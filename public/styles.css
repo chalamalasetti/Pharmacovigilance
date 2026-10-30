@@ -165,6 +165,54 @@ h2 { font-size: 17px; margin: 0 0 12px; }
   .foot { padding: 16px; }
 }
 
+/* Shared header: same links on every page, current page highlighted, Menu button on small screens */
+.skip { position: absolute; left: 8px; top: -60px; z-index: 20; background: var(--brand); color: var(--panel); padding: 8px 14px; border-radius: 8px; font-weight: 600; text-decoration: none; }
+.skip:focus { top: 8px; }
+.toplinks { align-items: center; gap: 4px; flex-wrap: wrap; }
+.toplinks a { padding: 6px 10px; border-radius: 8px; }
+.toplinks a:hover { background: var(--brand-soft); }
+.toplinks a[aria-current="page"] { background: var(--brand-soft); color: var(--ink); text-decoration: none; }
+.toplinks a.signin { margin-left: 8px; border: 1px solid var(--brand); }
+.menu-btn { display: none; margin-left: auto; border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 6px 14px; font-weight: 600; color: var(--brand); }
+.menu-btn::before { content: "☰ "; }
+.menu-open .menu-btn::before { content: "✕ "; }
+@media (max-width: 1180px) { .tagline { display: none; } .top { justify-content: space-between; } }
+@media (max-width: 900px) {
+  .menu-btn { display: inline-block; }
+  .toplinks { display: none; width: 100%; grid-template-columns: 1fr 1fr; gap: 2px 8px; padding: 6px 0 4px; border-top: 1px solid var(--line); }
+  .menu-open .toplinks { display: grid; }
+  .toplinks a { padding: 10px 12px; font-size: 15px; }
+  .toplinks a.signin { grid-column: 1 / -1; margin: 6px 0 0; text-align: center; }
+}
+
+/* Buttons used in page content */
+.btn { display: inline-block; border: 1px solid var(--line); background: var(--panel); color: var(--brand); border-radius: 8px; padding: 7px 14px; font-size: 14px; font-weight: 600; text-decoration: none; }
+.btn.primary { background: var(--brand); border-color: var(--brand); color: var(--panel); }
+
+/* First-visit welcome on the updates page */
+.welcome { display: flex; gap: 16px 24px; align-items: center; justify-content: space-between; flex-wrap: wrap; background: var(--brand-soft); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; }
+.welcome h2 { margin: 0 0 4px; }
+.welcome p { margin: 0; max-width: 68ch; font-size: 14px; }
+.welcome-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.layout > main { min-width: 0; }
+
+/* Filters in use, shown above the list */
+.active-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 16px; }
+.active-filters .label { margin: 0 4px 0 0; }
+.active-filters .link { margin: 0 0 0 4px; }
+.chip.on { background: var(--brand-soft); border-color: var(--brand); color: var(--ink); }
+.foot a { color: var(--brand); margin-left: 4px; }
+
+@media (max-width: 820px) {
+  /* Comfortable tap targets */
+  .chip, .seg button, .cat, .act, .imp-toggle, .reset, .show-filters, .btn { min-height: 36px; }
+  /* Key updates become a swipe row so the full list stays near the top */
+  .key-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px; padding-bottom: 6px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+  .key-grid .card { flex: 0 0 82%; scroll-snap-align: start; }
+  .welcome { padding: 14px 16px; }
+}
+
 /* Impact cards (main list and My PV Briefing) */
 .imp-toggle { margin-top: 8px; border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 3px 10px; font-size: 12px; color: var(--brand); font-weight: 600; }
 .imp-toggle[aria-expanded="true"] { background: var(--brand-soft); }
@@ -209,7 +257,6 @@ button.primary, .profile button.primary { background: var(--brand); border-color
 .imp-foot { color: var(--muted); font-size: 11px; }
 
 /* My PV Briefing */
-.toplinks a[aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
 .brief { max-width: 1000px; }
 .brief-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
 .brief-head .intro { margin: 0; }

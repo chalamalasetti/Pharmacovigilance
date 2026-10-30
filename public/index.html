@@ -17,19 +17,21 @@
   <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="top">
     <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
     <p class="tagline">Pharmacovigilance and regulatory updates from every major regulator</p>
-    <nav class="toplinks">
+    <button type="button" class="menu-btn" aria-controls="site-nav" aria-expanded="false">Menu</button>
+    <nav class="toplinks" id="site-nav" aria-label="Main">
+      <a href="./">Updates</a>
       <a href="briefing.html">My Briefing</a>
       <a href="research.html">Research</a>
       <a href="team.html" data-nav="team">Team</a>
       <a href="archive.html">Archive</a>
-      <a href="globe.html">🌍 Globe</a>
+      <a href="globe.html">Globe</a>
       <a href="agencies.html">Agencies</a>
-      <a href="feed.xml" title="Subscribe in a feed reader">RSS</a>
       <a href="about.html">About</a>
-      <a href="account.html" data-nav="account">Sign in</a>
+      <a href="account.html" class="signin" data-nav="account">Sign in</a>
     </nav>
   </header>
 
@@ -79,7 +81,18 @@
     </aside>
 
     <main>
-      <button type="button" class="show-filters" id="show-filters" aria-controls="filters" aria-expanded="false">Filters</button>
+      <button type="button" class="show-filters" id="show-filters" aria-controls="filters" aria-expanded="false">Search &amp; filters</button>
+      <section class="welcome" id="welcome" hidden aria-labelledby="welcome-title">
+        <div>
+          <h2 id="welcome-title">Welcome to PV Info</h2>
+          <p>Drug safety alerts, guidelines and regulatory changes from regulators worldwide, refreshed every hour. Use the filters to narrow by country or topic, and open an <b>Impact card</b> on any update to see what it could mean for your team.</p>
+        </div>
+        <div class="welcome-actions">
+          <a class="btn primary" href="briefing.html">Set up My Briefing</a>
+          <button type="button" class="btn" id="welcome-close">Got it</button>
+        </div>
+      </section>
+      <div class="active-filters" id="active" hidden></div>
       <section class="key" id="key" hidden>
         <h2>Key updates this week</h2>
         <div class="key-grid" id="key-grid"></div>
@@ -96,8 +109,10 @@
 
   <footer class="foot">
     Headlines link to the original regulator notice or news report. Always confirm details with the official source before acting.
+    <a href="feed.xml">Subscribe by RSS</a>
   </footer>
   <script type="module" src="app.js"></script>
   <script type="module" src="chat.js"></script>
+  <script type="module" src="nav.js"></script>
 </body>
 </html>
