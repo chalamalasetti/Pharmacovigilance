@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PV Info: pharmacovigilance and regulatory updates</title>
+  <meta name="description" content="Drug safety alerts, regulatory changes, guidelines and policy updates from FDA, EMA, MHRA, PMDA, CDSCO, Health Canada, TGA, WHO and regulators worldwide, filtered by country and topic.">
+  <meta name="theme-color" content="#0f4c5c">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="PV Info updates" href="feed.xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
+    <p class="tagline">Pharmacovigilance and regulatory updates from every major regulator</p>
+    <nav class="toplinks">
+      <a href="agencies.html">Agencies</a>
+      <a href="feed.xml" title="Subscribe in a feed reader">RSS</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="filters" id="filters" aria-label="Filters">
+      <div class="field">
+        <label for="q">Search</label>
+        <input id="q" type="search" placeholder="Drug, agency, topic…" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <span class="label">Region</span>
+        <div class="chips" id="regions" role="group" aria-label="Region"></div>
+      </div>
+
+      <div class="field">
+        <label for="country">Country or body</label>
+        <select id="country"></select>
+        <button type="button" class="link" id="follow" hidden>☆ Follow this country</button>
+        <label class="check" id="mine-wrap" hidden><input type="checkbox" id="mine"> Only countries I follow <span id="mine-list"></span></label>
+      </div>
+
+      <div class="field">
+        <span class="label">Topic</span>
+        <ul class="cats" id="cats"></ul>
+      </div>
+
+      <div class="field">
+        <span class="label">Source</span>
+        <div class="seg" id="kind" role="group" aria-label="Source type">
+          <button type="button" data-v="">All</button>
+          <button type="button" data-v="official">Regulators</button>
+          <button type="button" data-v="news">News</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="days">Published within</label>
+        <select id="days">
+          <option value="7">Last 7 days</option>
+          <option value="30">Last 30 days</option>
+          <option value="60">Last 60 days</option>
+        </select>
+      </div>
+
+      <button type="button" class="reset" id="reset">Clear filters</button>
+    </aside>
+
+    <main>
+      <button type="button" class="show-filters" id="show-filters" aria-controls="filters" aria-expanded="false">Filters</button>
+      <section class="key" id="key" hidden>
+        <h2>Key updates this week</h2>
+        <div class="key-grid" id="key-grid"></div>
+      </section>
+
+      <div class="listhead">
+        <h2 id="count">Loading updates…</h2>
+        <span class="updated" id="updated"></span>
+      </div>
+      <div id="list" class="list" aria-live="polite"></div>
+      <button type="button" class="more" id="more" hidden>Show more</button>
+    </main>
+  </div>
+
+  <footer class="foot">
+    Headlines link to the original regulator notice or news report. Always confirm details with the official source before acting.
+  </footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

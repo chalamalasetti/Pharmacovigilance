@@ -1,0 +1,18 @@
+{
+  "name": "pvinfo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pharmacovigilance and drug regulatory updates from every major regulator, in one place.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/aggregate.mjs",
+    "aggregate": "node scripts/aggregate.mjs",
+    "test": "node --test test/*.test.mjs",
+    "app": "node scripts/app.mjs",
+    "start": "node scripts/app.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "fast-xml-parser": "4.5.0"
+  }
+}

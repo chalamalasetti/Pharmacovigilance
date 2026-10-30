@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Test Drug Safety Update</title>
+  <entry>
+    <id>tag:regulator.example.org,2026:dsu-1</id>
+    <updated>2026-10-28T10:00:00Z</updated>
+    <link rel="alternate" type="text/html" href="https://regulator.example.org/dsu/sample-guideline"/>
+    <title>Guidance on Yellow Card reporting for biosimilars</title>
+    <summary>New guidance for healthcare professionals on reporting suspected adverse drug reactions.</summary>
+  </entry>
+</feed>
