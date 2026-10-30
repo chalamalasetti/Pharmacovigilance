@@ -1,0 +1,56 @@
+name: Feed health check
+
+# Half an hour after each hourly rebuild, reads the live site's data/status.json.
+# If the site has stopped refreshing, or a regulator feed has been down for 6 hours,
+# it opens one GitHub issue labelled "feed-alert" (GitHub emails the repo owner),
+# keeps that issue's details current while the problem lasts, and closes it with a
+# comment once everything is healthy again. Free: uses only the built-in GITHUB_TOKEN.
+
+on:
+  schedule:
+    - cron: "47 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check the live data
+        id: health
+        run: node scripts/health.mjs
+      - name: Open, update or close the alert issue
+        uses: actions/github-script@v7
+        env:
+          HEALTHY: ${{ steps.health.outputs.healthy }}
+        with:
+          script: |
+            const fs = require("fs");
+            const body = fs.readFileSync("report.md", "utf8");
+            const label = "feed-alert";
+            const { owner, repo } = context.repo;
+            const open = await github.paginate(github.rest.issues.listForRepo, { owner, repo, labels: label, state: "open" });
+            const issue = open[0];
+            if (process.env.HEALTHY === "true") {
+              if (issue) {
+                await github.rest.issues.createComment({ owner, repo, issue_number: issue.number, body: `Recovered: the latest check is healthy.\n\n${body}` });
+                await github.rest.issues.update({ owner, repo, issue_number: issue.number, state: "closed", state_reason: "completed" });
+              }
+              return;
+            }
+            if (issue) {
+              // Editing the body keeps the details current without emailing every hour.
+              await github.rest.issues.update({ owner, repo, issue_number: issue.number, body });
+              return;
+            }
+            try {
+              await github.rest.issues.createLabel({ owner, repo, name: label, color: "d93f0b", description: "Opened automatically when PV Info data stops refreshing" });
+            } catch {}
+            await github.rest.issues.create({ owner, repo, title: "PV Info data alert: a feed or the hourly refresh is failing", labels: [label], assignees: [owner], body });

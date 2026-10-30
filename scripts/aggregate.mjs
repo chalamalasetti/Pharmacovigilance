@@ -18,6 +18,7 @@ import { collectResearch } from "./research.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "public/data/updates.json");
+const STATUS = "status.json";
 const AGENCIES = path.join(ROOT, "public/data/agencies.json");
 // Regulators publish far less often than newsrooms, so keep two months on the page.
 const MAX_AGE_MS = 60 * 24 * 60 * 60 * 1000;
@@ -182,18 +183,56 @@ export function stampRetrieved(fresh, previous, now = new Date().toISOString()) 
   return fresh;
 }
 
-// The last snapshot: the local file when running on a computer, or the live site's copy
-// when building on Vercel (where each build starts without the previous output).
-async function previousUpdates(out) {
+// The last snapshot of a data file: the local copy when running on a computer, or the
+// live site's copy when building on Vercel (where each build starts without the previous output).
+async function previousJson(file) {
   try {
-    return JSON.parse(await readFile(out, "utf8")).updates ?? [];
+    return JSON.parse(await readFile(file, "utf8"));
   } catch {}
-  if (process.env.SKIP_PREVIOUS) return [];
+  if (process.env.SKIP_PREVIOUS) return null;
   try {
-    return JSON.parse(await fetchText(`${SITE_URL}/data/updates.json`, 1)).updates ?? [];
+    return JSON.parse(await fetchText(`${SITE_URL}/data/${path.basename(file)}`, 1));
   } catch {
-    return [];
+    return null;
   }
+}
+
+// One row per feed for the Data status page and the health check. lastSuccess and
+// failingSince carry over from the previous build, so an outage shows how long it has lasted.
+export function feedStatus(feeds, results, previous = [], now = new Date().toISOString()) {
+  const before = new Map(previous.map((s) => [s.id, s]));
+  return feeds.map((f, i) => {
+    const id = updateId(f.url ?? f.fixture ?? f.source);
+    const prev = before.get(id);
+    const r = results[i];
+    const row = { id, name: f.label ?? `${f.source}${f.kind === "news" && f.country ? ` (${f.country})` : ""}`, kind: f.kind, country: f.country ?? null };
+    if (r.status === "fulfilled") return { ...row, ok: true, count: r.value.length, lastSuccess: now };
+    return {
+      ...row,
+      ok: false,
+      count: 0,
+      error: String(r.reason?.message ?? r.reason).slice(0, 120),
+      lastSuccess: prev?.lastSuccess ?? null,
+      failingSince: (prev && !prev.ok && prev.failingSince) || now,
+    };
+  });
+}
+
+// The small file behind the status strip on every page and the hourly health check.
+export function buildStatus({ checked, updated, sources, research }) {
+  const ok = sources.filter((s) => s.ok).length;
+  return {
+    checked,
+    updated,
+    feeds: { total: sources.length, ok, failed: sources.length - ok },
+    sources,
+    research: research
+      ? {
+          refreshed: research.refreshed ?? null,
+          sources: (research.sources ?? []).map(({ id, name, configured, ok, lastSuccess, error }) => ({ id, name, configured, ok, lastSuccess, ...(error && { error }) })),
+        }
+      : null,
+  };
 }
 
 async function mapLimit(list, limit, fn) {
@@ -242,33 +281,38 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
   };
 
   const results = await mapLimit(feeds, CONCURRENCY, load);
+  const now = new Date().toISOString();
+  const dataDir = path.dirname(out);
+  const prevData = fixturesDir ? null : await previousJson(out);
+  const prevStatus = fixturesDir ? null : await previousJson(path.join(dataDir, STATUS));
+  const sources = feedStatus(feeds, results, prevStatus?.sources, now);
   const fresh = [];
-  const status = { ok: 0, failed: [] };
   results.forEach((r, i) => {
-    const f = feeds[i];
-    const label = `${f.source}${f.kind === "news" && f.country ? ` (${f.country})` : ""}`;
+    const s = sources[i];
     if (r.status === "fulfilled") {
-      status.ok++;
-      console.log(`${r.value.length ? "ok   " : "EMPTY"} ${label}: kept ${r.value.length} of ${r.value.seen}`);
+      console.log(`${r.value.length ? "ok   " : "EMPTY"} ${s.name}: kept ${r.value.length} of ${r.value.seen}`);
       fresh.push(...r.value);
     } else {
-      status.failed.push(f.source);
-      console.warn(`FAIL ${label}: ${r.reason?.message ?? r.reason}`);
+      console.warn(`FAIL ${s.name}: ${s.error}`);
     }
   });
-
-  if (!fresh.length && !fixturesDir) {
-    // Don't wipe the last good snapshot if every feed failed.
-    throw new Error("No updates collected; leaving existing updates.json untouched.");
-  }
+  const reachable = sources.filter((s) => s.ok).length;
 
   // Keep earlier updates still inside the window, so a feed that's down today doesn't erase its history.
-  const previous = fixturesDir ? [] : await previousUpdates(out);
+  const previous = prevData?.updates ?? [];
+  if (!fresh.length && !fixturesDir && !previous.length) {
+    // Nothing new and nothing to fall back on: fail the build so the live site keeps its last good copy.
+    throw new Error("No updates collected; leaving existing updates.json untouched.");
+  }
+  // When every source fails, the page keeps the last good updates and says when they were fetched.
+  const updated = reachable || fixturesDir ? now : (prevData?.updated ?? now);
+  if (!reachable && !fixturesDir) console.warn(`every source failed; keeping the ${previous.length} updates from ${updated}`);
   stampRetrieved(fresh, previous);
   const updates = pickUpdates([...fresh, ...previous], { checkAge: !fixturesDir });
   const data = {
-    updated: new Date().toISOString(),
-    feeds: { total: feeds.length, ok: status.ok, failed: status.failed.length },
+    updated,
+    checked: now,
+    feeds: { total: feeds.length, ok: reachable, failed: feeds.length - reachable },
     ...summarize(updates, agencies),
     updates,
   };
@@ -294,6 +338,11 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
       console.warn(`research: failed: ${e.message}`);
     }
   }
+  let research = null;
+  try {
+    research = JSON.parse(await readFile(path.join(dataDir, "research.json"), "utf8"));
+  } catch {}
+  await writeFile(path.join(dataDir, STATUS), JSON.stringify(buildStatus({ checked: now, updated, sources, research })) + "\n");
   const official = updates.filter((u) => u.kind === "official").length;
   const countries = new Set(updates.map((u) => u.country)).size;
   console.log(`wrote ${updates.length} updates (${official} official, ${countries} countries) to ${path.relative(ROOT, out)}`);

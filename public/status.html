@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data status · PV Info</title>
+  <meta name="theme-color" content="#0f4c5c">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Vercel Web Analytics and Speed Insights (enable both in the Vercel dashboard) -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
+    <p class="tagline">Pharmacovigilance and regulatory updates from every major regulator</p>
+    <button type="button" class="menu-btn" aria-controls="site-nav" aria-expanded="false">Menu</button>
+    <nav class="toplinks" id="site-nav" aria-label="Main">
+      <a href="./">Updates</a>
+      <a href="briefing.html">My Briefing</a>
+      <a href="research.html">Research</a>
+      <a href="team.html" data-nav="team">Team</a>
+      <a href="archive.html">Archive</a>
+      <a href="globe.html">Globe</a>
+      <a href="agencies.html">Agencies</a>
+      <a href="about.html">About</a>
+      <a href="account.html" class="signin" data-nav="account">Sign in</a>
+    </nav>
+  </header>
+  <main class="page">
+    <h1>Data status</h1>
+    <p class="intro">PV Info rebuilds every hour. This page shows when each source last gave updates. If a source can't be reached, its earlier updates stay on the site, so nothing disappears, but new notices from it may be missing until it recovers.</p>
+    <section class="st-summary" id="summary" aria-live="polite"><p>Loading…</p></section>
+    <section id="problems" hidden>
+      <h2>Current issues</h2>
+      <ul class="st-problems" id="problem-list"></ul>
+    </section>
+    <section>
+      <h2>Regulator feeds</h2>
+      <div class="st-table-wrap"><table class="st-table" id="official"></table></div>
+    </section>
+    <section>
+      <h2>News searches</h2>
+      <p class="st-note" id="news-sum"></p>
+      <details class="st-more"><summary>Show every news search</summary><div class="st-table-wrap"><table class="st-table" id="news"></table></div></details>
+    </section>
+    <section id="research-sec" hidden>
+      <h2>Research sources</h2>
+      <div class="st-table-wrap"><table class="st-table" id="research"></table></div>
+    </section>
+  </main>
+  <script type="module" src="status.js"></script>
+  <script type="module">import { navOnly } from "./cloud.js"; navOnly();</script>
+  <script type="module" src="nav.js"></script>
+</body>
+</html>

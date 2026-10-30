@@ -63,3 +63,61 @@ export function keyUpdates(updates, n = 6) {
   }
   return out;
 }
+
+// ---- Data freshness ----
+// Shared by the status strip on every page, the Data status page and the hourly
+// health check that opens a GitHub issue. The site rebuilds every hour, so two missed
+// rebuilds in a row is a problem. A single failed fetch is shown on the site straight
+// away but only raises an alert once it has lasted a while, so one slow hour stays quiet.
+export const FRESHNESS = {
+  staleAfterMs: 3 * 3600000,
+  officialAlertAfterMs: 6 * 3600000,
+  newsAlertShare: 0.5,
+  researchAlertAfterMs: 24 * 3600000,
+};
+
+// level: "ok", "warn" (something failed, data is still current) or "stale" (no fresh data).
+// Each problem says whether it is worth alerting the maintainer about.
+export function dataHealth(status, now = Date.now(), t = FRESHNESS) {
+  const problems = [];
+  const age = (iso) => (iso ? now - Date.parse(iso) : Infinity);
+  const hours = (ms) => (ms === Infinity ? "ever" : `${Math.round(ms / 3600000)} h`);
+  if (!status) return { level: "stale", problems: [{ text: "No data status has been published yet.", alert: true }] };
+
+  const sinceCheck = age(status.checked ?? status.updated);
+  const sinceData = age(status.updated);
+  let stale = false;
+  if (sinceCheck > t.staleAfterMs) {
+    stale = true;
+    problems.push({ text: `The site has not rebuilt for ${hours(sinceCheck)}. The hourly refresh or the build may be failing.`, alert: true });
+  } else if (sinceData > t.staleAfterMs) {
+    stale = true;
+    problems.push({ text: `No source has been reachable for ${hours(sinceData)}, so updates shown are from the last successful refresh.`, alert: true });
+  }
+
+  const sources = status.sources ?? [];
+  for (const s of sources.filter((s) => s.kind === "official" && !s.ok)) {
+    const down = age(s.failingSince ?? status.checked);
+    problems.push({
+      text: `${s.name} could not be reached${down > t.staleAfterMs ? ` for ${hours(down)}` : " at the last refresh"}${s.error ? ` (${s.error})` : ""}. Its earlier updates are still shown.`,
+      alert: down >= t.officialAlertAfterMs,
+      source: s.id,
+    });
+  }
+  const news = sources.filter((s) => s.kind === "news");
+  const newsDown = news.filter((s) => !s.ok);
+  if (newsDown.length) {
+    problems.push({
+      text: `${newsDown.length} of ${news.length} news searches failed at the last refresh.`,
+      alert: newsDown.length / news.length >= t.newsAlertShare,
+    });
+  }
+  for (const s of (status.research?.sources ?? []).filter((s) => s.configured && !s.ok)) {
+    const down = age(s.lastSuccess);
+    problems.push({
+      text: `Research source ${s.name} failed at its last refresh${s.lastSuccess ? `; last success ${hours(down)} ago` : ""}${s.error ? ` (${s.error})` : ""}.`,
+      alert: down >= t.researchAlertAfterMs,
+    });
+  }
+  return { level: stale ? "stale" : problems.length ? "warn" : "ok", problems };
+}

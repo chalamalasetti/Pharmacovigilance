@@ -24,7 +24,7 @@ export function buildFeeds(sources, agencies) {
     }
   }
   for (const topic of sources.topics) {
-    feeds.push({ source: "PV news search", country: null, kind: "news", relevance: "pv", url: newsSearchUrl(topic) });
+    feeds.push({ source: "PV news search", label: `News search: ${topic}`, country: null, kind: "news", relevance: "pv", url: newsSearchUrl(topic) });
   }
   return feeds;
 }
