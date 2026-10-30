@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Company · PV Info</title>
+  <meta name="description" content="A pharmaceutical company's public profile: related regulatory and safety updates, sourced products and markets, related research and source coverage.">
+  <meta name="theme-color" content="#0f4c5c">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Vercel Web Analytics and Speed Insights (enable both in the Vercel dashboard) -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
+    <p class="tagline">Pharmaceutical companies and the public updates related to their products</p>
+    <button type="button" class="menu-btn" aria-controls="site-nav" aria-expanded="false">Menu</button>
+    <nav class="toplinks" id="site-nav" aria-label="Main">
+      <a href="./">Updates</a>
+      <a href="briefing.html">My Briefing</a>
+      <a href="research.html">Research</a>
+      <a href="companies.html">Companies</a>
+      <a href="team.html" data-nav="team">Team</a>
+      <a href="archive.html">Archive</a>
+      <a href="globe.html">Globe</a>
+      <a href="agencies.html">Agencies</a>
+      <a href="about.html">About</a>
+      <a href="account.html" class="signin" data-nav="account">Sign in</a>
+    </nav>
+  </header>
+
+  <main class="page co-page" id="main">
+    <p><a href="companies.html" class="link">← Company Explorer</a></p>
+    <div id="head"><p class="intro">Loading…</p></div>
+    <div class="r-tabs" role="tablist" aria-label="Company views" id="tabs" hidden>
+      <button type="button" role="tab" id="tab-overview" aria-controls="panel" aria-selected="true">Overview</button>
+      <button type="button" role="tab" id="tab-updates" aria-controls="panel" aria-selected="false">Related updates <span class="n" id="n-updates"></span></button>
+      <button type="button" role="tab" id="tab-products" aria-controls="panel" aria-selected="false">Products &amp; markets <span class="n" id="n-products"></span></button>
+      <button type="button" role="tab" id="tab-research" aria-controls="panel" aria-selected="false">Research <span class="n" id="n-research"></span></button>
+      <button type="button" role="tab" id="tab-sources" aria-controls="panel" aria-selected="false">Sources &amp; coverage</button>
+    </div>
+    <section id="panel" role="tabpanel" aria-live="polite"></section>
+  </main>
+
+  <footer class="foot">
+    Public information only. Related updates and research are matched to this company by automated, rule-based checks with the reason shown for each; they are not company-confirmed safety issues and do not establish fault or causality. Product relationships come from FDA and EMA records; holder names are linked to the company group by an editorial mapping. No results does not mean no safety concerns.
+  </footer>
+  <script type="module" src="company.js"></script>
+  <script type="module" src="chat.js"></script>
+  <script type="module" src="nav.js"></script>
+</body>
+</html>

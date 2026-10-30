@@ -9,10 +9,12 @@ import { initCloud } from "./cloud.js";
 
 const $ = (id) => document.getElementById(id);
 const PAGE = 50;
-const DEFAULTS = { q: "", region: "", country: "", cat: "", kind: "", days: "30", mine: "" };
+const DEFAULTS = { q: "", region: "", country: "", cat: "", kind: "", days: "30", mine: "", co: "" };
 
 let data = null;
 let shown = PAGE;
+// Company names for the "Related companies" line and filter (Company Explorer data).
+let coNames = new Map();
 const ws = workspace.load();
 const state = { ...DEFAULTS };
 
@@ -103,6 +105,7 @@ function renderActive() {
     state.kind && [state.kind === "official" ? "Regulators only" : "News only", { kind: "" }],
     days[state.days] && [days[state.days], { days: DEFAULTS.days }],
     state.mine && ["Countries I follow", { mine: "" }],
+    state.co && [`Related to ${coNames.get(state.co) ?? state.co}`, { co: "" }],
   ].filter(Boolean);
   $("active").hidden = !active.length;
   $("active").replaceChildren(
@@ -111,6 +114,23 @@ function renderActive() {
     el("button", { type: "button", class: "link", onclick: reset }, "Clear all"),
   );
   $("show-filters").textContent = active.length ? `Search & filters (${active.length})` : "Search & filters";
+}
+
+// Product-related companies only; a bare company mention is not shown here.
+const relatedCompanies = (u) => (u.co ?? []).filter((m) => m.lane !== "corporate" && coNames.has(m.id));
+const forCompany = (u) => !state.co || (u.co ?? []).some((m) => m.id === state.co && m.lane !== "corporate");
+
+function companiesLine(u) {
+  const list = relatedCompanies(u);
+  if (!list.length) return null;
+  const shownCos = list.slice(0, 4);
+  return el(
+    "p",
+    { class: "why co-related" },
+    "Related companies: ",
+    ...shownCos.flatMap((m, i) => [i ? ", " : "", el("a", { href: `company.html?id=${m.id}&tab=updates`, title: `${m.lane} match: see why on the company page` }, coNames.get(m.id)), ` (${m.lane})`]),
+    list.length > 4 ? ` and ${list.length - 4} more` : "",
+  );
 }
 
 function card(u, { compact = false } = {}) {
@@ -139,6 +159,7 @@ function card(u, { compact = false } = {}) {
     ),
     el("h3", {}, el("a", { href: u.link, target: "_blank", rel: "noopener" }, u.title)),
     !compact && u.summary ? el("p", { class: "summary" }, u.summary.length > 280 ? `${u.summary.slice(0, 277)}…` : u.summary) : null,
+    compact ? null : companiesLine(u),
     el(
       "div",
       { class: "src" },
@@ -153,13 +174,13 @@ function card(u, { compact = false } = {}) {
 function render() {
   const followed = store.get();
   const filter = { ...state, followed: state.mine === "1" ? followed : null, now: Date.now() };
-  const list = data.updates.filter((u) => matches(u, filter));
+  const list = data.updates.filter((u) => matches(u, filter) && forCompany(u));
 
-  const key = keyUpdates(data.updates.filter((u) => matches(u, { ...filter, cat: "", days: "7" })), 6);
+  const key = keyUpdates(data.updates.filter((u) => matches(u, { ...filter, cat: "", days: "7" }) && forCompany(u)), 6);
   $("key").hidden = !key.length || Boolean(state.q);
   $("key-grid").replaceChildren(...key.map((u) => card(u, { compact: true })));
 
-  const scope = [state.country ? countryName(state.country) : state.region, state.cat ? catLabel(state.cat) : ""].filter(Boolean).join(" · ");
+  const scope = [state.country ? countryName(state.country) : state.region, state.cat ? catLabel(state.cat) : "", state.co ? coNames.get(state.co) ?? state.co : ""].filter(Boolean).join(" · ");
   $("count").textContent = `${list.length} update${list.length === 1 ? "" : "s"}${scope ? ` · ${scope}` : ""}`;
 
   const items = [];
@@ -242,6 +263,17 @@ async function main() {
   renderFilters();
   render();
   initCloud(ws, render);
+  loadCompanyNames();
+}
+
+async function loadCompanyNames() {
+  try {
+    const res = await fetch("data/companies/index.json", { cache: "no-cache" });
+    if (!res.ok) return;
+    coNames = new Map((await res.json()).companies.map((c) => [c.id, c.name]));
+    renderFilters();
+    render();
+  } catch {}
 }
 
 main();

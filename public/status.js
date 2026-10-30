@@ -22,7 +22,7 @@ function table(id, rows, { country = true } = {}) {
           "tr",
           { class: s.ok ? "" : "st-bad" },
           el("td", {}, country && s.country ? `${flag(s.country)} ` : "", s.name),
-          el("td", {}, s.ok ? (s.count != null ? `✓ OK · ${s.count} kept` : "✓ OK") : s.configured === false ? "Off" : `⚠ Failed${s.error ? ` (${s.error})` : ""}${s.failingSince ? `, first failed ${ago(new Date(s.failingSince))}` : ""}`),
+          el("td", {}, s.ok ? (s.count != null ? `✓ OK · ${s.count} kept` : s.mapped != null ? `✓ OK · ${s.mapped} of ${s.records} records linked to listed companies` : "✓ OK") : s.configured === false ? "Off" : `⚠ Failed${s.error ? ` (${s.error})` : ""}${s.failingSince ? `, first failed ${ago(new Date(s.failingSince))}` : ""}`),
           el("td", {}, s.configured === false ? "" : time(s.lastSuccess)),
         ),
       ),
@@ -55,6 +55,10 @@ async function main() {
   const newsBad = news.filter((s) => !s.ok);
   $("news-sum").textContent = `${news.length - newsBad.length} of ${news.length} news searches reachable at the last rebuild.${newsBad.length ? ` Failed: ${newsBad.map((s) => s.name).join(", ")}.` : ""}`;
   table("news", [...newsBad, ...news.filter((s) => s.ok)]);
+  if (status.companies?.sources?.length) {
+    $("companies-sec").hidden = false;
+    table("companies", status.companies.sources.map((s) => (s.stale ? { ...s, error: `${s.error ?? "failed"}; earlier products kept` } : s)), { country: false });
+  }
   if (status.research?.sources?.length) {
     $("research-sec").hidden = false;
     table("research", status.research.sources, { country: false });

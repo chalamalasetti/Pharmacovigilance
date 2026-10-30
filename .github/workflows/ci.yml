@@ -21,3 +21,8 @@ jobs:
       - name: Live feed check
         continue-on-error: true
         run: npm run aggregate
+      # Shows whether the FDA Orange Book and EMA downloads still parse. Informational:
+      # the weekly registry workflow is what updates the committed registry.
+      - name: Company registry source check
+        continue-on-error: true
+        run: npm run registry

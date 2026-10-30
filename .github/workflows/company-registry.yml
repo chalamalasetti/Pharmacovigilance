@@ -1,0 +1,43 @@
+name: Refresh company registry
+
+# Once a week, downloads the FDA Orange Book and EMA medicines data, links each record
+# to a company in companies/manifest.json (scripts/registry.mjs), and commits
+# companies/registry.json when it changed. That push redeploys the site. The hourly
+# builds only read the committed file, so a source outage never empties a company page.
+# Free: uses only the built-in GITHUB_TOKEN. Run it by hand from the Actions tab too.
+
+on:
+  schedule:
+    - cron: "30 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: company-registry
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build the registry
+        run: npm run registry
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- companies/registry.json && git ls-files --error-unmatch companies/registry.json >/dev/null 2>&1; then
+            echo "Registry unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add companies/registry.json
+          git commit -m "Refresh company registry from FDA and EMA data"
+          git push

@@ -76,6 +76,26 @@ Only the project URL and the public anon key reach the browser (`public/config.j
 
 Offline check: `node scripts/research.mjs --fixtures test/fixtures/research`.
 
+## Company Explorer
+
+`companies.html` searches pharmaceutical companies by name, alias, former name, brand or substance; `company.html?id=…` is one company's public page (overview, related updates, products and markets, research, sources and coverage). No sign-in, no AI and no paid service.
+
+- **Coverage list:** `companies/manifest.json` names each company group with a stable `id`, its legal name, aliases, former names, the exact phrases that identify it in news (`mentions`, case-sensitive and specific, so "Vertex" alone never matches), and the holder-name prefixes its legal entities use in FDA and EMA records (`holders`). Ambiguous short names such as "Merck" are listed under `ambiguous` and never matched on their own. The list is a **draft** until the product owner approves it: set `status` to `approved` with `approvedBy` and `approvedOn`, and bump `version` on every change.
+- **Sources:** `companies/sources.json` is the source capability register (what each source covers, how often, reuse terms, limits). Active today: the FDA Orange Book data files (US, NDAs and ANDAs) and EMA's medicines report (EU, centrally authorised). Planned: FDA Purple Book, the EU Union Register and EMA Article 57 data.
+- **Registry:** `scripts/registry.mjs` downloads the active sources, links each record's holder to a company and writes `companies/registry.json`, keeping the source, record locator, URL and file hash on every row. The **Refresh company registry** workflow runs it every Monday and commits the file, which redeploys the site. If a source fails, its last good rows are kept and marked stale. Run it by hand from the Actions tab after changing the manifest.
+- **Matching:** each hourly build matches updates and research papers to companies (`scripts/company-match.mjs`) in four lanes: direct (authorisation number, or a brand the company holds), substance, drug class (indirect) and company news (off by default). Every match stores its reason, and the rules version. A brand held by different companies in different markets is not matched unless the company is named. Results go to `public/data/companies/`, and each update gets a `co` list for the Updates page's "Related companies" line.
+- **Following:** followed companies are kept in this browser's localStorage (`pv-companies`) and show in My Briefing.
+
+Offline check: `node scripts/registry.mjs --fixtures test/fixtures/companies` (synthetic medicines; regenerate them with `python3 test/fixtures/companies/make-fixtures.py test/fixtures/companies`).
+
+### Company Explorer runbook
+
+- **Add or fix a company:** edit `companies/manifest.json` (never change or reuse an `id`), run `npm test`, then run the registry workflow so its products are linked.
+- **A large holder is not linked:** the Sources section of `companies.html` and `unmapped` in `companies/registry.json` list the biggest unlinked holder names. Add the right prefix to that company's `holders` after checking the holder really belongs to the group.
+- **A source fails:** the Data status page shows it under "Company registry sources", and the company pages say products come from the last good copy. Check the download URL in `companies/sources.json`; the parsers find columns by name, so a renamed column is the usual cause.
+- **A correction or company request:** both buttons open a public GitHub issue labelled `company-correction` or `company-request`.
+- **Never** describe the list as exhaustive or the matches as validated: coverage is as stated on the pages.
+
 ## Adding a country or source
 
 - New agency: add it to `public/data/agencies.json` with its aliases and a `query`. It shows up in the country filter, the directory and the news searches.
