@@ -1,5 +1,6 @@
-// Renders public/data/research.json as Latest research (filterable list) and
-// My watchlist (saved papers, followed topics and authors, saved searches).
+// Renders public/data/research.json as Latest research (filterable list), the
+// Innovation timeline (dated events for one topic) and My watchlist (saved papers,
+// followed topics and authors, saved searches).
 // Filters live in the URL so a view can be shared; the watchlist lives in this
 // browser's localStorage (research-lib.js).
 
@@ -8,7 +9,7 @@ import * as R from "./research-lib.js";
 
 const $ = (id) => document.getElementById(id);
 const PAGE = 40;
-const DEFAULTS = { q: "", app: "", method: "", type: "", maturity: "", days: "365", oa: "", since: "", author: "", view: "latest" };
+const DEFAULTS = { q: "", app: "", method: "", type: "", maturity: "", days: "365", oa: "", since: "", author: "", event: "", order: "", view: "latest" };
 
 let data = null;
 let shown = PAGE;
@@ -92,12 +93,15 @@ function card(p) {
       p.openAccess ? el("span", { class: "badge" }, "Open access") : null,
       R.isNew(watch, p) ? el("span", { class: "ws-badge" }, "New") : null,
       p.maturity && p.maturity.id !== "na" ? el("span", { class: `r-mat m-${p.maturity.id}`, title: p.maturity.reason }, p.maturity.label) : null,
+      p.review ? el("span", { class: "ws-badge", title: R.reviewLine(p) }, "Reviewed") : null,
     ),
     el("h3", {}, el("a", { href: `paper.html?id=${p.id}` }, p.title)),
     el("p", { class: "r-by" }, R.authorLine(p), p.venue ? ` · ${p.venue}` : "", p.published ? ` · ${p.published}` : ""),
-    p.summary.length
-      ? el("p", { class: "summary" }, el("span", { class: "r-q" }, "From the abstract: "), p.summary.map((s) => s.text).join(" "))
-      : el("p", { class: "summary none" }, "No abstract available in the source record."),
+    p.summaryWithdrawn
+      ? el("p", { class: "summary none" }, "Summary withdrawn after editorial review. Read the original publication.")
+      : p.summary.length
+        ? el("p", { class: "summary" }, el("span", { class: "r-q" }, "From the abstract: "), p.summary.map((s) => s.text).join(" "))
+        : el("p", { class: "summary none" }, "No abstract available in the source record."),
     el(
       "div",
       { class: "imp-chips" },
@@ -200,18 +204,117 @@ function renderHealth() {
 }
 
 function refresh() {
-  const isWatch = state.view === "watch";
-  $("tab-latest").setAttribute("aria-selected", String(!isWatch));
-  $("tab-watch").setAttribute("aria-selected", String(isWatch));
+  const view = state.view;
+  for (const v of ["latest", "timeline", "watch"]) $(`tab-${v}`).setAttribute("aria-selected", String(view === v));
   $("watch-n").textContent = Object.keys(watch.saved).length ? `(${Object.keys(watch.saved).length})` : "";
-  $("watch").hidden = !isWatch;
-  document.body.classList.toggle("r-watching", isWatch);
-  if (isWatch) renderWatch();
+  $("watch").hidden = view !== "watch";
+  $("timeline").hidden = view !== "timeline";
+  document.body.classList.toggle("r-watching", view === "watch");
+  document.body.classList.toggle("r-timing", view === "timeline");
+  if (view === "watch") renderWatch();
+  else if (view === "timeline") renderTimeline();
   else {
     renderList();
     const saveBtn = el("button", { type: "button", class: "link", onclick: saveSearch }, "Save this search");
     $("updated").replaceChildren(`Refreshed ${ago(new Date(data.refreshed))} · `, saveBtn);
   }
+}
+
+// ---- Innovation timeline ----
+
+function topicPicker() {
+  const counts = count((p) => [...p.tags.applications, ...p.tags.methods].map((t) => t.id));
+  const chip = (t, place) => el("button", { type: "button", class: `chip-s${place ? " place" : ""}`, onclick: () => set({ [place ? "app" : "method"]: t.id }) }, `${t.label} (${counts.get(t.id) ?? 0})`);
+  return el(
+    "div",
+    { class: "profile" },
+    el("h2", {}, "Pick a topic to see how it has developed"),
+    el("p", { class: "hint" }, "Choose a PV application, a method, or both (for example Literature screening with Large language models)."),
+    el("span", { class: "label" }, "PV application"),
+    el("div", { class: "imp-chips" }, data.taxonomy.applications.map((t) => chip(t, true))),
+    el("span", { class: "label" }, "Method or technology"),
+    el("div", { class: "imp-chips" }, data.taxonomy.methods.map((t) => chip(t, false))),
+  );
+}
+
+function tlEntry(ev, byId) {
+  const when = el("time", { class: "tl-date", datetime: ev.date }, ev.date);
+  const badge = el("span", { class: `tl-kind k-${ev.type}` }, R.eventLabel(ev.type));
+  if (ev.kind === "guidance") {
+    const g = ev.guidance;
+    return el("li", { class: `tl-item k-${ev.type}` }, el("span", { class: "tl-dot", "aria-hidden": "true" }), when, badge,
+      el("h3", {}, el("a", { href: g.link, target: "_blank", rel: "noopener" }, g.title)),
+      el("p", { class: "r-by" }, g.source),
+      el("p", { class: "hint" }, "Official regulator update on this topic, from the PV Info updates feed."),
+    );
+  }
+  const p = ev.paper;
+  const c = R.contribution(p);
+  const { earlier, later } = R.relatedByDate(p, byId);
+  const family = (p.family ?? []).map((f) => ({ f, q: byId.get(f.id) })).filter((x) => x.q);
+  const relLink = (q) => el("a", { href: `paper.html?id=${q.id}` }, q.title);
+  return el(
+    "li",
+    { class: `tl-item k-${ev.type}${p.status?.some((s) => s.type === "retracted") ? " r-retracted" : ""}` },
+    el("span", { class: "tl-dot", "aria-hidden": "true" }),
+    when,
+    badge,
+    p.type === "preprint" ? el("span", { class: "badge warnb" }, "Not peer reviewed") : null,
+    ...(p.status ?? []).map((s) => el("span", { class: `badge s-${s.type}` }, R.STATUS_LABEL[s.type])),
+    p.maturity && p.maturity.id !== "na" ? el("span", { class: `r-mat m-${p.maturity.id}`, title: p.maturity.reason }, p.maturity.label) : null,
+    el("h3", {}, el("a", { href: `paper.html?id=${p.id}` }, p.title)),
+    el("p", { class: "r-by" }, R.authorLine(p, 2), p.venue ? ` · ${p.venue}` : ""),
+    c ? el("p", { class: "tl-contrib" }, el("span", { class: "r-q" }, "Key contribution, from the abstract: "), c.text) : null,
+    family.length ? el("p", { class: "tl-rel" }, ...family.flatMap(({ f, q }, i) => [i ? "; " : "", f.relation === "preprint" ? "Earlier preprint: " : f.relation === "published as" ? "Later published as: " : "Other version: ", relLink(q)])) : null,
+    earlier.length || later.length
+      ? el("p", { class: "tl-rel why" }, "Similar topic (shared vocabulary, not citations): ",
+          ...earlier.slice(0, 2).flatMap((q, i) => [i ? ", " : "", "earlier ", relLink(q)]),
+          earlier.length && later.length ? "; " : "",
+          ...later.slice(0, 2).flatMap((q, i) => [i ? ", " : "", "later ", relLink(q)]))
+      : null,
+    R.primaryLink(p) ? el("a", { class: "link", href: R.primaryLink(p), target: "_blank", rel: "noopener" }, "Original source ↗") : null,
+  );
+}
+
+function renderTimeline() {
+  const box = $("timeline");
+  const scope = [state.app && topicLabel(state.app), state.method && topicLabel(state.method)].filter(Boolean).join(" with ");
+  if (!scope) {
+    $("count").textContent = "Innovation timeline";
+    box.replaceChildren(topicPicker());
+    return;
+  }
+  const f = { ...state, oa: state.oa === "1", since: state.since === "1" ? watch.prevVisit : null };
+  const events = R.timelineEvents(data.papers, data.guidance, f, { newest: state.order === "new" });
+  const byId = new Map(data.papers.map((p) => [p.id, p]));
+  $("count").textContent = `${scope}: ${events.length} event${events.length === 1 ? "" : "s"}`;
+  const range = events.length ? `${events.reduce((a, e) => (e.date < a ? e.date : a), events[0].date)} to ${events.reduce((a, e) => (e.date > a ? e.date : a), events[0].date)}` : "";
+  const typeChips = el("div", { class: "chips", role: "group", "aria-label": "Event type" },
+    ["", ...R.EVENT_TYPES.map((t) => t.id)].map((id) => el("button", { type: "button", class: `chip${id ? ` tl-chip k-${id}` : ""}`, "aria-pressed": String(state.event === id), onclick: () => set({ event: id }) }, id ? R.eventLabel(id) : "All events")));
+  const groups = [];
+  let month = null;
+  let side = 0;
+  for (const ev of events) {
+    const m = ev.date.slice(0, 7);
+    if (m !== month) groups.push(el("li", { class: "tl-month" }, new Date(`${(month = m)}-01T00:00:00Z`).toLocaleDateString(undefined, { month: "long", year: "numeric", timeZone: "UTC" })));
+    const item = tlEntry(ev, byId);
+    item.classList.add(side++ % 2 ? "tl-r" : "tl-l");
+    groups.push(item);
+  }
+  box.replaceChildren(
+    el("div", { class: "tl-head" },
+      typeChips,
+      el("div", { class: "row" },
+        el("div", { class: "seg", role: "group", "aria-label": "Order" },
+          el("button", { type: "button", "aria-pressed": String(state.order !== "new"), onclick: () => set({ order: "" }) }, "Oldest first"),
+          el("button", { type: "button", "aria-pressed": String(state.order === "new"), onclick: () => set({ order: "new" }) }, "Newest first")),
+        el("label", { class: "check tl-wide-toggle" }, el("input", { type: "checkbox", checked: watch.timelineWide || null, onchange: (e) => ((watch.timelineWide = e.target.checked), persist(), refresh()) }), " Expanded view"),
+        el("button", { type: "button", class: "link", onclick: () => set({ app: "", method: "" }) }, "Change topic"),
+      ),
+      el("p", { class: "hint" }, `${range ? `${range}. ` : ""}Each entry is a dated source in the collection. Later work is not necessarily better, and entries are linked only where a version link or shared vocabulary supports it, never as "builds on".`),
+    ),
+    events.length ? el("ol", { class: `tl${watch.timelineWide ? " tl-wide" : ""}` }, groups) : emptyNote(),
+  );
 }
 
 function saveSearch() {
@@ -238,7 +341,9 @@ function wire() {
     clearTimeout(t);
     t = setTimeout(() => set({ q: e.target.value.trim() }), 150);
   });
-  for (const id of ["app", "method", "type", "maturity", "days"]) $(id).addEventListener("change", (e) => set({ [id]: e.target.value, view: "latest" }));
+  // Filters apply to the list and the timeline; from the watchlist they open the list.
+  const listView = () => (state.view === "watch" ? "latest" : state.view);
+  for (const id of ["app", "method", "type", "maturity", "days"]) $(id).addEventListener("change", (e) => set({ [id]: e.target.value, view: listView() }));
   $("oa").addEventListener("change", (e) => set({ oa: e.target.checked ? "1" : "" }));
   $("since").addEventListener("change", (e) => set({ since: e.target.checked ? "1" : "" }));
   $("reset").addEventListener("click", () => set({ ...DEFAULTS, view: state.view }));
@@ -248,6 +353,7 @@ function wire() {
   });
   $("tab-latest").addEventListener("click", () => set({ view: "latest" }));
   $("tab-watch").addEventListener("click", () => set({ view: "watch" }));
+  $("tab-timeline").addEventListener("click", () => set({ view: "timeline" }));
   $("show-filters").addEventListener("click", () => {
     const open = document.body.classList.toggle("filters-open");
     $("show-filters").setAttribute("aria-expanded", String(open));
@@ -261,6 +367,7 @@ async function main() {
     const res = await fetch("data/research.json", { cache: "no-cache" });
     if (!res.ok) throw new Error(res.status);
     data = await res.json();
+    R.applyReviews(data.papers);
   } catch {
     $("count").textContent = "No research collected yet";
     $("list").replaceChildren(el("p", { class: "empty" }, "The research collection hasn't been built. Run ", el("code", {}, "npm run research"), " and reload."));

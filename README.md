@@ -61,6 +61,13 @@ Only the project URL and the public anon key reach the browser (`public/config.j
 - **Copyright:** abstracts belong to their publishers or authors. Full abstracts are kept only for open-access papers; for any other paper the page quotes at most one sentence per section and links to the original.
 - **Watchlist:** saved papers, notes, followed topics and authors, and saved searches are kept in this browser's localStorage (`pv-research`). Saved papers export as RIS.
 
+- **Innovation timeline:** the dated events for one topic: papers, preprints and their journal versions, datasets, documented implementations, and regulator guidance from the updates feed on the same topic. Entries are linked only by version links, or as "similar topic" through shared vocabulary. Nothing is presented as "builds on".
+- **Review queue** (`research-admin.html`): admins correct topics, approve or reject summaries, hide papers with weak PV relevance, fix version links and override maturity. Reviews live in `research_reviews`, and the database keeps the revision history. Each build adds the public part of each review to `research.json`, and the pages apply it over the automated values, which are kept. To turn it on, run `supabase/schema.sql` again (it is safe to re-run), then add yourself as an admin:
+
+  ```sql
+  insert into public.research_admins (email) values ('you@example.org') on conflict do nothing;
+  ```
+
 Offline check: `node scripts/research.mjs --fixtures test/fixtures/research`.
 
 ## Adding a country or source

@@ -25,11 +25,14 @@ const NOT_REPORTED = "Not reported in the available source.";
 const quote = (s) =>
   el("blockquote", { class: "r-quote" }, s.text, el("cite", {}, `Abstract${s.label ? ` · ${s.label}` : ""} · sentence ${s.ref}`));
 
-const quotes = (list) => (list?.length ? list.map(quote) : [el("p", { class: "none" }, NOT_REPORTED)]);
+const quotesOf = (list) => (list?.length ? list.map(quote) : [el("p", { class: "none" }, NOT_REPORTED)]);
 
 const interp = () => el("span", { class: "pot" }, "app interpretation");
 
+const withdrawn = () => [el("p", { class: "none" }, "Withdrawn after editorial review: the automated extraction did not reflect the paper well. Read the original publication.")];
+
 function sections(p, tax) {
+  const quotes = p.summaryWithdrawn ? withdrawn : quotesOf;
   const apps = p.tags.applications.map((t) => tax.applications.find((a) => a.id === t.id)).filter(Boolean);
   const methods = p.tags.methods.map((t) => tax.methods.find((m) => m.id === t.id)).filter(Boolean);
   const none = el("p", { class: "none" }, "No PV process was recognised in this paper, so there is no automated reading.");
@@ -121,6 +124,8 @@ function render(p, data) {
       el("button", { type: "button", class: "act", onclick: () => download(`${p.id}.ris`, R.ris([p])) }, "Export (RIS)"),
       copied,
     ),
+    p.excluded ? el("p", { class: "r-alert" }, "An editor hid this paper from the research list because its link to PV is weak.") : null,
+    p.review ? el("p", { class: "r-review" }, reviewSummary(p, data.taxonomy)) : null,
     el("p", { class: "r-basis" }, p.hasAbstract ? "Summary based on abstract. Sentences are quoted from the abstract, not from the full text." : "No abstract in the source record, so the sections below are empty. Read the original publication."),
     el("div", { class: "r-lensrow" }, el("span", { class: "label" }, "Reading lens"), lensPicker),
     ...lens.order.map((id) => {
@@ -130,7 +135,7 @@ function render(p, data) {
     el(
       "section",
       { class: "r-sec r-interp" },
-      el("h2", {}, "Evidence maturity", el("span", { class: "pot" }, "automated")),
+      el("h2", {}, "Evidence maturity", el("span", { class: "pot" }, p.maturity.reviewed ? "set by an editor" : "automated")),
       el("p", {}, el("strong", { class: `r-mat m-${p.maturity.id}` }, p.maturity.label), " ", p.maturity.reason),
       p.maturity.quote ? quote({ text: p.maturity.quote, ref: p.maturity.ref }) : null,
       el("p", { class: "hint" }, "Maturity describes the evidence the abstract reports. It does not mean regulatory acceptance or that the approach suits your organisation."),
@@ -155,11 +160,34 @@ function render(p, data) {
         ...Object.entries({ DOI: p.ids?.doi, PMID: p.ids?.pmid, PMCID: p.ids?.pmcid, "Europe PMC": p.ids?.epmc }).filter(([, v]) => v).flatMap(([k, v]) => [el("dt", {}, k), el("dd", {}, v)]),
         el("dt", {}, "Links"), el("dd", {}, ...Object.entries(p.links ?? {}).flatMap(([k, v], i) => [i ? " · " : "", el("a", { href: v, target: "_blank", rel: "noopener" }, { doi: "Publisher (DOI)", pubmed: "PubMed", pmc: "PubMed Central", europepmc: "Europe PMC", fulltext: "Full text" }[k] ?? k)])),
         el("dt", {}, "Collected"), el("dd", {}, `${p.firstSeen?.slice(0, 10)} from ${p.sources.map((s) => ({ europepmc: "Europe PMC", pubmed: "PubMed" })[s] ?? s).join(" and ")}`),
-        el("dt", {}, "Method"), el("dd", {}, `Rule-based extraction (${p.method}), no AI model. Review status: automated, not reviewed.`),
+        el("dt", {}, "Method"), el("dd", {}, `Rule-based extraction (${p.method}), no AI model. Review status: ${R.reviewLine(p).toLowerCase()}.`),
       ),
     ),
   ];
   $("paper").replaceChildren(...parts.filter(Boolean));
+}
+
+// What an editor changed, against the automated values.
+function reviewSummary(p, tax) {
+  const r = p.review;
+  const label = (id) => [...tax.applications, ...tax.methods].find((t) => t.id === id)?.label ?? id;
+  const parts = [];
+  if (r.summary === "approved") parts.push("summary checked against the abstract");
+  if (r.summary === "rejected") parts.push("summary withdrawn");
+  if (r.tags && p.autoTags) {
+    const before = new Set([...p.autoTags.applications, ...p.autoTags.methods].map((t) => t.id));
+    const after = new Set([...r.tags.applications, ...r.tags.methods]);
+    const added = [...after].filter((id) => !before.has(id)).map(label);
+    const removed = [...before].filter((id) => !after.has(id)).map(label);
+    if (added.length) parts.push(`added ${added.join(", ")}`);
+    if (removed.length) parts.push(`removed ${removed.join(", ")}`);
+    if (!added.length && !removed.length) parts.push("topics confirmed");
+  }
+  if (r.maturity && p.autoMaturity) parts.push(`maturity set to ${p.maturity.label} (was ${p.autoMaturity.label})`);
+  if (r.relevance === "ok") parts.push("PV relevance confirmed");
+  if (r.versionOf === "none") parts.push("version link removed");
+  else if (r.versionOf) parts.push("version link added");
+  return `✓ ${R.reviewLine(p)}${parts.length ? `: ${parts.join("; ")}.` : "."}`;
 }
 
 function download(name, body) {
@@ -175,6 +203,7 @@ async function main() {
     const res = await fetch("data/research.json", { cache: "no-cache" });
     if (!res.ok) throw new Error(res.status);
     data = await res.json();
+    R.applyReviews(data.papers);
   } catch {
     $("lede").textContent = "The research collection couldn't be loaded.";
     return;
