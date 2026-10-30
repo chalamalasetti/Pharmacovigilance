@@ -1,0 +1,71 @@
+{
+  "hitCount": 6,
+  "resultList": {
+    "result": [
+      {
+        "id": "39000001", "source": "MED", "pmid": "39000001", "doi": "10.1000/test.llm.screening",
+        "title": "Large language models for literature screening in pharmacovigilance: an evaluation against human reviewers.",
+        "authorString": "Rivera A, Okafor B, Lindqvist C.",
+        "authorList": { "author": [ { "fullName": "Rivera A", "lastName": "Rivera" }, { "fullName": "Okafor B", "lastName": "Okafor" }, { "fullName": "Lindqvist C", "lastName": "Lindqvist" } ] },
+        "journalInfo": { "journal": { "title": "Drug Safety" } },
+        "firstPublicationDate": "2026-09-20",
+        "pubTypeList": { "pubType": ["research-article", "Journal Article"] },
+        "isOpenAccess": "Y", "license": "cc by",
+        "keywordList": { "keyword": ["Pharmacovigilance", "Large language models", "Literature monitoring"] },
+        "abstractText": "<h4>Background</h4>Weekly literature monitoring for adverse drug reactions is labour-intensive. <h4>Objective</h4>We aimed to evaluate whether a large language model could screen medical literature for individual case safety reports. <h4>Methods</h4>We used 4,200 abstracts screened by two human reviewers at a marketing authorisation holder. The model was prompted with the screening criteria and compared with the human decisions. <h4>Results</h4>The model reached a recall of 97.1% and precision of 61.3% for valid cases, compared with the reference standard. Screening time fell by 48%. <h4>Limitations</h4>The study used a single company dataset and English-language abstracts only. <h4>Conclusions</h4>These findings suggest the model could support, but not replace, human literature screening.",
+        "fullTextUrlList": { "fullTextUrl": [ { "availabilityCode": "OA", "url": "https://example.org/fulltext/llm-screening" } ] }
+      },
+      {
+        "id": "PPR900001", "source": "PPR", "doi": "10.1101/2026.03.01.000001",
+        "title": "Detecting duplicate individual case safety reports with record linkage and machine learning",
+        "authorList": { "author": [ { "fullName": "Haddad N", "lastName": "Haddad" }, { "fullName": "Moreau P", "lastName": "Moreau" } ] },
+        "bookOrReportDetails": { "publisher": "medRxiv" },
+        "firstPublicationDate": "2026-03-01",
+        "pubTypeList": { "pubType": ["Preprint"] },
+        "isOpenAccess": "Y", "license": "cc by-nc",
+        "abstractText": "Duplicate reports distort safety signal detection in spontaneous reporting databases. We developed a machine learning classifier that combines record linkage features from case reports. Using 12,000 report pairs annotated by safety physicians, the classifier achieved an F1 score of 0.91. In conclusion, automated duplicate detection could reduce manual review."
+      },
+      {
+        "id": "39000002", "source": "MED", "pmid": "39000002", "doi": "10.1000/test.duplicates",
+        "title": "Detecting duplicate individual case safety reports with record linkage and machine learning.",
+        "authorList": { "author": [ { "fullName": "Haddad N", "lastName": "Haddad" }, { "fullName": "Moreau P", "lastName": "Moreau" }, { "fullName": "Sato K", "lastName": "Sato" } ] },
+        "journalInfo": { "journal": { "title": "Pharmacoepidemiology and Drug Safety" } },
+        "firstPublicationDate": "2026-08-11",
+        "pubTypeList": { "pubType": ["Journal Article"] },
+        "isOpenAccess": "N",
+        "abstractText": "Duplicate reports distort safety signal detection in spontaneous reporting databases. We developed a machine learning classifier that combines record linkage features from case reports. Using 12,000 report pairs annotated by safety physicians, the classifier achieved an F1 score of 0.91 on an independent validation dataset from a second national database. A limitation is that only English narratives were included. In conclusion, automated duplicate detection could reduce manual review."
+      },
+      {
+        "id": "39000003", "source": "MED", "pmid": "39000003", "doi": "10.1000/test.retracted",
+        "title": "A deep learning model for causality assessment of adverse drug reactions",
+        "authorList": { "author": [ { "fullName": "Novak T", "lastName": "Novak" } ] },
+        "journalInfo": { "journal": { "title": "Journal of Example Informatics" } },
+        "firstPublicationDate": "2026-05-02",
+        "pubTypeList": { "pubType": ["Journal Article", "Retracted Publication"] },
+        "commentCorrectionList": { "commentCorrection": [ { "id": "39000099", "source": "MED", "type": "Retraction in", "reference": "J Ex Inform. 2026;3:1" } ] },
+        "isOpenAccess": "N",
+        "abstractText": "Causality assessment of adverse drug reactions is subjective. We propose a deep learning framework that scores causality from case narratives."
+      },
+      {
+        "id": "39000004", "source": "MED", "pmid": "39000004", "doi": "10.1000/test.general.ai",
+        "title": "Machine learning for hospital bed occupancy forecasting",
+        "authorList": { "author": [ { "fullName": "Smith J", "lastName": "Smith" } ] },
+        "journalInfo": { "journal": { "title": "Health Systems" } },
+        "firstPublicationDate": "2026-09-01",
+        "pubTypeList": { "pubType": ["Journal Article"] },
+        "isOpenAccess": "Y", "license": "cc by",
+        "abstractText": "We trained gradient boosting models to forecast bed occupancy. Accuracy was 88%."
+      },
+      {
+        "id": "39000005", "source": "MED", "pmid": "39000005", "doi": "10.1000/test.review",
+        "title": "Artificial intelligence in signal detection: a scoping review",
+        "authorList": { "author": [ { "fullName": "Mensah E", "lastName": "Mensah" } ] },
+        "journalInfo": { "journal": { "title": "Frontiers in Drug Safety and Regulation" } },
+        "firstPublicationDate": "2026-07-15",
+        "pubTypeList": { "pubType": ["Review", "Journal Article"] },
+        "isOpenAccess": "Y", "license": "cc by",
+        "abstractText": "BACKGROUND: Artificial intelligence is increasingly applied to signal detection in pharmacovigilance. METHODS: We searched four databases for studies published 2015-2025. RESULTS: We included 64 studies; most used disproportionality analysis with machine learning on FAERS. Few studies reported external validation. CONCLUSIONS: Evidence of operational use remains limited."
+      }
+    ]
+  }
+}

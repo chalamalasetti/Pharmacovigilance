@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">39000002</PMID>
+      <Article>
+        <Journal><Title>Pharmacoepidemiology and Drug Safety</Title><JournalIssue><PubDate><Year>2026</Year><Month>Aug</Month></PubDate></JournalIssue></Journal>
+        <ArticleTitle>Detecting duplicate individual case safety reports with record linkage and machine learning.</ArticleTitle>
+        <Abstract>
+          <AbstractText Label="BACKGROUND">Duplicate reports distort safety signal detection in spontaneous reporting databases.</AbstractText>
+          <AbstractText Label="METHODS">We developed a machine learning classifier that combines record linkage features from case reports.</AbstractText>
+          <AbstractText Label="RESULTS">Using 12,000 report pairs annotated by safety physicians, the classifier achieved an F1 score of 0.91 on an independent validation dataset from a second national database.</AbstractText>
+          <AbstractText Label="CONCLUSIONS">Automated duplicate detection could reduce manual review.</AbstractText>
+        </Abstract>
+        <AuthorList><Author><LastName>Haddad</LastName><ForeName>Nadia</ForeName></Author></AuthorList>
+        <PublicationTypeList><PublicationType>Journal Article</PublicationType></PublicationTypeList>
+      </Article>
+    </MedlineCitation>
+    <PubmedData><ArticleIdList><ArticleId IdType="pubmed">39000002</ArticleId><ArticleId IdType="doi">10.1000/TEST.DUPLICATES</ArticleId></ArticleIdList></PubmedData>
+  </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE">
+      <PMID Version="1">39000010</PMID>
+      <Article>
+        <Journal><Title>Therapeutic Advances in Drug Safety</Title><JournalIssue><PubDate><Year>2026</Year><Month>10</Month><Day>02</Day></PubDate></JournalIssue></Journal>
+        <ArticleTitle>Deployment of an <i>NLP</i> pipeline for MedDRA auto-coding in routine case processing.</ArticleTitle>
+        <Abstract>
+          <AbstractText>We describe a natural language processing pipeline for MedDRA coding of adverse event verbatim terms. The pipeline was deployed in routine case processing at a global safety department in 2025. Over six months, coders accepted 83% of suggested preferred terms. These results indicate that auto-coding can be used in operational settings with human review.</AbstractText>
+        </Abstract>
+        <AuthorList><Author><LastName>Iyer</LastName><ForeName>Priya</ForeName></Author></AuthorList>
+        <PublicationTypeList><PublicationType>Journal Article</PublicationType></PublicationTypeList>
+      </Article>
+    </MedlineCitation>
+    <PubmedData><ArticleIdList><ArticleId IdType="pubmed">39000010</ArticleId></ArticleIdList></PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

@@ -51,6 +51,18 @@ Same setup as Just Visual News: import the repo in Vercel (`vercel.json` runs th
 
 Only the project URL and the public anon key reach the browser (`public/config.json`, written by the build). The service key is used only during the build to write the archive. Row-level security does the rest: anyone can read the archive, each reader sees only their own workspace, and team data only its members.
 
+## Research & Innovation
+
+`research.html` lists recent PV research and preprints, and `paper.html?id=…` opens each paper's detail page. The build runs `scripts/research.mjs` at most every 6 hours (set `RESEARCH_FORCE=1` to force a refresh). It works without AI or any paid service:
+
+- **Sources:** Europe PMC, which needs no key and includes all of PubMed plus the medRxiv and bioRxiv preprints. Searches are in `research.json`. PubMed's E-utilities are used directly only when `NCBI_EMAIL` is set (optionally with `NCBI_API_KEY`). NCBI asks that the tool and email be registered with them first.
+- **Tags:** two dimensions (PV application, and method or technology), set by keyword rules in `scripts/research-taxonomy.mjs`. Each tag keeps the words that triggered it.
+- **Sections and summary:** `scripts/research-extract.mjs` sorts the abstract's sentences into question, approach, findings, limitations and conclusion, and picks the summary sentences with TextRank. Every sentence is quoted verbatim. Evidence maturity comes from cue phrases, and the sentence behind each label is quoted with it.
+- **Copyright:** abstracts belong to their publishers or authors. Full abstracts are kept only for open-access papers; for any other paper the page quotes at most one sentence per section and links to the original.
+- **Watchlist:** saved papers, notes, followed topics and authors, and saved searches are kept in this browser's localStorage (`pv-research`). Saved papers export as RIS.
+
+Offline check: `node scripts/research.mjs --fixtures test/fixtures/research`.
+
 ## Adding a country or source
 
 - New agency: add it to `public/data/agencies.json` with its aliases and a `query`. It shows up in the country filter, the directory and the news searches.

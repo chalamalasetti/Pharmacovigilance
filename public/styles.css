@@ -459,3 +459,47 @@ code.invite { font-size: 12px; background: var(--bg); border: 1px solid var(--li
 .archive-form input[type="search"] { flex: 1; min-width: 220px; }
 #teams form input, #me input { font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; }
 #teams h3 { margin: 12px 0 6px; }
+
+/* Research & Innovation */
+.r-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+.r-tabs button { border: 0; border-bottom: 3px solid transparent; background: none; padding: 8px 12px; font-weight: 600; color: var(--muted); }
+.r-tabs button[aria-selected="true"] { color: var(--brand); border-bottom-color: var(--brand); }
+.r-tabs .n { font-weight: 400; }
+.r-watching .listhead, .r-watching #list, .r-watching #more, .r-watching #health { display: none !important; }
+.r-watch h2 { margin-top: 20px; }
+.r-card { --c: var(--guideline); }
+.r-card.r-retracted { --c: var(--safety); }
+.r-type { font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: var(--guideline); }
+.r-type.t-preprint { color: var(--recall); }
+.r-type.t-review { color: var(--regulation); }
+.badge.warnb { border-color: var(--recall); color: var(--recall); }
+.badge.s-retracted, .badge.s-concern { border-color: var(--safety); background: var(--safety); color: var(--panel); }
+.badge.s-corrected { border-color: var(--inspection); color: var(--inspection); }
+.r-mat { border-radius: 4px; padding: 0 6px; font-size: 11px; font-weight: 600; background: var(--line); color: var(--ink); }
+.r-mat.m-experimental { background: var(--brand-soft); color: var(--brand); }
+.r-mat.m-external { background: var(--regulation); color: var(--panel); }
+.r-mat.m-operational { background: var(--policy); color: var(--panel); }
+.r-by { margin: 0 0 6px; color: var(--muted); font-size: 13px; }
+.r-q { font-weight: 600; }
+.r-card .imp-chips button { cursor: pointer; }
+.r-card .imp-actions a.act, .r-paper a.act { text-decoration: none; display: inline-block; }
+.r-health { margin: 8px 0; font-size: 13px; color: var(--muted); }
+.r-health ul { margin: 6px 0; padding-left: 18px; }
+.r-paper h1 { font-size: 22px; line-height: 1.3; margin: 8px 0; }
+.r-author { border: 0; background: none; padding: 0; font: inherit; color: inherit; text-decoration: underline dotted; }
+.r-author[aria-pressed="true"] { color: var(--brand); font-weight: 600; }
+.r-alert { border-radius: 8px; padding: 10px 14px; font-weight: 600; background: var(--brand-soft); }
+.r-alert.s-retracted, .r-alert.s-concern { background: var(--safety); color: var(--panel); }
+.r-basis { margin: 14px 0 8px; padding: 8px 12px; border-left: 3px solid var(--brand); background: var(--brand-soft); font-size: 14px; }
+.r-lensrow { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px; }
+.r-lensrow .label { margin: 0; }
+.r-lens { min-width: 300px; }
+.r-sec { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.r-sec h2 { margin: 0 0 2px; font-size: 16px; }
+.r-sec .hint { margin-bottom: 8px; }
+.r-sec.r-interp { border-style: dashed; }
+.r-sec summary { font-weight: 600; cursor: pointer; }
+.r-sec textarea { width: 100%; font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
+.r-quote { margin: 6px 0; padding: 4px 0 4px 12px; border-left: 3px solid var(--line); }
+.r-quote cite { display: block; color: var(--muted); font-size: 12px; font-style: normal; margin-top: 2px; }
+@media (max-width: 560px) { .r-lens { min-width: 0; width: 100%; } }

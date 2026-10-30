@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research & Innovation · PV Info</title>
+  <meta name="description" content="Recent pharmacovigilance research and preprints, tagged by PV process and method, with evidence maturity and links to the original publication.">
+  <meta name="theme-color" content="#0f4c5c">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Vercel Web Analytics and Speed Insights (enable both in the Vercel dashboard) -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
+    <p class="tagline">What is being researched, what could change PV practice, and what is ready to use</p>
+    <nav class="toplinks">
+      <a href="./">Updates</a>
+      <a href="briefing.html">My Briefing</a>
+      <a href="research.html" aria-current="page">Research</a>
+      <a href="team.html" data-nav="team">Team</a>
+      <a href="archive.html">Archive</a>
+      <a href="globe.html">🌍 Globe</a>
+      <a href="agencies.html">Agencies</a>
+      <a href="about.html">About</a>
+      <a href="account.html" data-nav="account">Sign in</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="filters" id="filters" aria-label="Filters">
+      <div class="field">
+        <label for="q">Search</label>
+        <input id="q" type="search" placeholder="Title, author, keyword, DOI…" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label for="app">PV application</label>
+        <select id="app"></select>
+      </div>
+
+      <div class="field">
+        <label for="method">Method or technology</label>
+        <select id="method"></select>
+      </div>
+
+      <div class="field">
+        <label for="type">Publication type</label>
+        <select id="type"></select>
+      </div>
+
+      <div class="field">
+        <label for="maturity">Evidence maturity</label>
+        <select id="maturity"></select>
+      </div>
+
+      <div class="field">
+        <label for="days">Published within</label>
+        <select id="days">
+          <option value="30">Last 30 days</option>
+          <option value="90">Last 3 months</option>
+          <option value="365">Last 12 months</option>
+          <option value="">Any time</option>
+        </select>
+        <label class="check"><input type="checkbox" id="oa"> Open access only</label>
+        <label class="check" id="since-wrap" hidden><input type="checkbox" id="since"> New since my last visit</label>
+      </div>
+
+      <button type="button" class="reset" id="reset">Clear filters</button>
+    </aside>
+
+    <main>
+      <button type="button" class="show-filters" id="show-filters" aria-controls="filters" aria-expanded="false">Filters</button>
+      <div class="r-tabs" role="tablist" aria-label="Research views">
+        <button type="button" role="tab" id="tab-latest" aria-selected="true">Latest research</button>
+        <button type="button" role="tab" id="tab-watch" aria-selected="false">My watchlist <span id="watch-n" class="n"></span></button>
+      </div>
+
+      <section id="watch" class="r-watch" hidden aria-label="My watchlist"></section>
+
+      <div class="listhead">
+        <h2 id="count">Loading research…</h2>
+        <span class="updated" id="updated"></span>
+      </div>
+      <details class="r-health" id="health" hidden>
+        <summary id="health-sum"></summary>
+        <ul id="health-list"></ul>
+        <p class="hint">Missing coverage is not the same as no research: a source that failed or is switched off may hold papers that are not shown here.</p>
+      </details>
+      <div id="list" class="list" aria-live="polite"></div>
+      <button type="button" class="more" id="more" hidden>Show more</button>
+    </main>
+  </div>
+
+  <footer class="foot">
+    Summaries are sentences quoted from each paper's abstract and sorted by automated rules; nothing is rewritten by AI. Tags, maturity labels and relevance notes are the app's automated interpretation and have not been reviewed. Abstracts may be protected by copyright held by their publishers or authors; full abstracts are shown only for open-access papers. Records come from Europe PMC and PubMed (NLM). Always read the original publication before relying on a result.
+  </footer>
+  <script type="module" src="research.js"></script>
+  <script type="module" src="chat.js"></script>
+</body>
+</html>

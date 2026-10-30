@@ -14,6 +14,7 @@ import { CATEGORIES, categorize, isRelevant, countryMatchers, detectCountry } fr
 import { buildFeeds } from "./sources.mjs";
 import { writeRss } from "./rss.mjs";
 import { archiveUpdates, writePublicConfig } from "./cloud.mjs";
+import { collectResearch } from "./research.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "public/data/updates.json");
@@ -283,6 +284,14 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
       if (!r.skipped) console.log(`database: archived ${r.saved} updates`);
     } catch (e) {
       console.warn(`database: archive failed: ${e.message}`);
+    }
+  }
+  if (!fixturesDir) {
+    // Research & Innovation has its own sources; a failure there must not fail the build.
+    try {
+      await collectResearch();
+    } catch (e) {
+      console.warn(`research: failed: ${e.message}`);
     }
   }
   const official = updates.filter((u) => u.kind === "official").length;
