@@ -171,9 +171,15 @@ export function pickUpdates(all, { checkAge = true, now = Date.now() } = {}) {
     .slice(0, MAX_ITEMS);
 }
 
-async function previousUpdates() {
+// The last snapshot: the local file when running on a computer, or the live site's copy
+// when building on Vercel (where each build starts without the previous output).
+async function previousUpdates(out) {
   try {
-    return JSON.parse(await readFile(OUT, "utf8")).updates ?? [];
+    return JSON.parse(await readFile(out, "utf8")).updates ?? [];
+  } catch {}
+  if (!process.env.SITE_URL) return [];
+  try {
+    return JSON.parse(await fetchText(`${process.env.SITE_URL.replace(/\/$/, "")}/data/updates.json`, 1)).updates ?? [];
   } catch {
     return [];
   }
@@ -246,7 +252,7 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
   }
 
   // Keep earlier updates still inside the window, so a feed that's down today doesn't erase its history.
-  const previous = fixturesDir ? [] : await previousUpdates();
+  const previous = fixturesDir ? [] : await previousUpdates(out);
   const updates = pickUpdates([...fresh, ...previous], { checkAge: !fixturesDir });
   const data = {
     updated: new Date().toISOString(),
