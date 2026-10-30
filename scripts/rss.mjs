@@ -4,7 +4,7 @@
 import { writeFile } from "node:fs/promises";
 import { CATEGORIES } from "./classify.mjs";
 
-const SITE = process.env.SITE_URL || "https://pharmacovigilance.vercel.app";
+const SITE = (process.env.SITE_URL || "https://pharmacovigilance.vercel.app").replace(/\/$/, "");
 const LIMIT = 100;
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");

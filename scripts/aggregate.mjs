@@ -23,6 +23,7 @@ const MAX_ITEMS = 1500;
 const MAX_PER_FEED = 40;
 const FETCH_TIMEOUT_MS = 20000;
 const CONCURRENCY = 8;
+export const SITE_URL = (process.env.SITE_URL || "https://pharmacovigilance.vercel.app").replace(/\/$/, "");
 const UA = "PVInfo/0.1 (+https://github.com/chalamalasetti/Pharmacovigilance)";
 
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "@", textNodeName: "#text" });
@@ -177,9 +178,9 @@ async function previousUpdates(out) {
   try {
     return JSON.parse(await readFile(out, "utf8")).updates ?? [];
   } catch {}
-  if (!process.env.SITE_URL) return [];
+  if (process.env.SKIP_PREVIOUS) return [];
   try {
-    return JSON.parse(await fetchText(`${process.env.SITE_URL.replace(/\/$/, "")}/data/updates.json`, 1)).updates ?? [];
+    return JSON.parse(await fetchText(`${SITE_URL}/data/updates.json`, 1)).updates ?? [];
   } catch {
     return [];
   }
