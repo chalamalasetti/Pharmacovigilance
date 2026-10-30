@@ -1,0 +1,5 @@
+[
+  { "source": "FDA MedWatch safety alerts", "country": "US", "kind": "official", "category": "safety", "relevance": "all", "fixture": "regulator-rss.xml" },
+  { "source": "MHRA Drug Safety Update", "country": "GB", "kind": "official", "category": "safety", "relevance": "all", "fixture": "regulator-atom.xml" },
+  { "source": "PV news search", "country": null, "kind": "news", "relevance": "pv", "fixture": "news-search.xml" }
+]

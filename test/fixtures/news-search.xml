@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>"pharmacovigilance" - News search</title>
+  <item>
+    <title>CDSCO issues new pharmacovigilance guidance for marketing authorisation holders - Example Pharma Times</title>
+    <link>https://news.example.com/cdsco-pv-guidance</link>
+    <pubDate>Wed, 28 Oct 2026 06:00:00 GMT</pubDate>
+    <description>&lt;a href="https://news.example.com/cdsco-pv-guidance"&gt;CDSCO issues new pharmacovigilance guidance for marketing authorisation holders&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color="#6f6f6f"&gt;Example Pharma Times&lt;/font&gt;</description>
+    <source url="https://news.example.com">Example Pharma Times</source>
+  </item>
+  <item>
+    <title>PMDA and MHLW order revision of precautions for two anticoagulants - Example Daily</title>
+    <link>https://daily.example.com/pmda-precautions</link>
+    <pubDate>Thu, 29 Oct 2026 03:00:00 GMT</pubDate>
+    <source url="https://daily.example.com">Example Daily</source>
+  </item>
+  <item>
+    <title>Local bakery wins regional award - Example Gazette</title>
+    <link>https://gazette.example.com/bakery</link>
+    <pubDate>Thu, 29 Oct 2026 05:00:00 GMT</pubDate>
+    <source url="https://gazette.example.com">Example Gazette</source>
+  </item>
+  <item>
+    <title>Examplazole: Drug Safety Communication - Risk of Serious Liver Injury - Example Daily</title>
+    <link>https://daily.example.com/examplazole-copy</link>
+    <pubDate>Mon, 26 Oct 2026 14:00:00 GMT</pubDate>
+    <source url="https://daily.example.com">Example Daily</source>
+  </item>
+</channel>
+</rss>

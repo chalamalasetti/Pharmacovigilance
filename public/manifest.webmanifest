@@ -1,0 +1,10 @@
+{
+  "name": "PV Info",
+  "short_name": "PV Info",
+  "description": "Pharmacovigilance and regulatory updates from every major regulator.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6f7f8",
+  "theme_color": "#0f4c5c",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

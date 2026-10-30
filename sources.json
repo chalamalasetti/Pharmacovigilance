@@ -1,0 +1,32 @@
+{
+  "_note": "Official regulator feeds. Every agency in public/data/agencies.json with a \"query\" also gets a news search feed, built in scripts/sources.mjs. relevance \"pv\" keeps only items that look like drug safety or regulation; \"all\" keeps everything.",
+  "official": [
+    { "source": "FDA MedWatch safety alerts", "country": "US", "category": "safety", "relevance": "all", "url": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/medwatch/rss.xml" },
+    { "source": "FDA What's New: Drugs", "country": "US", "relevance": "all", "url": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/drugs/rss.xml" },
+    { "source": "FDA What's New: Biologics", "country": "US", "relevance": "pv", "url": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/biologics/rss.xml" },
+    { "source": "FDA press releases", "country": "US", "relevance": "pv", "url": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml" },
+    { "source": "FDA recalls", "country": "US", "category": "recall", "relevance": "pv", "url": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/recalls/rss.xml" },
+    { "source": "EMA news", "country": "EU", "relevance": "all", "url": "https://www.ema.europa.eu/en/news.xml" },
+    { "source": "MHRA Drug Safety Update", "country": "GB", "category": "safety", "relevance": "all", "url": "https://www.gov.uk/drug-safety-update.atom" },
+    { "source": "MHRA alerts, recalls and safety information", "country": "GB", "category": "recall", "relevance": "all", "url": "https://www.gov.uk/drug-device-alerts.atom" },
+    { "source": "MHRA news and guidance", "country": "GB", "relevance": "pv", "url": "https://www.gov.uk/government/organisations/medicines-and-healthcare-products-regulatory-agency.atom" },
+    { "source": "Health Canada health product recalls and alerts", "country": "CA", "category": "safety", "relevance": "all", "url": "https://recalls-rappels.canada.ca/en/feed/health-products-alerts-recalls" },
+    { "source": "TGA safety alerts", "country": "AU", "category": "safety", "relevance": "all", "url": "https://www.tga.gov.au/feeds/alert/safety-alerts.xml" },
+    { "source": "WHO news", "country": "INT", "relevance": "pv", "url": "https://www.who.int/rss-feeds/news-english.xml" }
+  ],
+  "topics": [
+    "pharmacovigilance",
+    "\"drug safety\" (regulator OR agency OR signal)",
+    "\"safety signal\" (drug OR vaccine OR medicine)",
+    "\"boxed warning\" OR \"black box warning\" FDA",
+    "\"drug safety communication\"",
+    "\"risk management plan\" OR REMS medicine",
+    "PSUR OR PBRER OR \"periodic safety update report\"",
+    "\"good pharmacovigilance practices\" OR \"GVP module\"",
+    "\"adverse event reporting\" (regulation OR guidance OR rule)",
+    "\"Dear Healthcare Professional\" OR DHPC",
+    "\"vaccine safety\" (regulator OR monitoring OR review)",
+    "nitrosamine (FDA OR EMA OR recall OR guidance)",
+    "\"falsified medicines\" OR \"substandard medicines\""
+  ]
+}

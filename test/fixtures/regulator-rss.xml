@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Test regulator alerts</title>
+  <link>https://regulator.example.org/</link>
+  <item>
+    <title>Examplazole: Drug Safety Communication - Risk of Serious Liver Injury</title>
+    <link>https://regulator.example.org/safety/examplazole?utm_source=rss</link>
+    <description>&lt;p&gt;The agency is warning that examplazole can cause serious liver injury. Labeling will be updated.&lt;/p&gt;</description>
+    <pubDate>Mon, 26 Oct 2026 14:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Testmab Injection Lots Recalled Due to Particulate Matter</title>
+    <link>https://regulator.example.org/recalls/testmab</link>
+    <description>Voluntary nationwide recall of two lots.</description>
+    <pubDate>Tue, 27 Oct 2026 09:30:00 GMT</pubDate>
+  </item>
+</channel>
+</rss>

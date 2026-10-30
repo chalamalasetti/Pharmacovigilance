@@ -1,0 +1,24 @@
+name: Refresh updates on Vercel
+
+# Vercel rebuilds on every push to main by itself. This adds a fresh build every
+# hour so new regulator notices show up, by calling a Vercel deploy hook.
+# Set the hook URL as the repo secret VERCEL_DEPLOY_HOOK (see README).
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel deploy hook
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::notice::VERCEL_DEPLOY_HOOK secret is not set yet; skipping."
+            exit 0
+          fi
+          curl -fsS -X POST "$HOOK"
