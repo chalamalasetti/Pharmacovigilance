@@ -3,3 +3,4 @@ node_modules/
 public/data/updates.json
 public/feed.xml
 public/config.json
+public/data/research.json
