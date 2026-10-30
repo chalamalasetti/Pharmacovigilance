@@ -16,19 +16,21 @@
   <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="top">
     <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
     <p class="tagline">What is being researched, what could change PV practice, and what is ready to use</p>
-    <nav class="toplinks">
+    <button type="button" class="menu-btn" aria-controls="site-nav" aria-expanded="false">Menu</button>
+    <nav class="toplinks" id="site-nav" aria-label="Main">
       <a href="./">Updates</a>
       <a href="briefing.html">My Briefing</a>
-      <a href="research.html" aria-current="page">Research</a>
+      <a href="research.html">Research</a>
       <a href="team.html" data-nav="team">Team</a>
       <a href="archive.html">Archive</a>
-      <a href="globe.html">🌍 Globe</a>
+      <a href="globe.html">Globe</a>
       <a href="agencies.html">Agencies</a>
       <a href="about.html">About</a>
-      <a href="account.html" data-nav="account">Sign in</a>
+      <a href="account.html" class="signin" data-nav="account">Sign in</a>
     </nav>
   </header>
 
@@ -41,5 +43,6 @@
     Sections quote the paper's abstract sentence by sentence and are sorted by automated rules; nothing is rewritten by AI. Relevance notes and maturity labels are the app's automated interpretation. Abstracts may be protected by copyright held by their publishers or authors. Always read the original publication before relying on a result.
   </footer>
   <script type="module" src="paper.js"></script>
+  <script type="module" src="nav.js"></script>
 </body>
 </html>
