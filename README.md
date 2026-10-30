@@ -63,6 +63,7 @@ Only the project URL and the public anon key reach the browser (`public/config.j
 
 - **Company list approval:** one button approves the current version of `companies/manifest.json`, with your name and today's date. A new manifest version needs a fresh approval. Withdrawing puts the draft notice back.
 - **Companies:** add a company, edit its names, matching phrases or holder prefixes, hide it, and undo any change. Signed-in readers can ask for a company from the bottom of the Companies page, and the requests wait here to be added or declined.
+- **Site menu:** reorder the menu and hide pages from it for every visitor (a hidden page still opens from a direct link; Updates and Sign in always stay). Choose who sees the data status line under the menu: admins only (the default) or everyone. Saved in `site_settings`; each build writes them to `public/data/site.json`, which `public/nav.js` applies.
 - **Admins:** add or remove admins by email (you cannot remove yourself).
 - **Data sources and research review:** failing regulator, research and registry sources, and the research review backlog with a link to the queue.
 - **Publish now and activity:** rebuild the site at once instead of waiting for the hourly run, and see a log of every admin change.

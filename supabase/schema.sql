@@ -600,3 +600,37 @@ end $$;
 
 revoke execute on function public.admin_set_deploy_hook(text), public.admin_publish_status(), public.admin_publish() from public, anon;
 grant execute on function public.admin_set_deploy_hook(text), public.admin_publish_status(), public.admin_publish() to authenticated;
+
+-- Site settings from the Admin page, applied to every visitor at the next build:
+--   hidden_nav    menu links hidden from everyone, e.g. ["companies"]
+--   nav_order     the order of the menu links, e.g. ["index", "research", "briefing"]
+--   status_strip  who sees the "Updated … · sources reachable" line: "admins" or "everyone"
+create table if not exists public.site_settings (
+  key text primary key,
+  value jsonb not null,
+  by_email text,
+  updated_at timestamptz not null default now()
+);
+alter table public.site_settings drop constraint if exists site_settings_key_check;
+alter table public.site_settings add constraint site_settings_key_check check (key in ('hidden_nav', 'nav_order', 'status_strip'));
+alter table public.site_settings enable row level security;
+drop policy if exists "Anyone can read site settings" on public.site_settings;
+create policy "Anyone can read site settings" on public.site_settings for select using (true);
+grant select (key, value, updated_at) on public.site_settings to anon, authenticated;
+
+create or replace function public.admin_set_setting(k text, v jsonb) returns void
+language plpgsql security definer set search_path = '' as $$
+begin
+  if not public.is_app_admin() then raise exception 'Only an admin can do that'; end if;
+  if k in ('hidden_nav', 'nav_order') and (jsonb_typeof(v) <> 'array' or exists (select 1 from jsonb_array_elements(v) x where jsonb_typeof(x) <> 'string' or x #>> '{}' !~ '^[a-z-]{1,40}$')) then
+    raise exception '% must be a list of page names', k;
+  end if;
+  if k = 'status_strip' and v not in ('"admins"'::jsonb, '"everyone"'::jsonb) then
+    raise exception 'status_strip must be "admins" or "everyone"';
+  end if;
+  insert into public.site_settings (key, value, by_email) values (k, v, auth.jwt() ->> 'email')
+    on conflict (key) do update set value = excluded.value, by_email = excluded.by_email, updated_at = now();
+  perform public.admin_log('site setting changed', k, jsonb_build_object('value', v));
+end $$;
+revoke execute on function public.admin_set_setting(text, jsonb) from public, anon;
+grant execute on function public.admin_set_setting(text, jsonb) to authenticated;

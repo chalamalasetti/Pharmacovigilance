@@ -16,7 +16,7 @@ import { writeRss } from "./rss.mjs";
 import { archiveUpdates, writePublicConfig } from "./cloud.mjs";
 import { collectResearch } from "./research.mjs";
 import { loadCompanies, annotateUpdates, writeCompanyData } from "./companies.mjs";
-import { loadOverlay } from "./admin.mjs";
+import { loadOverlay, siteSettings } from "./admin.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "public/data/updates.json");
@@ -320,9 +320,10 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
   // Company Explorer: tag each update with the companies it relates to. Extra, so a
   // problem here must not fail the build.
   let companies = null;
+  let overlay = null;
   try {
     // Admin page changes (approval, added or hidden companies) from the database.
-    const overlay = fixturesDir ? null : await loadOverlay({ previous: () => previousJson(path.join(dataDir, "companies/admin.json"), "companies/admin.json") });
+    overlay = fixturesDir ? null : await loadOverlay({ previous: () => previousJson(path.join(dataDir, "companies/admin.json"), "companies/admin.json") });
     if (overlay) console.log(`admin: applied ${overlay.overrides?.length ?? 0} company changes and ${overlay.approvals?.length ?? 0} approvals (${overlay.from})`);
     companies = await loadCompanies({ overlay });
     annotateUpdates(updates, companies.idx, companies.countryName);
@@ -372,6 +373,8 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
       console.warn(`companies: failed: ${e.message}`);
     }
   }
+  // Menu and status-strip settings from the Admin page, read by every page.
+  await writeFile(path.join(dataDir, "site.json"), JSON.stringify(siteSettings(overlay, now)) + "\n");
   await writeFile(path.join(dataDir, STATUS), JSON.stringify(buildStatus({ checked: now, updated, sources, research, registry: companies?.registry })) + "\n");
   const official = updates.filter((u) => u.kind === "official").length;
   const countries = new Set(updates.map((u) => u.country)).size;
