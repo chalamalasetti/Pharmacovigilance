@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account and team · PV Info</title>
+  <meta name="description" content="Sign in to sync your PV Info briefing across devices and share a review queue with your team.">
+  <meta name="theme-color" content="#0f4c5c">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Vercel Web Analytics and Speed Insights (enable both in the Vercel dashboard) -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
+    <p class="tagline">What changed, why it matters, and what your team should review</p>
+    <nav class="toplinks">
+      <a href="./">Updates</a>
+      <a href="briefing.html">My Briefing</a>
+      <a href="team.html" data-nav="team">Team</a>
+      <a href="archive.html">Archive</a>
+      <a href="globe.html">🌍 Globe</a>
+      <a href="agencies.html">Agencies</a>
+      <a href="about.html">About</a>
+      <a href="account.html" data-nav="account" aria-current="page">Sign in</a>
+    </nav>
+  </header>
+
+  <main class="page brief">
+    <h1>Account and team</h1>
+    <p class="intro" id="lede">Loading…</p>
+
+    <section class="profile" id="off" hidden>
+      <h2>Sign-in isn't set up on this site yet</h2>
+      <p class="hint">Everything still works and is kept in this browser. Accounts, sync and team queues switch on once the site's database is connected (see the README).</p>
+    </section>
+
+    <section class="profile" id="signin" hidden aria-label="Sign in">
+      <h2>Sign in</h2>
+      <p class="hint">We'll email you a link that signs you in. No password needed. A new address gets an account on first sign-in.</p>
+      <form id="signin-form" class="imp-form">
+        <div class="row">
+          <label>Work email <input type="email" id="email" required autocomplete="email" placeholder="you@company.com"></label>
+          <button type="submit" class="primary">Email me a sign-in link</button>
+        </div>
+        <p class="hint" id="signin-msg" role="status"></p>
+      </form>
+    </section>
+
+    <section class="profile" id="me" hidden aria-label="Your account">
+      <h2 id="me-title">Signed in</h2>
+      <p class="hint" id="sync-msg" role="status"></p>
+      <form id="name-form" class="imp-form">
+        <div class="row">
+          <label>Your name, as teammates see it <input type="text" id="name" maxlength="80" required></label>
+          <button type="submit">Save name</button>
+          <button type="button" id="signout">Sign out</button>
+        </div>
+        <p class="hint" id="name-msg" role="status"></p>
+      </form>
+    </section>
+
+    <section class="profile" id="teams" hidden aria-label="Teams">
+      <h2>Your team</h2>
+      <p class="hint">A team shares one review queue: when anyone assesses, assigns or dismisses an update, everyone in the team sees it, and every change is kept in an audit trail. Saved and followed updates stay personal.</p>
+      <div id="invited" class="imp-form" hidden></div>
+      <div id="team-list"></div>
+      <div id="team-detail"></div>
+      <div class="row" style="margin-top:12px">
+        <form id="create-form" class="row">
+          <input type="text" id="team-name" maxlength="80" required placeholder="New team name, e.g. EU Safety" aria-label="New team name">
+          <button type="submit">Create a team</button>
+        </form>
+        <form id="join-form" class="row">
+          <input type="text" id="code" required placeholder="Invite code" aria-label="Invite code">
+          <button type="submit">Join</button>
+        </form>
+      </div>
+      <p class="hint" id="team-msg" role="status"></p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Your sign-in and team data are kept in PV Info's database. Only your team can see its queue; only you can see your own workspace.</p>
+  </footer>
+  <script type="module" src="account.js"></script>
+</body>
+</html>

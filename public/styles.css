@@ -445,3 +445,17 @@ button.primary, .profile button.primary { background: var(--brand); border-color
   .globe-hint { bottom: auto; top: 72px; }
   .globe-legend { display: none; }
 }
+
+/* Account, team queue and archive (database features) */
+.team-line { margin: 2px 0 6px; font-size: 13px; }
+.imp-notes .team-line { margin: 0 0 3px; }
+.ws-badge.overdue { background: var(--safety); border-color: var(--safety); color: var(--panel); margin-right: 6px; }
+.imp-form .hint:empty { display: none; }
+.members li .act { margin-left: auto; }
+.log time { font-weight: 400; color: var(--muted); font-size: 12px; min-width: 70px; }
+code.invite { font-size: 12px; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 2px 6px; overflow-wrap: anywhere; }
+.archive-form { display: grid; gap: 10px; }
+.archive-form input, .archive-form select { font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; }
+.archive-form input[type="search"] { flex: 1; min-width: 220px; }
+#teams form input, #me input { font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; }
+#teams h3 { margin: 12px 0 6px; }

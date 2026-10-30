@@ -13,6 +13,7 @@ import { XMLParser } from "fast-xml-parser";
 import { CATEGORIES, categorize, isRelevant, countryMatchers, detectCountry } from "./classify.mjs";
 import { buildFeeds } from "./sources.mjs";
 import { writeRss } from "./rss.mjs";
+import { archiveUpdates, writePublicConfig } from "./cloud.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "public/data/updates.json");
@@ -272,6 +273,18 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
   };
   await writeFile(out, JSON.stringify(data) + "\n");
   await writeRss(updates, agencies, path.join(path.dirname(out), "..", "feed.xml"));
+  const site = path.join(path.dirname(out), "..");
+  if (await writePublicConfig(path.join(site, "config.json"))) console.log("database: sign-in and team features on");
+  if (!fixturesDir) {
+    // The archive is extra: a database hiccup must not fail the build.
+    const names = new Map(agencies.map((c) => [c.code, c.country]));
+    try {
+      const r = await archiveUpdates(updates, { countryName: (c) => names.get(c) ?? c });
+      if (!r.skipped) console.log(`database: archived ${r.saved} updates`);
+    } catch (e) {
+      console.warn(`database: archive failed: ${e.message}`);
+    }
+  }
   const official = updates.filter((u) => u.kind === "official").length;
   const countries = new Set(updates.map((u) => u.country)).size;
   console.log(`wrote ${updates.length} updates (${official} official, ${countries} countries) to ${path.relative(ROOT, out)}`);

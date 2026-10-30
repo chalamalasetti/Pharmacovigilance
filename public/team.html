@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team queue · PV Info</title>
+  <meta name="description" content="Your team's shared PV review queue: assessments, assignments, dismissals and an audit trail.">
+  <meta name="theme-color" content="#0f4c5c">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Vercel Web Analytics and Speed Insights (enable both in the Vercel dashboard) -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
+    <p class="tagline">What changed, why it matters, and what your team should review</p>
+    <nav class="toplinks">
+      <a href="./">Updates</a>
+      <a href="briefing.html">My Briefing</a>
+      <a href="team.html" data-nav="team" aria-current="page">Team</a>
+      <a href="archive.html">Archive</a>
+      <a href="globe.html">🌍 Globe</a>
+      <a href="agencies.html">Agencies</a>
+      <a href="about.html">About</a>
+      <a href="account.html" data-nav="account">Sign in</a>
+    </nav>
+  </header>
+
+  <main class="page brief">
+    <div class="brief-head">
+      <div>
+        <h1 id="title">Team queue</h1>
+        <p class="intro" id="lede">Loading…</p>
+      </div>
+      <div class="brief-controls"><a class="reset" href="account.html">Manage team</a></div>
+    </div>
+    <div class="tiles" id="tiles"></div>
+    <section class="brief-sec" id="queue-sec" hidden>
+      <div class="seg worktabs" id="tabs" role="tablist"></div>
+      <div id="queue"></div>
+    </section>
+    <section class="brief-sec" id="log-sec" hidden>
+      <h2>Activity</h2>
+      <p class="hint">Every change to the queue, recorded by the database with who made it and when.</p>
+      <ul class="upcoming log" id="log"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="queue.js"></script>
+  <script type="module" src="chat.js"></script>
+</body>
+</html>
