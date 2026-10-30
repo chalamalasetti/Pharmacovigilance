@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>PV Globe · PV Info</title>
+  <meta name="description" content="A live 3D globe of pharmacovigilance and regulatory updates. Countries glow by how many updates they have and pulse red for fresh safety alerts and recalls.">
+  <meta name="theme-color" content="#03070c">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="globepage">
+  <header class="globe-top">
+    <a class="brand" href="./" aria-label="PV Info, home"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
+    <div class="globe-title">
+      <b>PV Globe</b>
+      <span id="stats">Loading updates…</span>
+    </div>
+    <a class="globe-chip" href="./">All updates</a>
+  </header>
+
+  <canvas id="globe" class="globe-canvas" role="img" aria-label="A spinning globe. Countries with PV updates glow; red pulses mark fresh safety alerts and recalls."></canvas>
+
+  <aside class="globe-card" id="card" hidden aria-live="polite">
+    <div class="globe-card-head">
+      <span class="globe-card-place" id="cardPlace"></span>
+      <span class="globe-card-meta" id="cardMeta"></span>
+    </div>
+    <ul class="globe-card-list" id="cardList"></ul>
+    <a class="globe-card-more" id="cardMore"></a>
+    <button class="globe-card-close" id="cardClose" type="button" aria-label="Close" hidden>×</button>
+  </aside>
+
+  <div class="globe-legend" aria-hidden="true">
+    <span><i class="lg-alert"></i>Safety alert or recall this week</span>
+    <span><i class="lg-update"></i>Other updates</span>
+    <span><i class="lg-body"></i>EU / international body</span>
+  </div>
+  <p class="globe-hint" id="hint">Drag to spin · tap a glowing country</p>
+  <p class="globe-empty" id="empty" hidden>The globe couldn't load. Try again in a minute.</p>
+
+  <script src="vendor/d3-geo.js"></script>
+  <script src="globe.js" type="module"></script>
+</body>
+</html>
