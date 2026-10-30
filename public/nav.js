@@ -1,6 +1,9 @@
 // Shared header behaviour for every page with the top links: marks the current page,
 // folds the links behind a Menu button on small screens, and points the skip link
-// at the page's main content. The links themselves are identical on every page.
+// at the page's main content, and shows when the data was last refreshed. The links
+// themselves are identical on every page.
+
+import { ago, dataHealth } from "./lib.js";
 
 const nav = document.getElementById("site-nav");
 const btn = document.querySelector(".menu-btn");
@@ -38,3 +41,32 @@ document.querySelector(".skip")?.addEventListener("click", (e) => {
   main.focus();
   main.scrollIntoView();
 });
+
+// Status strip under the header: when the updates were last refreshed, and a warning when
+// a source is down or the hourly refresh has stopped. Links to the Data status page.
+async function freshness() {
+  const top = document.querySelector(".top");
+  if (!top || page === "status") return;
+  let status = null;
+  try {
+    const res = await fetch("data/status.json", { cache: "no-cache" });
+    if (res.ok) status = await res.json();
+  } catch {}
+  if (!status) return;
+  const { level, problems } = dataHealth(status);
+  const when = new Date(status.updated);
+  const strip = document.createElement("div");
+  strip.className = `freshness f-${level}`;
+  strip.setAttribute("role", "status");
+  const text = document.createElement("span");
+  text.title = when.toLocaleString();
+  const official = problems.filter((p) => p.source).length;
+  text.textContent =
+    level === "stale"
+      ? `⚠ Data may be out of date. Last successful update ${ago(when)}.`
+      : `${level === "ok" ? "✓" : "⚠"} Updated ${ago(when)} · ${status.feeds.ok} of ${status.feeds.total} sources reachable${official ? ` · ${official} regulator feed${official > 1 ? "s" : ""} down, earlier updates kept` : ""}`;
+  const link = Object.assign(document.createElement("a"), { href: "status.html", textContent: "Source status" });
+  strip.append(text, " ", link);
+  top.after(strip);
+}
+freshness();

@@ -589,3 +589,22 @@ code.invite { font-size: 12px; background: var(--bg); border: 1px solid var(--li
 .r-history { margin-top: 8px; font-size: 13px; }
 .page .r-tabs { flex-wrap: wrap; }
 .tl-head .seg button { white-space: nowrap; }
+
+/* Data freshness strip (every page) and the Data status page */
+.freshness { display: flex; flex-wrap: wrap; gap: 4px 8px; justify-content: center; padding: 6px 24px; font-size: 13px; color: var(--muted); background: var(--bg); border-bottom: 1px solid var(--line); }
+.freshness a { color: var(--brand); font-weight: 600; }
+.freshness.f-warn { color: var(--ink); background: color-mix(in srgb, var(--recall) 12%, var(--panel)); }
+.freshness.f-stale { color: var(--ink); background: color-mix(in srgb, var(--safety) 14%, var(--panel)); font-weight: 600; }
+.st-summary { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--regulation); border-radius: 10px; padding: 12px 16px; margin: 16px 0 24px; }
+.st-summary p { margin: 4px 0; }
+.st-summary.f-warn { border-left-color: var(--recall); }
+.st-summary.f-stale { border-left-color: var(--safety); }
+.st-head { font-weight: 700; font-size: 16px; }
+.st-problems { padding-left: 20px; }
+.st-table-wrap { overflow-x: auto; margin-bottom: 24px; }
+.st-table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; font-size: 14px; }
+.st-table th, .st-table td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.st-table th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.st-table tr.st-bad td { color: var(--safety); }
+.st-note { color: var(--muted); font-size: 14px; }
+.st-more summary { cursor: pointer; color: var(--brand); font-weight: 600; margin-bottom: 8px; }

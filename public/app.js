@@ -239,9 +239,6 @@ async function main() {
     $("list").replaceChildren(el("p", { class: "empty" }, "The update list hasn't been built. Run ", el("code", {}, "npm run aggregate"), " (or ", el("code", {}, "npm run app"), ") and reload."));
     return;
   }
-  const when = new Date(data.updated);
-  $("updated").textContent = `Updated ${ago(when)} · ${data.feeds.ok} of ${data.feeds.total} sources reachable`;
-  $("updated").title = when.toLocaleString();
   renderFilters();
   render();
   initCloud(ws, render);
