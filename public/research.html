@@ -80,6 +80,7 @@
       <button type="button" class="show-filters" id="show-filters" aria-controls="filters" aria-expanded="false">Filters</button>
       <div class="r-tabs" role="tablist" aria-label="Research views">
         <button type="button" role="tab" id="tab-latest" aria-selected="true">Latest research</button>
+        <button type="button" role="tab" id="tab-timeline" aria-selected="false">Innovation timeline</button>
         <button type="button" role="tab" id="tab-watch" aria-selected="false">My watchlist <span id="watch-n" class="n"></span></button>
       </div>
 
@@ -93,7 +94,9 @@
         <summary id="health-sum"></summary>
         <ul id="health-list"></ul>
         <p class="hint">Missing coverage is not the same as no research: a source that failed or is switched off may hold papers that are not shown here.</p>
+        <p class="hint">Editors: <a href="research-admin.html">review queue</a>.</p>
       </details>
+      <section id="timeline" class="r-timeline" hidden aria-label="Innovation timeline"></section>
       <div id="list" class="list" aria-live="polite"></div>
       <button type="button" class="more" id="more" hidden>Show more</button>
     </main>

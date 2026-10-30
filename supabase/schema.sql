@@ -227,3 +227,100 @@ drop trigger if exists team_items_stamp on public.team_items;
 create trigger team_items_stamp before insert or update on public.team_items for each row execute function public.team_item_stamp();
 drop trigger if exists team_items_log on public.team_items;
 create trigger team_items_log after insert or update on public.team_items for each row execute function public.team_item_log();
+
+-- ── Research review (Research & Innovation admin queue) ─────────────────────
+--
+--   research_admins          who may review research (add your email once, see below)
+--   research_reviews         one editor decision per paper: corrected tags, summary
+--                            approved or rejected, PV relevance, maturity, notes
+--   research_review_events   revision history, written only by the database itself
+--
+-- Anyone may read the published parts of a review (the public pages show what an editor
+-- changed); the reviewer's email and internal notes are visible to admins only.
+-- To make yourself an admin, run once with your sign-in email:
+--   insert into public.research_admins (email) values ('you@example.org') on conflict do nothing;
+
+create table if not exists public.research_admins (
+  email text primary key check (email = lower(email)),
+  added_at timestamptz not null default now()
+);
+alter table public.research_admins enable row level security;
+-- No policies: only the SQL editor (and the function below) can see this list.
+
+create or replace function public.is_research_admin() returns boolean
+language sql stable security definer set search_path = '' as $$
+  select exists (select 1 from public.research_admins where email = lower(auth.jwt() ->> 'email'))
+$$;
+grant execute on function public.is_research_admin() to anon, authenticated;
+
+create table if not exists public.research_reviews (
+  paper_id text primary key,
+  title text,
+  tags jsonb,
+  summary_status text check (summary_status in ('approved', 'rejected')),
+  relevance text check (relevance in ('ok', 'weak')),
+  maturity jsonb,
+  version_of text,
+  note text,
+  reviewed_by text,
+  reviewed_at timestamptz not null default now()
+);
+alter table public.research_reviews enable row level security;
+drop policy if exists "Anyone can read research reviews" on public.research_reviews;
+create policy "Anyone can read research reviews" on public.research_reviews for select using (true);
+drop policy if exists "Admins add research reviews" on public.research_reviews;
+create policy "Admins add research reviews" on public.research_reviews for insert to authenticated with check (public.is_research_admin());
+drop policy if exists "Admins change research reviews" on public.research_reviews;
+create policy "Admins change research reviews" on public.research_reviews for update to authenticated
+  using (public.is_research_admin()) with check (public.is_research_admin());
+drop policy if exists "Admins remove research reviews" on public.research_reviews;
+create policy "Admins remove research reviews" on public.research_reviews for delete to authenticated using (public.is_research_admin());
+grant select (paper_id, title, tags, summary_status, relevance, maturity, version_of, reviewed_at) on public.research_reviews to anon, authenticated;
+grant insert, update, delete on public.research_reviews to authenticated;
+
+-- The full rows, notes and reviewer included, for the admin queue.
+create or replace function public.admin_research_reviews() returns setof public.research_reviews
+language sql stable security definer set search_path = '' as $$
+  select * from public.research_reviews where public.is_research_admin()
+$$;
+grant execute on function public.admin_research_reviews() to authenticated;
+
+create table if not exists public.research_review_events (
+  id bigint generated always as identity primary key,
+  paper_id text not null,
+  action text not null,
+  before jsonb,
+  after jsonb,
+  by_email text,
+  at timestamptz not null default now()
+);
+create index if not exists research_review_events_paper on public.research_review_events (paper_id, at desc);
+alter table public.research_review_events enable row level security;
+drop policy if exists "Admins read review history" on public.research_review_events;
+create policy "Admins read review history" on public.research_review_events for select to authenticated using (public.is_research_admin());
+grant select on public.research_review_events to authenticated;
+
+-- Who reviewed and when is set by the database, not the browser.
+create or replace function public.research_review_stamp() returns trigger
+language plpgsql set search_path = '' as $$
+begin
+  new.reviewed_by := auth.jwt() ->> 'email';
+  new.reviewed_at := now();
+  return new;
+end $$;
+
+create or replace function public.research_review_log() returns trigger
+language plpgsql security definer set search_path = '' as $$
+begin
+  insert into public.research_review_events (paper_id, action, before, after, by_email)
+    values (coalesce(new.paper_id, old.paper_id), lower(tg_op),
+            case when tg_op <> 'INSERT' then to_jsonb(old) end,
+            case when tg_op <> 'DELETE' then to_jsonb(new) end,
+            auth.jwt() ->> 'email');
+  return null;
+end $$;
+
+drop trigger if exists research_reviews_stamp on public.research_reviews;
+create trigger research_reviews_stamp before insert or update on public.research_reviews for each row execute function public.research_review_stamp();
+drop trigger if exists research_reviews_log on public.research_reviews;
+create trigger research_reviews_log after insert or update or delete on public.research_reviews for each row execute function public.research_review_log();

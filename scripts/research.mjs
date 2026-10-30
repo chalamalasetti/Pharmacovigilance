@@ -16,6 +16,8 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { XMLParser } from "fast-xml-parser";
 import { pvRelevance, tagPaper, paperText, taxonomy, TAXONOMY_VERSION } from "./research-taxonomy.mjs";
 import { classifySentences, textRank, idfTable, vector, cosine, assessMaturity } from "./research-extract.mjs";
+import { cloudConfig } from "./cloud.mjs";
+import { reviewFromRow } from "../public/research-lib.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "public/data/research.json");
@@ -344,12 +346,82 @@ export function sourceList(env = process.env) {
   ];
 }
 
+// ---- Editor reviews and official guidance (applied on every build) ----
+
+// Reviews from the admin queue (supabase/schema.sql). Public columns only, so the
+// reviewer's email and notes never reach the site.
+export async function fetchReviews(cfg = cloudConfig(), fetchImpl = fetch) {
+  const key = cfg.serviceKey || cfg.publicKey;
+  if (!cfg.url || !key) return null;
+  const cols = "paper_id,tags,summary_status,relevance,maturity,version_of,reviewed_at";
+  const res = await fetchImpl(`${cfg.url}/rest/v1/research_reviews?select=${cols}`, {
+    headers: { apikey: key, ...(key.startsWith("eyJ") && { authorization: `Bearer ${key}` }) },
+    signal: AbortSignal.timeout(20000),
+  });
+  if (!res.ok) throw new Error(`reviews HTTP ${res.status}`);
+  return res.json();
+}
+
+// Stores each paper's review next to its automated fields, which stay untouched,
+// so a review can be changed or removed later. The pages apply it (research-lib.js).
+export function attachReviews(papers, reviews) {
+  const byId = new Map((reviews ?? []).map((r) => [r.paper_id, r]));
+  for (const p of papers) {
+    delete p.review;
+    const r = byId.get(p.id);
+    if (!r) continue;
+    p.review = reviewFromRow(r);
+  }
+  return papers;
+}
+
+const GUIDANCE_CATEGORIES = new Set(["guideline", "regulation"]);
+// Signal and real-world-evidence words appear in most safety notices, so on their
+// own they don't make a regulator update relevant to research topics.
+const GUIDANCE_ONLY_APPS = new Set(["signal", "rwe"]);
+
+// Regulator guidance and regulation from the updates feed that touches a research
+// topic, for the timeline. Kept across builds, since the feed covers only 60 days.
+export function guidanceEvents(updates, previous = [], now = new Date()) {
+  const byId = new Map(previous.map((g) => [g.id, g]));
+  for (const u of updates ?? []) {
+    if (u.kind !== "official" || !(GUIDANCE_CATEGORIES.has(u.category) || u.tags?.some((t) => GUIDANCE_CATEGORIES.has(t)))) continue;
+    const tags = tagPaper(`${u.title}. ${u.summary ?? ""}`.toLowerCase());
+    tags.applications = tags.applications.filter((t) => !GUIDANCE_ONLY_APPS.has(t.id) || tags.methods.length);
+    if (!tags.applications.length && !tags.methods.length) continue;
+    byId.set(u.id, { id: u.id, title: u.title, link: u.link, source: u.agency ? `${u.agency} (${u.source})` : u.source, published: u.published?.slice(0, 10) ?? null, tags });
+  }
+  const cutoff = day(new Date(now - KEEP_DAYS * 86400000));
+  return [...byId.values()].filter((g) => !g.published || g.published >= cutoff).sort((a, b) => (b.published ?? "").localeCompare(a.published ?? "")).slice(0, 300);
+}
+
+async function finish(data, out, { fixturesDir, env, updatesFile }) {
+  if (!fixturesDir) {
+    try {
+      const reviews = await fetchReviews(cloudConfig(env));
+      if (reviews) {
+        attachReviews(data.papers, reviews);
+        console.log(`research: applied ${reviews.length} editor reviews`);
+      }
+    } catch (e) {
+      // Keep the reviews from the last build rather than dropping them.
+      console.warn(`research: reviews unavailable (${e.message}); keeping the previous ones`);
+    }
+  }
+  try {
+    const updates = JSON.parse(await readFile(updatesFile ?? path.join(path.dirname(out), "updates.json"), "utf8")).updates;
+    data.guidance = guidanceEvents(updates, data.guidance ?? []);
+  } catch {}
+  data.taxonomy = taxonomy();
+  await writeFile(out, JSON.stringify(data) + "\n");
+}
+
 // Fetches, builds and writes research.json. Returns the number of papers.
-export async function collectResearch({ fixturesDir = null, out = OUT, now = new Date(), env = process.env } = {}) {
+export async function collectResearch({ fixturesDir = null, out = OUT, now = new Date(), env = process.env, updatesFile = null } = {}) {
   const prev = fixturesDir ? null : await previous(out);
   if (prev && !env.RESEARCH_FORCE && now - Date.parse(prev.refreshed ?? 0) < REFRESH_EVERY_MS) {
     // Fetched recently: keep the last result (a fresh Vercel build has no file yet, so write it).
-    await writeFile(out, JSON.stringify(prev) + "\n");
+    await finish(prev, out, { fixturesDir, env, updatesFile });
     console.log(`research: kept ${prev.papers.length} papers from ${prev.refreshed} (refreshes every 6 hours)`);
     return prev.papers.length;
   }
@@ -402,14 +474,13 @@ export async function collectResearch({ fixturesDir = null, out = OUT, now = new
 
   if (!fixturesDir && !sources.some((s) => s.ok) && prev) {
     // Every source failed: keep the old papers but record the failure.
-    const kept = { ...prev, sources };
-    await writeFile(out, JSON.stringify(kept) + "\n");
+    await finish({ ...prev, sources }, out, { fixturesDir, env, updatesFile });
     console.warn("research: every source failed; kept the previous papers");
     return prev.papers.length;
   }
 
-  const data = { updated: nowIso, refreshed: nowIso, window: { from, to }, method: METHOD, taxonomy: taxonomy(), sources, papers };
-  await writeFile(out, JSON.stringify(data) + "\n");
+  const data = { updated: nowIso, refreshed: nowIso, window: { from, to }, method: METHOD, taxonomy: taxonomy(), sources, papers, guidance: prev?.guidance ?? [] };
+  await finish(data, out, { fixturesDir, env, updatesFile });
   console.log(`research: wrote ${papers.length} papers (${fresh.length} from this refresh) to ${path.relative(ROOT, out)}`);
   return papers.length;
 }
