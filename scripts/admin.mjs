@@ -30,11 +30,13 @@ export async function fetchOverlay(cfg = cloudConfig(), fetchImpl = fetch) {
     if (!res.ok) throw new Error(`${pathAndQuery.split("?")[0]} HTTP ${res.status}`);
     return res.json();
   };
-  const [approvals, overrides] = await Promise.all([
+  const [approvals, overrides, settings] = await Promise.all([
     get("manifest_approvals?select=version,status,approved_by,approved_on,note,updated_at"),
     get("company_overrides?select=company_id,data,hidden,note,updated_at&order=company_id"),
+    // Older databases have no site_settings table yet; the site then keeps its defaults.
+    get("site_settings?select=key,value,updated_at").catch(() => []),
   ]);
-  return { fetched: new Date().toISOString(), approvals, overrides };
+  return { fetched: new Date().toISOString(), approvals, overrides, settings };
 }
 
 // The database first; if it is unreachable, the overlay the live site last applied, so
@@ -149,6 +151,28 @@ export function applyOverlay(manifest, overlay) {
   return { manifest: out, applied, problems };
 }
 
+// The menu's pages ("index" is Updates), in their default order. Admins may reorder all
+// of them and hide any but Updates; Sign in always stays last.
+export const NAV = ["index", "briefing", "research", "companies", "team", "archive", "globe", "agencies", "about"];
+export const HIDEABLE_NAV = NAV.filter((x) => x !== "index");
+
+// data/site.json: settings every page reads (nav.js). The status strip is for admins
+// unless an admin chose to show it to everyone.
+export function siteSettings(overlay, now = new Date().toISOString()) {
+  const get = (k) => (overlay?.settings ?? []).find((x) => x.key === k)?.value;
+  const hidden = get("hidden_nav");
+  const order = get("nav_order");
+  // Unknown names are dropped and pages missing from a saved order keep their default
+  // place after it, so a page added to the site later still shows up.
+  const ordered = Array.isArray(order) ? [...new Set(order.filter((x) => NAV.includes(x)))] : [];
+  return {
+    built: now,
+    navOrder: [...ordered, ...NAV.filter((x) => !ordered.includes(x))],
+    hiddenNav: Array.isArray(hidden) ? hidden.filter((x) => HIDEABLE_NAV.includes(x)) : [],
+    statusStrip: get("status_strip") === "everyone" ? "everyone" : "admins",
+  };
+}
+
 // data/companies/admin.json: what this build applied, for the Admin page and the
 // weekly registry run. Only public fields.
 export function adminSummary({ base, result, overlay, now = new Date().toISOString() }) {
@@ -164,6 +188,6 @@ export function adminSummary({ base, result, overlay, now = new Date().toISOStri
     // can fill its form and show what each change does.
     companies: result.manifest.companies.map((c) => ({ id: c.id, ...Object.fromEntries(EDITABLE.filter((f) => c[f] !== undefined).map((f) => [f, c[f]])), ...(c.added && { added: true }), ...(c.edited && { edited: true }) })),
     hidden: result.applied.hidden.map((id) => ({ id, name: base.companies.find((c) => c.id === id)?.name ?? id })),
-    overlay: overlay ? { fetched: overlay.fetched, approvals: overlay.approvals, overrides: overlay.overrides } : null,
+    overlay: overlay ? { fetched: overlay.fetched, approvals: overlay.approvals, overrides: overlay.overrides, settings: overlay.settings ?? [] } : null,
   };
 }

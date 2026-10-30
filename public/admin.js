@@ -22,8 +22,13 @@ let me = null;
 let live = null; // data/companies/admin.json: what the site applied at its last build
 let status = null;
 let research = null;
-let db = { approvals: [], overrides: [], requests: [], admins: [], events: [], publish: null };
+let db = { approvals: [], overrides: [], requests: [], admins: [], events: [], publish: null, settings: [] };
 let editing = null; // { id, isNew, request }
+let site = null; // data/site.json: the menu and status-strip settings the site uses now
+let menu = null; // the menu being arranged: { order, hidden }
+
+// The menu's pages ("index" is Updates); keep in step with NAV in scripts/admin.mjs.
+const NAV_LABELS = { index: "Updates", briefing: "My Briefing", research: "Research", companies: "Companies", team: "Team", archive: "Archive", globe: "Globe", agencies: "Agencies", about: "About" };
 
 const time = (iso) => (iso ? el("time", { datetime: iso, title: new Date(iso).toLocaleString() }, ago(new Date(iso))) : "never");
 const slug = (s) => s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
@@ -52,23 +57,24 @@ const check = ({ error }) => {
 const msg = (id) => el("p", { class: "hint", id, role: "status" });
 
 async function load() {
-  const [approvals, overrides, requests, admins, events, publish] = await Promise.all([
+  const [approvals, overrides, requests, admins, events, publish, settings] = await Promise.all([
     sb.from("manifest_approvals").select("version,status,approved_by,approved_on,note,updated_at"),
     sb.from("company_overrides").select("company_id,data,hidden,note,updated_at").order("updated_at", { ascending: false }),
     sb.from("company_requests").select("*").order("created_at", { ascending: false }).limit(100),
     sb.rpc("admin_list_admins"),
     sb.from("admin_events").select("action,target,detail,by_email,at").order("at", { ascending: false }).limit(40),
     sb.rpc("admin_publish_status"),
+    sb.from("site_settings").select("key,value,updated_at"),
   ]);
   for (const r of [approvals, overrides, requests, admins, events]) check(r);
-  db = { approvals: approvals.data, overrides: overrides.data, requests: requests.data, admins: admins.data, events: events.data, publish: publish.error ? null : publish.data };
+  db = { approvals: approvals.data, overrides: overrides.data, requests: requests.data, admins: admins.data, events: events.data, publish: publish.error ? null : publish.data, settings: settings.error ? [] : settings.data };
 }
 
 // ── Publish ─────────────────────────────────────────────────────────────────
 
 function pendingChanges() {
   const built = live?.built ?? "";
-  return [...db.approvals, ...db.overrides].filter((x) => x.updated_at > built).length;
+  return [...db.approvals, ...db.overrides, ...db.settings].filter((x) => x.updated_at > built).length;
 }
 
 function publishSection() {
@@ -336,11 +342,55 @@ function activitySection() {
   );
 }
 
+// ── Site menu and status strip ──────────────────────────────────────────────
+
+const setting = (k, fallback) => db.settings.find((x) => x.key === k)?.value ?? fallback;
+
+function savedMenu() {
+  const order = setting("nav_order", site?.navOrder ?? Object.keys(NAV_LABELS)).filter((x) => x in NAV_LABELS);
+  return { order: [...order, ...Object.keys(NAV_LABELS).filter((x) => !order.includes(x))], hidden: new Set(setting("hidden_nav", site?.hiddenNav ?? [])) };
+}
+
+function menuSection() {
+  menu ??= savedMenu();
+  const move = (i, d) => {
+    const j = i + d;
+    [menu.order[i], menu.order[j]] = [menu.order[j], menu.order[i]];
+    render();
+    $("menu").querySelectorAll("li")[j]?.querySelector(`button[data-d="${d}"]`)?.focus();
+  };
+  const saved = savedMenu();
+  const changed = saved.order.join() !== menu.order.join() || [...saved.hidden].sort().join() !== [...menu.hidden].sort().join();
+  const strip = setting("status_strip", site?.statusStrip ?? "admins");
+  return el("section", { class: "profile", id: "menu" },
+    el("h2", {}, "Site menu"),
+    el("p", { class: "hint" }, "Arrange the menu and hide pages from it, for every visitor. A hidden page still opens from a direct link. Updates always stays, and Sign in is always last."),
+    el("ol", { class: "ad-menu" }, menu.order.map((id, i) => el("li", { class: menu.hidden.has(id) ? "off" : "" },
+      el("label", { class: "check" }, el("input", { type: "checkbox", checked: !menu.hidden.has(id) || null, disabled: id === "index" || null, onchange: (e) => (e.target.checked ? menu.hidden.delete(id) : menu.hidden.add(id), render()) }), ` ${NAV_LABELS[id]}`, menu.hidden.has(id) ? el("span", { class: "hint" }, " (hidden)") : null),
+      el("span", { class: "row" },
+        el("button", { type: "button", "data-d": "-1", "aria-label": `Move ${NAV_LABELS[id]} up`, disabled: i === 0 || null, onclick: () => move(i, -1) }, "↑"),
+        el("button", { type: "button", "data-d": "1", "aria-label": `Move ${NAV_LABELS[id]} down`, disabled: i === menu.order.length - 1 || null, onclick: () => move(i, 1) }, "↓"))))),
+    el("div", { class: "row" },
+      el("button", { type: "button", class: "primary", disabled: !changed || null, onclick: () => act($("menu-msg"), async () => {
+        check(await sb.rpc("admin_set_setting", { k: "nav_order", v: menu.order }));
+        check(await sb.rpc("admin_set_setting", { k: "hidden_nav", v: [...menu.hidden] }));
+        menu = null;
+      }) }, "Save menu"),
+      changed ? el("button", { type: "button", onclick: () => ((menu = null), render()) }, "Discard changes") : null),
+    msg("menu-msg"),
+    el("h3", {}, "Data status line"),
+    el("p", { class: "hint" }, "The line under the menu that says when updates were last refreshed and how many sources were reachable."),
+    el("div", { class: "row" }, [["admins", "Show it to admins only"], ["everyone", "Show it to everyone"]].map(([v, label]) =>
+      el("label", { class: "check" }, el("input", { type: "radio", name: "strip", value: v, checked: strip === v || null, onchange: () => act($("strip-msg"), async () => check(await sb.rpc("admin_set_setting", { k: "status_strip", v }))) }), ` ${label}`))),
+    msg("strip-msg"),
+  );
+}
+
 function render() {
   $("ad-msg").textContent = "";
   $("lede").textContent = `Signed in as ${me.email}. Changes here are saved in the database and go live at the next build.`;
   $("jump").hidden = false;
-  $("app").replaceChildren(publishSection(), approvalSection(), companiesSection(), adminsSection(), sourcesSection(), researchSection(), activitySection());
+  $("app").replaceChildren(publishSection(), approvalSection(), companiesSection(), menuSection(), adminsSection(), sourcesSection(), researchSection(), activitySection());
 }
 
 async function main() {
@@ -362,7 +412,7 @@ async function main() {
       : `Signed in as ${me.email}, which is not an admin. Ask an existing admin to add you on this page.`;
     return;
   }
-  [live, status, research] = await Promise.all([getJson("data/companies/admin.json"), getJson("data/status.json"), getJson("data/research.json")]);
+  [live, status, research, site] = await Promise.all([getJson("data/companies/admin.json"), getJson("data/status.json"), getJson("data/research.json"), getJson("data/site.json")]);
   if (!live) {
     $("lede").textContent = "This site's last build did not publish the admin data (data/companies/admin.json). It appears after the next build.";
     return;

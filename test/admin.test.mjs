@@ -95,3 +95,18 @@ test("the build reads public columns from the database, and falls back to the la
   assert.equal(kept.approvals[0].status, "approved");
   assert.equal(await loadOverlay({ cfg: { url: "", publicKey: "" }, fetchImpl: down, previous: async () => null }), null);
 });
+
+test("menu settings: a saved order comes first, later pages keep their place, Updates can't be hidden", async () => {
+  const { siteSettings, NAV } = await import("../scripts/admin.mjs");
+  const none = siteSettings(null, at);
+  assert.deepEqual(none, { built: at, navOrder: NAV, hiddenNav: [], statusStrip: "admins" });
+  const s = siteSettings({ settings: [
+    { key: "nav_order", value: ["research", "index", "research", "nope"] },
+    { key: "hidden_nav", value: ["companies", "index", "<x>"] },
+    { key: "status_strip", value: "everyone" },
+  ] }, at);
+  assert.deepEqual(s.navOrder.slice(0, 3), ["research", "index", "briefing"]);
+  assert.equal(s.navOrder.length, NAV.length);
+  assert.deepEqual(s.hiddenNav, ["companies"]);
+  assert.equal(s.statusStrip, "everyone");
+});

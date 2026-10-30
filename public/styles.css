@@ -683,3 +683,7 @@ code.invite { font-size: 12px; background: var(--bg); border: 1px solid var(--li
 .co-request { margin-top: 24px; }
 #app input:not([type=checkbox]):not([type=radio]), #app select { font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; }
 #app .imp-form label { flex-wrap: wrap; }
+.ad-menu { list-style: none; padding: 0; margin: 0 0 12px; max-width: 420px; }
+.ad-menu li { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 4px; background: var(--panel); }
+.ad-menu li.off { opacity: .6; }
+.ad-menu button { min-width: 32px; }
