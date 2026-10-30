@@ -57,7 +57,7 @@ function datesBlock(card) {
   return el("dl", { class: "imp-dates" }, rows);
 }
 
-// The full card. ctx: { ws, countryName, onChange(id) }.
+// The full card. ctx: { ws, countryName, onChange(id), technicalFirst }.
 export function impactSection(u, ctx) {
   const card = impactCard(u, { countryName: ctx.countryName });
   const rec = () => item(ctx.ws, u.id);
@@ -153,6 +153,8 @@ export function impactSection(u, ctx) {
     );
   }
 
+  const business = el("div", { class: "imp-block" }, el("h4", {}, "Business impact ", el("span", { class: "pot" }, "potential")), impactList(card.business, "No business implications detected by the rules."));
+  const technical = el("div", { class: "imp-block" }, el("h4", {}, "Technical impact ", el("span", { class: "pot" }, "potential")), impactList(card.technical, "No technical implications detected by the rules."));
   const status = el("span");
   const notes = el("div", { class: "imp-notes" });
   const ev = card.evidence;
@@ -171,10 +173,8 @@ export function impactSection(u, ctx) {
       ),
       card.affected.substances.length ? el("p", { class: "why" }, "Products and substances are detected by name pattern and may be incomplete.") : el("p", { class: "why" }, "No product or substance names detected in the text."),
     ),
-    el("div", { class: "imp-cols" },
-      el("div", { class: "imp-block" }, el("h4", {}, "Business impact ", el("span", { class: "pot" }, "potential")), impactList(card.business, "No business implications detected by the rules.")),
-      el("div", { class: "imp-block" }, el("h4", {}, "Technical impact ", el("span", { class: "pot" }, "potential")), impactList(card.technical, "No technical implications detected by the rules.")),
-    ),
+    // Technical readers see technical impact first.
+    el("div", { class: "imp-cols" }, ...(ctx.technicalFirst ? [technical, business] : [business, technical])),
     el("div", { class: "imp-block" }, el("h4", {}, "Dates"), datesBlock(card)),
     el("div", { class: "imp-block" },
       el("h4", {}, "Evidence"),

@@ -76,6 +76,7 @@ export function importJson(ws, text) {
   for (const [id, rec] of Object.entries(inc.items)) {
     if (!ws.items[id] || stamp(rec) >= stamp(ws.items[id])) ws.items[id] = rec;
   }
+  if (inc.groups) ws.groups = inc.groups;
   if (inc.profile) {
     ws.profile = { ...ws.profile, ...inc.profile };
     ws.profileSet = true;
