@@ -89,6 +89,28 @@ function renderFilters() {
   );
 
   for (const b of $("kind").children) b.setAttribute("aria-pressed", String(b.dataset.v === state.kind));
+  renderActive();
+}
+
+// The filters in use, as removable chips above the list, so a narrowed view is never a mystery.
+function renderActive() {
+  const days = { 7: "Last 7 days", 60: "Last 60 days" };
+  const active = [
+    state.q && [`“${state.q}”`, { q: "" }],
+    state.region && [state.region, { region: "", country: "" }],
+    state.country && [`${flag(state.country)} ${countryName(state.country)}`, { country: "" }],
+    state.cat && [catLabel(state.cat), { cat: "" }],
+    state.kind && [state.kind === "official" ? "Regulators only" : "News only", { kind: "" }],
+    days[state.days] && [days[state.days], { days: DEFAULTS.days }],
+    state.mine && ["Countries I follow", { mine: "" }],
+  ].filter(Boolean);
+  $("active").hidden = !active.length;
+  $("active").replaceChildren(
+    el("span", { class: "label" }, "Showing"),
+    ...active.map(([text, patch]) => el("button", { type: "button", class: "chip on", "aria-label": `Remove filter: ${text}`, onclick: () => set(patch) }, text, el("span", { "aria-hidden": "true" }, " ×"))),
+    el("button", { type: "button", class: "link", onclick: reset }, "Clear all"),
+  );
+  $("show-filters").textContent = active.length ? `Search & filters (${active.length})` : "Search & filters";
 }
 
 function card(u, { compact = false } = {}) {
@@ -186,15 +208,28 @@ function wire() {
     store.set(list.includes(state.country) ? list.filter((c) => c !== state.country) : [...list, state.country]);
     renderFilters();
   });
+  $("welcome-close").addEventListener("click", () => {
+    $("welcome").hidden = true;
+    try {
+      localStorage.setItem("pv-welcomed", "1");
+    } catch {}
+  });
   $("show-filters").addEventListener("click", () => {
     const open = document.body.classList.toggle("filters-open");
     $("show-filters").setAttribute("aria-expanded", String(open));
   });
 }
 
+function welcome() {
+  try {
+    $("welcome").hidden = Boolean(localStorage.getItem("pv-welcomed"));
+  } catch {}
+}
+
 async function main() {
   readUrl();
   wire();
+  welcome();
   try {
     const res = await fetch("data/updates.json", { cache: "no-cache" });
     if (!res.ok) throw new Error(res.status);

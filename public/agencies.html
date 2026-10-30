@@ -15,19 +15,21 @@
   <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="top">
     <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
     <p class="tagline">Pharmacovigilance and regulatory updates from every major regulator</p>
-    <nav class="toplinks">
+    <button type="button" class="menu-btn" aria-controls="site-nav" aria-expanded="false">Menu</button>
+    <nav class="toplinks" id="site-nav" aria-label="Main">
+      <a href="./">Updates</a>
       <a href="briefing.html">My Briefing</a>
       <a href="research.html">Research</a>
       <a href="team.html" data-nav="team">Team</a>
       <a href="archive.html">Archive</a>
-      <a href="./">Updates</a>
-      <a href="globe.html">🌍 Globe</a>
-      <a href="feed.xml">RSS</a>
+      <a href="globe.html">Globe</a>
+      <a href="agencies.html">Agencies</a>
       <a href="about.html">About</a>
-      <a href="account.html" data-nav="account">Sign in</a>
+      <a href="account.html" class="signin" data-nav="account">Sign in</a>
     </nav>
   </header>
   <main class="page">
@@ -38,5 +40,6 @@
   <script type="module" src="agencies.js"></script>
   <script type="module" src="chat.js"></script>
   <script type="module">import { navOnly } from "./cloud.js"; navOnly();</script>
+  <script type="module" src="nav.js"></script>
 </body>
 </html>
