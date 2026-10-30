@@ -15,13 +15,19 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { MANIFEST, SOURCES, REGISTRY } from "./registry.mjs";
 import { buildIndex, matchText, updateText, paperText, MATCH_RULES } from "./company-match.mjs";
+import { applyOverlay, adminSummary } from "./admin.mjs";
 
 const KEEP_DAYS = 365;
 const MAX_HISTORY = 6000;
 const LANE_ORDER = { direct: 0, substance: 1, class: 2, corporate: 3 };
 
-export async function loadCompanies() {
-  const manifest = JSON.parse(await readFile(MANIFEST, "utf8"));
+// `overlay` holds the Admin page's changes (admin.mjs): an approval of this manifest
+// version, and companies added, edited or hidden. They are applied over the repo file.
+export async function loadCompanies({ overlay = null } = {}) {
+  const base = JSON.parse(await readFile(MANIFEST, "utf8"));
+  const result = applyOverlay(base, overlay);
+  for (const p of result.problems) console.warn(`admin: company change ${p.id} skipped in part: ${p.problem}`);
+  const manifest = result.manifest;
   const register = JSON.parse(await readFile(SOURCES, "utf8"));
   let registry = null;
   try {
@@ -32,7 +38,7 @@ export async function loadCompanies() {
     const agencies = JSON.parse(await readFile(fileURLToPath(new URL("../public/data/agencies.json", import.meta.url)), "utf8"));
     names = new Map(agencies.map((a) => [a.code, a.country]));
   } catch {}
-  return { manifest, register, registry, idx: buildIndex(manifest, registry), countryName: (c) => names.get(c) ?? c };
+  return { manifest, register, registry, idx: buildIndex(manifest, registry), countryName: (c) => names.get(c) ?? c, admin: adminSummary({ base, result, overlay }) };
 }
 
 const slim = (m) => ({ id: m.id, lane: m.lane });
@@ -182,6 +188,7 @@ export async function writeCompanyData({ dir, ctx, updates, papers, previousHist
   await mkdir(dir, { recursive: true });
   await writeFile(path.join(dir, "index.json"), JSON.stringify(data.index) + "\n");
   await writeFile(path.join(dir, "products.json"), JSON.stringify(data.products) + "\n");
+  if (ctx.admin) await writeFile(path.join(dir, "admin.json"), JSON.stringify(ctx.admin) + "\n");
   await writeFile(path.join(dir, "matches.json"), JSON.stringify({ updated: now.toISOString(), rules: MATCH_RULES, items: history }) + "\n");
   for (const [id, f] of data.files) await writeFile(path.join(dir, `${id}.json`), JSON.stringify(f) + "\n");
   return { companies: data.files.size, matched: history.length };

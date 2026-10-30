@@ -57,6 +57,22 @@ Each build also writes `public/data/status.json`: when the updates were last ref
 
 Only the project URL and the public anon key reach the browser (`public/config.json`, written by the build). The service key is used only during the build to write the archive. Row-level security does the rest: anyone can read the archive, each reader sees only their own workspace, and team data only its members.
 
+## Admin console
+
+`admin.html` is one signed-in page for app admins (the emails in `research_admins`). It replaces editing repo files or running SQL for day-to-day admin work:
+
+- **Company list approval:** one button approves the current version of `companies/manifest.json`, with your name and today's date. A new manifest version needs a fresh approval. Withdrawing puts the draft notice back.
+- **Companies:** add a company, edit its names, matching phrases or holder prefixes, hide it, and undo any change. Signed-in readers can ask for a company from the bottom of the Companies page, and the requests wait here to be added or declined.
+- **Admins:** add or remove admins by email (you cannot remove yourself).
+- **Data sources and research review:** failing regulator, research and registry sources, and the research review backlog with a link to the queue.
+- **Publish now and activity:** rebuild the site at once instead of waiting for the hourly run, and see a log of every admin change.
+
+How it works: admin changes live in Supabase (`manifest_approvals`, `company_overrides`, `company_requests`, `admin_events`; see `supabase/schema.sql`). Each build reads them (`scripts/admin.mjs`), applies them over the repo manifest, and publishes what it applied as `public/data/companies/admin.json`. If the database can't be reached, the build reuses the live site's last copy, so an approval or a hidden company never flips back. The repo files are not changed. The weekly registry run reads that same file from the live site, so companies added here get their FDA and EMA products linked on Mondays.
+
+Publish now: in Vercel, open the project → **Settings** → **Git** → **Deploy Hooks**, create a hook for `main`, and paste its URL in the Publish section once. It is stored in a database table nobody can read, and the database calls it through Supabase's free `pg_net` extension. No GitHub or Vercel token reaches the browser.
+
+To turn it on, run `supabase/schema.sql` again (safe to re-run). Admins already in `research_admins` can use the page straight away, and the account page shows them an **Open the Admin console** button.
+
 ## Research & Innovation
 
 `research.html` lists recent PV research and preprints, and `paper.html?id=…` opens each paper's detail page. The build runs `scripts/research.mjs` at most every 6 hours (set `RESEARCH_FORCE=1` to force a refresh). It works without AI or any paid service:
@@ -80,7 +96,7 @@ Offline check: `node scripts/research.mjs --fixtures test/fixtures/research`.
 
 `companies.html` searches pharmaceutical companies by name, alias, former name, brand or substance; `company.html?id=…` is one company's public page (overview, related updates, products and markets, research, sources and coverage). No sign-in, no AI and no paid service.
 
-- **Coverage list:** `companies/manifest.json` names each company group with a stable `id`, its legal name, aliases, former names, the exact phrases that identify it in news (`mentions`, case-sensitive and specific, so "Vertex" alone never matches), and the holder-name prefixes its legal entities use in FDA and EMA records (`holders`). Ambiguous short names such as "Merck" are listed under `ambiguous` and never matched on their own. The list is a **draft** until the product owner approves it: set `status` to `approved` with `approvedBy` and `approvedOn`, and bump `version` on every change.
+- **Coverage list:** `companies/manifest.json` names each company group with a stable `id`, its legal name, aliases, former names, the exact phrases that identify it in news (`mentions`, case-sensitive and specific, so "Vertex" alone never matches), and the holder-name prefixes its legal entities use in FDA and EMA records (`holders`). Ambiguous short names such as "Merck" are listed under `ambiguous` and never matched on their own. The list is a **draft** until the product owner approves it on the Admin page (or by setting `status`, `approvedBy` and `approvedOn` here). Bump `version` on every change to this file.
 - **Sources:** `companies/sources.json` is the source capability register (what each source covers, how often, reuse terms, limits). Active today: the FDA Orange Book data files (US, NDAs and ANDAs) and EMA's medicines report (EU, centrally authorised). Planned: FDA Purple Book, the EU Union Register and EMA Article 57 data.
 - **Registry:** `scripts/registry.mjs` downloads the active sources, links each record's holder to a company and writes `companies/registry.json`, keeping the source, record locator, URL and file hash on every row. The **Refresh company registry** workflow runs it every Monday and commits the file, which redeploys the site. If a source fails, its last good rows are kept and marked stale. Run it by hand from the Actions tab after changing the manifest.
 - **Matching:** each hourly build matches updates and research papers to companies (`scripts/company-match.mjs`) in four lanes: direct (authorisation number, or a brand the company holds), substance, drug class (indirect) and company news (off by default). Every match stores its reason, and the rules version. A brand held by different companies in different markets is not matched unless the company is named. Results go to `public/data/companies/`, and each update gets a `co` list for the Updates page's "Related companies" line.
@@ -90,10 +106,10 @@ Offline check: `node scripts/registry.mjs --fixtures test/fixtures/companies` (s
 
 ### Company Explorer runbook
 
-- **Add or fix a company:** edit `companies/manifest.json` (never change or reuse an `id`), run `npm test`, then run the registry workflow so its products are linked.
+- **Add, fix or hide a company:** use the Companies section of the Admin page. For a lasting change to the base list, edit `companies/manifest.json` (never change or reuse an `id`), run `npm test`, then run the registry workflow so its products are linked.
 - **A large holder is not linked:** the Sources section of `companies.html` and `unmapped` in `companies/registry.json` list the biggest unlinked holder names. Add the right prefix to that company's `holders` after checking the holder really belongs to the group.
 - **A source fails:** the Data status page shows it under "Company registry sources", and the company pages say products come from the last good copy. Check the download URL in `companies/sources.json`; the parsers find columns by name, so a renamed column is the usual cause.
-- **A correction or company request:** both buttons open a public GitHub issue labelled `company-correction` or `company-request`.
+- **A correction or company request:** both buttons open a public GitHub issue labelled `company-correction` or `company-request`. Signed-in readers can also ask from the "Missing a company?" box, and those requests wait on the Admin page.
 - **Never** describe the list as exhaustive or the matches as validated: coverage is as stated on the pages.
 
 ## Adding a country or source
