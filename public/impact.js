@@ -229,17 +229,73 @@ export function cardText(u, card, { status = "Automated extraction, not reviewed
   ].join("\n");
 }
 
-// Roles a reader can pick, and the topics each cares most about (used to rank the briefing).
+// The five audiences a reader can pick, the topics each cares most about, and the
+// words and impact rules that push an update up their briefing. Sections per view
+// live in views.js. Readers can rename these and add their own groups (see groups()).
 export const ROLES = [
-  { id: "qppv", label: "QPPV / PV head", topics: { safety: 3, guideline: 3, regulation: 3, inspection: 2, policy: 1 } },
-  { id: "signal", label: "Signal management / safety physician", topics: { safety: 3, label: 2, recall: 1 } },
-  { id: "case", label: "Case processing / ICSR", topics: { guideline: 2, regulation: 3, safety: 1 }, impact: ["reporting", "rules", "icsr"] },
-  { id: "aggregate", label: "Aggregate reporting", topics: { guideline: 2, regulation: 2, safety: 2 }, impact: ["reporting"] },
-  { id: "ra", label: "Regulatory affairs / labelling", topics: { label: 3, approval: 2, regulation: 2, guideline: 1 }, impact: ["labelling"] },
-  { id: "qa", label: "Quality / compliance", topics: { recall: 3, inspection: 3, guideline: 1 }, impact: ["quality", "inspection", "sop"] },
-  { id: "systems", label: "Safety systems / IT", topics: { guideline: 2, regulation: 2 }, technical: true },
-  { id: "intel", label: "Regulatory intelligence", topics: { regulation: 3, policy: 3, guideline: 3 }, impact: ["consultation"] },
+  {
+    id: "ops",
+    label: "Case processing & operations",
+    blurb: "Reporting changes, authority communications, submission interruptions, process implications",
+    topics: { regulation: 3, guideline: 2, safety: 1 },
+    impact: ["reporting", "rules", "icsr", "interface", "sop"],
+    words: ["icsr", "e2b", "reporting", "submission", "gateway", "outage", "downtime", "maintenance", "unavailab", "interruption", "eudravigilance", "faers", "expedited"],
+  },
+  {
+    id: "safety",
+    label: "Safety scientists & physicians",
+    blurb: "Safety communications, PRAC outcomes, product and substance watchlists",
+    topics: { safety: 3, label: 2, recall: 1 },
+    impact: ["monitoring", "labelling", "riskmin"],
+    words: [" prac ", " signal", "safety communication", "dhpc", "drug safety update", "direct healthcare professional"],
+  },
+  {
+    id: "qppv",
+    label: "QPPV & compliance",
+    blurb: "Regulatory changes, effective dates, consultations, inspection themes, review status",
+    topics: { regulation: 3, guideline: 3, inspection: 3, policy: 2, safety: 1 },
+    impact: ["sop", "training", "consultation", "inspection"],
+    words: ["effective", "into force", "consultation", "inspection", "qppv", "psmf", "requirement"],
+  },
+  {
+    id: "systems",
+    label: "PV systems & configuration",
+    blurb: "E2B changes, validation rules, gateway notices, terminology releases, configuration impact",
+    topics: { guideline: 2, regulation: 2 },
+    technical: true,
+    words: ["e2b", "validation rule", "business rule", "gateway", "meddra", "whodrug", "terminology", "xml", "idmp", "spor", "release", "version"],
+  },
+  {
+    id: "leader",
+    label: "PV leaders",
+    blurb: "A concise weekly briefing, major changes, pending assessments, coverage gaps",
+    topics: { safety: 2, regulation: 2, guideline: 2, recall: 1, inspection: 1 },
+    window: "7d",
+  },
 ];
+
+// Earlier role ids map onto the five audiences.
+export const LEGACY_ROLES = { case: "ops", aggregate: "ops", signal: "safety", ra: "qppv", qa: "qppv", intel: "qppv" };
+
+// The reader's groups: the five audiences under the names they chose, plus groups
+// they added. A custom group starts from one audience's view and adds its own
+// topics and keywords. `settings` is { names: {id: name}, custom: [{id, name, base, topics, words}] }.
+export function groups(settings = {}) {
+  const names = settings.names ?? {};
+  const base = ROLES.map((r) => ({ ...r, base: r.id, label: names[r.id]?.trim() || r.label, defaultLabel: r.label }));
+  const custom = (settings.custom ?? []).map((c) => {
+    const from = ROLES.find((r) => r.id === c.base) ?? ROLES[0];
+    const topics = { ...from.topics };
+    for (const t of c.topics ?? []) topics[t] = Math.max(topics[t] ?? 0, 3);
+    return { ...from, id: c.id, base: from.id, label: c.name?.trim() || "My group", custom: true, topics, words: [...(from.words ?? []), ...(c.words ?? []).map((w) => ` ${w.toLowerCase().trim()}`)], blurb: `Based on ${from.label}` };
+  });
+  return [...base, ...custom];
+}
+
+export function findGroup(id, settings) {
+  const all = groups(settings);
+  return all.find((g) => g.id === (LEGACY_ROLES[id] ?? id)) ?? null;
+}
 
 export const TOPICS = ["safety", "recall", "label", "guideline", "regulation", "policy", "inspection", "approval", "news"];
 
@@ -259,13 +315,14 @@ export function briefingScore(u, profile = {}, card = null) {
   const inPlace = !profile.countries?.length || profile.countries.includes(u.country) || u.country === "INT";
   const inTopic = !profile.topics?.length || u.tags.some((t) => profile.topics.includes(t));
   if (!hits.length && !(inPlace && inTopic)) return { score: 0, hits };
-  const role = ROLES.find((r) => r.id === profile.role);
+  const role = findGroup(profile.role, profile.groups);
   let score = hits.length * 6 + (u.priority ?? 0) / 2 + (u.kind === "official" ? 2 : 0);
   if (profile.countries?.includes(u.country)) score += 2;
   if (role) {
     score += Math.max(0, ...u.tags.map((t) => role.topics[t] ?? 0));
     if (card && role.technical && card.technical.length) score += 3;
     if (card && role.impact && [...card.business, ...card.technical].some((x) => role.impact.includes(x.key))) score += 2;
+    if (role.words?.some((w) => norm(`${u.title} ${u.summary ?? ""}`).includes(w))) score += 2;
   }
   return { score: Math.round(score * 10) / 10, hits };
 }
@@ -276,7 +333,7 @@ const WINDOWS = { "24h": 1, "7d": 7, "30d": 30 };
 // new updates in their scope ranked for their role, watchlist hits, new updates
 // about substances they follow, and dates still ahead. Dismissed updates drop out.
 export function buildBriefing(updates, ws, { window = "24h", now = Date.now(), lastVisit = null, countryName } = {}) {
-  const profile = ws.profile ?? {};
+  const profile = { ...(ws.profile ?? {}), groups: ws.groups };
   const items = ws.items ?? {};
   const since = window === "visit" && lastVisit ? Date.parse(lastVisit) : now - (WINDOWS[window] ?? 1) * 86400000;
   const isNew = (u) => !u.published || Date.parse(u.published) >= since;

@@ -43,9 +43,57 @@
             <option value="30d">Last 30 days</option>
           </select>
         </label>
+        <button type="button" class="reset" id="edit-groups">Groups</button>
         <button type="button" class="reset" id="edit">Edit profile</button>
       </div>
     </div>
+
+    <nav class="views" id="views" aria-label="Switch view"></nav>
+
+    <section class="setup" id="setup" hidden aria-label="Set up your briefing">
+      <p class="step" id="setup-step">Step 1 of 2</p>
+      <div id="setup-1">
+        <h2>Who are you reading for?</h2>
+        <p class="hint">Pick the view closest to your work. You can switch views at any time, rename them, or add your own groups.</p>
+        <div class="role-grid" id="setup-roles"></div>
+        <button type="button" class="link" id="setup-skip">Skip and show everything</button>
+      </div>
+      <div id="setup-2" hidden>
+        <h2>What are you interested in?</h2>
+        <p class="hint">Your view already puts its topics first. Tick topics or countries only to narrow the briefing further. Everything here can be changed later under Edit profile.</p>
+        <div class="field">
+          <span class="label">Topics <small>(none = all)</small></span>
+          <div class="pf-checks" id="setup-topics"></div>
+        </div>
+        <div class="field">
+          <span class="label">Countries and bodies <small>(none = all)</small></span>
+          <div class="pf-checks" id="setup-countries"></div>
+        </div>
+        <div class="field">
+          <label for="setup-watch">Watchlist</label>
+          <input type="search" id="setup-watch" placeholder="Products, substances or keywords, comma separated">
+        </div>
+        <div class="row">
+          <button type="button" class="primary" id="setup-done">Show my briefing</button>
+          <button type="button" id="setup-back">Back</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile" id="groups" hidden aria-label="Groups">
+      <h2>Groups</h2>
+      <p class="hint">Rename the five built-in views to match your organisation, or add your own group. A custom group starts from one view's sections and adds the topics and keywords you choose. Saved in this browser only.</p>
+      <form id="groups-form">
+        <div id="groups-list" class="groups-list"></div>
+        <div class="row">
+          <button type="button" id="group-add">+ Add a group</button>
+        </div>
+        <div class="row">
+          <button type="submit" class="primary">Save groups</button>
+          <button type="button" id="groups-cancel">Cancel</button>
+        </div>
+      </form>
+    </section>
 
     <section class="profile" id="profile" hidden aria-label="Briefing profile">
       <h2>Your briefing profile</h2>
@@ -53,7 +101,7 @@
       <form id="profile-form">
         <div class="pf-grid">
           <div class="field">
-            <label for="pf-role">Role</label>
+            <label for="pf-role">View</label>
             <select id="pf-role"></select>
           </div>
           <div class="field">
@@ -87,10 +135,7 @@
 
     <div class="tiles" id="tiles"></div>
 
-    <section class="brief-sec" id="sec-watch" hidden>
-      <h2>Watchlist hits</h2>
-      <div id="watch"></div>
-    </section>
+    <div id="sections"></div>
 
     <section class="brief-sec" id="sec-follow" hidden>
       <h2>New on what you follow</h2>
@@ -98,7 +143,7 @@
     </section>
 
     <section class="brief-sec">
-      <h2 id="review-title">To review</h2>
+      <h2 id="review-title">More in your scope</h2>
       <div id="review"></div>
       <button type="button" class="more" id="review-more" hidden>Show more</button>
     </section>
