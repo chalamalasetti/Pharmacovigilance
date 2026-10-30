@@ -11,6 +11,7 @@ import { VIEW_LIMIT, viewSections, pendingWork, coverageGaps } from "./views.js"
 import { el, impactSection, statusBadges } from "./impact-view.js";
 import * as workspace from "./workspace.js";
 import { initCloud } from "./cloud.js";
+import { loadFollowed, followedUpdates } from "./companies-lib.js";
 
 const $ = (id) => document.getElementById(id);
 const PAGE = 10;
@@ -25,6 +26,7 @@ workspace.persist(ws);
 
 let data = null;
 let shown = PAGE;
+let coNames = new Map();
 let tab = "saved";
 let windowSel = (() => {
   try {
@@ -118,6 +120,10 @@ function render() {
   const group = currentGroup();
   const { sections, rest } = group ? viewSections(group.base, b) : { sections: [{ id: "watch", title: "Watchlist hits", items: b.watch }], rest: b.review };
   $("sections").replaceChildren(...sections.map((sec, i) => renderSection(sec, b, i === 0)));
+
+  const cos = followedUpdates(data.updates, loadFollowed().filter((id) => coNames.has(id)));
+  $("sec-companies").hidden = !cos.length;
+  $("companies").replaceChildren(...cos.map((x) => briefCard(x.u, { why: x.hits.map((m) => `${coNames.get(m.id)} (${m.lane} match)`) })));
 
   $("sec-follow").hidden = !b.followUps.length;
   $("follow").replaceChildren(...b.followUps.map((x) => briefCard(x.u, { why: [`mentions ${x.about.join(", ")}, which you follow`] })));
@@ -468,6 +474,16 @@ async function main() {
     renderViews();
     render();
   });
+  // Followed companies are optional: only fetch names when the reader follows any.
+  if (loadFollowed().length) {
+    try {
+      const res = await fetch("data/companies/index.json", { cache: "no-cache" });
+      if (res.ok) {
+        coNames = new Map((await res.json()).companies.map((c) => [c.id, c.name]));
+        render();
+      }
+    } catch {}
+  }
 }
 
 main();

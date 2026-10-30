@@ -15,6 +15,7 @@ import { buildFeeds } from "./sources.mjs";
 import { writeRss } from "./rss.mjs";
 import { archiveUpdates, writePublicConfig } from "./cloud.mjs";
 import { collectResearch } from "./research.mjs";
+import { loadCompanies, annotateUpdates, writeCompanyData } from "./companies.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "public/data/updates.json");
@@ -185,13 +186,13 @@ export function stampRetrieved(fresh, previous, now = new Date().toISOString()) 
 
 // The last snapshot of a data file: the local copy when running on a computer, or the
 // live site's copy when building on Vercel (where each build starts without the previous output).
-async function previousJson(file) {
+async function previousJson(file, sitePath = path.basename(file)) {
   try {
     return JSON.parse(await readFile(file, "utf8"));
   } catch {}
   if (process.env.SKIP_PREVIOUS) return null;
   try {
-    return JSON.parse(await fetchText(`${SITE_URL}/data/${path.basename(file)}`, 1));
+    return JSON.parse(await fetchText(`${SITE_URL}/data/${sitePath}`, 1));
   } catch {
     return null;
   }
@@ -219,7 +220,7 @@ export function feedStatus(feeds, results, previous = [], now = new Date().toISO
 }
 
 // The small file behind the status strip on every page and the hourly health check.
-export function buildStatus({ checked, updated, sources, research }) {
+export function buildStatus({ checked, updated, sources, research, registry = null }) {
   const ok = sources.filter((s) => s.ok).length;
   return {
     checked,
@@ -230,6 +231,12 @@ export function buildStatus({ checked, updated, sources, research }) {
       ? {
           refreshed: research.refreshed ?? null,
           sources: (research.sources ?? []).map(({ id, name, configured, ok, lastSuccess, error }) => ({ id, name, configured, ok, lastSuccess, ...(error && { error }) })),
+        }
+      : null,
+    companies: registry
+      ? {
+          built: registry.built,
+          sources: (registry.sources ?? []).map(({ id, name, ok, lastSuccess, error, stale, records, mapped }) => ({ id, name, ok, lastSuccess, records, mapped, ...(error && { error }), ...(stale && { stale }) })),
         }
       : null,
   };
@@ -309,6 +316,15 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
   if (!reachable && !fixturesDir) console.warn(`every source failed; keeping the ${previous.length} updates from ${updated}`);
   stampRetrieved(fresh, previous);
   const updates = pickUpdates([...fresh, ...previous], { checkAge: !fixturesDir });
+  // Company Explorer: tag each update with the companies it relates to. Extra, so a
+  // problem here must not fail the build.
+  let companies = null;
+  try {
+    companies = await loadCompanies();
+    annotateUpdates(updates, companies.idx, companies.countryName);
+  } catch (e) {
+    console.warn(`companies: matching skipped: ${e.message}`);
+  }
   const data = {
     updated,
     checked: now,
@@ -342,7 +358,17 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
   try {
     research = JSON.parse(await readFile(path.join(dataDir, "research.json"), "utf8"));
   } catch {}
-  await writeFile(path.join(dataDir, STATUS), JSON.stringify(buildStatus({ checked: now, updated, sources, research })) + "\n");
+  if (companies) {
+    try {
+      const dir = path.join(dataDir, "companies");
+      const prev = fixturesDir ? null : await previousJson(path.join(dir, "matches.json"), "companies/matches.json");
+      const r = await writeCompanyData({ dir, ctx: companies, updates, papers: research?.papers, previousHistory: prev?.items ?? [] });
+      console.log(`companies: wrote ${r.companies} company pages, ${r.matched} matched items`);
+    } catch (e) {
+      console.warn(`companies: failed: ${e.message}`);
+    }
+  }
+  await writeFile(path.join(dataDir, STATUS), JSON.stringify(buildStatus({ checked: now, updated, sources, research, registry: companies?.registry })) + "\n");
   const official = updates.filter((u) => u.kind === "official").length;
   const countries = new Set(updates.map((u) => u.country)).size;
   console.log(`wrote ${updates.length} updates (${official} official, ${countries} countries) to ${path.relative(ROOT, out)}`);

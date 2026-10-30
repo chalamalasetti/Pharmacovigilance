@@ -8,6 +8,7 @@
     "build": "node scripts/aggregate.mjs",
     "aggregate": "node scripts/aggregate.mjs",
     "research": "node scripts/research.mjs",
+    "registry": "node scripts/registry.mjs",
     "test": "node --test test/*.test.mjs",
     "app": "node scripts/app.mjs",
     "start": "node scripts/app.mjs"

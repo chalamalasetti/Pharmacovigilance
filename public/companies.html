@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Company Explorer · PV Info</title>
+  <meta name="description" content="Search pharmaceutical companies and see public regulatory and safety updates related to their products, with the source of every product relationship.">
+  <meta name="theme-color" content="#0f4c5c">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Vercel Web Analytics and Speed Insights (enable both in the Vercel dashboard) -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
+    <p class="tagline">Pharmaceutical companies and the public updates related to their products</p>
+    <button type="button" class="menu-btn" aria-controls="site-nav" aria-expanded="false">Menu</button>
+    <nav class="toplinks" id="site-nav" aria-label="Main">
+      <a href="./">Updates</a>
+      <a href="briefing.html">My Briefing</a>
+      <a href="research.html">Research</a>
+      <a href="companies.html">Companies</a>
+      <a href="team.html" data-nav="team">Team</a>
+      <a href="archive.html">Archive</a>
+      <a href="globe.html">Globe</a>
+      <a href="agencies.html">Agencies</a>
+      <a href="about.html">About</a>
+      <a href="account.html" class="signin" data-nav="account">Sign in</a>
+    </nav>
+  </header>
+
+  <main class="page co-page" id="main">
+    <h1>Company Explorer</h1>
+    <p class="intro">Find a pharmaceutical company and the public regulatory and safety updates related to its products. Every product link comes from FDA or EMA records, with the source shown. Updates are labelled as related, not as company-confirmed safety issues.</p>
+    <p class="co-draft" id="draft" hidden></p>
+
+    <div class="co-search" role="search">
+      <label for="q" class="label">Company, brand or substance</label>
+      <div class="co-combo">
+        <input id="q" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggest" autocomplete="off" placeholder="e.g. Pfizer, Genentech, Ozempic, semaglutide">
+        <ul id="suggest" class="co-suggest" role="listbox" aria-label="Suggestions" hidden></ul>
+      </div>
+      <p class="hint">Try: <span id="examples" class="co-examples"></span></p>
+    </div>
+
+    <section id="followed-sec" class="co-followed" hidden aria-labelledby="followed-h">
+      <h2 id="followed-h">Companies you follow</h2>
+      <div id="followed" class="co-grid"></div>
+    </section>
+
+    <section id="results-sec" hidden aria-live="polite">
+      <div id="ambiguous"></div>
+      <h2 id="results-h">Companies</h2>
+      <div id="results" class="co-grid"></div>
+      <div id="product-results"></div>
+    </section>
+
+    <section id="browse-sec" aria-labelledby="browse-h">
+      <h2 id="browse-h">Browse</h2>
+      <div class="co-browse">
+        <div class="field"><span class="label" id="region-l">Region</span><div class="chips" id="regions" role="group" aria-labelledby="region-l"></div></div>
+        <div class="field"><label for="type">Company type</label><select id="type"></select></div>
+      </div>
+      <p class="hint" id="browse-n"></p>
+      <div id="browse" class="co-grid"></div>
+    </section>
+
+    <section id="coverage" class="co-coverage" aria-labelledby="coverage-h">
+      <h2 id="coverage-h">Coverage and limitations</h2>
+      <div id="coverage-body"><p>Loading…</p></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Following or searching for a company does not mean you work for it or represent it, and gives no special access. Product relationships come from public FDA and EMA records; linking a holder name to a company group is an editorial mapping and is shown as such. A related update is not evidence of fault or causality, and no results does not mean no safety concerns.
+  </footer>
+  <script type="module" src="companies.js"></script>
+  <script type="module" src="chat.js"></script>
+  <script type="module" src="nav.js"></script>
+</body>
+</html>

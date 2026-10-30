@@ -1,0 +1,65 @@
+{
+  "note": "Source capability register for the company registry. Each source says what it covers, what it does not, how it is collected and how often. Only sources marked active are collected.",
+  "sources": [
+    {
+      "id": "fda-orange-book",
+      "name": "FDA Orange Book data files",
+      "status": "active",
+      "url": "https://www.fda.gov/media/76860/download",
+      "page": "https://www.fda.gov/drugs/drug-approvals-and-databases/orange-book-data-files",
+      "jurisdictions": ["US"],
+      "entityTypes": ["application holder (applicant)", "product", "active ingredient"],
+      "fields": ["Ingredient", "Dosage form and route", "Trade name", "Applicant and applicant full name", "Strength", "Application type and number", "Approval date", "Marketing category (Rx, OTC, discontinued)"],
+      "access": "Zip of tilde-delimited text files, downloaded once a week",
+      "cadence": "FDA updates the files monthly; PV Info checks weekly",
+      "reuse": "US federal government data; no copyright restrictions on reuse",
+      "limitations": [
+        "Covers drugs approved through NDAs and ANDAs. Most biologics, vaccines and biosimilars are licensed through BLAs and are not in the Orange Book.",
+        "The applicant is the holder of the application. It is not necessarily the manufacturer, distributor or the company that markets the product.",
+        "Approval does not prove the product is on the market. Products FDA lists as discontinued are shown as discontinued."
+      ]
+    },
+    {
+      "id": "ema-medicines",
+      "name": "EMA medicines data (human medicines report)",
+      "status": "active",
+      "url": "https://www.ema.europa.eu/en/documents/report/medicines-output-medicines-report_en.xlsx",
+      "page": "https://www.ema.europa.eu/en/medicines/download-medicine-data",
+      "jurisdictions": ["EU"],
+      "entityTypes": ["marketing authorisation holder", "medicine", "active substance", "ATC code"],
+      "fields": ["Name of medicine", "EMA product number", "Medicine status", "INN / common name", "Active substance", "ATC code", "Pharmacotherapeutic group", "Marketing authorisation holder", "Marketing authorisation date", "Medicine URL"],
+      "access": "Excel report, downloaded once a week",
+      "cadence": "EMA refreshes the report daily; PV Info checks weekly",
+      "reuse": "EMA website content may be reproduced with acknowledgement of the source, per EMA's legal notice",
+      "limitations": [
+        "Centrally authorised medicines only. Medicines authorised nationally by EU member states are not included.",
+        "The holder shown is the marketing authorisation holder named in the current report. Earlier holders of transferred authorisations are not listed.",
+        "An EU authorisation does not prove the medicine is marketed in every member state."
+      ]
+    },
+    {
+      "id": "fda-purple-book",
+      "name": "FDA Purple Book (licensed biologics)",
+      "status": "planned",
+      "page": "https://purplebooksearch.fda.gov/",
+      "jurisdictions": ["US"],
+      "limitations": ["Not collected yet. Needed for US biologics, vaccines and biosimilars."]
+    },
+    {
+      "id": "eu-union-register",
+      "name": "European Commission Union Register of medicinal products",
+      "status": "planned",
+      "page": "https://health.ec.europa.eu/medicinal-products/union-register_en",
+      "jurisdictions": ["EU"],
+      "limitations": ["Not collected yet. Would add authorisation history and transfers between holders."]
+    },
+    {
+      "id": "ema-article-57",
+      "name": "EMA public Article 57 data",
+      "status": "planned",
+      "page": "https://www.ema.europa.eu/en/human-regulatory-overview/post-authorisation/data-medicines-iso-idmp-standards-post-authorisation/public-data-article-57-database",
+      "jurisdictions": ["EU", "EEA"],
+      "limitations": ["Not collected yet. Would add nationally authorised products in the EEA; field and reuse checks are needed first."]
+    }
+  ]
+}
