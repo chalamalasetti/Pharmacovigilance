@@ -10,9 +10,6 @@ on:
   schedule:
     - cron: "30 4 * * 1"
   workflow_dispatch:
-  # TEMPORARY: fills the PR #11 preview with real products. Remove before merging.
-  push:
-    branches: [claude/project-thread-wusccr]
 
 permissions:
   contents: write
