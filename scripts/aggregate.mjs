@@ -23,7 +23,7 @@ const MAX_ITEMS = 1500;
 const MAX_PER_FEED = 40;
 const FETCH_TIMEOUT_MS = 20000;
 const CONCURRENCY = 8;
-export const SITE_URL = (process.env.SITE_URL || "https://pharmacovigilance.vercel.app").replace(/\/$/, "");
+export const SITE_URL = (process.env.SITE_URL || "https://pharmacovigilance-self.vercel.app").replace(/\/$/, "");
 const UA = "PVInfo/0.1 (+https://github.com/chalamalasetti/Pharmacovigilance)";
 
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "@", textNodeName: "#text" });
