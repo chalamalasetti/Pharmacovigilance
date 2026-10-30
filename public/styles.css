@@ -676,3 +676,10 @@ code.invite { font-size: 12px; background: var(--bg); border: 1px solid var(--li
   .co-filters select, .co-filters input[type="search"] { width: 100%; }
   .co-kind { display: block; }
 }
+
+/* Admin console */
+.ad-jump { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 0 0 16px; font-size: 14px; }
+#ad-msg:not(:empty) { position: sticky; top: 0; z-index: 2; background: var(--brand-soft); color: var(--ink); border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; font-size: 14px; }
+.co-request { margin-top: 24px; }
+#app input:not([type=checkbox]):not([type=radio]), #app select { font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; }
+#app .imp-form label { flex-wrap: wrap; }

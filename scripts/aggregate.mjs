@@ -16,6 +16,7 @@ import { writeRss } from "./rss.mjs";
 import { archiveUpdates, writePublicConfig } from "./cloud.mjs";
 import { collectResearch } from "./research.mjs";
 import { loadCompanies, annotateUpdates, writeCompanyData } from "./companies.mjs";
+import { loadOverlay } from "./admin.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "public/data/updates.json");
@@ -320,7 +321,10 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
   // problem here must not fail the build.
   let companies = null;
   try {
-    companies = await loadCompanies();
+    // Admin page changes (approval, added or hidden companies) from the database.
+    const overlay = fixturesDir ? null : await loadOverlay({ previous: () => previousJson(path.join(dataDir, "companies/admin.json"), "companies/admin.json") });
+    if (overlay) console.log(`admin: applied ${overlay.overrides?.length ?? 0} company changes and ${overlay.approvals?.length ?? 0} approvals (${overlay.from})`);
+    companies = await loadCompanies({ overlay });
     annotateUpdates(updates, companies.idx, companies.countryName);
   } catch (e) {
     console.warn(`companies: matching skipped: ${e.message}`);

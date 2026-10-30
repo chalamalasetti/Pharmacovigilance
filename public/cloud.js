@@ -30,6 +30,14 @@ export async function currentUser() {
   return data.session?.user ?? null;
 }
 
+// Whether the signed-in reader is an app admin (supabase/schema.sql: research_admins).
+export async function isAdmin() {
+  const sb = await client();
+  if (!sb || !(await currentUser())) return false;
+  const { data, error } = await sb.rpc("is_app_admin");
+  return !error && data === true;
+}
+
 export const displayName = (user) => user?.user_metadata?.name || user?.email?.split("@")[0] || "";
 
 // Emails a one-time sign-in link that brings the reader back to the account page.

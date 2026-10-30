@@ -10,7 +10,7 @@ const btn = document.querySelector(".menu-btn");
 
 // "/briefing", "/briefing.html" and "/" all resolve; paper and review pages belong to Research.
 const page = (location.pathname.split("/").pop() || "index").replace(/\.html$/, "");
-const current = page === "paper" || page === "research-admin" ? "research" : page === "company" ? "companies" : page;
+const current = page === "paper" || page === "research-admin" ? "research" : page === "company" ? "companies" : page === "admin" ? "account" : page;
 for (const a of nav?.querySelectorAll("a") ?? []) {
   const target = (a.getAttribute("href") === "./" ? "index" : a.getAttribute("href")).replace(/\.html$/, "");
   if (target === current) a.setAttribute("aria-current", "page");

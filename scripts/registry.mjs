@@ -265,7 +265,11 @@ export function linkRecords(records, match) {
 const sortProducts = (a, b) => a.company.localeCompare(b.company) || a.src.localeCompare(b.src) || String(a.authId).localeCompare(String(b.authId)) || a.brand.localeCompare(b.brand);
 
 export async function buildRegistry({ fixturesDir = null, out = REGISTRY, now = new Date().toISOString(), fetchImpl = download } = {}) {
-  const manifest = JSON.parse(await readFile(MANIFEST, "utf8"));
+  // Companies added or hidden on the Admin page count too, so their products are linked.
+  // The Actions run has no database keys, so this reads what the live site last applied.
+  const { applyOverlay, loadOverlay } = await import("./admin.mjs");
+  const overlay = fixturesDir ? null : await loadOverlay();
+  const manifest = applyOverlay(JSON.parse(await readFile(MANIFEST, "utf8")), overlay).manifest;
   const register = JSON.parse(await readFile(SOURCES, "utf8"));
   let previous = null;
   try {

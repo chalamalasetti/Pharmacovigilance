@@ -324,3 +324,279 @@ drop trigger if exists research_reviews_stamp on public.research_reviews;
 create trigger research_reviews_stamp before insert or update on public.research_reviews for each row execute function public.research_review_stamp();
 drop trigger if exists research_reviews_log on public.research_reviews;
 create trigger research_reviews_log after insert or update or delete on public.research_reviews for each row execute function public.research_review_log();
+
+-- ── Admin console (admin.html) ───────────────────────────────────────────────
+--
+-- One signed-in page where app admins (the research_admins list above) look after the
+-- site without editing repo files or running SQL:
+--
+--   manifest_approvals   approval of a version of companies/manifest.json
+--   company_overrides    companies added, edited or hidden by an admin, applied over the
+--                        manifest at every build (the repo file itself is left as it is)
+--   company_requests     companies that signed-in readers ask to have added
+--   admin_events         log of every admin change, written only by the database
+--   app_secrets          the Vercel deploy hook behind "Publish now"; never readable
+--
+-- Every change reaches the public site at the next build (hourly, or at once with
+-- Publish now). Only the admin list is kept in research_admins, so an admin can review
+-- research and run the console.
+
+alter table public.research_admins add column if not exists added_by text;
+
+create or replace function public.is_app_admin() returns boolean
+language sql stable security definer set search_path = '' as $$
+  select public.is_research_admin()
+$$;
+grant execute on function public.is_app_admin() to anon, authenticated;
+
+create table if not exists public.admin_events (
+  id bigint generated always as identity primary key,
+  action text not null,
+  target text,
+  detail jsonb,
+  by_email text,
+  at timestamptz not null default now()
+);
+create index if not exists admin_events_recent on public.admin_events (at desc);
+alter table public.admin_events enable row level security;
+drop policy if exists "Admins read the admin log" on public.admin_events;
+create policy "Admins read the admin log" on public.admin_events for select to authenticated using (public.is_app_admin());
+-- No insert, update or delete grants: only the functions and triggers below write here.
+grant select on public.admin_events to authenticated;
+
+create or replace function public.admin_log(act text, tgt text, info jsonb default null) returns void
+language sql security definer set search_path = '' as $$
+  insert into public.admin_events (action, target, detail, by_email) values (act, tgt, info, auth.jwt() ->> 'email')
+$$;
+revoke execute on function public.admin_log(text, text, jsonb) from public, anon, authenticated;
+
+-- Admins: listed, added and removed through these functions, so the list itself stays
+-- unreadable to everyone else.
+create or replace function public.admin_list_admins() returns table (email text, added_at timestamptz, added_by text)
+language sql stable security definer set search_path = '' as $$
+  select a.email, a.added_at, a.added_by from public.research_admins a where public.is_app_admin() order by a.added_at
+$$;
+
+create or replace function public.admin_add_admin(new_email text) returns void
+language plpgsql security definer set search_path = '' as $$
+declare e text := lower(trim(new_email));
+begin
+  if not public.is_app_admin() then raise exception 'Only an admin can do that'; end if;
+  if e !~ '^[^@\s]+@[^@\s]+\.[^@\s]+$' then raise exception 'That does not look like an email address'; end if;
+  insert into public.research_admins (email, added_by) values (e, auth.jwt() ->> 'email') on conflict (email) do nothing;
+  if found then perform public.admin_log('admin added', e); end if;
+end $$;
+
+create or replace function public.admin_remove_admin(old_email text) returns void
+language plpgsql security definer set search_path = '' as $$
+declare e text := lower(trim(old_email));
+begin
+  if not public.is_app_admin() then raise exception 'Only an admin can do that'; end if;
+  if e = lower(auth.jwt() ->> 'email') then raise exception 'You cannot remove yourself; ask another admin'; end if;
+  delete from public.research_admins where email = e;
+  if found then perform public.admin_log('admin removed', e); end if;
+end $$;
+
+revoke execute on function public.admin_list_admins(), public.admin_add_admin(text), public.admin_remove_admin(text) from public, anon;
+grant execute on function public.admin_list_admins(), public.admin_add_admin(text), public.admin_remove_admin(text) to authenticated;
+
+-- Company list approval. One row per manifest version, so editing the manifest in the
+-- repo (a new version) needs a fresh approval. The approver's name is public, as it
+-- was in the manifest; the email is for admins only.
+create table if not exists public.manifest_approvals (
+  version text primary key,
+  status text not null check (status in ('approved', 'draft')),
+  approved_by text check (length(approved_by) <= 120),
+  approved_on date,
+  note text check (length(note) <= 1000),
+  by_email text,
+  updated_at timestamptz not null default now()
+);
+alter table public.manifest_approvals enable row level security;
+drop policy if exists "Anyone can read approvals" on public.manifest_approvals;
+create policy "Anyone can read approvals" on public.manifest_approvals for select using (true);
+grant select (version, status, approved_by, approved_on, note, updated_at) on public.manifest_approvals to anon, authenticated;
+
+create or replace function public.admin_set_manifest_approval(v text, approve boolean, approver text default null, why text default null) returns void
+language plpgsql security definer set search_path = '' as $$
+declare who text := coalesce(nullif(trim(approver), ''), nullif(auth.jwt() -> 'user_metadata' ->> 'name', ''), split_part(auth.jwt() ->> 'email', '@', 1));
+begin
+  if not public.is_app_admin() then raise exception 'Only an admin can do that'; end if;
+  if coalesce(trim(v), '') = '' then raise exception 'Which manifest version?'; end if;
+  insert into public.manifest_approvals (version, status, approved_by, approved_on, note, by_email, updated_at)
+    values (trim(v), case when approve then 'approved' else 'draft' end, case when approve then who end, case when approve then current_date end, nullif(trim(why), ''), auth.jwt() ->> 'email', now())
+    on conflict (version) do update set status = excluded.status, approved_by = excluded.approved_by, approved_on = excluded.approved_on, note = excluded.note, by_email = excluded.by_email, updated_at = now();
+  perform public.admin_log(case when approve then 'company list approved' else 'company list approval withdrawn' end, trim(v), jsonb_build_object('by', who, 'note', nullif(trim(why), '')));
+end $$;
+revoke execute on function public.admin_set_manifest_approval(text, boolean, text, text) from public, anon;
+grant execute on function public.admin_set_manifest_approval(text, boolean, text, text) to authenticated;
+
+-- Companies added, edited or hidden by an admin. `data` holds only the fields that
+-- differ from the manifest (for a new company, all of them); the build checks them
+-- and reports any problem back on the admin page.
+create table if not exists public.company_overrides (
+  company_id text primary key check (company_id ~ '^[a-z0-9]+(-[a-z0-9]+)*$' and length(company_id) <= 60),
+  data jsonb not null default '{}' check (jsonb_typeof(data) = 'object' and length(data::text) <= 20000),
+  hidden boolean not null default false,
+  note text check (length(note) <= 1000),
+  by_email text,
+  updated_at timestamptz not null default now()
+);
+alter table public.company_overrides enable row level security;
+drop policy if exists "Anyone can read company changes" on public.company_overrides;
+create policy "Anyone can read company changes" on public.company_overrides for select using (true);
+drop policy if exists "Admins add company changes" on public.company_overrides;
+create policy "Admins add company changes" on public.company_overrides for insert to authenticated with check (public.is_app_admin());
+drop policy if exists "Admins edit company changes" on public.company_overrides;
+create policy "Admins edit company changes" on public.company_overrides for update to authenticated using (public.is_app_admin()) with check (public.is_app_admin());
+drop policy if exists "Admins remove company changes" on public.company_overrides;
+create policy "Admins remove company changes" on public.company_overrides for delete to authenticated using (public.is_app_admin());
+grant select (company_id, data, hidden, note, updated_at) on public.company_overrides to anon, authenticated;
+grant insert, update, delete on public.company_overrides to authenticated;
+
+create or replace function public.company_override_stamp() returns trigger
+language plpgsql set search_path = '' as $$
+begin
+  new.by_email := auth.jwt() ->> 'email';
+  new.updated_at := now();
+  return new;
+end $$;
+
+create or replace function public.company_override_log() returns trigger
+language plpgsql security definer set search_path = '' as $$
+begin
+  perform public.admin_log(
+    case when tg_op = 'DELETE' then 'company change removed'
+         when new.hidden and (tg_op = 'INSERT' or not old.hidden) then 'company hidden'
+         when tg_op = 'UPDATE' and old.hidden and not new.hidden then 'company shown again'
+         else 'company saved' end,
+    coalesce(new.company_id, old.company_id),
+    jsonb_build_object('before', case when tg_op <> 'INSERT' then to_jsonb(old) - 'by_email' end, 'after', case when tg_op <> 'DELETE' then to_jsonb(new) - 'by_email' end));
+  return null;
+end $$;
+
+drop trigger if exists company_overrides_stamp on public.company_overrides;
+create trigger company_overrides_stamp before insert or update on public.company_overrides for each row execute function public.company_override_stamp();
+drop trigger if exists company_overrides_log on public.company_overrides;
+create trigger company_overrides_log after insert or update or delete on public.company_overrides for each row execute function public.company_override_log();
+
+-- Company requests from signed-in readers. A reader sees their own requests; admins
+-- see all of them and mark each one added or declined.
+create table if not exists public.company_requests (
+  id bigint generated always as identity primary key,
+  name text not null check (length(trim(name)) between 2 and 120),
+  website text check (length(website) <= 300),
+  country text check (length(country) <= 60),
+  note text check (length(note) <= 1000),
+  status text not null default 'open' check (status in ('open', 'added', 'declined')),
+  company_id text,
+  requested_by uuid default auth.uid() references auth.users on delete set null,
+  requested_email text,
+  created_at timestamptz not null default now(),
+  resolved_by text,
+  resolved_at timestamptz
+);
+create index if not exists company_requests_open on public.company_requests (status, created_at desc);
+alter table public.company_requests enable row level security;
+drop policy if exists "Readers request companies" on public.company_requests;
+create policy "Readers request companies" on public.company_requests for insert to authenticated with check (requested_by = (select auth.uid()));
+drop policy if exists "Own requests, or admins" on public.company_requests;
+create policy "Own requests, or admins" on public.company_requests for select to authenticated using (requested_by = (select auth.uid()) or public.is_app_admin());
+drop policy if exists "Admins answer requests" on public.company_requests;
+create policy "Admins answer requests" on public.company_requests for update to authenticated using (public.is_app_admin()) with check (public.is_app_admin());
+grant select on public.company_requests to authenticated;
+grant insert (name, website, country, note) on public.company_requests to authenticated;
+grant update (status, company_id) on public.company_requests to authenticated;
+
+create or replace function public.company_request_stamp() returns trigger
+language plpgsql set search_path = '' as $$
+begin
+  if tg_op = 'INSERT' then
+    new.requested_by := auth.uid();
+    new.requested_email := auth.jwt() ->> 'email';
+    new.status := 'open';
+    new.created_at := now();
+  elsif new.status is distinct from old.status then
+    new.resolved_by := case when new.status = 'open' then null else auth.jwt() ->> 'email' end;
+    new.resolved_at := case when new.status = 'open' then null else now() end;
+  end if;
+  return new;
+end $$;
+
+create or replace function public.company_request_log() returns trigger
+language plpgsql security definer set search_path = '' as $$
+begin
+  if new.status is distinct from old.status then
+    perform public.admin_log('company request ' || new.status, new.name, jsonb_build_object('request', new.id, 'company', new.company_id));
+  end if;
+  return null;
+end $$;
+
+drop trigger if exists company_requests_stamp on public.company_requests;
+create trigger company_requests_stamp before insert or update on public.company_requests for each row execute function public.company_request_stamp();
+drop trigger if exists company_requests_log on public.company_requests;
+create trigger company_requests_log after update on public.company_requests for each row execute function public.company_request_log();
+
+-- "Publish now": an admin saves the site's Vercel deploy hook once; after that the
+-- database calls it (through Supabase's free pg_net extension) so the site rebuilds
+-- without waiting for the hourly run. The hook never leaves the database.
+do $$ begin
+  create extension if not exists pg_net;
+exception when others then
+  raise notice 'pg_net is not available (%); Publish now stays off and changes go live at the hourly build.', sqlerrm;
+end $$;
+
+create table if not exists public.app_secrets (
+  key text primary key,
+  value text not null,
+  updated_at timestamptz not null default now()
+);
+alter table public.app_secrets enable row level security;
+-- No policies and no grants: only the functions below use it.
+revoke all on public.app_secrets from anon, authenticated;
+
+create or replace function public.admin_set_deploy_hook(hook text) returns void
+language plpgsql security definer set search_path = '' as $$
+begin
+  if not public.is_app_admin() then raise exception 'Only an admin can do that'; end if;
+  if coalesce(trim(hook), '') = '' then
+    delete from public.app_secrets where key = 'vercel_deploy_hook';
+    perform public.admin_log('publish button turned off', null);
+    return;
+  end if;
+  if trim(hook) !~ '^https://api\.vercel\.com/v1/integrations/deploy/[A-Za-z0-9_/-]+$' then
+    raise exception 'That is not a Vercel deploy hook URL (it starts with https://api.vercel.com/v1/integrations/deploy/)';
+  end if;
+  insert into public.app_secrets (key, value) values ('vercel_deploy_hook', trim(hook))
+    on conflict (key) do update set value = excluded.value, updated_at = now();
+  perform public.admin_log('publish button set up', null);
+end $$;
+
+-- Whether Publish now is set up, and when it was last used (never the hook itself).
+create or replace function public.admin_publish_status() returns jsonb
+language sql stable security definer set search_path = '' as $$
+  select case when public.is_app_admin() then jsonb_build_object(
+    'hook', exists (select 1 from public.app_secrets where key = 'vercel_deploy_hook'),
+    'lastPublish', (select max(at) from public.admin_events where action = 'publish requested')) end
+$$;
+
+create or replace function public.admin_publish() returns timestamptz
+language plpgsql security definer set search_path = '' as $$
+declare h text; last timestamptz;
+begin
+  if not public.is_app_admin() then raise exception 'Only an admin can do that'; end if;
+  select value into h from public.app_secrets where key = 'vercel_deploy_hook';
+  if h is null then raise exception 'Set up the publish button first (paste the Vercel deploy hook)'; end if;
+  select max(at) into last from public.admin_events where action = 'publish requested';
+  if last > now() - interval '3 minutes' then raise exception 'A rebuild was started less than 3 minutes ago; it takes a few minutes to finish'; end if;
+  begin
+    perform net.http_post(url := h, body := '{}'::jsonb);
+  exception when undefined_function or invalid_schema_name then
+    raise exception 'Turn on the pg_net extension in Supabase (Database, Extensions) to use Publish now';
+  end;
+  perform public.admin_log('publish requested', null);
+  return now();
+end $$;
+
+revoke execute on function public.admin_set_deploy_hook(text), public.admin_publish_status(), public.admin_publish() from public, anon;
+grant execute on function public.admin_set_deploy_hook(text), public.admin_publish_status(), public.admin_publish() to authenticated;

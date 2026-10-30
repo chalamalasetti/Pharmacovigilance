@@ -129,6 +129,7 @@ async function main() {
   $("me-title").textContent = `Signed in as ${user.email}`;
   $("me").hidden = false;
   $("name").value = cloud.displayName(user);
+  cloud.isAdmin().then((yes) => ($("admin-link").hidden = !yes));
   cloud.onSync(renderSync);
   $("name-form").addEventListener("submit", (e) => {
     e.preventDefault();

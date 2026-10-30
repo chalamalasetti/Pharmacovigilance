@@ -71,6 +71,22 @@
       <div id="browse" class="co-grid"></div>
     </section>
 
+    <section id="request-sec" class="profile co-request" hidden aria-labelledby="request-h">
+      <h2 id="request-h">Missing a company?</h2>
+      <p class="hint" id="request-lede"></p>
+      <form id="request-form" class="imp-form" hidden>
+        <div class="row">
+          <label>Company <input type="text" name="name" required minlength="2" maxlength="120" placeholder="e.g. Acme Pharma"></label>
+          <label>Country <input type="text" name="country" maxlength="60" placeholder="Optional"></label>
+          <label>Website <input type="url" name="website" maxlength="300" placeholder="Optional"></label>
+        </div>
+        <textarea name="note" rows="2" maxlength="1000" placeholder="Why it matters to you, or names it trades under (optional)" aria-label="Note"></textarea>
+        <div class="row"><button type="submit" class="primary">Ask for it to be added</button></div>
+        <p class="hint" id="request-msg" role="status"></p>
+      </form>
+      <ul class="log" id="my-requests"></ul>
+    </section>
+
     <section id="coverage" class="co-coverage" aria-labelledby="coverage-h">
       <h2 id="coverage-h">Coverage and limitations</h2>
       <div id="coverage-body"><p>Loading…</p></div>
@@ -81,6 +97,7 @@
     Following or searching for a company does not mean you work for it or represent it, and gives no special access. Product relationships come from public FDA and EMA records; linking a holder name to a company group is an editorial mapping and is shown as such. A related update is not evidence of fault or causality, and no results does not mean no safety concerns.
   </footer>
   <script type="module" src="companies.js"></script>
+  <script type="module" src="company-request.js"></script>
   <script type="module" src="chat.js"></script>
   <script type="module" src="nav.js"></script>
 </body>
