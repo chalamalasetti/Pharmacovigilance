@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My PV Briefing · PV Info</title>
+  <meta name="description" content="A short daily briefing of pharmacovigilance and regulatory updates for your role, countries, topics and watchlist, with an impact card for each update.">
+  <meta name="theme-color" content="#0f4c5c">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
+    <p class="tagline">What changed, why it matters, and what your team should review</p>
+    <nav class="toplinks">
+      <a href="./">Updates</a>
+      <a href="briefing.html" aria-current="page">My Briefing</a>
+      <a href="globe.html">🌍 Globe</a>
+      <a href="agencies.html">Agencies</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="page brief">
+    <div class="brief-head">
+      <div>
+        <h1>My PV Briefing</h1>
+        <p class="intro" id="lede">Loading…</p>
+      </div>
+      <div class="brief-controls">
+        <label class="inline">Show
+          <select id="window">
+            <option value="24h">Last 24 hours</option>
+            <option value="visit">Since my last visit</option>
+            <option value="7d">Last 7 days</option>
+            <option value="30d">Last 30 days</option>
+          </select>
+        </label>
+        <button type="button" class="reset" id="edit">Edit profile</button>
+      </div>
+    </div>
+
+    <section class="profile" id="profile" hidden aria-label="Briefing profile">
+      <h2>Your briefing profile</h2>
+      <p class="hint">Saved in this browser only. Nothing is sent anywhere.</p>
+      <form id="profile-form">
+        <div class="pf-grid">
+          <div class="field">
+            <label for="pf-role">Role</label>
+            <select id="pf-role"></select>
+          </div>
+          <div class="field">
+            <label for="pf-watch">Watchlist</label>
+            <textarea id="pf-watch" rows="3" placeholder="One per line or comma separated: products, substances, keywords (e.g. valproate, GLP-1, E2B, nitrosamine)"></textarea>
+          </div>
+        </div>
+        <div class="field">
+          <span class="label">Topics <small>(none ticked = all)</small></span>
+          <div class="pf-checks" id="pf-topics"></div>
+        </div>
+        <div class="field">
+          <span class="label">Countries and bodies <small>(none ticked = all; international bodies are always included)</small></span>
+          <div id="pf-countries"></div>
+        </div>
+        <div class="row">
+          <button type="submit" class="primary">Save profile</button>
+          <button type="button" id="pf-cancel">Cancel</button>
+        </div>
+      </form>
+      <div class="pf-data">
+        <span class="label">Your workspace data</span>
+        <div class="row">
+          <button type="button" id="export">Export workspace (JSON)</button>
+          <label class="filebtn">Import workspace<input type="file" id="import" accept="application/json,.json" hidden></label>
+          <button type="button" id="csv">Export assessments (CSV)</button>
+        </div>
+        <p class="hint" id="data-msg"></p>
+      </div>
+    </section>
+
+    <div class="tiles" id="tiles"></div>
+
+    <section class="brief-sec" id="sec-watch" hidden>
+      <h2>Watchlist hits</h2>
+      <div id="watch"></div>
+    </section>
+
+    <section class="brief-sec" id="sec-follow" hidden>
+      <h2>New on what you follow</h2>
+      <div id="follow"></div>
+    </section>
+
+    <section class="brief-sec">
+      <h2 id="review-title">To review</h2>
+      <div id="review"></div>
+      <button type="button" class="more" id="review-more" hidden>Show more</button>
+    </section>
+
+    <section class="brief-sec" id="sec-dates" hidden>
+      <h2>Coming up</h2>
+      <p class="hint">Effective dates, consultation deadlines and transition periods stated in updates in your scope. Check each against the source.</p>
+      <ul class="upcoming" id="dates"></ul>
+    </section>
+
+    <section class="brief-sec">
+      <h2>My work</h2>
+      <div class="seg worktabs" id="worktabs" role="tablist"></div>
+      <div id="work"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Impact cards are produced by keyword rules from each source's headline and summary; anything marked “potential” is a prompt to check, not a conclusion. Always confirm with the official source before acting.
+  </footer>
+  <script type="module" src="briefing.js"></script>
+  <script type="module" src="chat.js"></script>
+</body>
+</html>

@@ -1,7 +1,10 @@
 // Renders public/data/updates.json as a filterable list. Filters live in the URL
 // (so a filtered view can be shared) and followed countries live in localStorage.
+// Each update opens into an impact card with save, follow, assess, assign and dismiss.
 
 import { flag, ago, dayLabel, matches, keyUpdates, REGIONS } from "./lib.js";
+import { impactSection, statusBadges } from "./impact-view.js";
+import * as workspace from "./workspace.js";
 
 const $ = (id) => document.getElementById(id);
 const PAGE = 50;
@@ -9,6 +12,7 @@ const DEFAULTS = { q: "", region: "", country: "", cat: "", kind: "", days: "30"
 
 let data = null;
 let shown = PAGE;
+const ws = workspace.load();
 const state = { ...DEFAULTS };
 
 function readUrl() {
@@ -88,15 +92,27 @@ function renderFilters() {
 
 function card(u, { compact = false } = {}) {
   const when = u.published ? new Date(u.published) : null;
+  const badges = el("span", { class: "ws-badges" }, statusBadges(workspace.item(ws, u.id)));
+  const box = el("div", { class: "impact-box" });
+  const toggle = el("button", { type: "button", class: "imp-toggle", "aria-expanded": "false" }, "Impact card ▾");
+  toggle.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") !== "true";
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.textContent = open ? "Hide impact card ▴" : "Impact card ▾";
+    box.replaceChildren(
+      open ? impactSection(u, { ws, countryName, onChange: () => badges.replaceChildren(...statusBadges(workspace.item(ws, u.id))) }) : "",
+    );
+  });
   return el(
     "article",
-    { class: `card c-${u.category}${u.kind === "official" ? " official" : ""}` },
+    { class: `card c-${u.category}${u.kind === "official" ? " official" : ""}${workspace.item(ws, u.id).dismissed ? " dismissed" : ""}` },
     el(
       "div",
       { class: "meta" },
       el("span", { class: "tag" }, catLabel(u.category)),
       el("button", { type: "button", class: "where", title: `Show only ${countryName(u.country)}`, onclick: () => set({ country: u.country, region: "" }) }, `${flag(u.country)} ${countryName(u.country)}`),
       u.kind === "official" ? el("span", { class: "badge" }, "Official") : null,
+      badges,
     ),
     el("h3", {}, el("a", { href: u.link, target: "_blank", rel: "noopener" }, u.title)),
     !compact && u.summary ? el("p", { class: "summary" }, u.summary.length > 280 ? `${u.summary.slice(0, 277)}…` : u.summary) : null,
@@ -106,6 +122,8 @@ function card(u, { compact = false } = {}) {
       el("span", {}, u.agency && !u.source.includes(u.agency) ? `${u.source} · ${u.agency}` : u.source),
       when ? el("time", { datetime: u.published, title: when.toLocaleString() }, ago(when)) : null,
     ),
+    compact ? null : toggle,
+    compact ? null : box,
   );
 }
 
