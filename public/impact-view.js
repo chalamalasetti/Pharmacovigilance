@@ -1,8 +1,11 @@
 // Draws an update's impact card and its actions (save, follow, assess, assign,
-// dismiss with a reason). Used by the main list and by My PV Briefing.
+// dismiss with a reason). Used by the main list, My PV Briefing, the team queue
+// and the archive. When the reader is in a team, assessments, assignments and
+// dismissals also go to the team's shared queue (cloud.js).
 
 import { impactCard, cardText, DATE_LABELS } from "./impact.js";
 import { ASSESSMENT, DISMISS_REASONS, item, update, reviewStatus, snapshot } from "./workspace.js";
+import { team, teamAction, teamSummary } from "./cloud.js";
 
 export const el = (tag, attrs = {}, ...kids) => {
   const n = document.createElement(tag);
@@ -69,6 +72,14 @@ export function impactSection(u, ctx) {
     // Keep a copy of the update so saved and assigned work outlives the 60-day feed.
     update(ctx.ws, u.id, { ...patch, snapshot: snapshot(u) });
     if (!Object.keys(rec()).some((k) => k !== "snapshot")) update(ctx.ws, u.id, { snapshot: null });
+    const shared = Object.fromEntries(Object.entries(patch).filter(([k]) => ["assess", "assign", "dismissed"].includes(k)));
+    if (team.id && Object.keys(shared).length) {
+      teamMsg.textContent = "Saving to the team queue…";
+      teamAction(u, shared).then(
+        () => ((teamMsg.textContent = ""), draw()),
+        (e) => (teamMsg.textContent = `Saved for you, but not to the team queue: ${e.message}`),
+      );
+    }
     draw();
     ctx.onChange?.(u.id);
   };
@@ -85,19 +96,26 @@ export function impactSection(u, ctx) {
       );
     }
     if (kind === "assign") {
-      const to = el("input", { type: "text", placeholder: "Name or email", required: true, "aria-label": "Assign to", value: r.assign?.to ?? "" });
+      // Teammates are offered by name; anyone else can still be typed in.
+      const list = team.id ? el("datalist", { id: `members-${u.id}` }, team.members.map((m) => el("option", { value: m.name || m.email }, m.name && m.email ? m.email : null))) : null;
+      const to = el("input", { type: "text", placeholder: team.id ? "Teammate, name or email" : "Name or email", required: true, "aria-label": "Assign to", value: r.assign?.to ?? "", list: list ? `members-${u.id}` : null });
+      const member = () => team.members.find((m) => [m.name, m.email].includes(to.value.trim()));
       const due = el("input", { type: "date", "aria-label": "Due date", value: r.assign?.due ?? "" });
       const note = el("textarea", { rows: 2, placeholder: "What should they check?", "aria-label": "Assignment note" });
       note.value = r.assign?.note ?? "";
       const status = reviewStatus(r);
       const mail = () => {
         const body = `${note.value.trim() ? `${note.value.trim()}\n\n` : ""}${due.value ? `Due: ${due.value}\n\n` : ""}${cardText(u, card, { status })}`;
-        const addr = /@/.test(to.value) ? to.value.trim() : "";
+        const addr = member()?.email ?? (/@/.test(to.value) ? to.value.trim() : "");
         return `mailto:${encodeURIComponent(addr)}?subject=${encodeURIComponent(`PV review: ${u.title}`)}&body=${encodeURIComponent(body.slice(0, 1800))}`;
       };
-      return el("form", { class: "imp-form", onsubmit: (e) => (e.preventDefault(), change({ assign: { to: to.value.trim(), due: due.value, note: note.value.trim(), at: today() } })) },
-        el("div", { class: "row" }, el("label", {}, "Assign to ", to), el("label", {}, "Due ", due)), note,
-        el("p", { class: "hint" }, "Assignments are kept in this browser only. Use “Email” to send the card to the person."),
+      const assign = () => {
+        const m = member();
+        return { to: to.value.trim(), due: due.value, note: note.value.trim(), at: today(), ...(m && { user_id: m.user_id, email: m.email }) };
+      };
+      return el("form", { class: "imp-form", onsubmit: (e) => (e.preventDefault(), change({ assign: assign() })) },
+        el("div", { class: "row" }, el("label", {}, "Assign to ", to, list), el("label", {}, "Due ", due)), note,
+        el("p", { class: "hint" }, team.id ? `Shared with ${team.name}: a teammate sees it under Team → Assigned to me. Use “Email” to tell them too.` : "Assignments are kept in this browser only. Sign in and join a team to share them, or use “Email” to send the card."),
         el("div", { class: "row" },
           el("button", { type: "submit", class: "primary" }, "Save assignment"),
           el("button", { type: "button", onclick: () => (location.href = mail()) }, "✉ Email"),
@@ -149,6 +167,7 @@ export function impactSection(u, ctx) {
       r.assess?.note ? el("p", {}, el("b", {}, "Assessment note: "), r.assess.note) : null,
       r.assign ? el("p", {}, el("b", {}, "Assigned to: "), r.assign.to, r.assign.due ? ` · due ${fmtDate(r.assign.due)}` : "", r.assign.note ? ` · ${r.assign.note}` : "") : null,
       r.dismissed ? el("p", {}, el("b", {}, "Dismissed: "), r.dismissed.reason, r.dismissed.note ? ` · ${r.dismissed.note}` : "") : null,
+      team.id && team.items.get(u.id) ? el("p", { class: "team-line" }, el("b", {}, `${team.name}: `), teamSummary(team.items.get(u.id))) : null,
       ].filter(Boolean),
     );
   }
@@ -157,6 +176,7 @@ export function impactSection(u, ctx) {
   const technical = el("div", { class: "imp-block" }, el("h4", {}, "Technical impact ", el("span", { class: "pot" }, "potential")), impactList(card.technical, "No technical implications detected by the rules."));
   const status = el("span");
   const notes = el("div", { class: "imp-notes" });
+  const teamMsg = el("p", { class: "hint", role: "status" });
   const ev = card.evidence;
   wrap.append(
     el("div", { class: "imp-block" },
@@ -186,6 +206,7 @@ export function impactSection(u, ctx) {
       ),
     ),
     notes,
+    teamMsg,
     actions,
     panel,
     el("p", { class: "imp-foot" }, "Impact fields come from keyword rules applied to the source's headline and summary. “Potential” items are prompts to check, not conclusions."),

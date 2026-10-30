@@ -1,7 +1,8 @@
 // The reader's own workspace: their briefing profile and what they have done with
-// each update (saved, followed, assessed, assigned, dismissed). PV Info has no
-// server or accounts, so this lives in this browser's localStorage; Export and
-// Import move it to another browser or a colleague.
+// each update (saved, followed, assessed, assigned, dismissed). It lives in this
+// browser's localStorage; Export and Import move it to another browser or a
+// colleague, and a signed-in reader's copy is also synced through the database
+// (cloud.js), using reconcile() below to combine two devices' changes.
 
 const KEY = "pv-workspace";
 const VERSION = 1;
@@ -37,10 +38,21 @@ export function load() {
   return ws;
 }
 
-export function save(ws) {
+const saved = new Set();
+// Called after every change (cloud.js uses it to push the change to the database).
+export const onSave = (fn) => saved.add(fn);
+
+// Writes to this browser without counting as a change (used for synced copies).
+export function persist(ws) {
   try {
     localStorage.setItem(KEY, JSON.stringify(ws));
   } catch {}
+}
+
+export function save(ws) {
+  ws.changedAt = new Date().toISOString();
+  persist(ws);
+  for (const fn of saved) fn(ws);
 }
 
 export const item = (ws, id) => ws.items[id] ?? {};
@@ -68,14 +80,18 @@ export function exportJson(ws) {
   return JSON.stringify({ ...ws, exported: new Date().toISOString() }, null, 2);
 }
 
+const stamp = (r) => [r.assess?.at, r.assign?.at, r.dismissed?.at, r.savedAt, r.followedAt].filter(Boolean).sort().pop() ?? "";
+const mergeItems = (into, from) => {
+  for (const [id, rec] of Object.entries(from)) {
+    if (!into[id] || stamp(rec) >= stamp(into[id])) into[id] = rec;
+  }
+};
+
 // Accepts an exported file. Profile is replaced; item records are merged, newest change winning.
 export function importJson(ws, text) {
   const inc = JSON.parse(text);
   if (!inc || inc.version !== VERSION || typeof inc.items !== "object") throw new Error("Not a PV Info workspace file");
-  const stamp = (r) => [r.assess?.at, r.assign?.at, r.dismissed?.at, r.savedAt, r.followedAt].filter(Boolean).sort().pop() ?? "";
-  for (const [id, rec] of Object.entries(inc.items)) {
-    if (!ws.items[id] || stamp(rec) >= stamp(ws.items[id])) ws.items[id] = rec;
-  }
+  mergeItems(ws.items, inc.items);
   if (inc.groups) ws.groups = inc.groups;
   if (inc.profile) {
     ws.profile = { ...ws.profile, ...inc.profile };
@@ -83,6 +99,28 @@ export function importJson(ws, text) {
   }
   save(ws);
   return ws;
+}
+
+// Combines this browser's workspace with the synced copy. syncedAt is the synced
+// copy's changedAt when this browser last matched it. If only one side changed
+// since then it wins outright (so removals stick); if both did, item records are
+// merged newest first and the profile and groups come from the later change.
+// Returns the workspace to keep and whether the database needs the result.
+export function reconcile(local, remote, now = new Date().toISOString()) {
+  if (!remote || remote.version !== VERSION) return { ws: local, push: true };
+  const since = local.syncedAt ?? "";
+  const remoteChanged = (remote.changedAt ?? "") > since;
+  const localChanged = (local.changedAt ?? "") > since;
+  const lastVisit = [local.lastVisit, remote.lastVisit].filter(Boolean).sort().pop() ?? null;
+  if (!remoteChanged) return { ws: local, push: localChanged };
+  if (!localChanged) return { ws: { ...empty(), ...remote, lastVisit, syncedAt: remote.changedAt }, push: false };
+  const newer = (remote.changedAt ?? "") > (local.changedAt ?? "") ? remote : local;
+  const items = { ...local.items };
+  mergeItems(items, remote.items ?? {});
+  const ws = { ...empty(), ...local, profile: newer.profile, groups: newer.groups, profileSet: local.profileSet || remote.profileSet, team: newer.team, items, lastVisit, changedAt: now };
+  if (!ws.groups) delete ws.groups;
+  if (!ws.team) delete ws.team;
+  return { ws, push: true };
 }
 
 // Assessments and assignments as CSV, for a tracker or an audit trail.

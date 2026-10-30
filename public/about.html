@@ -19,10 +19,13 @@
     <p class="tagline">Pharmacovigilance and regulatory updates from every major regulator</p>
     <nav class="toplinks">
       <a href="briefing.html">My Briefing</a>
+      <a href="team.html" data-nav="team">Team</a>
+      <a href="archive.html">Archive</a>
       <a href="./">Updates</a>
       <a href="globe.html">🌍 Globe</a>
       <a href="agencies.html">Agencies</a>
       <a href="feed.xml">RSS</a>
+      <a href="account.html" data-nav="account">Sign in</a>
     </nav>
   </header>
   <main class="page prose">
@@ -40,11 +43,15 @@
     <h2>My PV Briefing and impact cards</h2>
     <p><a href="briefing.html">My PV Briefing</a> is a short daily view built from your role, countries, topics and watchlist. Every update opens into an impact card: what changed (quoted from the source), who may be affected, potential business and technical impact, the dates the source states (publication, effective date, consultation deadline, transition period), and the evidence behind it. You can save, follow, assess, assign or dismiss an update with a reason.</p>
     <p>The briefing has views for case processing and operations, safety scientists and physicians, QPPV and compliance, PV systems and configuration, and PV leaders (a weekly summary with pending assessments and coverage gaps). Switch views at any time, rename them under Groups, or add groups of your own.</p>
-    <p>Impact cards are produced by keyword rules, not AI. Each “potential” implication shows the words that triggered it and is a prompt to check, not a conclusion. Your profile and actions are stored only in this browser; use Export to move them elsewhere.</p>
+    <p>Impact cards are produced by keyword rules, not AI. Each “potential” implication shows the words that triggered it and is a prompt to check, not a conclusion. Your profile and actions are stored in this browser; use Export to move them elsewhere, or sign in to keep them on every device.</p>
+    <h2>Accounts, teams and the archive</h2>
+    <p><a href="account.html">Sign in</a> with your email (we send a link; there is no password) and your briefing profile, groups and actions sync across your devices. Create a team and invite colleagues by link to share one review queue: assessments, assignments and dismissals from any impact card appear on the <a href="team.html">Team</a> page for everyone in the team, with an activity log of who changed what and when.</p>
+    <p>The <a href="archive.html">Archive</a> keeps every update PV Info has collected, long after it leaves the 60-day list. Search it by words, country, topic and dates.</p>
     <h2>Follow updates elsewhere</h2>
     <p>Subscribe to <a href="feed.xml">the RSS feed</a> in Outlook, Teams, Slack or any feed reader. Any filtered view can be bookmarked or shared: the filters are part of the address.</p>
     <h2>Please note</h2>
     <p>PV Info is a reading aid, not a regulatory record. Topic and country tags are automatic and can be wrong, and some regulators publish only in their own language or without a feed. Always confirm details with the official source before acting.</p>
   </main>
+  <script type="module">import { navOnly } from "./cloud.js"; navOnly();</script>
 </body>
 </html>

@@ -5,6 +5,7 @@
 import { flag, ago, dayLabel, matches, keyUpdates, REGIONS } from "./lib.js";
 import { impactSection, statusBadges } from "./impact-view.js";
 import * as workspace from "./workspace.js";
+import { initCloud } from "./cloud.js";
 
 const $ = (id) => document.getElementById(id);
 const PAGE = 50;
@@ -208,6 +209,7 @@ async function main() {
   $("updated").title = when.toLocaleString();
   renderFilters();
   render();
+  initCloud(ws, render);
 }
 
 main();

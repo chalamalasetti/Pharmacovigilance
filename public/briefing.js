@@ -3,13 +3,14 @@
 // impact card. Each view leads with its own sections (views.js); readers switch
 // views at any time, rename them and add their own groups.
 // The profile and every save, follow, assessment, assignment and dismissal are
-// kept in this browser (see workspace.js).
+// kept in this browser (see workspace.js) and, once signed in, synced (cloud.js).
 
 import { flag, ago, REGIONS } from "./lib.js";
 import { TOPICS, DATE_LABELS, buildBriefing, groups, findGroup, ROLES, LEGACY_ROLES } from "./impact.js";
 import { VIEW_LIMIT, viewSections, pendingWork, coverageGaps } from "./views.js";
 import { el, impactSection, statusBadges } from "./impact-view.js";
 import * as workspace from "./workspace.js";
+import { initCloud } from "./cloud.js";
 
 const $ = (id) => document.getElementById(id);
 const PAGE = 10;
@@ -19,7 +20,8 @@ const ws = workspace.load();
 // The previous visit decides "since my last visit"; this visit becomes the next one's.
 const lastVisit = ws.lastVisit;
 ws.lastVisit = new Date().toISOString();
-workspace.save(ws);
+// Not a change worth syncing: each device keeps its own last visit.
+workspace.persist(ws);
 
 let data = null;
 let shown = PAGE;
@@ -460,6 +462,12 @@ async function main() {
   else if (ws.profile.role in LEGACY_ROLES) ws.profile.role = findGroup(ws.profile.role, ws.groups)?.id ?? "";
   render();
   if (!ws.profileSet && !asked) startSetup();
+  // Signed in: bring in the synced profile and actions, and the team queue.
+  initCloud(ws, () => {
+    if (ws.profileSet) $("setup").hidden = true;
+    renderViews();
+    render();
+  });
 }
 
 main();
