@@ -172,6 +172,14 @@ export function pickUpdates(all, { checkAge = true, now = Date.now() } = {}) {
     .slice(0, MAX_ITEMS);
 }
 
+// When PV Info first saw each update (the evidence line on its impact card). An update
+// already in the last snapshot keeps its original date.
+export function stampRetrieved(fresh, previous, now = new Date().toISOString()) {
+  const first = new Map(previous.filter((u) => u.retrieved).map((u) => [u.id, u.retrieved]));
+  for (const u of fresh) u.retrieved = first.get(u.id) ?? now;
+  return fresh;
+}
+
 // The last snapshot: the local file when running on a computer, or the live site's copy
 // when building on Vercel (where each build starts without the previous output).
 async function previousUpdates(out) {
@@ -254,6 +262,7 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
 
   // Keep earlier updates still inside the window, so a feed that's down today doesn't erase its history.
   const previous = fixturesDir ? [] : await previousUpdates(out);
+  stampRetrieved(fresh, previous);
   const updates = pickUpdates([...fresh, ...previous], { checkAge: !fixturesDir });
   const data = {
     updated: new Date().toISOString(),

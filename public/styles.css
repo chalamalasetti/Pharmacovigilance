@@ -165,6 +165,90 @@ h2 { font-size: 17px; margin: 0 0 12px; }
   .foot { padding: 16px; }
 }
 
+/* Impact cards (main list and My PV Briefing) */
+.imp-toggle { margin-top: 8px; border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 3px 10px; font-size: 12px; color: var(--brand); font-weight: 600; }
+.imp-toggle[aria-expanded="true"] { background: var(--brand-soft); }
+.card.dismissed { opacity: .6; }
+.ws-badges { display: inline-flex; flex-wrap: wrap; gap: 4px; margin-left: auto; }
+.ws-badge { border-radius: 4px; padding: 0 6px; font-size: 11px; font-weight: 600; background: var(--brand-soft); color: var(--brand); }
+.ws-badge.dim { background: var(--line); color: var(--muted); }
+.ws-badge.a-action { background: var(--safety); color: var(--panel); }
+.impact { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line); font-size: 14px; display: grid; gap: 12px; }
+.impact h4 { margin: 0 0 4px; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.impact p { margin: 0; }
+.impact .changed { font-size: 15px; }
+.why { color: var(--muted); font-size: 12px; }
+.none { color: var(--muted); font-style: italic; }
+.warn { color: var(--recall); font-weight: 600; }
+.pot { font-size: 10px; font-weight: 700; border: 1px solid var(--muted); border-radius: 3px; padding: 0 4px; margin-left: 4px; vertical-align: 1px; text-transform: lowercase; letter-spacing: 0; }
+.imp-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.imp-list { margin: 0; padding-left: 18px; }
+.imp-list li { margin-bottom: 3px; }
+.imp-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 4px; }
+.chip-s { border-radius: 999px; padding: 1px 9px; font-size: 12px; border: 1px solid var(--line); background: var(--bg); }
+.chip-s.place { background: var(--brand-soft); border-color: transparent; font-weight: 600; }
+.chip-s.sub { border-style: dashed; }
+.imp-dates { display: grid; grid-template-columns: max-content 1fr; gap: 3px 14px; margin: 0; }
+.imp-dates dt { font-weight: 600; font-size: 13px; }
+.imp-dates dd { margin: 0; }
+.imp-dates dt:has(+ dd + dd) { grid-row: span 2; }
+.imp-notes p { margin: 0 0 3px; font-size: 13px; }
+.imp-notes:empty { display: none; }
+.imp-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.act, .imp-form button, .profile button, .filebtn { border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 4px 10px; font-size: 13px; }
+.act[aria-pressed="true"] { background: var(--brand-soft); border-color: var(--brand); color: var(--brand); font-weight: 600; }
+button.primary, .profile button.primary { background: var(--brand); border-color: var(--brand); color: var(--panel); font-weight: 600; }
+.imp-panel:empty { display: none; }
+.imp-form { display: grid; gap: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+.imp-form label { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; }
+.imp-form input, .imp-form select, .imp-form textarea, .profile textarea { font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; }
+.imp-form textarea, .profile textarea { width: 100%; resize: vertical; }
+.imp-form input[type="text"] { flex: 1; min-width: 160px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.hint { color: var(--muted); font-size: 12px; margin: 0; }
+.imp-foot { color: var(--muted); font-size: 11px; }
+
+/* My PV Briefing */
+.toplinks a[aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
+.brief { max-width: 1000px; }
+.brief-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+.brief-head .intro { margin: 0; }
+.scope { font-size: 13px; }
+.brief-controls { display: flex; gap: 10px; align-items: center; }
+.inline { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
+.inline select { width: auto; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 24px; }
+.tile { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; display: grid; }
+.tile b { font-size: 24px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tile span { color: var(--muted); font-size: 12px; }
+.tile.hot b { color: var(--brand); }
+.tile.safety b { color: var(--safety); }
+.brief-sec { margin-bottom: 28px; }
+.whyhere { margin: 0 0 6px; font-size: 12px; color: var(--muted); }
+.profile { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin-bottom: 24px; }
+.profile h2 { margin-bottom: 2px; }
+.profile .hint { margin-bottom: 14px; }
+.pf-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 16px; }
+.pf-checks { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.pf-check { display: flex; align-items: center; gap: 5px; font-size: 13px; }
+.pf-region { border: 0; padding: 0; margin: 0 0 10px; }
+.pf-region legend { font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 4px; padding: 0; }
+.pf-data { border-top: 1px solid var(--line); margin-top: 16px; padding-top: 12px; }
+.filebtn { cursor: pointer; }
+.upcoming { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.upcoming li { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; font-size: 14px; }
+.upcoming time { font-weight: 700; font-variant-numeric: tabular-nums; }
+.upcoming a { text-decoration: none; font-weight: 600; }
+.upcoming a:hover { text-decoration: underline; }
+.dtype { font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 4px; padding: 0 6px; background: var(--brand-soft); color: var(--brand); }
+.dtype.t-consultation { background: var(--policy); color: var(--panel); }
+.dtype.t-effective { background: var(--regulation); color: var(--panel); }
+.worktabs { margin-bottom: 12px; max-width: 560px; }
+@media (max-width: 820px) {
+  .imp-cols, .pf-grid { grid-template-columns: 1fr; }
+  .toplinks { gap: 12px; flex-wrap: wrap; }
+}
+
 /* "Ask PV Info" chat bubble, bottom right. */
 .chat-fab {
   position: fixed;
