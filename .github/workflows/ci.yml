@@ -59,6 +59,15 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts
       # Read-only live check; no cache publication, credentials or deployment hook.
+      - name: Check alternate official TGA endpoints (read only)
+        run: |
+          node --input-type=module <<'JS'
+          import {safeFetch} from './scripts/safe-fetch.mjs';
+          await Promise.all(['https://tga.gov.au/feeds/alert/safety-alerts.xml','https://www.tga.gov.au/safety/safety-monitoring-and-information/safety-alerts'].map(async url=>{
+            try { const r=await safeFetch(url,{tries:1,timeoutMs:15000}); console.log(JSON.stringify({url,status:r.status,bytes:r.body.length,format:r.contentType,hasLatest:r.body.includes('Latest Safety alerts')})); }
+            catch(e){console.log(JSON.stringify({url,error:e.message,status:e.status}));}
+          }));
+          JS
       - run: node scripts/fda-snapshot.mjs /tmp/regulator-check.json
       - name: Verify TGA collection from GitHub runner
         run: |
