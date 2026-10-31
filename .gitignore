@@ -10,3 +10,5 @@ public/data/site.json
 public/data/sources/
 public/data/coverage.json
 public/data/resources.json
+public/sitemap.xml
+public/robots.txt

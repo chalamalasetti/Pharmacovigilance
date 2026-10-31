@@ -4,6 +4,7 @@
 
 import { flag, ago } from "./lib.js";
 import * as C from "./companies-lib.js";
+import { describePage } from "./seo.js";
 
 const $ = (id) => document.getElementById(id);
 const TABS = ["overview", "updates", "products", "research", "sources"];
@@ -69,6 +70,7 @@ function header() {
     data.manifest.status !== "approved" ? el("p", { class: "co-draft" }, "From the draft coverage list, not yet approved. Names and holder mappings may change after review.") : null,
   );
   document.title = `${p.name} · PV Info`;
+  describePage({ params: { id: p.id }, title: document.title, description: `${p.name}: drug safety and regulatory updates, products and research that may concern ${p.legal ?? p.name}, from public sources.` });
 }
 
 function tabs() {

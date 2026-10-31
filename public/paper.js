@@ -3,6 +3,7 @@
 // and technical relevance, clearly labelled. Section order follows the reader's lens.
 
 import * as R from "./research-lib.js";
+import { describePage } from "./seo.js";
 
 const $ = (id) => document.getElementById(id);
 const watch = R.startVisit(R.loadWatch());
@@ -68,6 +69,11 @@ function sections(p, tax) {
 
 function render(p, data) {
   document.title = `${p.title} · PV Info Research`;
+  describePage({
+    params: { id: p.id },
+    title: document.title,
+    description: `${p.title}${p.venue ? ` (${p.venue}${p.published ? `, ${p.published.slice(0, 4)}` : ""})` : ""}: research question, approach, findings and relevance to pharmacovigilance practice.`,
+  });
   const byId = new Map(data.papers.map((x) => [x.id, x]));
   const lens = R.LENSES.find((l) => l.id === watch.lens) ?? R.LENSES[1];
   const secs = sections(p, data.taxonomy);

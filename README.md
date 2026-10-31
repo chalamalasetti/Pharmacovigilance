@@ -40,6 +40,16 @@ node scripts/aggregate.mjs --fixtures test/fixtures   # sample data, no network
 
 Same setup as Just Visual News: import the repo in Vercel (`vercel.json` runs the aggregator as the build and serves `public/`). Vercel rebuilds on every push to `main`; `.github/workflows/vercel-refresh.yml` asks it to rebuild every hour once you add a Vercel deploy hook URL as the repo secret `VERCEL_DEPLOY_HOOK`. The site lives at https://pharmacovigilance-info.vercel.app (Vercel project `pharmacovigilance`; with `pharmacovigilance-info.vercel.app` added under Settings → Domains). RSS links point there, and each build reads the live site's last `updates.json` so updates older than what the feeds still list are kept for the full 60 days. To host it elsewhere, set the `SITE_URL` environment variable to the new address.
 
+## Search engines (www.pvinfo.org)
+
+Every page keeps its own `<title>` and `<meta name="description">`. `scripts/seo.mjs` adds a generated block after them with the canonical address (`https://www.pvinfo.org/...`), Open Graph and Twitter tags (image: `public/og.png`). After adding or renaming a page, run `npm run seo`; the tests fail if a page is missing a title or description or its block is out of date. A page with `<meta name="robots" content="noindex">` (admin, status, account and team pages) gets no canonical tag and stays out of the sitemap.
+
+The build (`npm run build`) runs it after the aggregator and writes `public/sitemap.xml` (every indexable page, plus one `paper.html?id=` URL per paper and one `company.html?id=` URL per company) and `public/robots.txt`. New pages are included automatically. `public/seo.js` points the canonical tag on paper and company pages at the item shown.
+
+Settings (Vercel → Project → Settings → Environment Variables, both optional):
+- `SEO_SITE_URL`: canonical address, default `https://www.pvinfo.org`. This is separate from `SITE_URL`, which the build uses to read the last published data.
+- `GOOGLE_SITE_VERIFICATION`: only if you verify Search Console with the HTML-tag method; put the `content="..."` value here and redeploy. The DNS method needs nothing here.
+
 ## Data freshness and feed alerts
 
 Each build also writes `public/data/status.json`: when the updates were last refreshed, and for every feed whether it was reachable, when it last succeeded and how long it has been failing. A strip under the menu on every page shows the last successful update and turns amber when a source is down or red when the data is more than 3 hours old; `status.html` lists every source. A feed that fails keeps its earlier updates on the site, and if every feed fails the build keeps the whole previous list instead of emptying the page.
