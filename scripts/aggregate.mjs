@@ -1,4 +1,4 @@
-import { fetchFdaSnapshot, snapshotEntry, eligibleFda } from "./fda-snapshot.mjs";
+import { fetchRegulatorSnapshot, snapshotEntry, eligibleSnapshot } from "./fda-snapshot.mjs";
 // Pulls every regulator feed and PV news search, keeps what matters to drug safety
 // and regulatory teams, tags each update with a country and section, and writes
 // public/data/updates.json (for the site) and public/feed.xml (for feed readers).
@@ -180,7 +180,7 @@ export function sourceRun(feed, r, now) {
     ok: r.status === "fulfilled" && !m.stale && m.collectorOk !== false,
     http_status: m.http ?? null,
     format: m.format ?? null,
-    error: r.status === "fulfilled" ? (m.stale || m.collectorOk === false ? "Using an aging FDA snapshot; check scheduled collector status." : null) : String(r.reason?.message ?? r.reason).slice(0, 300),
+    error: r.status === "fulfilled" ? (m.stale || m.collectorOk === false ? "Using an aging regulator snapshot; check scheduled collector status." : null) : String(r.reason?.message ?? r.reason).slice(0, 300),
     items_seen: r.status === "fulfilled" ? r.value.seen : 0,
     items_kept: r.status === "fulfilled" ? r.value.length : 0,
     items_new: r.status === "fulfilled" ? (m.new ?? 0) : 0,
@@ -210,14 +210,14 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
   const prevData = fixturesDir ? null : await previousJson(out);
   const known = new Set((prevData?.updates ?? []).map((u) => u.id));
 
-  const fdaSnapshot = !fixturesDir && feeds.some(eligibleFda) ? await fetchFdaSnapshot() : null;
+  const regulatorSnapshot = !fixturesDir && feeds.some(eligibleSnapshot) ? await fetchRegulatorSnapshot() : null;
 
   const load = async (feed) => {
     const started = Date.now();
     let body;
     let meta = { attempts: 1 };
     const secrets = registry?.secrets?.get(feed.id) ?? {};
-    const cached = !fixturesDir ? snapshotEntry(fdaSnapshot, feed) : null;
+    const cached = !fixturesDir ? snapshotEntry(regulatorSnapshot, feed) : null;
     if (cached) {
       const since = feed.since ? Date.parse(feed.since) : null;
       const kept = cached.items.filter(i => !since || !i.published || Date.parse(i.published) >= since).map(i => enrich(i, feed, ctx)).filter(Boolean).slice(0, MAX_PER_FEED);

@@ -152,27 +152,27 @@ How it works: tables `safety_resources`, `safety_resource_events` and `resource_
 
 Topic and country tags are automatic and can be wrong. PV Info is a reading aid; always confirm details with the official source.
 
-## FDA collection delivery
+## Official regulator collection delivery
 
-The five official FDA RSS feeds are collected by `.github/workflows/fda-collector.yml`
+The five official FDA RSS feeds and TGA safety alerts are collected by `.github/workflows/fda-collector.yml`
 (at minute 7 each hour, on manual dispatch, and on relevant code changes). Collection
 runs on GitHub Actions because production Vercel requests to these same URLs have
 returned HTTP 404 while the GitHub runner succeeds. The workflow reads the last
-published active registry, fetches only the five exact FDA endpoints, privacy-screens
+published active registry, fetches only six fixed official endpoints, privacy-screens
 parsed items, and publishes `fda-feeds.json` to the `fda-feed-cache` branch using the
 existing workflow token. It then calls the existing `VERCEL_DEPLOY_HOOK` when set.
 The cache branch is excluded from Vercel preview builds by `scripts/ignore-build.mjs`.
 The older refresh workflow remains available for manual rebuilds; its duplicate hourly
 schedule is removed so the collector triggers one rebuild after snapshot publication.
 
-The app's build and Admin → Test now can use this snapshot. FDA remains the original
+The app's build and Admin → Test now can use this snapshot. The regulator remains the original
 source; article links and publication dates are preserved. Source status identifies
-GitHub Actions delivery and actual FDA collection time. A snapshot older than two
+GitHub Actions delivery and actual source collection time. A snapshot older than two
 hours (or from a collector whose latest attempt failed) warns; after twelve hours it
 is rejected and the app tries the official URL directly. Paused sources are not
 consumed. Missing/corrupt snapshots never turn arbitrary URLs into proxy requests.
 GitHub scheduling and Vercel builds may be delayed; these are freshness targets,
-not a guarantee of hourly delivery. Check Actions → Collect official FDA feeds and
+not a guarantee of hourly delivery. Check Actions → Collect official regulator feeds and
 `status.html` when investigating gaps. No new paid service or source credential is
 required. Do not point the collector at patient-level data.
 
@@ -199,3 +199,5 @@ assessment decisions are not overwritten; snapshots preserve the confirmed scope
 product evidence, match explanation and portfolio revision. Research is a review
 candidate, not a regulatory obligation. Team assignment remains email-only. No new
 database table or schema migration is needed.
+
+Company selections are not published to other users. Signed-in scopes sync to the owner workspace (row-level access); explicitly submitted assessment context is visible to that team. Local scopes are shared by anyone using the same browser profile and remain after sign-out. Workspace exports contain the scope. This is access control, not end-to-end encryption: database administrators can access stored workspace data, and company-specific page/data requests can appear in hosting logs. The public company directory is independent of readers’ selections.
