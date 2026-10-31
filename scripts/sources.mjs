@@ -57,18 +57,27 @@ export async function seedRegistry(file = path.join(ROOT, "sources.json")) {
   return JSON.parse(await readFile(file, "utf8")).sources;
 }
 
+// Once cloud configuration exists, repository seeds are never an outage fallback.
+// Empty snapshots are valid: an administrator may deliberately remove every source.
 export async function loadRegistry({ cfg = cloudConfig(), fetchImpl = fetch, previous = null, seed = seedRegistry } = {}) {
-  try {
-    const live = await fetchRegistry(cfg, fetchImpl);
-    if (live && !live.missing) return { ...live, from: "database" };
-    if (live?.missing) console.warn("sources: the data_sources table is not set up yet (run supabase/schema.sql); using sources.json");
-  } catch (e) {
-    console.warn(`sources: database unavailable (${e.message}); using the registry from the last build`);
+  const managed = Boolean(cfg.url || cfg.serviceKey);
+  if (cfg.url && cfg.serviceKey) {
     try {
-      const prev = previous ? await previous() : await fetchImpl(`${SITE_URL}/data/sources/registry.json`, { signal: AbortSignal.timeout(20000) }).then((r) => (r.ok ? r.json() : null));
-      if (prev?.sources?.length && prev.from !== "repository") return { sources: prev.sources, secrets: new Map(), from: "last build" };
-    } catch {}
+      const live = await fetchRegistry(cfg, fetchImpl);
+      if (live && !live.missing) return { ...live, from: "database" };
+    } catch {
+      console.warn("sources: database unavailable; checking the last managed registry");
+    }
   }
+  if (!managed && !previous) return { sources: await seed(), secrets: new Map(), from: "repository" };
+  let prev;
+  try {
+    prev = previous ? await previous() : await fetchImpl(`${SITE_URL}/data/sources/registry.json`, { signal: AbortSignal.timeout(20000) }).then((r) => r.ok ? r.json() : null);
+  } catch {}
+  if (prev && ["database", "last build"].includes(prev.from) && Array.isArray(prev.sources)) {
+    return { sources: prev.sources, secrets: new Map(), from: "last build" };
+  }
+  if (managed) throw new Error("Source registry unavailable: collection stopped. Restore the database or a managed snapshot; repository seeds will not be activated.");
   return { sources: await seed(), secrets: new Map(), from: "repository" };
 }
 

@@ -1,3 +1,4 @@
+import { withoutPersonalFields } from "./privacy.js";
 // Pure helpers for the Research & Innovation pages (research.js, paper.js) and the tests:
 // labels, filtering, the reader's research watchlist, and citation export.
 
@@ -21,11 +22,7 @@ export const LENSES = [
   { id: "leadership", label: "Leadership", order: ["business", "findings", "limitations", "question", "technical", "approach", "explore"] },
 ];
 
-export function authorLine(p, n = 3) {
-  const a = p.authors ?? [];
-  if (!a.length) return "Authors not listed";
-  return a.length > n ? `${a.slice(0, n).join(", ")} et al.` : a.join(", ");
-}
+export function authorLine() { return ""; }
 
 // Preprints whose journal version is also here are folded into that version.
 export const hasJournalVersion = (p) => p.type === "preprint" && (p.family ?? []).some((f) => f.relation === "published as");
@@ -43,9 +40,9 @@ export function matchesPaper(p, f, now = Date.now()) {
   if (f.days && p.published && now - Date.parse(p.published) > Number(f.days) * 86400000) return false;
   if (f.since && !(p.firstSeen > f.since)) return false;
   if (f.ids && !f.ids.includes(p.id)) return false;
-  if (f.author && !(p.authors ?? []).some((a) => fold(a) === fold(f.author))) return false;
+  if (f.author) return false; // Legacy author filters are no longer supported.
   if (f.q) {
-    const hay = fold(`${p.title} ${(p.authors ?? []).join(" ")} ${p.venue ?? ""} ${(p.keywords ?? []).join(" ")} ${p.summary.map((s) => s.text).join(" ")} ${p.ids?.doi ?? ""} ${p.ids?.pmid ?? ""}`);
+    const hay = fold(`${p.title} ${p.venue ?? ""} ${(p.keywords ?? []).join(" ")} ${p.summary.map((s) => s.text).join(" ")} ${p.ids?.doi ?? ""} ${p.ids?.pmid ?? ""}`);
     if (!fold(f.q).split(/\s+/).filter(Boolean).every((w) => hay.includes(w))) return false;
   }
   return true;
@@ -60,14 +57,19 @@ export const emptyWatch = () => ({ version: VERSION, saved: {}, topics: [], auth
 export function loadWatch(storage = globalThis.localStorage) {
   try {
     const s = JSON.parse(storage.getItem(KEY) || "null");
-    if (s && s.version === VERSION) return { ...emptyWatch(), ...s };
+    if (s && s.version === VERSION) {
+      const clean = { ...emptyWatch(), ...withoutPersonalFields(s), authors: [] };
+      clean.searches = clean.searches.map((x) => { const p = new URLSearchParams(x.params); p.delete("author"); return { ...x, params: p.toString() }; });
+      storage.setItem(KEY, JSON.stringify(clean));
+      return clean;
+    }
   } catch {}
   return emptyWatch();
 }
 
 export function saveWatch(w, storage = globalThis.localStorage) {
   try {
-    storage.setItem(KEY, JSON.stringify(w));
+    storage.setItem(KEY, JSON.stringify({ ...withoutPersonalFields(w), authors: [] }));
   } catch {}
 }
 
@@ -79,7 +81,7 @@ export function startVisit(w, now = new Date().toISOString()) {
   return w;
 }
 
-export const snapshot = (p) => ({ id: p.id, title: p.title, authors: (p.authors ?? []).slice(0, 6), venue: p.venue, published: p.published, type: p.type, links: p.links, ids: p.ids });
+export const snapshot = (p) => ({ id: p.id, title: p.title, venue: p.venue, published: p.published, type: p.type, links: p.links, ids: p.ids });
 
 export function toggleSaved(w, p, now = new Date().toISOString()) {
   if (w.saved[p.id]) delete w.saved[p.id];
@@ -95,12 +97,12 @@ export function setNote(w, p, note, now = new Date().toISOString()) {
 
 const toggleIn = (list, v) => (list.includes(v) ? list.filter((x) => x !== v) : [...list, v]);
 export const toggleTopic = (w, id) => ((w.topics = toggleIn(w.topics, id)), w.topics.includes(id));
-export const toggleAuthor = (w, name) => ((w.authors = toggleIn(w.authors, name)), w.authors.includes(name));
+export const toggleAuthor = (w) => { w.authors = []; return false; };
 
 // Papers that match something the reader follows (a topic in either dimension, or an author).
 export function followedMatch(w, p) {
   const tags = [...p.tags.applications, ...p.tags.methods].map((t) => t.id);
-  return w.topics.some((t) => tags.includes(t)) || (p.authors ?? []).some((a) => w.authors.includes(a));
+  return w.topics.some((t) => tags.includes(t));
 }
 
 export const isNew = (w, p) => Boolean(w.prevVisit && p.firstSeen > w.prevVisit);
@@ -115,7 +117,7 @@ export function ris(papers) {
     papers
       .map((p) => {
         const lines = [`TY  - ${risType[p.type] ?? "GEN"}`, `TI  - ${p.title}`];
-        for (const a of p.authors ?? []) lines.push(`AU  - ${a}`);
+
         if (p.venue) lines.push(`${p.type === "conference" ? "T2" : "JO"}  - ${p.venue}`);
         if (p.published) lines.push(`PY  - ${p.published.slice(0, 4)}`, `DA  - ${p.published.replace(/-/g, "/")}`);
         if (p.ids?.doi) lines.push(`DO  - ${p.ids.doi}`);
@@ -135,7 +137,7 @@ export function citation(p) {
   const year = p.published?.slice(0, 4) ?? "n.d.";
   const where = p.venue ? ` ${p.venue}.` : "";
   const id = p.ids?.doi ? ` doi:${p.ids.doi}` : p.ids?.pmid ? ` PMID: ${p.ids.pmid}` : "";
-  return `${authorLine(p, 6)} (${year}). ${p.title}.${where}${p.type === "preprint" ? " [Preprint]" : ""}${id}`;
+  return `(${year}). ${p.title}.${where}${p.type === "preprint" ? " [Preprint]" : ""}${id}`;
 }
 
 export const primaryLink = (p) => p.links?.doi ?? p.links?.pubmed ?? p.links?.europepmc ?? p.links?.fulltext ?? null;

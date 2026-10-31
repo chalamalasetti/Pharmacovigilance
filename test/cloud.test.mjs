@@ -111,9 +111,9 @@ test("team queue items are cleaned, and tabs sort them", () => {
 
 test("a queue line says who did what", () => {
   cloud.team.me = { id: "me" };
-  cloud.team.members = [{ user_id: "p", name: "Priya" }];
-  const line = cloud.teamSummary({ assess: { status: "action", by: "p", at: "2026-10-29T10:00:00Z", note: "Check SmPC" }, assign: { to: "Raj", due: "2026-11-05" } });
-  assert.match(line, /^Relevant: action needed \(Priya, .*\): Check SmPC · assigned to Raj, due /);
+  cloud.team.members = [{ user_id: "p", name: "Legacy personal name", email: "reviewer@example.org" }];
+  const line = cloud.teamSummary({ assess: { status: "action", by: "p", at: "2026-10-29T10:00:00Z", note: "Check SmPC" }, assign: { to: "owner@example.org", due: "2026-11-05" } });
+  assert.match(line, /^Relevant: action needed \(reviewer@example\.org, .*\): Check SmPC · assigned to owner@example\.org, due /);
   assert.equal(cloud.memberName("me"), "you");
   assert.equal(cloud.memberName("gone"), "a former member");
 });

@@ -79,7 +79,7 @@ test("the build reads the registry from the database, else the last build, else 
   assert.equal(buildFeeds(live).feeds.length, 0, "a paused source is not collected");
 
   const missing = async () => ({ ok: false, status: 404, text: async () => '{"code":"PGRST205","message":"Could not find the table"}' });
-  assert.equal((await loadRegistry({ cfg, fetchImpl: missing })).from, "repository");
+  await assert.rejects(loadRegistry({ cfg, fetchImpl: missing, previous: async () => null }), /collection stopped/);
 
   const down = async () => ({ ok: false, status: 503, text: async () => "unavailable" });
   const fallback = await loadRegistry({ cfg, fetchImpl: down, previous: async () => ({ from: "database", sources: [{ ...rows[0], type: "rss" }] }) });

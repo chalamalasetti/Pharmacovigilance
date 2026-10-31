@@ -120,10 +120,9 @@ function approvalSection() {
           el("p", {}, `✓ You approved this version as ${row.approved_by} on ${row.approved_on}.`, row.note ? ` Note: ${row.note}` : ""),
           el("div", { class: "row" }, el("button", { type: "button", onclick: () => confirm("Withdraw the approval? The site shows the list as a draft again.") && act($("ap-msg"), async () => check(await sb.rpc("admin_set_manifest_approval", { v: m.version, approve: false }))) }, "Withdraw approval")),
           msg("ap-msg"))
-      : el("form", { class: "imp-form", onsubmit: (e) => (e.preventDefault(), act($("ap-msg"), async () => check(await sb.rpc("admin_set_manifest_approval", { v: m.version, approve: true, approver: e.target.approver.value, why: e.target.why.value })))) },
+      : el("form", { class: "imp-form", onsubmit: (e) => (e.preventDefault(), act($("ap-msg"), async () => check(await sb.rpc("admin_set_manifest_approval", { v: m.version, approve: true, approver: null, why: e.target.why.value })))) },
           el("p", { class: "hint" }, "Approving sets status, approved by and the date for this version, so the draft notice comes off the Companies pages. If the repository file changes to a new version later, that version needs its own approval."),
           el("div", { class: "row" },
-            el("label", {}, "Approve as ", el("input", { type: "text", name: "approver", maxlength: 120, required: true, value: cloud.displayName(me) })),
             el("label", {}, "Note ", el("input", { type: "text", name: "why", maxlength: 1000, placeholder: "Optional" }))),
           el("div", { class: "row" }, el("button", { type: "submit", class: "primary" }, `Approve version ${m.version}`)),
           msg("ap-msg")),

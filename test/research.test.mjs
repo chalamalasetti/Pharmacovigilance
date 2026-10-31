@@ -82,7 +82,7 @@ test("fixture build: one record per paper, labelled statuses, linked versions, h
   assert.equal(d.papers.filter((p) => p.ids.doi === "10.1000/test.duplicates").length, 1, "duplicate DOI appears once");
   const pre = d.papers.find((p) => p.type === "preprint");
   assert.equal(pre.peerReview, "preprint");
-  assert.equal(pre.family[0].relation, "published as");
+  assert.equal(pre.family, undefined, "title/author similarity no longer creates a publication identity link");
   assert.ok(d.papers.find((p) => /causality/.test(p.title)).status.some((s) => s.type === "retracted"));
   for (const p of d.papers) {
     assert.ok(R.primaryLink(p), `${p.title} has an original-source link`);
@@ -110,10 +110,10 @@ test("research filters, watchlist and citations", async () => {
   const d = await build();
   const now = Date.parse("2026-10-30T12:00:00Z");
   const all = d.papers.filter((p) => R.matchesPaper(p, {}, now));
-  assert.ok(!all.some((p) => p.type === "preprint"), "preprint with a journal version is folded in by default");
+  assert.ok(all.some((p) => p.type === "preprint"), "unconfirmed versions stay visible rather than being inferred from personal names");
   assert.ok(d.papers.filter((p) => R.matchesPaper(p, { type: "preprint" }, now)).length === 1);
   assert.ok(d.papers.filter((p) => R.matchesPaper(p, { app: "literature" }, now)).every((p) => p.tags.applications.some((t) => t.id === "literature")));
-  assert.equal(d.papers.filter((p) => R.matchesPaper(p, { q: "record linkage" }, now)).length, 1);
+  assert.equal(d.papers.filter((p) => R.matchesPaper(p, { q: "record linkage" }, now)).length, 2, "both unconfirmed versions remain searchable");
 
   const store = { v: null, getItem() { return this.v; }, setItem(_, v) { this.v = v; } };
   const w = R.loadWatch(store);

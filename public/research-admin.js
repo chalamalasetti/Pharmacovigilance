@@ -62,7 +62,7 @@ function editor(p, onDone) {
     el("option", { value: "" }, "Automatic linking"),
     el("option", { value: "none", selected: r.version_of === "none" || null }, "Not a version of another paper (remove links)"),
     ...data.papers
-      .filter((x) => x.id !== p.id && (x.type === "preprint") !== (p.type === "preprint") && x.authors?.[0]?.split(/\s+/).pop() === p.authors?.[0]?.split(/\s+/).pop())
+      .filter((x) => x.id !== p.id && (x.type === "preprint") !== (p.type === "preprint") && x.title?.toLowerCase().trim() === p.title?.toLowerCase().trim())
       .slice(0, 20)
       .map((x) => el("option", { value: x.id, selected: r.version_of === x.id || null }, `Same paper as: ${x.title.slice(0, 80)} (${R.typeLabel(x.type)}, ${x.published ?? "undated"})`)),
   ];
@@ -186,14 +186,14 @@ function row(p) {
 function render() {
   const queue = R.REVIEW_QUEUES.find((t) => t.id === tab);
   const fold = (s) => s.toLowerCase();
-  const list = data.papers.filter((p) => queue.test(p) && (!q || fold(`${p.title} ${(p.authors ?? []).join(" ")} ${p.ids?.doi ?? ""}`).includes(fold(q))));
+  const list = data.papers.filter((p) => queue.test(p) && (!q || fold(`${p.title} ${p.ids?.doi ?? ""}`).includes(fold(q))));
   const failing = data.sources.filter((s) => s.configured && !s.ok);
   $("lede").textContent = `Signed in as ${me}. ${reviews.size} of ${raw.papers.length} papers reviewed.`;
   $("app").replaceChildren(
     ...[failing.length ? el("p", { class: "r-alert" }, `⚠ Failed at the last refresh: ${failing.map((s) => `${s.name} (${s.error})`).join("; ")}`) : null,
     el("div", { class: "r-tabs", role: "tablist" },
       R.REVIEW_QUEUES.map((t) => el("button", { type: "button", role: "tab", "aria-selected": String(t.id === tab), onclick: () => ((tab = t.id), (shown = PAGE), render()) }, `${t.label} `, el("span", { class: "n" }, `(${data.papers.filter(t.test).length})`)))),
-    el("div", { class: "row" }, el("input", { type: "search", placeholder: "Find by title, author or DOI", value: q, oninput: (e) => ((q = e.target.value), render()) })),
+    el("div", { class: "row" }, el("input", { type: "search", placeholder: "Find by title or DOI", value: q, oninput: (e) => ((q = e.target.value), render()) })),
     ...(list.length ? list.slice(0, shown).map(row) : [el("p", { class: "empty" }, "Nothing in this queue.")]),
     list.length > shown ? el("button", { type: "button", class: "more", onclick: () => ((shown += PAGE), render()) }, "Show more") : null,
   ].filter(Boolean));

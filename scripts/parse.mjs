@@ -6,6 +6,7 @@
 // settings.itemsPath with settings.fields naming the title, link, date and summary. A web
 // page gives its links whose address matches settings.linkPattern.
 
+import { publicUpdate } from "../public/privacy.js";
 import { createHash } from "node:crypto";
 import { XMLParser } from "fast-xml-parser";
 import { categorize, isRelevant, detectCountry } from "./classify.mjs";
@@ -180,7 +181,7 @@ export function enrich(item, feed, { matchers, byCode }) {
   const agency = feed.kind === "official" ? place.agencies[0].abbr : found?.code === code ? found.agency : null;
   const { category, tags } = categorize(item.title, item.summary, feed.category);
   const priority = CATEGORY_WEIGHT[category] + (feed.kind === "official" ? 3 : 0) + (agency ? 1 : 0);
-  return {
+  return publicUpdate({
     id: updateId(item.link),
     title: item.title,
     link: item.link,
@@ -196,5 +197,5 @@ export function enrich(item, feed, { matchers, byCode }) {
     published: item.published,
     // Which registry source collected it, so its provenance survives a pause or a new address.
     ...(feed.id && { sourceId: feed.id }),
-  };
+  });
 }

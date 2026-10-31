@@ -109,7 +109,7 @@ drop policy if exists "Leave, or owner removes" on public.team_members;
 create policy "Leave, or owner removes" on public.team_members for delete to authenticated
   using (user_id = (select auth.uid()) or public.is_team_owner(team_id));
 grant select, delete on public.team_members to authenticated;
-grant update (name) on public.team_members to authenticated;
+revoke update (name) on public.team_members from authenticated;
 
 -- Teams are created and joined only through these functions, so nobody can add
 -- themselves to a team without its invite code or make themselves an owner.
@@ -120,7 +120,7 @@ begin
   if auth.uid() is null then raise exception 'Sign in first'; end if;
   insert into public.teams (name, created_by) values (trim(team_name), auth.uid()) returning id into t;
   insert into public.team_members (team_id, user_id, email, name, role)
-    values (t, auth.uid(), auth.jwt() ->> 'email', nullif(trim(member_name), ''), 'owner');
+    values (t, auth.uid(), auth.jwt() ->> 'email', null, 'owner');
   return t;
 end $$;
 
@@ -132,8 +132,8 @@ begin
   select id into t from public.teams where invite_code = trim(code);
   if t is null then raise exception 'That invite code was not found'; end if;
   insert into public.team_members (team_id, user_id, email, name)
-    values (t, auth.uid(), auth.jwt() ->> 'email', nullif(trim(member_name), ''))
-    on conflict (team_id, user_id) do update set name = coalesce(excluded.name, public.team_members.name);
+    values (t, auth.uid(), auth.jwt() ->> 'email', null)
+    on conflict (team_id, user_id) do update set name = null;
   return t;
 end $$;
 
@@ -419,7 +419,7 @@ grant select (version, status, approved_by, approved_on, note, updated_at) on pu
 
 create or replace function public.admin_set_manifest_approval(v text, approve boolean, approver text default null, why text default null) returns void
 language plpgsql security definer set search_path = '' as $$
-declare who text := coalesce(nullif(trim(approver), ''), nullif(auth.jwt() -> 'user_metadata' ->> 'name', ''), split_part(auth.jwt() ->> 'email', '@', 1));
+declare who text := 'Administrator'; -- Public attribution never contains a personal name or email.
 begin
   if not public.is_app_admin() then raise exception 'Only an admin can do that'; end if;
   if coalesce(trim(v), '') = '' then raise exception 'Which manifest version?'; end if;
@@ -1466,3 +1466,29 @@ do $import$ begin
   perform set_config('pv.resource_action', '', true);
 end $import$;
 -- END RESOURCE IMPORT
+
+-- Email-only account policy. Keep the nullable legacy column for compatibility,
+-- but do not accept personal display names through old clients or direct requests.
+create or replace function public.email_only_member() returns trigger
+language plpgsql set search_path = '' as $$
+begin
+  new.name := null;
+  return new;
+end $$;
+drop trigger if exists email_only_member on public.team_members;
+create trigger email_only_member before insert or update on public.team_members
+  for each row execute function public.email_only_member();
+revoke all on function public.email_only_member() from public, anon, authenticated;
+
+create or replace function public.email_only_assignment() returns trigger
+language plpgsql set search_path = '' as $$
+begin
+  if new.assign is not null and coalesce(new.assign ->> 'to', '') !~ '^[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]+$' then
+    raise exception 'Assignments require an email address, not a personal name';
+  end if;
+  return new;
+end $$;
+drop trigger if exists "00_email_only_assignment" on public.team_items;
+create trigger "00_email_only_assignment" before insert or update on public.team_items
+  for each row execute function public.email_only_assignment();
+revoke all on function public.email_only_assignment() from public, anon, authenticated;
