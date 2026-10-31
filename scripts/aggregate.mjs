@@ -5,6 +5,7 @@
 //   node scripts/aggregate.mjs                  # fetch live feeds
 //   node scripts/aggregate.mjs --fixtures DIR   # parse DIR/manifest.json feeds from local .xml files (offline testing)
 
+import { publicUpdate } from "../public/privacy.js";
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -284,7 +285,7 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
   const updated = reachable || fixturesDir ? now : (prevData?.updated ?? now);
   if (!reachable && !fixturesDir) console.warn(`every source failed; keeping the ${previous.length} updates from ${updated}`);
   stampRetrieved(fresh, previous);
-  const updates = pickUpdates([...fresh, ...previous], { checkAge: !fixturesDir });
+  const updates = pickUpdates([...fresh, ...previous].map(publicUpdate).filter(Boolean), { checkAge: !fixturesDir });
   // Company Explorer: tag each update with the companies it relates to. Extra, so a
   // problem here must not fail the build.
   let companies = null;

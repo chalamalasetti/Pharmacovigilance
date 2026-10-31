@@ -12,6 +12,7 @@
 // returned or stored with the result. A passing result is recorded in data_source_tests,
 // which is what lets the database activate the source or apply the change.
 
+import { publicUpdate } from "../public/privacy.js";
 import { createRequire } from "node:module";
 import { cloudConfig } from "../scripts/cloud.mjs";
 import { countryMatchers } from "../scripts/classify.mjs";
@@ -110,7 +111,7 @@ export async function testSource(raw, secrets = {}, { fetchOpts = {} } = {}) {
     newest: dates.at(-1) ?? null,
     oldest: dates[0] ?? null,
     ...(parsed.items.length ? {} : { error: "The address answered, but no items were found in it." }),
-    samples: parsed.items.slice(0, SAMPLES).map((i) => {
+    samples: parsed.items.map(publicUpdate).filter(Boolean).slice(0, SAMPLES).map((i) => {
       const u = keptBy.get(i.link);
       return { title: i.title, link: i.link, published: i.published, source: i.source, kept: Boolean(u), ...(u && { category: u.category, country: u.country }) };
     }),

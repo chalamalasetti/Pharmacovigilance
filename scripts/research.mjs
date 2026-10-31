@@ -1,3 +1,4 @@
+import { withoutPersonalFields, unsafeNarrative } from "../public/privacy.js";
 // Collects PV research for the Research & Innovation section and writes
 // public/data/research.json. Sources are Europe PMC (all of PubMed plus the
 // medRxiv/bioRxiv preprints, no key needed) and, when NCBI_EMAIL is set, PubMed's
@@ -88,8 +89,6 @@ export function fromEuropePmc(r) {
   const title = clean(r.title).replace(/\.$/, "");
   return {
     title,
-    authors: asArray(r.authorList?.author).map((a) => clean(a.fullName || a.collectiveName || [a.firstName, a.lastName].filter(Boolean).join(" "))).filter(Boolean),
-    authorString: clean(r.authorString),
     venue: clean(r.journalInfo?.journal?.title || r.bookOrReportDetails?.publisher || (preprint ? "Preprint server" : "")),
     published: r.firstPublicationDate || r.electronicPublicationDate || (r.pubYear ? `${r.pubYear}-01-01` : null),
     preprint,
@@ -151,7 +150,6 @@ export function parsePubmed(body) {
     const abstract = asArray(a.Abstract?.AbstractText).map((t) => ({ label: typeof t === "object" ? t["@Label"] || "" : "", text: clean(text(t)) }));
     return {
       title: clean(text(a.ArticleTitle)).replace(/\.$/, ""),
-      authors: asArray(a.AuthorList?.Author).map((x) => clean(x.CollectiveName ? text(x.CollectiveName) : [text(x.ForeName), text(x.LastName)].filter(Boolean).join(" "))).filter(Boolean),
       venue: clean(text(a.Journal?.Title)),
       published: pubmedDate(a),
       preprint: pubTypes.includes("Preprint"),
@@ -209,7 +207,6 @@ export function dedupe(records) {
     if (Array.isArray(r.abstract) && r.abstract.length > 1 && !/<h\d|[A-Z]{4,}:/.test(String(hit.abstract))) hit.abstract = r.abstract;
     if (!hit.abstract || (Array.isArray(hit.abstract) && !hit.abstract.length)) hit.abstract = r.abstract;
     for (const f of ["venue", "published", "fullTextUrl", "license"]) hit[f] ||= r[f];
-    if (!hit.authors.length) hit.authors = r.authors;
     hit.pubTypes = [...new Set([...hit.pubTypes, ...r.pubTypes])];
     hit.comments = [...hit.comments, ...r.comments];
     hit.openAccess ||= r.openAccess;
@@ -222,7 +219,9 @@ const pick = (list, n) => list.slice(0, n).map(({ text, n: ref, label }) => ({ t
 
 // Abstracts belong to their publishers. Open-access papers show the whole
 // abstract; for others the page quotes at most one sentence per section and links out.
-export function buildPaper(r, idf, now = new Date().toISOString()) {
+export function buildPaper(raw, idf, now = new Date().toISOString()) {
+  if (unsafeNarrative(JSON.stringify(raw.abstract)) || unsafeNarrative(raw.title)) return null;
+  const r = withoutPersonalFields(raw);
   const abstractText = Array.isArray(r.abstract) ? r.abstract.map((p) => `${p.label ? `${p.label}: ` : ""}${p.text}`).join(" ") : clean(r.abstract);
   const hay = paperText({ title: r.title, keywords: r.keywords, abstract: abstractText });
   const relevance = pvRelevance(hay);
@@ -252,8 +251,6 @@ export function buildPaper(r, idf, now = new Date().toISOString()) {
   return {
     id: paperId(ids),
     title: r.title,
-    authors: r.authors.length ? r.authors.slice(0, 12) : r.authorString ? r.authorString.split(/,\s*/).slice(0, 12) : [],
-    authorCount: r.authors.length || undefined,
     venue: r.venue || null,
     published: r.published ? r.published.slice(0, 10) : null,
     type,
@@ -288,28 +285,15 @@ export function buildPaper(r, idf, now = new Date().toISOString()) {
 // The text used to compare papers: what is kept on the page, so stored papers compare the same way.
 const compareText = (p) => [p.title, (p.keywords ?? []).join(" "), ...p.summary.map((s) => s.text), ...Object.values(p.sections).flat().map((s) => s.text)].join(" ");
 
-// Links preprints to their journal versions (comment links, or near-identical title
-// and the same first author) and lists up to three related papers for each.
+// Keeps explicit version links and lists related papers without retaining author names.
 export function linkPapers(papers) {
   const idf = idfTable(papers.map(compareText));
   const vecs = new Map(papers.map((p) => [p.id, vector(compareText(p), idf)]));
-  const titleVecs = new Map(papers.map((p) => [p.id, vector(p.title, idf)]));
-  const lastName = (p) => (p.authors[0] ?? "").split(/\s+/).pop()?.toLowerCase() ?? "";
-  for (const p of papers) delete p.family;
-  const join = (pre, pub, how) => {
-    (pre.family ??= []).push({ id: pub.id, relation: "published as", how });
-    (pub.family ??= []).push({ id: pre.id, relation: "preprint", how });
-  };
-  const preprints = papers.filter((p) => p.type === "preprint");
-  const published = papers.filter((p) => p.type !== "preprint" && p.type !== "notice");
-  for (const pre of preprints) {
-    let best = null;
-    for (const pub of published) {
-      if (pub.published && pre.published && pub.published < pre.published) continue;
-      const s = cosine(titleVecs.get(pre.id), titleVecs.get(pub.id));
-      if (s > 0.85 && lastName(pre) && lastName(pre) === lastName(pub) && (!best || s > best.s)) best = { pub, s };
-    }
-    if (best) join(pre, best.pub, "same title and first author");
+  // Preserve only explicit identifier-backed version relationships. Title similarity
+  // contributes to related papers below; it cannot prove publication identity.
+  for (const p of papers) {
+    const family = (p.family ?? []).filter((f) => f.how === "source identifier");
+    if (family.length) p.family = family; else delete p.family;
   }
   const seen = new Set(papers.map((p) => p.id));
   for (const p of papers) {
@@ -395,7 +379,8 @@ export function guidanceEvents(updates, previous = [], now = new Date()) {
   return [...byId.values()].filter((g) => !g.published || g.published >= cutoff).sort((a, b) => (b.published ?? "").localeCompare(a.published ?? "")).slice(0, 300);
 }
 
-async function finish(data, out, { fixturesDir, env, updatesFile }) {
+async function finish(raw, out, { fixturesDir, env, updatesFile }) {
+  const data = withoutPersonalFields(raw);
   if (!fixturesDir) {
     try {
       const reviews = await fetchReviews(cloudConfig(env));
@@ -413,7 +398,7 @@ async function finish(data, out, { fixturesDir, env, updatesFile }) {
     data.guidance = guidanceEvents(updates, data.guidance ?? []);
   } catch {}
   data.taxonomy = taxonomy();
-  await writeFile(out, JSON.stringify(data) + "\n");
+  await writeFile(out, JSON.stringify(withoutPersonalFields(data)) + "\n");
 }
 
 // Fetches, builds and writes research.json. Returns the number of papers.
@@ -450,7 +435,7 @@ export async function collectResearch({ fixturesDir = null, out = OUT, now = new
       Object.assign(status, { ok: true, lastSuccess: nowIso, count: got.length, error: null });
       console.log(`research: ${s.id} returned ${got.length} records`);
     } catch (e) {
-      status.error = String(e.message ?? e).slice(0, 200);
+      status.error = "Source collection failed; inspect source availability without logging response content.";
       console.warn(`research: ${s.id} failed: ${status.error}`);
     }
   }

@@ -112,7 +112,6 @@ function render(p, data) {
       p.openAccess ? el("span", { class: "badge" }, `Open access${p.license ? ` (${p.license.toUpperCase()})` : ""}`) : null,
     ),
     el("h1", {}, p.title),
-    el("p", { class: "r-by" }, el("span", {}, ...(p.authors ?? []).flatMap((a, i) => [i ? ", " : "", el("button", { type: "button", class: "r-author", "aria-pressed": String(watch.authors.includes(a)), title: watch.authors.includes(a) ? "Stop following this author" : "Follow this author", onclick: () => (R.toggleAuthor(watch, a), persist(), render(p, data)) }, a)])), p.authorCount > (p.authors ?? []).length ? " et al." : ""),
     el("p", { class: "r-by" }, [p.venue, p.published].filter(Boolean).join(" · ")),
     el(
       "div",

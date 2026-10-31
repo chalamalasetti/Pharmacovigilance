@@ -96,10 +96,10 @@ export function impactSection(u, ctx) {
       );
     }
     if (kind === "assign") {
-      // Teammates are offered by name; anyone else can still be typed in.
-      const list = team.id ? el("datalist", { id: `members-${u.id}` }, team.members.map((m) => el("option", { value: m.name || m.email }, m.name && m.email ? m.email : null))) : null;
-      const to = el("input", { type: "text", placeholder: team.id ? "Teammate, name or email" : "Name or email", required: true, "aria-label": "Assign to", value: r.assign?.to ?? "", list: list ? `members-${u.id}` : null });
-      const member = () => team.members.find((m) => [m.name, m.email].includes(to.value.trim()));
+      // Email is the only personal identifier requested for assignments.
+      const list = team.id ? el("datalist", { id: `members-${u.id}` }, team.members.map((m) => el("option", { value: m.email }, null))) : null;
+      const to = el("input", { type: "email", placeholder: "Email", required: true, "aria-label": "Assign to", value: r.assign?.to ?? "", list: list ? `members-${u.id}` : null });
+      const member = () => team.members.find((m) => m.email === to.value.trim());
       const due = el("input", { type: "date", "aria-label": "Due date", value: r.assign?.due ?? "" });
       const note = el("textarea", { rows: 2, placeholder: "What should they check?", "aria-label": "Assignment note" });
       note.value = r.assign?.note ?? "";

@@ -4,6 +4,7 @@
 // to the permanent archive. Without the environment variables both are skipped
 // and the site works as before, from this browser's storage only.
 
+import { publicUpdate } from "../public/privacy.js";
 import { writeFile } from "node:fs/promises";
 import { impactCard } from "../public/impact.js";
 
@@ -26,7 +27,9 @@ export async function writePublicConfig(file, cfg = cloudConfig()) {
   return on;
 }
 
-export function toRow(u, countryName, withSourceId = false) {
+export function toRow(raw, countryName, withSourceId = false) {
+  const u = publicUpdate(raw);
+  if (!u) return null;
   return {
     ...(withSourceId && { source_id: u.sourceId ?? null }),
     id: u.id,
@@ -56,7 +59,8 @@ export async function archiveUpdates(updates, { cfg = cloudConfig(), countryName
   if (!cfg.url || !cfg.serviceKey) return { skipped: true, saved: 0 };
   let saved = 0;
   for (let i = 0; i < updates.length; i += batch) {
-    const rows = updates.slice(i, i + batch).map((u) => toRow(u, countryName, withSourceId));
+    const rows = updates.slice(i, i + batch).map((u) => toRow(u, countryName, withSourceId)).filter(Boolean);
+    if (!rows.length) continue;
     const res = await fetchImpl(`${cfg.url}/rest/v1/updates?on_conflict=id`, {
       method: "POST",
       headers: { ...authHeaders(cfg.serviceKey), "content-type": "application/json", prefer: "resolution=merge-duplicates,return=minimal" },

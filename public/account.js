@@ -89,10 +89,10 @@ function renderTeams() {
     el("p", { class: "hint" }, "Anyone with the link can join after signing in, so share it only with your team."),
     el("ul", { class: "upcoming members" },
       t.members.map((m) => el("li", {},
-        el("b", {}, m.name || m.email || "Member"), el("span", { class: "why" }, `${m.email ?? ""}${m.role === "owner" ? " · owner" : ""}`),
+        el("b", {}, m.email || "Member"), el("span", { class: "why" }, `${m.email ?? ""}${m.role === "owner" ? " · owner" : ""}`),
         m.user_id === t.me?.id
           ? el("button", { type: "button", class: "act", onclick: () => confirm(`Leave ${t.name}? You'll lose access to its queue.`) && busy($("team-msg"), async () => (await cloud.removeMember(ws, m.user_id), renderTeams())) }, "Leave")
-          : owner ? el("button", { type: "button", class: "act", onclick: () => confirm(`Remove ${m.name || m.email} from ${t.name}?`) && busy($("team-msg"), async () => (await cloud.removeMember(ws, m.user_id), renderTeams())) }, "Remove") : null,
+          : owner ? el("button", { type: "button", class: "act", onclick: () => confirm(`Remove ${m.email} from ${t.name}?`) && busy($("team-msg"), async () => (await cloud.removeMember(ws, m.user_id), renderTeams())) }, "Remove") : null,
       )),
     ),
     el("p", {}, el("a", { href: "team.html" }, "Open the team queue →")),
@@ -128,19 +128,8 @@ async function main() {
   $("lede").textContent = "You're signed in.";
   $("me-title").textContent = `Signed in as ${user.email}`;
   $("me").hidden = false;
-  $("name").value = cloud.displayName(user);
   cloud.isAdmin().then((yes) => ($("admin-link").hidden = !yes));
   cloud.onSync(renderSync);
-  $("name-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    busy($("name-msg"), async () => {
-      cloud.team.me = await cloud.saveName($("name").value.trim());
-      cloud.markNav();
-      $("name-msg").textContent = "Saved.";
-      await cloud.loadTeam(ws);
-      renderTeams();
-    });
-  });
   $("signout").addEventListener("click", async () => {
     await cloud.signOut();
     location.reload();

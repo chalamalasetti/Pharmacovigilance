@@ -1,6 +1,6 @@
 // Renders public/data/research.json as Latest research (filterable list), the
 // Innovation timeline (dated events for one topic) and My watchlist (saved papers,
-// followed topics and authors, saved searches).
+// followed topics and saved searches).
 // Filters live in the URL so a view can be shared; the watchlist lives in this
 // browser's localStorage (research-lib.js).
 
@@ -9,7 +9,7 @@ import * as R from "./research-lib.js";
 
 const $ = (id) => document.getElementById(id);
 const PAGE = 40;
-const DEFAULTS = { q: "", app: "", method: "", type: "", maturity: "", days: "365", oa: "", since: "", author: "", event: "", order: "", view: "latest" };
+const DEFAULTS = { q: "", app: "", method: "", type: "", maturity: "", days: "365", oa: "", since: "", event: "", order: "", view: "latest" };
 
 let data = null;
 let shown = PAGE;
@@ -138,7 +138,7 @@ function emptyNote() {
 
 function renderList() {
   const list = filtered();
-  const scope = [state.app && topicLabel(state.app), state.method && topicLabel(state.method), state.author].filter(Boolean).join(" · ");
+  const scope = [state.app && topicLabel(state.app), state.method && topicLabel(state.method)].filter(Boolean).join(" · ");
   $("count").textContent = `${list.length} paper${list.length === 1 ? "" : "s"}${scope ? ` · ${scope}` : ""}`;
   $("list").replaceChildren(...(list.length ? list.slice(0, shown).map(card) : [emptyNote()]));
   $("more").hidden = list.length <= shown;
@@ -161,9 +161,6 @@ function renderWatch() {
       el("p", { class: "hint" }, "Follow topics to see their new papers here. Everything on this page is kept in this browser only."),
       el("div", { class: "imp-chips" }, ...data.taxonomy.applications.map((t) => followBtn(t.id))),
       el("div", { class: "imp-chips" }, ...data.taxonomy.methods.map((t) => followBtn(t.id))),
-      watch.authors.length
-        ? el("p", {}, el("strong", {}, "Authors: "), ...watch.authors.map((a) => el("button", { type: "button", class: "chip-s", title: "Show this author's papers", onclick: () => set({ author: a, view: "latest" }) }, a)))
-        : el("p", { class: "hint" }, "Follow an author from any paper's detail page."),
       el("h2", {}, "Saved searches"),
       watch.searches.length ? el("ul", { class: "imp-list" }, watch.searches.map(searchRow)) : el("p", { class: "hint" }, "Set filters on Latest research and choose Save this search."),
       el("div", { class: "row" },
@@ -172,7 +169,7 @@ function renderWatch() {
       ),
     ),
     el("h2", {}, `New in followed topics since your last visit (${followedNew.length})`),
-    ...(followedNew.length ? followedNew.slice(0, 20).map(card) : [el("p", { class: "empty" }, watch.topics.length || watch.authors.length ? "Nothing new since your last visit." : "Follow a topic above to see new papers here.")]),
+    ...(followedNew.length ? followedNew.slice(0, 20).map(card) : [el("p", { class: "empty" }, watch.topics.length ? "Nothing new since your last visit." : "Follow a topic above to see new papers here.")]),
     el("h2", {}, `Saved papers (${saved.length})`),
     ...(savedPapers.length
       ? savedPapers.map((p) => (p.gone ? el("article", { class: "card" }, el("h3", {}, el("a", { href: R.primaryLink(p) ?? "#", target: "_blank", rel: "noopener" }, p.title)), el("p", { class: "hint" }, "No longer in the collection; kept from when you saved it.")) : card(p)))

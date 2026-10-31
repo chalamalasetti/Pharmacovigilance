@@ -38,7 +38,7 @@ export async function isAdmin() {
   return !error && data === true;
 }
 
-export const displayName = (user) => user?.user_metadata?.name || user?.email?.split("@")[0] || "";
+export const displayName = (user) => user?.email || "";
 
 // Emails a one-time sign-in link that brings the reader back to the account page.
 export async function signIn(email) {
@@ -50,15 +50,6 @@ export async function signIn(email) {
 export async function signOut() {
   const sb = await client();
   await sb?.auth.signOut();
-}
-
-// Saves the reader's display name on their account and on every team they are in.
-export async function saveName(name) {
-  const sb = await client();
-  const { data, error } = await sb.auth.updateUser({ data: { name } });
-  if (error) throw error;
-  await sb.from("team_members").update({ name }).eq("user_id", data.user.id);
-  return data.user;
 }
 
 // ── Workspace sync ───────────────────────────────────────────────────────────
@@ -150,7 +141,7 @@ export function memberName(userId) {
   if (!userId) return "someone";
   if (userId === team.me?.id) return "you";
   const m = team.members.find((x) => x.user_id === userId);
-  return m ? m.name || m.email || "a teammate" : "a former member";
+  return m ? m.email || "a teammate" : "a former member";
 }
 
 const DONE = new Set(["noaction", "notrelevant"]);
@@ -181,7 +172,7 @@ export async function loadTeam(ws) {
   Object.assign(team, { id: active?.id ?? null, name: active?.name ?? "", code: active?.code ?? "", role: active?.role ?? "", members: [], items: new Map() });
   if (team.id) {
     const [m, i] = await Promise.all([
-      sb.from("team_members").select("user_id, email, name, role, joined_at").eq("team_id", team.id).order("joined_at"),
+      sb.from("team_members").select("user_id, email, role, joined_at").eq("team_id", team.id).order("joined_at"),
       sb.from("team_items").select("*").eq("team_id", team.id).order("updated_at", { ascending: false }).limit(2000),
     ]);
     if (m.error) throw m.error;
@@ -207,12 +198,12 @@ const rpc = async (fn, args) => {
 };
 
 export async function createTeam(ws, name) {
-  const id = await rpc("create_team", { team_name: name, member_name: displayName(await currentUser()) });
+  const id = await rpc("create_team", { team_name: name, member_name: null });
   return setActiveTeam(ws, id);
 }
 
 export async function joinTeam(ws, code) {
-  const id = await rpc("join_team", { code, member_name: displayName(await currentUser()) });
+  const id = await rpc("join_team", { code, member_name: null });
   return setActiveTeam(ws, id);
 }
 
