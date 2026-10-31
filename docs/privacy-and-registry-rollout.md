@@ -29,3 +29,16 @@ This patch does not change infrastructure/proxy logging or existing analytics pr
 ## Verification
 
 Run `npm ci --ignore-scripts`, then `npm test` on Node 20+ (CI uses Node 22). `test/privacy.test.mjs` covers policy boundaries, legacy cache rewriting, archive filtering, scientific-number preservation and managed outage cases. Local-host HTTP integration tests may need a network-capable CI environment; do not relax production network protections to make tests pass. SQL changes require a real Supabase/PostgreSQL smoke test; text-based tests are not a substitute.
+
+## Applied database migrations — 31 October 2026
+
+The project referenced by the live PV Info config was verified before applying:
+
+- `20261031212207_pv_info_email_only_privacy.sql`
+- `20261031212251_pv_info_remove_direct_member_updates.sql`
+
+The follow-up revokes table-level UPDATE as well as column-level UPDATE: existing Supabase grants had allowed updates despite a column-only revoke. Creation/join remain available through authenticated functions; member SELECT/DELETE and row-level security are preserved.
+
+Verified catalog permissions, enabled triggers, generic public approval attribution, anonymous function restrictions, and migration history. A rolled-back test under the authenticated role verified team creation, suppression of supplied member names, rejection of direct name updates, acceptance of email assignments, and rejection of non-email assignments. Historical records were not bulk-deleted. Security advisor categories/counts were unchanged from the pre-migration baseline; this is not a clean security audit.
+
+These are incremental migrations for an existing schema, not a bootstrap baseline for an empty database. Future automated deployment needs a baseline strategy and an authenticated deployment connection; merely deploying Vercel does not run database migrations. Do not add a public SQL execution endpoint or put database credentials in browser code.

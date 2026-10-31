@@ -109,7 +109,8 @@ drop policy if exists "Leave, or owner removes" on public.team_members;
 create policy "Leave, or owner removes" on public.team_members for delete to authenticated
   using (user_id = (select auth.uid()) or public.is_team_owner(team_id));
 grant select, delete on public.team_members to authenticated;
-revoke update (name) on public.team_members from authenticated;
+revoke update on public.team_members from public, anon, authenticated;
+revoke update (name) on public.team_members from public, anon, authenticated;
 
 -- Teams are created and joined only through these functions, so nobody can add
 -- themselves to a team without its invite code or make themselves an owner.
