@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sources we cover · PV Info</title>
+  <meta name="description" content="The regulator feeds, news searches and other sources PV Info collects drug safety and regulatory updates from.">
+  <meta name="theme-color" content="#0f4c5c">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Vercel Web Analytics and Speed Insights (enable both in the Vercel dashboard) -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
+    <p class="tagline">Pharmacovigilance and regulatory updates from every major regulator</p>
+    <button type="button" class="menu-btn" aria-controls="site-nav" aria-expanded="false">Menu</button>
+    <nav class="toplinks" id="site-nav" aria-label="Main">
+      <a href="./">Updates</a>
+      <a href="briefing.html">My Briefing</a>
+      <a href="research.html">Research</a>
+      <a href="companies.html">Companies</a>
+      <a href="team.html" data-nav="team">Team</a>
+      <a href="archive.html">Archive</a>
+      <a href="globe.html">Globe</a>
+      <a href="agencies.html">Agencies</a>
+      <a href="about.html">About</a>
+      <a href="account.html" class="signin" data-nav="account">Sign in</a>
+    </nav>
+  </header>
+  <main class="page">
+    <h1>Sources we cover</h1>
+    <p class="intro" id="lede">Every source PV Info collects updates from, refreshed every hour. Official regulator feeds are marked as such; news searches find coverage of agencies that publish no feed of their own.</p>
+    <div id="summary"></div>
+    <div class="row ds-tools" id="filters" hidden>
+      <input type="search" id="q" placeholder="Search sources or countries" aria-label="Search sources">
+      <select id="cls" aria-label="Classification"><option value="">All kinds</option></select>
+      <select id="region" aria-label="Country or region"><option value="">All countries and regions</option></select>
+    </div>
+    <div id="list"></div>
+    <p class="hint">See also the <a href="agencies.html">regulators and PV bodies</a> PV Info follows.</p>
+  </main>
+  <script type="module" src="coverage.js"></script>
+  <script type="module">import { navOnly } from "./cloud.js"; navOnly();</script>
+  <script type="module" src="nav.js"></script>
+</body>
+</html>

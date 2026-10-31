@@ -30,7 +30,7 @@ export function healthReport(status, now = Date.now()) {
   if (alerts.length) lines.push("### Needs attention", ...alerts.map((p) => `- ${p.text}`), "");
   const minor = problems.filter((p) => !p.alert);
   if (minor.length) lines.push("### Also seen (not alerting yet)", ...minor.map((p) => `- ${p.text}`), "");
-  lines.push(`Details: ${SITE_URL}/status.html`, "", "This issue closes itself when the next check is healthy.");
+  lines.push(`Details: ${SITE_URL}/status.html · Manage sources: ${SITE_URL}/admin-sources.html`, "", "This issue closes itself when the next check is healthy.");
   return { healthy: alerts.length === 0, body: lines.filter((l) => l !== null).join("\n") };
 }
 

@@ -1,11 +1,11 @@
 [
   { "code": "INT", "country": "International", "region": "International", "terms": ["global", "worldwide", "international"], "agencies": [
-    { "abbr": "WHO", "name": "World Health Organization", "url": "https://www.who.int/teams/regulation-prequalification/regulation-and-safety/pharmacovigilance", "aliases": ["World Health Organization", "WHO"], "query": "\"World Health Organization\" (medical product alert OR vaccine safety OR pharmacovigilance OR falsified medicine)" },
-    { "abbr": "UMC", "name": "Uppsala Monitoring Centre (WHO Programme for International Drug Monitoring)", "url": "https://who-umc.org", "aliases": ["Uppsala Monitoring Centre", "VigiBase", "WHO-UMC"], "query": "\"Uppsala Monitoring Centre\" OR VigiBase" },
-    { "abbr": "ICH", "name": "International Council for Harmonisation", "url": "https://www.ich.org", "aliases": ["ICH E2", "ICH guideline", "International Council for Harmonisation", "ICH E2B", "ICH E2E", "ICH E2C"], "query": "\"ICH guideline\" OR \"ICH E2\" OR \"International Council for Harmonisation\"" },
-    { "abbr": "CIOMS", "name": "Council for International Organizations of Medical Sciences", "url": "https://cioms.ch", "aliases": ["CIOMS"], "query": "CIOMS (pharmacovigilance OR working group OR report)" },
-    { "abbr": "ICMRA", "name": "International Coalition of Medicines Regulatory Authorities", "url": "https://www.icmra.info", "aliases": ["ICMRA"], "query": "ICMRA medicines regulators" },
-    { "abbr": "AMA", "name": "African Medicines Agency", "url": "https://www.nepad.org/microsite/african-medicines-agency-ama", "aliases": ["African Medicines Agency"], "query": "\"African Medicines Agency\"" }
+    { "abbr": "WHO", "name": "World Health Organization", "url": "https://www.who.int/teams/regulation-prequalification/regulation-and-safety/pharmacovigilance", "aliases": ["World Health Organization", "WHO"] },
+    { "abbr": "UMC", "name": "Uppsala Monitoring Centre (WHO Programme for International Drug Monitoring)", "url": "https://who-umc.org", "aliases": ["Uppsala Monitoring Centre", "VigiBase", "WHO-UMC"] },
+    { "abbr": "ICH", "name": "International Council for Harmonisation", "url": "https://www.ich.org", "aliases": ["ICH E2", "ICH guideline", "International Council for Harmonisation", "ICH E2B", "ICH E2E", "ICH E2C"] },
+    { "abbr": "CIOMS", "name": "Council for International Organizations of Medical Sciences", "url": "https://cioms.ch", "aliases": ["CIOMS"] },
+    { "abbr": "ICMRA", "name": "International Coalition of Medicines Regulatory Authorities", "url": "https://www.icmra.info", "aliases": ["ICMRA"] },
+    { "abbr": "AMA", "name": "African Medicines Agency", "url": "https://www.nepad.org/microsite/african-medicines-agency-ama", "aliases": ["African Medicines Agency"] }
   ]},
 
   { "code": "US", "country": "United States", "region": "Americas", "terms": ["United States", "U.S.", "US", "American"], "agencies": [
@@ -15,144 +15,144 @@
     { "abbr": "HC", "name": "Health Canada", "url": "https://recalls-rappels.canada.ca/en", "aliases": ["Health Canada", "Canada Vigilance", "MedEffect"] }
   ]},
   { "code": "BR", "country": "Brazil", "region": "Americas", "terms": ["Brazil", "Brazilian", "Brasil"], "agencies": [
-    { "abbr": "ANVISA", "name": "Agência Nacional de Vigilância Sanitária", "url": "https://www.gov.br/anvisa", "aliases": ["ANVISA", "Anvisa"], "query": "Anvisa (farmacovigilância OR pharmacovigilance OR recall OR alerta OR resolução OR medicamento)" }
+    { "abbr": "ANVISA", "name": "Agência Nacional de Vigilância Sanitária", "url": "https://www.gov.br/anvisa", "aliases": ["ANVISA", "Anvisa"] }
   ]},
   { "code": "MX", "country": "Mexico", "region": "Americas", "terms": ["Mexico", "Mexican", "México"], "agencies": [
-    { "abbr": "COFEPRIS", "name": "Comisión Federal para la Protección contra Riesgos Sanitarios", "url": "https://www.gob.mx/cofepris", "aliases": ["COFEPRIS", "Cofepris"], "query": "COFEPRIS (farmacovigilancia OR alerta sanitaria OR medicamento OR NOM)" }
+    { "abbr": "COFEPRIS", "name": "Comisión Federal para la Protección contra Riesgos Sanitarios", "url": "https://www.gob.mx/cofepris", "aliases": ["COFEPRIS", "Cofepris"] }
   ]},
   { "code": "AR", "country": "Argentina", "region": "Americas", "terms": ["Argentina", "Argentine"], "agencies": [
-    { "abbr": "ANMAT", "name": "Administración Nacional de Medicamentos, Alimentos y Tecnología Médica", "url": "https://www.argentina.gob.ar/anmat", "aliases": ["ANMAT"], "query": "ANMAT (medicamento OR farmacovigilancia OR retiro OR alerta)" }
+    { "abbr": "ANMAT", "name": "Administración Nacional de Medicamentos, Alimentos y Tecnología Médica", "url": "https://www.argentina.gob.ar/anmat", "aliases": ["ANMAT"] }
   ]},
   { "code": "CO", "country": "Colombia", "region": "Americas", "terms": ["Colombia", "Colombian"], "agencies": [
-    { "abbr": "INVIMA", "name": "Instituto Nacional de Vigilancia de Medicamentos y Alimentos", "url": "https://www.invima.gov.co", "aliases": ["INVIMA", "Invima"], "query": "INVIMA (medicamento OR farmacovigilancia OR alerta)" }
+    { "abbr": "INVIMA", "name": "Instituto Nacional de Vigilancia de Medicamentos y Alimentos", "url": "https://www.invima.gov.co", "aliases": ["INVIMA", "Invima"] }
   ]},
   { "code": "CL", "country": "Chile", "region": "Americas", "terms": ["Chile", "Chilean"], "agencies": [
-    { "abbr": "ISP", "name": "Instituto de Salud Pública de Chile", "url": "https://www.ispch.cl", "aliases": ["Instituto de Salud Pública de Chile", "ISP Chile"], "query": "\"Instituto de Salud Pública\" Chile (medicamento OR farmacovigilancia OR alerta)" }
+    { "abbr": "ISP", "name": "Instituto de Salud Pública de Chile", "url": "https://www.ispch.cl", "aliases": ["Instituto de Salud Pública de Chile", "ISP Chile"] }
   ]},
   { "code": "PE", "country": "Peru", "region": "Americas", "terms": ["Peru", "Peruvian", "Perú"], "agencies": [
-    { "abbr": "DIGEMID", "name": "Dirección General de Medicamentos, Insumos y Drogas", "url": "https://www.digemid.minsa.gob.pe", "aliases": ["DIGEMID", "Digemid"], "query": "DIGEMID (alerta OR medicamento OR farmacovigilancia)" }
+    { "abbr": "DIGEMID", "name": "Dirección General de Medicamentos, Insumos y Drogas", "url": "https://www.digemid.minsa.gob.pe", "aliases": ["DIGEMID", "Digemid"] }
   ]},
 
   { "code": "EU", "country": "European Union", "region": "Europe", "terms": ["European Union", "EU", "European Commission"], "agencies": [
-    { "abbr": "EMA", "name": "European Medicines Agency", "url": "https://www.ema.europa.eu/en/human-regulatory-overview/pharmacovigilance-overview", "aliases": ["EMA", "European Medicines Agency", "PRAC", "CHMP", "EudraVigilance", "Pharmacovigilance Risk Assessment Committee", "GVP module"], "query": "(\"European Medicines Agency\" OR PRAC OR EudraVigilance) (safety OR signal OR pharmacovigilance OR guideline OR referral)" }
+    { "abbr": "EMA", "name": "European Medicines Agency", "url": "https://www.ema.europa.eu/en/human-regulatory-overview/pharmacovigilance-overview", "aliases": ["EMA", "European Medicines Agency", "PRAC", "CHMP", "EudraVigilance", "Pharmacovigilance Risk Assessment Committee", "GVP module"] }
   ]},
   { "code": "GB", "country": "United Kingdom", "region": "Europe", "terms": ["United Kingdom", "UK", "U.K.", "Britain", "British", "England", "Scotland", "Wales"], "agencies": [
     { "abbr": "MHRA", "name": "Medicines and Healthcare products Regulatory Agency", "url": "https://www.gov.uk/government/organisations/medicines-and-healthcare-products-regulatory-agency", "aliases": ["MHRA", "Yellow Card", "Medicines and Healthcare products Regulatory Agency", "Drug Safety Update"] }
   ]},
   { "code": "DE", "country": "Germany", "region": "Europe", "terms": ["Germany", "German"], "agencies": [
-    { "abbr": "BfArM", "name": "Federal Institute for Drugs and Medical Devices", "url": "https://www.bfarm.de/EN/Home/_node.html", "aliases": ["BfArM", "Paul-Ehrlich-Institut", "Paul Ehrlich Institute"], "query": "(BfArM OR \"Paul-Ehrlich-Institut\") (Arzneimittel OR Rote-Hand-Brief OR safety OR Pharmakovigilanz)" }
+    { "abbr": "BfArM", "name": "Federal Institute for Drugs and Medical Devices", "url": "https://www.bfarm.de/EN/Home/_node.html", "aliases": ["BfArM", "Paul-Ehrlich-Institut", "Paul Ehrlich Institute"] }
   ]},
   { "code": "FR", "country": "France", "region": "Europe", "terms": ["France", "French"], "agencies": [
-    { "abbr": "ANSM", "name": "Agence nationale de sécurité du médicament et des produits de santé", "url": "https://ansm.sante.fr", "aliases": ["ANSM"], "query": "ANSM (médicament OR pharmacovigilance OR rappel OR sécurité)" }
+    { "abbr": "ANSM", "name": "Agence nationale de sécurité du médicament et des produits de santé", "url": "https://ansm.sante.fr", "aliases": ["ANSM"] }
   ]},
   { "code": "IT", "country": "Italy", "region": "Europe", "terms": ["Italy", "Italian"], "agencies": [
-    { "abbr": "AIFA", "name": "Agenzia Italiana del Farmaco", "url": "https://www.aifa.gov.it", "aliases": ["AIFA"], "query": "AIFA (farmacovigilanza OR farmaco OR nota informativa OR ritiro)" }
+    { "abbr": "AIFA", "name": "Agenzia Italiana del Farmaco", "url": "https://www.aifa.gov.it", "aliases": ["AIFA"] }
   ]},
   { "code": "ES", "country": "Spain", "region": "Europe", "terms": ["Spain", "Spanish", "España"], "agencies": [
-    { "abbr": "AEMPS", "name": "Agencia Española de Medicamentos y Productos Sanitarios", "url": "https://www.aemps.gob.es", "aliases": ["AEMPS"], "query": "AEMPS (medicamento OR farmacovigilancia OR alerta OR retirada)" }
+    { "abbr": "AEMPS", "name": "Agencia Española de Medicamentos y Productos Sanitarios", "url": "https://www.aemps.gob.es", "aliases": ["AEMPS"] }
   ]},
   { "code": "NL", "country": "Netherlands", "region": "Europe", "terms": ["Netherlands", "Dutch"], "agencies": [
-    { "abbr": "CBG-MEB", "name": "Medicines Evaluation Board / Lareb", "url": "https://www.cbg-meb.nl", "aliases": ["CBG-MEB", "Medicines Evaluation Board", "Lareb", "CBG"], "query": "(Lareb OR \"College ter Beoordeling van Geneesmiddelen\" OR CBG-MEB) (bijwerking OR geneesmiddel OR safety)" }
+    { "abbr": "CBG-MEB", "name": "Medicines Evaluation Board / Lareb", "url": "https://www.cbg-meb.nl", "aliases": ["CBG-MEB", "Medicines Evaluation Board", "Lareb", "CBG"] }
   ]},
   { "code": "IE", "country": "Ireland", "region": "Europe", "terms": ["Ireland", "Irish"], "agencies": [
-    { "abbr": "HPRA", "name": "Health Products Regulatory Authority", "url": "https://www.hpra.ie", "aliases": ["HPRA", "Health Products Regulatory Authority"], "query": "\"Health Products Regulatory Authority\" OR HPRA medicines" }
+    { "abbr": "HPRA", "name": "Health Products Regulatory Authority", "url": "https://www.hpra.ie", "aliases": ["HPRA", "Health Products Regulatory Authority"] }
   ]},
   { "code": "CH", "country": "Switzerland", "region": "Europe", "terms": ["Switzerland", "Swiss"], "agencies": [
-    { "abbr": "Swissmedic", "name": "Swissmedic", "url": "https://www.swissmedic.ch", "aliases": ["Swissmedic"], "query": "Swissmedic" }
+    { "abbr": "Swissmedic", "name": "Swissmedic", "url": "https://www.swissmedic.ch", "aliases": ["Swissmedic"] }
   ]},
   { "code": "SE", "country": "Sweden", "region": "Europe", "terms": ["Sweden", "Swedish"], "agencies": [
-    { "abbr": "MPA", "name": "Läkemedelsverket (Medical Products Agency)", "url": "https://www.lakemedelsverket.se/en", "aliases": ["Läkemedelsverket", "Swedish Medical Products Agency"], "query": "Läkemedelsverket" }
+    { "abbr": "MPA", "name": "Läkemedelsverket (Medical Products Agency)", "url": "https://www.lakemedelsverket.se/en", "aliases": ["Läkemedelsverket", "Swedish Medical Products Agency"] }
   ]},
   { "code": "DK", "country": "Denmark", "region": "Europe", "terms": ["Denmark", "Danish"], "agencies": [
-    { "abbr": "DKMA", "name": "Danish Medicines Agency", "url": "https://laegemiddelstyrelsen.dk/en", "aliases": ["Danish Medicines Agency", "Lægemiddelstyrelsen", "DKMA"], "query": "Lægemiddelstyrelsen OR \"Danish Medicines Agency\"" }
+    { "abbr": "DKMA", "name": "Danish Medicines Agency", "url": "https://laegemiddelstyrelsen.dk/en", "aliases": ["Danish Medicines Agency", "Lægemiddelstyrelsen", "DKMA"] }
   ]},
   { "code": "NO", "country": "Norway", "region": "Europe", "terms": ["Norway", "Norwegian"], "agencies": [
-    { "abbr": "DMP", "name": "Norwegian Medical Products Agency", "url": "https://www.dmp.no/en", "aliases": ["Direktoratet for medisinske produkter", "Norwegian Medical Products Agency"], "query": "\"Direktoratet for medisinske produkter\" OR \"Norwegian Medical Products Agency\"" }
+    { "abbr": "DMP", "name": "Norwegian Medical Products Agency", "url": "https://www.dmp.no/en", "aliases": ["Direktoratet for medisinske produkter", "Norwegian Medical Products Agency"] }
   ]},
   { "code": "BE", "country": "Belgium", "region": "Europe", "terms": ["Belgium", "Belgian"], "agencies": [
-    { "abbr": "FAMHP", "name": "Federal Agency for Medicines and Health Products", "url": "https://www.famhp.be/en", "aliases": ["FAMHP", "AFMPS", "FAGG"], "query": "FAMHP OR AFMPS OR FAGG medicines" }
+    { "abbr": "FAMHP", "name": "Federal Agency for Medicines and Health Products", "url": "https://www.famhp.be/en", "aliases": ["FAMHP", "AFMPS", "FAGG"] }
   ]},
   { "code": "PL", "country": "Poland", "region": "Europe", "terms": ["Poland", "Polish"], "agencies": [
-    { "abbr": "URPL", "name": "Office for Registration of Medicinal Products", "url": "https://urpl.gov.pl/en", "aliases": ["URPL", "GIF Poland"], "query": "URPL OR \"Główny Inspektorat Farmaceutyczny\"" }
+    { "abbr": "URPL", "name": "Office for Registration of Medicinal Products", "url": "https://urpl.gov.pl/en", "aliases": ["URPL", "GIF Poland"] }
   ]},
   { "code": "TR", "country": "Türkiye", "region": "Europe", "terms": ["Turkey", "Türkiye", "Turkish"], "agencies": [
-    { "abbr": "TITCK", "name": "Turkish Medicines and Medical Devices Agency", "url": "https://www.titck.gov.tr", "aliases": ["TITCK", "TİTCK"], "query": "TİTCK OR TITCK ilaç" }
+    { "abbr": "TITCK", "name": "Turkish Medicines and Medical Devices Agency", "url": "https://www.titck.gov.tr", "aliases": ["TITCK", "TİTCK"] }
   ]},
   { "code": "RU", "country": "Russia", "region": "Europe", "terms": ["Russia", "Russian"], "agencies": [
-    { "abbr": "Roszdravnadzor", "name": "Federal Service for Surveillance in Healthcare", "url": "https://roszdravnadzor.gov.ru", "aliases": ["Roszdravnadzor", "Росздравнадзор"], "query": "Roszdravnadzor OR Росздравнадзор" }
+    { "abbr": "Roszdravnadzor", "name": "Federal Service for Surveillance in Healthcare", "url": "https://roszdravnadzor.gov.ru", "aliases": ["Roszdravnadzor", "Росздравнадзор"] }
   ]},
 
   { "code": "JP", "country": "Japan", "region": "Asia-Pacific", "terms": ["Japan", "Japanese"], "agencies": [
-    { "abbr": "PMDA", "name": "Pharmaceuticals and Medical Devices Agency / MHLW", "url": "https://www.pmda.go.jp/english/safety/info-services/drugs/0001.html", "aliases": ["PMDA", "MHLW", "Ministry of Health, Labour and Welfare", "Pharmaceuticals and Medical Devices Agency"], "query": "(PMDA OR MHLW OR \"Pharmaceuticals and Medical Devices Agency\") (safety OR revision OR precautions OR guideline OR approval)" }
+    { "abbr": "PMDA", "name": "Pharmaceuticals and Medical Devices Agency / MHLW", "url": "https://www.pmda.go.jp/english/safety/info-services/drugs/0001.html", "aliases": ["PMDA", "MHLW", "Ministry of Health, Labour and Welfare", "Pharmaceuticals and Medical Devices Agency"] }
   ]},
   { "code": "IN", "country": "India", "region": "Asia-Pacific", "terms": ["India", "Indian"], "agencies": [
-    { "abbr": "CDSCO", "name": "Central Drugs Standard Control Organisation / PvPI", "url": "https://cdsco.gov.in", "aliases": ["CDSCO", "DCGI", "Drugs Controller General", "PvPI", "Pharmacovigilance Programme of India", "Indian Pharmacopoeia Commission"], "query": "(CDSCO OR DCGI OR PvPI OR \"Pharmacovigilance Programme of India\") (drug OR alert OR notification OR guidance OR safety)" }
+    { "abbr": "CDSCO", "name": "Central Drugs Standard Control Organisation / PvPI", "url": "https://cdsco.gov.in", "aliases": ["CDSCO", "DCGI", "Drugs Controller General", "PvPI", "Pharmacovigilance Programme of India", "Indian Pharmacopoeia Commission"] }
   ]},
   { "code": "CN", "country": "China", "region": "Asia-Pacific", "terms": ["China", "Chinese"], "agencies": [
-    { "abbr": "NMPA", "name": "National Medical Products Administration", "url": "https://english.nmpa.gov.cn", "aliases": ["NMPA", "National Medical Products Administration", "CDE China"], "query": "NMPA (drug OR regulation OR pharmacovigilance OR guideline OR safety)" }
+    { "abbr": "NMPA", "name": "National Medical Products Administration", "url": "https://english.nmpa.gov.cn", "aliases": ["NMPA", "National Medical Products Administration", "CDE China"] }
   ]},
   { "code": "KR", "country": "South Korea", "region": "Asia-Pacific", "terms": ["South Korea", "Korea", "Korean"], "agencies": [
-    { "abbr": "MFDS", "name": "Ministry of Food and Drug Safety", "url": "https://www.mfds.go.kr/eng/index.do", "aliases": ["MFDS", "Ministry of Food and Drug Safety", "KIDS Korea"], "query": "MFDS (drug OR safety OR regulation OR guideline)" }
+    { "abbr": "MFDS", "name": "Ministry of Food and Drug Safety", "url": "https://www.mfds.go.kr/eng/index.do", "aliases": ["MFDS", "Ministry of Food and Drug Safety", "KIDS Korea"] }
   ]},
   { "code": "AU", "country": "Australia", "region": "Asia-Pacific", "terms": ["Australia", "Australian"], "agencies": [
     { "abbr": "TGA", "name": "Therapeutic Goods Administration", "url": "https://www.tga.gov.au/safety", "aliases": ["TGA", "Therapeutic Goods Administration"] }
   ]},
   { "code": "NZ", "country": "New Zealand", "region": "Asia-Pacific", "terms": ["New Zealand"], "agencies": [
-    { "abbr": "Medsafe", "name": "Medsafe (New Zealand Medicines and Medical Devices Safety Authority)", "url": "https://www.medsafe.govt.nz", "aliases": ["Medsafe", "CARM", "Pharmac"], "query": "Medsafe (medicine OR safety OR alert)" }
+    { "abbr": "Medsafe", "name": "Medsafe (New Zealand Medicines and Medical Devices Safety Authority)", "url": "https://www.medsafe.govt.nz", "aliases": ["Medsafe", "CARM", "Pharmac"] }
   ]},
   { "code": "SG", "country": "Singapore", "region": "Asia-Pacific", "terms": ["Singapore", "Singaporean"], "agencies": [
-    { "abbr": "HSA", "name": "Health Sciences Authority", "url": "https://www.hsa.gov.sg", "aliases": ["Health Sciences Authority"], "query": "\"Health Sciences Authority\" Singapore" }
+    { "abbr": "HSA", "name": "Health Sciences Authority", "url": "https://www.hsa.gov.sg", "aliases": ["Health Sciences Authority"] }
   ]},
   { "code": "MY", "country": "Malaysia", "region": "Asia-Pacific", "terms": ["Malaysia", "Malaysian"], "agencies": [
-    { "abbr": "NPRA", "name": "National Pharmaceutical Regulatory Agency", "url": "https://www.npra.gov.my", "aliases": ["NPRA"], "query": "NPRA Malaysia" }
+    { "abbr": "NPRA", "name": "National Pharmaceutical Regulatory Agency", "url": "https://www.npra.gov.my", "aliases": ["NPRA"] }
   ]},
   { "code": "TH", "country": "Thailand", "region": "Asia-Pacific", "terms": ["Thailand", "Thai"], "agencies": [
-    { "abbr": "Thai FDA", "name": "Thai Food and Drug Administration", "url": "https://en.fda.moph.go.th", "aliases": ["Thai FDA"], "query": "\"Thai FDA\" drug" }
+    { "abbr": "Thai FDA", "name": "Thai Food and Drug Administration", "url": "https://en.fda.moph.go.th", "aliases": ["Thai FDA"] }
   ]},
   { "code": "PH", "country": "Philippines", "region": "Asia-Pacific", "terms": ["Philippines", "Filipino"], "agencies": [
-    { "abbr": "FDA PH", "name": "Food and Drug Administration Philippines", "url": "https://www.fda.gov.ph", "aliases": ["FDA Philippines", "Philippine FDA"], "query": "\"FDA Philippines\" OR \"Philippine FDA\" (drug OR advisory OR medicine)" }
+    { "abbr": "FDA PH", "name": "Food and Drug Administration Philippines", "url": "https://www.fda.gov.ph", "aliases": ["FDA Philippines", "Philippine FDA"] }
   ]},
   { "code": "ID", "country": "Indonesia", "region": "Asia-Pacific", "terms": ["Indonesia", "Indonesian"], "agencies": [
-    { "abbr": "BPOM", "name": "Badan Pengawas Obat dan Makanan", "url": "https://www.pom.go.id", "aliases": ["BPOM"], "query": "BPOM (obat OR drug OR farmakovigilans)" }
+    { "abbr": "BPOM", "name": "Badan Pengawas Obat dan Makanan", "url": "https://www.pom.go.id", "aliases": ["BPOM"] }
   ]},
   { "code": "TW", "country": "Taiwan", "region": "Asia-Pacific", "terms": ["Taiwan", "Taiwanese"], "agencies": [
-    { "abbr": "TFDA", "name": "Taiwan Food and Drug Administration", "url": "https://www.fda.gov.tw/ENG", "aliases": ["TFDA", "Taiwan FDA"], "query": "\"Taiwan FDA\" OR TFDA drug" }
+    { "abbr": "TFDA", "name": "Taiwan Food and Drug Administration", "url": "https://www.fda.gov.tw/ENG", "aliases": ["TFDA", "Taiwan FDA"] }
   ]},
   { "code": "VN", "country": "Vietnam", "region": "Asia-Pacific", "terms": ["Vietnam", "Vietnamese", "Viet Nam"], "agencies": [
-    { "abbr": "DAV", "name": "Drug Administration of Vietnam", "url": "https://dav.gov.vn", "aliases": ["Drug Administration of Vietnam"], "query": "\"Drug Administration of Vietnam\" OR \"Cục Quản lý Dược\"" }
+    { "abbr": "DAV", "name": "Drug Administration of Vietnam", "url": "https://dav.gov.vn", "aliases": ["Drug Administration of Vietnam"] }
   ]},
   { "code": "PK", "country": "Pakistan", "region": "Asia-Pacific", "terms": ["Pakistan", "Pakistani"], "agencies": [
-    { "abbr": "DRAP", "name": "Drug Regulatory Authority of Pakistan", "url": "https://www.dra.gov.pk", "aliases": ["DRAP", "Drug Regulatory Authority of Pakistan"], "query": "DRAP (drug OR alert OR recall OR pharmacovigilance)" }
+    { "abbr": "DRAP", "name": "Drug Regulatory Authority of Pakistan", "url": "https://www.dra.gov.pk", "aliases": ["DRAP", "Drug Regulatory Authority of Pakistan"] }
   ]},
   { "code": "BD", "country": "Bangladesh", "region": "Asia-Pacific", "terms": ["Bangladesh", "Bangladeshi"], "agencies": [
-    { "abbr": "DGDA", "name": "Directorate General of Drug Administration", "url": "https://dgda.gov.bd", "aliases": ["DGDA"], "query": "DGDA Bangladesh drug" }
+    { "abbr": "DGDA", "name": "Directorate General of Drug Administration", "url": "https://dgda.gov.bd", "aliases": ["DGDA"] }
   ]},
   { "code": "HK", "country": "Hong Kong", "region": "Asia-Pacific", "terms": ["Hong Kong"], "agencies": [
-    { "abbr": "DH Drug Office", "name": "Department of Health Drug Office", "url": "https://www.drugoffice.gov.hk", "aliases": ["Drug Office Hong Kong"], "query": "\"Hong Kong\" \"Department of Health\" (drug recall OR pharmaceutical OR medicine)" }
+    { "abbr": "DH Drug Office", "name": "Department of Health Drug Office", "url": "https://www.drugoffice.gov.hk", "aliases": ["Drug Office Hong Kong"] }
   ]},
 
   { "code": "SA", "country": "Saudi Arabia", "region": "Middle East & Africa", "terms": ["Saudi Arabia", "Saudi"], "agencies": [
-    { "abbr": "SFDA", "name": "Saudi Food and Drug Authority", "url": "https://www.sfda.gov.sa/en", "aliases": ["SFDA", "Saudi Food and Drug Authority"], "query": "SFDA (drug OR pharmacovigilance OR safety OR regulation)" }
+    { "abbr": "SFDA", "name": "Saudi Food and Drug Authority", "url": "https://www.sfda.gov.sa/en", "aliases": ["SFDA", "Saudi Food and Drug Authority"] }
   ]},
   { "code": "AE", "country": "United Arab Emirates", "region": "Middle East & Africa", "terms": ["United Arab Emirates", "UAE", "Emirati", "Dubai", "Abu Dhabi"], "agencies": [
-    { "abbr": "EDE", "name": "Emirates Drug Establishment / MOHAP", "url": "https://mohap.gov.ae/en", "aliases": ["MOHAP", "Emirates Drug Establishment"], "query": "(\"Emirates Drug Establishment\" OR MOHAP) (drug OR medicine OR recall)" }
+    { "abbr": "EDE", "name": "Emirates Drug Establishment / MOHAP", "url": "https://mohap.gov.ae/en", "aliases": ["MOHAP", "Emirates Drug Establishment"] }
   ]},
   { "code": "EG", "country": "Egypt", "region": "Middle East & Africa", "terms": ["Egypt", "Egyptian"], "agencies": [
-    { "abbr": "EDA", "name": "Egyptian Drug Authority", "url": "https://www.edaegypt.gov.eg/en", "aliases": ["Egyptian Drug Authority"], "query": "\"Egyptian Drug Authority\"" }
+    { "abbr": "EDA", "name": "Egyptian Drug Authority", "url": "https://www.edaegypt.gov.eg/en", "aliases": ["Egyptian Drug Authority"] }
   ]},
   { "code": "IL", "country": "Israel", "region": "Middle East & Africa", "terms": ["Israel", "Israeli"], "agencies": [
-    { "abbr": "MoH Israel", "name": "Israel Ministry of Health, Pharmaceutical Division", "url": "https://www.gov.il/en/departments/ministry_of_health", "aliases": ["Israeli Ministry of Health"], "query": "\"Israel\" \"Ministry of Health\" (drug safety OR medicine recall)" }
+    { "abbr": "MoH Israel", "name": "Israel Ministry of Health, Pharmaceutical Division", "url": "https://www.gov.il/en/departments/ministry_of_health", "aliases": ["Israeli Ministry of Health"] }
   ]},
   { "code": "ZA", "country": "South Africa", "region": "Middle East & Africa", "terms": ["South Africa", "South African"], "agencies": [
-    { "abbr": "SAHPRA", "name": "South African Health Products Regulatory Authority", "url": "https://www.sahpra.org.za", "aliases": ["SAHPRA"], "query": "SAHPRA" }
+    { "abbr": "SAHPRA", "name": "South African Health Products Regulatory Authority", "url": "https://www.sahpra.org.za", "aliases": ["SAHPRA"] }
   ]},
   { "code": "NG", "country": "Nigeria", "region": "Middle East & Africa", "terms": ["Nigeria", "Nigerian"], "agencies": [
-    { "abbr": "NAFDAC", "name": "National Agency for Food and Drug Administration and Control", "url": "https://nafdac.gov.ng", "aliases": ["NAFDAC"], "query": "NAFDAC (drug OR alert OR recall OR pharmacovigilance OR falsified)" }
+    { "abbr": "NAFDAC", "name": "National Agency for Food and Drug Administration and Control", "url": "https://nafdac.gov.ng", "aliases": ["NAFDAC"] }
   ]},
   { "code": "KE", "country": "Kenya", "region": "Middle East & Africa", "terms": ["Kenya", "Kenyan"], "agencies": [
-    { "abbr": "PPB", "name": "Pharmacy and Poisons Board", "url": "https://web.pharmacyboardkenya.org", "aliases": ["Pharmacy and Poisons Board"], "query": "\"Pharmacy and Poisons Board\" Kenya" }
+    { "abbr": "PPB", "name": "Pharmacy and Poisons Board", "url": "https://web.pharmacyboardkenya.org", "aliases": ["Pharmacy and Poisons Board"] }
   ]},
   { "code": "GH", "country": "Ghana", "region": "Middle East & Africa", "terms": ["Ghana", "Ghanaian"], "agencies": [
-    { "abbr": "FDA Ghana", "name": "Food and Drugs Authority Ghana", "url": "https://fdaghana.gov.gh", "aliases": ["Food and Drugs Authority", "FDA Ghana"], "query": "\"Food and Drugs Authority\" Ghana (drug OR medicine OR recall)" }
+    { "abbr": "FDA Ghana", "name": "Food and Drugs Authority Ghana", "url": "https://fdaghana.gov.gh", "aliases": ["Food and Drugs Authority", "FDA Ghana"] }
   ]}
 ]

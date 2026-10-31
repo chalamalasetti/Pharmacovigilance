@@ -6,12 +6,13 @@
 //   node scripts/aggregate.mjs --fixtures DIR   # parse DIR/manifest.json feeds from local .xml files (offline testing)
 
 import { readFile, writeFile } from "node:fs/promises";
-import { createHash } from "node:crypto";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { XMLParser } from "fast-xml-parser";
-import { CATEGORIES, categorize, isRelevant, countryMatchers, detectCountry } from "./classify.mjs";
-import { buildFeeds } from "./sources.mjs";
+import { CATEGORIES, countryMatchers } from "./classify.mjs";
+import { updateId, normalizeLink, titleKey, stripHtml, parseFeed, parseItems, enrich } from "./parse.mjs";
+import { loadRegistry, buildFeeds, writeRegistryFiles, recordRuns } from "./sources.mjs";
+import { safeFetch, explainError } from "./safe-fetch.mjs";
+import { fillSecrets, redact } from "../public/sources-lib.js";
 import { writeRss } from "./rss.mjs";
 import { archiveUpdates, writePublicConfig } from "./cloud.mjs";
 import { collectResearch } from "./research.mjs";
@@ -31,12 +32,7 @@ const CONCURRENCY = 8;
 export const SITE_URL = (process.env.SITE_URL || "https://pharmacovigilance-info.vercel.app").replace(/\/$/, "");
 const UA = "PVInfo/0.1 (+https://github.com/chalamalasetti/Pharmacovigilance)";
 
-const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "@", textNodeName: "#text" });
-
-export const updateId = (link) => createHash("sha1").update(link).digest("hex").slice(0, 10);
-
-const asArray = (v) => (v == null ? [] : Array.isArray(v) ? v : [v]);
-const text = (v) => (v == null ? "" : typeof v === "object" ? String(v["#text"] ?? "") : String(v));
+export { updateId, normalizeLink, titleKey, stripHtml, parseFeed, enrich };
 
 async function fetchText(url, tries = 2) {
   try {
@@ -52,113 +48,6 @@ async function fetchText(url, tries = 2) {
     await new Promise((r) => setTimeout(r, 1500));
     return fetchText(url, tries - 1);
   }
-}
-
-// Same update, different tracking tags: strip them so duplicates collapse.
-export function normalizeLink(link) {
-  try {
-    const u = new URL(link.trim());
-    u.hash = "";
-    for (const k of [...u.searchParams.keys()]) {
-      if (/^(utm_|at_|cmp|ito|ns_|ref$|source$)/i.test(k)) u.searchParams.delete(k);
-    }
-    u.protocol = "https:";
-    if (u.pathname.length > 1) u.pathname = u.pathname.replace(/\/$/, "");
-    return u.href.replace(/\/$/, "");
-  } catch {
-    return link.trim();
-  }
-}
-
-// Loose key for spotting the same headline from two outlets.
-export function titleKey(title) {
-  return title
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}\s]/gu, "")
-    .replace(/\s+/g, " ")
-    .trim()
-    .slice(0, 80);
-}
-
-export function stripHtml(s) {
-  return String(s)
-    .replace(/<[^>]*>/g, " ")
-    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(n))
-    .replace(/&(amp|quot|apos|#39|lt|gt|nbsp);/g, (m, e) => ({ amp: "&", quot: '"', apos: "'", "#39": "'", lt: "<", gt: ">", nbsp: " " })[e])
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function linkFromItem(item) {
-  for (const l of asArray(item.link)) {
-    if (typeof l === "string" && l.trim()) return l.trim();
-    if (l && l["@href"] && (!l["@rel"] || l["@rel"] === "alternate")) return l["@href"];
-  }
-  const guid = text(item.guid) || text(item.id);
-  return guid.startsWith("http") ? guid : null;
-}
-
-// Reads RSS 2.0, RSS 1.0 (RDF) and Atom. News searches name the outlet in <source>
-// and at the end of the headline ("Title - Outlet"); both are split back out.
-export function parseFeed(xml, feed) {
-  const doc = parser.parse(xml);
-  const items = doc.rss?.channel
-    ? asArray(doc.rss.channel.item)
-    : doc["rdf:RDF"]
-      ? asArray(doc["rdf:RDF"].item)
-      : asArray(doc.feed?.entry);
-
-  return items
-    .map((item) => {
-      const raw = linkFromItem(item);
-      if (!raw) return null;
-      let title = stripHtml(text(item.title));
-      const outlet = text(item.source).trim();
-      if (outlet && title.endsWith(` - ${outlet}`)) title = title.slice(0, -(outlet.length + 3)).trim();
-      let summary = stripHtml(text(item.description) || text(item.summary) || text(item.content)).slice(0, 500);
-      // News search descriptions just repeat the headline and outlet.
-      if (summary && (summary.startsWith(title) || (outlet && summary.endsWith(outlet) && summary.length < title.length + outlet.length + 10))) summary = "";
-      const date = new Date(text(item.pubDate) || text(item["dc:date"]) || text(item.published) || text(item.updated));
-      if (date.getTime() > Date.now()) date.setTime(Date.now());
-      return {
-        title,
-        link: normalizeLink(raw),
-        summary,
-        source: outlet || feed.source,
-        published: Number.isNaN(date.getTime()) ? null : date.toISOString(),
-      };
-    })
-    .filter((i) => i && i.title);
-}
-
-const CATEGORY_WEIGHT = { safety: 5, recall: 4, label: 4, regulation: 4, guideline: 4, policy: 2, inspection: 2, approval: 1, news: 0 };
-
-// Tags each raw item with its country, region, agency and section, and a priority score
-// used to pick the "Key updates" at the top of the page.
-export function enrich(item, feed, { matchers, byCode }) {
-  const found = detectCountry(`${item.title}. ${item.summary}`, matchers);
-  if (feed.relevance === "pv" && !isRelevant(item.title, item.summary, { namesRegulator: Boolean(found?.agency) })) return null;
-  // Official feeds speak for their own country; news is placed by what it mentions.
-  const code = feed.kind === "official" ? feed.country : (found?.code ?? feed.country ?? "INT");
-  const place = byCode.get(code) ?? byCode.get("INT");
-  const agency = feed.kind === "official" ? place.agencies[0].abbr : found?.code === code ? found.agency : null;
-  const { category, tags } = categorize(item.title, item.summary, feed.category);
-  const priority = CATEGORY_WEIGHT[category] + (feed.kind === "official" ? 3 : 0) + (agency ? 1 : 0);
-  return {
-    id: updateId(item.link),
-    title: item.title,
-    link: item.link,
-    ...(item.summary && { summary: item.summary }),
-    source: item.source,
-    kind: feed.kind,
-    country: place.code,
-    region: place.region,
-    ...(agency && { agency }),
-    category,
-    tags,
-    priority,
-    published: item.published,
-  };
 }
 
 // Newest first, one copy of each update (by link or headline). Official notices win
@@ -199,15 +88,18 @@ async function previousJson(file, sitePath = path.basename(file)) {
   }
 }
 
-// One row per feed for the Data status page and the health check. lastSuccess and
-// failingSince carry over from the previous build, so an outage shows how long it has lasted.
+// One row per feed for the Data status page and the health check. lastSuccess,
+// failingSince and the count of failures in a row carry over from the previous build,
+// so an outage shows how long it has lasted. Registry sources keep their id when their
+// address changes; rows from before the registry (keyed by address) are picked up once.
 export function feedStatus(feeds, results, previous = [], now = new Date().toISOString()) {
   const before = new Map(previous.map((s) => [s.id, s]));
   return feeds.map((f, i) => {
-    const id = updateId(f.url ?? f.fixture ?? f.source);
-    const prev = before.get(id);
+    const legacy = updateId(f.url ?? f.fixture ?? f.source);
+    const id = f.id ?? legacy;
+    const prev = before.get(id) ?? before.get(legacy);
     const r = results[i];
-    const row = { id, name: f.label ?? `${f.source}${f.kind === "news" && f.country ? ` (${f.country})` : ""}`, kind: f.kind, country: f.country ?? null };
+    const row = { id, name: f.label ?? (f.id ? f.source : `${f.source}${f.kind === "news" && f.country ? ` (${f.country})` : ""}`), kind: f.kind, country: f.country ?? null };
     if (r.status === "fulfilled") return { ...row, ok: true, count: r.value.length, lastSuccess: now };
     return {
       ...row,
@@ -216,6 +108,7 @@ export function feedStatus(feeds, results, previous = [], now = new Date().toISO
       error: String(r.reason?.message ?? r.reason).slice(0, 120),
       lastSuccess: prev?.lastSuccess ?? null,
       failingSince: (prev && !prev.ok && prev.failingSince) || now,
+      failures: (prev && !prev.ok ? (prev.failures ?? 1) : 0) + 1,
     };
   });
 }
@@ -272,26 +165,75 @@ export function summarize(updates, agencies) {
   };
 }
 
+// One collection run for data_source_runs (supabase/schema.sql).
+export function sourceRun(feed, r, now) {
+  const m = r.status === "fulfilled" ? r.value.meta ?? {} : r.reason ?? {};
+  return {
+    source_id: feed.id,
+    run_at: now,
+    ok: r.status === "fulfilled",
+    http_status: m.http ?? null,
+    format: m.format ?? null,
+    error: r.status === "fulfilled" ? null : String(r.reason?.message ?? r.reason).slice(0, 300),
+    items_seen: r.status === "fulfilled" ? r.value.seen : 0,
+    items_kept: r.status === "fulfilled" ? r.value.length : 0,
+    items_new: r.status === "fulfilled" ? (m.new ?? 0) : 0,
+    newest_item: m.newest ?? null,
+    attempts: m.attempts ?? 1,
+    duration_ms: m.ms ?? null,
+  };
+}
+
 // Collects updates and writes updates.json and feed.xml. Returns how many were written.
 export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
   const agencies = JSON.parse(await readFile(AGENCIES, "utf8"));
   const ctx = { matchers: countryMatchers(agencies), byCode: new Map(agencies.map((c) => [c.code, c])) };
-  const feeds = fixturesDir
-    ? JSON.parse(await readFile(path.join(fixturesDir, "manifest.json"), "utf8"))
-    : buildFeeds(JSON.parse(await readFile(path.join(ROOT, "sources.json"), "utf8")), agencies);
+  const dataDir = path.dirname(out);
+  // The data source registry (Admin → Data sources) is the list of what to collect.
+  const registry = fixturesDir
+    ? null
+    : await loadRegistry({ previous: () => previousJson(path.join(dataDir, "sources/registry.json"), "sources/registry.json") });
+  let feeds;
+  let problems = [];
+  if (fixturesDir) feeds = JSON.parse(await readFile(path.join(fixturesDir, "manifest.json"), "utf8"));
+  else {
+    ({ feeds, problems } = buildFeeds(registry));
+    console.log(`sources: ${feeds.length} active of ${registry.sources.length} in the registry (${registry.from})`);
+    for (const p of problems) console.warn(`sources: skipped ${p.id}: ${p.problem}`);
+  }
+  const prevData = fixturesDir ? null : await previousJson(out);
+  const known = new Set((prevData?.updates ?? []).map((u) => u.id));
 
   const load = async (feed) => {
-    const xml = fixturesDir ? await readFile(path.join(fixturesDir, feed.fixture), "utf8") : await fetchText(feed.url);
-    const items = parseFeed(xml, feed);
-    const kept = items.map((i) => enrich(i, feed, ctx)).filter(Boolean).slice(0, MAX_PER_FEED);
+    const started = Date.now();
+    let body;
+    let meta = { attempts: 1 };
+    const secrets = registry?.secrets?.get(feed.id) ?? {};
+    if (fixturesDir) body = await readFile(path.join(fixturesDir, feed.fixture), "utf8");
+    else {
+      const url = fillSecrets(feed.url, secrets);
+      const headers = Object.fromEntries(Object.entries(feed.headers ?? {}).map(([k, v]) => [k, fillSecrets(v, secrets).value]));
+      if (url.missing.length) throw Object.assign(new Error(`Missing credential ${url.missing.join(", ")}`), { attempts: 0 });
+      try {
+        const res = await safeFetch(url.value, { headers, timeoutMs: FETCH_TIMEOUT_MS });
+        body = res.body;
+        meta = { attempts: res.attempts, http: res.status, contentType: res.contentType, url: res.url };
+      } catch (e) {
+        throw Object.assign(new Error(redact(explainError(e), secrets)), { attempts: e.attempts, http: e.status, ms: Date.now() - started });
+      }
+    }
+    const { format, items } = fixturesDir ? { format: "rss", items: parseFeed(body, feed) } : parseItems(body, feed, meta);
+    // After a resume or a new address, only items inside the catch-up window are taken.
+    const since = feed.since ? Date.parse(feed.since) : null;
+    const fresh = since ? items.filter((i) => !i.published || Date.parse(i.published) >= since) : items;
+    const kept = fresh.map((i) => enrich(i, feed, ctx)).filter(Boolean).slice(0, MAX_PER_FEED);
     kept.seen = items.length;
+    kept.meta = { ...meta, format, ms: Date.now() - started, newest: items.map((i) => i.published).filter(Boolean).sort().at(-1) ?? null, new: kept.filter((u) => !known.has(u.id)).length };
     return kept;
   };
 
   const results = await mapLimit(feeds, CONCURRENCY, load);
   const now = new Date().toISOString();
-  const dataDir = path.dirname(out);
-  const prevData = fixturesDir ? null : await previousJson(out);
   const prevStatus = fixturesDir ? null : await previousJson(path.join(dataDir, STATUS));
   const sources = feedStatus(feeds, results, prevStatus?.sources, now);
   const fresh = [];
@@ -305,6 +247,19 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
     }
   });
   const reachable = sources.filter((s) => s.ok).length;
+  if (registry) {
+    // The Admin page's health and history. Extra, so a problem here must not fail the build.
+    try {
+      await writeRegistryFiles(dataDir, registry, { problems, now });
+      if (registry.from === "database") {
+        const runs = feeds.map((f, i) => sourceRun(f, results[i], now));
+        const r = await recordRuns(runs);
+        if (!r.skipped) console.log(`sources: recorded ${r.saved} collection runs`);
+      }
+    } catch (e) {
+      console.warn(`sources: could not record runs: ${e.message}`);
+    }
+  }
 
   // Keep earlier updates still inside the window, so a feed that's down today doesn't erase its history.
   const previous = prevData?.updates ?? [];
@@ -345,7 +300,8 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
     // The archive is extra: a database hiccup must not fail the build.
     const names = new Map(agencies.map((c) => [c.code, c.country]));
     try {
-      const r = await archiveUpdates(updates, { countryName: (c) => names.get(c) ?? c });
+      // The source_id column exists once schema.sql has the registry, which is when the registry came from the database.
+      const r = await archiveUpdates(updates, { countryName: (c) => names.get(c) ?? c, withSourceId: registry?.from === "database" });
       if (!r.skipped) console.log(`database: archived ${r.saved} updates`);
     } catch (e) {
       console.warn(`database: archive failed: ${e.message}`);
