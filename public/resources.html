@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Public Safety Data Resources · PV Info</title>
+  <meta name="description" content="A curated directory of public drug, vaccine and device safety databases: what each contains, how to access it, its limitations and the official link.">
+  <meta name="theme-color" content="#0f4c5c">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Vercel Web Analytics and Speed Insights (enable both in the Vercel dashboard) -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
+    <p class="tagline">Pharmacovigilance and regulatory updates from every major regulator</p>
+    <button type="button" class="menu-btn" aria-controls="site-nav" aria-expanded="false">Menu</button>
+    <nav class="toplinks" id="site-nav" aria-label="Main">
+      <a href="./">Updates</a>
+      <a href="briefing.html">My Briefing</a>
+      <a href="research.html">Research</a>
+      <a href="resources.html">Resources</a>
+      <a href="companies.html">Companies</a>
+      <a href="team.html" data-nav="team">Team</a>
+      <a href="archive.html">Archive</a>
+      <a href="globe.html">Globe</a>
+      <a href="agencies.html">Agencies</a>
+      <a href="about.html">About</a>
+      <a href="account.html" class="signin" data-nav="account">Sign in</a>
+    </nav>
+  </header>
+  <main class="page rs-page" id="main">
+    <h1>Public Safety Data Resources</h1>
+    <p class="intro">Find publicly accessible safety databases, registers and safety communications, see what each one contains and how you can use it, and open the official resource.</p>
+    <details class="rs-coverage" id="coverage"><summary>What this directory covers</summary><p id="coverage-text"></p></details>
+
+    <section class="rs-guide" aria-labelledby="guide-h">
+      <h2 id="guide-h">Which resource should I use?</h2>
+      <div class="rs-guide-qs" id="guide" role="group" aria-label="Common questions"></div>
+      <p class="hint" id="guide-tip" role="status" aria-live="polite"></p>
+    </section>
+
+    <form class="rs-search" id="search-form" role="search">
+      <label for="q" class="label">Search</label>
+      <div class="row"><input type="search" id="q" placeholder="For example: Find adverse-event data for Japan" autocomplete="off"><button type="submit" class="primary">Search</button></div>
+    </form>
+    <div class="row rs-filters" id="filters" aria-label="Filters"></div>
+    <div class="chips rs-understood" id="understood" aria-live="polite"></div>
+    <p class="hint" id="count" role="status" aria-live="polite">Loading…</p>
+    <div id="list"></div>
+
+    <section class="profile rs-suggest" id="suggest" aria-labelledby="suggest-h">
+      <h2 id="suggest-h">Suggest a resource</h2>
+      <p class="hint">Know a public safety resource that should be here? Tell us; an editor checks every suggestion against the official source before adding it. No sign-in needed.</p>
+      <div id="suggest-form"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Each resource is checked against its official website; the date on each card is when its access and details were last checked. Inclusion here does not mean PV Info collects from a resource or endorses it. See also the <a href="coverage.html">sources PV Info collects updates from</a>.
+  </footer>
+  <script type="module" src="resources.js"></script>
+  <script type="module" src="nav.js"></script>
+</body>
+</html>

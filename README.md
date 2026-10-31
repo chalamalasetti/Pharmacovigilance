@@ -130,6 +130,20 @@ How it works: tables `data_sources`, `data_source_events`, `data_source_runs`, `
 
 To turn it on, run `supabase/schema.sql` again (safe to re-run). The 75 sources appear in the table at once, active, with the same URLs and settings.
 
+## Public Safety Data Resources
+
+`resources.html` (menu: Resources) is a curated directory of public safety databases, registers and safety communication lists. It is a reference for readers, separate from collection: listing a resource never makes the build collect from it. Automated collection needs a source in Data sources, tested and activated there.
+
+- **Each card** shows the name and maintaining organization, the question it helps answer, data coverage (countries, products, report types, years), access, downloads, API, reuse terms, limitations, the official link and when it was last verified. Public access, downloadable data and permission to reuse data are recorded separately.
+- **Categories:** adverse-event reporting databases; regulatory safety communications and recalls; product labels and reference information; clinical trial results; research and literature; specialist resources (vaccines, pregnancy, medication errors, medical devices).
+- **Finding things:** filters for country, category, product type, access and download/API; a search that reads plain questions ("Find adverse-event data for Japan") into those filters with keyword rules (no AI); and a "Which resource should I use?" guide. For a country, its own resources come first, then EU-wide ones for EEA countries and international ones. Filters are in the URL, so a view can be shared.
+- **Favorites** are kept in the reader's workspace (this browser; synced when signed in). Viewing never needs sign-in.
+- **Suggest a resource** and **Report incorrect information** need no sign-in. Messages go to `resource_feedback` through `submit_resource_feedback`, which allows five an hour per address (stored as a hash) and 200 a day in all.
+- **Admin → Safety data resources** (`admin-resources.html`): add, edit, verify ("Save and verify" records that you checked the official page today), categorize, flag a broken link (readers see a warning), publish, retire and restore, with every change in the resource's history. A resource is published only once verified (enforced by the database). Linking a resource to an existing data source only shows readers that PV Info collects from it; "Set up a source connector" opens a prefilled draft on the Data sources page, which collects only after its own test and activation.
+- **Coverage statement:** the page says it is a curated selection, not every database (`COVERAGE_STATEMENT` in `public/resources-lib.js`).
+
+How it works: tables `safety_resources`, `safety_resource_events` and `resource_feedback` in `supabase/schema.sql`, readable by admins only and changed through `admin_*` functions. Each build publishes the published entries to `public/data/resources.json` (`scripts/resources.mjs`) without editors' emails; if the database can't be reached it reuses that file from the live site. `resources.json` in the repository is the initial list: 57 resources, each checked against its official page on 31 Oct 2026 by an automated page read (marked "awaiting editor review" until an admin verifies it). Five whose pages could not be read are drafts. `schema.sql` imports the list once (regenerate with `npm run resources:sql`).
+
 ## Adding a country or source
 
 - New source: Admin → Data sources → **Add a source**.

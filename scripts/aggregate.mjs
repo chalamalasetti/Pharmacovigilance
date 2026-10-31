@@ -18,6 +18,7 @@ import { archiveUpdates, writePublicConfig } from "./cloud.mjs";
 import { collectResearch } from "./research.mjs";
 import { loadCompanies, annotateUpdates, writeCompanyData } from "./companies.mjs";
 import { loadOverlay, siteSettings } from "./admin.mjs";
+import { loadResources, writeResources } from "./resources.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "public/data/updates.json");
@@ -258,6 +259,18 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
       }
     } catch (e) {
       console.warn(`sources: could not record runs: ${e.message}`);
+    }
+  }
+
+  if (!fixturesDir) {
+    // Public Safety Data Resources (Admin → Safety data resources). A reference directory,
+    // not a list of feeds; a problem here must not fail the build.
+    try {
+      const loaded = await loadResources({ previous: () => previousJson(path.join(dataDir, "resources.json")) });
+      const r = await writeResources(dataDir, loaded, registry, now);
+      console.log(`resources: published ${r.total} resources (${loaded.from})${r.skipped.length ? `, skipped ${r.skipped.map((x) => x.id).join(", ")}` : ""}`);
+    } catch (e) {
+      console.warn(`resources: failed: ${e.message}`);
     }
   }
 

@@ -10,6 +10,7 @@
     "research": "node scripts/research.mjs",
     "registry": "node scripts/registry.mjs",
     "sources:sql": "node scripts/sources-sql.mjs",
+    "resources:sql": "node scripts/resources-sql.mjs",
     "test": "node --test test/*.test.mjs",
     "app": "node scripts/app.mjs",
     "start": "node scripts/app.mjs"

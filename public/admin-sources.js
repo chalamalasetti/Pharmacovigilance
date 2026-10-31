@@ -578,6 +578,15 @@ async function main() {
     return;
   }
   render();
+  // "Set up a source connector" on Admin → Safety data resources opens a draft here,
+  // prefilled from the resource. It is collected only after a passing test and activation.
+  const q = new URLSearchParams(location.search);
+  if (q.get("add")) {
+    form = { ...blank(), id: slug(q.get("name") ?? ""), name: q.get("name") ?? "", organization: q.get("organization") ?? "", url: q.get("url") ?? "",
+      regions: (q.get("regions") ?? "").split(",").filter((c) => /^[A-Z]{2,3}$/.test(c) && c !== "INT"), notes: q.get("resource") ? `Proposed from the safety data resource ${q.get("resource")}.` : "" };
+    open({ kind: "edit", id: null });
+    $("ad-msg").textContent = "A draft prefilled from the resource. Check the feed address, test it, and activate it only if it passes.";
+  }
 }
 
 main();

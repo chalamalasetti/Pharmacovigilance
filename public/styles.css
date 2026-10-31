@@ -742,3 +742,54 @@ code.invite { font-size: 12px; background: var(--bg); border: 1px solid var(--li
 .ds-creds .members { margin: 0; }
 .cov-table td:first-child { min-width: 200px; }
 @media (max-width: 700px) { .ds-tools select, .ds-tools input[type="search"] { width: 100%; } }
+
+/* Public Safety Data Resources (resources.html) and its admin page */
+.rs-coverage { background: var(--brand-soft); border-radius: 10px; padding: 10px 14px; margin: 0 0 18px; font-size: 14px; }
+.rs-coverage summary { cursor: pointer; font-weight: 600; }
+.rs-coverage p { margin: 8px 0 0; max-width: 80ch; }
+.rs-guide { margin-bottom: 18px; }
+.rs-guide h2 { font-size: 17px; margin: 0 0 8px; }
+.rs-guide-qs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.rs-q { text-align: left; }
+.rs-search { margin-bottom: 10px; }
+.rs-search .row input { flex: 1; min-width: 220px; }
+.rs-search button { border-radius: 8px; padding: 8px 16px; border: 1px solid var(--brand); }
+.rs-filters { align-items: flex-end; margin-bottom: 8px; }
+.rs-sel { display: flex; flex-direction: column; gap: 2px; min-width: 150px; flex: 1 1 150px; max-width: 240px; }
+.rs-sel .label { margin: 0; }
+.rs-understood { margin: 4px 0 8px; align-items: center; }
+.rs-group { font-size: 17px; margin: 22px 0 10px; }
+.rs-card { --c: var(--brand); }
+.rs-card.rs-broken { --c: var(--recall); }
+.rs-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.rs-head h3 { margin-top: 2px; }
+.rs-org { margin: 0 0 6px; color: var(--muted); font-size: 13px; }
+.rs-fav { flex: none; }
+.rs-collected { background: var(--brand-soft); border-color: transparent; color: var(--brand); font-weight: 600; }
+.rs-purpose { margin: 8px 0; font-size: 14px; }
+.rs-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 20px; margin: 8px 0; font-size: 13px; }
+.rs-facts h4 { margin: 0 0 4px; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.rs-facts dl { display: grid; grid-template-columns: max-content 1fr; gap: 2px 10px; margin: 0 0 4px; }
+.rs-facts dt { font-weight: 600; }
+.rs-facts dd, .rs-facts p { margin: 0; }
+.rs-reuse { font-weight: 600; }
+.rs-reuse.u-open { color: var(--regulation); }
+.rs-reuse.u-permission { color: var(--recall); }
+.rs-links { margin: 10px 0 6px; }
+.rs-foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 14px; color: var(--muted); font-size: 12px; margin: 6px 0 0; }
+.rs-foot .link { border: 0; background: none; padding: 0; color: var(--brand); text-decoration: underline; font-size: 12px; cursor: pointer; }
+.rs-form { margin-top: 8px; }
+.rs-field { display: grid !important; gap: 3px; }
+.rs-field input, .rs-field textarea { width: 100%; }
+.rs-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.rs-suggest { margin-top: 28px; }
+.rs-admin-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; }
+.rs-admin-form .wide { grid-column: 1 / -1; }
+.rs-admin-form fieldset { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; margin: 0; }
+.rs-admin-form legend { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 4px; }
+.rs-admin-form textarea, .rs-admin-form input:not([type=checkbox]):not([type=radio]), .rs-admin-form select { width: 100%; font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; }
+.rs-inbox li { margin-bottom: 10px; }
+@media (max-width: 720px) {
+  .rs-facts, .rs-admin-form { grid-template-columns: 1fr; }
+  .rs-sel { max-width: none; }
+}
