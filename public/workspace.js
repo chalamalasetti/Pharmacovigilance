@@ -93,6 +93,8 @@ export function importJson(ws, text) {
   if (!inc || inc.version !== VERSION || typeof inc.items !== "object") throw new Error("Not a PV Info workspace file");
   mergeItems(ws.items, inc.items);
   if (inc.groups) ws.groups = inc.groups;
+  if (inc.companyPortfolios && typeof inc.companyPortfolios === "object" && !Array.isArray(inc.companyPortfolios)) ws.companyPortfolios = inc.companyPortfolios;
+  if (typeof inc.activeCompany === "string") ws.activeCompany = inc.activeCompany;
   if (inc.profile) {
     ws.profile = { ...ws.profile, ...inc.profile };
     ws.profileSet = true;
@@ -117,7 +119,7 @@ export function reconcile(local, remote, now = new Date().toISOString()) {
   const newer = (remote.changedAt ?? "") > (local.changedAt ?? "") ? remote : local;
   const items = { ...local.items };
   mergeItems(items, remote.items ?? {});
-  const ws = { ...empty(), ...local, profile: newer.profile, groups: newer.groups, profileSet: local.profileSet || remote.profileSet, team: newer.team, resourceFavs: newer.resourceFavs, items, lastVisit, changedAt: now };
+  const ws = { ...empty(), ...local, profile: newer.profile, groups: newer.groups, profileSet: local.profileSet || remote.profileSet, team: newer.team, resourceFavs: newer.resourceFavs, companyPortfolios: newer.companyPortfolios, activeCompany: newer.activeCompany, items, lastVisit, changedAt: now };
   if (!ws.groups) delete ws.groups;
   if (!ws.team) delete ws.team;
   if (!ws.resourceFavs) delete ws.resourceFavs;
@@ -144,4 +146,10 @@ export function exportCsv(ws, updates) {
 
 // A small copy of the update kept with the record, so saved and assigned work survives
 // after the update ages out of the 60-day feed.
-export const snapshot = (u) => ({ title: u.title, link: u.link, country: u.country, source: u.source, published: u.published, category: u.category, tags: u.tags, kind: u.kind, agency: u.agency, summary: u.summary, id: u.id, priority: u.priority, region: u.region, retrieved: u.retrieved });
+export const snapshot = (u) => ({ title: u.title, link: u.link, country: u.country, source: u.source, published: u.published, category: u.category, tags: u.tags, kind: u.kind, agency: u.agency, summary: u.summary, id: u.id, priority: u.priority, region: u.region, retrieved: u.retrieved, ...(u.companyContext && { companyContext: u.companyContext }) });
+
+// Only organizational context crosses the team boundary; ignore unrelated fields.
+export function cleanCompanyContext(c) {
+  const str = v => String(v ?? "").slice(0,1000);
+  return { companyId:str(c.companyId), companyName:str(c.companyName), markets:Array.isArray(c.markets)?c.markets.map(str).slice(0,10):[], products:Array.isArray(c.products)?c.products.slice(0,300).map(p=>({key:str(p.key),brand:str(p.brand),market:str(p.market),authId:str(p.authId),url:/^https?:\/\//.test(p.url??"")?str(p.url):""})):[], lane:str(c.lane), reason:str(c.reason), scopeReason:str(c.scopeReason), outside:c.outside===true, portfolioRevision:Number(c.portfolioRevision)||0, portfolioConfirmedAt:str(c.portfolioConfirmedAt), fingerprint:str(c.fingerprint), sourceItem:str(c.sourceItem), evidenceKind:c.evidenceKind==='paper'?'paper':'update', sentAt:str(c.sentAt), ...(c.paperId && {paperId:str(c.paperId)}) };
+}

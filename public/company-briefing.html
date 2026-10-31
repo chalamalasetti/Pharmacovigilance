@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Company Briefing · PV Info</title>
+  <meta name="description" content="Confirm company products and markets, explore relevant PV updates and research, and send evidence for assessment.">
+  <meta name="theme-color" content="#0f4c5c">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
+    <p class="tagline">Your company portfolio, relevant evidence, and review queue</p>
+    <button type="button" class="menu-btn" aria-controls="site-nav" aria-expanded="false">Menu</button>
+    <nav class="toplinks" id="site-nav" aria-label="Main">
+      <a href="./">Updates</a>
+      <a href="briefing.html">My Briefing</a>
+      <a href="research.html">Research</a>
+      <a href="resources.html">Resources</a>
+      <a href="companies.html">Companies</a>
+      <a href="team.html" data-nav="team">Team</a>
+      <a href="archive.html">Archive</a>
+      <a href="globe.html">Globe</a>
+      <a href="agencies.html">Agencies</a>
+      <a href="about.html">About</a>
+      <a href="account.html" class="signin" data-nav="account">Sign in</a>
+    </nav>
+  </header>
+
+  <main class="page brief portfolio-page" id="main">
+    <div class="brief-head"><div><h1>My Company Briefing</h1><p class="intro">Your products. Your markets. Evidence you can review.</p></div><a class="act" href="briefing.html">My PV Briefing</a></div>
+    <ol class="portfolio-steps" aria-label="Briefing setup"><li>Select company</li><li>Confirm products &amp; markets</li><li>Review evidence &amp; assess</li></ol>
+    <section class="profile" aria-label="Select company"><h2>1. Select a company</h2><label for="company-search">Company name or alias</label><input type="search" id="company-search" placeholder="e.g. Pfizer, Novartis, Merck" autocomplete="off" disabled><div id="company-results" class="company-choices"></div></section>
+    <p id="notice" class="hint" role="status" aria-live="polite">Loading company directory…</p>
+    <section id="company-head"></section>
+    <section id="scope-editor" class="profile" hidden></section>
+    <section id="company-feed" hidden></section>
+  </main>
+  <footer class="foot">Your monitoring scope is private to this browser, or your own synced workspace when signed in. Only explicitly sent assessment context is shared with your selected team. Company selection does not establish affiliation. Do not enter personal or patient data. Matches are review candidates, not confirmed obligations.</footer>
+  <script type="module" src="company-briefing.js"></script>
+  <script type="module" src="chat.js"></script>
+  <script type="module" src="nav.js"></script>
+</body>
+</html>

@@ -63,7 +63,7 @@ function header() {
     btn.textContent = on ? "★ Following" : "☆ Follow";
   });
   $("head").replaceChildren(
-    el("div", { class: "co-title" }, el("h1", {}, p.name), btn),
+    el("div", { class: "co-title" }, el("h1", {}, p.name), btn, el("a", { class: "btn primary", href: `company-briefing.html?company=${encodeURIComponent(p.id)}` }, "Build my company briefing")),
     el("p", { class: "intro" }, `${flag(p.country)} ${p.legal ?? p.name} · ${p.region} · ${(p.types ?? []).map((t) => C.TYPE_LABELS[t] ?? t).join(", ")}`),
     el("p", { class: "co-meta" }, el("span", { class: `co-cov cov-${data.coverage.status}` }, C.COVERAGE[data.coverage.status]), " ", el("span", { class: "co-pub" }, "Public information")),
     data.manifest.status !== "approved" ? el("p", { class: "co-draft" }, "From the draft coverage list, not yet approved. Names and holder mappings may change after review.") : null,

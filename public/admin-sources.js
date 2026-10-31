@@ -242,6 +242,7 @@ function testBlock(result, { compact = false } = {}) {
     el("p", { class: "st-head" }, head),
     el("ul", { class: "ds-facts" },
       result.status != null ? el("li", {}, `Response: HTTP ${result.status}${result.contentType ? ` (${result.contentType})` : ""}`) : null,
+      result.delivery ? el("li", {}, `Delivery: scheduled GitHub Actions collector · FDA fetched ${result.collectedAt}`) : null,
       result.format ? el("li", {}, `Detected format: ${{ rss: "RSS", atom: "Atom", xml: "XML", json: "JSON", html: "Web page (HTML)", unknown: "unknown" }[result.format] ?? result.format}`) : null,
       result.redirects?.length ? el("li", {}, `Redirected ${result.redirects.length}× to ${result.finalUrl}`) : null,
       result.newest ? el("li", {}, `Newest item ${result.newest.slice(0, 10)}${result.oldest ? `, oldest ${result.oldest.slice(0, 10)}` : ""}`) : null,
