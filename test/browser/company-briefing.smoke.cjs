@@ -28,6 +28,8 @@ const assert=require('node:assert/strict');
  await page.getByRole('button',{name:'Under assessment',exact:true}).click();
  state=await page.evaluate(()=>JSON.parse(localStorage.getItem('pv-workspace')));assert.equal(Object.keys(state.items).length,1);
  await page.reload();await page.getByRole('heading',{name:'Updates to review (1)'}).waitFor();
+ assert.ok(!(await page.locator('main').innerText()).includes('null'),'conditional UI must not render null placeholders');
+ await page.getByRole('button',{name:'Open assessment',exact:true}).waitFor();
  await page.screenshot({path:'/tmp/pv-company-desktop.png',fullPage:true});
  await page.setViewportSize({width:390,height:844});await page.screenshot({path:'/tmp/pv-company-mobile.png',fullPage:true});
  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'mobile content fits viewport');

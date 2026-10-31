@@ -4,7 +4,7 @@ on:
     - cron: '7 * * * *'
   workflow_dispatch:
   push:
-    branches: [main, codex/fda-company-briefing]
+    branches: [main]
     paths:
       - 'scripts/fda-snapshot.mjs'
       - '.github/workflows/fda-collector.yml'

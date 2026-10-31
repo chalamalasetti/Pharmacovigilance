@@ -1,10 +1,11 @@
 import { searchCompanies, COVERAGE } from './companies-lib.js';
-import { productKey, selectableProducts, confirmPortfolio, portfolioState, scopedItems, assessmentHandoff } from './company-briefing-lib.js';
+import { productKey, selectableProducts, confirmPortfolio, portfolioState, scopedItems, assessmentHandoff, assessmentKey } from './company-briefing-lib.js';
 import { el, impactSection } from './impact-view.js';
 import * as workspace from './workspace.js';
 import * as cloud from './cloud.js';
 
 const $ = id => document.getElementById(id);
+const replace = (node,...children) => node.replaceChildren(...children.flat().filter(x=>x!=null && x!==false));
 const ws = workspace.load();
 let index, company, draft, editing = true, generation = 0, productQuery = '', limit = 40;
 let filters = { days: 30, includeClass: false, includeOutside: false };
@@ -15,7 +16,7 @@ const scopeCounts = () => $('scope-count').textContent = `${draft.productKeys.si
 
 function renderSearch() {
   const result = searchCompanies(index,$('company-search').value,10);
-  $('company-results').replaceChildren(
+  replace($('company-results'),
     result.ambiguous ? el('p',{class:'warn'},`“${result.ambiguous.term}” identifies different companies. Choose the correct organization below.`) : null,
     ...result.results.map(({company:c,via})=>el('button',{type:'button',class:'co-choice',onclick:()=>choose(c.id)},el('strong',{},c.name),el('span',{class:'hint'},`${c.legal??c.name} · ${c.region}${via?' · '+via:''}`))),
     !result.results.length && $('company-search').value.trim().length>=2 ? el('p',{class:'empty'},'No company matches. Try an alias, or browse ',el('a',{href:'companies.html'},'Company Explorer'),'.') : null);
@@ -37,7 +38,7 @@ async function choose(id) {
     draft={markets:new Set(p?.markets??[]),productKeys:new Set(p?.productKeys??[])};
     editing=portfolioState(p,company)!=='confirmed';
     history.replaceState(null,'',`?company=${encodeURIComponent(id)}`);
-    $('company-results').replaceChildren();
+    replace($('company-results'),);
     $('company-search').value=company.profile.name;
     productQuery='';limit=40;message('');render();
   }catch{if(version===generation)message('Company data could not load. Your saved scope is preserved. Try selecting the company again.',true);}
@@ -46,7 +47,7 @@ function renderProducts() {
   const all=selectableProducts(company).filter(p=>draft.markets.has(p.market));
   const q=productQuery.toLowerCase();
   const rows=all.filter(p=>`${p.brand} ${p.ingredients.join(' ')} ${p.authId}`.toLowerCase().includes(q));
-  $('product-list').replaceChildren(...rows.slice(0,limit).map(p=>{
+  replace($('product-list'),...rows.slice(0,limit).map(p=>{
     const key=productKey(p);
     const check=el('input',{type:'checkbox',checked:draft.productKeys.has(key),onchange:e=>{if(e.target.checked)draft.productKeys.add(key);else draft.productKeys.delete(key);scopeCounts();}});
     return el('div',{class:'portfolio-product'},el('label',{class:'check'},check,el('span',{},el('strong',{},p.brand),el('span',{class:'hint'},` ${p.ingredients.join(' + ')} · ${p.market} · ${p.authId}`))),el('p',{class:'hint'},`${p.holder} · ${p.status} · `,external(p.url,'Source record')));
@@ -59,7 +60,7 @@ function setup() {
   const markets=[...new Set(available.map(p=>p.market))].sort();
   $('scope-editor').hidden=!editing;
   if(!editing)return;
-  $('scope-editor').replaceChildren(
+  replace($('scope-editor'),
     el('h2',{},'2. Confirm products and markets'),
     el('p',{class:'hint'},'This defines your monitoring scope. It does not confirm commercial availability, company responsibility, or regulatory applicability. Only sourced US/EU records are currently available.'),
     el('fieldset',{class:'portfolio-markets'},el('legend',{},'Markets'),...markets.map(m=>el('label',{class:'check'},el('input',{type:'checkbox',checked:draft.markets.has(m),onchange:e=>{if(e.target.checked)draft.markets.add(m);else{draft.markets.delete(m);for(const p of available.filter(p=>p.market===m))draft.productKeys.delete(productKey(p));}renderProducts();}}),m==='US'?'United States':'European Union'))),
@@ -86,20 +87,24 @@ async function send(item,button,feedback) {
     const assess=shared?.assess??existing.assess??{status:'open',at:new Date().toISOString()};
     // Preserve the evidence and scope used for an existing assessment.
     const target=shared?.snapshot??existing.snapshot??u;
-    if(!existing.assess)workspace.update(ws,u.id,{assess,snapshot:workspace.snapshot(u)});
+    if(!existing.assess)workspace.update(ws,u.id,{assess,snapshot:workspace.snapshot(target)});
     if(cloud.team.id){
       if(!cloud.team.items.has(u.id))await cloud.teamAction({...target,id:u.id},{assess});
-      feedback.replaceChildren('In ',el('a',{href:'team.html'},`${cloud.team.name} → All open`),'. No duplicate created.');
-    }else feedback.replaceChildren('Saved under assessment in your workspace. ',el('a',{href:'briefing.html'},'Open My Briefing → My work'),'. Sign in and join a team to share it.');
+      replace(feedback,'In ',el('a',{href:'team.html'},`${cloud.team.name} → All open`),'. No duplicate created.');
+    }else replace(feedback,'Saved under assessment in your workspace. ',el('a',{href:'briefing.html'},'Open My Briefing → My work'),'. Sign in and join a team to share it.');
     const box=button.closest('article').querySelector('.company-assessment');
-    box.replaceChildren(impactSection({...target,id:u.id},{ws,countryName:c=>c}));
+    replace(box,impactSection({...target,id:u.id},{ws,countryName:c=>c}));
     button.textContent=cloud.team.id?'In team assessment queue':'Under assessment';
   }catch(e){feedback.textContent=`${e.message} Your local assessment, if saved, is preserved. Retry to share it.`;}finally{button.disabled=false;}
 }
 function itemCard(item) {
   const isPaper=item.kind==='paper';
   const feedback=el('p',{class:'hint',role:'status'});
-  const button=el('button',{type:'button',class:'btn primary',onclick:()=>send(item,button,feedback)},cloud.team.id?`Send to ${cloud.team.name} for assessment`:'Send for assessment');
+  const key=assessmentKey(item,portfolio());
+  const inTeam=cloud.team.id && cloud.team.items.has(key);
+  const exists=Boolean(workspace.item(ws,key).assess);
+  const label=inTeam || (!cloud.team.id && exists) ? 'Open assessment' : cloud.team.id ? `Send to ${cloud.team.name} for assessment` : 'Send for assessment';
+  const button=el('button',{type:'button',class:'btn primary',onclick:()=>send(item,button,feedback)},label);
   const source=isPaper?`paper.html?id=${encodeURIComponent(item.paper)}`:item.link;
   return el('article',{class:`card c-${item.category??'news'} portfolio-item`},
     el('div',{class:'meta'},el('span',{class:'tag'},isPaper?'Research':item.official?'Official notice':'News'),el('span',{class:`co-lane lane-${item.lane}`},`${item.lane} match`),item.published?el('time',{datetime:item.published},item.published.slice(0,10)):null),
@@ -114,14 +119,14 @@ function itemCard(item) {
 function renderBriefing() {
   const valid=portfolioState(portfolio(),company)==='confirmed';
   $('company-feed').hidden=!valid || editing;
-  if(!valid||editing){$('company-feed').replaceChildren();return;}
+  if(!valid||editing){replace($('company-feed'),);return;}
   const p=portfolio();
   const results=scopedItems(company,p,filters);
   const select=el('select',{'aria-label':'Company briefing time window',onchange:e=>{filters.days=Number(e.target.value);renderBriefing();}},...[['30','Last 30 days'],['90','Last 90 days'],['365','Last year'],['0','All collected dates']].map(([v,t])=>el('option',{value:v,selected:Number(v)===filters.days},t)));
   const controls=el('div',{class:'co-filters'},select,...[['includeClass','Include indirect class matches'],['includeOutside','Include notices outside selected markets']].map(([key,label])=>el('label',{class:'check'},el('input',{type:'checkbox',checked:filters[key],onchange:e=>{filters[key]=e.target.checked;renderBriefing();}}),label)));
   const section=(title,items)=>el('section',{class:'brief-sec'},el('h2',{},`${title} (${items.length})`),...items.slice(0,20).map(itemCard),!items.length?el('p',{class:'empty'},'No matches in this scope and time window. This does not establish an absence of safety concerns.'):null,
     items.length>20?el('button',{type:'button',class:'more',onclick:e=>e.target.replaceWith(...items.slice(20).map(itemCard))},`Show ${items.length-20} more`):null);
-  $('company-feed').replaceChildren(el('h2',{},'3. Your company briefing'),
+  replace($('company-feed'),el('h2',{},'3. Your company briefing'),
     el('div',{class:'tiles'},...[[p.productKeys.length,'confirmed product records'],[p.markets.join(', '),'monitoring markets'],[results.updates.length,'related updates'],[results.research.length,'related papers']].map(([n,t])=>el('div',{class:'tile'},el('b',{},String(n)),el('span',{},t)))),
     el('p',{class:'hint'},`Confirmed ${p.confirmedAt.slice(0,10)} · revision ${p.revision}. ${cloud.team.id?`Assessment destination: ${cloud.team.name}.`:'Assessments stay in your workspace until you explicitly share them with a team.'}`),controls,
     results.legacy?el('p',{class:'warn'},`${results.legacy} older matches lack product-level evidence and are excluded until reprocessed.`):null,
@@ -130,7 +135,8 @@ function renderBriefing() {
 function render() {
   if(!company)return;
   const state=portfolioState(portfolio(),company);
-  $('company-head').replaceChildren(el('h2',{},company.profile.name),el('p',{class:'hint'},`${COVERAGE[company.coverage.status]??company.coverage.status} · Public relationships, private monitoring preferences.`),
+  if(state!=='confirmed')editing=true;
+  replace($('company-head'),el('h2',{},company.profile.name),el('p',{class:'hint'},`${COVERAGE[company.coverage.status]??company.coverage.status} · Public relationships, private monitoring preferences.`),
     el('p',{},company.coverage.note),company.coverage.staleSources?el('p',{class:'warn'},'A product registry source is failing; review source freshness before confirming scope.'):null,
     state==='needs-review'?el('p',{class:'warn'},'A selected product was removed or its public details changed. Reconfirm before matching or sending new assessments. Existing assessments retain their original context.'):null,
     el('div',{class:'row'},el('a',{class:'act',href:`company.html?id=${encodeURIComponent(company.profile.id)}`},'Public company page'),state==='confirmed'?el('button',{type:'button',class:'act',onclick:()=>{editing=!editing;render();}},editing?'Back to confirmed briefing':'Edit products and markets'):null));
@@ -139,10 +145,10 @@ function render() {
 async function main() {
   try{
     const r=await fetch('data/companies/index.json',{cache:'no-cache'});if(!r.ok)throw new Error();index=await r.json();
+    await cloud.initCloud(ws,()=>{if(company)render();});
     $('company-search').disabled=false;$('company-search').addEventListener('input',renderSearch);
     const id=new URLSearchParams(location.search).get('company')??ws.activeCompany;
     if(id)await choose(id);else message('Search for a company to start. No account or personal details required.');
-    await cloud.initCloud(ws,()=>{if(company)render();});
     cloud.onTeam(()=>{if(company)renderBriefing();});
   }catch{message('The company directory is unavailable. Your saved workspace is preserved. Reload to retry.',true);}
 }
