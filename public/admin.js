@@ -22,13 +22,14 @@ let me = null;
 let live = null; // data/companies/admin.json: what the site applied at its last build
 let status = null;
 let research = null;
+let resourcesPub = null; // data/resources.json: the public directory as last built
 let db = { approvals: [], overrides: [], requests: [], admins: [], events: [], publish: null, settings: [] };
 let editing = null; // { id, isNew, request }
 let site = null; // data/site.json: the menu and status-strip settings the site uses now
 let menu = null; // the menu being arranged: { order, hidden }
 
 // The menu's pages ("index" is Updates); keep in step with NAV in scripts/admin.mjs.
-const NAV_LABELS = { index: "Updates", briefing: "My Briefing", research: "Research", companies: "Companies", team: "Team", archive: "Archive", globe: "Globe", agencies: "Agencies", about: "About" };
+const NAV_LABELS = { index: "Updates", briefing: "My Briefing", research: "Research", resources: "Resources", companies: "Companies", team: "Team", archive: "Archive", globe: "Globe", agencies: "Agencies", about: "About" };
 
 const time = (iso) => (iso ? el("time", { datetime: iso, title: new Date(iso).toLocaleString() }, ago(new Date(iso))) : "never");
 const slug = (s) => s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
@@ -323,6 +324,16 @@ function sourcesSection() {
   );
 }
 
+// The public directory of safety data resources: counts from the last build; the work is on its own page.
+function resourcesSection() {
+  return el("section", { class: "profile", id: "resources" },
+    el("h2", {}, "Safety data resources"),
+    el("p", {}, resourcesPub ? `${resourcesPub.total} resources are published in the public directory. ` : "The public directory has not been built yet. ", el("a", { href: "resources.html" }, "Open the directory")),
+    el("p", {}, el("a", { class: "btn", href: "admin-resources.html" }, "Manage safety data resources")),
+    el("p", { class: "hint" }, "Add, edit, verify, categorize, flag broken links and retire resources, and answer readers' suggestions and corrections. A resource is a reference link for readers; it never makes PV Info collect anything (that is Data sources)."),
+  );
+}
+
 function researchSection() {
   const papers = research?.papers ?? [];
   return el("section", { class: "profile", id: "research" },
@@ -391,7 +402,7 @@ function render() {
   $("ad-msg").textContent = "";
   $("lede").textContent = `Signed in as ${me.email}. Changes here are saved in the database and go live at the next build.`;
   $("jump").hidden = false;
-  $("app").replaceChildren(publishSection(), approvalSection(), companiesSection(), menuSection(), adminsSection(), sourcesSection(), researchSection(), activitySection());
+  $("app").replaceChildren(publishSection(), approvalSection(), companiesSection(), menuSection(), adminsSection(), sourcesSection(), resourcesSection(), researchSection(), activitySection());
 }
 
 async function main() {
@@ -413,7 +424,7 @@ async function main() {
       : `Signed in as ${me.email}, which is not an admin. Ask an existing admin to add you on this page.`;
     return;
   }
-  [live, status, research, site] = await Promise.all([getJson("data/companies/admin.json"), getJson("data/status.json"), getJson("data/research.json"), getJson("data/site.json")]);
+  [live, status, research, site, resourcesPub] = await Promise.all([getJson("data/companies/admin.json"), getJson("data/status.json"), getJson("data/research.json"), getJson("data/site.json"), getJson("data/resources.json")]);
   if (!live) {
     $("lede").textContent = "This site's last build did not publish the admin data (data/companies/admin.json). It appears after the next build.";
     return;

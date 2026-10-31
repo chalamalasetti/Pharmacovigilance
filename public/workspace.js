@@ -104,7 +104,7 @@ export function importJson(ws, text) {
 // Combines this browser's workspace with the synced copy. syncedAt is the synced
 // copy's changedAt when this browser last matched it. If only one side changed
 // since then it wins outright (so removals stick); if both did, item records are
-// merged newest first and the profile and groups come from the later change.
+// merged newest first and the profile, groups and favorite resources come from the later change.
 // Returns the workspace to keep and whether the database needs the result.
 export function reconcile(local, remote, now = new Date().toISOString()) {
   if (!remote || remote.version !== VERSION) return { ws: local, push: true };
@@ -117,9 +117,10 @@ export function reconcile(local, remote, now = new Date().toISOString()) {
   const newer = (remote.changedAt ?? "") > (local.changedAt ?? "") ? remote : local;
   const items = { ...local.items };
   mergeItems(items, remote.items ?? {});
-  const ws = { ...empty(), ...local, profile: newer.profile, groups: newer.groups, profileSet: local.profileSet || remote.profileSet, team: newer.team, items, lastVisit, changedAt: now };
+  const ws = { ...empty(), ...local, profile: newer.profile, groups: newer.groups, profileSet: local.profileSet || remote.profileSet, team: newer.team, resourceFavs: newer.resourceFavs, items, lastVisit, changedAt: now };
   if (!ws.groups) delete ws.groups;
   if (!ws.team) delete ws.team;
+  if (!ws.resourceFavs) delete ws.resourceFavs;
   return { ws, push: true };
 }
 

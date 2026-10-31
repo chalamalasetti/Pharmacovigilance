@@ -153,7 +153,7 @@ export function applyOverlay(manifest, overlay) {
 
 // The menu's pages ("index" is Updates), in their default order. Admins may reorder all
 // of them and hide any but Updates; Sign in always stays last.
-export const NAV = ["index", "briefing", "research", "companies", "team", "archive", "globe", "agencies", "about"];
+export const NAV = ["index", "briefing", "research", "resources", "companies", "team", "archive", "globe", "agencies", "about"];
 export const HIDEABLE_NAV = NAV.filter((x) => x !== "index");
 
 // data/site.json: settings every page reads (nav.js). The status strip is for admins

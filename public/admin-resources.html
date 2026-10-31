@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Safety data resources · Admin · PV Info</title>
+  <meta name="description" content="Admin: maintain the Public Safety Data Resources directory: add, edit, verify, categorize, flag broken links, retire resources, and answer reader suggestions.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0f4c5c">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
+    <p class="tagline">Admin · Safety data resources</p>
+    <button type="button" class="menu-btn" aria-controls="site-nav" aria-expanded="false">Menu</button>
+    <nav class="toplinks" id="site-nav" aria-label="Main">
+      <a href="./">Updates</a>
+      <a href="briefing.html">My Briefing</a>
+      <a href="research.html">Research</a>
+      <a href="resources.html">Resources</a>
+      <a href="companies.html">Companies</a>
+      <a href="team.html" data-nav="team">Team</a>
+      <a href="archive.html">Archive</a>
+      <a href="globe.html">Globe</a>
+      <a href="agencies.html">Agencies</a>
+      <a href="about.html">About</a>
+      <a href="account.html" class="signin" data-nav="account">Sign in</a>
+    </nav>
+  </header>
+
+    <main class="page brief wide" id="main">
+    <p class="hint"><a href="admin.html">← Admin</a></p>
+    <h1>Safety data resources</h1>
+    <p class="intro" id="lede">Loading…</p>
+    <p class="hint" id="ad-msg" role="status" aria-live="polite"></p>
+    <div id="app"></div>
+  </main>
+
+  <footer class="foot">
+    This directory is for readers to find and open resources. It never makes PV Info collect anything: collection happens only from sources in <a href="admin-sources.html">Data sources</a>, each tested and activated there. Every change is saved with your email and time in the resource's history, and reaches the public page at the next build, hourly or straight away with Publish now on the Admin page.
+  </footer>
+  <script type="module" src="nav.js"></script>
+  <script type="module" src="admin-resources.js"></script>
+</body>
+</html>
