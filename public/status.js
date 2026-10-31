@@ -22,7 +22,7 @@ function table(id, rows, { country = true } = {}) {
           "tr",
           { class: s.ok ? "" : "st-bad" },
           el("td", {}, country && s.country ? `${flag(s.country)} ` : "", s.name),
-          el("td", {}, s.ok ? (s.delivery === "github-actions" ? `${s.stale || !s.collectorOk ? "⚠ Cached" : "✓ Collected"} via GitHub Actions · ${s.count} kept · FDA collection ${ago(new Date(s.collectedAt))}${!s.collectorOk ? " · latest collector attempt failed" : ""}` : s.count != null ? `✓ OK · ${s.count} kept` : s.mapped != null ? `✓ OK · ${s.mapped} of ${s.records} records linked to listed companies` : "✓ OK") : s.configured === false ? "Off" : `⚠ Failed${s.error ? ` (${s.error})` : ""}${s.failingSince ? `, first failed ${ago(new Date(s.failingSince))}` : ""}`),
+          el("td", {}, s.ok ? (s.delivery === "github-actions" ? `${s.stale || !s.collectorOk ? "⚠ Cached" : "✓ Collected"} via GitHub Actions · ${s.count} kept · Source collection ${ago(new Date(s.collectedAt))}${!s.collectorOk ? " · latest collector attempt failed" : ""}` : s.count != null ? `✓ OK · ${s.count} kept` : s.mapped != null ? `✓ OK · ${s.mapped} of ${s.records} records linked to listed companies` : "✓ OK") : s.configured === false ? "Off" : `⚠ Failed${s.error ? ` (${s.error})` : ""}${s.failingSince ? `, first failed ${ago(new Date(s.failingSince))}` : ""}`),
           el("td", {}, s.configured === false ? "" : time(s.lastSuccess)),
         ),
       ),

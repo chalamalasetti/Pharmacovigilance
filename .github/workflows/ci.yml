@@ -45,3 +45,19 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
           node test/browser/company-briefing.smoke.cjs
+
+  regulator-collector-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      # Read-only live check; no cache publication, credentials or deployment hook.
+      - run: node scripts/fda-snapshot.mjs /tmp/regulator-check.json
+      - name: Verify TGA collection from GitHub runner
+        run: |
+          node --input-type=module -e "import {readFileSync} from 'node:fs'; const d=JSON.parse(readFileSync('/tmp/regulator-check.json')); const e=d.entries.find(x=>x.id==='tga-safety-alerts'); if(!e?.ok) throw new Error('TGA live collection failed; do not claim restored delivery'); console.log('TGA: '+e.items.length+' validated official items');"

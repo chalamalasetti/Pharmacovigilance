@@ -108,7 +108,7 @@ export function dataHealth(status, now = Date.now(), t = FRESHNESS) {
   }
   for (const s of sources.filter(s => s.delivery === "github-actions" && (s.stale || s.collectorOk === false))) {
     const elapsed = age(s.collectedAt);
-    problems.push({ text:`${s.name} is served from an aging FDA snapshot (${hours(elapsed)} old)${s.collectorOk === false ? "; the latest collector attempt failed" : ""}. Original FDA links remain available.`, alert:elapsed >= t.officialAlertAfterMs, source:s.id });
+    problems.push({ text:`${s.name} is served from an aging regulator snapshot (${hours(elapsed)} old)${s.collectorOk === false ? "; the latest collector attempt failed" : ""}. Original regulator links remain available.`, alert:elapsed >= t.officialAlertAfterMs, source:s.id });
   }
   const news = sources.filter((s) => s.kind === "news");
   const newsDown = news.filter((s) => !s.ok);

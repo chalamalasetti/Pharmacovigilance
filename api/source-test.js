@@ -1,4 +1,4 @@
-import { eligibleFda, fetchFdaSnapshot, snapshotEntry } from "../scripts/fda-snapshot.mjs";
+import { eligibleSnapshot, fetchRegulatorSnapshot, snapshotEntry } from "../scripts/fda-snapshot.mjs";
 // Test now for Admin → Data sources: a Vercel serverless function (free on the Hobby
 // plan) that fetches a source's address the way the hourly build would and reports the
 // response status, the format it found, sample items, how many would be kept, and any
@@ -86,7 +86,7 @@ export async function testSource(raw, secrets = {}, { fetchOpts = {} } = {}) {
   const url = fillSecrets(feed.url, secrets).value;
   const headers = Object.fromEntries(Object.entries(feed.headers ?? {}).map(([k, v]) => [k, fillSecrets(v, secrets).value]));
   const started = Date.now();
-  const cached = eligibleFda(feed) ? snapshotEntry(await fetchFdaSnapshot(), feed) : null;
+  const cached = eligibleSnapshot(feed) ? snapshotEntry(await fetchRegulatorSnapshot(), feed) : null;
   if (cached) {
     const kept = cached.items.map(i => enrich(i,feed,ctx)).filter(Boolean);
     const ids = new Set(kept.map(i=>i.link));
@@ -95,7 +95,7 @@ export async function testSource(raw, secrets = {}, { fetchOpts = {} } = {}) {
     return { ok, stage:"done", status:200, format:"rss", delivery:"github-actions", collectedAt:cached.collectedAt,
       stale:cached.stale, contentType:"application/rss+xml", url:feed.url, items:cached.items.length, kept:kept.length,
       newest:dates.at(-1)??null, oldest:dates[0]??null, ms:Date.now()-started, settings:source.settings, type:source.type,
-      ...(!ok && {error:"FDA snapshot is aging or its latest collector attempt failed. Earlier data remains available; wait for a successful collector run."}),
+      ...(!ok && {error:"Regulator snapshot is aging or its latest collector attempt failed. Earlier data remains available; wait for a successful collector run."}),
       samples:cached.items.slice(0,SAMPLES).map(i=>({title:i.title,link:i.link,published:i.published,source:feed.source,kept:ids.has(i.link),category:kept.find(k=>k.link===i.link)?.category,country:kept.find(k=>k.link===i.link)?.country})) };
   }
   let res;
