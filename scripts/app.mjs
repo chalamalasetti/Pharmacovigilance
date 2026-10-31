@@ -11,6 +11,7 @@ import { spawn } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { aggregate } from "./aggregate.mjs";
+import sourceTest from "../api/source-test.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../public");
 const PORT = Number(process.env.PORT) || 4330;
@@ -35,6 +36,8 @@ export const server = http.createServer(async (req, res) => {
     res.writeHead(400).end();
     return;
   }
+  // The Vercel function behind Admin → Data sources → Test now, served the same way here.
+  if (urlPath === "/api/source-test") return sourceTest(req, res);
   const file = path.join(ROOT, urlPath.endsWith("/") ? urlPath + "index.html" : urlPath);
   if (!file.startsWith(ROOT + path.sep)) {
     res.writeHead(403).end();

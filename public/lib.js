@@ -74,6 +74,8 @@ export const FRESHNESS = {
   officialAlertAfterMs: 6 * 3600000,
   newsAlertShare: 0.5,
   researchAlertAfterMs: 24 * 3600000,
+  // Any registry source that has failed this many hourly runs in a row alerts on its own.
+  repeatAlertRuns: 6,
 };
 
 // level: "ok", "warn" (something failed, data is still current) or "stale" (no fresh data).
@@ -111,6 +113,9 @@ export function dataHealth(status, now = Date.now(), t = FRESHNESS) {
       text: `${newsDown.length} of ${news.length} news searches failed at the last refresh.`,
       alert: newsDown.length / news.length >= t.newsAlertShare,
     });
+  }
+  for (const s of newsDown.filter((s) => (s.failures ?? 0) >= t.repeatAlertRuns)) {
+    problems.push({ text: `${s.name} has failed ${s.failures} collections in a row${s.error ? ` (${s.error})` : ""}. It stays active; fix or pause it on Admin → Data sources.`, alert: true, source: s.id });
   }
   for (const s of (status.research?.sources ?? []).filter((s) => s.configured && !s.ok)) {
     const down = age(s.lastSuccess);

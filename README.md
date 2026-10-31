@@ -6,9 +6,8 @@ Modelled on [Just Visual News](https://github.com/chalamalasetti/Justvisualnews)
 
 ## How it works
 
-- `public/data/agencies.json` is the directory of 49 countries and international bodies (WHO, UMC, ICH, CIOMS, ICMRA, FDA, EMA, MHRA, PMDA, CDSCO, NMPA, MFDS, Health Canada, TGA, ANVISA, Swissmedic, SAHPRA, SFDA and more): region, agency names and aliases, official site, and a news search query.
-- `sources.json` lists the official regulator feeds (FDA MedWatch, drugs, biologics, press releases and recalls; EMA news; MHRA Drug Safety Update, alerts and news; Health Canada recalls and alerts; TGA safety alerts; WHO news) and PV topic searches (safety signals, boxed warnings, PSUR/PBRER, GVP, DHPC, nitrosamines, falsified medicines…).
-- `scripts/sources.mjs` adds a Google News search feed for every agency with a `query`, so countries without their own feed are still covered.
+- `public/data/agencies.json` is the directory of 49 countries and international bodies (WHO, UMC, ICH, CIOMS, ICMRA, FDA, EMA, MHRA, PMDA, CDSCO, NMPA, MFDS, Health Canada, TGA, ANVISA, Swissmedic, SAHPRA, SFDA and more): region, agency names and aliases, and official site. It decides where each update is placed.
+- The **data source registry** is the list of what the build collects: the official regulator feeds (FDA MedWatch, drugs, biologics, press releases and recalls; EMA news; MHRA Drug Safety Update, alerts and news; Health Canada recalls and alerts; TGA safety alerts; WHO news), a Google News search per agency so countries without their own feed are still covered, and PV topic searches (safety signals, boxed warnings, PSUR/PBRER, GVP, DHPC, nitrosamines, falsified medicines…). Admins manage it on **Admin → Data sources**; see [Data sources](#data-sources).
 - `scripts/aggregate.mjs` fetches everything (8 at a time), keeps news only when it is about medicines, safety or regulation, tags each update with a country, region, agency and topic (`scripts/classify.mjs`), drops duplicates (the official notice wins over news coverage of it), keeps 60 days, and writes `public/data/updates.json` and an RSS feed at `public/feed.xml`. Earlier updates are kept when a feed is down.
 - `public/` is the site: `index.html` (search, region, country, topic, source and date filters; key updates of the week; follow countries), `agencies.html` (the directory with links to each regulator) and `about.html`. Filters are in the URL, so any view can be shared or bookmarked.
 - **Ask PV Info** (`public/chat.js`, logic in `public/chat-lib.js`): a chat bubble on every page. It reads the question for a country or agency (“PMDA”, “India”), a region, a topic (“recalls”, “guidelines”), a time window (“this week”) and any other words (a drug name), then answers with the matching updates, each linked to its source, plus a link to the same filters on the main page. Like Just Visual News' "Ask the news", it runs in the browser over the site's own data: no AI, no server, nothing invented.
@@ -65,7 +64,7 @@ Only the project URL and the public anon key reach the browser (`public/config.j
 - **Companies:** add a company, edit its names, matching phrases or holder prefixes, hide it, and undo any change. Signed-in readers can ask for a company from the bottom of the Companies page, and the requests wait here to be added or declined.
 - **Site menu:** reorder the menu and hide pages from it for every visitor (a hidden page still opens from a direct link; Updates and Sign in always stay). Choose who sees the data status line under the menu: admins only (the default) or everyone. Saved in `site_settings`; each build writes them to `public/data/site.json`, which `public/nav.js` applies.
 - **Admins:** add or remove admins by email (you cannot remove yourself).
-- **Data sources and research review:** failing regulator, research and registry sources, and the research review backlog with a link to the queue.
+- **Data sources and research review:** failing regulator, research and registry sources with a link to [Data sources](#data-sources), and the research review backlog with a link to the queue.
 - **Publish now and activity:** rebuild the site at once instead of waiting for the hourly run, and see a log of every admin change.
 
 How it works: admin changes live in Supabase (`manifest_approvals`, `company_overrides`, `company_requests`, `admin_events`; see `supabase/schema.sql`). Each build reads them (`scripts/admin.mjs`), applies them over the repo manifest, and publishes what it applied as `public/data/companies/admin.json`. If the database can't be reached, the build reuses the live site's last copy, so an approval or a hidden company never flips back. The repo files are not changed. The weekly registry run reads that same file from the live site, so companies added here get their FDA and EMA products linked on Mondays.
@@ -113,10 +112,28 @@ Offline check: `node scripts/registry.mjs --fixtures test/fixtures/companies` (s
 - **A correction or company request:** both buttons open a public GitHub issue labelled `company-correction` or `company-request`. Signed-in readers can also ask from the "Missing a company?" box, and those requests wait on the Admin page.
 - **Never** describe the list as exhaustive or the matches as validated: coverage is as stated on the pages.
 
+## Data sources
+
+`admin-sources.html` (Admin → Data sources) manages every source the hourly build collects, without a code change or a deployment. The registry in Supabase is the build's only list; there is no hard-coded one.
+
+- **The table** shows each source's name, organization, exact URL (for a news search, the provider and query), type (RSS/Atom, JSON API, web page, news search), classification (official regulator, research, vendor, secondary news), countries/regions, topics, status (active, paused, draft), collection health (successful, failed, stale, never collected), last attempt and last success, items collected and accepted in the chosen period, and actions. Summary cards above it count Configured, Active, Paused, Failing and Stale. Status is what an admin set; health is how collection went, so an active source can be failing and a paused one keeps the health it had.
+- **Add:** enter the details and URL, **Test now**, check the sample records, then **Save and activate** (or save a draft). **Edit:** a changed URL, type or parser setting must pass Test now before it can be saved; names, topics and notes don't need a test. The database enforces this: it only accepts a configuration that passed a test in the last 24 hours.
+- **Test now** runs on the server (`api/source-test.js`, a free Vercel function, admins only) and shows the HTTP status, detected format, redirects, sample items with whether each would be kept, and errors in plain words.
+- **Pause** stops collection from the next build; everything already collected stays, with its source id. **Resume** restarts it with a catch-up window you choose (0 to 60 days). Updates are identified by their link, so a resume or a new URL never adds one twice.
+- **History** shows every configuration change (who, when, why, before and after), collection runs with failures, and tests. Any change can be undone, and the undo is logged too.
+- **Credentials:** a source that needs a key writes `{{NAME}}` in its URL or a header; the value is set on the edit form, stored in `data_source_secrets` (no browser can read it), and used only when collecting and testing. URLs with a literal key, password or token are refused.
+- **Safety:** every address is checked on the server before each fetch and at each redirect (`scripts/safe-fetch.mjs`): only http/https on ports 80 and 443, no private networks, link-local or cloud metadata addresses (checked at connect time, after DNS), no https-to-http redirects, and a size and time limit.
+- **Failures:** temporary failures (timeouts, 429, 5xx) are retried within the run. A failing source is never switched off: it stays active, shows as Failed with its last success, and after 6 failed runs in a row the hourly health check opens a GitHub issue.
+- **Public coverage:** `coverage.html` (linked from About) lists active sources by name, organization, kind, countries and topics, from `public/data/coverage.json`. It has no URLs, settings, credentials or health.
+
+How it works: tables `data_sources`, `data_source_events`, `data_source_runs`, `data_source_tests` and `data_source_secrets` in `supabase/schema.sql`, changed only through `admin_*` functions that check the admin. Each build loads the registry (`scripts/sources.mjs`), collects the active sources, records one run per source, and publishes what it used as `public/data/sources/registry.json` (credential names only). If the database can't be reached, the build uses that file from the live site, so a paused source never restarts by accident. `sources.json` in the repository is the initial import of the 75 sources collected before the registry existed; `schema.sql` imports it once (regenerate the import with `npm run sources:sql` if it changes). It is only used by builds before the schema has been run.
+
+To turn it on, run `supabase/schema.sql` again (safe to re-run). The 75 sources appear in the table at once, active, with the same URLs and settings.
+
 ## Adding a country or source
 
-- New agency: add it to `public/data/agencies.json` with its aliases and a `query`. It shows up in the country filter, the directory and the news searches.
-- New official feed: add it to `sources.official` in `sources.json` with its `country`, an optional default `category`, and `relevance` (`all` for a pure drug-safety feed, `pv` for a mixed feed such as press releases).
+- New source: Admin → Data sources → **Add a source**.
+- New agency: add it to `public/data/agencies.json` with its aliases, so updates that mention it are placed in its country. Then add a news search for it on the Data sources page if it has no feed.
 - CI's "Live feed check" step prints which feeds are reachable and how many updates each gave.
 
 Topic and country tags are automatic and can be wrong. PV Info is a reading aid; always confirm details with the official source.

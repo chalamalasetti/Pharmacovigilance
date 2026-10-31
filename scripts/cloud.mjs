@@ -26,8 +26,9 @@ export async function writePublicConfig(file, cfg = cloudConfig()) {
   return on;
 }
 
-export function toRow(u, countryName) {
+export function toRow(u, countryName, withSourceId = false) {
   return {
+    ...(withSourceId && { source_id: u.sourceId ?? null }),
     id: u.id,
     title: u.title,
     link: u.link,
@@ -51,11 +52,11 @@ export function toRow(u, countryName) {
 const authHeaders = (key) => ({ apikey: key, ...(key.startsWith("eyJ") && { authorization: `Bearer ${key}` }) });
 
 // Inserts new updates and refreshes known ones (archived_at keeps the first time).
-export async function archiveUpdates(updates, { cfg = cloudConfig(), countryName = (c) => c, fetchImpl = fetch, batch = 500 } = {}) {
+export async function archiveUpdates(updates, { cfg = cloudConfig(), countryName = (c) => c, fetchImpl = fetch, batch = 500, withSourceId = false } = {}) {
   if (!cfg.url || !cfg.serviceKey) return { skipped: true, saved: 0 };
   let saved = 0;
   for (let i = 0; i < updates.length; i += batch) {
-    const rows = updates.slice(i, i + batch).map((u) => toRow(u, countryName));
+    const rows = updates.slice(i, i + batch).map((u) => toRow(u, countryName, withSourceId));
     const res = await fetchImpl(`${cfg.url}/rest/v1/updates?on_conflict=id`, {
       method: "POST",
       headers: { ...authHeaders(cfg.serviceKey), "content-type": "application/json", prefer: "resolution=merge-duplicates,return=minimal" },

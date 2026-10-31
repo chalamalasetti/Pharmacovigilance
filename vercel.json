@@ -4,6 +4,9 @@
   "installCommand": "npm ci",
   "buildCommand": "npm run build",
   "outputDirectory": "public",
+  "functions": {
+    "api/source-test.js": { "maxDuration": 30, "includeFiles": "public/data/agencies.json" }
+  },
   "headers": [
     {
       "source": "/data/(.*)",

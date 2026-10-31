@@ -687,3 +687,58 @@ code.invite { font-size: 12px; background: var(--bg); border: 1px solid var(--li
 .ad-menu li { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 4px; background: var(--panel); }
 .ad-menu li.off { opacity: .6; }
 .ad-menu button { min-width: 32px; }
+
+/* Admin → Data sources */
+.page.brief.wide { max-width: 1440px; }
+.ds-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.ds-card { display: grid; gap: 2px; text-align: left; background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--news); border-radius: 10px; padding: 10px 14px; font: inherit; color: var(--ink); cursor: pointer; }
+.ds-card b { font-size: 26px; font-variant-numeric: tabular-nums; }
+.ds-card small { color: var(--muted); font-size: 12px; }
+.ds-card[aria-pressed="true"] { background: var(--brand-soft); border-color: var(--brand); }
+.ds-card.k-active { border-left-color: var(--regulation); }
+.ds-card.k-paused { border-left-color: var(--news); }
+.ds-card.k-failing { border-left-color: var(--safety); }
+.ds-card.k-stale { border-left-color: var(--recall); }
+.ds-tools { margin-bottom: 12px; }
+.ds-tools input[type="search"] { flex: 1; min-width: 220px; }
+.ds-tools select, .ds-tools input[type="search"] { width: auto; }
+.ds-tools input, .ds-tools select { font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; }
+.ds-table { font-size: 13px; min-width: 1500px; }
+.ds-table td { white-space: normal; }
+.ds-url { min-width: 220px; max-width: 300px; overflow-wrap: anywhere; }
+.ds-table td:first-child { min-width: 170px; }
+.ds-url code { font-size: 12px; }
+.ds-when { white-space: nowrap; }
+.ds-num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ds-acts { display: flex; flex-wrap: wrap; gap: 4px; min-width: 150px; }
+.ds-acts button { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 6px; padding: 3px 8px; font-size: 12px; }
+.ds-h, .ds-s { display: inline-block; border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 600; border: 1px solid var(--line); white-space: nowrap; }
+.ds-h.h-successful { color: var(--regulation); border-color: currentColor; }
+.ds-h.h-failed { background: var(--safety); border-color: var(--safety); color: var(--panel); }
+.ds-h.h-stale { color: var(--recall); border-color: currentColor; }
+.ds-h.h-never { color: var(--muted); }
+.ds-s.s-active { background: var(--brand-soft); }
+.ds-s.s-paused { border-style: dashed; }
+.ds-s.s-draft { color: var(--muted); border-style: dotted; }
+#ds-panel:not(:empty) { margin-bottom: 18px; }
+.ds-form fieldset { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; margin: 0; display: grid; gap: 8px; }
+.ds-form legend { font-weight: 700; font-size: 13px; padding: 0 4px; }
+.ds-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px 14px; }
+#app .imp-form label.ds-field, .ds-field { display: grid; gap: 3px; align-content: start; font-size: 13px; font-weight: 600; }
+.ds-field .check { font-weight: 400; }
+.ds-field input:not([type=radio]):not([type=checkbox]), .ds-field select, .ds-field textarea { width: 100%; box-sizing: border-box; }
+.ds-field .check { display: flex; align-items: center; gap: 6px; }
+#ds-gen { color: var(--muted); font-size: 12px; }
+.ds-test { border: 1px solid var(--line); border-left: 4px solid var(--news); border-radius: 8px; padding: 8px 12px; background: var(--panel); }
+.ds-test.ok { border-left-color: var(--regulation); }
+.ds-test.bad { border-left-color: var(--safety); }
+.ds-facts { margin: 4px 0 8px; padding-left: 18px; font-size: 13px; }
+.ds-samples { margin: 4px 0; padding-left: 20px; font-size: 13px; display: grid; gap: 4px; }
+.ds-kept { color: var(--regulation); font-size: 12px; font-weight: 600; }
+.ds-diff { margin: 4px 0; padding-left: 18px; font-size: 12px; }
+.ds-diff del { color: var(--safety); }
+.ds-diff ins { color: var(--regulation); text-decoration: none; }
+.ds-log li { display: block; }
+.ds-creds .members { margin: 0; }
+.cov-table td:first-child { min-width: 200px; }
+@media (max-width: 700px) { .ds-tools select, .ds-tools input[type="search"] { width: 100%; } }

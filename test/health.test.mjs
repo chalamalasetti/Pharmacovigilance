@@ -92,3 +92,13 @@ test("aggregate writes status.json next to updates.json", async () => {
   assert.ok(status.sources.every((s) => s.ok && s.lastSuccess === status.checked));
   assert.equal(status.updated, status.checked);
 });
+
+test("a source failing many runs in a row alerts on its own, and is never switched off", () => {
+  const s = healthy();
+  Object.assign(s.sources[1], { ok: false, error: "HTTP 500", failures: 5 });
+  assert.ok(!dataHealth(s, now).problems.some((p) => p.alert && p.source === "b"));
+  s.sources[1].failures = 6;
+  const p = dataHealth(s, now).problems.find((p) => p.source === "b");
+  assert.equal(p.alert, true);
+  assert.match(p.text, /failed 6 collections in a row/);
+});

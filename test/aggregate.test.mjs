@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { parseFeed, normalizeLink, pickUpdates, aggregate } from "../scripts/aggregate.mjs";
 import { buildFeeds, newsSearchUrl } from "../scripts/sources.mjs";
+import { feedFromSource } from "../public/sources-lib.js";
 
 const fixtures = new URL("./fixtures/", import.meta.url);
 const read = (f) => readFileSync(new URL(f, fixtures), "utf8");
@@ -45,14 +46,24 @@ test("duplicates collapse, official copy wins, old items drop", () => {
   assert.deepEqual(picked.map((u) => u.link), ["https://b"]);
 });
 
-test("every agency query and topic becomes a news search feed", () => {
-  const agencies = JSON.parse(readFileSync(new URL("../public/data/agencies.json", import.meta.url)));
-  const sources = JSON.parse(readFileSync(new URL("../sources.json", import.meta.url)));
-  const feeds = buildFeeds(sources, agencies);
-  const queries = agencies.flatMap((c) => c.agencies).filter((a) => a.query).length;
-  assert.equal(feeds.length, sources.official.length + queries + sources.topics.length);
+test("the imported registry gives the 75 feeds the build collected before it", () => {
+  const { sources } = JSON.parse(readFileSync(new URL("../sources.json", import.meta.url)));
+  const { feeds, problems } = buildFeeds({ sources });
+  assert.deepEqual(problems, []);
+  assert.equal(feeds.length, 75);
+  assert.equal(feeds.filter((f) => f.kind === "official").length, 12);
+  assert.equal(feeds.filter((f) => f.kind === "news").length, 63);
+  assert.equal(new Set(feeds.map((f) => f.id)).size, 75, "ids are unique");
   assert.ok(feeds.every((f) => /^https:\/\//.test(f.url)));
+  const cdsco = feeds.find((f) => f.id === "news-in-cdsco");
+  assert.deepEqual([cdsco.kind, cdsco.country, cdsco.relevance], ["news", "IN", "pv"]);
+  assert.equal(feeds.find((f) => f.id === "fda-medwatch").url, "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/medwatch/rss.xml");
+  assert.equal(feeds.find((f) => f.id === "search-pharmacovigilance").country, null);
   assert.match(newsSearchUrl("CDSCO"), /q=CDSCO%20when%3A30d&hl=en-US&gl=US&ceid=US:en$/);
+  // Paused and draft sources are not collected.
+  const paused = buildFeeds({ sources: sources.map((s, i) => (i < 2 ? { ...s, status: i ? "draft" : "paused" } : s)) });
+  assert.equal(paused.feeds.length, 73);
+  assert.equal(feedFromSource(sources[0]).id, sources[0].id);
 });
 
 test("aggregate over fixtures tags countries and topics and writes the files", async () => {

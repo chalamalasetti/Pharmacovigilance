@@ -302,7 +302,7 @@ function adminsSection() {
 // ── Data sources and research review ────────────────────────────────────────
 
 function sourcesSection() {
-  if (!status) return el("section", { class: "profile", id: "sources" }, el("h2", {}, "Data sources"), el("p", {}, "No data status has been published yet."));
+  if (!status) return el("section", { class: "profile", id: "sources" }, el("h2", {}, "Data sources"), el("p", {}, "No data status has been published yet. "), el("p", {}, el("a", { class: "btn", href: "admin-sources.html" }, "Manage data sources")));
   const { level, problems } = dataHealth(status);
   const failing = [
     ...status.sources.filter((s) => !s.ok).map((s) => ({ group: s.kind === "official" ? "Regulator feed" : "News search", ...s })),
@@ -318,7 +318,8 @@ function sourcesSection() {
           el("thead", {}, el("tr", {}, ["Source", "Problem", "Last success"].map((h) => el("th", { scope: "col" }, h)))),
           el("tbody", {}, failing.map((s) => el("tr", { class: "st-bad" }, el("td", {}, `${s.group}: ${s.name}`), el("td", {}, s.error ?? "failed", s.failingSince ? ` · since ${ago(new Date(s.failingSince))}` : ""), el("td", {}, time(s.lastSuccess)))))))
       : el("p", { class: "hint" }, "No source failed at the last build."),
-    el("p", { class: "hint" }, "To fix a feed's address or add a source, edit sources.json in the repository; a feed that stays down for a day also opens a GitHub issue."),
+    el("p", {}, el("a", { class: "btn", href: "admin-sources.html" }, "Manage data sources")),
+    el("p", { class: "hint" }, "Add, test, edit, pause or resume a source, see each one's health and history, and undo any change. A source that keeps failing stays active and opens a GitHub issue after 6 failed runs in a row."),
   );
 }
 
