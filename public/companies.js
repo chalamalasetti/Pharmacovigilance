@@ -60,6 +60,7 @@ function companyCard(c, via) {
     "article",
     { class: "co-card" },
     el("h3", {}, el("a", { href: link(c.id) }, c.name)),
+    el("a", {class:"act",href:`company-briefing.html?company=${encodeURIComponent(c.id)}`},"Build briefing"),
     el("p", { class: "co-sub" }, `${flag(c.country)} ${c.legal ?? c.name}`, c.parent ? ` · ${c.parent.relation}` : ""),
     via ? el("p", { class: "co-via" }, `Matched ${via}`) : null,
     el("p", { class: "co-meta" }, coverageBadge(c)),

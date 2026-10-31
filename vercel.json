@@ -5,19 +5,34 @@
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "functions": {
-    "api/source-test.js": { "maxDuration": 30, "includeFiles": "public/data/agencies.json" }
+    "api/source-test.js": {
+      "maxDuration": 30,
+      "includeFiles": "public/data/agencies.json"
+    }
   },
   "headers": [
     {
       "source": "/data/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, s-maxage=300, must-revalidate" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=300, must-revalidate"
+        }
+      ]
     },
     {
       "source": "/feed.xml",
       "headers": [
-        { "key": "Content-Type", "value": "application/rss+xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=0, s-maxage=300, must-revalidate" }
+        {
+          "key": "Content-Type",
+          "value": "application/rss+xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=300, must-revalidate"
+        }
       ]
     }
-  ]
+  ],
+  "ignoreCommand": "node scripts/ignore-build.mjs"
 }

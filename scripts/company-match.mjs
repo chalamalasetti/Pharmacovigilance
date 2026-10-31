@@ -1,3 +1,4 @@
+import { productKey } from "../public/company-briefing-lib.js";
 // Matches updates and research papers to companies in the registry, with a plain
 // reason for every match. Deterministic rules only (no AI), versioned by MATCH_RULES so
 // a stored match says which rules made it.
@@ -14,7 +15,7 @@
 
 import { moiety, normName } from "./registry.mjs";
 
-export const MATCH_RULES = "match-1";
+export const MATCH_RULES = "match-2";
 
 export const LABELS = {
   id: "Direct identifier match",
@@ -115,7 +116,9 @@ export function buildIndex(manifest, registry) {
     }
   }
   const longest = Math.max(1, ...[...brands.keys(), ...substances.keys()].map((k) => k.split(" ").length));
-  return { companies, products, brands, substances, auth, mentions, classHoldings, longest: Math.min(longest, 6) };
+  const productsByCompany = new Map();
+  for (const p of products) { if (!productsByCompany.has(p.company)) productsByCompany.set(p.company,[]); productsByCompany.get(p.company).push(p); }
+  return { companies, products, productsByCompany, brands, substances, auth, mentions, classHoldings, longest: Math.min(longest, 6) };
 }
 
 const AUTH_RE = [/\bEMEA\/H\/C\/\d{6}\b/g, /\b(?:A?NDA)\s*(?:No\.?\s*|#\s*)?\d{6}\b/g];
@@ -196,7 +199,12 @@ export function matchText(idx, text, { country = null, kind = "update", countryN
   }
   return [...out.values()].map((m) => {
     const note = m.lane === "corporate" ? null : where(new Set(m.markets));
-    return { ...m, ...(note && { outside: note }) };
+    const keys = (idx.productsByCompany.get(m.id) ?? []).filter(p => (
+      m.lane === "direct" ? m.terms.some(t => authKey(t) === authKey(p.authId ?? "") || termKey(t) === termKey(p.brand)) :
+      m.lane === "substance" ? (p.moieties ?? []).some(v => m.terms.some(t => termKey(t) === termKey(v))) :
+      m.lane === "class" ? CLASSES.some(cl => m.terms.includes(cl.label) && (p.moieties ?? []).some(v => cl.members.some(t => termKey(t) === termKey(v)))) : false
+    )).map(productKey);
+    return { ...m, productKeys: [...new Set(keys)], ...(note && { outside: note }) };
   });
 }
 

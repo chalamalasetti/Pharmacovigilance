@@ -151,3 +151,51 @@ How it works: tables `safety_resources`, `safety_resource_events` and `resource_
 - CI's "Live feed check" step prints which feeds are reachable and how many updates each gave.
 
 Topic and country tags are automatic and can be wrong. PV Info is a reading aid; always confirm details with the official source.
+
+## FDA collection delivery
+
+The five official FDA RSS feeds are collected by `.github/workflows/fda-collector.yml`
+(at minute 7 each hour, on manual dispatch, and on relevant code changes). Collection
+runs on GitHub Actions because production Vercel requests to these same URLs have
+returned HTTP 404 while the GitHub runner succeeds. The workflow reads the last
+published active registry, fetches only the five exact FDA endpoints, privacy-screens
+parsed items, and publishes `fda-feeds.json` to the `fda-feed-cache` branch using the
+existing workflow token. It then calls the existing `VERCEL_DEPLOY_HOOK` when set.
+The cache branch is excluded from Vercel preview builds by `scripts/ignore-build.mjs`.
+The older refresh workflow remains available for manual rebuilds; its duplicate hourly
+schedule is removed so the collector triggers one rebuild after snapshot publication.
+
+The app's build and Admin → Test now can use this snapshot. FDA remains the original
+source; article links and publication dates are preserved. Source status identifies
+GitHub Actions delivery and actual FDA collection time. A snapshot older than two
+hours (or from a collector whose latest attempt failed) warns; after twelve hours it
+is rejected and the app tries the official URL directly. Paused sources are not
+consumed. Missing/corrupt snapshots never turn arbitrary URLs into proxy requests.
+GitHub scheduling and Vercel builds may be delayed; these are freshness targets,
+not a guarantee of hourly delivery. Check Actions → Collect official FDA feeds and
+`status.html` when investigating gaps. No new paid service or source credential is
+required. Do not point the collector at patient-level data.
+
+## My Company Briefing
+
+Open `company-briefing.html` from My Briefing, Company Explorer, or a company page.
+Search/select an organization, explicitly choose current sourced product records
+and their markets, and confirm your monitoring scope. The first version uses the
+US/EU relationships already mapped by the FDA/EMA registry; it does not infer
+commercial availability, local responsibility or company affiliation.
+
+The briefing matches **selected product keys**, not merely a company's name. Each
+update/paper shows why it matched, the matching confirmed product records and source
+links. Indirect class matches and out-of-market notices are optional. Missing product
+mapping and older matches without product-level evidence are disclosed. A changed,
+removed or transferred selected product requires reconfirmation before new handoffs.
+
+Scopes live in `workspace.companyPortfolios` and remain in this browser unless the
+reader signs in to sync their own workspace. They never enter public company JSON or
+URLs. “Send for assessment” is an explicit handoff: anonymous readers get a local
+assessment; signed-in readers with an active team send the context to that team's
+existing queue. Company/market/item keys prevent repeated-click duplicates. Existing
+assessment decisions are not overwritten; snapshots preserve the confirmed scope,
+product evidence, match explanation and portfolio revision. Research is a review
+candidate, not a regulatory obligation. Team assignment remains email-only. No new
+database table or schema migration is needed.

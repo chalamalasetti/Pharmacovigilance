@@ -1,12 +1,10 @@
 name: Refresh updates on Vercel
 
-# Vercel rebuilds on every push to main by itself. This adds a fresh build every
-# hour so new regulator notices show up, by calling a Vercel deploy hook.
+# Manual rebuild. The hourly FDA collector now triggers this same deploy hook
+# after publishing its snapshot, so each scheduled refresh sees the latest FDA data.
 # Set the hook URL as the repo secret VERCEL_DEPLOY_HOOK (see README).
 
 on:
-  schedule:
-    - cron: "17 * * * *"
   workflow_dispatch:
 
 jobs:

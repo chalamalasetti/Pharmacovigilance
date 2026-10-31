@@ -166,7 +166,7 @@ export function explainError(e) {
   if (e instanceof BlockedError) return e.message;
   const s = e.status;
   if (s === 401 || s === 403) return `The server refused access (HTTP ${s}). The address may need a credential, or the site blocks automated readers.`;
-  if (s === 404 || s === 410) return `Nothing was found at this address (HTTP ${s}). The feed may have moved.`;
+  if (s === 404 || s === 410) return `This server received HTTP ${s}. The URL may have moved or may return a different response from another network.`;
   if (s === 429) return "The server says too many requests (HTTP 429). It was retried; try again later.";
   if (s >= 500) return `The server had an error (HTTP ${s}). This is usually temporary.`;
   if (s) return `The server answered HTTP ${s}.`;

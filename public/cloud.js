@@ -128,6 +128,7 @@ export function cleanItem(r) {
   const str = (v) => (v == null ? undefined : String(v));
   const snapshot = {
     ...Object.fromEntries(["title", "summary", "source", "country", "region", "agency", "category", "kind", "published", "retrieved"].map((k) => [k, str(s[k])]).filter(([, v]) => v !== undefined)),
+    ...(s.companyContext && typeof s.companyContext === "object" && { companyContext: workspace.cleanCompanyContext(s.companyContext) }),
     id: r.update_id,
     title: str(s.title) || "Untitled update",
     link: /^https?:\/\//i.test(s.link ?? "") ? s.link : "#",

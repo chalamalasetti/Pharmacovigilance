@@ -65,6 +65,15 @@ export function impactSection(u, ctx) {
   const card = impactCard(u, { countryName: ctx.countryName });
   const rec = () => item(ctx.ws, u.id);
   const wrap = el("section", { class: "impact", "aria-label": "Impact card" });
+  if (u.companyContext) {
+    const c = u.companyContext;
+    wrap.append(el("div", {class:"company-context"}, el("h3",{},`${c.companyName} · Company applicability`),
+      el("p",{},`Monitoring markets: ${(c.markets??[]).join(", ")} · Portfolio revision ${c.portfolioRevision}`),
+      el("p",{},`Matched products: ${(c.products??[]).map(p=>`${p.brand} (${p.market})`).join(", ")}`),
+      el("p",{class:"why"},c.reason), el("p",{class:"hint"},"Sent for assessment. Company applicability has not been confirmed."),
+      c.outside ? el("p",{class:"warn"},"Outside monitoring markets; assess relevance before taking action.") : null,
+      c.evidenceKind === "paper" ? el("p",{class:"hint"},"Research review only. This does not create a regulatory obligation or establish causality.") : null));
+  }
   const panel = el("div", { class: "imp-panel" });
   const actions = el("div", { class: "imp-actions" });
 

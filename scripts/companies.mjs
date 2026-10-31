@@ -107,7 +107,7 @@ export function buildCompanyData({ manifest, register, registry, history, now = 
       const r = related.get(m.id);
       if (!r) continue;
       const { co, ...item } = x;
-      const entry = { ...item, lane: m.lane, label: m.label, reason: m.reason, terms: m.terms, ...(m.outside && { outside: m.outside }), shared: co.length };
+      const entry = { ...item, lane: m.lane, label: m.label, reason: m.reason, terms: m.terms, productKeys: m.productKeys, ...(m.outside && { outside: m.outside }), shared: co.length };
       (x.kind === "paper" ? r.research : r.updates).push(entry);
     }
   }

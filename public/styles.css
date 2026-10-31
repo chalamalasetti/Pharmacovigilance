@@ -793,3 +793,21 @@ code.invite { font-size: 12px; background: var(--bg); border: 1px solid var(--li
   .rs-facts, .rs-admin-form { grid-template-columns: 1fr; }
   .rs-sel { max-width: none; }
 }
+
+/* Private company briefing: scope confirmation before evidence and assessment. */
+.portfolio-page { max-width:1200px; }
+.portfolio-steps { display:flex; gap:2rem; flex-wrap:wrap; padding:16px 32px; background:var(--brand-soft); border-radius:12px; }
+.company-choices { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:8px; margin-top:12px; }
+.co-choice { display:grid; gap:5px; text-align:left; padding:14px; border:1px solid var(--line); border-radius:10px; background:var(--panel); }
+.co-choice:hover { border-color:var(--brand); background:var(--brand-soft); }
+#company-search { width:min(100%,560px); margin-top:8px; }
+.portfolio-markets { display:flex; flex-wrap:wrap; gap:20px; border:1px solid var(--line); border-radius:10px; margin-bottom:16px; }
+.portfolio-products { max-height:420px; overflow:auto; border:1px solid var(--line); border-radius:10px; margin:12px 0 20px; }
+.portfolio-product { padding:12px 16px; border-bottom:1px solid var(--line); }
+.portfolio-product .check { display:flex; align-items:start; gap:10px; }
+.portfolio-product .hint { display:block; margin:4px 0; }
+.portfolio-evidence { padding-left:22px; font-size:13px; color:var(--muted); }
+.company-context { border-left:3px solid var(--brand); background:var(--brand-soft); padding:14px; margin-bottom:16px; }
+.portfolio-item .btn { margin-top:8px; }
+.portfolio-page .row { flex-wrap:wrap; gap:8px; }
+@media(max-width:600px) { .portfolio-steps{display:grid;gap:8px;} .portfolio-page .row>input{width:100%;} .portfolio-products{max-height:360px;} .portfolio-page .tiles{grid-template-columns:repeat(2,1fr);} }

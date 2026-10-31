@@ -1,3 +1,4 @@
+import { fetchFdaSnapshot, snapshotEntry, eligibleFda } from "./fda-snapshot.mjs";
 // Pulls every regulator feed and PV news search, keeps what matters to drug safety
 // and regulatory teams, tags each update with a country and section, and writes
 // public/data/updates.json (for the site) and public/feed.xml (for feed readers).
@@ -102,7 +103,10 @@ export function feedStatus(feeds, results, previous = [], now = new Date().toISO
     const prev = before.get(id) ?? before.get(legacy);
     const r = results[i];
     const row = { id, name: f.label ?? (f.id ? f.source : `${f.source}${f.kind === "news" && f.country ? ` (${f.country})` : ""}`), kind: f.kind, country: f.country ?? null };
-    if (r.status === "fulfilled") return { ...row, ok: true, count: r.value.length, lastSuccess: now };
+    if (r.status === "fulfilled") {
+      const m = r.value.meta ?? {};
+      return { ...row, ok: true, count: r.value.length, lastSuccess: m.collectedAt ?? now, ...(m.delivery && { delivery: m.delivery, collectedAt: m.collectedAt, stale: m.stale, collectorOk: m.collectorOk }) };
+    }
     return {
       ...row,
       ok: false,
@@ -173,10 +177,10 @@ export function sourceRun(feed, r, now) {
   return {
     source_id: feed.id,
     run_at: now,
-    ok: r.status === "fulfilled",
+    ok: r.status === "fulfilled" && !m.stale && m.collectorOk !== false,
     http_status: m.http ?? null,
     format: m.format ?? null,
-    error: r.status === "fulfilled" ? null : String(r.reason?.message ?? r.reason).slice(0, 300),
+    error: r.status === "fulfilled" ? (m.stale || m.collectorOk === false ? "Using an aging FDA snapshot; check scheduled collector status." : null) : String(r.reason?.message ?? r.reason).slice(0, 300),
     items_seen: r.status === "fulfilled" ? r.value.seen : 0,
     items_kept: r.status === "fulfilled" ? r.value.length : 0,
     items_new: r.status === "fulfilled" ? (m.new ?? 0) : 0,
@@ -206,11 +210,21 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
   const prevData = fixturesDir ? null : await previousJson(out);
   const known = new Set((prevData?.updates ?? []).map((u) => u.id));
 
+  const fdaSnapshot = !fixturesDir && feeds.some(eligibleFda) ? await fetchFdaSnapshot() : null;
+
   const load = async (feed) => {
     const started = Date.now();
     let body;
     let meta = { attempts: 1 };
     const secrets = registry?.secrets?.get(feed.id) ?? {};
+    const cached = !fixturesDir ? snapshotEntry(fdaSnapshot, feed) : null;
+    if (cached) {
+      const since = feed.since ? Date.parse(feed.since) : null;
+      const kept = cached.items.filter(i => !since || !i.published || Date.parse(i.published) >= since).map(i => enrich(i, feed, ctx)).filter(Boolean).slice(0, MAX_PER_FEED);
+      kept.seen = cached.items.length;
+      kept.meta = { http: 200, format: "rss", attempts: 1, ms: Date.now()-started, delivery: "github-actions", collectedAt: cached.collectedAt, stale: cached.stale, collectorOk: cached.collectorOk, newest: cached.items.map(i => i.published).filter(Boolean).sort().at(-1) ?? null, new: kept.filter(u => !known.has(u.id)).length };
+      return kept;
+    }
     if (fixturesDir) body = await readFile(path.join(fixturesDir, feed.fixture), "utf8");
     else {
       const url = fillSecrets(feed.url, secrets);
