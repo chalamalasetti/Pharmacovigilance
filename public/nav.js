@@ -9,10 +9,29 @@ import { ago, dataHealth } from "./lib.js";
 
 const nav = document.getElementById("site-nav");
 const btn = document.querySelector(".menu-btn");
+let adminAllowed = false;
+// Hide until the server confirms this account's role. Never trust cached menu settings.
+const adminLink = document.createElement("a");
+adminLink.href = "admin.html";
+adminLink.textContent = "Admin";
+adminLink.dataset.nav = "admin";
+adminLink.dataset.adminOnly = "";
+adminLink.hidden = true;
+if (nav) nav.insertBefore(adminLink, nav.querySelector(".signin"));
+async function refreshAdminLink() {
+  adminAllowed = false;
+  adminLink.hidden = true;
+  try {
+    const { isAdmin } = await import("./cloud.js");
+    adminAllowed = await isAdmin() === true;
+  } catch { /* Keep admin navigation hidden if authorization cannot be checked. */ }
+  adminLink.hidden = !adminAllowed;
+}
+refreshAdminLink();
 
 // "/briefing", "/briefing.html" and "/" all resolve; paper and review pages belong to Research.
 const page = (location.pathname.split("/").pop() || "index").replace(/\.html$/, "");
-const current = page === "paper" || page === "research-admin" ? "research" : ["company", "company-briefing"].includes(page) ? "companies" : page === "admin" ? "account" : page;
+const current = page === "paper" || page === "research-admin" ? "research" : ["company", "company-briefing"].includes(page) ? "companies" : page.startsWith("admin") ? "admin" : page;
 const targetOf = (a) => (a.getAttribute("href") === "./" ? "index" : a.getAttribute("href")).replace(/\.html$/, "");
 for (const a of nav?.querySelectorAll("a") ?? []) {
   if (targetOf(a) === current) a.setAttribute("aria-current", "page");
@@ -32,7 +51,7 @@ export function arrangeNav(site, links = nav) {
     if (a && a !== signin) links.insertBefore(a, signin);
   }
   const hide = new Set(site.hiddenNav ?? []);
-  for (const a of all) a.hidden = hide.has(targetOf(a)) && a !== signin;
+  for (const a of all) a.hidden = a.hasAttribute("data-admin-only") ? !adminAllowed : hide.has(targetOf(a)) && a !== signin;
 }
 const readSite = () => {
   try {
