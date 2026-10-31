@@ -47,6 +47,8 @@ jobs:
           node test/browser/company-briefing.smoke.cjs
 
   regulator-collector-check:
+    # External availability is informational; unit/browser checks remain blocking.
+    continue-on-error: true
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
