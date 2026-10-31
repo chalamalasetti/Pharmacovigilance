@@ -49,7 +49,8 @@ export async function signIn(email) {
 
 export async function signOut() {
   const sb = await client();
-  await sb?.auth.signOut();
+  const result = await sb?.auth.signOut();
+  if (result?.error) throw result.error;
 }
 
 // ── Workspace sync ───────────────────────────────────────────────────────────
@@ -287,11 +288,27 @@ export async function archiveStats() {
 
 // ── Page wiring ──────────────────────────────────────────────────────────────
 
-// Shows who is signed in and how many open items are assigned to them in the
-// top links of the page.
+// Keeps account identity out of the header; signed-in readers can sign out directly.
+// The team link still shows the number of open items assigned to them.
 export function markNav() {
   const acct = document.querySelector('[data-nav="account"]');
-  if (acct) acct.textContent = team.me ? `👤 ${displayName(team.me)}` : "Sign in";
+  if (acct) {
+    acct.textContent = team.me ? "Sign out" : "Sign in";
+    acct.title = "";
+    acct.onclick = team.me ? async (event) => {
+      event.preventDefault();
+      if (acct.getAttribute("aria-busy") === "true") return;
+      acct.setAttribute("aria-busy", "true");
+      try {
+        await signOut();
+        location.reload();
+      } catch {
+        acct.title = "Could not sign out. Please try again.";
+      } finally {
+        acct.removeAttribute("aria-busy");
+      }
+    } : null;
+  }
   const link = document.querySelector('[data-nav="team"]');
   if (link) {
     const n = assignedToMe().length;
