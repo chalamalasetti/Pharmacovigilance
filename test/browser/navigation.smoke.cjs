@@ -27,7 +27,7 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
  assert.equal(await page.getByLabel('Move Action Center up',{exact:true}).isDisabled(),false);
  const saved=await page.evaluate(()=>window.savedMenus[0]);assert.ok(saved.groups.find(g=>g.id==='resources').items.some(i=>i.id==='action-center'&&i.label==='Safety actions'));assert.equal(saved.groups.find(g=>g.id==='resources').label,'Knowledge');assert.equal(saved.groups.flatMap(g=>g.items).find(i=>i.id==='globe').hidden,true);
  assert.equal(await page.getByLabel('Show Updates',{exact:true}).isDisabled(),true);
- await page.getByLabel('Move Action Center up',{exact:true}).click();
+ await page.getByLabel('Move Action Center up',{exact:true}).click();assert.equal(await page.getByLabel('Move Action Center up',{exact:true}).evaluate(n=>n===document.activeElement),true);
  await page.getByLabel('Move group Knowledge up',{exact:true}).click();
  await page.getByRole('button',{name:'Save menu',exact:true}).click();
  const reordered=await page.evaluate(()=>window.savedMenus[1]);assert.equal(reordered.groups[2].id,'resources');assert.equal(reordered.groups[2].items[3].id,'action-center');

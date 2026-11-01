@@ -13,7 +13,12 @@ export function menuEditor({value,legacy={},expected=null,onSave}) {
  const reset=el('button',{type:'button',class:'act',onclick:()=>{draft=defaultNavigation();notice.textContent='Default grouping loaded as a draft. Save to apply it.';draw();}},'Use default grouping');
  function refreshDirty(){body.inert=saving;reset.disabled=saving;add.disabled=saving;const changed=JSON.stringify(saved)!==JSON.stringify(draft);save.disabled=saving||!changed;discard.disabled=saving||!changed;renderNavigation(preview,{navigation:draft},{current:'action-center'});}
  function rename(label,value,onChange){return el('input',{type:'text',value,maxlength:32,required:true,'aria-label':label,oninput:e=>{onChange(e.target.value);refreshDirty();}});}
- function move(list,index,delta){const to=index+delta;if(to<0||to>=list.length)return;[list[index],list[to]]=[list[to],list[index]];draw();}
+ function move(list,index,delta){
+  const to=index+delta;if(to<0||to>=list.length)return;
+  const label=document.activeElement?.getAttribute('aria-label');
+  [list[index],list[to]]=[list[to],list[index]];draw();
+  if(label){const buttons=[...root.querySelectorAll('button[aria-label]')];const next=buttons.find(b=>b.getAttribute('aria-label')===label&&!b.disabled)??buttons.find(b=>b.getAttribute('aria-label')===label.replace(/ up$| down$/,delta<0?' down':' up')&&!b.disabled);next?.focus();}
+ }
  function arrow(label,disabled,callback,symbol){return el('button',{type:'button',class:'menu-icon-btn','aria-label':label,title:label,disabled:saving||disabled,onclick:callback},symbol);}
  function draw(){
   body.replaceChildren(...draft.groups.map((g,gi)=>el('article',{class:'menu-group-card'},
