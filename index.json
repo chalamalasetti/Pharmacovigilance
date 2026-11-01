@@ -82,9 +82,11 @@
       "country": "US",
       "agency": "FDA",
       "title": "21 CFR 312.32",
-      "latest": null,
+      "latest": "documents/fda-31232/c4f818891f402ee849a0aecacd058dee920564f77020a1eb3a1ac10d75c55988.json",
       "last_checked_at": "2026-11-01T17:26:04.667Z",
+      "last_success_at": "2026-11-01T17:22:52.948Z",
       "status": "source_unavailable",
+      "candidate_count": 13,
       "note": "Previous extraction preserved; source could not be retrieved."
     },
     "fda-31480": {
@@ -92,9 +94,11 @@
       "country": "US",
       "agency": "FDA",
       "title": "21 CFR 314.80",
-      "latest": null,
+      "latest": "documents/fda-31480/710e5ff96af2a730045aaa8b8f3fbcb156a9c5a9bc75fc882fa7e77d05feda8f.json",
       "last_checked_at": "2026-11-01T17:26:05.028Z",
+      "last_success_at": "2026-11-01T17:22:53.620Z",
       "status": "source_unavailable",
+      "candidate_count": 14,
       "note": "Previous extraction preserved; source could not be retrieved."
     },
     "au-tga-pv-responsibilities": {
