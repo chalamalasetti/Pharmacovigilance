@@ -8,7 +8,8 @@
     "deploymentEnabled": {
       "codex/*": false,
       "claude/*": false,
-      "fda-feed-cache": false
+      "fda-feed-cache": false,
+      "regulatory-document-cache": false
     }
   },
   "functions": {
