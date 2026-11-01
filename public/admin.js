@@ -7,6 +7,7 @@
 import { el } from "./impact-view.js";
 import * as cloud from "./cloud.js";
 import { ago, dataHealth } from "./lib.js";
+import { menuEditor } from "./menu-editor.js";
 import { REVIEW_QUEUES } from "./research-lib.js";
 
 const $ = (id) => document.getElementById(id);
@@ -27,9 +28,6 @@ let db = { approvals: [], overrides: [], requests: [], admins: [], events: [], p
 let editing = null; // { id, isNew, request }
 let site = null; // data/site.json: the menu and status-strip settings the site uses now
 let menu = null; // the menu being arranged: { order, hidden }
-
-// The menu's pages ("index" is Updates); keep in step with NAV in scripts/admin.mjs.
-const NAV_LABELS = { index: "Updates", briefing: "My Briefing", research: "Research", resources: "Resources", companies: "Companies", "action-center": "Action Center", team: "Team", archive: "Archive", globe: "Globe", agencies: "Agencies", about: "About" };
 
 const time = (iso) => (iso ? el("time", { datetime: iso, title: new Date(iso).toLocaleString() }, ago(new Date(iso))) : "never");
 const slug = (s) => s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
@@ -357,44 +355,17 @@ function activitySection() {
 
 const setting = (k, fallback) => db.settings.find((x) => x.key === k)?.value ?? fallback;
 
-function savedMenu() {
-  const order = setting("nav_order", site?.navOrder ?? Object.keys(NAV_LABELS)).filter((x) => x in NAV_LABELS);
-  return { order: [...order, ...Object.keys(NAV_LABELS).filter((x) => !order.includes(x))], hidden: new Set(setting("hidden_nav", site?.hiddenNav ?? [])) };
-}
-
 function menuSection() {
-  menu ??= savedMenu();
-  const move = (i, d) => {
-    const j = i + d;
-    [menu.order[i], menu.order[j]] = [menu.order[j], menu.order[i]];
-    render();
-    $("menu").querySelectorAll("li")[j]?.querySelector(`button[data-d="${d}"]`)?.focus();
-  };
-  const saved = savedMenu();
-  const changed = saved.order.join() !== menu.order.join() || [...saved.hidden].sort().join() !== [...menu.hidden].sort().join();
-  const strip = setting("status_strip", site?.statusStrip ?? "admins");
-  return el("section", { class: "profile", id: "menu" },
-    el("h2", {}, "Site menu"),
-    el("p", { class: "hint" }, "Arrange the menu and hide pages from it, for every visitor. A hidden page still opens from a direct link. Updates always stays, and Sign in is always last."),
-    el("ol", { class: "ad-menu" }, menu.order.map((id, i) => el("li", { class: menu.hidden.has(id) ? "off" : "" },
-      el("label", { class: "check" }, el("input", { type: "checkbox", checked: !menu.hidden.has(id) || null, disabled: id === "index" || null, onchange: (e) => (e.target.checked ? menu.hidden.delete(id) : menu.hidden.add(id), render()) }), ` ${NAV_LABELS[id]}`, menu.hidden.has(id) ? el("span", { class: "hint" }, " (hidden)") : null),
-      el("span", { class: "row" },
-        el("button", { type: "button", "data-d": "-1", "aria-label": `Move ${NAV_LABELS[id]} up`, disabled: i === 0 || null, onclick: () => move(i, -1) }, "↑"),
-        el("button", { type: "button", "data-d": "1", "aria-label": `Move ${NAV_LABELS[id]} down`, disabled: i === menu.order.length - 1 || null, onclick: () => move(i, 1) }, "↓"))))),
-    el("div", { class: "row" },
-      el("button", { type: "button", class: "primary", disabled: !changed || null, onclick: () => act($("menu-msg"), async () => {
-        check(await sb.rpc("admin_set_setting", { k: "nav_order", v: menu.order }));
-        check(await sb.rpc("admin_set_setting", { k: "hidden_nav", v: [...menu.hidden] }));
-        menu = null;
-      }) }, "Save menu"),
-      changed ? el("button", { type: "button", onclick: () => ((menu = null), render()) }, "Discard changes") : null),
-    msg("menu-msg"),
-    el("h3", {}, "Data status line"),
-    el("p", { class: "hint" }, "The line under the menu that says when updates were last refreshed and how many sources were reachable."),
-    el("div", { class: "row" }, [["admins", "Show it to admins only"], ["everyone", "Show it to everyone"]].map(([v, label]) =>
-      el("label", { class: "check" }, el("input", { type: "radio", name: "strip", value: v, checked: strip === v || null, onchange: () => act($("strip-msg"), async () => check(await sb.rpc("admin_set_setting", { k: "status_strip", v }))) }), ` ${label}`))),
-    msg("strip-msg"),
-  );
+  const navSetting=db.settings.find(x=>x.key==='navigation');
+  menu ??= menuEditor({value:navSetting?.value??site?.navigation,legacy:site??{},expected:navSetting?.updated_at??null,onSave:async(value,expected)=>{
+    const {data,error}=await sb.rpc('admin_save_navigation',{v:value,expected});if(error)throw error;
+    // Keep the same editor instance/draft and refresh publish status without resetting input.
+    await load();render();return data;
+  }});
+  const strip=setting('status_strip',site?.statusStrip??'admins');
+  return el('div',{},menu,el('section',{class:'profile'},el('h3',{},'Data status line'),
+    el('p',{class:'hint'},'Show refresh times and source availability below the header.'),
+    el('div',{class:'row'},[['admins','Admins only'],['everyone','Everyone']].map(([v,label])=>el('label',{class:'check'},el('input',{type:'radio',name:'strip',value:v,checked:strip===v||null,onchange:()=>act($('strip-msg'),async()=>check(await sb.rpc('admin_set_setting',{k:'status_strip',v})))}),label))),msg('strip-msg')));
 }
 
 function render() {

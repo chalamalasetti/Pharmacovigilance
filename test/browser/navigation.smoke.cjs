@@ -1,0 +1,38 @@
+const {chromium}=require('playwright');const assert=require('node:assert/strict');
+(async()=>{
+ const browser=await chromium.launch({headless:true,executablePath:process.env.PV_BROWSER_EXECUTABLE||chromium.executablePath(),args:['--no-sandbox']});
+ const page=await browser.newPage({viewport:{width:1360,height:960}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.route('**/config.json',r=>r.fulfill({json:{}}));await page.route('**/data/site.json',r=>r.fulfill({json:{}}));
+ await page.goto('http://127.0.0.1:4173/about.html');
+ const my=page.locator('#site-nav summary').filter({hasText:'My Briefing'});await my.waitFor();
+ assert.equal(await page.locator('#site-nav a[data-nav="action-center"]').isVisible(),false);
+ await my.focus();await page.keyboard.press('Enter');await page.locator('#site-nav a[data-nav="action-center"]').waitFor({state:'visible'});
+ await page.keyboard.press('Escape');assert.equal(await page.locator('#site-nav details[open]').count(),0);
+ assert.equal(await page.locator('#site-nav [data-admin-only]').isVisible(),false);
+ await page.setViewportSize({width:390,height:844});await page.getByRole('button',{name:'Menu',exact:false}).click();await my.click();assert.equal(await page.locator('#site-nav a[data-nav="action-center"]').isVisible(),true);
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ await page.screenshot({path:'/tmp/pv-grouped-menu-mobile.png',fullPage:true});
+ await page.setViewportSize({width:1360,height:1000});
+ await page.evaluate(async()=>{
+  const {menuEditor}=await import('/menu-editor.js');const {defaultNavigation}=await import('/navigation.js');
+  window.savedMenus=[];window.failSave=false;
+  document.querySelector('main').replaceChildren(menuEditor({value:defaultNavigation(),onSave:async(value,expected)=>{if(window.failSave)throw Error('Synthetic conflict: reload before saving');window.savedMenus.push(value);return '2026-11-01T00:00:00Z';}}));
+ });
+ await page.getByLabel('Label for Action Center',{exact:true}).fill('Safety actions');
+ await page.getByLabel('Group for Action Center',{exact:true}).selectOption('resources');
+ await page.getByLabel('Rename group Resources',{exact:true}).fill('Knowledge');
+ await page.getByLabel('Show Global view',{exact:true}).uncheck();
+ await page.getByRole('button',{name:'+ Add group',exact:true}).click();await page.getByLabel('Rename group New group',{exact:true}).fill('Operations');
+ await page.getByRole('button',{name:'Save menu',exact:true}).click();
+ assert.equal(await page.getByLabel('Move Action Center up',{exact:true}).isDisabled(),false);
+ const saved=await page.evaluate(()=>window.savedMenus[0]);assert.ok(saved.groups.find(g=>g.id==='resources').items.some(i=>i.id==='action-center'&&i.label==='Safety actions'));assert.equal(saved.groups.find(g=>g.id==='resources').label,'Knowledge');assert.equal(saved.groups.flatMap(g=>g.items).find(i=>i.id==='globe').hidden,true);
+ assert.equal(await page.getByLabel('Show Updates',{exact:true}).isDisabled(),true);
+ await page.getByLabel('Move Action Center up',{exact:true}).click();assert.equal(await page.getByLabel('Move Action Center up',{exact:true}).evaluate(n=>n===document.activeElement),true);
+ await page.getByLabel('Move group Knowledge up',{exact:true}).click();
+ await page.getByRole('button',{name:'Save menu',exact:true}).click();
+ const reordered=await page.evaluate(()=>window.savedMenus[1]);assert.equal(reordered.groups[2].id,'resources');assert.equal(reordered.groups[2].items[3].id,'action-center');
+ await page.getByLabel('Label for Action Center',{exact:true}).fill('Changed draft');await page.evaluate(()=>window.failSave=true);await page.getByRole('button',{name:'Save menu',exact:true}).click();await page.getByText('Synthetic conflict: reload before saving',{exact:true}).waitFor();assert.equal(await page.getByLabel('Label for Action Center',{exact:true}).inputValue(),'Changed draft');
+ await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:'/tmp/pv-navigation-studio-desktop.png',fullPage:true});
+ await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await page.screenshot({path:'/tmp/pv-navigation-studio-mobile.png',fullPage:true});
+ assert.deepEqual(errors,[]);console.log('Grouped navigation: keyboard, Escape, touch, admin hiding; editor move/rename/hide/add/save/conflict retention and desktop/mobile layout passed.');await browser.close();
+})().catch(e=>{console.error(e);process.exit(1)});

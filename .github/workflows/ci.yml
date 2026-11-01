@@ -46,3 +46,4 @@ jobs:
           trap 'kill "$server_pid"' EXIT
           node test/browser/company-briefing.smoke.cjs
           node test/browser/action-center.smoke.cjs
+          node test/browser/navigation.smoke.cjs

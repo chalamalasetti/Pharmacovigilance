@@ -99,7 +99,8 @@ test("the build reads public columns from the database, and falls back to the la
 test("menu settings: a saved order comes first, later pages keep their place, Updates can't be hidden", async () => {
   const { siteSettings, NAV } = await import("../scripts/admin.mjs");
   const none = siteSettings(null, at);
-  assert.deepEqual(none, { built: at, navOrder: NAV, hiddenNav: [], statusStrip: "admins" });
+  assert.deepEqual({...none,navigation:undefined}, { built: at, navOrder: NAV, hiddenNav: [], statusStrip: "admins",navigation:undefined });
+  assert.ok(none.navigation.groups.find(g=>g.id==="my-briefing").items.some(i=>i.id==="action-center"));
   const s = siteSettings({ settings: [
     { key: "nav_order", value: ["research", "index", "research", "nope"] },
     { key: "hidden_nav", value: ["companies", "index", "<x>"] },
