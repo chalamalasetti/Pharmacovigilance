@@ -1,3 +1,4 @@
+import {watchAdmin} from './admin-visibility.js';
 // Data status page: when the updates were last refreshed and how each source did,
 // from data/status.json (written by scripts/aggregate.mjs on every build).
 import { ago, flag, dataHealth } from "./lib.js";
@@ -30,13 +31,16 @@ function table(id, rows, { country = true } = {}) {
   );
 }
 
-async function main() {
+async function main(current) {
   let status;
   try {
     const res = await fetch("data/status.json", { cache: "no-cache" });
     if (!res.ok) throw new Error(res.status);
     status = await res.json();
+    if(!current())return;
+    if(!status?.feeds||!Array.isArray(status.sources))throw Error('Status unavailable');
   } catch {
+    if(!current())return;
     $("summary").replaceChildren(el("p", {}, "No status has been published yet. It appears after the next build."));
     return;
   }
@@ -65,4 +69,4 @@ async function main() {
   }
 }
 
-main();
+watchAdmin({elements:[$('status-content')],onHide:()=>{$('status-access').hidden=false;$('status-access').replaceChildren('Feed status is available to signed-in site administrators. ',el('a',{href:'account.html'},'Sign in'));for(const id of ['official','news','companies','research'])$(id).replaceChildren();$('summary').replaceChildren(el('p',{},'Loading source diagnostics…'));},onAdmin:async current=>{$('status-access').hidden=true;await main(current);}});

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PV Info: pharmacovigilance and regulatory updates</title>
-  <meta name="description" content="Drug safety alerts, regulatory changes, guidelines and policy updates from FDA, EMA, MHRA, PMDA, CDSCO, Health Canada, TGA, WHO and regulators worldwide, filtered by country and topic.">
+  <title>PV Info · Pharmacovigilance intelligence for safety and systems teams</title>
+  <meta name="description" content="Explore drug safety alerts, guidance and regulatory news for pharmacovigilance, regulatory affairs and safety systems teams. Filter by country and topic, check source coverage and build a personal briefing.">
   <meta name="theme-color" content="#0f4c5c">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
@@ -13,8 +13,8 @@
   <link rel="canonical" href="https://www.pvinfo.org/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="PV Info">
-  <meta property="og:title" content="PV Info: pharmacovigilance and regulatory updates">
-  <meta property="og:description" content="Drug safety alerts, regulatory changes, guidelines and policy updates from FDA, EMA, MHRA, PMDA, CDSCO, Health Canada, TGA, WHO and regulators worldwide, filtered by country and topic.">
+  <meta property="og:title" content="PV Info · Pharmacovigilance intelligence for safety and systems teams">
+  <meta property="og:description" content="Explore drug safety alerts, guidance and regulatory news for pharmacovigilance, regulatory affairs and safety systems teams. Filter by country and topic, check source coverage and build a personal briefing.">
   <meta property="og:url" content="https://www.pvinfo.org/">
   <meta property="og:image" content="https://www.pvinfo.org/og.png">
   <meta property="og:image:width" content="1200">
@@ -22,17 +22,18 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- seo:end -->
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="home.css">
   <!-- Vercel Web Analytics and Speed Insights (enable both in the Vercel dashboard) -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
-<body>
+<body class="home">
   <a class="skip" href="#main">Skip to content</a>
   <header class="top">
-    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
-    <p class="tagline">Pharmacovigilance and regulatory updates from every major regulator</p>
+    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info<small>Pharmacovigilance intelligence</small></span></a>
+    <p class="tagline">For drug safety, regulatory and PV systems teams</p>
     <button type="button" class="menu-btn" aria-controls="site-nav" aria-expanded="false">Menu</button>
     <nav class="toplinks" id="site-nav" aria-label="Main">
       <a href="./">Updates</a>
@@ -49,81 +50,34 @@
     </nav>
   </header>
 
-  <div class="layout">
-    <aside class="filters" id="filters" aria-label="Filters">
-      <div class="field">
-        <label for="q">Search</label>
-        <input id="q" type="search" placeholder="Drug, agency, topic…" autocomplete="off">
-      </div>
+  <main id="main" class="home-main">
+    <section class="home-hero" aria-labelledby="home-title">
+      <div><p class="home-eyebrow">DRUG SAFETY · REGULATORY AFFAIRS · PV SYSTEMS</p><h1 id="home-title">Find the update.<br><span>Understand the potential impact.</span></h1><p class="home-intro">Safety alerts, recalls, label changes and guidance, with source evidence and prompts for business and technical review.</p><p class="home-scope">Direct regulator feeds and filtered industry news across the Americas, Europe, Asia-Pacific, Middle East &amp; Africa. Coverage varies by source, language and availability.</p><p id="hero-sources" class="home-scope">See the source list for configured regulators and secondary news coverage.</p><a href="coverage.html" class="home-text-link">See sources and coverage →</a></div>
+      <div class="home-start"><span class="home-step">YOUR NEXT STEP</span><h2>Make it relevant to your work.</h2><p>Choose your role, countries and topics. Get a tailored briefing with potential business and system impacts.</p><a class="btn primary" href="briefing.html">Set up My Briefing →</a><a class="home-browse" href="#updates">Browse latest updates</a><p class="home-small">Start in this browser. Sign in with email to sync across devices.</p></div>
+    </section>
 
-      <div class="field">
-        <span class="label">Region</span>
-        <div class="chips" id="regions" role="group" aria-label="Region"></div>
-      </div>
+    <section class="home-health" id="home-health" hidden aria-label="Update freshness and source health">
+      <div><span class="home-label">UPDATE SNAPSHOT</span><p id="snapshot-time">Checking snapshot time…</p></div><div><span class="home-label">SOURCE CHECKS</span><p id="source-checks">Checking collection status…</p></div><div><span class="home-label">LATEST PUBLICATION</span><p id="latest-publication">Checking publication dates…</p></div><div class="home-health-state"><span id="health-label" role="status">Hourly collection schedule</span><a href="status.html">View source status →</a></div><p id="health-note" class="home-health-note">Each source has its own publication schedule. Earlier items are retained when a source is unavailable.</p>
+    </section>
 
-      <div class="field">
-        <label for="country">Country or body</label>
-        <select id="country"></select>
-        <button type="button" class="link" id="follow" hidden>☆ Follow this country</button>
-        <label class="check" id="mine-wrap" hidden><input type="checkbox" id="mine"> Only countries I follow <span id="mine-list"></span></label>
-      </div>
+    <section class="home-filter-panel" aria-label="Find relevant updates">
+      <fieldset id="filter-controls" disabled><legend>Find relevant updates</legend><div class="home-primary-filters"><div class="field"><label for="q">Search updates</label><input id="q" type="search" placeholder="Drug, agency or keyword" autocomplete="off" aria-describedby="search-help"></div><div class="field"><label for="country">Country or body</label><select id="country"><option value="">All countries</option></select></div><div class="field"><label for="topic">Topic</label><select id="topic"><option value="">All topics</option></select></div><button type="button" class="reset" id="reset">Reset filters</button></div><p id="search-help" class="home-search-help">All search words must match. Try <button class="link" type="button" data-example="FDA recall">FDA recall</button> or <button class="link" type="button" data-example="EMA guidance">EMA guidance</button>.</p>
+      <details id="filters" class="home-advanced"><summary>More filters: region, source and publication window</summary><div class="home-advanced-grid"><div class="field"><span class="label">Region</span><div class="chips" id="regions" role="group" aria-label="Region"></div></div><div class="field"><span class="label">Source type</span><div class="seg" id="kind" role="group" aria-label="Source type"><button type="button" data-v="">All</button><button type="button" data-v="official">Regulator feeds</button><button type="button" data-v="news">News coverage</button></div></div><div class="field"><label for="days">Published within</label><select id="days"><option value="7">Last 7 days</option><option value="30" selected>Last 30 days</option><option value="60">Last 60 days</option></select><p class="home-small">Items without a supplied date remain visible.</p></div><div class="field"><button type="button" class="link" id="follow" hidden>Follow selected country</button><label class="check" id="mine-wrap" hidden><input type="checkbox" id="mine"> Only countries I follow <span id="mine-list"></span></label></div></div></details></fieldset>
+      <div class="active-filters" id="active" hidden aria-label="Active filters"></div>
+    </section>
 
-      <div class="field">
-        <span class="label">Topic</span>
-        <ul class="cats" id="cats"></ul>
-      </div>
+    <div id="load-message" class="home-load-message" role="status" aria-live="polite">Loading the interactive feed. Any page snapshot below remains readable.</div><button type="button" class="btn" id="retry" hidden>Retry loading updates</button>
+    <section class="key" id="key" hidden aria-labelledby="key-title"><div class="home-section-heading"><h2 id="key-title">Priority picks this week</h2><p>Rule-based ranking of official notices and safety-related topics.</p></div><div class="key-grid" id="key-grid"></div></section>
+    <section id="updates" aria-labelledby="count"><div class="listhead"><h2 id="count">Latest updates</h2><span id="window-label" class="home-small">Last 30 days · undated items included</span><a href="feed.xml">Subscribe by RSS ↗</a></div><p id="snapshot-label" class="home-small">Interactive filters will apply when loading completes.</p><div id="list" class="list" aria-busy="true">
+      <!-- home-snapshot:start -->
+      <p class="empty">Retrieving the latest published updates. You can also <a href="feed.xml">read the RSS feed</a> or <a href="coverage.html">explore source coverage</a>.</p>
+      <!-- home-snapshot:end -->
+    </div><button type="button" class="more" id="more" hidden>Show more</button></section>
 
-      <div class="field">
-        <span class="label">Source</span>
-        <div class="seg" id="kind" role="group" aria-label="Source type">
-          <button type="button" data-v="">All</button>
-          <button type="button" data-v="official">Regulators</button>
-          <button type="button" data-v="news">News</button>
-        </div>
-      </div>
-
-      <div class="field">
-        <label for="days">Published within</label>
-        <select id="days">
-          <option value="7">Last 7 days</option>
-          <option value="30">Last 30 days</option>
-          <option value="60">Last 60 days</option>
-        </select>
-      </div>
-
-      <button type="button" class="reset" id="reset">Clear filters</button>
-    </aside>
-
-    <main>
-      <button type="button" class="show-filters" id="show-filters" aria-controls="filters" aria-expanded="false">Search &amp; filters</button>
-      <section class="welcome" id="welcome" hidden aria-labelledby="welcome-title">
-        <div>
-          <h2 id="welcome-title">Welcome to PV Info</h2>
-          <p>Drug safety alerts, guidelines and regulatory changes from regulators worldwide, refreshed every hour. Use the filters to narrow by country or topic, and open an <b>Impact card</b> on any update to see what it could mean for your team.</p>
-        </div>
-        <div class="welcome-actions">
-          <a class="btn primary" href="briefing.html">Set up My Briefing</a>
-          <button type="button" class="btn" id="welcome-close">Got it</button>
-        </div>
-      </section>
-      <div class="active-filters" id="active" hidden></div>
-      <section class="key" id="key" hidden>
-        <h2>Key updates this week</h2>
-        <div class="key-grid" id="key-grid"></div>
-      </section>
-
-      <div class="listhead">
-        <h2 id="count">Loading updates…</h2>
-      </div>
-      <div id="list" class="list" aria-live="polite"></div>
-      <button type="button" class="more" id="more" hidden>Show more</button>
-    </main>
-  </div>
-
-  <footer class="foot">
-    Headlines link to the original regulator notice or news report. Always confirm details with the official source before acting.
-    <a href="feed.xml">Subscribe by RSS</a>
-  </footer>
+    <section class="home-trust" aria-labelledby="trust-title"><div><p class="home-eyebrow">EVIDENCE BEFORE ACTION</p><h2 id="trust-title">Know what you are reading.</h2><p><strong>Regulator feed</strong> identifies an item from a configured official feed. <strong>News coverage</strong> identifies a publisher report; mentioning an agency does not make it an official notice.</p><p><strong>Impact cards</strong> use keyword rules to suggest potential business, process and system implications. They are review prompts. Check the original source and your company’s applicability before acting.</p><a href="about.html#how-it-works">How selection, tagging and refresh work →</a></div><div><h3>Coverage is visible.</h3><p id="coverage-detail">The source list shows which regulators are collected directly and which jurisdictions appear through news coverage. A directory listing does not guarantee collected updates.</p><p>Some feeds also include devices and other health products. Source excerpts are shown when supplied; missing summaries and publication dates are labeled.</p><div class="home-trust-links"><a href="coverage.html">Sources we cover</a><a href="status.html" data-feed-admin hidden>Feed refresh status</a><a href="about.html#feedback" id="report-home">Report a missing or incorrect update</a></div></div></section>
+    <noscript><p class="home-noscript">JavaScript is off. The page snapshot below the filters contains links to published items. Use <a href="feed.xml">RSS</a> for updates or <a href="coverage.html">source coverage</a> for details. Interactive filtering and Impact cards need JavaScript.</p></noscript>
+  </main>
+  <footer class="foot">PV Info means pharmacovigilance information. Confirm the original publication before acting. <a href="about.html#feedback">Feedback and corrections</a> · <a href="feed.xml">RSS feed</a></footer>
   <script type="module" src="app.js"></script>
   <script type="module" src="chat.js"></script>
   <script type="module" src="nav.js"></script>
