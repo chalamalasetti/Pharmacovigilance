@@ -1,0 +1,892 @@
+{
+  "schema_version": "public-document-key-info-v1",
+  "document_id": "ema-gvp-i",
+  "metadata": {
+    "title": "GVP Module I — PV systems and quality systems",
+    "country": "EU",
+    "agency": "EMA",
+    "edition": "2012 module",
+    "norm": "Guidance",
+    "topic": "PV quality and outsourcing",
+    "lifecycle": "Marketed",
+    "legal_basis": "GVP explains EU PV legislation including Regulation (EU) No 520/2012; confirm the current consolidated legal provisions.",
+    "applicability": "EU marketing authorisation holders and their PV quality systems; confirm role and arrangements.",
+    "published_on": "2012-06-25",
+    "effective_on": "2012-07-02",
+    "source_status": "current"
+  },
+  "metadata_verification": "Source-register metadata; dates and legal status require human verification.",
+  "source_url": "https://www.ema.europa.eu/en/documents/scientific-guideline/guideline-good-pharmacovigilance-practices-module-i-pharmacovigilance-systems-and-their-quality-systems_en.pdf",
+  "original_sha256": "197de2bc0cfb6bdafe8d322934ece6e9bd4c5901651a5a828e74076470d7ff59",
+  "content_kind": "pdf",
+  "parser_version": "normative-rules-v2",
+  "extraction_status": "candidates_extracted",
+  "candidate_count": 107,
+  "excluded_paragraphs": 0,
+  "candidate_limit_reached": false,
+  "review_status": "pending",
+  "limitations": [
+    "English rule-based extraction; no GPT or paid API.",
+    "Candidates are not approved requirements. Read the original, qualifications and exceptions.",
+    "Scans, tables, other languages and implicit obligations may be missed. Zero candidates does not establish zero requirements."
+  ],
+  "candidates": [
+    {
+      "ordinal": 1,
+      "anchor": "page-4-paragraph-3",
+      "statement": "For performing their pharmacovigilance activities, marketing authorisation holders, competent authorities of Member States and the Agency shall establish and use quality systems that are adequate and effective for this performance. The legal requirement for quality systems was introduced by Directive 2010/84/EU amending Directive 2001/83/EC (the latter is referenced as DIR) and Regulation (EU) No 1235/2010 amending Regulation (EC) No 726/2004 (the latter is referenced as REG) to strengthen pharmacovigilance in the EU. The minimum requirements of these quality systems are set out in the Commission Implementing Regulation (EU) No 520/2012 on the Performance of Pharmacovigilance Activities Provided for in Regulation (EC) No 726/2004 and Directive 2001/83/EC (the Implementing Regulation is referenced as IR).",
+      "context": "The definition of a pharmacovigilance system is provided in Article 1 of Directive 2001/83/EC as a system used by the marketing authorisation holder and by Member States to fulfil the tasks and responsibilities listed in Title IX and designed to monitor the safety of authorised medicinal products and detect any change to their risk-benefit balance. The Agency likewise maintains a pharmacovigilance system to fulfil its pharmacovigilance activities. While there has to be compliance with these legal requirements, the implementation of a quality system should be adapted to the respective organisation.",
+      "fingerprint": "7803a7edb2ddda0f2256d24bc7408d994b7db6e0f8bee55349edc0e2f47be1cb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 2,
+      "anchor": "page-4-paragraph-4",
+      "statement": "While there has to be compliance with these legal requirements, the implementation of a quality system should be adapted to the respective organisation.",
+      "context": "For performing their pharmacovigilance activities, marketing authorisation holders, competent authorities of Member States and the Agency shall establish and use quality systems that are adequate and effective for this performance. The legal requirement for quality systems was introduced by Directive 2010/84/EU amending Directive 2001/83/EC (the latter is referenced as DIR) and Regulation (EU) No 1235/2010 amending Regulation (EC) No 726/2004 (the latter is referenced as REG) to strengthen pharmacovigilance in the EU. The minimum requirements of these quality systems are set out in the Commission Implementing Regulation (EU) No 520/2012 on the Performance of Pharmacovigilance Activities Provided for in Regulation (EC) No 726/2004 and Directive 2001/83/EC (the Implementing Regulation is referenced as IR). By following the overall quality objectives in I.B.4. and the guiding principle in I",
+      "fingerprint": "4343ff3397d81743bd9bf7e9c8df45f2244ed788c3d4268b2703720f7b4ad806",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 3,
+      "anchor": "page-4-paragraph-5",
+      "statement": "By following the overall quality objectives in I.B.4. and the guiding principle in I.B.5. to meet the needs of patients, healthcare professionals and the public in relation to the safety of medicines, the application of the quality system should be adapted to how crucial each pharmacovigilance task is for fulfilling the quality objectives for each medicinal product covered by a quality system.",
+      "context": "While there has to be compliance with these legal requirements, the implementation of a quality system should be adapted to the respective organisation. The guidance on quality systems in this Module is consistent with the general principles of the ISO",
+      "fingerprint": "0f69d785e9f1cf6f31a46e2376d3cdf10c573b022bcd8e3ecd46d34f52ee15a3",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 4,
+      "anchor": "page-4-paragraph-8",
+      "statement": "In this Module, all applicable legal requirements are referenced in the way explained in the GVP Introductory Cover Note and are usually identifiable by the modal verb “shall”. Guidance for the implementation of legal requirements is provided using the modal verb “should”.",
+      "context": "9000 Standards on good quality management practices, specifically the ISO 9001-2008 Standards on quality management systems, issued by the International Organization for Standardization (ISO). The general application of quality management to pharmacovigilance systems is described under I.B. and requirements specific to the operation of the EU network in I.C.. I.B. Structures and processes I.B.1. Pharmacovigilance system A pharmacovigilance system is defined as a system used by an organisation to fulfil its legal tasks and responsibilities in relation to pharmacovigilance and designed to monitor the safety of authorised medicinal products and detect any change to their risk-benefit balance [DIR Art 1(28d)].",
+      "fingerprint": "8557fd90f61465a478a8bb0b7d9b33e15ae3891dfad9a5ac6dc833bd0f0c500c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 5,
+      "anchor": "page-5-paragraph-5",
+      "statement": "The quality system is part of the pharmacovigilance system and consists of its own structures and processes. It shall cover organisational structure, responsibilities, procedures, processes and resources of the pharmacovigilance system as well as appropriate resource management, compliance management and record management [IR Art 8(2)].",
+      "context": "Specific quality objectives and quality requirements for the specific structures and processes of the pharmacovigilance systems are provided in each Module of GVP as appropriate. I.B.3. Quality cycle The quality system shall be based on all of the following activities:",
+      "fingerprint": "b9622dafa8cddb16bfb8636aa11311791071456e69833bc10bd7f5092cc6f36a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 6,
+      "anchor": "page-5-paragraph-6",
+      "statement": "I.B.3. Quality cycle The quality system shall be based on all of the following activities:",
+      "context": "The quality system is part of the pharmacovigilance system and consists of its own structures and processes. It shall cover organisational structure, responsibilities, procedures, processes and resources of the pharmacovigilance system as well as appropriate resource management, compliance management and record management [IR Art 8(2)]. • quality planning: establishing structures and planning integrated and consistent processes;",
+      "fingerprint": "c0b1eaacf4300dd857311f5853c0c902fbdbd666e2a8a6bcbaee379542e1521d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 7,
+      "anchor": "page-5-paragraph-14",
+      "statement": "I.B.5. Principles for good pharmacovigilance practices With the aim of fulfilling the overall quality objectives in I.B.4., the following principles should guide the design of all structures and processes as well as the conduct of all tasks and responsibilities:",
+      "context": "• promoting the safe and effective use of medicinal products, in particular through providing timely information about the safety of medicinal products to patients, healthcare professionals and the public; and • contributing to the protection of patients’ and public health. • The needs of patients, healthcare professionals and the public in relation to the safety of medicines should be met.",
+      "fingerprint": "05641a6dfeb8a5b0a7dd4128a3738ce3a27fc8d3edc1dd58a94f0c709adf8780",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 8,
+      "anchor": "page-5-paragraph-15",
+      "statement": "• The needs of patients, healthcare professionals and the public in relation to the safety of medicines should be met.",
+      "context": "I.B.5. Principles for good pharmacovigilance practices With the aim of fulfilling the overall quality objectives in I.B.4., the following principles should guide the design of all structures and processes as well as the conduct of all tasks and responsibilities: EMA/541760/2011 Page 6/25 • Upper management should provide leadership in the implementation of the quality system and motivation for all staff members in relation to the quality objectives.",
+      "fingerprint": "99540fcf8a22990c93a0685147401f7f22efb32a023eeb58e441f5177b95504f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 9,
+      "anchor": "page-6-paragraph-1",
+      "statement": "EMA/541760/2011 Page 6/25 • Upper management should provide leadership in the implementation of the quality system and motivation for all staff members in relation to the quality objectives.",
+      "context": "• The needs of patients, healthcare professionals and the public in relation to the safety of medicines should be met. • All persons within the organisation should be involved in and support the pharmacovigilance system on the basis of task ownership and responsibility in a degree according to their tasks and assigned responsibilities.",
+      "fingerprint": "70d812501b179786a7eea5019762dd2b3d7145f074c3f0a772a6e6194db6e4eb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 10,
+      "anchor": "page-6-paragraph-2",
+      "statement": "• All persons within the organisation should be involved in and support the pharmacovigilance system on the basis of task ownership and responsibility in a degree according to their tasks and assigned responsibilities.",
+      "context": "EMA/541760/2011 Page 6/25 • Upper management should provide leadership in the implementation of the quality system and motivation for all staff members in relation to the quality objectives. • All persons involved with the entire organisation should engage in continuous quality improvement following the quality cycle in I.B.3..",
+      "fingerprint": "560bcf2c83667b2162b688a14a2b578b6c80294cf7d9e0c745ed8693cf607c14",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 11,
+      "anchor": "page-6-paragraph-3",
+      "statement": "• All persons involved with the entire organisation should engage in continuous quality improvement following the quality cycle in I.B.3..",
+      "context": "• All persons within the organisation should be involved in and support the pharmacovigilance system on the basis of task ownership and responsibility in a degree according to their tasks and assigned responsibilities. • Resources and tasks should be organised as structures and processes in a manner that will support the proactive, risk-proportionate, continuous and integrated conduct of pharmacovigilance.",
+      "fingerprint": "8bcc9073a2bf3c7dd806182c6a58323de87d549ec948a27e11a0f906ca61b3f1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 12,
+      "anchor": "page-6-paragraph-4",
+      "statement": "• Resources and tasks should be organised as structures and processes in a manner that will support the proactive, risk-proportionate, continuous and integrated conduct of pharmacovigilance.",
+      "context": "• All persons involved with the entire organisation should engage in continuous quality improvement following the quality cycle in I.B.3.. • All available evidence on the risk-benefit balance of medicinal products should be sought and all relevant aspects, which could impact on the risk-benefit balance and the use of a product, should be considered for decision-making.",
+      "fingerprint": "62e8b1468a98fb52c338ca6d6f0c3270f1e3741503a0275c708d5d709ad44beb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 13,
+      "anchor": "page-6-paragraph-5",
+      "statement": "• All available evidence on the risk-benefit balance of medicinal products should be sought and all relevant aspects, which could impact on the risk-benefit balance and the use of a product, should be considered for decision-making.",
+      "context": "• Resources and tasks should be organised as structures and processes in a manner that will support the proactive, risk-proportionate, continuous and integrated conduct of pharmacovigilance. • Good cooperation should be fostered between marketing authorisation holders, competent authorities, public health organisations, patients, healthcare professionals, learned societies and other relevant bodies in accordance with the applicable legal provisions.",
+      "fingerprint": "12cd2240085ecc80c1178112b06a2fe1cfa88b0b6a1d84097b13079706654989",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 14,
+      "anchor": "page-6-paragraph-6",
+      "statement": "• Good cooperation should be fostered between marketing authorisation holders, competent authorities, public health organisations, patients, healthcare professionals, learned societies and other relevant bodies in accordance with the applicable legal provisions.",
+      "context": "• All available evidence on the risk-benefit balance of medicinal products should be sought and all relevant aspects, which could impact on the risk-benefit balance and the use of a product, should be considered for decision-making. I.B.6. Responsibilities for the quality system within an organisation A sufficient number of competent and appropriately qualified and trained personnel shall be available for the performance of pharmacovigilance activities [IR Art 10(1), Art 14(1)]. Their responsibility should include adherence to the principles defined in I.B.5..",
+      "fingerprint": "3aebe9eb1460a5080ac3c794c8e686c94856f5721e90d8a76507f83f435b57cf",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 15,
+      "anchor": "page-6-paragraph-7",
+      "statement": "I.B.6. Responsibilities for the quality system within an organisation A sufficient number of competent and appropriately qualified and trained personnel shall be available for the performance of pharmacovigilance activities [IR Art 10(1), Art 14(1)]. Their responsibility should include adherence to the principles defined in I.B.5..",
+      "context": "• Good cooperation should be fostered between marketing authorisation holders, competent authorities, public health organisations, patients, healthcare professionals, learned societies and other relevant bodies in accordance with the applicable legal provisions. For the purpose of a systematic approach towards quality in accordance with the quality cycle (see I.B.3.), managerial staff (i.e. staff with management responsibilities) in any organisation should be responsible for:",
+      "fingerprint": "78254df5bd8f13806383082cce288ae56f97bea6da25c73556c73d3c57e2d406",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 16,
+      "anchor": "page-6-paragraph-8",
+      "statement": "For the purpose of a systematic approach towards quality in accordance with the quality cycle (see I.B.3.), managerial staff (i.e. staff with management responsibilities) in any organisation should be responsible for:",
+      "context": "I.B.6. Responsibilities for the quality system within an organisation A sufficient number of competent and appropriately qualified and trained personnel shall be available for the performance of pharmacovigilance activities [IR Art 10(1), Art 14(1)]. Their responsibility should include adherence to the principles defined in I.B.5.. • ensuring that the organisation documents the quality system as described in I.B.11.;",
+      "fingerprint": "353a45ddf99e92fa74eb7ee5d142043e85baba8746799df420be01759fe30c06",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 17,
+      "anchor": "page-7-paragraph-1",
+      "statement": "EMA/541760/2011 Page 7/25 In relation to the management responsibilities described above, upper management within an organisation should provide leadership through:",
+      "context": "• ensuring that audits are performed (see I.B.12.). • motivating all staff members, based on shared values, trust and freedom to speak and act with responsibility and through recognition of staff members’ contributions within the organisation; and • assigning roles, responsibilities and authorities to staff members according to their competencies and communicating and implementing these throughout the organisation.",
+      "fingerprint": "52ed0ef9fe3dd6ba212b6afa48142df1e32a98d41420df8e6c7d3bf6e5af92b7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 18,
+      "anchor": "page-7-paragraph-3",
+      "statement": "For competent authorities, all persons involved in the procedures and processes of the quality system established for the performance of pharmacovigilance activities shall be responsible for the good functioning of that quality system and shall ensure a systematic approach towards quality and towards the implementation and maintenance of the quality system [IR Art 8(5)].",
+      "context": "• motivating all staff members, based on shared values, trust and freedom to speak and act with responsibility and through recognition of staff members’ contributions within the organisation; and • assigning roles, responsibilities and authorities to staff members according to their competencies and communicating and implementing these throughout the organisation. I.B.7. Training of personnel for pharmacovigilance Achieving the required quality for the conduct of pharmacovigilance processes and their outcomes by an organisation is intrinsically linked with the availability of a sufficient number of competent and appropriately qualified and trained personnel (see I.B.6.).",
+      "fingerprint": "ee1af3ca5efdbd10c0630434abbb3296df12c81676bd449805f25222b6514a7a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 19,
+      "anchor": "page-7-paragraph-5",
+      "statement": "All personnel involved in the performance of pharmacovigilance activities shall receive initial and continued training [IR Art 10(3), Art 14(2)]. For marketing authorisation holders, this training shall relate to the roles and responsibilities of the personnel [IR Art 10(3)].",
+      "context": "I.B.7. Training of personnel for pharmacovigilance Achieving the required quality for the conduct of pharmacovigilance processes and their outcomes by an organisation is intrinsically linked with the availability of a sufficient number of competent and appropriately qualified and trained personnel (see I.B.6.). The organisation shall keep training plans and records for documenting, maintaining and developing the competences of personnel [IR Art 10(3), Art 14(2)]. Training plans should be based on training needs assessment and should be subject to monitoring.",
+      "fingerprint": "c46b80f81d55458d4734dd4a5c1a801d93abe2e592e5ec870066b09d08317f22",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 20,
+      "anchor": "page-7-paragraph-6",
+      "statement": "The organisation shall keep training plans and records for documenting, maintaining and developing the competences of personnel [IR Art 10(3), Art 14(2)]. Training plans should be based on training needs assessment and should be subject to monitoring.",
+      "context": "All personnel involved in the performance of pharmacovigilance activities shall receive initial and continued training [IR Art 10(3), Art 14(2)]. For marketing authorisation holders, this training shall relate to the roles and responsibilities of the personnel [IR Art 10(3)]. The training should support continuous improvement of relevant skills, the application of scientific progress and professional development and ensure that staff members have the appropriate qualifications, understanding of relevant pharmacovigilance requirements as well as experience for the assigned tasks and responsibilities. All staff members of the organisation should receive and be able to seek information about what to do if they become aware of a safety concern.",
+      "fingerprint": "3ea6a172cef8d24bfe8d71e38ec74c871765ccac416a30500a7f8798d386a1cb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 21,
+      "anchor": "page-7-paragraph-7",
+      "statement": "The training should support continuous improvement of relevant skills, the application of scientific progress and professional development and ensure that staff members have the appropriate qualifications, understanding of relevant pharmacovigilance requirements as well as experience for the assigned tasks and responsibilities. All staff members of the organisation should receive and be able to seek information about what to do if they become aware of a safety concern.",
+      "context": "The organisation shall keep training plans and records for documenting, maintaining and developing the competences of personnel [IR Art 10(3), Art 14(2)]. Training plans should be based on training needs assessment and should be subject to monitoring. There should be a process in place within the organisation to check that training results in the appropriate levels of understanding and conduct of pharmacovigilance activities for the assigned tasks and responsibilities, or to identify unmet training needs, in line with professional development plans agreed for the organisations as well as the individual staff members.",
+      "fingerprint": "b46f0ca7c7c3a585b4021dc4f3b924241dbbba37b9d6d01d2e17af5f86147e17",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 22,
+      "anchor": "page-7-paragraph-8",
+      "statement": "There should be a process in place within the organisation to check that training results in the appropriate levels of understanding and conduct of pharmacovigilance activities for the assigned tasks and responsibilities, or to identify unmet training needs, in line with professional development plans agreed for the organisations as well as the individual staff members.",
+      "context": "The training should support continuous improvement of relevant skills, the application of scientific progress and professional development and ensure that staff members have the appropriate qualifications, understanding of relevant pharmacovigilance requirements as well as experience for the assigned tasks and responsibilities. All staff members of the organisation should receive and be able to seek information about what to do if they become aware of a safety concern. Adequate training should also be considered by the organisation for those staff members to whom no specific pharmacovigilance tasks and responsibilities have been assigned but whose activities may have an impact on the pharmacovigilance system or the conduct of pharmacovigilance. Such activities include but are not limited to those related to clinical trials, technical product complaints, medical information, terminologies",
+      "fingerprint": "f6a696463a92718d922c4b44c898a5798479334032f9726718accf0704345a96",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 23,
+      "anchor": "page-7-paragraph-9",
+      "statement": "Adequate training should also be considered by the organisation for those staff members to whom no specific pharmacovigilance tasks and responsibilities have been assigned but whose activities may have an impact on the pharmacovigilance system or the conduct of pharmacovigilance. Such activities include but are not limited to those related to clinical trials, technical product complaints, medical information, terminologies, sales and marketing, regulatory affairs, legal affairs and audits.",
+      "context": "There should be a process in place within the organisation to check that training results in the appropriate levels of understanding and conduct of pharmacovigilance activities for the assigned tasks and responsibilities, or to identify unmet training needs, in line with professional development plans agreed for the organisations as well as the individual staff members. Appropriate instructions on the processes to be used in case of urgency, including business continuity (see I.B.11.3.), shall be provided by the organisation to their personnel [IR Art 10(4), Art 14(3)].",
+      "fingerprint": "372d5efc9854a728d74196fb4187cfa4bbd2cdb2084396377b3ce9be6170c1f5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 24,
+      "anchor": "page-7-paragraph-10",
+      "statement": "Appropriate instructions on the processes to be used in case of urgency, including business continuity (see I.B.11.3.), shall be provided by the organisation to their personnel [IR Art 10(4), Art 14(3)].",
+      "context": "Adequate training should also be considered by the organisation for those staff members to whom no specific pharmacovigilance tasks and responsibilities have been assigned but whose activities may have an impact on the pharmacovigilance system or the conduct of pharmacovigilance. Such activities include but are not limited to those related to clinical trials, technical product complaints, medical information, terminologies, sales and marketing, regulatory affairs, legal affairs and audits. I.B.8. Facilities and equipment for pharmacovigilance Achieving the required quality for the conduct of pharmacovigilance processes and their outcomes is also intrinsically linked with appropriate facilities and equipment used to support the processes.",
+      "fingerprint": "163652d2385da100805405fb8622f5621c998018156eeb76289a1c7edeb04efb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 25,
+      "anchor": "page-7-paragraph-12",
+      "statement": "Facilities and equipment should include office space, information technology (IT) systems and (electronic) storage space. They should be located, designed, constructed, adapted and maintained to suit their intended purpose in line with the quality objectives for pharmacovigilance (see I.B.4.) and",
+      "context": "I.B.8. Facilities and equipment for pharmacovigilance Achieving the required quality for the conduct of pharmacovigilance processes and their outcomes is also intrinsically linked with appropriate facilities and equipment used to support the processes. EMA/541760/2011 Page 8/25 also be available for business continuity (see I.B.11.3.). Facilities and equipment which are critical for the conduct of pharmacovigilance (see I.B.11.3.) should be subject to appropriate checks, qualification and/or validation activities to prove their suitability for the intended purpose. There should be processes in place to keep awareness of the valid terminologies (see Module VI) in their valid versions and to keep the IT systems up-to-date accordingly.",
+      "fingerprint": "379ab0cbd02097da74aa7ef8a17f3b6628e13c82063f33f402dbb40f39049658",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 26,
+      "anchor": "page-8-paragraph-1",
+      "statement": "EMA/541760/2011 Page 8/25 also be available for business continuity (see I.B.11.3.). Facilities and equipment which are critical for the conduct of pharmacovigilance (see I.B.11.3.) should be subject to appropriate checks, qualification and/or validation activities to prove their suitability for the intended purpose. There should be processes in place to keep awareness of the valid terminologies (see Module VI) in their valid versions and to keep the IT systems up-to-date accordingly.",
+      "context": "Facilities and equipment should include office space, information technology (IT) systems and (electronic) storage space. They should be located, designed, constructed, adapted and maintained to suit their intended purpose in line with the quality objectives for pharmacovigilance (see I.B.4.) and I.B.9. Specific quality system procedures and processes I.B.9.1. Compliance management by marketing authorisation holders For the purpose of compliance management, marketing authorisation holders shall have specific quality system procedures and processes in place in order to ensure the following:",
+      "fingerprint": "ee9ede91fb3ea9bfb2c0cd030bbe34121e736957defbc9ae106713bf204a8686",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 27,
+      "anchor": "page-8-paragraph-2",
+      "statement": "I.B.9. Specific quality system procedures and processes I.B.9.1. Compliance management by marketing authorisation holders For the purpose of compliance management, marketing authorisation holders shall have specific quality system procedures and processes in place in order to ensure the following:",
+      "context": "EMA/541760/2011 Page 8/25 also be available for business continuity (see I.B.11.3.). Facilities and equipment which are critical for the conduct of pharmacovigilance (see I.B.11.3.) should be subject to appropriate checks, qualification and/or validation activities to prove their suitability for the intended purpose. There should be processes in place to keep awareness of the valid terminologies (see Module VI) in their valid versions and to keep the IT systems up-to-date accordingly. • the continuous monitoring of pharmacovigilance data, the examination of options for risk minimisation and prevention and that appropriate measures are taken by the marketing authorisation holder [IR Art 11(1)(a)] (see Modules IX and XII);",
+      "fingerprint": "d82bd0de99c99915e280eccc55916f40479bf0a2f933d03a530ed475ea6d326e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 28,
+      "anchor": "page-8-paragraph-10",
+      "statement": "I.B.9.2. Compliance management by competent authorities For the purpose of compliance management, competent authorities shall establish specific quality system procedures and processes in order to achieve all of the following objectives:",
+      "context": "• appropriate communication of relevant safety information to healthcare professionals and patients (see Module XII and XV) [IR Art 11(1)(g)]. • ensuring the evaluation of the quality, including completeness, of pharmacovigilance data submitted [IR Art 15(1)(a)];",
+      "fingerprint": "8531c61a02fde8d952cb56f359a6868374a0121a3694c9d0d0e6975379c6888a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 29,
+      "anchor": "page-9-paragraph-3",
+      "statement": "Independence in the performance of pharmacovigilance activities is interpreted in the sense that all regulatory decisions on medicinal products should be taken in the sole interest of patients’ and public health.",
+      "context": "• conducting inspections, including pre-authorisation inspections [IR Art 15(1)(f)]. I.B.10. Record management The organisation shall record all pharmacovigilance information and ensure that it is handled and stored so as to allow accurate reporting, interpretation and verification of that information [IR Art 12(1), Art 16(1)].",
+      "fingerprint": "77f58f3f3b31f936d74273960f7ed92a036ba508fffc7a9a83782c28bf873d0d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 30,
+      "anchor": "page-9-paragraph-4",
+      "statement": "I.B.10. Record management The organisation shall record all pharmacovigilance information and ensure that it is handled and stored so as to allow accurate reporting, interpretation and verification of that information [IR Art 12(1), Art 16(1)].",
+      "context": "Independence in the performance of pharmacovigilance activities is interpreted in the sense that all regulatory decisions on medicinal products should be taken in the sole interest of patients’ and public health. A record management system shall be put in place for all documents used for pharmacovigilance activities, ensuring their retrievability as well as traceability of the measures taken to investigate safety concerns, of the timelines for those investigations and of decisions on safety concerns, including their date and the decision-making process [IR Art 12(1), Art 16(1)].",
+      "fingerprint": "463a153f7b02c0a109189a45d459fc80edefade5c5eb561cdb2f802dc5c98db3",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 31,
+      "anchor": "page-9-paragraph-5",
+      "statement": "A record management system shall be put in place for all documents used for pharmacovigilance activities, ensuring their retrievability as well as traceability of the measures taken to investigate safety concerns, of the timelines for those investigations and of decisions on safety concerns, including their date and the decision-making process [IR Art 12(1), Art 16(1)].",
+      "context": "I.B.10. Record management The organisation shall record all pharmacovigilance information and ensure that it is handled and stored so as to allow accurate reporting, interpretation and verification of that information [IR Art 12(1), Art 16(1)]. The record management system should support: • the management of the quality of pharmacovigilance data, including their completeness, accuracy and integrity;",
+      "fingerprint": "b3ab41ea1d7fd8f30050b905f31d2ae132824596b3a2b5e90dc994f3e29e2b84",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 32,
+      "anchor": "page-9-paragraph-6",
+      "statement": "The record management system should support: • the management of the quality of pharmacovigilance data, including their completeness, accuracy and integrity;",
+      "context": "A record management system shall be put in place for all documents used for pharmacovigilance activities, ensuring their retrievability as well as traceability of the measures taken to investigate safety concerns, of the timelines for those investigations and of decisions on safety concerns, including their date and the decision-making process [IR Art 12(1), Art 16(1)]. • timely access to all records; • effective internal and external communication; and • the retention of documents relating to the pharmacovigilance systems and the conduct of pharmacovigilance for individual medicinal products, in accordance with the applicable retention periods.",
+      "fingerprint": "a35e085bf9189b2fdcc93cac5458b072c51116adfb1ec00c35aed469f4978e61",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 33,
+      "anchor": "page-9-paragraph-8",
+      "statement": "In addition, marketing authorisation holders shall establish mechanisms enabling the traceability and follow-up of adverse reaction reports [IR Art 12(1)].",
+      "context": "• timely access to all records; • effective internal and external communication; and • the retention of documents relating to the pharmacovigilance systems and the conduct of pharmacovigilance for individual medicinal products, in accordance with the applicable retention periods. In this context, it should be ensured that the fundamental right to personal data protection is fully and effectively guaranteed in all pharmacovigilance activities in conformity with legal provisions. The purpose of safeguarding public health constitutes a substantial public interest and consequently the processing of personal data should be justified if identifiable personal data are processed only where necessary and only where the parties involved assess this necessity at every stage of the pharmacovigilance process (IR Recital 17). As part of a record management system, specific measures should therefore be",
+      "fingerprint": "2786e36b09ae5b3d66e1d5d35a9b7f72eb3cc601007ee31ab4573c432b191d3b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 34,
+      "anchor": "page-9-paragraph-9",
+      "statement": "In this context, it should be ensured that the fundamental right to personal data protection is fully and effectively guaranteed in all pharmacovigilance activities in conformity with legal provisions. The purpose of safeguarding public health constitutes a substantial public interest and consequently the processing of personal data should be justified if identifiable personal data are processed only where necessary and only where the parties involved assess this necessity at every stage of the pharmacovigilance process (IR Recital 17). As part of a record management system, specific measures should therefore be taken at each stage in the storage and processing of pharmacovigilance data to ensure data security and confidentiality. This should involve strict limitation of access to documents and to databases to authorised personnel respecting the medical and administrative confidentiality of the data.",
+      "context": "In addition, marketing authorisation holders shall establish mechanisms enabling the traceability and follow-up of adverse reaction reports [IR Art 12(1)]. There should be appropriate structures and processes in place to ensure that pharmacovigilance data and records are protected from destruction during the applicable record retention period.",
+      "fingerprint": "3c6574078f411ab34953ba5e3d8d4894257639aad721605933d3d39db43a52f7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 35,
+      "anchor": "page-9-paragraph-10",
+      "statement": "There should be appropriate structures and processes in place to ensure that pharmacovigilance data and records are protected from destruction during the applicable record retention period.",
+      "context": "In this context, it should be ensured that the fundamental right to personal data protection is fully and effectively guaranteed in all pharmacovigilance activities in conformity with legal provisions. The purpose of safeguarding public health constitutes a substantial public interest and consequently the processing of personal data should be justified if identifiable personal data are processed only where necessary and only where the parties involved assess this necessity at every stage of the pharmacovigilance process (IR Recital 17). As part of a record management system, specific measures should therefore be taken at each stage in the storage and processing of pharmacovigilance data to ensure data security and confidentiality. This should involve strict limitation of access to documents and to databases to authorised personnel respecting the medical and administrative confidentiality",
+      "fingerprint": "b4f2b10d03827760c7967f445ccd2aa25937b48517c39d819b7293c521f44f67",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 36,
+      "anchor": "page-9-paragraph-11",
+      "statement": "The record management system should be described in a record management policy.",
+      "context": "There should be appropriate structures and processes in place to ensure that pharmacovigilance data and records are protected from destruction during the applicable record retention period. EMA/541760/2011 Page 10/25 I.B.11. Documentation of the quality system All elements, requirements and provisions adopted for the quality system shall be documented in a systematic and orderly manner in the form of written policies and procedures, such as quality plans, quality manuals and quality records [IR Art 8(4)].",
+      "fingerprint": "8debf9430a62a5c254c2fe132c2b54ac9c49552b21a002382c8e77203206a773",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 37,
+      "anchor": "page-10-paragraph-1",
+      "statement": "EMA/541760/2011 Page 10/25 I.B.11. Documentation of the quality system All elements, requirements and provisions adopted for the quality system shall be documented in a systematic and orderly manner in the form of written policies and procedures, such as quality plans, quality manuals and quality records [IR Art 8(4)].",
+      "context": "The record management system should be described in a record management policy. A quality plan documents the setting of quality objectives and sets out the processes to be implemented to achieve them. A procedure is a specified way to carry out a process and may take the format of a standard operating procedure and other work instruction or quality manual. A quality manual documents the scope of the quality system, the processes of the quality system and the interaction between the two. A quality record is a document stating results achieved or providing evidence of activities performed.",
+      "fingerprint": "cc75cad2c7ce314fe71311b47b33cc3938f8d86635fd54a80148858c784a371c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 38,
+      "anchor": "page-10-paragraph-3",
+      "statement": "In order to have a systematic approach, the organisation should define in advance:",
+      "context": "A quality plan documents the setting of quality objectives and sets out the processes to be implemented to achieve them. A procedure is a specified way to carry out a process and may take the format of a standard operating procedure and other work instruction or quality manual. A quality manual documents the scope of the quality system, the processes of the quality system and the interaction between the two. A quality record is a document stating results achieved or providing evidence of activities performed. • quality objectives specific to their organisations in accordance with the overall quality objectives provided under I.B.4. and the structure- and process-specific quality objectives in accordance with each Module of GVP; and • methods for monitoring the effectiveness of the pharmacovigilance system (see I.B.12.).",
+      "fingerprint": "a75544916a80c66ffd7512e71db0bdd95a717df8477d3ea8a83dd3e30aca371b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 39,
+      "anchor": "page-10-paragraph-5",
+      "statement": "The quality system shall be documented by: • documents on organisational structures and assignments of tasks to personnel (see I.B.11.1. and I.B.11.2.);",
+      "context": "• quality objectives specific to their organisations in accordance with the overall quality objectives provided under I.B.4. and the structure- and process-specific quality objectives in accordance with each Module of GVP; and • methods for monitoring the effectiveness of the pharmacovigilance system (see I.B.12.). • training plans and records (see I.B.7.) [IR Art 10(3), Art 14(2)]; • instructions for the compliance management processes (see I.B.9.) [IR Art 11(1), Art 15(1)];",
+      "fingerprint": "824277047eff4f38c5a767c8fea2d2fbe33280a47c9bda6def0328596794a75a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 40,
+      "anchor": "page-10-paragraph-10",
+      "statement": "Training plans and records shall be kept and made available for audit and inspection [IR Art 10(3), Art 14(2)].",
+      "context": "• reports of quality audits and follow-up audits, including their dates and results [IR Art 13(2), Art 17(2)]. It is recommended that the documentation of the quality system also includes:",
+      "fingerprint": "f697cdebde1800a4df2329e7bbcfdb2ecdcab510afe34a4ee8e3a3f396fdaadb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 41,
+      "anchor": "page-11-paragraph-2",
+      "statement": "I.B.11.1. Additional quality system documentation by marketing authorisation holders In addition to the quality system documentation in accordance with I.B.11., marketing authorisation holders shall document:",
+      "context": "EMA/541760/2011 Page 11/25 applied to deviations or deficiencies and that the effectiveness of the actions taken has been verified. • their human resource management in the pharmacovigilance system master file (PSMF) (see Module II) [IR Art 2(5)(b)];",
+      "fingerprint": "cfdb731ff927c90782078dafdd547e809bfb9edb72b2a645ad0e64d5b013ed2d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 42,
+      "anchor": "page-11-paragraph-9",
+      "statement": "I.B.11.2. Additional quality system documentation by competent authorities In addition to the quality system documentation in accordance with I.B.11., the organisational structures and the distribution of tasks and responsibilities shall be clear and, to the extent necessary, accessible [IR Art 14(1)].",
+      "context": "For the requirements of documenting the quality system in the pharmacovigilance system master file (PSMF) or its annexes, see Module II. It is recommended that the documentation of the quality system additionally includes the organisational structures and assignments of tasks, responsibilities and authorities to all personnel directly involved in pharmacovigilance tasks.",
+      "fingerprint": "ded9f3919ea2a6f94e7cb86ea0be1d89a80b8289de1232cce3bbb3b0bc3e54c0",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 43,
+      "anchor": "page-11-paragraph-11",
+      "statement": "Contact points shall be established [IR Art 14(1)], in particular to facilitate interaction between competent authorities, marketing authorisation holders and persons reporting information on the risks of medicinal products as regards patients’ or public health.",
+      "context": "It is recommended that the documentation of the quality system additionally includes the organisational structures and assignments of tasks, responsibilities and authorities to all personnel directly involved in pharmacovigilance tasks. I.B.11.3. Critical pharmacovigilance processes and business continuity The following pharmacovigilance processes should be considered as critical include:",
+      "fingerprint": "a0775c3b0afa9b7b64525c5c12e25c98d46a04ba6f7879d3ca063a85d8c23fcb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 44,
+      "anchor": "page-11-paragraph-12",
+      "statement": "I.B.11.3. Critical pharmacovigilance processes and business continuity The following pharmacovigilance processes should be considered as critical include:",
+      "context": "Contact points shall be established [IR Art 14(1)], in particular to facilitate interaction between competent authorities, marketing authorisation holders and persons reporting information on the risks of medicinal products as regards patients’ or public health. • continuous safety profile monitoring and benefit-risk evaluation of authorised medicinal products;",
+      "fingerprint": "d14f7a2c49ef84bc94c34a7f9c7526838d9abbb5a42524b3f229a1da39984819",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 45,
+      "anchor": "page-12-paragraph-9",
+      "statement": "Business continuity plans should be established in a risk-based manner and should include:",
+      "context": "• implementation of variations to marketing authorisations for safety reasons according to the urgency required. • provisions for events that could severely impact on the organisation’s staff and infrastructure in general or on the structures and processes for pharmacovigilance in particular; and • back-up systems for urgent exchange of information within an organisation, amongst organisations sharing pharmacovigilance tasks as well as between marketing authorisation holders and competent authorities.",
+      "fingerprint": "344e8bc7b83098bdfdf58c377ae5578129382cd9a1b49a6838e0ddc2887589c3",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 46,
+      "anchor": "page-12-paragraph-11",
+      "statement": "I.B.12. Monitoring of the performance and effectiveness of the pharmacovigilance system and its quality system Processes to monitor the performance and effectiveness of a pharmacovigilance system and its quality system should include:",
+      "context": "• provisions for events that could severely impact on the organisation’s staff and infrastructure in general or on the structures and processes for pharmacovigilance in particular; and • back-up systems for urgent exchange of information within an organisation, amongst organisations sharing pharmacovigilance tasks as well as between marketing authorisation holders and competent authorities. • reviews of the systems by those responsible for management; • audits;",
+      "fingerprint": "1ba691879f847569f5007a56654d724e743dc7324147e83cf12e449bba6cdeb5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 47,
+      "anchor": "page-12-paragraph-15",
+      "statement": "The requirements for the quality system itself are laid out in this Module and its effectiveness should be monitored by managerial staff, who should review the documentation of the quality system (see I.B.11.) at regular intervals, with the frequency and the extent of the reviews to be determined in a",
+      "context": "The organisation may use performance indicators to continuously monitor the good performance of pharmacovigilance activities [IR Art 9(1)] in relation to the quality requirements. The quality requirements for each pharmacovigilance process are provided in each Module of GVP as appropriate. EMA/541760/2011 Page 13/25 risk-based manner. Pre-defined programmes for the review of the system should therefore be in place.",
+      "fingerprint": "0f95a8efde59191e1e56a9b2d6e4ef32e6ef3c8db8c383052d95c99d6eccee35",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 48,
+      "anchor": "page-13-paragraph-1",
+      "statement": "EMA/541760/2011 Page 13/25 risk-based manner. Pre-defined programmes for the review of the system should therefore be in place.",
+      "context": "The requirements for the quality system itself are laid out in this Module and its effectiveness should be monitored by managerial staff, who should review the documentation of the quality system (see I.B.11.) at regular intervals, with the frequency and the extent of the reviews to be determined in a Reviews of the quality system should include the review of standard operating procedures and work instructions, deviations from the established quality system, audit and inspections reports as well as the use of the indicators referred to above.",
+      "fingerprint": "c594616304cf7bc1b779e7cce9bee983489fc7284da3288113bc16803a35b18c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 49,
+      "anchor": "page-13-paragraph-2",
+      "statement": "Reviews of the quality system should include the review of standard operating procedures and work instructions, deviations from the established quality system, audit and inspections reports as well as the use of the indicators referred to above.",
+      "context": "EMA/541760/2011 Page 13/25 risk-based manner. Pre-defined programmes for the review of the system should therefore be in place. Risk-based audits of the quality system shall be performed at regular intervals to ensure that it complies with the requirements for the quality system, the human resource management, the compliance management, the record management and the data retention and to ensure its effectiveness [IR Art 13(1), Art 17(1)]. Audits of the quality system should include audit of the pharmacovigilance system which is the subject of the quality system. The methods and processes for the audits are described in Module IV. In relation to the pharmacovigilance system of a marketing authorisation holder, a report shall be drawn up on the results for each quality audit and any follow-up audits be sent to the management responsible for the matters audited [IR Art 13(2)]. The report sh",
+      "fingerprint": "e16df04b9e2be9828a3878f038d8f10364d2acf36908512f0bf6362281802536",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 50,
+      "anchor": "page-13-paragraph-3",
+      "statement": "Risk-based audits of the quality system shall be performed at regular intervals to ensure that it complies with the requirements for the quality system, the human resource management, the compliance management, the record management and the data retention and to ensure its effectiveness [IR Art 13(1), Art 17(1)]. Audits of the quality system should include audit of the pharmacovigilance system which is the subject of the quality system. The methods and processes for the audits are described in Module IV. In relation to the pharmacovigilance system of a marketing authorisation holder, a report shall be drawn up on the results for each quality audit and any follow-up audits be sent to the management responsible for the matters audited [IR Art 13(2)]. The report should include the results of audits of organisations or persons the marketing authorisation holder has delegated tasks to, as these are part of the marketing authorisation holder‘s pharmacovigilance system. For competent authorities, the audit report shall be sent to the management responsible for the matters audited [IR Art 17(2)].",
+      "context": "Reviews of the quality system should include the review of standard operating procedures and work instructions, deviations from the established quality system, audit and inspections reports as well as the use of the indicators referred to above. As a consequence of the monitoring of the performance and effectiveness of a pharmacovigilance system and its quality system (including the use of audits), corrective and preventive measures should be implemented when deemed necessary. In particular as a consequence of audits, corrective action(s), including a follow-up audit of deficiencies, shall be taken where necessary [IR Art 13(2), Art 17(2)]. Additionally, the competent authorities should have in place arrangements for monitoring the compliance of marketing authorisations holders with legally required pharmacovigilance tasks and responsibilities. They shall further ensure compliance with t",
+      "fingerprint": "49ac47cd065088e3313f2bcdd60e82835ffc77cd2e00a85d6fe9666177554c7e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 51,
+      "anchor": "page-13-paragraph-4",
+      "statement": "As a consequence of the monitoring of the performance and effectiveness of a pharmacovigilance system and its quality system (including the use of audits), corrective and preventive measures should be implemented when deemed necessary. In particular as a consequence of audits, corrective action(s), including a follow-up audit of deficiencies, shall be taken where necessary [IR Art 13(2), Art 17(2)]. Additionally, the competent authorities should have in place arrangements for monitoring the compliance of marketing authorisations holders with legally required pharmacovigilance tasks and responsibilities. They shall further ensure compliance with the legal requirements by means of conducting inspections of marketing authorisation holders [DIR Art 111(1)] (see Module III). Guidance on compliance monitoring for each pharmacovigilance process is provided in each Module of GVP as appropriate.",
+      "context": "Risk-based audits of the quality system shall be performed at regular intervals to ensure that it complies with the requirements for the quality system, the human resource management, the compliance management, the record management and the data retention and to ensure its effectiveness [IR Art 13(1), Art 17(1)]. Audits of the quality system should include audit of the pharmacovigilance system which is the subject of the quality system. The methods and processes for the audits are described in Module IV. In relation to the pharmacovigilance system of a marketing authorisation holder, a report shall be drawn up on the results for each quality audit and any follow-up audits be sent to the management responsible for the matters audited [IR Art 13(2)]. The report should include the results of audits of organisations or persons the marketing authorisation holder has delegated tasks to, as the",
+      "fingerprint": "b6cb8ac7ed22c6e15c843f267cdea43ff63303d7172666dd618e757416e4c3b2",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 52,
+      "anchor": "page-13-paragraph-6",
+      "statement": "I.B.13. Preparedness planning for pharmacovigilance in public health emergencies Any pharmacovigilance system should be adaptable to public health emergencies and preparedness plans should be developed as appropriate.",
+      "context": "Requirements and methods for evaluating the effectiveness of actions taken upon medicinal products for the purpose of minimising risks and supporting the safe and effective use of medicines in patients are described in Module XVI. For preparedness planning in the EU, see I.C.4.. I.C. Operation of the EU network I.C.1. Overall pharmacovigilance responsibilities of the applicant and marketing authorisation holder in the EU The marketing authorisation holder in the EU is responsible for the respective pharmacovigilance tasks and responsibilities laid down in Directive 2001/83/EC, Regulation (EC) No 726/2004 and the Commission Implementing Regulation (EU) No 520/2012 on the Performance of Pharmacovigilance Activities Provided for in Regulation (EC) No 726/2004 and Directive 2001/83/EC in order to assure responsibility and liability for its authorised medicinal products and to ensure that app",
+      "fingerprint": "ba457a4ccca5ff60137abaec97cbab14972369252d86aad7b680d1d5da657330",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 53,
+      "anchor": "page-14-paragraph-1",
+      "statement": "EMA/541760/2011 Page 14/25 For this purpose, the marketing authorisation holder shall operate a pharmacovigilance system [DIR 104(1)] and shall establish and use a quality system that is adequate and effective for performing its pharmacovigilance activities [IR Art 8(1)].",
+      "context": "For preparedness planning in the EU, see I.C.4.. I.C. Operation of the EU network I.C.1. Overall pharmacovigilance responsibilities of the applicant and marketing authorisation holder in the EU The marketing authorisation holder in the EU is responsible for the respective pharmacovigilance tasks and responsibilities laid down in Directive 2001/83/EC, Regulation (EC) No 726/2004 and the Commission Implementing Regulation (EU) No 520/2012 on the Performance of Pharmacovigilance Activities Provided for in Regulation (EC) No 726/2004 and Directive 2001/83/EC in order to assure responsibility and liability for its authorised medicinal products and to ensure that appropriate action can be taken, when necessary. There may be circumstances where a marketing authorisation holder may establish more than one pharmacovigilance system, e.g. specific systems for particular types of products (e.g. vacc",
+      "fingerprint": "09d7cbb289c6887226f95c283ea30c3ddba925ad11a15ec991474b070a6cf0d0",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 54,
+      "anchor": "page-14-paragraph-3",
+      "statement": "A description of the pharmacovigilance system shall be developed by the applicant for a marketing authorisation in the format of a pharmacovigilance system master file (PSMF) and be maintained by the marketing authorisation holder for all authorised medicinal products (see Module II). The applicant or the marketing authorisation holder is also responsible for developing and maintaining product- specific risk management systems (see Module V).",
+      "context": "There may be circumstances where a marketing authorisation holder may establish more than one pharmacovigilance system, e.g. specific systems for particular types of products (e.g. vaccines, products available without medical prescription). Guidance on the structures and processes on how the marketing authorisation holder should conduct the pharmacovigilance tasks and responsibilities is provided in the respective GVP Modules.",
+      "fingerprint": "7ae9cab1028ef6076c94d062a826912e99a63215fb3c8da2afca614de7033159",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 55,
+      "anchor": "page-14-paragraph-4",
+      "statement": "Guidance on the structures and processes on how the marketing authorisation holder should conduct the pharmacovigilance tasks and responsibilities is provided in the respective GVP Modules.",
+      "context": "A description of the pharmacovigilance system shall be developed by the applicant for a marketing authorisation in the format of a pharmacovigilance system master file (PSMF) and be maintained by the marketing authorisation holder for all authorised medicinal products (see Module II). The applicant or the marketing authorisation holder is also responsible for developing and maintaining product- specific risk management systems (see Module V). I.C.1.1. Responsibilities of the marketing authorisation holder in relation to the qualified person responsible for pharmacovigilance in the EU As part of the pharmacovigilance system, the marketing authorisation holder shall have permanently and continuously at its disposal an appropriately qualified person responsible for pharmacovigilance in the EU (QPPV) [DIR Art 104(3)(a)].",
+      "fingerprint": "4de40fa35b099ffa588b3adfb68d480c0a0083683b799cafe6ddb21e08086095",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 56,
+      "anchor": "page-14-paragraph-5",
+      "statement": "I.C.1.1. Responsibilities of the marketing authorisation holder in relation to the qualified person responsible for pharmacovigilance in the EU As part of the pharmacovigilance system, the marketing authorisation holder shall have permanently and continuously at its disposal an appropriately qualified person responsible for pharmacovigilance in the EU (QPPV) [DIR Art 104(3)(a)].",
+      "context": "Guidance on the structures and processes on how the marketing authorisation holder should conduct the pharmacovigilance tasks and responsibilities is provided in the respective GVP Modules. The marketing authorisation holder shall submit the name and contact details of the QPPV to the competent authorities in Member States and the Agency [DIR Art 104(3) last paragraph]. Changes to this information should be submitted in accordance with Regulation (EC) No 1234/2008 on variations to the terms of marketing authorisation and the Communication from the Commission - Guideline on the Details of the Various Categories of Variations to the Terms of Marketing Authorisations for Medicinal Products for Human Use and Veterinary Medicinal Products 1 .",
+      "fingerprint": "7f4053aedba5571c82701241b89fa37c096ec0531fc1c78bf49a7d7577ed0a4b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 57,
+      "anchor": "page-14-paragraph-6",
+      "statement": "The marketing authorisation holder shall submit the name and contact details of the QPPV to the competent authorities in Member States and the Agency [DIR Art 104(3) last paragraph]. Changes to this information should be submitted in accordance with Regulation (EC) No 1234/2008 on variations to the terms of marketing authorisation and the Communication from the Commission - Guideline on the Details of the Various Categories of Variations to the Terms of Marketing Authorisations for Medicinal Products for Human Use and Veterinary Medicinal Products 1 .",
+      "context": "I.C.1.1. Responsibilities of the marketing authorisation holder in relation to the qualified person responsible for pharmacovigilance in the EU As part of the pharmacovigilance system, the marketing authorisation holder shall have permanently and continuously at its disposal an appropriately qualified person responsible for pharmacovigilance in the EU (QPPV) [DIR Art 104(3)(a)]. The duties of the QPPV shall be defined in a job description [IR Art 10(2)]. The hierarchical relationship of the QPPV shall be defined in an organisational chart together with those of other managerial and supervisory staff [IR Art 10(2)].",
+      "fingerprint": "88379eb42e646600e36e4c559b82272b90553f64c88cd38f75c4703e44f4fef5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 58,
+      "anchor": "page-14-paragraph-7",
+      "statement": "The duties of the QPPV shall be defined in a job description [IR Art 10(2)]. The hierarchical relationship of the QPPV shall be defined in an organisational chart together with those of other managerial and supervisory staff [IR Art 10(2)].",
+      "context": "The marketing authorisation holder shall submit the name and contact details of the QPPV to the competent authorities in Member States and the Agency [DIR Art 104(3) last paragraph]. Changes to this information should be submitted in accordance with Regulation (EC) No 1234/2008 on variations to the terms of marketing authorisation and the Communication from the Commission - Guideline on the Details of the Various Categories of Variations to the Terms of Marketing Authorisations for Medicinal Products for Human Use and Veterinary Medicinal Products 1 . Information relating to the QPPV shall be included in the pharmacovigilance systems master file (PSMF) [IR Art 2(1)] (see Module II).",
+      "fingerprint": "ca94f9f913a68509121873a1834a9c0ace98e8cdf5837704a220787bc9bd43a0",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 59,
+      "anchor": "page-14-paragraph-8",
+      "statement": "Information relating to the QPPV shall be included in the pharmacovigilance systems master file (PSMF) [IR Art 2(1)] (see Module II).",
+      "context": "The duties of the QPPV shall be defined in a job description [IR Art 10(2)]. The hierarchical relationship of the QPPV shall be defined in an organisational chart together with those of other managerial and supervisory staff [IR Art 10(2)]. Each pharmacovigilance system can have only one QPPV. A QPPV may be employed by more than one marketing authorisation holder, for a shared or for separate pharmacovigilance systems or may fulfil the role of QPPV for more than one pharmacovigilance system of the same marketing authorisation holder, provided that the QPPV is able to fulfil all obligations.",
+      "fingerprint": "edabe499c2b029504608ae7920be27ddf1fa6d0c45994c1edb272938d6f3958d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 60,
+      "anchor": "page-14-paragraph-11",
+      "statement": "The marketing authorisation holder shall ensure that the QPPV has sufficient authority to influence the performance of the quality system and the pharmacovigilance activities of the marketing authorisation holder [IR Art 10(2)]. The marketing authorisation holder should therefore ensure that the QPPV has",
+      "context": "In addition to the QPPV, competent authorities in Member States are legally provided with the option to request the nomination of a pharmacovigilance contact person at national level reporting to the QPPV. Reporting in this context relates to pharmacovigilance tasks and responsibilities and not necessarily to line management. A contact person at national level may also be nominated as the QPPV. 1 See Volume 2C of the Rules Governing Medicinal Products in the EU; http://ec.europa.eu/health/documents/eudralex/vol- 2/index_en.htm",
+      "fingerprint": "e0bf875e1979520d8a0d60e725348543a0e3152ef7f442753ae8a8a75543868b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 61,
+      "anchor": "page-15-paragraph-1",
+      "statement": "EMA/541760/2011 Page 15/25 access to the pharmacovigilance system master file (PSMF) as well as authority over it and is notified of any changes to it in accordance with Module II (see I.C.1.3). The authority over the pharmacovigilance system and the PSMF should allow the QPPV to implement changes to the system and to provide input into risk management plans (see Module V) as well as into the preparation of regulatory action in response to emerging safety concerns (see Module XII).",
+      "context": "1 See Volume 2C of the Rules Governing Medicinal Products in the EU; http://ec.europa.eu/health/documents/eudralex/vol- 2/index_en.htm Overall, the marketing authorisation holder should ensure that structures and processes are in place, so that the QPPV can fulfil the responsibilities listed in I.C.1.3.. In order to do this, the marketing authorisation holder should ensure that mechanisms are in place so that the QPPV receives all relevant information and that the QPPV can access all information the QPPV considers relevant, in particular on:",
+      "fingerprint": "ad2a883b32b496163ed11dd5c8297e379de19798b2d0b591a1a42542ea5ced9e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 62,
+      "anchor": "page-15-paragraph-2",
+      "statement": "Overall, the marketing authorisation holder should ensure that structures and processes are in place, so that the QPPV can fulfil the responsibilities listed in I.C.1.3.. In order to do this, the marketing authorisation holder should ensure that mechanisms are in place so that the QPPV receives all relevant information and that the QPPV can access all information the QPPV considers relevant, in particular on:",
+      "context": "EMA/541760/2011 Page 15/25 access to the pharmacovigilance system master file (PSMF) as well as authority over it and is notified of any changes to it in accordance with Module II (see I.C.1.3). The authority over the pharmacovigilance system and the PSMF should allow the QPPV to implement changes to the system and to provide input into risk management plans (see Module V) as well as into the preparation of regulatory action in response to emerging safety concerns (see Module XII). • emerging safety concerns and any other information relating to the benefit-risk evaluation of the medicinal products covered by the pharmacovigilance system;",
+      "fingerprint": "991529a3a844abbab669c44c33ab5df930acc7483e6a07ba98478f44825664fb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 63,
+      "anchor": "page-15-paragraph-6",
+      "statement": "The outcome of the regular reviews of the quality system referred to in I.B.6. and I.B.12. and the measures introduced should be communicated by the managerial staff to the QPPV.",
+      "context": "• information from sources other than from the specific marketing authorisation holder, e.g. from those with whom the marketing authorisation holder has contractual arrangements; and • the procedures relevant to pharmacovigilance which the marketing authorisation holder has in place at every level in order to ensure consistency and compliance across the organisation. Compliance information should be provided to the QPPV on a periodic basis. Such information may also be used to provide assurance to the QPPV that commitments in the framework of risk management plans and post-authorisation safety systems are being adhered to.",
+      "fingerprint": "8a9d2de268d5131d68598012424baf7983576a49de7e8098a43ed433c82b34e3",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 64,
+      "anchor": "page-15-paragraph-7",
+      "statement": "Compliance information should be provided to the QPPV on a periodic basis. Such information may also be used to provide assurance to the QPPV that commitments in the framework of risk management plans and post-authorisation safety systems are being adhered to.",
+      "context": "The outcome of the regular reviews of the quality system referred to in I.B.6. and I.B.12. and the measures introduced should be communicated by the managerial staff to the QPPV. The managerial staff should also inform the QPPV of scheduled pharmacovigilance audits. The QPPV should be able to trigger an audit where appropriate. The managerial staff should provide the QPPV with a copy of the corrective and preventive action plan following each audit relevant to the pharmacovigilance system the QPPV is responsible for, so that the QPPV can assure that appropriate corrective actions are implemented.",
+      "fingerprint": "c2a53bbb50756385e328f30d26dbad089082e05e487c4d27da541477fba2204d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 65,
+      "anchor": "page-15-paragraph-8",
+      "statement": "The managerial staff should also inform the QPPV of scheduled pharmacovigilance audits. The QPPV should be able to trigger an audit where appropriate. The managerial staff should provide the QPPV with a copy of the corrective and preventive action plan following each audit relevant to the pharmacovigilance system the QPPV is responsible for, so that the QPPV can assure that appropriate corrective actions are implemented.",
+      "context": "Compliance information should be provided to the QPPV on a periodic basis. Such information may also be used to provide assurance to the QPPV that commitments in the framework of risk management plans and post-authorisation safety systems are being adhered to. In particular with regard to its adverse reaction database (or other systems to collate adverse reaction reports), the marketing authorisation holder should implement a procedure to ensure that the QPPV is able to obtain information from the database, for example, to respond to urgent requests for information from the competent authorities or the Agency, at any time. If this procedure requires the involvement of other personnel, for example database specialists, then this should be taken into account in the arrangements made by the marketing authorisation holder for supporting the QPPV outside of normal working hours.",
+      "fingerprint": "9919febe374b60a419e1d747aceccd77a935db201f65fbef1560732491f07fb7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 66,
+      "anchor": "page-15-paragraph-9",
+      "statement": "In particular with regard to its adverse reaction database (or other systems to collate adverse reaction reports), the marketing authorisation holder should implement a procedure to ensure that the QPPV is able to obtain information from the database, for example, to respond to urgent requests for information from the competent authorities or the Agency, at any time. If this procedure requires the involvement of other personnel, for example database specialists, then this should be taken into account in the arrangements made by the marketing authorisation holder for supporting the QPPV outside of normal working hours.",
+      "context": "The managerial staff should also inform the QPPV of scheduled pharmacovigilance audits. The QPPV should be able to trigger an audit where appropriate. The managerial staff should provide the QPPV with a copy of the corrective and preventive action plan following each audit relevant to the pharmacovigilance system the QPPV is responsible for, so that the QPPV can assure that appropriate corrective actions are implemented. When a marketing authorisation holder intends to expand its product portfolio, for example, by acquisition of another company or by purchasing individual products from another marketing authorisation holder, the QPPV should be notified as early as possible in the due diligence process in order that the potential impact on the pharmacovigilance system can be assessed and the system be adapted accordingly. The QPPV may also have a role in determining what pharmacovigilance",
+      "fingerprint": "fc1b7e779d4e4200211cd9c19d393477d6e5637fd01e60b74b18acb5f76bbb57",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 67,
+      "anchor": "page-15-paragraph-10",
+      "statement": "When a marketing authorisation holder intends to expand its product portfolio, for example, by acquisition of another company or by purchasing individual products from another marketing authorisation holder, the QPPV should be notified as early as possible in the due diligence process in order that the potential impact on the pharmacovigilance system can be assessed and the system be adapted accordingly. The QPPV may also have a role in determining what pharmacovigilance data should be requested from the other company, either pre- or post-acquisition. In this situation, the QPPV should be made aware of the sections of the contractual arrangements that relate to responsibilities for pharmacovigilance activities and safety data exchange and have the authority to request amendments.",
+      "context": "In particular with regard to its adverse reaction database (or other systems to collate adverse reaction reports), the marketing authorisation holder should implement a procedure to ensure that the QPPV is able to obtain information from the database, for example, to respond to urgent requests for information from the competent authorities or the Agency, at any time. If this procedure requires the involvement of other personnel, for example database specialists, then this should be taken into account in the arrangements made by the marketing authorisation holder for supporting the QPPV outside of normal working hours. EMA/541760/2011 Page 16/25 When a marketing authorisation holder intends to establish a partnership with another marketing authorisation holder, organisation or person that has a direct or indirect impact on the pharmacovigilance system, the QPPV should be informed early en",
+      "fingerprint": "87dd94a532266d96a5b6ebc99c97d1134c3f08da44ff24eadbf809c5b57a8cc5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 68,
+      "anchor": "page-16-paragraph-1",
+      "statement": "EMA/541760/2011 Page 16/25 When a marketing authorisation holder intends to establish a partnership with another marketing authorisation holder, organisation or person that has a direct or indirect impact on the pharmacovigilance system, the QPPV should be informed early enough and be involved in the preparation of the corresponding contractual arrangements (see I.C.1.5.) so that all necessary provisions relevant to the pharmacovigilance system are included.",
+      "context": "When a marketing authorisation holder intends to expand its product portfolio, for example, by acquisition of another company or by purchasing individual products from another marketing authorisation holder, the QPPV should be notified as early as possible in the due diligence process in order that the potential impact on the pharmacovigilance system can be assessed and the system be adapted accordingly. The QPPV may also have a role in determining what pharmacovigilance data should be requested from the other company, either pre- or post-acquisition. In this situation, the QPPV should be made aware of the sections of the contractual arrangements that relate to responsibilities for pharmacovigilance activities and safety data exchange and have the authority to request amendments. I.C.1.2. Qualifications of the qualified person responsible for pharmacovigilance in the EU The marketing aut",
+      "fingerprint": "988305a44f2c99e0073557f9978089bd3e436d7729d6479b5cf9e0f6f81c45fb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 69,
+      "anchor": "page-16-paragraph-2",
+      "statement": "I.C.1.2. Qualifications of the qualified person responsible for pharmacovigilance in the EU The marketing authorisation holder shall ensure that the QPPV has acquired adequate theoretical and practical knowledge for the performance of pharmacovigilance activities [IR Art 10(1)]. The QPPV should have skills for the management of pharmacovigilance systems as well as expertise or access to expertise in relevant areas such as medicine, pharmaceutical sciences as well as epidemiology and biostatistics. Where the QPPV has not completed basic medical training in accordance with Article 24 of Directive 2005/36/EC, the marketing authorisation holder shall ensure that the QPPV is assisted by a medically trained person (i.e. in accordance with Article 24 of Directive 2005/36/EC) and this assistance shall be duly documented [IR Art 10(1)].",
+      "context": "EMA/541760/2011 Page 16/25 When a marketing authorisation holder intends to establish a partnership with another marketing authorisation holder, organisation or person that has a direct or indirect impact on the pharmacovigilance system, the QPPV should be informed early enough and be involved in the preparation of the corresponding contractual arrangements (see I.C.1.5.) so that all necessary provisions relevant to the pharmacovigilance system are included. The expectation is that the applicant or marketing authorisation holder will assess the qualification of the QPPV prior to appointment by, for example, reviewing university qualifications, knowledge of EU pharmacovigilance requirements and experience in pharmacovigilance.",
+      "fingerprint": "8c5b66f719341ad546e0dc81e3fee5d8a0231f58779e037cedf28b6b6abcdedd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 70,
+      "anchor": "page-16-paragraph-4",
+      "statement": "The applicant or marketing authorisation holder should provide the QPPV with training in relation to its pharmacovigilance system, which is appropriate for the role prior to the QPPV taking up the position and which is appropriately documented. Consideration should be given to additional training, as needed, of the QPPV in the medicinal products covered by the pharmacovigilance system.",
+      "context": "The expectation is that the applicant or marketing authorisation holder will assess the qualification of the QPPV prior to appointment by, for example, reviewing university qualifications, knowledge of EU pharmacovigilance requirements and experience in pharmacovigilance. I.C.1.3. Role of the qualified person responsible for pharmacovigilance in the EU The qualified person responsible for pharmacovigilance in the EU (QPPV) is a natural 2 person.",
+      "fingerprint": "c8845f957829635c0530a8b72f005e0a7c14fddf2a9c98fe037e5a22fe38f472",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 71,
+      "anchor": "page-16-paragraph-6",
+      "statement": "The QPPV appointed by the marketing authorisation holder shall be appropriately qualified (see I.C.1.2.) and shall be at the marketing authorisation holder’s disposal permanently and continuously (see I.C.1.1.) [DIR Art 104 (3)(a)]. The QPPV shall reside and operate in the EU [DIR Art 104 (3) last paragraph]. Following European Economic Area (EEA) agreements, the QPPV may also reside and operate in Norway, Iceland or Liechtenstein. Back-up procedures in the case of absence of the QPPV shall be in place [IR Art 2(1)(d)] and should be accessible through the QPPV’s contact details. The QPPV should ensure that the back-up person has all necessary information to fulfil the role.",
+      "context": "I.C.1.3. Role of the qualified person responsible for pharmacovigilance in the EU The qualified person responsible for pharmacovigilance in the EU (QPPV) is a natural 2 person. The QPPV shall be responsible for the establishment and maintenance of the marketing authorisation holder’s pharmacovigilance system [DIR Art 104 (3) last paragraph] and therefore shall have sufficient authority to influence the performance of the quality system and the pharmacovigilance activities [IR Art 10(2)] and to promote, maintain and improve compliance with the legal requirements [IR Art 2(1)(a)]. Hence, the QPPV should have access to the pharmacovigilance system master file (PSMF) (see Module II) and be in a position of authority to ensure and to verify that the information contained in the PSMFis an accurate and up-to-date reflection of the pharmacovigilance system under the QPPV’s responsibility.",
+      "fingerprint": "4a9a7542bd6c352f801cb995a5f3b99489c91f4fe0c43c253c954f31eee69c17",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 72,
+      "anchor": "page-16-paragraph-7",
+      "statement": "The QPPV shall be responsible for the establishment and maintenance of the marketing authorisation holder’s pharmacovigilance system [DIR Art 104 (3) last paragraph] and therefore shall have sufficient authority to influence the performance of the quality system and the pharmacovigilance activities [IR Art 10(2)] and to promote, maintain and improve compliance with the legal requirements [IR Art 2(1)(a)]. Hence, the QPPV should have access to the pharmacovigilance system master file (PSMF) (see Module II) and be in a position of authority to ensure and to verify that the information contained in the PSMFis an accurate and up-to-date reflection of the pharmacovigilance system under the QPPV’s responsibility.",
+      "context": "The QPPV appointed by the marketing authorisation holder shall be appropriately qualified (see I.C.1.2.) and shall be at the marketing authorisation holder’s disposal permanently and continuously (see I.C.1.1.) [DIR Art 104 (3)(a)]. The QPPV shall reside and operate in the EU [DIR Art 104 (3) last paragraph]. Following European Economic Area (EEA) agreements, the QPPV may also reside and operate in Norway, Iceland or Liechtenstein. Back-up procedures in the case of absence of the QPPV shall be in place [IR Art 2(1)(d)] and should be accessible through the QPPV’s contact details. The QPPV should ensure that the back-up person has all necessary information to fulfil the role. In relation to the medicinal products covered by the pharmacovigilance system, specific additional responsibilities of the QPPV should include:",
+      "fingerprint": "a1f75b8d5ee15808a8c888bd88db805385d5584ffc6d59b3c26f2087cc4875df",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 73,
+      "anchor": "page-16-paragraph-8",
+      "statement": "In relation to the medicinal products covered by the pharmacovigilance system, specific additional responsibilities of the QPPV should include:",
+      "context": "The QPPV shall be responsible for the establishment and maintenance of the marketing authorisation holder’s pharmacovigilance system [DIR Art 104 (3) last paragraph] and therefore shall have sufficient authority to influence the performance of the quality system and the pharmacovigilance activities [IR Art 10(2)] and to promote, maintain and improve compliance with the legal requirements [IR Art 2(1)(a)]. Hence, the QPPV should have access to the pharmacovigilance system master file (PSMF) (see Module II) and be in a position of authority to ensure and to verify that the information contained in the PSMFis an accurate and up-to-date reflection of the pharmacovigilance system under the QPPV’s responsibility. 2 A natural person is a real human being, as distinguished from a corporation which is often treated at law as a fictitious person.",
+      "fingerprint": "067897db94e00b6053dc1bd7e88a50bf0285af42402a235e796741c5a8813bae",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 74,
+      "anchor": "page-17-paragraph-12",
+      "statement": "This responsibility for the pharmacovigilance system means that the QPPV has oversight over the functioning of the system in all relevant aspects, including its quality system (e.g. standard operating procedures, contractual arrangements, database operations, compliance data regarding quality, completeness and timeliness of expedited reporting and submission of periodic update reports, audit reports and training of personnel in relation to pharmacovigilance). Specifically for the adverse reaction database, if applicable, the QPPV should be aware of the validation status of the database, including any failures that occurred during validation and the corrective actions that have been taken to address the failures. The QPPV should also be informed of significant changes that are made to the database (e.g. changes that could have an impact on pharmacovigilance activities).",
+      "context": "• acting as a single pharmacovigilance contact point for the competent authorities in Member States and the Agency on a 24-hour basis and also as a contact point for pharmacovigilance inspections. The QPPV may delegate specific tasks, under supervision, to appropriately qualified and trained individuals, for example, acting as safety experts for certain products, provided that the QPPV maintains system oversight and overview of the safety profiles of all products. Such delegation should be documented.",
+      "fingerprint": "0f34f57d0e8c5cb428b17a10ea0474ea3bd1145c5b3371364807e99f082c4f92",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 75,
+      "anchor": "page-17-paragraph-13",
+      "statement": "The QPPV may delegate specific tasks, under supervision, to appropriately qualified and trained individuals, for example, acting as safety experts for certain products, provided that the QPPV maintains system oversight and overview of the safety profiles of all products. Such delegation should be documented.",
+      "context": "This responsibility for the pharmacovigilance system means that the QPPV has oversight over the functioning of the system in all relevant aspects, including its quality system (e.g. standard operating procedures, contractual arrangements, database operations, compliance data regarding quality, completeness and timeliness of expedited reporting and submission of periodic update reports, audit reports and training of personnel in relation to pharmacovigilance). Specifically for the adverse reaction database, if applicable, the QPPV should be aware of the validation status of the database, including any failures that occurred during validation and the corrective actions that have been taken to address the failures. The QPPV should also be informed of significant changes that are made to the database (e.g. changes that could have an impact on pharmacovigilance activities). I.C.1.4. Specific",
+      "fingerprint": "fb666f17d154c7d1d4c4b2ebbfe17588a7d80f9e18a9d1cbfb015fb580eb9830",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 76,
+      "anchor": "page-17-paragraph-14",
+      "statement": "I.C.1.4. Specific quality system processes of the marketing authorisation holder in the EU In applying the requirements set out in I.B.9.1. in the EU, the marketing authorisation holder shall put in place the following additional specific quality system processes for ensuring:",
+      "context": "The QPPV may delegate specific tasks, under supervision, to appropriately qualified and trained individuals, for example, acting as safety experts for certain products, provided that the QPPV maintains system oversight and overview of the safety profiles of all products. Such delegation should be documented. • the submission of adverse reaction data to EudraVigilance within the legal timelines [IR Art 11(c)];",
+      "fingerprint": "00e4bd6124652746c3f5d62418203d7bf202937502400bf1a6b460d57741b8fd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 77,
+      "anchor": "page-18-paragraph-5",
+      "statement": "The retention periods above apply unless the documents shall be retained for a longer period where EU or national law so requires [IR Art 12(2)].",
+      "context": "• that the product information is kept up-to-date by the marketing authorisation holder in the light of scientific knowledge, including the assessments and recommendations made public via the European medicines web-portal an on the basis of a continuous monitoring by the marketing authorisation holder of information published on the European medicines web-portal [IR Art 11(1)(g)]. During the retention period, retrievability of the documents should be ensured. Documents can be retained in electronic format, provided that the electronic system has been appropriately validated and appropriate arrangements exist for system security, access and back-up of data. If documents in paper format are transferred into an electronic format, the transfer process should ensure that all of the information present in the original format is retained in a legible manner and that the media used for storage w",
+      "fingerprint": "5410ea400487f9187a9a8fa5ab245a9210d3fce454a2dcb34ba2dc7639b52146",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 78,
+      "anchor": "page-18-paragraph-6",
+      "statement": "During the retention period, retrievability of the documents should be ensured. Documents can be retained in electronic format, provided that the electronic system has been appropriately validated and appropriate arrangements exist for system security, access and back-up of data. If documents in paper format are transferred into an electronic format, the transfer process should ensure that all of the information present in the original format is retained in a legible manner and that the media used for storage will remain readable over time.",
+      "context": "The retention periods above apply unless the documents shall be retained for a longer period where EU or national law so requires [IR Art 12(2)]. Documents transferred in situations where the business of the marketing authorisation holder is taken over by another organisation should be complete.",
+      "fingerprint": "b74f85df8068a1bb2b08178fd0494cea9818e87b5da2220ef8a89726b9093bbb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 79,
+      "anchor": "page-18-paragraph-7",
+      "statement": "Documents transferred in situations where the business of the marketing authorisation holder is taken over by another organisation should be complete.",
+      "context": "During the retention period, retrievability of the documents should be ensured. Documents can be retained in electronic format, provided that the electronic system has been appropriately validated and appropriate arrangements exist for system security, access and back-up of data. If documents in paper format are transferred into an electronic format, the transfer process should ensure that all of the information present in the original format is retained in a legible manner and that the media used for storage will remain readable over time. I.C.1.5. Quality system requirements for pharmacovigilance tasks subcontracted by the marketing authorisation holder The marketing authorisation holder may subcontract certain activities of the pharmacovigilance system to third parties [IR Art 6(1)], i.e. to another organisation or person (where the same requirements apply to a person as for an organi",
+      "fingerprint": "6fd4750b60606c38fffae4f017afc05e996eb28d7c6bda914c2b0510d620a9fe",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 80,
+      "anchor": "page-18-paragraph-8",
+      "statement": "I.C.1.5. Quality system requirements for pharmacovigilance tasks subcontracted by the marketing authorisation holder The marketing authorisation holder may subcontract certain activities of the pharmacovigilance system to third parties [IR Art 6(1)], i.e. to another organisation or person (where the same requirements apply to a person as for an organisation). This may include the role of the QPPV. The marketing authorisation holder shall nevertheless retain full responsibility for the completeness and accuracy of the pharmacovigilance system master file (PSMF) (see Module II) [IR Art 6(1)]. The ultimate responsibility for the fulfilment of all pharmacovigilance tasks and responsibilities and the quality and integrity of the pharmacovigilance system always remains with the marketing authorisation holder.",
+      "context": "Documents transferred in situations where the business of the marketing authorisation holder is taken over by another organisation should be complete. Where a marketing authorisation holder has subcontracted some tasks of its pharmacovigilance tasks, it shall retain responsibility for ensuring that an effective quality system is applied in relation to those tasks [IR Art 11(2)]. All guidance provided in GVP is also applicable to the other organisation to which the tasks have been subcontracted.",
+      "fingerprint": "af19bc885e3e06d56c288e1bf87b4678ab6473f9c109e85993163f51a47c9249",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 81,
+      "anchor": "page-18-paragraph-9",
+      "statement": "Where a marketing authorisation holder has subcontracted some tasks of its pharmacovigilance tasks, it shall retain responsibility for ensuring that an effective quality system is applied in relation to those tasks [IR Art 11(2)]. All guidance provided in GVP is also applicable to the other organisation to which the tasks have been subcontracted.",
+      "context": "I.C.1.5. Quality system requirements for pharmacovigilance tasks subcontracted by the marketing authorisation holder The marketing authorisation holder may subcontract certain activities of the pharmacovigilance system to third parties [IR Art 6(1)], i.e. to another organisation or person (where the same requirements apply to a person as for an organisation). This may include the role of the QPPV. The marketing authorisation holder shall nevertheless retain full responsibility for the completeness and accuracy of the pharmacovigilance system master file (PSMF) (see Module II) [IR Art 6(1)]. The ultimate responsibility for the fulfilment of all pharmacovigilance tasks and responsibilities and the quality and integrity of the pharmacovigilance system always remains with the marketing authorisation holder. When subcontracting tasks to another organisation, the marketing authorisation holder",
+      "fingerprint": "ac2070cdb33f1b838604d35520f728f3184a4e8f8aa168fafdb5d1ab31d7bf66",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 82,
+      "anchor": "page-18-paragraph-10",
+      "statement": "When subcontracting tasks to another organisation, the marketing authorisation holder shall draw up subcontracts [IR Art 6(2)] and these should be detailed, up-to-date and clearly document the contractual arrangements between the marketing authorisation holder and the other organisation, describing arrangements for delegation and the responsibilities of each party. A description of the subcontracted activities and/or services shall be included in the pharmacovigilance system master file (PSMF) [IR Art 2(6)] and a list of the subcontracts shall be included in an annex to the PSMF, specifying the product(s) and territory(ies) concerned [IR Art 6(2)] (see Module II). The other",
+      "context": "Where a marketing authorisation holder has subcontracted some tasks of its pharmacovigilance tasks, it shall retain responsibility for ensuring that an effective quality system is applied in relation to those tasks [IR Art 11(2)]. All guidance provided in GVP is also applicable to the other organisation to which the tasks have been subcontracted. EMA/541760/2011 Page 19/25 organisation may be subject to inspection at the discretion of the competent or supervisory authority in the relevant Member State.",
+      "fingerprint": "642cfcde1fcc03a9d13cd68159ca2ac33f3175d7d4e4621ab1283ad7b2388027",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 83,
+      "anchor": "page-19-paragraph-2",
+      "statement": "Contractual arrangements should be prepared with the aim of enabling compliance with the legal requirements by each party involved. When preparing contractual arrangements, the marketing authorisation holder should include sufficiently detailed descriptions of the delegated tasks, the related interactions and data exchange, together with, for example, agreed definitions, tools, assignments and timelines. The contractual arrangements should also contain clear information on the practical management of pharmacovigilance as well as related processes, including those for the maintenance of pharmacovigilance databases. Further, they should indicate which processes are in place for checking whether the agreed arrangements are being adhered to on an ongoing basis. In this respect, regular risk-based audits of the other organisation by the marketing authorisation holder or introduction of other methods of control and assessment are recommended.",
+      "context": "EMA/541760/2011 Page 19/25 organisation may be subject to inspection at the discretion of the competent or supervisory authority in the relevant Member State. With respect to centrally authorised products, contractual arrangements between different marketing authorisation holders should also be in place in relation to separately authorised medicinal products with the application of Article 82(1) of Regulation (EC) No 726/2004 in order to ensure conduct of pharmacovigilance on the basis of complete worldwide data sets.",
+      "fingerprint": "b823d01ff2d11a0899a1f33df908b68bcc1d8de1c942d6f8bc641d12726b261a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 84,
+      "anchor": "page-19-paragraph-3",
+      "statement": "With respect to centrally authorised products, contractual arrangements between different marketing authorisation holders should also be in place in relation to separately authorised medicinal products with the application of Article 82(1) of Regulation (EC) No 726/2004 in order to ensure conduct of pharmacovigilance on the basis of complete worldwide data sets.",
+      "context": "Contractual arrangements should be prepared with the aim of enabling compliance with the legal requirements by each party involved. When preparing contractual arrangements, the marketing authorisation holder should include sufficiently detailed descriptions of the delegated tasks, the related interactions and data exchange, together with, for example, agreed definitions, tools, assignments and timelines. The contractual arrangements should also contain clear information on the practical management of pharmacovigilance as well as related processes, including those for the maintenance of pharmacovigilance databases. Further, they should indicate which processes are in place for checking whether the agreed arrangements are being adhered to on an ongoing basis. In this respect, regular risk-based audits of the other organisation by the marketing authorisation holder or introduction of other",
+      "fingerprint": "e8520b155e000facca7959420bcd23831512a71b1e7669272fba484cb234ad6c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 85,
+      "anchor": "page-19-paragraph-6",
+      "statement": "For this purpose each competent authority in a Member State as well as the Agency shall operate a pharmacovigilance system [DIR 101(1)] and shall establish and use an adequate and effective quality system for performing their pharmacovigilance activities [IR Art 8(1)].",
+      "context": "I.C.2. Overall pharmacovigilance responsibilities within the EU regulatory network The competent authorities in Member States and the Agency are responsible for the respective pharmacovigilance tasks and responsibilities imposed on them by Directive 2001/83/EC, Regulation (EC) No 726/2004 and the Commission Implementing Regulation (EU) No 520/2012 on the Performance of Pharmacovigilance Activities Provided for in Regulation (EC) No 726/2004 and Directive 2001/83/EC in order to ensure that appropriate action can be taken, when necessary. The Agency and the Member States shall cooperate to continuously develop pharmacovigilance systems capable of achieving high standards of public health protection for all medicinal products, regardless of the routes of marketing authorisation, including the use of collaborative approaches, to maximise use of resources available within the EU [REG Art 28e]",
+      "fingerprint": "cc52227e0e18e2396556cf380259b84757d3c1e0804d81186d26aa7f10e807b9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 86,
+      "anchor": "page-19-paragraph-7",
+      "statement": "The Agency and the Member States shall cooperate to continuously develop pharmacovigilance systems capable of achieving high standards of public health protection for all medicinal products, regardless of the routes of marketing authorisation, including the use of collaborative approaches, to maximise use of resources available within the EU [REG Art 28e].",
+      "context": "For this purpose each competent authority in a Member State as well as the Agency shall operate a pharmacovigilance system [DIR 101(1)] and shall establish and use an adequate and effective quality system for performing their pharmacovigilance activities [IR Art 8(1)]. The requirement in I.B.11.2. according to which competent authorities shall keep accessible clear descriptions of the organisational structures, assignment of tasks and responsibilities as well as contact points [IR Art 14(1)], should relate to the interaction between competent authorities in Member States, the Agency, the European Commission, marketing authorisation holders and persons reporting information on the risks of medicinal products.",
+      "fingerprint": "5c4b6fe3b9831f15b21cf2d003d7380ae8c0a88a545c249a09da3afa3e6b9288",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 87,
+      "anchor": "page-19-paragraph-8",
+      "statement": "The requirement in I.B.11.2. according to which competent authorities shall keep accessible clear descriptions of the organisational structures, assignment of tasks and responsibilities as well as contact points [IR Art 14(1)], should relate to the interaction between competent authorities in Member States, the Agency, the European Commission, marketing authorisation holders and persons reporting information on the risks of medicinal products.",
+      "context": "The Agency and the Member States shall cooperate to continuously develop pharmacovigilance systems capable of achieving high standards of public health protection for all medicinal products, regardless of the routes of marketing authorisation, including the use of collaborative approaches, to maximise use of resources available within the EU [REG Art 28e]. Guidance on the structures and processes to enable the competent authorities in Member States and the Agency to conduct the pharmacovigilance tasks and responsibilities is provided in the respective Modules of GVP.",
+      "fingerprint": "68c10400dc4b948af575d7458ad7370841ad8ae91d495214ec3a41b592a61513",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 88,
+      "anchor": "page-20-paragraph-1",
+      "statement": "EMA/541760/2011 Page 20/25 I.C.2.1. Role of the competent authorities in Member States Each Member State shall designate a competent authority for the performance of pharmacovigilance [DIR Art 101(3)]. This authority is usually the same as the competent authority responsible for granting national marketing authorisations.",
+      "context": "Guidance on the structures and processes to enable the competent authorities in Member States and the Agency to conduct the pharmacovigilance tasks and responsibilities is provided in the respective Modules of GVP. Each competent authority in a Member State must operate a pharmacovigilance system for the fulfilment of their pharmacovigilance tasks and their participation in EU pharmacovigilance activities [DIR Art 101(1)]. In this context, the competent authority in a Member State is responsible for the safety monitoring of each medicinal product, independent of its route of authorisation, in the territory of that Member State. In particular, the competent authority in each Member State shall be responsible for monitoring data originating in their territory [IR Art 18(4)].",
+      "fingerprint": "88b4deafa38fce007e5b86c527913dc7e3e2ca298159a8415522bedefda83f7c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 89,
+      "anchor": "page-20-paragraph-2",
+      "statement": "Each competent authority in a Member State must operate a pharmacovigilance system for the fulfilment of their pharmacovigilance tasks and their participation in EU pharmacovigilance activities [DIR Art 101(1)]. In this context, the competent authority in a Member State is responsible for the safety monitoring of each medicinal product, independent of its route of authorisation, in the territory of that Member State. In particular, the competent authority in each Member State shall be responsible for monitoring data originating in their territory [IR Art 18(4)].",
+      "context": "EMA/541760/2011 Page 20/25 I.C.2.1. Role of the competent authorities in Member States Each Member State shall designate a competent authority for the performance of pharmacovigilance [DIR Art 101(3)]. This authority is usually the same as the competent authority responsible for granting national marketing authorisations. For nationally authorised products, including those authorised through the mutual recognition or the decentralised procedure, the competent authority in a Member State is responsible for granting, varying, suspending and revoking a marketing authorisation. The pharmacovigilance tasks and responsibilities of competent authorities in Member States for each process in relation to such products, are detailed in the respective Modules of GVP.",
+      "fingerprint": "754d45246dfb9836bf185e8f8bdc8014046c8ee17883595a985dd244a40f3d8e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 90,
+      "anchor": "page-20-paragraph-4",
+      "statement": "For products authorised through the mutual recognition or the decentralised procedure, one Member State acts as the Reference Member State. For practical reasons, the competent authority of the Reference Member State should coordinate communication with the marketing authorisation holder on pharmacovigilance matters and monitor the compliance of the marketing authorisation holder with legal pharmacovigilance requirements. These arrangements do not replace the legal responsibilities of the marketing authorisation holder with respect to individual competent authorities and the Agency.",
+      "context": "For nationally authorised products, including those authorised through the mutual recognition or the decentralised procedure, the competent authority in a Member State is responsible for granting, varying, suspending and revoking a marketing authorisation. The pharmacovigilance tasks and responsibilities of competent authorities in Member States for each process in relation to such products, are detailed in the respective Modules of GVP. Nationally authorised products, including those authorised through the mutual recognition or the decentralised procedure, may become subject to regulatory procedures at EU level on pharmacovigilance grounds. If a Commission Decision for a nationally authorised product exists as an outcome of such a procedure, the competent authorities in Member States are responsible for the implementation of the Commission Decision and also for its follow-up, unless exc",
+      "fingerprint": "192f34850d0aef9ec057a1d9195e4cad8c45f5e1bf4fa097a422e01ce5ba7642",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 91,
+      "anchor": "page-20-paragraph-8",
+      "statement": "In relation to the various aspects of the role described above, each Member State’s competent authority should ensure that all pharmacovigilance data are shared between competent authorities in other Member States, the European Commission and the Agency for each process in accordance with the legislation and the guidance in the respective GVP Modules.",
+      "context": "Competent authorities in Member States are responsible for pharmacovigilance inspections of organisations in their territory in relation to medicinal products. This is independent of the route of marketing authorisation as well as which competent authority granted the marketing authorisation for the respective medicinal product (see Module III). EMA/541760/2011 Page 21/25 I.C.2.2. Role of the European Commission The European Commission is the competent authority for medicinal products authorised through the centralised procedure and is responsible for granting, varying, suspending and revoking their marketing authorisations by adoption of Commission Decisions on the basis of Opinions adopted by the Committee for Medicinal Products for Human Use (CHMP) (see I.C.2.3.3.).",
+      "fingerprint": "8b20f6f91c93af012f757b9a66e85e171380c2d973a4a241ca6aa40101506d61",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 92,
+      "anchor": "page-21-paragraph-5",
+      "statement": "Pharmacovigilance for centrally authorised products is conducted by the Agency with the involvement of the Rapporteurs, the PRAC and the CHMP. The Agency should take the lead for communicating with the marketing authorisation holders of centrally authorised products. The respective responsibilities for each pharmacovigilance process are detailed in the GVP Modules.",
+      "context": "The Agency provides coordination and technical, scientific and administrative support to the Pharmacovigilance Risk Assessment Committee (PRAC) (see I.C.2.3.2.) and the Committee for Medicinal Products for Human Use (CHMP) (see I.C.2.3.3.) and coordination and technical and administrative support to the Coordination Group for Mutual Recognition and Decentralised Procedures - Human (CMDh) (see I.C.2.3.4.), as well as coordination between the committees and the CMDh. For nationally authorised products, the Agency coordinates regulatory procedures at EU level on pharmacovigilance grounds through providing support to the CMDh and CHMP (see Chapter 3 of the Notice to Applicants and the Agency’s and HMA Procedural Advice on Referral Procedures for Safety Reasons).",
+      "fingerprint": "54a741886fe7b8a4bc10a7b79c039c1cb073c694dcdfc9f13941d2d1151df595",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 93,
+      "anchor": "page-23-paragraph-1",
+      "statement": "EMA/541760/2011 Page 23/25 variation of marketing authorisations granted by the Member States as well as questions arising for nationally authorised products from assessments of periodic safety update reports (see Module VII), post-authorisation safety studies (see Module VIII) and during regulatory procedures at EU level. The CMDh shall reach a position, based on a PRAC recommendation, on regulatory procedures at EU level when only nationally authorised products, including those authorised through the mutual recognition or the decentralised procedure, are involved [DIR Art 107k](see Chapter 3 of the Notice to Applicants and the Agency’s and HMA Procedural Advice on Referral Procedures for Safety Reasons). The responsibilities of the CMDh for each pharmacovigilance process are described in the respective GVP Modules. The Rules of Procedure of the CMDh and the Functions and Tasks for CMDh are published on the HMA website 5 .",
+      "context": "4 http://www.ema.europa.eu/ema/index.jsp?curl=pages/about_us/general/general_content_000095.jsp&murl=menus/abou t_us/about_us.jsp&mid=WC0b01ac0580028c7a I.C.2.4. Specific quality system processes of the quality systems of competent authorities in Member States and the Agency In applying the requirements set out in I.B.9.2. in the EU, the competent authorities in Member States and the Agency shall put in place the following additional specific quality system processes for:",
+      "fingerprint": "d10be4ecb59954ffd9c6087027e2d46f6d4ac0f4a4670cc0f8fc48ef56c874ce",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 94,
+      "anchor": "page-23-paragraph-2",
+      "statement": "I.C.2.4. Specific quality system processes of the quality systems of competent authorities in Member States and the Agency In applying the requirements set out in I.B.9.2. in the EU, the competent authorities in Member States and the Agency shall put in place the following additional specific quality system processes for:",
+      "context": "EMA/541760/2011 Page 23/25 variation of marketing authorisations granted by the Member States as well as questions arising for nationally authorised products from assessments of periodic safety update reports (see Module VII), post-authorisation safety studies (see Module VIII) and during regulatory procedures at EU level. The CMDh shall reach a position, based on a PRAC recommendation, on regulatory procedures at EU level when only nationally authorised products, including those authorised through the mutual recognition or the decentralised procedure, are involved [DIR Art 107k](see Chapter 3 of the Notice to Applicants and the Agency’s and HMA Procedural Advice on Referral Procedures for Safety Reasons). The responsibilities of the CMDh for each pharmacovigilance process are described in the respective GVP Modules. The Rules of Procedure of the CMDh and the Functions and Tasks for CMDh",
+      "fingerprint": "afe6d4eb359bd5d41100f555ce9f4db60677939eb765812f787579ff0cb8bf8a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 95,
+      "anchor": "page-23-paragraph-10",
+      "statement": "The retention periods above apply unless the documents shall be retained for a longer period where EU or national law so requires [IR Art 16(2)].",
+      "context": "In this context, documents relating to a medicinal product include documents of a reference medicinal product where this is applicable. During the retention periods referred to above, retrievability of the documents should be ensured.",
+      "fingerprint": "c74395acb1649bc12d7a86c3e417b4ce2893990c45682a5246e49c0c669d567c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 96,
+      "anchor": "page-23-paragraph-11",
+      "statement": "During the retention periods referred to above, retrievability of the documents should be ensured.",
+      "context": "The retention periods above apply unless the documents shall be retained for a longer period where EU or national law so requires [IR Art 16(2)]. Documents can be retained in electronic format, provided that the electronic system has been appropriately validated and appropriate arrangements exist for system security, access and back-up of data. If pharmacovigilance documents in paper format are transferred into an electronic format, the transfer process should ensure that all of the information present in the original format is retained in a legible manner and that the media used for storage will remain readable over time.",
+      "fingerprint": "974c9be0e6f80d3911d50a6db8a7564ce9fe6f5ec9d581e9caffa403cd146c46",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 97,
+      "anchor": "page-23-paragraph-12",
+      "statement": "Documents can be retained in electronic format, provided that the electronic system has been appropriately validated and appropriate arrangements exist for system security, access and back-up of data. If pharmacovigilance documents in paper format are transferred into an electronic format, the transfer process should ensure that all of the information present in the original format is retained in a legible manner and that the media used for storage will remain readable over time.",
+      "context": "During the retention periods referred to above, retrievability of the documents should be ensured. 5 http://www.hma.eu/205.html",
+      "fingerprint": "611b10cd061e6aa9f5fdf05a2a2b86f7109ffdf7e60bf5e4c863857bf85d4a1b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 98,
+      "anchor": "page-24-paragraph-2",
+      "statement": "In addition to the above, competent authorities in Member States shall establish procedures for collecting and recording all suspected adverse reactions that occur in their territory (see Module VI) [IR Art 15(2)].",
+      "context": "EMA/541760/2011 Page 24/25 The legal requirements for record management (see I.B.10.) imply accessibility to the records from within the EU, preferably at a single point. In addition to the above, the Agency shall establish procedures for literature monitoring in accordance with Article 27 of Regulation (EC) No 726/2004 (see Module VI) [IR Art 15(3)].",
+      "fingerprint": "0cd900a85aef92e32c5c44fc153603e7466e0b0714acf465a619113246525fb4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 99,
+      "anchor": "page-24-paragraph-3",
+      "statement": "In addition to the above, the Agency shall establish procedures for literature monitoring in accordance with Article 27 of Regulation (EC) No 726/2004 (see Module VI) [IR Art 15(3)].",
+      "context": "In addition to the above, competent authorities in Member States shall establish procedures for collecting and recording all suspected adverse reactions that occur in their territory (see Module VI) [IR Art 15(2)]. In addition to the quality system documentation in accordance with I.B.11. and I.B.11.2., competent authorities in Member States and the Agency shall clearly determine, and to the extent necessary, keep accessible the organisational structures and the distribution of tasks and responsibilities [IR Art 14(1)] as well as establish contact points [IR Art 14(1)], in particular to facilitate interaction between competent authorities in Member States, the Agency, marketing authorisation holders and persons reporting information on the risks of medicinal products as regards patients’ or public health.",
+      "fingerprint": "3c32316e949f8ae10ff17f6d13b6f9a509a7bf3f4b16b99d5499b9aa68fdc8e5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 100,
+      "anchor": "page-24-paragraph-4",
+      "statement": "In addition to the quality system documentation in accordance with I.B.11. and I.B.11.2., competent authorities in Member States and the Agency shall clearly determine, and to the extent necessary, keep accessible the organisational structures and the distribution of tasks and responsibilities [IR Art 14(1)] as well as establish contact points [IR Art 14(1)], in particular to facilitate interaction between competent authorities in Member States, the Agency, marketing authorisation holders and persons reporting information on the risks of medicinal products as regards patients’ or public health.",
+      "context": "In addition to the above, the Agency shall establish procedures for literature monitoring in accordance with Article 27 of Regulation (EC) No 726/2004 (see Module VI) [IR Art 15(3)]. Quality audits of the Member States’ and Agency ‘s pharmacovigilance systems (see I.B.12.) shall be performed according to a common methodology [IR Art 17(1)]. The results of audits shall be reported by competent authorities in Member States in accordance with Article 101(2) of Directive 2001/83/EC and by the Agency in accordance with Article 28f of Regulation (EC) No 726/2004 (see Module IV).",
+      "fingerprint": "73dab5a7a11143f0fe9833cc8147e2e83bf238d46b9a0655dfcaa82fdfd0cedd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 101,
+      "anchor": "page-24-paragraph-5",
+      "statement": "Quality audits of the Member States’ and Agency ‘s pharmacovigilance systems (see I.B.12.) shall be performed according to a common methodology [IR Art 17(1)]. The results of audits shall be reported by competent authorities in Member States in accordance with Article 101(2) of Directive 2001/83/EC and by the Agency in accordance with Article 28f of Regulation (EC) No 726/2004 (see Module IV).",
+      "context": "In addition to the quality system documentation in accordance with I.B.11. and I.B.11.2., competent authorities in Member States and the Agency shall clearly determine, and to the extent necessary, keep accessible the organisational structures and the distribution of tasks and responsibilities [IR Art 14(1)] as well as establish contact points [IR Art 14(1)], in particular to facilitate interaction between competent authorities in Member States, the Agency, marketing authorisation holders and persons reporting information on the risks of medicinal products as regards patients’ or public health. I.C.2.5. Quality system requirements for pharmacovigilance tasks delegated or transferred by competent authorities in Member States A competent authority in a Member State may delegate any pharmacovigilance task to another Member State subject to a written agreement of the latter Member State [DIR",
+      "fingerprint": "6708a41b5f6cb8ab208a40660268005df9c0f35ec5443ad32cb6b46d003aa442",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 102,
+      "anchor": "page-24-paragraph-6",
+      "statement": "I.C.2.5. Quality system requirements for pharmacovigilance tasks delegated or transferred by competent authorities in Member States A competent authority in a Member State may delegate any pharmacovigilance task to another Member State subject to a written agreement of the latter Member State [DIR Art 103]. The written agreement should be reflected by exchange of letters, defining the scope of the delegation.",
+      "context": "Quality audits of the Member States’ and Agency ‘s pharmacovigilance systems (see I.B.12.) shall be performed according to a common methodology [IR Art 17(1)]. The results of audits shall be reported by competent authorities in Member States in accordance with Article 101(2) of Directive 2001/83/EC and by the Agency in accordance with Article 28f of Regulation (EC) No 726/2004 (see Module IV). A competent authority in a Member State may transfer any or all of the pharmacovigilance tasks to another organisation, but the ultimate responsibility for the fulfilment of all pharmacovigilance tasks and responsibilities and the quality and integrity of the pharmacovigilance system always remains with the competent authority in a Member State.",
+      "fingerprint": "4301d910ca3246e5ede7081f3063ce06b436de8667ae179dc001e8a234e07237",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 103,
+      "anchor": "page-24-paragraph-8",
+      "statement": "Where tasks are transferred to another organisation, the competent authority in a Member State should ensure that the tasks are subject to a quality system compliant with the legal requirements applicable to their own organisation.",
+      "context": "A competent authority in a Member State may transfer any or all of the pharmacovigilance tasks to another organisation, but the ultimate responsibility for the fulfilment of all pharmacovigilance tasks and responsibilities and the quality and integrity of the pharmacovigilance system always remains with the competent authority in a Member State. I.C.2.6. Transparency of the quality system of the EU regulatory network The European Commission (EC) shall publish every three years a report on the performance of pharmacovigilance based on the reports submitted by the competent authorities in Member States (first EC report due on 21 July 2015) and by the Agency (first EC report due on 2 January 2014) on the results of their regular pharmacovigilance system audits (see Module IV) [DIR Art 101(2), Art 108b, REG Art 28f, Art 29].",
+      "fingerprint": "aded9ff811aaa77469636ca1b7bc6d3915fd56929a3bb264ae5e0a4901d206d1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 104,
+      "anchor": "page-24-paragraph-9",
+      "statement": "I.C.2.6. Transparency of the quality system of the EU regulatory network The European Commission (EC) shall publish every three years a report on the performance of pharmacovigilance based on the reports submitted by the competent authorities in Member States (first EC report due on 21 July 2015) and by the Agency (first EC report due on 2 January 2014) on the results of their regular pharmacovigilance system audits (see Module IV) [DIR Art 101(2), Art 108b, REG Art 28f, Art 29].",
+      "context": "Where tasks are transferred to another organisation, the competent authority in a Member State should ensure that the tasks are subject to a quality system compliant with the legal requirements applicable to their own organisation. I.C.3. Data protection in the EU All legal requirements of the IR, including those relating to the record management described in I.B.10., shall apply without prejudice to the obligations of national competent authorities and marketing authorisation holders relating to their processing of personal data under Directive 95/46/EC or the obligations of the Agency relating to its processing of personal data under Regulation (EC) No 45/2001 [IR Art 39].",
+      "fingerprint": "3344e978696d933fe1b35a8f0d218b8032a4217ff819f99aa2b1b4ae82f826b8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 105,
+      "anchor": "page-24-paragraph-10",
+      "statement": "I.C.3. Data protection in the EU All legal requirements of the IR, including those relating to the record management described in I.B.10., shall apply without prejudice to the obligations of national competent authorities and marketing authorisation holders relating to their processing of personal data under Directive 95/46/EC or the obligations of the Agency relating to its processing of personal data under Regulation (EC) No 45/2001 [IR Art 39].",
+      "context": "I.C.2.6. Transparency of the quality system of the EU regulatory network The European Commission (EC) shall publish every three years a report on the performance of pharmacovigilance based on the reports submitted by the competent authorities in Member States (first EC report due on 21 July 2015) and by the Agency (first EC report due on 2 January 2014) on the results of their regular pharmacovigilance system audits (see Module IV) [DIR Art 101(2), Art 108b, REG Art 28f, Art 29]. EMA/541760/2011 Page 25/25 I.C.4. Preparedness planning in the EU for pharmacovigilance in public health emergencies The pharmacovigilance systems of marketing authorisation holders, competent authorities in Member States and the Agency should be adaptable to public health emergencies. Preparedness plans should be developed as appropriate (see I.B.13.).",
+      "fingerprint": "b8468cda60f7d45c36bf500ca7d1dab842b26feeffdd0bd8c0ff696863ca6c19",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 106,
+      "anchor": "page-25-paragraph-1",
+      "statement": "EMA/541760/2011 Page 25/25 I.C.4. Preparedness planning in the EU for pharmacovigilance in public health emergencies The pharmacovigilance systems of marketing authorisation holders, competent authorities in Member States and the Agency should be adaptable to public health emergencies. Preparedness plans should be developed as appropriate (see I.B.13.).",
+      "context": "I.C.3. Data protection in the EU All legal requirements of the IR, including those relating to the record management described in I.B.10., shall apply without prejudice to the obligations of national competent authorities and marketing authorisation holders relating to their processing of personal data under Directive 95/46/EC or the obligations of the Agency relating to its processing of personal data under Regulation (EC) No 45/2001 [IR Art 39]. A public health emergency is a public health threat duly recognised either by the World Health Organization (WHO) or the Community in the framework of Decision No. 2119/98/EC of the European Parliament and of the Council.",
+      "fingerprint": "34e21f5a60676a685533f828eb6897fbc3fa4634a91ecda73f246486a8e0b191",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 107,
+      "anchor": "page-25-paragraph-3",
+      "statement": "Pharmacovigilance requirements for public health emergencies should be considered by the competent authorities in Member States, the European Commission and the Agency on a case-by-case basis and appropriately notified to marketing authorisation holders and the public. The Agency publishes its notifications on the Agency’s website.",
+      "context": "A public health emergency is a public health threat duly recognised either by the World Health Organization (WHO) or the Community in the framework of Decision No. 2119/98/EC of the European Parliament and of the Council.",
+      "fingerprint": "3b7ceb0c3c2f96c5447199deed5a7df3e803fe1261ab1d8c5a689e02284f3c98",
+      "review_status": "pending"
+    }
+  ],
+  "retrieved_at": "2026-11-01T17:22:32.904Z"
+}

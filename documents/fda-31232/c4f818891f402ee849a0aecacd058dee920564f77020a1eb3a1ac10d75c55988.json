@@ -1,0 +1,140 @@
+{
+  "schema_version": "public-document-key-info-v1",
+  "document_id": "fda-31232",
+  "metadata": {
+    "title": "21 CFR 312.32",
+    "country": "US",
+    "agency": "FDA",
+    "edition": "eCFR snapshot 2026-10-29",
+    "norm": "Regulation",
+    "topic": "Clinical safety reporting",
+    "lifecycle": "Clinical",
+    "legal_basis": "21 CFR 312.32. Consult the official legal sources and any pending amendments.",
+    "applicability": "IND sponsors; determine whether information meets the specific reportability criteria.",
+    "published_on": "",
+    "effective_on": "",
+    "source_status": "current"
+  },
+  "metadata_verification": "Source-register metadata; dates and legal status require human verification.",
+  "source_url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-D/part-312/subpart-B/section-312.32",
+  "original_sha256": "fc9c8d8574c5881109988acaaf2a09ee3cda81057bce817d7481890751f74280",
+  "content_kind": "html",
+  "parser_version": "normative-rules-v2",
+  "extraction_status": "candidates_extracted",
+  "candidate_count": 13,
+  "excluded_paragraphs": 0,
+  "candidate_limit_reached": false,
+  "review_status": "pending",
+  "limitations": [
+    "English rule-based extraction; no GPT or paid API.",
+    "Candidates are not approved requirements. Read the original, qualifications and exceptions.",
+    "Scans, tables, other languages and implicit obligations may be missed. Zero candidates does not establish zero requirements."
+  ],
+  "candidates": [
+    {
+      "ordinal": 1,
+      "anchor": "p-312.32(b)",
+      "statement": "(b) Review of safety information. The sponsor must promptly review all information relevant to the safety of the drug obtained or otherwise received by the sponsor from foreign or domestic sources, including information derived from any clinical or epidemiological investigations, animal or in vitro studies, reports in the scientific literature, and unpublished scientific papers, as well as reports from foreign regulatory authorities and reports of foreign commercial marketing experience for drugs that are not marketed in the United States.",
+      "context": "Unexpected adverse event or unexpected suspected adverse reaction. An adverse event or suspected adverse reaction is considered “unexpected” if it is not listed in the investigator brochure or is not listed at the specificity or severity that has been observed; or, if an investigator brochure is not required or available, is not consistent with the risk information described in the general investigational plan or elsewhere in the current application, as amended. For example, under this definition, hepatic necrosis would be unexpected (by virtue of greater severity) if the investigator brochure referred only to elevated hepatic enzymes or hepatitis. Similarly, cerebral thromboembolism and cerebral vasculitis would be unexpected (by virtue of greater specificity) if the investigator brochure listed only cerebral vascular accidents. “Unexpected,” as used in this definition, also refers to a",
+      "fingerprint": "8856fa22375ae0a2437fade0a826d4f0edaa9efe935c01076ab2ebf973d3facb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 2,
+      "anchor": "p-312.32(c)(1)",
+      "statement": "(1) IND safety reports. The sponsor must notify FDA and all participating investigators (i.e., all investigators to whom the sponsor is providing drug under its INDs or under any investigator's IND) in an IND safety report of potential serious risks, from clinical trials or any other source, as soon as possible, but in no case later than 15 calendar days after the sponsor determines that the information qualifies for reporting under paragraph (c)(1)(i), (c)(1)(ii), (c)(1)(iii), or (c)(1)(iv) of this section. In each IND safety report, the sponsor must identify all IND safety reports previously submitted to FDA concerning a similar suspected adverse reaction, and must analyze the significance of the suspected adverse reaction in light of previous, similar reports or any other relevant information.",
+      "context": "(i) Serious and unexpected suspected adverse reaction. The sponsor must report any suspected adverse reaction that is both serious and unexpected. The sponsor must report an adverse event as a suspected adverse reaction only if there is evidence to suggest a causal relationship between the drug and the adverse event, such as:",
+      "fingerprint": "dfa7eca5eec3e90fd0010976fc0b43d162d1753436453433ef0488cb2c9c9e26",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 3,
+      "anchor": "p-312.32(c)(1)(i)",
+      "statement": "(i) Serious and unexpected suspected adverse reaction. The sponsor must report any suspected adverse reaction that is both serious and unexpected. The sponsor must report an adverse event as a suspected adverse reaction only if there is evidence to suggest a causal relationship between the drug and the adverse event, such as:",
+      "context": "(1) IND safety reports. The sponsor must notify FDA and all participating investigators (i.e., all investigators to whom the sponsor is providing drug under its INDs or under any investigator's IND) in an IND safety report of potential serious risks, from clinical trials or any other source, as soon as possible, but in no case later than 15 calendar days after the sponsor determines that the information qualifies for reporting under paragraph (c)(1)(i), (c)(1)(ii), (c)(1)(iii), or (c)(1)(iv) of this section. In each IND safety report, the sponsor must identify all IND safety reports previously submitted to FDA concerning a similar suspected adverse reaction, and must analyze the significance of the suspected adverse reaction in light of previous, similar reports or any other relevant information. (A) A single occurrence of an event that is uncommon and known to be strongly associated wit",
+      "fingerprint": "006d3968f1cc1042bea6c29548d7454fe4a1e6b07d7265b72c074504565b2c7e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 4,
+      "anchor": "p-312.32(c)(1)(ii)",
+      "statement": "(ii) Findings from other studies. The sponsor must report any findings from epidemiological studies, pooled analysis of multiple studies, or clinical studies (other than those reported under paragraph (c)(1)(i) of this section), whether or not conducted under an IND, and whether or not conducted by the sponsor, that suggest a significant risk in humans exposed to the drug. Ordinarily, such a finding would result in a safety-related change in the protocol, informed consent, investigator brochure (excluding routine updates of these documents), or other aspects of the overall conduct of the clinical investigation.",
+      "context": "(C) An aggregate analysis of specific events observed in a clinical trial (such as known consequences of the underlying disease or condition under investigation or other events that commonly occur in the study population independent of drug therapy) that indicates those events occur more frequently in the drug treatment group than in a concurrent or historical control group. (iii) Findings from animal or in vitro testing. The sponsor must report any findings from animal or in vitro testing, whether or not conducted by the sponsor, that suggest a significant risk in humans exposed to the drug, such as reports of mutagenicity, teratogenicity, or carcinogenicity, or reports of significant organ toxicity at or near the expected human exposure. Ordinarily, any such findings would result in a safety-related change in the protocol, informed consent, investigator brochure (excluding routine upda",
+      "fingerprint": "a925738476641f5586cbbc2f6692207fd119d6b3a08026beb53ae4dec6e3b52a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 5,
+      "anchor": "p-312.32(c)(1)(iii)",
+      "statement": "(iii) Findings from animal or in vitro testing. The sponsor must report any findings from animal or in vitro testing, whether or not conducted by the sponsor, that suggest a significant risk in humans exposed to the drug, such as reports of mutagenicity, teratogenicity, or carcinogenicity, or reports of significant organ toxicity at or near the expected human exposure. Ordinarily, any such findings would result in a safety-related change in the protocol, informed consent, investigator brochure (excluding routine updates of these documents), or other aspects of the overall conduct of the clinical investigation.",
+      "context": "(ii) Findings from other studies. The sponsor must report any findings from epidemiological studies, pooled analysis of multiple studies, or clinical studies (other than those reported under paragraph (c)(1)(i) of this section), whether or not conducted under an IND, and whether or not conducted by the sponsor, that suggest a significant risk in humans exposed to the drug. Ordinarily, such a finding would result in a safety-related change in the protocol, informed consent, investigator brochure (excluding routine updates of these documents), or other aspects of the overall conduct of the clinical investigation. (iv) Increased rate of occurrence of serious suspected adverse reactions. The sponsor must report any clinically important increase in the rate of a serious suspected adverse reaction over that listed in the protocol or investigator brochure.",
+      "fingerprint": "005316917b7c7d50c45de9e0b6b037ea72d70ab888cb2d490d3dd5e7b7fb1c49",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 6,
+      "anchor": "p-312.32(c)(1)(iv)",
+      "statement": "(iv) Increased rate of occurrence of serious suspected adverse reactions. The sponsor must report any clinically important increase in the rate of a serious suspected adverse reaction over that listed in the protocol or investigator brochure.",
+      "context": "(iii) Findings from animal or in vitro testing. The sponsor must report any findings from animal or in vitro testing, whether or not conducted by the sponsor, that suggest a significant risk in humans exposed to the drug, such as reports of mutagenicity, teratogenicity, or carcinogenicity, or reports of significant organ toxicity at or near the expected human exposure. Ordinarily, any such findings would result in a safety-related change in the protocol, informed consent, investigator brochure (excluding routine updates of these documents), or other aspects of the overall conduct of the clinical investigation. (v) Submission of IND safety reports. The sponsor must submit each IND safety report in a narrative format or on FDA Form 3500A or in an electronic format that FDA can process, review, and archive. FDA will periodically issue guidance on how to provide the electronic submission (e.",
+      "fingerprint": "aa0ac04fc3a8156338fe8ca6761e5becd0619432372ecf5f56a07ff99ca77c10",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 7,
+      "anchor": "p-312.32(c)(1)(v)",
+      "statement": "(v) Submission of IND safety reports. The sponsor must submit each IND safety report in a narrative format or on FDA Form 3500A or in an electronic format that FDA can process, review, and archive. FDA will periodically issue guidance on how to provide the electronic submission (e.g., method of transmission, media, file formats, preparation and organization of files). The sponsor may submit foreign suspected adverse reactions on a Council for International Organizations of Medical Sciences (CIOMS) I Form instead of a FDA Form 3500A. Reports of overall findings or pooled analyses from published and unpublished in vitro, animal, epidemiological, or clinical studies must be submitted in a narrative format. Each notification to FDA must bear prominent identification of its contents, i.e., “IND Safety Report,” and must be transmitted to the review division in the Center for Drug Evaluation and Research or in the Center for Biologics Evaluation and Research that has responsibility for review of the IND. Upon request from FDA, the sponsor must submit to FDA any additional data or information that the agency deems necessary, as soon as possible, but in no case later than 15 calendar days after receiving the request.",
+      "context": "(iv) Increased rate of occurrence of serious suspected adverse reactions. The sponsor must report any clinically important increase in the rate of a serious suspected adverse reaction over that listed in the protocol or investigator brochure. (2) Unexpected fatal or life-threatening suspected adverse reaction reports. The sponsor must also notify FDA of any unexpected fatal or life-threatening suspected adverse reaction as soon as possible but in no case later than 7 calendar days after the sponsor's initial receipt of the information.",
+      "fingerprint": "3e27c7ceb711efce368cd7bec098f280926363a2101e99147eec04cfbe227052",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 8,
+      "anchor": "p-312.32(c)(2)",
+      "statement": "(2) Unexpected fatal or life-threatening suspected adverse reaction reports. The sponsor must also notify FDA of any unexpected fatal or life-threatening suspected adverse reaction as soon as possible but in no case later than 7 calendar days after the sponsor's initial receipt of the information.",
+      "context": "(v) Submission of IND safety reports. The sponsor must submit each IND safety report in a narrative format or on FDA Form 3500A or in an electronic format that FDA can process, review, and archive. FDA will periodically issue guidance on how to provide the electronic submission (e.g., method of transmission, media, file formats, preparation and organization of files). The sponsor may submit foreign suspected adverse reactions on a Council for International Organizations of Medical Sciences (CIOMS) I Form instead of a FDA Form 3500A. Reports of overall findings or pooled analyses from published and unpublished in vitro, animal, epidemiological, or clinical studies must be submitted in a narrative format. Each notification to FDA must bear prominent identification of its contents, i.e., “IND Safety Report,” and must be transmitted to the review division in the Center for Drug Evaluation an",
+      "fingerprint": "4df4d9fb0d7e385923765689b4ab0b18c7e06f58c91ec45cc9dcc2e151c92f44",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 9,
+      "anchor": "p-312.32(c)(4)",
+      "statement": "(4) Investigations of marketed drugs. A sponsor of a clinical study of a drug marketed or approved in the United States that is conducted under an IND is required to submit IND safety reports for suspected adverse reactions that are observed in the clinical study, at domestic or foreign study sites. The sponsor must also submit safety information from the clinical study as prescribed by the postmarketing safety reporting requirements (e.g., §§ 310.305, 314.80, and 600.80 of this chapter).",
+      "context": "(3) Reporting format or frequency. FDA may require a sponsor to submit IND safety reports in a format or at a frequency different than that required under this paragraph. The sponsor may also propose and adopt a different reporting format or frequency if the change is agreed to in advance by the director of the FDA review division that has responsibility for review of the IND. (5) Reporting study endpoints. Study endpoints (e.g., mortality or major morbidity) must be reported to FDA by the sponsor as described in the protocol and ordinarily would not be reported under paragraph (c) of this section. However, if a serious and unexpected adverse event occurs for which there is evidence suggesting a causal relationship between the drug and the event (e.g., death from anaphylaxis), the event must be reported under § 312.32(c)(1)(i) as a serious and unexpected suspected adverse reaction even i",
+      "fingerprint": "c0e493414bb52b11b731a58c56bec87423381c8800e4dd5760e92ccf1868ee9a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 10,
+      "anchor": "p-312.32(c)(5)",
+      "statement": "(5) Reporting study endpoints. Study endpoints (e.g., mortality or major morbidity) must be reported to FDA by the sponsor as described in the protocol and ordinarily would not be reported under paragraph (c) of this section. However, if a serious and unexpected adverse event occurs for which there is evidence suggesting a causal relationship between the drug and the event (e.g., death from anaphylaxis), the event must be reported under § 312.32(c)(1)(i) as a serious and unexpected suspected adverse reaction even if it is a component of the study endpoint (e.g., all-cause mortality).",
+      "context": "(4) Investigations of marketed drugs. A sponsor of a clinical study of a drug marketed or approved in the United States that is conducted under an IND is required to submit IND safety reports for suspected adverse reactions that are observed in the clinical study, at domestic or foreign study sites. The sponsor must also submit safety information from the clinical study as prescribed by the postmarketing safety reporting requirements (e.g., §§ 310.305, 314.80, and 600.80 of this chapter).",
+      "fingerprint": "52e2e243e0634e65136b169f5ecef4cdab7bbbe316d5e619666658f540ea7863",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 11,
+      "anchor": "p-312.32(d)(1)",
+      "statement": "(1) The sponsor must promptly investigate all safety information it receives.",
+      "context": "(2) Relevant followup information to an IND safety report must be submitted as soon as the information is available and must be identified as such, i.e., “Followup IND Safety Report.”",
+      "fingerprint": "940901750da024184b8b075c1a6faccf65837285500e52d787a21c17dffa028a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 12,
+      "anchor": "p-312.32(d)(2)",
+      "statement": "(2) Relevant followup information to an IND safety report must be submitted as soon as the information is available and must be identified as such, i.e., “Followup IND Safety Report.”",
+      "context": "(1) The sponsor must promptly investigate all safety information it receives. (3) If the results of a sponsor's investigation show that an adverse event not initially determined to be reportable under paragraph (c) of this section is so reportable, the sponsor must report such suspected adverse reaction in an IND safety report as soon as possible, but in no case later than 15 calendar days after the determination is made.",
+      "fingerprint": "7e8bd653e5b6458d53794236d58850562102b51fcdf746661fed53b57117884b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 13,
+      "anchor": "p-312.32(d)(3)",
+      "statement": "(3) If the results of a sponsor's investigation show that an adverse event not initially determined to be reportable under paragraph (c) of this section is so reportable, the sponsor must report such suspected adverse reaction in an IND safety report as soon as possible, but in no case later than 15 calendar days after the determination is made.",
+      "context": "(2) Relevant followup information to an IND safety report must be submitted as soon as the information is available and must be identified as such, i.e., “Followup IND Safety Report.” (e) Disclaimer. A safety report or other information submitted by a sponsor under this part (and any release by FDA of that report or information) does not necessarily reflect a conclusion by the sponsor or FDA that the report or information constitutes an admission that the drug caused or contributed to an adverse event. A sponsor need not admit, and may deny, that the report or information submitted by the sponsor constitutes an admission that the drug caused or contributed to an adverse event.",
+      "fingerprint": "78a1a7fc64e9539c78ee41fae5142e345578b359a3c44575b03e67698b29bfbf",
+      "review_status": "pending"
+    }
+  ],
+  "retrieved_at": "2026-11-01T17:22:52.946Z"
+}

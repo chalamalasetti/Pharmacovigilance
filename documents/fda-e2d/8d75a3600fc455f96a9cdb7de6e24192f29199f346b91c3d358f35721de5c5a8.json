@@ -1,0 +1,796 @@
+{
+  "schema_version": "public-document-key-info-v1",
+  "document_id": "fda-e2d",
+  "metadata": {
+    "title": "E2D(R1) Post-Approval Safety Data",
+    "country": "US",
+    "agency": "FDA",
+    "edition": "Final March 2026",
+    "norm": "Guidance",
+    "topic": "Postmarketing reporting",
+    "lifecycle": "Marketed",
+    "legal_basis": "Guidance recommendations; underlying binding regulations remain separately applicable.",
+    "applicability": "Post-approval safety data management and reporting; confirm US-specific implementation.",
+    "published_on": "2026-03-03",
+    "effective_on": "",
+    "source_status": "current"
+  },
+  "metadata_verification": "Source-register metadata; dates and legal status require human verification.",
+  "source_url": "https://www.fda.gov/media/176977/download",
+  "original_sha256": "d781934572ce0ab9ce06fb9f27a623f61132530a13a1bea0e6a2cc9914e90321",
+  "content_kind": "pdf",
+  "parser_version": "normative-rules-v2",
+  "extraction_status": "candidates_extracted",
+  "candidate_count": 95,
+  "excluded_paragraphs": 0,
+  "candidate_limit_reached": false,
+  "review_status": "pending",
+  "limitations": [
+    "English rule-based extraction; no GPT or paid API.",
+    "Candidates are not approved requirements. Read the original, qualifications and exceptions.",
+    "Scans, tables, other languages and implicit obligations may be missed. Zero candidates does not establish zero requirements."
+  ],
+  "candidates": [
+    {
+      "ordinal": 1,
+      "anchor": "page-4-paragraph-37",
+      "statement": "A. What Should Be Reported? (5.1) ................................................................................................ 16",
+      "context": "V. STANDARDS FOR REPORTING (5) .......................................................................... 16",
+      "fingerprint": "4a051d19be4b20cdc66e148acf765e91968ea299c4a8760f0e93f01fe13a510a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 2,
+      "anchor": "page-6-paragraph-3",
+      "statement": "I. INTRODUCTION (1) 2 It is important to establish an internationally standardized procedure to ensure the quality of postapproval safety information and to harmonize, where feasible, the way of gathering and reporting information. The International Council for Harmonisation (ICH) guidance for industry E2D(R1) Postapproval Safety Data: Definitions and Standards for Management and Reporting of Individual Case Safety Reports provides guidance on definitions and standards for postapproval individual case safety reporting, as well as good case management practices. This guidance was originally based on the content of the ICH guidance for industry E2A Clinical Safety Data Management: Definitions and standards for Expedited Reporting (March 1995) (ICH E2A) 3 (which provides guidance on preapproval safety data management), with consideration as to how the terms and definitions should be applied in the postapproval phase of the product life cycle. Detailed guidance on the specific structure, format, standards, and data elements for transmitting individual case safety reports (ICSRs) is provided in the ICH guidance for industry E2B(R3) Electronic Transmission of Individual Case Safety Reports (ICSRs) Implementation Guide — Data Elements and Message Specification (April 2022) (ICH E2B) .",
+      "context": "To discuss an alternative approach, contact the FDA office responsible for this guidance as listed on the title page. Guidance on periodic reporting of aggregated safety data is covered in the ICH guidance for industry E2C(R2) Periodic Benefit-Risk Evaluation Report (PBRER) (July 2016) (ICH E2C).",
+      "fingerprint": "7ed7aab82091cdabf7025b857546269c2ab336e7d6b6dec162992c791e1d9073",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 3,
+      "anchor": "page-7-paragraph-1",
+      "statement": "this guidance notes where regional and local requirements may vary and, as such, marketing authorization holders (MAHs) should refer to the relevant regional or local regulatory authority’s requirements.",
+      "context": "3 We update guidances periodically. For the most recent version of a guidance, check the FDA guidance web page at https://www.fda.gov/regulatory-information/search-fda-guidance-documents . In general, FDA’s guidance documents do not establish legally enforceable responsibilities.",
+      "fingerprint": "d4f96098c4a5e4631b0e475d08162358894284b262faea23cadd7b077933f0b4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 4,
+      "anchor": "page-8-paragraph-4",
+      "statement": "4. Unexpected AE/ADR (2.1.4) MAHs should consider AEs/ADRs in ICSRs as unexpected if the reported AE/ADR is not included in the regional or local product labeling (e.g., prescribing information, summary of product characteristics). In addition, an AE/ADR in an ICSR whose nature, severity, or specificity is not consistent with the term or description used in the regional or local product labeling should be considered unexpected. When an MAH is uncertain whether an AE/ADR in an ICSR should be treated as expected or unexpected for a region or country, the AE/ADR should be treated as unexpected for that region or country.",
+      "context": "• Is an important medical event as described below. Important medical events that might not be immediately life-threatening or result in death or hospitalization may also be considered serious AEs/ADRs when, based on medical and scientific judgement, they might jeopardize the patient or might require intervention to prevent one of the other outcomes listed in the definition above. Examples of such events which may occur following the use of a medicinal product are intensive treatment in an emergency room or at home for allergic bronchospasm, blood dyscrasias or convulsions that do not result in hospitalization, or development of dependency or substance use disorder. An ADR included in the regional or local product labeling should be considered unexpected when it is reported with a fatal outcome in an ICSR unless the labeling specifically states that the ADR might be associated with a fat",
+      "fingerprint": "b2a32d48ac865bb6ee5a502e9867ecba0efdff0250e6ba5114aa93fba92cc846",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 5,
+      "anchor": "page-8-paragraph-5",
+      "statement": "An ADR included in the regional or local product labeling should be considered unexpected when it is reported with a fatal outcome in an ICSR unless the labeling specifically states that the ADR might be associated with a fatal outcome.",
+      "context": "4. Unexpected AE/ADR (2.1.4) MAHs should consider AEs/ADRs in ICSRs as unexpected if the reported AE/ADR is not included in the regional or local product labeling (e.g., prescribing information, summary of product characteristics). In addition, an AE/ADR in an ICSR whose nature, severity, or specificity is not consistent with the term or description used in the regional or local product labeling should be considered unexpected. When an MAH is uncertain whether an AE/ADR in an ICSR should be treated as expected or unexpected for a region or country, the AE/ADR should be treated as unexpected for that region or country. Product labeling may include information related to ADRs for the pharmaceutical class to which the medicinal product belongs. This situation is often referred to as class ADRs , and such class ADRs should not automatically be considered expected when reported in an ICSR for",
+      "fingerprint": "10792e413502f10a6b7994758940b0c4cd8185ef5d4ad93e71c0b050b3eb3e02",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 6,
+      "anchor": "page-8-paragraph-6",
+      "statement": "Product labeling may include information related to ADRs for the pharmaceutical class to which the medicinal product belongs. This situation is often referred to as class ADRs , and such class ADRs should not automatically be considered expected when reported in an ICSR for one of the medicinal products. In this instance, MAHs should refer to the relevant regional or local requirements.",
+      "context": "An ADR included in the regional or local product labeling should be considered unexpected when it is reported with a fatal outcome in an ICSR unless the labeling specifically states that the ADR might be associated with a fatal outcome. Note: In contrast to the term unexpected , the term unlisted is not applicable to individual case safety reporting but is used to characterize the ADR according to the Company Core Safety Information (refer to ICH E2C for definitions).",
+      "fingerprint": "8cc5b1e694396fd902f89ffb577e4f181fe2e7b8b31b65ea2144a9dd1a6a8d47",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 7,
+      "anchor": "page-9-paragraph-6",
+      "statement": "Regional and local requirements determine which ICSRs should be reported (e.g., based on seriousness, expectedness). See section V (5), Standards for Reporting, for information on what should be reported. In order to be eligible for submission to any regulatory authority, ICSRs should have at least these minimum criteria:",
+      "context": "B. ICSR Including Minimum Criteria (2.2) An ICSR is a description of an AE/ADR or other observation in an individual patient at a specific point of time. • At least one AE/ADR — see section V.A.1 (5.1.1), or other observation — see section V.A.3 (5.1.3);",
+      "fingerprint": "3842365a5aecd1fdb194cb68327c4aee655cbf741fc9857b387031a93e8346cf",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 8,
+      "anchor": "page-9-paragraph-9",
+      "statement": "• At least one identifiable reporter — see section VI.A (6.1). A case is the information received by an MAH or regulatory authority about an AE/ADR or other observation. Cases missing any of the above criteria do not qualify for ICSR reporting; due diligence should be exercised to collect the missing criteria (see section VI.D (6.4), Follow-up Information).",
+      "context": "• At least one suspect or interacting 4 medicinal product; • An identifiable patient 5 — see section VI.A (6.1); 4 The term suspect medicinal product includes interacting medicinal products. Interacting medicinal products are products for which the reporter indicates a suspected interaction with other medicinal products, food, or other nondrug compounds. All interacting medicinal products are considered to be suspect medicinal products (see ICH E2B).",
+      "fingerprint": "154cacef5172ad07e74f53dea1e7917f80dc27174c33fc742d6e24edae1d18fb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 9,
+      "anchor": "page-10-paragraph-3",
+      "statement": "D. Primary Source (2.4) A primary source is a person who provides facts about a case. Primary sources, often referred to as reporters , include healthcare professionals and consumers who provide facts about a case to the MAH or regulatory authority. Primary sources should be distinguished from senders who gather information on a case from primary sources and transmit it (e.g., MAH to regulatory authority). Several sources, such as healthcare professionals and/or consumers, may provide information on the same case. The primary source for regulatory purposes is the person who first provided facts on the case (see ICH E2B). For the primary source in the case of a literature article, see section IV.B (4.2), Literature.",
+      "context": "C. Expedited Report (2.3) An expedited report is an ICSR that meets the requirements for reporting as soon as possible, but no later than 15 calendar days after day zero (see section V.B (5.2), Reporting Time Frames). E. Healthcare Professional (2.5) Healthcare professional (HCP) is defined as a primary source who is medically qualified such as a physician, dentist, pharmacist, nurse, coroner (if medically trained), or as otherwise specified by regional or local requirements.",
+      "fingerprint": "fcd526e904ab845036f79ed83d8da7291dca45dd90e9cba3c4888efe15ffa131",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 10,
+      "anchor": "page-11-paragraph-2",
+      "statement": "For MAH ODCS activities that are not conducted according to a protocol (e.g., a market research program, a patient support program, accessing data on a digital platform in the context of an ODCS), the MAH should have documentation in place that at least describes the:",
+      "context": "clinical trial or study. The term protocol encompasses successive versions of the protocol and protocol modifications. (1) Objectives of the ODCS activity; (2) Source(s) of the data; (3) Dataset that the MAH will collect or receive and review in order to meet the objectives of the activity detailed under item 1, including the look-back period and/or duration of the data collection;",
+      "fingerprint": "b95e9c05d43ed6f0972c424827415f06165e1432806c92e1231699195a97b42b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 11,
+      "anchor": "page-12-paragraph-7",
+      "statement": "Stimulated reports should be considered spontaneous reports. There are certain AEs/ADRs that, although not direct communications to the MAH, if required to be reported as ICSRs, should be managed as spontaneous reports. See section IV.B (4.2), Literature, section IV.C.2 (4.3.2), Digital Platforms Not Under the Responsibility of the MAH, and section IV.H (4.8), Other Sources.",
+      "context": "In certain situations, public communication about an AE/ADR (e.g., a Dear Healthcare Professional communication, litigation, or publication or reporting in the media) results in stimulated reporting (i.e., increased reporting by primary sources regarding the AE/ADR). Regional or local requirements may require HCPs to report AEs/ADRs not gathered as part of an ODCS to regulatory authorities; these reports should also be managed as spontaneous reports.",
+      "fingerprint": "89b741087c6f462f44c0c1ce6ad6d7b1e9dd4ca2c66e09b23dae02c66bf95f86",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 12,
+      "anchor": "page-12-paragraph-8",
+      "statement": "Regional or local requirements may require HCPs to report AEs/ADRs not gathered as part of an ODCS to regulatory authorities; these reports should also be managed as spontaneous reports.",
+      "context": "Stimulated reports should be considered spontaneous reports. There are certain AEs/ADRs that, although not direct communications to the MAH, if required to be reported as ICSRs, should be managed as spontaneous reports. See section IV.B (4.2), Literature, section IV.C.2 (4.3.2), Digital Platforms Not Under the Responsibility of the MAH, and section IV.H (4.8), Other Sources. B. Solicited Reports (3.2) Solicited reports are those derived from ODCSs (see section II.H (2.8), Organized Data Collection System). For the purposes of reporting, solicited ICSRs should be classified as “report",
+      "fingerprint": "53bbf8a8d67f31c81e1fa67c59d7b33ad48c63ede81acc9aba61b425cc57a439",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 13,
+      "anchor": "page-12-paragraph-9",
+      "statement": "B. Solicited Reports (3.2) Solicited reports are those derived from ODCSs (see section II.H (2.8), Organized Data Collection System). For the purposes of reporting, solicited ICSRs should be classified as “report",
+      "context": "Regional or local requirements may require HCPs to report AEs/ADRs not gathered as part of an ODCS to regulatory authorities; these reports should also be managed as spontaneous reports. from study” in ICH E2B format and should have a causality assessment (see section V.A.1 (5.1.1), AEs/ADRs).",
+      "fingerprint": "a322bed21c1f4af8c3ac95f043a7391a4472f4c75f1d2864c4aadcc6a4c253d4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 14,
+      "anchor": "page-13-paragraph-1",
+      "statement": "from study” in ICH E2B format and should have a causality assessment (see section V.A.1 (5.1.1), AEs/ADRs).",
+      "context": "B. Solicited Reports (3.2) Solicited reports are those derived from ODCSs (see section II.H (2.8), Organized Data Collection System). For the purposes of reporting, solicited ICSRs should be classified as “report",
+      "fingerprint": "36f2405843cd284f7d0a860d5c5c488629c93093a4e7797657a867f3adb70d69",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 15,
+      "anchor": "page-13-paragraph-3",
+      "statement": "A. Communications by HCPs and Consumers (4.1) Communications by HCPs and consumers are reports from an HCP or consumer to an MAH, regulatory authority, or other organization (e.g., Regional Pharmacovigilance Centre) that describes one or more AEs/ADRs. These reports may be spontaneous or they may have been gathered as part of an ODCS. For the purposes of ICSR reporting, if spontaneous, then the “Type of Report” in ICH E2B format should be classified as “spontaneous report.” If gathered as part of an ODCS (i.e., solicited), then the “Type of Report” in ICH E2B format should be classified as “report from study.”",
+      "context": "B. Literature (4.2) Each MAH is encouraged, and in some regions required, to regularly monitor the worldwide scientific literature for safety information concerning their products by conducting a search and literature review using large reference databases with broad coverage. MAHs should refer to regional and local requirements regarding their obligations to perform literature screening and the frequency of such screening.",
+      "fingerprint": "af4e45878e014363b6cbf16ed2ba61008be0c2003311c229f098353654e230f9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 16,
+      "anchor": "page-13-paragraph-4",
+      "statement": "B. Literature (4.2) Each MAH is encouraged, and in some regions required, to regularly monitor the worldwide scientific literature for safety information concerning their products by conducting a search and literature review using large reference databases with broad coverage. MAHs should refer to regional and local requirements regarding their obligations to perform literature screening and the frequency of such screening.",
+      "context": "A. Communications by HCPs and Consumers (4.1) Communications by HCPs and consumers are reports from an HCP or consumer to an MAH, regulatory authority, or other organization (e.g., Regional Pharmacovigilance Centre) that describes one or more AEs/ADRs. These reports may be spontaneous or they may have been gathered as part of an ODCS. For the purposes of ICSR reporting, if spontaneous, then the “Type of Report” in ICH E2B format should be classified as “spontaneous report.” If gathered as part of an ODCS (i.e., solicited), then the “Type of Report” in ICH E2B format should be classified as “report from study.” MAHs should assess whether AEs/ADRs from scientific literature, including relevant published abstracts from meetings and draft manuscripts, qualify for reporting. Whether or not AEs/ADRs from literature are required to be reported as ICSRs depends on regional and local requirements",
+      "fingerprint": "a81c54ee552d87331ed5e417c058acb3fc235a8135352699e60a83d1ea4ce40b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 17,
+      "anchor": "page-13-paragraph-5",
+      "statement": "MAHs should assess whether AEs/ADRs from scientific literature, including relevant published abstracts from meetings and draft manuscripts, qualify for reporting. Whether or not AEs/ADRs from literature are required to be reported as ICSRs depends on regional and local requirements.",
+      "context": "B. Literature (4.2) Each MAH is encouraged, and in some regions required, to regularly monitor the worldwide scientific literature for safety information concerning their products by conducting a search and literature review using large reference databases with broad coverage. MAHs should refer to regional and local requirements regarding their obligations to perform literature screening and the frequency of such screening. Literature cases may differ from information from other sources, particularly concerning causality, as authors may reference many events and many medicinal products and the author may not necessarily suspect the products to be causally related to the events described in the article. If AEs/ADRs are suspected by the article’s author to be associated with one or more medicinal products in a literature article, then the MAH should report the case as an ICSR if it otherwi",
+      "fingerprint": "b1eff118fe4f47ec40ca8fd787aaee81fa22fa9dfc23e8a26f8ac60d2f1f520d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 18,
+      "anchor": "page-13-paragraph-6",
+      "statement": "Literature cases may differ from information from other sources, particularly concerning causality, as authors may reference many events and many medicinal products and the author may not necessarily suspect the products to be causally related to the events described in the article. If AEs/ADRs are suspected by the article’s author to be associated with one or more medicinal products in a literature article, then the MAH should report the case as an ICSR if it otherwise meets reporting requirements. If multiple products are mentioned in an article, an ICSR should be reported by the MAH(s) whose product or products are suspected by the article’s author to be associated with one or more AEs/ADRs. (Note that more than one MAH may have suspect products, and thus each MAH should submit ICSR(s), for a single article). Where the author’s suspicion is not stated or not available, MAHs should consider the relationship between products and events in this context to determine if AEs/ADRs from literature should be reported.",
+      "context": "MAHs should assess whether AEs/ADRs from scientific literature, including relevant published abstracts from meetings and draft manuscripts, qualify for reporting. Whether or not AEs/ADRs from literature are required to be reported as ICSRs depends on regional and local requirements. If an author explicitly states in an article that an event is not associated with a medicinal product, or the event occurred before the patient was exposed to the product, the MAHs should not report it as an ICSR.",
+      "fingerprint": "f304a56b1f386406ed4e2e967c938eadc46d95ef19675be4ee8080acf24d7942",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 19,
+      "anchor": "page-13-paragraph-7",
+      "statement": "If an author explicitly states in an article that an event is not associated with a medicinal product, or the event occurred before the patient was exposed to the product, the MAHs should not report it as an ICSR.",
+      "context": "Literature cases may differ from information from other sources, particularly concerning causality, as authors may reference many events and many medicinal products and the author may not necessarily suspect the products to be causally related to the events described in the article. If AEs/ADRs are suspected by the article’s author to be associated with one or more medicinal products in a literature article, then the MAH should report the case as an ICSR if it otherwise meets reporting requirements. If multiple products are mentioned in an article, an ICSR should be reported by the MAH(s) whose product or products are suspected by the article’s author to be associated with one or more AEs/ADRs. (Note that more than one MAH may have suspect products, and thus each MAH should submit ICSR(s), for a single article). Where the author’s suspicion is not stated or not available, MAHs should con",
+      "fingerprint": "3df675d6765f8bffcf0ca68af27660d93ca5f36044cc6f8075f2e5305873141f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 20,
+      "anchor": "page-13-paragraph-8",
+      "statement": "Once a determination is made to submit an ICSR from literature, follow ICH E2B for instructions on designating the “Type of Report.” If a case in the literature arises from spontaneous observations, “Type of Report” in ICH E2B format should be classified as",
+      "context": "If an author explicitly states in an article that an event is not associated with a medicinal product, or the event occurred before the patient was exposed to the product, the MAHs should not report it as an ICSR. “spontaneous report.” In this context, spontaneous observations are descriptions of AEs/ADRs in a patient or group of patients (i.e., individual case report or case series) which the author(s) identified in their clinical experience. Conversely, if a case in the literature arises from a study, “Type of Report” in ICH E2B format should be classified as “report from study.” Literature cases arising from a study are AEs/ADRs identified from publications where the author(s) gathered the cases only as part of an ODCS (for example, an author who plans and conducts a search of a dataset for cases meeting prespecified criteria); see section II.H (2.8), Organized Data Collection System.",
+      "fingerprint": "0ecddf6a10e926d83d577b6b1228fbedc0c785f954bdbc98e9167b4e6e15b3ff",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 21,
+      "anchor": "page-14-paragraph-1",
+      "statement": "“spontaneous report.” In this context, spontaneous observations are descriptions of AEs/ADRs in a patient or group of patients (i.e., individual case report or case series) which the author(s) identified in their clinical experience. Conversely, if a case in the literature arises from a study, “Type of Report” in ICH E2B format should be classified as “report from study.” Literature cases arising from a study are AEs/ADRs identified from publications where the author(s) gathered the cases only as part of an ODCS (for example, an author who plans and conducts a search of a dataset for cases meeting prespecified criteria); see section II.H (2.8), Organized Data Collection System.",
+      "context": "Once a determination is made to submit an ICSR from literature, follow ICH E2B for instructions on designating the “Type of Report.” If a case in the literature arises from spontaneous observations, “Type of Report” in ICH E2B format should be classified as When submitting ICSRs from literature, an ICSR with relevant medical information should be provided for each identifiable patient (see section VI.A (6.1), Assessing Patient and Reporter Identifiability). The literature reference should be included in the ICSR, 6 and the first listed author (or the corresponding author, if one is specified) should be given as the primary source;",
+      "fingerprint": "712b2888a5f1191642c607c354f7b5b54186d0ea111dacee17b7d3b723c7b42e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 22,
+      "anchor": "page-14-paragraph-2",
+      "statement": "When submitting ICSRs from literature, an ICSR with relevant medical information should be provided for each identifiable patient (see section VI.A (6.1), Assessing Patient and Reporter Identifiability). The literature reference should be included in the ICSR, 6 and the first listed author (or the corresponding author, if one is specified) should be given as the primary source;",
+      "context": "“spontaneous report.” In this context, spontaneous observations are descriptions of AEs/ADRs in a patient or group of patients (i.e., individual case report or case series) which the author(s) identified in their clinical experience. Conversely, if a case in the literature arises from a study, “Type of Report” in ICH E2B format should be classified as “report from study.” Literature cases arising from a study are AEs/ADRs identified from publications where the author(s) gathered the cases only as part of an ODCS (for example, an author who plans and conducts a search of a dataset for cases meeting prespecified criteria); see section II.H (2.8), Organized Data Collection System. information about co-authors does not need to be documented. Additionally, regulatory authorities may request, and in some regions require, a copy of the article to accompany the ICSR. MAHs are encouraged, and in",
+      "fingerprint": "3efd1cba19c07c0059a74cfd42f432293c97bf0b977226a120ed50e846bf1c9a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 23,
+      "anchor": "page-14-paragraph-4",
+      "statement": "MAHs may conduct literature searches themselves or use external services (i.e., third parties acting on behalf of the MAH) to conduct literature searches. MAHs and/or the third parties acting on their behalf should review the literature search results without undue delay to identify AEs/ADRs. When required, follow-up activities should be initiated in a timely manner to collect missing data on the minimum criteria for an ICSR and/or to obtain additional medically relevant information (see sections II.B (2.2), ICSR Including Minimum Criteria, and VI.D (6.4), Follow- up Information). The regulatory time clock for the reporting of ICSRs from the scientific literature starts (day zero) as soon as the MAH or third party acting on their behalf identifies sufficient information to determine that the criteria for ICSR reporting are met (refer to sections II.B (2.2), ICSR Including Minimum Criteria, and V.B (5.2), Reporting Time Frames). This date should be considered day zero unless otherwise specified by regional or local requirements. If follow-up is required to determine that the criteria for ICSR reporting are met, then day zero is the date the MAH receives sufficient follow-up information to determine that these criteria are met.",
+      "context": "information about co-authors does not need to be documented. Additionally, regulatory authorities may request, and in some regions require, a copy of the article to accompany the ICSR. MAHs are encouraged, and in some regions required, to include in their literature screening scientific journals or other publications available in their local region or language. In some literature articles, a suspect medicinal product is identified by its active substance, and the product source, brand, or trade name are not specified. Unless otherwise specified by regional or local requirements, the MAH is not required to collect or submit ICSRs from literature if the MAH can determine, based on the region or country, product name, active substance name, pharmaceutical form, batch number, marketing status, or other characteristics, that the product is not the MAH’s product; and if unable to make this det",
+      "fingerprint": "b2c7418da2ad57cc279e0384d45bd168b887541e4863cb8b283dd55f40c6bbec",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 24,
+      "anchor": "page-14-paragraph-5",
+      "statement": "In some literature articles, a suspect medicinal product is identified by its active substance, and the product source, brand, or trade name are not specified. Unless otherwise specified by regional or local requirements, the MAH is not required to collect or submit ICSRs from literature if the MAH can determine, based on the region or country, product name, active substance name, pharmaceutical form, batch number, marketing status, or other characteristics, that the product is not the MAH’s product; and if unable to make this determination, then the MAH should presume that the product is the MAH’s product and, therefore, should collect and",
+      "context": "MAHs may conduct literature searches themselves or use external services (i.e., third parties acting on behalf of the MAH) to conduct literature searches. MAHs and/or the third parties acting on their behalf should review the literature search results without undue delay to identify AEs/ADRs. When required, follow-up activities should be initiated in a timely manner to collect missing data on the minimum criteria for an ICSR and/or to obtain additional medically relevant information (see sections II.B (2.2), ICSR Including Minimum Criteria, and VI.D (6.4), Follow- up Information). The regulatory time clock for the reporting of ICSRs from the scientific literature starts (day zero) as soon as the MAH or third party acting on their behalf identifies sufficient information to determine that the criteria for ICSR reporting are met (refer to sections II.B (2.2), ICSR Including Minimum Criteri",
+      "fingerprint": "98fcd2276a4055c0589d38604d92707e093a29a315f11f73a89c86690d544d6b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 25,
+      "anchor": "page-14-paragraph-6",
+      "statement": "6 See ICH E2B for the standard format to be used for literature citations: citations should be provided in the style specified by the Vancouver Convention, known as Vancouver style , which has been developed by the International Committee of Medical Journal Editors. The conventional styles, including styles for special situations, can be found in the following reference: International Committee of Medical Journal Editors. Uniform requirements for manuscripts submitted to biomedical journals. N Engl J Med 1997; 336:309–15.",
+      "context": "In some literature articles, a suspect medicinal product is identified by its active substance, and the product source, brand, or trade name are not specified. Unless otherwise specified by regional or local requirements, the MAH is not required to collect or submit ICSRs from literature if the MAH can determine, based on the region or country, product name, active substance name, pharmaceutical form, batch number, marketing status, or other characteristics, that the product is not the MAH’s product; and if unable to make this determination, then the MAH should presume that the product is the MAH’s product and, therefore, should collect and report ICSRs as appropriate. The MAH should indicate in the narrative of their ICSRs that the specific brand was not identified.",
+      "fingerprint": "82e9ae126aadded2fc94868ce88e642012a41a78fa82301bf34a3187f3b1bf50",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 26,
+      "anchor": "page-15-paragraph-1",
+      "statement": "report ICSRs as appropriate. The MAH should indicate in the narrative of their ICSRs that the specific brand was not identified.",
+      "context": "6 See ICH E2B for the standard format to be used for literature citations: citations should be provided in the style specified by the Vancouver Convention, known as Vancouver style , which has been developed by the International Committee of Medical Journal Editors. The conventional styles, including styles for special situations, can be found in the following reference: International Committee of Medical Journal Editors. Uniform requirements for manuscripts submitted to biomedical journals. N Engl J Med 1997; 336:309–15. For regions where translations of a literature article are required to be submitted with the ICSR, translation of the abstract or only pertinent sections of the article should be acceptable if it captures all the relevant information for an ICSR, including at least the four minimum criteria (see section II.B (2.2), ICSR Including Minimum Criteria), especially for long a",
+      "fingerprint": "b92a65202cd36d84327a97db961f7db755cd5cd1fdf06d796e7b4b1383faca5b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 27,
+      "anchor": "page-15-paragraph-2",
+      "statement": "For regions where translations of a literature article are required to be submitted with the ICSR, translation of the abstract or only pertinent sections of the article should be acceptable if it captures all the relevant information for an ICSR, including at least the four minimum criteria (see section II.B (2.2), ICSR Including Minimum Criteria), especially for long articles whose subject matter may be largely outside the scope of the case(s) in question. The full translation of a publication should be provided upon request by a regulatory authority. Unless specifically otherwise required, translation into English is the accepted standard.",
+      "context": "report ICSRs as appropriate. The MAH should indicate in the narrative of their ICSRs that the specific brand was not identified. A publication may duplicate or provide follow-up to a report previously received by an MAH or regulatory authority via other means (e.g., spontaneously). Duplicate detection and management should be performed when articles are identified in scientific literature, to establish whether the AE/ADR has previously been reported (see section VI.F (6.6), Duplicate Management). If the article is referring to information that is in a pre-existing case, then the MAH should add the publication’s citation to the pre-existing case, along with additional relevant medical details, if available, and report as a follow-up ICSR as appropriate. For reporting purposes, new information from a literature source should be managed as with any other follow-up report.",
+      "fingerprint": "4af0d48d32da6e51a60461a2cb9615b877c61d44e646974b82cbad641f5fa68a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 28,
+      "anchor": "page-15-paragraph-3",
+      "statement": "A publication may duplicate or provide follow-up to a report previously received by an MAH or regulatory authority via other means (e.g., spontaneously). Duplicate detection and management should be performed when articles are identified in scientific literature, to establish whether the AE/ADR has previously been reported (see section VI.F (6.6), Duplicate Management). If the article is referring to information that is in a pre-existing case, then the MAH should add the publication’s citation to the pre-existing case, along with additional relevant medical details, if available, and report as a follow-up ICSR as appropriate. For reporting purposes, new information from a literature source should be managed as with any other follow-up report.",
+      "context": "For regions where translations of a literature article are required to be submitted with the ICSR, translation of the abstract or only pertinent sections of the article should be acceptable if it captures all the relevant information for an ICSR, including at least the four minimum criteria (see section II.B (2.2), ICSR Including Minimum Criteria), especially for long articles whose subject matter may be largely outside the scope of the case(s) in question. The full translation of a publication should be provided upon request by a regulatory authority. Unless specifically otherwise required, translation into English is the accepted standard. See section IV.G (4.7), Regulatory Authorities, regarding publications containing cases that the authors obtained from a regulatory authority’s publicly available national or regional AE/ADR database.",
+      "fingerprint": "ee4445e1a6dd416767dd85e7e4a8ccd92f0dd5bd6131f304226b971b2a90f339",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 29,
+      "anchor": "page-15-paragraph-5",
+      "statement": "Literature which presents the results from noninterventional studies, meta-analyses, or systematic literature reviews may be excluded from reporting as ICSRs depending on regional and local requirements. For literature where the cases do not qualify for ICSR reporting, but which represent new or significant safety findings, the MAH should consider including the findings in the literature section of their next relevant periodic report, where applicable. MAHs should also follow the guidance in section V.A.2 (5.1.2), Important Safety Findings, about communicating safety findings to regulatory authorities.",
+      "context": "See section IV.G (4.7), Regulatory Authorities, regarding publications containing cases that the authors obtained from a regulatory authority’s publicly available national or regional AE/ADR database. C. Digital Platforms (4.3) A digital platform is the software and technology used to enable transmission of information between users. Digital platforms include but are not limited to social media, websites, internet forums, chat rooms, mobile health technologies, and software applications (apps).",
+      "fingerprint": "11542139a3298938d2ac3ee92e8ad84389b36cef26b8e7e7cc0c14638d644236",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 30,
+      "anchor": "page-15-paragraph-7",
+      "statement": "A general distinction should be made between those digital platforms that are under the responsibility of the MAH and those that are not under the responsibility of the MAH.",
+      "context": "C. Digital Platforms (4.3) A digital platform is the software and technology used to enable transmission of information between users. Digital platforms include but are not limited to social media, websites, internet forums, chat rooms, mobile health technologies, and software applications (apps). 1. Digital Platforms Under the Responsibility of the MAH (4.3.1) The MAH is responsible for the content of, and communications made available via digital platforms, that are owned, controlled, or operated by, or on behalf of, the MAH. A donation (financial or other) by an MAH to an organization that owns the digital platform does not",
+      "fingerprint": "3b644089b893f722dd7a1b8a6f3f1fcbc2dcaf0f6927051e69a7c0739063d284",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 31,
+      "anchor": "page-16-paragraph-2",
+      "statement": "MAHs should regularly screen digital platforms under their responsibility for AEs/ADRs. The frequency of the screening should allow for the MAH to identify and report AEs/ADRs within the required reporting timeline (see section V.B (5.2), Reporting Time Frames). The regulatory time clock for reporting starts (day zero) as soon as sufficient information to determine that the criteria for an ICSR (i.e., the minimum criteria as defined in section II.B (2.2), ICSR Including Minimum Criteria) was posted on the digital platform. AEs/ADRs should be managed as spontaneous or solicited depending on the context in which the MAH received the report; for example, AEs/ADRs spontaneously reported by patients on any part of an MAH’s product website should be managed as spontaneous reports (see section III.A (3.1), Spontaneous Reports); and AEs/ADRs identified from an ODCS conducted on a digital platform under the MAH’s responsibility should be considered solicited reports (see section III.B (3.2), Solicited Reports) and managed according to the documentation describing the ODCS activity (see section II.H (2.8), Organized Data Collection System).",
+      "context": "necessarily mean that the MAH is responsible for the content of and communications made available via that digital platform, provided that the MAH does not control any content or communications made available via the digital platform. 2. Digital Platforms Not Under the Responsibility of the MAH (4.3.2) MAHs are not expected to screen or review digital platforms not under their responsibility for AE(s)/ADR(s).",
+      "fingerprint": "0502bdb8d71cff95e7839908aab9203dc41856d5bd9f12d029b6cfa6e2c978ac",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 32,
+      "anchor": "page-16-paragraph-4",
+      "statement": "However, if an MAH screens or accesses data from a digital platform not under its responsibility, and the MAH’s activity is conducted in a planned manner consistent with an organized data collection, the MAH should consider the activity to be an ODCS (see section II.H (2.8), Organized Data Collection System).",
+      "context": "2. Digital Platforms Not Under the Responsibility of the MAH (4.3.2) MAHs are not expected to screen or review digital platforms not under their responsibility for AE(s)/ADR(s). If accessing data on a digital platform in the context of an ODCS, the MAH should have documentation in place as detailed in section II.H (2.8), Organized Data Collection System. The source of the data described in the ODCS documentation should specify the digital platform(s) being accessed. The time frame that the MAH will conduct the activity (including review of the dataset) should also be specified in the documentation.",
+      "fingerprint": "73b9fa5a97fb009865f96d8ecb41edd35b88e589385da29fda792fb3d63c4539",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 33,
+      "anchor": "page-16-paragraph-5",
+      "statement": "If accessing data on a digital platform in the context of an ODCS, the MAH should have documentation in place as detailed in section II.H (2.8), Organized Data Collection System. The source of the data described in the ODCS documentation should specify the digital platform(s) being accessed. The time frame that the MAH will conduct the activity (including review of the dataset) should also be specified in the documentation.",
+      "context": "However, if an MAH screens or accesses data from a digital platform not under its responsibility, and the MAH’s activity is conducted in a planned manner consistent with an organized data collection, the MAH should consider the activity to be an ODCS (see section II.H (2.8), Organized Data Collection System). When accessing data from a digital platform not under its responsibility in the context of an ODCS, an MAH is not expected to search for AEs/ADRs beyond conducting its planned review of the dataset collected for the activity as detailed in its documentation. If the MAH identifies AEs/ADRs during the course of the review, the AEs/ADRs should be recorded, managed and assessed for reporting as required by regional or local requirements.",
+      "fingerprint": "8e0ea2d40e5f0a09a7edd37e1bf22d85f138900b1f60728d676abfa844500910",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 34,
+      "anchor": "page-16-paragraph-6",
+      "statement": "When accessing data from a digital platform not under its responsibility in the context of an ODCS, an MAH is not expected to search for AEs/ADRs beyond conducting its planned review of the dataset collected for the activity as detailed in its documentation. If the MAH identifies AEs/ADRs during the course of the review, the AEs/ADRs should be recorded, managed and assessed for reporting as required by regional or local requirements.",
+      "context": "If accessing data on a digital platform in the context of an ODCS, the MAH should have documentation in place as detailed in section II.H (2.8), Organized Data Collection System. The source of the data described in the ODCS documentation should specify the digital platform(s) being accessed. The time frame that the MAH will conduct the activity (including review of the dataset) should also be specified in the documentation. The regulatory time clock for reporting starts (day zero) as soon as the MAH (or third party acting on their behalf), when reviewing the accessed data, identifies an AE/ADR and has sufficient information to determine that the criteria for reporting (i.e., the minimum criteria as defined in section II.B (2.2), ICSR Including Minimum Criteria) are met; day zero is not necessarily the date the digital platform data was accessed. If follow-up information is received or ob",
+      "fingerprint": "f5c166e85ed8dc0d2b3596fae00e65b3b03b19c43a3cd116fe00b1f90b8961d7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 35,
+      "anchor": "page-17-paragraph-2",
+      "statement": "If an AE/ADR collected from a digital platform in the context of an ODCS meets reporting requirements, it should be managed as a solicited report which includes an appropriate causality assessment (see Section V.A.1 (5.1.1), AEs/ADRs). For these ICSRs, the “Study Type Where reaction(s)/event(s) Were Observed” data element in ICH E2B should be used to reflect the origin of the report as from a digital platform in the context of an ODCS. This designation enables these ICSRs to be distinguished from ICSRs originating from studies and other ODCS.",
+      "context": "that criteria for ICSR reporting are met. See section V.B (5.2), Reporting Time Frames, for additional guidance on the time clock for reporting. Note: The value for digital platform in the context of an ODCS should only be used for the “Study Type Where reaction(s)/event(s) Were Observed” data element if the AE/ADR was collected from a digital platform and none of the other study types apply. For example, if the AE/ADR was collected in the context of a PSP, then the PSP study type should be selected, instead of digital platform (see sections IV.E (4.5), PSPs, and IV.F (4.6), MRPs).",
+      "fingerprint": "5460c44d3842973fd48367acf03bb626e12a851b927b26e540384117df2665d6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 36,
+      "anchor": "page-17-paragraph-3",
+      "statement": "Note: The value for digital platform in the context of an ODCS should only be used for the “Study Type Where reaction(s)/event(s) Were Observed” data element if the AE/ADR was collected from a digital platform and none of the other study types apply. For example, if the AE/ADR was collected in the context of a PSP, then the PSP study type should be selected, instead of digital platform (see sections IV.E (4.5), PSPs, and IV.F (4.6), MRPs).",
+      "context": "If an AE/ADR collected from a digital platform in the context of an ODCS meets reporting requirements, it should be managed as a solicited report which includes an appropriate causality assessment (see Section V.A.1 (5.1.1), AEs/ADRs). For these ICSRs, the “Study Type Where reaction(s)/event(s) Were Observed” data element in ICH E2B should be used to reflect the origin of the report as from a digital platform in the context of an ODCS. This designation enables these ICSRs to be distinguished from ICSRs originating from studies and other ODCS. If an MAH becomes aware of AEs/ADRs on a digital platform not under the MAH’s responsibility, and the MAH received the information outside of the context of an ODCS (e.g., an MAH employee is viewing a website to identify possible answers or solutions to a business question and sees an AE/ADR mentioned), the MAH is expected to review the safety infor",
+      "fingerprint": "eaea92359d79aa78fb4d279e1a14c15d2ac94ca81139206f9cd7ccc6530361ca",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 37,
+      "anchor": "page-17-paragraph-5",
+      "statement": "Although these cases are not direct communications to the MAH, if an AE/ADR collected from a digital platform outside the context of an ODCS meets reporting requirements, then it should be managed as a spontaneous report (see section V (5), Standards for Reporting, for information on standards and timeline for reporting).",
+      "context": "If an MAH becomes aware of AEs/ADRs on a digital platform not under the MAH’s responsibility, and the MAH received the information outside of the context of an ODCS (e.g., an MAH employee is viewing a website to identify possible answers or solutions to a business question and sees an AE/ADR mentioned), the MAH is expected to review the safety information and collect AEs/ADRs in accordance with regional and local requirements. Note: See section IV.G (4.7), Regulatory Authorities, regarding cases from regulatory authorities’ national or regional AE/ADR databases available to MAHs via the regulatory authorities’ digital platforms.",
+      "fingerprint": "fa579f2bb3316e9516543fc2983a23c5fc00fb60991b109b3ec4e20446d2282a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 38,
+      "anchor": "page-17-paragraph-7",
+      "statement": "D. Noninterventional Studies (4.4) Noninterventional studies (also known as observational studies) are a type of study in which participants receive an approved medicinal product during routine medical practice and are not assigned, according to a study protocol, to a specific intervention or treatment. For noninterventional studies conducted by, or on behalf of, an MAH, MAHs should have a protocol in place as detailed in section II.H (2.8), Organized Data Collection System.",
+      "context": "Note: See section IV.G (4.7), Regulatory Authorities, regarding cases from regulatory authorities’ national or regional AE/ADR databases available to MAHs via the regulatory authorities’ digital platforms. Noninterventional studies can involve primary data collection and/or secondary use of data:",
+      "fingerprint": "3d39ae6d3828b34695d9e6468a2fe29d669802830700643661b5369a604cd6c3",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 39,
+      "anchor": "page-18-paragraph-4",
+      "statement": "1. Noninterventional Studies With Primary Data Collection (4.4.1) MAHs should review for AEs/ADRs or other observations all information received in noninterventional studies with primary data collection. When permitted by regional or local requirements and supported by adequate justification, a selective approach to safety data collection (see the ICH guidance for industry E19 A Selective Approach to Safety Data Collection in Specific Late-Stage Pre-Approval or Post-Approval Clinical Trials (December 2022)) may be considered.",
+      "context": "The guidance provided hereafter applies for the management of AEs/ADRs or other observations for noninterventional studies, unless regional or local requirements indicate otherwise in relation to whether the data are from primary data collection and/or secondary use of data. AEs/ADRs that the MAH collects in the context of primary data collection should be managed as solicited reports which includes an appropriate causality assessment to determine reporting (see section V.A.1 (5.1.1), AEs/ADRs). For these ICSRs, the “Study Type Where reaction(s)/event(s) Were Observed” data element in ICH E2B should be used to reflect the origin of the report as ‘Other studies.’ If required by regional or local requirements, AEs/ADRs should be summarized in the final study report.",
+      "fingerprint": "939cb4c7bd4f7ba3d00d7847ffe8f58bf0a3480139b280de3ae04734d5e1dad7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 40,
+      "anchor": "page-18-paragraph-5",
+      "statement": "AEs/ADRs that the MAH collects in the context of primary data collection should be managed as solicited reports which includes an appropriate causality assessment to determine reporting (see section V.A.1 (5.1.1), AEs/ADRs). For these ICSRs, the “Study Type Where reaction(s)/event(s) Were Observed” data element in ICH E2B should be used to reflect the origin of the report as ‘Other studies.’ If required by regional or local requirements, AEs/ADRs should be summarized in the final study report.",
+      "context": "1. Noninterventional Studies With Primary Data Collection (4.4.1) MAHs should review for AEs/ADRs or other observations all information received in noninterventional studies with primary data collection. When permitted by regional or local requirements and supported by adequate justification, a selective approach to safety data collection (see the ICH guidance for industry E19 A Selective Approach to Safety Data Collection in Specific Late-Stage Pre-Approval or Post-Approval Clinical Trials (December 2022)) may be considered. 2. Noninterventional Studies With Secondary Use of Data (4.4.2) The design of noninterventional studies with secondary use of data is characterized by the utilization of existing data for a different purpose than the one for which they were originally collected.",
+      "fingerprint": "29952e8ac4a5701f2e1dfadd912d728cd6ff8ef78a8ab6d9378ff43e928747ba",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 41,
+      "anchor": "page-18-paragraph-7",
+      "statement": "AEs/ADRs that the MAH identifies in the context of secondary use of data should not be reported as ICSRs, unless regional or local requirements indicate otherwise.",
+      "context": "2. Noninterventional Studies With Secondary Use of Data (4.4.2) The design of noninterventional studies with secondary use of data is characterized by the utilization of existing data for a different purpose than the one for which they were originally collected. 7 When final, this guidance will represent the FDA’s current thinking on this topic. For the most recent version of a guidance, check the FDA guidance web page at https://www.fda.gov/regulatory-information/search-fda-guidance- documents .",
+      "fingerprint": "3c4dd0076a5d7610e4b533d85244c2b1a64f00d82782deb259c23c4031c87bc2",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 42,
+      "anchor": "page-19-paragraph-1",
+      "statement": "If required by regional or local requirements, AEs/ADRs should be summarized in the final study report.",
+      "context": "7 When final, this guidance will represent the FDA’s current thinking on this topic. For the most recent version of a guidance, check the FDA guidance web page at https://www.fda.gov/regulatory-information/search-fda-guidance- documents . E. PSPs (4.5) MAHs should review all information received in a PSP for AEs/ADRs. AEs/ADRs that the MAH becomes aware of in the context of a PSP should be recorded, managed, and assessed for reporting as required by regional or local requirements.",
+      "fingerprint": "f04297c6ec26cdff11dc8bbff8b80802f2c406ef53db2f833b6100c8576d1116",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 43,
+      "anchor": "page-19-paragraph-2",
+      "statement": "E. PSPs (4.5) MAHs should review all information received in a PSP for AEs/ADRs. AEs/ADRs that the MAH becomes aware of in the context of a PSP should be recorded, managed, and assessed for reporting as required by regional or local requirements.",
+      "context": "If required by regional or local requirements, AEs/ADRs should be summarized in the final study report. For the setup and conduct of PSPs, MAHs should have documentation in place as detailed in section II.H (2.8), Organized Data Collection System.",
+      "fingerprint": "5f5fca8f331a6bc60c2073671e280719f7f92dfe4ac9994c3abfe671f066150a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 44,
+      "anchor": "page-19-paragraph-3",
+      "statement": "For the setup and conduct of PSPs, MAHs should have documentation in place as detailed in section II.H (2.8), Organized Data Collection System.",
+      "context": "E. PSPs (4.5) MAHs should review all information received in a PSP for AEs/ADRs. AEs/ADRs that the MAH becomes aware of in the context of a PSP should be recorded, managed, and assessed for reporting as required by regional or local requirements. PSPs vary in their nature and design. A single PSP may include a combination of activities such as nurse support, chatrooms, and delivery services. Each of the individual activities in the combined program may or may not meet the criteria of a PSP (see section II.I (2.9), Patient Support Program) on its own. For example, a stand-alone service delivering product to a patient’s home would not meet the criteria for a PSP (see section II.I (2.9), Patient Support Program). However, if a program includes delivery service combined with another activity that does meet criteria of a PSP (such as a nurse helping to administer a drug), then the combined pr",
+      "fingerprint": "280245c808a7045338ef3b5d65f05376ebce9a5f0cdad3b93258a66f688a15b6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 45,
+      "anchor": "page-19-paragraph-4",
+      "statement": "PSPs vary in their nature and design. A single PSP may include a combination of activities such as nurse support, chatrooms, and delivery services. Each of the individual activities in the combined program may or may not meet the criteria of a PSP (see section II.I (2.9), Patient Support Program) on its own. For example, a stand-alone service delivering product to a patient’s home would not meet the criteria for a PSP (see section II.I (2.9), Patient Support Program). However, if a program includes delivery service combined with another activity that does meet criteria of a PSP (such as a nurse helping to administer a drug), then the combined program is considered a PSP. If any one or more of the individual activities in the combined program do meet the PSP criteria, then AEs/ADRs received from any part of the program should be managed as coming from a PSP (i.e., as solicited reports).",
+      "context": "For the setup and conduct of PSPs, MAHs should have documentation in place as detailed in section II.H (2.8), Organized Data Collection System. If an AE/ADR from a PSP meets reporting requirements, it should be managed as a solicited report which includes an appropriate causality assessment (see section V.A.1 (5.1.1), AEs/ADRs). For these ICSRs, the “Study Type Where reaction(s)/event(s) Were Observed” data element in ICH E2B should be used to reflect the origin of the report as PSP. This enables ICSRs from PSPs to be distinguished from those originating from studies and other ODCS. MAHs may conduct a PSP using a digital platform; in this situation the ICH E2B data element value for PSP should be selected.",
+      "fingerprint": "dd568963d2498303e3c8d8afc40fba9e8f6fd830db27061e0360775bf6a54c5f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 46,
+      "anchor": "page-19-paragraph-5",
+      "statement": "If an AE/ADR from a PSP meets reporting requirements, it should be managed as a solicited report which includes an appropriate causality assessment (see section V.A.1 (5.1.1), AEs/ADRs). For these ICSRs, the “Study Type Where reaction(s)/event(s) Were Observed” data element in ICH E2B should be used to reflect the origin of the report as PSP. This enables ICSRs from PSPs to be distinguished from those originating from studies and other ODCS. MAHs may conduct a PSP using a digital platform; in this situation the ICH E2B data element value for PSP should be selected.",
+      "context": "PSPs vary in their nature and design. A single PSP may include a combination of activities such as nurse support, chatrooms, and delivery services. Each of the individual activities in the combined program may or may not meet the criteria of a PSP (see section II.I (2.9), Patient Support Program) on its own. For example, a stand-alone service delivering product to a patient’s home would not meet the criteria for a PSP (see section II.I (2.9), Patient Support Program). However, if a program includes delivery service combined with another activity that does meet criteria of a PSP (such as a nurse helping to administer a drug), then the combined program is considered a PSP. If any one or more of the individual activities in the combined program do meet the PSP criteria, then AEs/ADRs received from any part of the program should be managed as coming from a PSP (i.e., as solicited reports). A",
+      "fingerprint": "93b6101a6996e88891bdb6501a7d137cd1bf1f9c2b73f24fb404929f3ccc5e6e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 47,
+      "anchor": "page-19-paragraph-6",
+      "statement": "AEs/ADRs arising from MAH activities that only allow one-way interactions (e.g., delivery services, provision of vouchers or coupons) which are not part of an ODCS should be managed as spontaneous reports. Such stand-alone activities, which are not part of a combined multi- activity PSP, do not meet criteria for a PSP (i.e., do not have a mechanism for two-way interactions). When MAHs use third-party service providers to conduct part of or all of a PSP, the MAH should have contractual agreements in place to ensure that those third-party service providers report AEs/ADRs to the MAH (see section VI.E (6.5), Contractual Agreements).",
+      "context": "If an AE/ADR from a PSP meets reporting requirements, it should be managed as a solicited report which includes an appropriate causality assessment (see section V.A.1 (5.1.1), AEs/ADRs). For these ICSRs, the “Study Type Where reaction(s)/event(s) Were Observed” data element in ICH E2B should be used to reflect the origin of the report as PSP. This enables ICSRs from PSPs to be distinguished from those originating from studies and other ODCS. MAHs may conduct a PSP using a digital platform; in this situation the ICH E2B data element value for PSP should be selected. F. MRPs (4.6) MAHs should review all information received in an MRP for AEs/ADRs. AEs/ADRs that the MAH becomes aware of in the context of an MRP should be recorded, managed, and assessed for reporting as required by regional or local requirements.",
+      "fingerprint": "8a516d315a74bd344e40554fd9fff13a60c2ea7134c56cc770661f899fc1e2cc",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 48,
+      "anchor": "page-19-paragraph-7",
+      "statement": "F. MRPs (4.6) MAHs should review all information received in an MRP for AEs/ADRs. AEs/ADRs that the MAH becomes aware of in the context of an MRP should be recorded, managed, and assessed for reporting as required by regional or local requirements.",
+      "context": "AEs/ADRs arising from MAH activities that only allow one-way interactions (e.g., delivery services, provision of vouchers or coupons) which are not part of an ODCS should be managed as spontaneous reports. Such stand-alone activities, which are not part of a combined multi- activity PSP, do not meet criteria for a PSP (i.e., do not have a mechanism for two-way interactions). When MAHs use third-party service providers to conduct part of or all of a PSP, the MAH should have contractual agreements in place to ensure that those third-party service providers report AEs/ADRs to the MAH (see section VI.E (6.5), Contractual Agreements). For the setup and conduct of MRPs, MAHs should have documentation in place as detailed in section II.H (2.8), Organized Data Collection System. When MAHs use third-party service providers to conduct part of or all of an MRP, the MAH should have contractual agree",
+      "fingerprint": "155966d1843044045ad44f332e9e93020667bfdebf8540ccdeebfbfaf53e4c28",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 49,
+      "anchor": "page-20-paragraph-1",
+      "statement": "For the setup and conduct of MRPs, MAHs should have documentation in place as detailed in section II.H (2.8), Organized Data Collection System. When MAHs use third-party service providers to conduct part of or all of an MRP, the MAH should have contractual agreements in place to ensure that those third-party service providers report AEs/ADRs to the MAH (see Section VI.E (6.5), Contractual Agreements).",
+      "context": "F. MRPs (4.6) MAHs should review all information received in an MRP for AEs/ADRs. AEs/ADRs that the MAH becomes aware of in the context of an MRP should be recorded, managed, and assessed for reporting as required by regional or local requirements. If an AE/ADR from an MRP meets reporting requirements, it should be managed as a solicited report which includes an appropriate causality assessment (see section V.A.1 (5.1.1), AEs/ADRs). For these ICSRs, the “Study Type Where reaction(s)/event(s) Were Observed” data element in ICH E2B should be used to reflect the origin of the report as MRP. This enables ICSRs from MRPs to be distinguished from those originating from studies and other ODCS.",
+      "fingerprint": "3e6357b3b84828e2db58d47bc550560324d2ed05c97ad0857b7b1ae139869d88",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 50,
+      "anchor": "page-20-paragraph-2",
+      "statement": "If an AE/ADR from an MRP meets reporting requirements, it should be managed as a solicited report which includes an appropriate causality assessment (see section V.A.1 (5.1.1), AEs/ADRs). For these ICSRs, the “Study Type Where reaction(s)/event(s) Were Observed” data element in ICH E2B should be used to reflect the origin of the report as MRP. This enables ICSRs from MRPs to be distinguished from those originating from studies and other ODCS.",
+      "context": "For the setup and conduct of MRPs, MAHs should have documentation in place as detailed in section II.H (2.8), Organized Data Collection System. When MAHs use third-party service providers to conduct part of or all of an MRP, the MAH should have contractual agreements in place to ensure that those third-party service providers report AEs/ADRs to the MAH (see Section VI.E (6.5), Contractual Agreements). MAHs may conduct an MRP using a digital platform; in this situation the ICH E2B data element value for MRP should be selected.",
+      "fingerprint": "7018d6bf7486bcedfe84e7af63d457210053dc52608e590b657786e9b1a6e3c3",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 51,
+      "anchor": "page-20-paragraph-3",
+      "statement": "MAHs may conduct an MRP using a digital platform; in this situation the ICH E2B data element value for MRP should be selected.",
+      "context": "If an AE/ADR from an MRP meets reporting requirements, it should be managed as a solicited report which includes an appropriate causality assessment (see section V.A.1 (5.1.1), AEs/ADRs). For these ICSRs, the “Study Type Where reaction(s)/event(s) Were Observed” data element in ICH E2B should be used to reflect the origin of the report as MRP. This enables ICSRs from MRPs to be distinguished from those originating from studies and other ODCS. G. Regulatory Authorities (4.7) Cases originating from a regulatory authority are subject to reporting to other regulatory authorities (according to regional and local requirements) by each MAH.",
+      "fingerprint": "658d0fe781bd539f6c3f86929320b8a658e69ba19a8d398baf977f94635d6b30",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 52,
+      "anchor": "page-20-paragraph-5",
+      "statement": "Cases from national or regional AE/ADR databases owned or operated by a regulator may be obtained by the MAH (either directly or via literature articles). MAHs should cross-reference to the source reports by including the regulator’s case identification number, if available to the MAH, in the appropriate ICH E2B data element.",
+      "context": "G. Regulatory Authorities (4.7) Cases originating from a regulatory authority are subject to reporting to other regulatory authorities (according to regional and local requirements) by each MAH. When an MAH obtains a case from a regulatory authority, the MAH is not required to resubmit the case as an ICSR to the same regulatory authority unless the MAH has received or obtained new information about the case from a primary source 8 , or unless otherwise specified by regional or local requirements.",
+      "fingerprint": "ff7d5257f3a2c414bb994e72ba60164d21f26e3abc036599cc8cd5906dd59091",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 53,
+      "anchor": "page-20-paragraph-7",
+      "statement": "H. Other Sources (4.8) If an MAH becomes aware of an AE/ADR from nonmedical sources, e.g., the lay press or other media, it should be recorded, managed, and assessed for reporting as required by regional and local requirements. Although not a direct communication to the MAH, if an AE/ADR collected from a nonmedical source meets reporting requirements, then it should be managed as a spontaneous report (see section V (5), Standards for Reporting, for information on standards and timeline for reporting). Reports received by the MAH as a result of litigation should also be managed as spontaneous reports.",
+      "context": "When an MAH obtains a case from a regulatory authority, the MAH is not required to resubmit the case as an ICSR to the same regulatory authority unless the MAH has received or obtained new information about the case from a primary source 8 , or unless otherwise specified by regional or local requirements. 8 See 21 CFR 314.80(b) and 600.80(b).",
+      "fingerprint": "74c6987c48e5265f72994c49cd86c52f978fec14291f1888736ebaf492213c54",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 54,
+      "anchor": "page-21-paragraph-2",
+      "statement": "A. What Should Be Reported? (5.1)",
+      "context": "V. STANDARDS FOR REPORTING (5) 1. AEs/ADRs (5.1.1) Cases of AEs/ADRs that are both serious and unexpected are subject to expedited reporting. The reporting of serious expected AEs/ADRs in an expedited manner varies according to regional and local requirements. Nonserious AEs/ADRs, whether expected or not, would normally not be subject to expedited reporting but may be reportable as ICSRs per regional or local requirements and timelines.",
+      "fingerprint": "7a671965c7b0f9a6b9e5f18eb241d8ee50eb59a2129628546750805bf9023927",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 55,
+      "anchor": "page-21-paragraph-5",
+      "statement": "For purposes of reporting, solicited reports are classified as “report from study” in ICH E2B and should have a causality assessment; solicited reports should only be submitted if a causal relationship between a medicinal product and an AE is at least a reasonable possibility, as assessed by either the reporter or the MAH.",
+      "context": "For purposes of reporting, spontaneous reports imply a suspected causal relationship (see section II.A.2 (2.1.2), Adverse Drug Reaction). Cases that contain only an outcome (e.g., death) should only be reported as an ICSR if required by regional or local requirements.",
+      "fingerprint": "04a982dcece08938cedbe1a4d05319e17cda87f7f3daf0c60cdf4bab6299f0b5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 56,
+      "anchor": "page-21-paragraph-6",
+      "statement": "Cases that contain only an outcome (e.g., death) should only be reported as an ICSR if required by regional or local requirements.",
+      "context": "For purposes of reporting, solicited reports are classified as “report from study” in ICH E2B and should have a causality assessment; solicited reports should only be submitted if a causal relationship between a medicinal product and an AE is at least a reasonable possibility, as assessed by either the reporter or the MAH. 2. Important Safety Findings (5.1.2) Safety findings which do not qualify for ICSR reporting and which may lead to changes in the known benefit-risk balance of a medicinal product and/or impact on public health should be communicated as soon as possible to the regulatory authorities in accordance with regional or local requirements. Examples include any significant unanticipated safety findings from an in vitro, animal, epidemiological, or clinical study that suggest a significant human risk, such as evidence of mutagenicity, teratogenicity, carcinogenicity, immunogeni",
+      "fingerprint": "e0f6d236a87f96c2228ac1de417295fdc4a9d7ebd3f2dc8dd92bbbaf7c9de1bd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 57,
+      "anchor": "page-21-paragraph-7",
+      "statement": "2. Important Safety Findings (5.1.2) Safety findings which do not qualify for ICSR reporting and which may lead to changes in the known benefit-risk balance of a medicinal product and/or impact on public health should be communicated as soon as possible to the regulatory authorities in accordance with regional or local requirements. Examples include any significant unanticipated safety findings from an in vitro, animal, epidemiological, or clinical study that suggest a significant human risk, such as evidence of mutagenicity, teratogenicity, carcinogenicity, immunogenicity, or increased mortality.",
+      "context": "Cases that contain only an outcome (e.g., death) should only be reported as an ICSR if required by regional or local requirements. 3. Other Observations (5.1.3) It is recognized that an MAH may become aware of certain observations as detailed below related to the use of a product that may or may not be associated with an AE/ADR. The MAH should record these cases and, as applicable, conduct follow-up (see section VI.D (6.4), Follow- up Information).",
+      "fingerprint": "cec44f6b57a02239ba7ad0b82f6a912ee1f21b7e2bbf27ba79f076420a121d77",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 58,
+      "anchor": "page-21-paragraph-8",
+      "statement": "3. Other Observations (5.1.3) It is recognized that an MAH may become aware of certain observations as detailed below related to the use of a product that may or may not be associated with an AE/ADR. The MAH should record these cases and, as applicable, conduct follow-up (see section VI.D (6.4), Follow- up Information).",
+      "context": "2. Important Safety Findings (5.1.2) Safety findings which do not qualify for ICSR reporting and which may lead to changes in the known benefit-risk balance of a medicinal product and/or impact on public health should be communicated as soon as possible to the regulatory authorities in accordance with regional or local requirements. Examples include any significant unanticipated safety findings from an in vitro, animal, epidemiological, or clinical study that suggest a significant human risk, such as evidence of mutagenicity, teratogenicity, carcinogenicity, immunogenicity, or increased mortality. Such observations in the absence of an AE/ADR should only be reported as an ICSR if required by regional or local requirements or other regulatory authority conditions and should be discussed in the periodic report according to the ICH E2C guidelines where applicable. If such observations are r",
+      "fingerprint": "2028da5ff9164e3729b95a5c7f000321ed4a3e72e6ecaec5447a949197b46e49",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 59,
+      "anchor": "page-21-paragraph-9",
+      "statement": "Such observations in the absence of an AE/ADR should only be reported as an ICSR if required by regional or local requirements or other regulatory authority conditions and should be discussed in the periodic report according to the ICH E2C guidelines where applicable. If such observations are required to be reported as ICSRs, then they should be managed as spontaneous or solicited depending on the context in which the MAH received the report, in the same way that ICSRs for AEs/ADRs are managed (see section III (3), Types of ICSRs).",
+      "context": "3. Other Observations (5.1.3) It is recognized that an MAH may become aware of certain observations as detailed below related to the use of a product that may or may not be associated with an AE/ADR. The MAH should record these cases and, as applicable, conduct follow-up (see section VI.D (6.4), Follow- up Information). a. Lack of efficacy or lack of effect (5.1.3.1) Reports of lack of efficacy or lack of effect occurring independently (i.e., with no associated AE/ADR) should only be reported as ICSRs if required by regional or local requirements or other regulatory authority conditions. Note that in some regions or countries lack of efficacy and lack of effect may be considered AEs/ADRs, depending on regional or local requirements.",
+      "fingerprint": "5d1225cb220d772290bd62f1296497220b237600f47e1a9780b7cf74f83475fc",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 60,
+      "anchor": "page-22-paragraph-1",
+      "statement": "a. Lack of efficacy or lack of effect (5.1.3.1) Reports of lack of efficacy or lack of effect occurring independently (i.e., with no associated AE/ADR) should only be reported as ICSRs if required by regional or local requirements or other regulatory authority conditions. Note that in some regions or countries lack of efficacy and lack of effect may be considered AEs/ADRs, depending on regional or local requirements.",
+      "context": "Such observations in the absence of an AE/ADR should only be reported as an ICSR if required by regional or local requirements or other regulatory authority conditions and should be discussed in the periodic report according to the ICH E2C guidelines where applicable. If such observations are required to be reported as ICSRs, then they should be managed as spontaneous or solicited depending on the context in which the MAH received the report, in the same way that ICSRs for AEs/ADRs are managed (see section III (3), Types of ICSRs). Products used in critical conditions or for the treatment of life-threatening diseases, vaccines, and contraceptives are examples of classes of medicinal products where lack of efficacy or lack of effect with no associated AE/ADR may be subject to ICSR reporting according to regional or local requirements. MAHs should apply judgment when determining if a case",
+      "fingerprint": "9c96df3420b3f43424f6ba45e3dffe6e85ce6f41f1eba3234c7c6733754f86c1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 61,
+      "anchor": "page-22-paragraph-2",
+      "statement": "Products used in critical conditions or for the treatment of life-threatening diseases, vaccines, and contraceptives are examples of classes of medicinal products where lack of efficacy or lack of effect with no associated AE/ADR may be subject to ICSR reporting according to regional or local requirements. MAHs should apply judgment when determining if a case report represents a lack of efficacy or lack of effect with consideration of the local product labeling. Reports associated with AEs/ADRs are subject to ICSR reporting requirements.",
+      "context": "a. Lack of efficacy or lack of effect (5.1.3.1) Reports of lack of efficacy or lack of effect occurring independently (i.e., with no associated AE/ADR) should only be reported as ICSRs if required by regional or local requirements or other regulatory authority conditions. Note that in some regions or countries lack of efficacy and lack of effect may be considered AEs/ADRs, depending on regional or local requirements. b. Overdose, abuse, misuse, medication error, and occupational exposure (5.1.3.2) Reports associated with overdose, abuse, misuse, medication error, or occupational exposure with no associated AE/ADR should only be reported as ICSRs if required by regional or local requirements or other regulatory authority conditions. MAHs should apply judgement when determining if a case represents overdose, abuse, misuse, medication error, or occupational exposure with consideration of th",
+      "fingerprint": "4ab7eb3c820365d6d210c05fd8becaff10f85e84f60a4f0fa5ffd0fddc651954",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 62,
+      "anchor": "page-22-paragraph-3",
+      "statement": "b. Overdose, abuse, misuse, medication error, and occupational exposure (5.1.3.2) Reports associated with overdose, abuse, misuse, medication error, or occupational exposure with no associated AE/ADR should only be reported as ICSRs if required by regional or local requirements or other regulatory authority conditions. MAHs should apply judgement when determining if a case represents overdose, abuse, misuse, medication error, or occupational exposure with consideration of the local product labeling. Reports associated with AEs/ADRs are subject to ICSR reporting requirements.",
+      "context": "Products used in critical conditions or for the treatment of life-threatening diseases, vaccines, and contraceptives are examples of classes of medicinal products where lack of efficacy or lack of effect with no associated AE/ADR may be subject to ICSR reporting according to regional or local requirements. MAHs should apply judgment when determining if a case report represents a lack of efficacy or lack of effect with consideration of the local product labeling. Reports associated with AEs/ADRs are subject to ICSR reporting requirements. Medication errors where no associated AE/ADR has occurred may, in some instances, not involve a patient (e.g., near miss events or intercepted medication errors where a medication error occurred but did not reach a patient) and may also be required to be reported as an ICSR per regional and local requirements; in this instance, the ICSR should include th",
+      "fingerprint": "f057a6b3c0bfa9709fff5ae4d8ea2a9c7646445251baa1f7063326812c359439",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 63,
+      "anchor": "page-22-paragraph-4",
+      "statement": "Medication errors where no associated AE/ADR has occurred may, in some instances, not involve a patient (e.g., near miss events or intercepted medication errors where a medication error occurred but did not reach a patient) and may also be required to be reported as an ICSR per regional and local requirements; in this instance, the ICSR should include the minimum criteria (see section II.B (2.2), ICSR Including Minimum Criteria) except for the identifiable patient.",
+      "context": "b. Overdose, abuse, misuse, medication error, and occupational exposure (5.1.3.2) Reports associated with overdose, abuse, misuse, medication error, or occupational exposure with no associated AE/ADR should only be reported as ICSRs if required by regional or local requirements or other regulatory authority conditions. MAHs should apply judgement when determining if a case represents overdose, abuse, misuse, medication error, or occupational exposure with consideration of the local product labeling. Reports associated with AEs/ADRs are subject to ICSR reporting requirements. c. Exposure to medicinal products associated with pregnancy or breastfeeding (5.1.3.3) Reports of exposure through a parent, such as the use of medicinal products in pregnancy or breastfeeding or paternal exposure, with no associated AE/ADR in either the parent or the child should only be reported as ICSRs if require",
+      "fingerprint": "0fe32184d8d08377e61f31268c2cadccb3489507dadc38aa052af2806e6dc648",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 64,
+      "anchor": "page-22-paragraph-5",
+      "statement": "c. Exposure to medicinal products associated with pregnancy or breastfeeding (5.1.3.3) Reports of exposure through a parent, such as the use of medicinal products in pregnancy or breastfeeding or paternal exposure, with no associated AE/ADR in either the parent or the child should only be reported as ICSRs if required by regional or local requirements or other regulatory authority conditions. The MAH is not expected to record exposures during pregnancy for products specifically indicated for use during pregnancy, if not associated with an AE/ADR.",
+      "context": "Medication errors where no associated AE/ADR has occurred may, in some instances, not involve a patient (e.g., near miss events or intercepted medication errors where a medication error occurred but did not reach a patient) and may also be required to be reported as an ICSR per regional and local requirements; in this instance, the ICSR should include the minimum criteria (see section II.B (2.2), ICSR Including Minimum Criteria) except for the identifiable patient. AEs/ADRs, such as abnormal outcome following parental exposure including congenital anomalies, potential epigenetic responses, developmental disorders in the foetus or child, foetal death, spontaneous abortion, or AEs/ADRs in the mother or newborn, are subject to ICSR reporting requirements.",
+      "fingerprint": "c66ded74dcfc2070b2a6cafe0bb7d8bb7412d44b8671c2aab0f31bb5d1714dee",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 65,
+      "anchor": "page-23-paragraph-1",
+      "statement": "d. Off-label use (5.1.3.4) Reports of off-label use with no associated AE/ADR should only be reported as ICSRs if required by regional or local requirements or other regulatory authority conditions. MAHs should apply judgement when determining if a case report represents off-label use with consideration of the local product labeling. Reports associated with AEs/ADRs are subject to ICSR reporting requirements.",
+      "context": "AEs/ADRs, such as abnormal outcome following parental exposure including congenital anomalies, potential epigenetic responses, developmental disorders in the foetus or child, foetal death, spontaneous abortion, or AEs/ADRs in the mother or newborn, are subject to ICSR reporting requirements. B. Reporting Time Frames (5.2) In general, ICSRs that fulfill regional or local criteria for expedited reporting (see section V.A (5.1), What Should Be Reported?) should be submitted as soon as possible, but not later than 15 calendar days after day zero (see below). Time frames for reporting AEs/ADRs that are reportable as ICSRs, but which do not meet regional or local criteria for expedited reporting, including nonserious AEs/ADRs, may vary according to regional or local requirements and may be subject to nonexpedited (greater than 15 calendar days) timelines.",
+      "fingerprint": "de409cf23e8f092c9f22642e08f6ee59b8f05c0a63ff5c6072cb5a189c32ec55",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 66,
+      "anchor": "page-23-paragraph-2",
+      "statement": "B. Reporting Time Frames (5.2) In general, ICSRs that fulfill regional or local criteria for expedited reporting (see section V.A (5.1), What Should Be Reported?) should be submitted as soon as possible, but not later than 15 calendar days after day zero (see below). Time frames for reporting AEs/ADRs that are reportable as ICSRs, but which do not meet regional or local criteria for expedited reporting, including nonserious AEs/ADRs, may vary according to regional or local requirements and may be subject to nonexpedited (greater than 15 calendar days) timelines.",
+      "context": "d. Off-label use (5.1.3.4) Reports of off-label use with no associated AE/ADR should only be reported as ICSRs if required by regional or local requirements or other regulatory authority conditions. MAHs should apply judgement when determining if a case report represents off-label use with consideration of the local product labeling. Reports associated with AEs/ADRs are subject to ICSR reporting requirements. The regulatory reporting time clock is considered to start on the date when any personnel of the MAH (including third parties, such as service providers and other contractual partners, acting on behalf of the MAH) obtains sufficient information to determine that a case report fulfills the minimum criteria for reporting (see section II.B (2.2), ICSR Including Minimum Criteria). This date should be considered day zero unless otherwise specified by regional or local requirements.",
+      "fingerprint": "6abd4e408f036544859292ef7fe17963946d12ca6594ef17168938923f10bbfe",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 67,
+      "anchor": "page-23-paragraph-3",
+      "statement": "The regulatory reporting time clock is considered to start on the date when any personnel of the MAH (including third parties, such as service providers and other contractual partners, acting on behalf of the MAH) obtains sufficient information to determine that a case report fulfills the minimum criteria for reporting (see section II.B (2.2), ICSR Including Minimum Criteria). This date should be considered day zero unless otherwise specified by regional or local requirements.",
+      "context": "B. Reporting Time Frames (5.2) In general, ICSRs that fulfill regional or local criteria for expedited reporting (see section V.A (5.1), What Should Be Reported?) should be submitted as soon as possible, but not later than 15 calendar days after day zero (see below). Time frames for reporting AEs/ADRs that are reportable as ICSRs, but which do not meet regional or local criteria for expedited reporting, including nonserious AEs/ADRs, may vary according to regional or local requirements and may be subject to nonexpedited (greater than 15 calendar days) timelines. Refer to sections IV.B (4.2) and IV.C (4.3) for specific information regarding day zero for case reports from literature and digital platforms.",
+      "fingerprint": "e4bab2d77641d680bbbccc48ae106c830704311d7ce150146421b1ad08639c36",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 68,
+      "anchor": "page-23-paragraph-5",
+      "statement": "When additional medically relevant information is received for a previously reported case, the reporting time clock is considered to begin again for submission of the follow-up report; as such day zero for follow-up information is the date the MAH receives the additional information. In addition, a case initially classified as a nonexpedited report would qualify for expedited reporting upon receipt of follow-up information that indicates the case should be reclassified (e.g., from nonserious to serious), and day zero is the date of receipt of the follow-up information.",
+      "context": "Refer to sections IV.B (4.2) and IV.C (4.3) for specific information regarding day zero for case reports from literature and digital platforms. When submitting an amendment to a previously submitted report (e.g., a correction based on MAH internal quality review) with no receipt of additional information, a new clock start date (day zero) should not be assigned .",
+      "fingerprint": "266534648b0783823b0958dec51bafcb5d5cbd6f12f2718e0a705018e05e1c26",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 69,
+      "anchor": "page-23-paragraph-6",
+      "statement": "When submitting an amendment to a previously submitted report (e.g., a correction based on MAH internal quality review) with no receipt of additional information, a new clock start date (day zero) should not be assigned .",
+      "context": "When additional medically relevant information is received for a previously reported case, the reporting time clock is considered to begin again for submission of the follow-up report; as such day zero for follow-up information is the date the MAH receives the additional information. In addition, a case initially classified as a nonexpedited report would qualify for expedited reporting upon receipt of follow-up information that indicates the case should be reclassified (e.g., from nonserious to serious), and day zero is the date of receipt of the follow-up information. VI. GOOD CASE MANAGEMENT PRACTICES (6) Accurate, complete, and authentic information is important for MAHs and regulatory agencies identifying and assessing AE/ADR reports. Both are faced with the task of acquiring sufficient information to help ensure that the reports are authentic, accurate, as complete as possible, and",
+      "fingerprint": "57cb0daaee1005acbb122013d965eef370cd2f0ba4d9fe1fc2b8fa83d8b84383",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 70,
+      "anchor": "page-24-paragraph-1",
+      "statement": "MAHs should refer to regional and local requirements for the protection of personal data privacy including patients, reporters, HCPs, and others, when gathering, transmitting or retransmitting information in ICSRs.",
+      "context": "VI. GOOD CASE MANAGEMENT PRACTICES (6) Accurate, complete, and authentic information is important for MAHs and regulatory agencies identifying and assessing AE/ADR reports. Both are faced with the task of acquiring sufficient information to help ensure that the reports are authentic, accurate, as complete as possible, and nonduplicative. When information is received from a primary source, the primary source’s description of the event should be retained. The ICSR should include the verbatim terms as used by the reporter, or an accurate translation. Any MAH personnel receiving information about a case should provide an unbiased and unfiltered report of the information. While the recipient of the information is encouraged to actively query the primary source to elicit the most complete account possible, inferences and imputations should be avoided in report submission. However, clearly iden",
+      "fingerprint": "1d1cfc96871c07bf231db89ae0c6a48ca23c7dc7333d551987e135cf786cb91a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 71,
+      "anchor": "page-24-paragraph-2",
+      "statement": "When information is received from a primary source, the primary source’s description of the event should be retained. The ICSR should include the verbatim terms as used by the reporter, or an accurate translation. Any MAH personnel receiving information about a case should provide an unbiased and unfiltered report of the information. While the recipient of the information is encouraged to actively query the primary source to elicit the most complete account possible, inferences and imputations should be avoided in report submission. However, clearly identified evaluations by the MAH are considered appropriate and are required by some regulatory authorities, and they should be recorded in the relevant ICH E2B data elements.",
+      "context": "MAHs should refer to regional and local requirements for the protection of personal data privacy including patients, reporters, HCPs, and others, when gathering, transmitting or retransmitting information in ICSRs. The MAH should request and include follow-up information from the consumer or relevant HCPs as needed, seeking consent where necessary.",
+      "fingerprint": "1e85bdd3342e1853b85536f133c844d615108d4ac7a74d92d296b557607dec2a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 72,
+      "anchor": "page-24-paragraph-3",
+      "statement": "The MAH should request and include follow-up information from the consumer or relevant HCPs as needed, seeking consent where necessary.",
+      "context": "When information is received from a primary source, the primary source’s description of the event should be retained. The ICSR should include the verbatim terms as used by the reporter, or an accurate translation. Any MAH personnel receiving information about a case should provide an unbiased and unfiltered report of the information. While the recipient of the information is encouraged to actively query the primary source to elicit the most complete account possible, inferences and imputations should be avoided in report submission. However, clearly identified evaluations by the MAH are considered appropriate and are required by some regulatory authorities, and they should be recorded in the relevant ICH E2B data elements. A. Assessing Patient and Reporter Identifiability (6.1) Patient and reporter identifiability is important to avoid case duplication, ensure authenticity, and facilitat",
+      "fingerprint": "e45b7f589a5811a19add3933e17916a70d30ff29b010bdd182061b692da110e4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 73,
+      "anchor": "page-24-paragraph-4",
+      "statement": "A. Assessing Patient and Reporter Identifiability (6.1) Patient and reporter identifiability is important to avoid case duplication, ensure authenticity, and facilitate follow-up of appropriate cases. The term identifiable in this context refers to the verification of the existence of a patient and a reporter (i.e., a primary source; see section II.D (2.4), Primary Source). Secondhand reports (i.e., situations where an individual notifies the MAH of an AE/ADR but does not have firsthand knowledge about the event) are considered incomplete, and where permissible and feasible, attempts should be made to verify the existence of an identifiable patient and reporter.",
+      "context": "The MAH should request and include follow-up information from the consumer or relevant HCPs as needed, seeking consent where necessary. To have an identifiable patient, there should be enough information to indicate the existence of a specific patient. One or more of the following should automatically qualify a patient as identifiable: age (or age category, e.g., adolescent, adult, elderly), gestational age, sex, initials, date of birth, name, patient identification number, or other identifiers specified by regional or local requirements.",
+      "fingerprint": "95eece3ef5492d7d799061520fd9f2c85dcfc3823ebffda8b72d8aa32d4f0c44",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 74,
+      "anchor": "page-24-paragraph-5",
+      "statement": "To have an identifiable patient, there should be enough information to indicate the existence of a specific patient. One or more of the following should automatically qualify a patient as identifiable: age (or age category, e.g., adolescent, adult, elderly), gestational age, sex, initials, date of birth, name, patient identification number, or other identifiers specified by regional or local requirements.",
+      "context": "A. Assessing Patient and Reporter Identifiability (6.1) Patient and reporter identifiability is important to avoid case duplication, ensure authenticity, and facilitate follow-up of appropriate cases. The term identifiable in this context refers to the verification of the existence of a patient and a reporter (i.e., a primary source; see section II.D (2.4), Primary Source). Secondhand reports (i.e., situations where an individual notifies the MAH of an AE/ADR but does not have firsthand knowledge about the event) are considered incomplete, and where permissible and feasible, attempts should be made to verify the existence of an identifiable patient and reporter. Examples of characteristics that qualify a reporter as identifiable include but are not limited to:",
+      "fingerprint": "600703f66b088e0f7bac0ef97eed566ca532c693afbbde1f98f99d637a2a0e62",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 75,
+      "anchor": "page-24-paragraph-7",
+      "statement": "name, initials, or address (e.g., reporter’s organization, department, street, city, state or province, postcode, region or country, email, phone number), qualification (e.g., HCP, lawyer, consumer, other nonHCP). For cases where the reporter wishes to remain anonymous, the ICSR should still be reported, as long as the existence of an individual as the reporter is known and the case otherwise meets reporting requirements.",
+      "context": "Examples of characteristics that qualify a reporter as identifiable include but are not limited to: In the absence of qualifying descriptors, a report referring to a definite number of patients should not be regarded as a case until the four minimum criteria for reporting are met. For example, “Twenty patients experienced . . .” or “a few patients experienced” should be followed up for patient-identifiable information before creating an ICSR. To qualify for ICSR reporting it should be possible to associate an AE/ADR or AEs/ADRs with a specific identifiable patient.",
+      "fingerprint": "9f40a922173a92fcbbead5aebf86d3e00792808b348f76dc2dd8e1e6b59e3906",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 76,
+      "anchor": "page-24-paragraph-8",
+      "statement": "In the absence of qualifying descriptors, a report referring to a definite number of patients should not be regarded as a case until the four minimum criteria for reporting are met. For example, “Twenty patients experienced . . .” or “a few patients experienced” should be followed up for patient-identifiable information before creating an ICSR. To qualify for ICSR reporting it should be possible to associate an AE/ADR or AEs/ADRs with a specific identifiable patient.",
+      "context": "name, initials, or address (e.g., reporter’s organization, department, street, city, state or province, postcode, region or country, email, phone number), qualification (e.g., HCP, lawyer, consumer, other nonHCP). For cases where the reporter wishes to remain anonymous, the ICSR should still be reported, as long as the existence of an individual as the reporter is known and the case otherwise meets reporting requirements. In relation to cases from digital platforms, the identifiability of the reporter or patient refers to the existence of a real person; where permissible and feasible, attempts can be made to verify that the patient and the reporter exist. The presence of a digital platform username or identifier (i.e., handle ) in the absence of qualifying identifiers is insufficient to confirm that there is a real patient and/or reporter. In addition, MAHs should only consider the perso",
+      "fingerprint": "390631ad0a47f39c0e2d6742c99c061f5b840435ba12181616e025fa099e715f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 77,
+      "anchor": "page-25-paragraph-1",
+      "statement": "In relation to cases from digital platforms, the identifiability of the reporter or patient refers to the existence of a real person; where permissible and feasible, attempts can be made to verify that the patient and the reporter exist. The presence of a digital platform username or identifier (i.e., handle ) in the absence of qualifying identifiers is insufficient to confirm that there is a real patient and/or reporter. In addition, MAHs should only consider the person providing the information to qualify as a reporter if the person experienced the event or has firsthand information about it. Where follow-up is feasible, MAHs should attempt to obtain evidence of the existence of a real patient and reporter (e.g., via requesting at least one identifiable characteristic).",
+      "context": "In the absence of qualifying descriptors, a report referring to a definite number of patients should not be regarded as a case until the four minimum criteria for reporting are met. For example, “Twenty patients experienced . . .” or “a few patients experienced” should be followed up for patient-identifiable information before creating an ICSR. To qualify for ICSR reporting it should be possible to associate an AE/ADR or AEs/ADRs with a specific identifiable patient. B. The Role of Narratives (6.2) The objective of the narrative is to summarize all relevant clinical and related information, including patient characteristics, therapy details, medical history, concurrent conditions, clinical course of the event(s), AE(s)/ADR(s) including the outcome, diagnosis, laboratory evidence (including normal ranges), and any other information that supports an assessment of a causal relationship betw",
+      "fingerprint": "f97ee09208a2bf90196b4aa916a05b67d844e34d8f7d5e3d261ebff4ba96158d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 78,
+      "anchor": "page-25-paragraph-2",
+      "statement": "B. The Role of Narratives (6.2) The objective of the narrative is to summarize all relevant clinical and related information, including patient characteristics, therapy details, medical history, concurrent conditions, clinical course of the event(s), AE(s)/ADR(s) including the outcome, diagnosis, laboratory evidence (including normal ranges), and any other information that supports an assessment of a causal relationship between a medicinal product and an AE/ADR. The narrative should serve as a comprehensive, stand-alone “medical story.” The information should be presented in a logical time sequence; ideally this should be presented in the chronology of the patient’s experience, rather than in the chronology in which the information was received. In follow-up reports, new information should be clearly identified.",
+      "context": "In relation to cases from digital platforms, the identifiability of the reporter or patient refers to the existence of a real person; where permissible and feasible, attempts can be made to verify that the patient and the reporter exist. The presence of a digital platform username or identifier (i.e., handle ) in the absence of qualifying identifiers is insufficient to confirm that there is a real patient and/or reporter. In addition, MAHs should only consider the person providing the information to qualify as a reporter if the person experienced the event or has firsthand information about it. Where follow-up is feasible, MAHs should attempt to obtain evidence of the existence of a real patient and reporter (e.g., via requesting at least one identifiable characteristic). Abbreviations and acronyms should be avoided, with the possible exception of laboratory parameters and units. Key inf",
+      "fingerprint": "20756f89ed381d0c31503e80d1c0d0b50bcb96e2f0ae3f11909bda06ceee9603",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 79,
+      "anchor": "page-25-paragraph-3",
+      "statement": "Abbreviations and acronyms should be avoided, with the possible exception of laboratory parameters and units. Key information from supplementary records should be included in the report, and its availability should be mentioned in the narrative and appropriate ICH E2B data element and supplied on request. Any relevant autopsy or pathologic findings should also be summarized in the narrative, and related documents should be provided according to regional or local requirements and where permitted by local data privacy laws.",
+      "context": "B. The Role of Narratives (6.2) The objective of the narrative is to summarize all relevant clinical and related information, including patient characteristics, therapy details, medical history, concurrent conditions, clinical course of the event(s), AE(s)/ADR(s) including the outcome, diagnosis, laboratory evidence (including normal ranges), and any other information that supports an assessment of a causal relationship between a medicinal product and an AE/ADR. The narrative should serve as a comprehensive, stand-alone “medical story.” The information should be presented in a logical time sequence; ideally this should be presented in the chronology of the patient’s experience, rather than in the chronology in which the information was received. In follow-up reports, new information should be clearly identified. Terms (e.g., AEs/ADRs, indication, medical conditions) in the narrative shou",
+      "fingerprint": "1a95012b86d47261e4f400f176b281b2f59277cbb096b787b68932cac028afc5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 80,
+      "anchor": "page-25-paragraph-4",
+      "statement": "Terms (e.g., AEs/ADRs, indication, medical conditions) in the narrative should be accurately reflected in appropriate ICH E2B data elements.",
+      "context": "Abbreviations and acronyms should be avoided, with the possible exception of laboratory parameters and units. Key information from supplementary records should be included in the report, and its availability should be mentioned in the narrative and appropriate ICH E2B data element and supplied on request. Any relevant autopsy or pathologic findings should also be summarized in the narrative, and related documents should be provided according to regional or local requirements and where permitted by local data privacy laws. C. Clinical Case Evaluation (6.3) The purpose of careful medical review is to ensure correct interpretation of medical information.",
+      "fingerprint": "a4de7971c78cfac152cc1be130b1745c833b54b0bc6f06668ee2af21fd1fb3fd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 81,
+      "anchor": "page-25-paragraph-6",
+      "statement": "If possible, information about the case should be collected from the HCPs who are directly involved in the patient’s care. Regardless of the source of an AE/ADR report, the initial recipient should carefully review the report for the accuracy and completeness of the medical information.",
+      "context": "C. Clinical Case Evaluation (6.3) The purpose of careful medical review is to ensure correct interpretation of medical information. The review should include, but is not limited to, the following considerations:",
+      "fingerprint": "1dd6ab63d50aaa7203740e8d993b96aa5e0d6c86d6bcf072aaf0283addf21f3e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 82,
+      "anchor": "page-25-paragraph-7",
+      "statement": "The review should include, but is not limited to, the following considerations:",
+      "context": "If possible, information about the case should be collected from the HCPs who are directly involved in the patient’s care. Regardless of the source of an AE/ADR report, the initial recipient should carefully review the report for the accuracy and completeness of the medical information. • Are the AE(s)/ADR(s) serious (according to the criteria in section II.A.3 (2.1.3), Serious AE/ADR)? • Is a diagnosis possible from the description of the AE(s)/ADR(s), and is it supported by evidence?",
+      "fingerprint": "c7c6173d8bc0ec658998782e7e2978afae78484f7f6aa87f4830a8988fb7c0d1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 83,
+      "anchor": "page-26-paragraph-2",
+      "statement": "D. Follow-up Information (6.4) Initial AE/ADR reports may not have sufficient information for clinical case evaluation, and efforts should be made to seek additional information on reports, including AEs/ADRs that were reported secondhand (i.e., cases where the reporter is aware of an AE/ADR, but does not have firsthand knowledge of relevant information about the event). It is important that at the time of the original report, sufficient details about the patient and reporter be collected and retained to enable follow-up, within the constraints imposed by regional or local data privacy laws.",
+      "context": "• Have the relevant diagnostic procedures been performed? • Were alternative causes and/or confounding factors for the AE(s)/ADR(s) considered? • Is there information regarding a temporal association between the medicinal product and the AE(s)/ADR(s), and information on the outcome? • What additional information is needed? To optimize the value of follow-up, the first consideration should be prioritization of case reports by importance. Highest priority for follow-up are cases which are both serious and unexpected.",
+      "fingerprint": "fbc0b827504d4eb285431c777be08fc04a15edf5ae2fe4d45c6463244f80d865",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 84,
+      "anchor": "page-26-paragraph-3",
+      "statement": "To optimize the value of follow-up, the first consideration should be prioritization of case reports by importance. Highest priority for follow-up are cases which are both serious and unexpected.",
+      "context": "D. Follow-up Information (6.4) Initial AE/ADR reports may not have sufficient information for clinical case evaluation, and efforts should be made to seek additional information on reports, including AEs/ADRs that were reported secondhand (i.e., cases where the reporter is aware of an AE/ADR, but does not have firsthand knowledge of relevant information about the event). It is important that at the time of the original report, sufficient details about the patient and reporter be collected and retained to enable follow-up, within the constraints imposed by regional or local data privacy laws. At a slightly lower priority are serious, expected and nonserious, unexpected cases. In addition to seriousness and expectedness as criteria, cases of special interest (e.g., AEs/ADRs under enhanced monitoring at the request of regulatory authorities) should be prioritized.",
+      "fingerprint": "7831dda9b3d578e2d6315e04b5ae6abfc9df11d151ccbd2b0fd0550c1ae23281",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 85,
+      "anchor": "page-26-paragraph-4",
+      "statement": "At a slightly lower priority are serious, expected and nonserious, unexpected cases. In addition to seriousness and expectedness as criteria, cases of special interest (e.g., AEs/ADRs under enhanced monitoring at the request of regulatory authorities) should be prioritized.",
+      "context": "To optimize the value of follow-up, the first consideration should be prioritization of case reports by importance. Highest priority for follow-up are cases which are both serious and unexpected. All requests and attempts for follow-up information should be documented. The MAH should provide specific questions it would like to have answered. Follow-up methods should be tailored toward optimizing the collection of missing information to allow meaningful case evaluation.",
+      "fingerprint": "cf379d11f07ca903987096fe97ef81553e12e7d3c09d1e8321222ee9c4584f37",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 86,
+      "anchor": "page-26-paragraph-5",
+      "statement": "All requests and attempts for follow-up information should be documented. The MAH should provide specific questions it would like to have answered. Follow-up methods should be tailored toward optimizing the collection of missing information to allow meaningful case evaluation.",
+      "context": "At a slightly lower priority are serious, expected and nonserious, unexpected cases. In addition to seriousness and expectedness as criteria, cases of special interest (e.g., AEs/ADRs under enhanced monitoring at the request of regulatory authorities) should be prioritized. To facilitate the capture of clinically relevant and complete information, use of a targeted questionnaire or specific form is encouraged, preferably at the time of the initial report.",
+      "fingerprint": "2c7155b3df2835693266d37d4672eadeb3daae500c6f3bcfabdecfafc0b90787",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 87,
+      "anchor": "page-26-paragraph-7",
+      "statement": "Individuals with the appropriate level of pharmacovigilance training and therapeutic expertise should be involved in the follow-up of received cases.",
+      "context": "To facilitate the capture of clinically relevant and complete information, use of a targeted questionnaire or specific form is encouraged, preferably at the time of the initial report. In relation to cases from digital platform not under the responsibility of the MAH, MAHs should exercise caution prior to conducting follow-up of any message marked as private, as this may constitute a breach of consent depending on regional and local privacy regulations.",
+      "fingerprint": "76a96e42b27357dfc6717b7a0c2935067cef5f7eca06e01ae49f4cfc298ac378",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 88,
+      "anchor": "page-26-paragraph-8",
+      "statement": "In relation to cases from digital platform not under the responsibility of the MAH, MAHs should exercise caution prior to conducting follow-up of any message marked as private, as this may constitute a breach of consent depending on regional and local privacy regulations.",
+      "context": "Individuals with the appropriate level of pharmacovigilance training and therapeutic expertise should be involved in the follow-up of received cases. 1. Other Observations (6.4.1) For some other observations without an AE/ADR, there are specific considerations for follow-up as outlined below.",
+      "fingerprint": "7e476fb84f49fbe12a65a3913a0f0ffa38e4085868f0d91dbdc2ade13c73b801",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 89,
+      "anchor": "page-27-paragraph-1",
+      "statement": "a. Overdose, abuse, misuse, medication error, and occupational exposure (6.4.1.1) Reports should be followed up to ensure that the information is as complete as possible with regard to suspected drug(s) and the context of occurrence.",
+      "context": "1. Other Observations (6.4.1) For some other observations without an AE/ADR, there are specific considerations for follow-up as outlined below. b. Exposure to medicinal products associated with pregnancy or breastfeeding (6.4.1.2) MAHs are expected to follow up all pregnancy reports from HCPs or consumers where the embryo or foetus could have been exposed (through maternal or paternal exposure) to one of its medicinal products. For certain types of medicinal products, potential for embryo-foetal exposure may need to be considered even if the medicinal product was taken before the gestational period commenced. MAHs should collect information on the outcome of the pregnancy, health of the newborn, and, where appropriate, development of the child. This follow-up is not expected for cases of exposure during pregnancy for products specifically indicated for use during pregnancy if not associa",
+      "fingerprint": "7d9935780550cd7965be4d7275d96b0063c50d461c02166e9510edfc04acfa09",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 90,
+      "anchor": "page-27-paragraph-2",
+      "statement": "b. Exposure to medicinal products associated with pregnancy or breastfeeding (6.4.1.2) MAHs are expected to follow up all pregnancy reports from HCPs or consumers where the embryo or foetus could have been exposed (through maternal or paternal exposure) to one of its medicinal products. For certain types of medicinal products, potential for embryo-foetal exposure may need to be considered even if the medicinal product was taken before the gestational period commenced. MAHs should collect information on the outcome of the pregnancy, health of the newborn, and, where appropriate, development of the child. This follow-up is not expected for cases of exposure during pregnancy for products specifically indicated for use during pregnancy if not associated with an AE/ADR.",
+      "context": "a. Overdose, abuse, misuse, medication error, and occupational exposure (6.4.1.1) Reports should be followed up to ensure that the information is as complete as possible with regard to suspected drug(s) and the context of occurrence. E. Contractual Agreements (6.5) Contractual agreements may take place between MAHs and third parties (e.g., service providers) who perform activities for the MAH in which they would foreseeably receive or otherwise obtain safety information associated with the MAH’s medicinal product. Further, the marketing of medicines may take place through contractual agreements between MAHs and other companies, which may market one or more products with the same active substance name in the same or different regions or countries.",
+      "fingerprint": "888a8a45f43c4ec5593ccd5388cf3ae81aee031672194834a813bb38b1533d4f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 91,
+      "anchor": "page-27-paragraph-4",
+      "statement": "It is important that these agreements specify the management and reporting of ICSRs (i.e., processes for exchange of safety information, including timelines and regulatory reporting responsibilities) in accordance with regional and local requirements. Processes should be in place to identify responsibilities, as applicable, and avoid duplicate reporting to regulatory authorities.",
+      "context": "E. Contractual Agreements (6.5) Contractual agreements may take place between MAHs and third parties (e.g., service providers) who perform activities for the MAH in which they would foreseeably receive or otherwise obtain safety information associated with the MAH’s medicinal product. Further, the marketing of medicines may take place through contractual agreements between MAHs and other companies, which may market one or more products with the same active substance name in the same or different regions or countries. Whatever the nature of the agreements, the MAH is ultimately responsible for reporting within the required timelines; therefore, the contractual partners should minimize the data exchange period to enable compliance with MAH responsibilities (see section V.B (5.2), Reporting Time Frames).",
+      "fingerprint": "3d93afd78355f5f451728679d762f6658cebe6323943a5099d50f2bc5308691c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 92,
+      "anchor": "page-27-paragraph-5",
+      "statement": "Whatever the nature of the agreements, the MAH is ultimately responsible for reporting within the required timelines; therefore, the contractual partners should minimize the data exchange period to enable compliance with MAH responsibilities (see section V.B (5.2), Reporting Time Frames).",
+      "context": "It is important that these agreements specify the management and reporting of ICSRs (i.e., processes for exchange of safety information, including timelines and regulatory reporting responsibilities) in accordance with regional and local requirements. Processes should be in place to identify responsibilities, as applicable, and avoid duplicate reporting to regulatory authorities. F. Duplicate Management (6.6) Detection and handling of duplicate reports is an important element of good case management.",
+      "fingerprint": "4d01530471302ddb335941187f3980adee0a8645821f997f0237da794ff1ac9a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 93,
+      "anchor": "page-27-paragraph-7",
+      "statement": "Regulatory authorities and MAHs should consider and manage duplicates when reviewing pharmacovigilance data, as duplicates negatively impact signal detection.",
+      "context": "F. Duplicate Management (6.6) Detection and handling of duplicate reports is an important element of good case management. Examples of common causes of duplicate reports are: • A consumer and HCP reporting the same AE/ADR or other observation;",
+      "fingerprint": "1b18aa6933a4dfc354dbd44e27bb78f85969f6008262d85c12d93dc1c614a001",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 94,
+      "anchor": "page-28-paragraph-5",
+      "statement": "Duplicate detection relies on good quality data and is generally based on similarities but should take into account that information in ICSRs may differ between reporters.",
+      "context": "MAHs may utilize duplicate management strategies that are most suitable for their individual situation. ICH E2B supports specific actions to be taken upon detection of duplicates (i.e., population of ICH E2B data elements with other case identification numbers by which the case is known and submission of nullification or amendment reports as applicable). G. How to Report (6.7) ICSRs should be transmitted electronically using the ICH E2B format, according to the ICH E2B guidelines 9 . In regions or countries where ICH E2B has yet to be implemented, other formats (e.g., CIOMS I) may be utilized. ICH E2B uses the Medical Dictionary for Regulatory Activities (MedDRA, ICH M1 guideline) 10 for coding medical information.",
+      "fingerprint": "e91c30bd48e02677136dc55b90e4525d18bc85cc21acfb1842e15026a7660145",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 95,
+      "anchor": "page-28-paragraph-6",
+      "statement": "G. How to Report (6.7) ICSRs should be transmitted electronically using the ICH E2B format, according to the ICH E2B guidelines 9 . In regions or countries where ICH E2B has yet to be implemented, other formats (e.g., CIOMS I) may be utilized. ICH E2B uses the Medical Dictionary for Regulatory Activities (MedDRA, ICH M1 guideline) 10 for coding medical information.",
+      "context": "Duplicate detection relies on good quality data and is generally based on similarities but should take into account that information in ICSRs may differ between reporters. 9 See 21 CFR 314.80(g) and 600.80(h).",
+      "fingerprint": "faf046612fde5e64ea56fbb61d7aebee114006717cf88d7e73f4db37de671bb4",
+      "review_status": "pending"
+    }
+  ],
+  "retrieved_at": "2026-11-01T17:22:48.103Z"
+}

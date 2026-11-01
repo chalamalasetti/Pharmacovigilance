@@ -1,0 +1,112 @@
+{
+  "schema_version": "public-document-key-info-v1",
+  "documents": {
+    "ca-hc-gvp-regulations": {
+      "document_id": "ca-hc-gvp-regulations",
+      "country": "CA",
+      "agency": "CA_HC",
+      "title": "GUI-0102: The regulations",
+      "latest": null,
+      "last_checked_at": "2026-11-01T17:22:12.812Z",
+      "status": "source_unavailable",
+      "note": "Previous extraction preserved; source could not be retrieved."
+    },
+    "ca-hc-gvp-system": {
+      "document_id": "ca-hc-gvp-system",
+      "country": "CA",
+      "agency": "CA_HC",
+      "title": "GUI-0102: Pharmacovigilance system",
+      "latest": "documents/ca-hc-gvp-system/3db489d2e0006d7a86b71d224f89197d5df84ee5e691252f2c40a2dcf5772eb8.json",
+      "last_checked_at": "2026-11-01T17:22:15.833Z",
+      "last_success_at": "2026-11-01T17:22:15.833Z",
+      "status": "candidates_extracted",
+      "candidate_count": 37
+    },
+    "gb-mhra-pv-procedures": {
+      "document_id": "gb-mhra-pv-procedures",
+      "country": "GB",
+      "agency": "GB_MHRA",
+      "title": "Guidance on pharmacovigilance procedures",
+      "latest": "documents/gb-mhra-pv-procedures/33b1c9e9be982362e2cd027f5275de3d329486472f5e67f8a29bd7f0cead12b9.json",
+      "last_checked_at": "2026-11-01T17:22:24.084Z",
+      "last_success_at": "2026-11-01T17:22:24.084Z",
+      "status": "partial",
+      "candidate_count": 62
+    },
+    "ema-gvp-i": {
+      "document_id": "ema-gvp-i",
+      "country": "EU",
+      "agency": "EMA",
+      "title": "GVP Module I — PV systems and quality systems",
+      "latest": "documents/ema-gvp-i/dcfa0b85f28f3227c6fedd4a3c2a3db896c63efc60c83e1c0d4592dc1689a802.json",
+      "last_checked_at": "2026-11-01T17:22:32.912Z",
+      "last_success_at": "2026-11-01T17:22:32.912Z",
+      "status": "candidates_extracted",
+      "candidate_count": 107
+    },
+    "eu-520-2012": {
+      "document_id": "eu-520-2012",
+      "country": "EU",
+      "agency": "EMA",
+      "title": "Commission Implementing Regulation (EU) No 520/2012",
+      "latest": null,
+      "last_checked_at": "2026-11-01T17:22:40.367Z",
+      "status": "source_unavailable",
+      "note": "Previous extraction preserved; source could not be retrieved."
+    },
+    "fda-aems-esg": {
+      "document_id": "fda-aems-esg",
+      "country": "US",
+      "agency": "FDA",
+      "title": "AEMS electronic submissions",
+      "latest": "documents/fda-aems-esg/be14c8bd0f05205c782ba77ed327eaa3712e7ca412b76c54825bfed252600255.json",
+      "last_checked_at": "2026-11-01T17:22:47.126Z",
+      "last_success_at": "2026-11-01T17:22:47.126Z",
+      "status": "candidates_extracted",
+      "candidate_count": 5
+    },
+    "fda-e2d": {
+      "document_id": "fda-e2d",
+      "country": "US",
+      "agency": "FDA",
+      "title": "E2D(R1) Post-Approval Safety Data",
+      "latest": "documents/fda-e2d/8d75a3600fc455f96a9cdb7de6e24192f29199f346b91c3d358f35721de5c5a8.json",
+      "last_checked_at": "2026-11-01T17:22:48.114Z",
+      "last_success_at": "2026-11-01T17:22:48.114Z",
+      "status": "candidates_extracted",
+      "candidate_count": 95
+    },
+    "fda-31232": {
+      "document_id": "fda-31232",
+      "country": "US",
+      "agency": "FDA",
+      "title": "21 CFR 312.32",
+      "latest": "documents/fda-31232/c4f818891f402ee849a0aecacd058dee920564f77020a1eb3a1ac10d75c55988.json",
+      "last_checked_at": "2026-11-01T17:22:52.948Z",
+      "last_success_at": "2026-11-01T17:22:52.948Z",
+      "status": "candidates_extracted",
+      "candidate_count": 13
+    },
+    "fda-31480": {
+      "document_id": "fda-31480",
+      "country": "US",
+      "agency": "FDA",
+      "title": "21 CFR 314.80",
+      "latest": "documents/fda-31480/710e5ff96af2a730045aaa8b8f3fbcb156a9c5a9bc75fc882fa7e77d05feda8f.json",
+      "last_checked_at": "2026-11-01T17:22:53.620Z",
+      "last_success_at": "2026-11-01T17:22:53.620Z",
+      "status": "candidates_extracted",
+      "candidate_count": 14
+    },
+    "au-tga-pv-responsibilities": {
+      "document_id": "au-tga-pv-responsibilities",
+      "country": "AU",
+      "agency": "AU_TGA",
+      "title": "Pharmacovigilance responsibilities of medicine sponsors",
+      "latest": null,
+      "last_checked_at": "2026-11-01T17:22:57.048Z",
+      "status": "source_unavailable",
+      "note": "Previous extraction preserved; source could not be retrieved."
+    }
+  }
+}

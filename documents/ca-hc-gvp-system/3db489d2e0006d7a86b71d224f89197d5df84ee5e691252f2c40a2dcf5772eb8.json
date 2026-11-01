@@ -1,0 +1,332 @@
+{
+  "schema_version": "public-document-key-info-v1",
+  "document_id": "ca-hc-gvp-system",
+  "metadata": {
+    "title": "GUI-0102: Pharmacovigilance system",
+    "country": "CA",
+    "agency": "CA_HC",
+    "edition": "GUI-0102 issued 2026-05-22",
+    "norm": "Guidance",
+    "topic": "PV systems and quality",
+    "lifecycle": "Marketed",
+    "legal_basis": "Health Canada administrative guidance, GUI-0102. Legislation prevails; read with the overview, regulations chapter, glossary and references.",
+    "applicability": "Manufacturers and market authorization holders with in-scope marketed human drugs. This is one chapter, not the entire guideline. Confirm exclusions and the source overview.",
+    "published_on": "2026-05-22",
+    "effective_on": "2026-05-22",
+    "source_status": "current"
+  },
+  "metadata_verification": "Source-register metadata; dates and legal status require human verification.",
+  "source_url": "https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-manufacturing-practices/guidance-documents/pharmacovigilance-guidelines-0102/pharmacovigilance-system.html",
+  "original_sha256": "e266d313493e1f4809327e8dcbe2eb98e9090d4ca0bc5273a24c594857f88ea5",
+  "content_kind": "html",
+  "parser_version": "normative-rules-v2",
+  "extraction_status": "candidates_extracted",
+  "candidate_count": 37,
+  "excluded_paragraphs": 0,
+  "candidate_limit_reached": false,
+  "review_status": "pending",
+  "limitations": [
+    "English rule-based extraction; no GPT or paid API.",
+    "Candidates are not approved requirements. Read the original, qualifications and exceptions.",
+    "Scans, tables, other languages and implicit obligations may be missed. Zero candidates does not establish zero requirements."
+  ],
+  "candidates": [
+    {
+      "ordinal": 1,
+      "anchor": "paragraph-15",
+      "statement": "To build a robust pharmacovigilance system, you should:",
+      "context": "take reliable and timely actions based on the available evidence set out a decision-making process with deliverables for consistency in all activities",
+      "fingerprint": "aeb4d56fbed777457da4cf55d16a82e8ede0f24c34d4226f63a967bd52def4f4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 2,
+      "anchor": "paragraph-25",
+      "statement": "You should prepare and document written procedures outlining pharmacovigilance processes with step-by-step instructions for relevant personnel and departments. These procedures should have unique identifiers.",
+      "context": "Periodic reviews, as per established timelines, ensure that the written procedures continue to adhere to current regulations, expectations, and accurately reflect current practices. The revision history, reason(s) for revision, revision number, and effective dates for written procedures should be documented accordingly.",
+      "fingerprint": "5d49a8b97ffd983163128a350ef8020692ce0299290c3abae55097bebef1902c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 3,
+      "anchor": "paragraph-26",
+      "statement": "Periodic reviews, as per established timelines, ensure that the written procedures continue to adhere to current regulations, expectations, and accurately reflect current practices. The revision history, reason(s) for revision, revision number, and effective dates for written procedures should be documented accordingly.",
+      "context": "You should prepare and document written procedures outlining pharmacovigilance processes with step-by-step instructions for relevant personnel and departments. These procedures should have unique identifiers. Designated personnel should date, approve, and sign any revisions to the procedures (Refer to the Personnel and training section). All personnel and departments involved in pharmacovigilance should know when a procedure is revised and be trained before a revised procedure takes effect.",
+      "fingerprint": "e83c4613293e897d744a47a69a21dbbb9d3f71c3bc94faf095003b77ab08f600",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 4,
+      "anchor": "paragraph-27",
+      "statement": "Designated personnel should date, approve, and sign any revisions to the procedures (Refer to the Personnel and training section). All personnel and departments involved in pharmacovigilance should know when a procedure is revised and be trained before a revised procedure takes effect.",
+      "context": "Periodic reviews, as per established timelines, ensure that the written procedures continue to adhere to current regulations, expectations, and accurately reflect current practices. The revision history, reason(s) for revision, revision number, and effective dates for written procedures should be documented accordingly. When pharmacovigilance activities are contracted to a third party, you must ensure that roles and responsibilities, as well as step-by-step instructions are clearly documented in the respective written procedures or contractual agreements. They should be easy to follow to allow contractors to comply with the applicable regulatory requirements (Refer to the Contractual agreements section). Copies of procedures belonging to a third party and contractual agreements should be made available during inspections/audits.",
+      "fingerprint": "bdb4dc5e0b6d3cab6fac2cd6faccf5c619a4a968eea2c356001ef1f1cbadd813",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 5,
+      "anchor": "paragraph-28",
+      "statement": "When pharmacovigilance activities are contracted to a third party, you must ensure that roles and responsibilities, as well as step-by-step instructions are clearly documented in the respective written procedures or contractual agreements. They should be easy to follow to allow contractors to comply with the applicable regulatory requirements (Refer to the Contractual agreements section). Copies of procedures belonging to a third party and contractual agreements should be made available during inspections/audits.",
+      "context": "Designated personnel should date, approve, and sign any revisions to the procedures (Refer to the Personnel and training section). All personnel and departments involved in pharmacovigilance should know when a procedure is revised and be trained before a revised procedure takes effect. Documentation should show that the procedures have been put into practice.",
+      "fingerprint": "1d5cafd4f0e5dfd0e472b5a8284fb7c90af460b4fb56a4a5f9917bfec84f05ce",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 6,
+      "anchor": "paragraph-29",
+      "statement": "Documentation should show that the procedures have been put into practice.",
+      "context": "When pharmacovigilance activities are contracted to a third party, you must ensure that roles and responsibilities, as well as step-by-step instructions are clearly documented in the respective written procedures or contractual agreements. They should be easy to follow to allow contractors to comply with the applicable regulatory requirements (Refer to the Contractual agreements section). Copies of procedures belonging to a third party and contractual agreements should be made available during inspections/audits.",
+      "fingerprint": "22bcc7e06f405efa10d89077f00001b4be6b07e7e217ddd2e72d38b9617e5f99",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 7,
+      "anchor": "paragraph-31",
+      "statement": "In a planned deviation, the departure should be documented, evaluated and approved before the change is implemented.",
+      "context": "A deviation is a change or departure from the steps and/or instructions outlined in an approved written procedure. These can be planned or unplanned. In an unplanned deviation, the departure is unexpected and could suggest a systematic deficiency which needs to be resolved.",
+      "fingerprint": "ac9191824b37258ab4c1c51aa66874da5e47cb46ad4c8bfb3a93dfdfa591d581",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 8,
+      "anchor": "paragraph-34",
+      "statement": "When there is an unplanned deviation, you should:",
+      "context": "A systematic deficiency is a fundamental inadequacy that exists within the processes or mechanisms of a pharmacovigilance system. It can arise from inadequate planning, design, or oversight of the system. This deficiency impacts the system’s ability to function effectively, consistently, and achieve its intended goal. It is widespread instead of isolated. A widespread incident is one that is part of a series or pattern of similar occurrences. document the deviation in a timely manner",
+      "fingerprint": "9cbf74d6b30c86dff367d37f0a4e291bfe0c2cb461fe13cfc42ab0099baf35d8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 9,
+      "anchor": "paragraph-41",
+      "statement": "Good quality control practices should be in place to detect deviations. You may periodically perform:",
+      "context": "evaluate, as necessary, if the corrective and preventative actions taken addressed the root cause of the deviation",
+      "fingerprint": "2d26b91bdbc1501c2b36cbad0548d971d7b960d3738f65c7eb4179cb8120ede1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 10,
+      "anchor": "paragraph-46",
+      "statement": "Establish a change control system to allow ongoing process optimization and a continuing state of control. The department responsible for the change should document, evaluate the impact, and approve all changes, as well as identify the appropriate effective date. Any significant change that impacts compliance of your pharmacovigilance responsibilities may require re-validation or verification of systems or processes.",
+      "context": "",
+      "fingerprint": "a4c675fa13d4d2a90e9e92ff41b9d0c8a17a27d1179828ec513653f1caf6d762",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 11,
+      "anchor": "paragraph-48",
+      "statement": "You should establish a risk-based business continuity plan, which can be implemented to enable you to continue critical operations during scenarios such as:",
+      "context": "periods of absence from regular business hours",
+      "fingerprint": "53dd82078097ec2acd059fd0d4d2d241f8b43c6c7c9e8264234b6968feeb1e9b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 12,
+      "anchor": "paragraph-59",
+      "statement": "When merging or migrating pharmacovigilance databases, you should consider the following:",
+      "context": "Merging or migrating databases principles on record retention, data integrity, and maintain an audit trail of the migration process",
+      "fingerprint": "74e9e78d417c487c0cacdfd4f0379cd9301a640c715cf25b8da8cd9956382ba5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 13,
+      "anchor": "paragraph-65",
+      "statement": "Audits (previously known as self-inspection) help you monitor your organization’s compliance, including the compliance of third-party vendors that you delegate responsibilities to. Your contractual agreements should outline your right and responsibility to conduct periodic audits on third-party vendors according to your risk-based strategy.",
+      "context": "",
+      "fingerprint": "d1b627c8301d3f09d2b944e676655f0d01ec88f7f26b33bf74e367295e4d311e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 14,
+      "anchor": "paragraph-67",
+      "statement": "The scope of your audit program should cover all departments or third parties that take part in your pharmacovigilance activities, for example, those that:",
+      "context": "receive, handle, document, process, evaluate, and submit adverse drug reactions (ADRs) and unusual failure in efficacy (UFIE) data",
+      "fingerprint": "1595c3fbf5cf53916c7e3bdab6c0622678398924b735dc3e982cc9268b9ad0c9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 15,
+      "anchor": "paragraph-76",
+      "statement": "Your audit program should include:",
+      "context": "a comprehensive written procedure that describes the functions of your audit program and must address all areas of the applicable regulations",
+      "fingerprint": "0b9461a542037174bb3c32b0748682619fb0152256b0fc55dc220ecb76e8b1e8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 16,
+      "anchor": "paragraph-77",
+      "statement": "a comprehensive written procedure that describes the functions of your audit program and must address all areas of the applicable regulations",
+      "context": "Your audit program should include: Note: audit of pharmacovigilance activities internal to the MAH should be conducted by personnel independent from the pharmacovigilance department. However, audits on third-party vendors may be conducted by the pharmacovigilance department.",
+      "fingerprint": "8395628c52f5df8f6f33e66805559c5fc4bc1a34623a1d03da2323f375b41cfe",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 17,
+      "anchor": "paragraph-78",
+      "statement": "Note: audit of pharmacovigilance activities internal to the MAH should be conducted by personnel independent from the pharmacovigilance department. However, audits on third-party vendors may be conducted by the pharmacovigilance department.",
+      "context": "a comprehensive written procedure that describes the functions of your audit program and must address all areas of the applicable regulations the frequency of audits based on a documented risk-based strategy",
+      "fingerprint": "6ed109a5c2bdf388a35c39af3bc1fe59eb666fb63ea52eedc646f65e421bc327",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 18,
+      "anchor": "paragraph-84",
+      "statement": "There should be an assessment to determine if adequate validation has been completed on an electronic system used to capture, process, manage or archive pharmacovigilance activities. Adequacy should be assessed based on the criticality of the system and its intended use. Validation confirms that the system is reliable, credible and will perform as expected. You should document how validation, testing, and re-validation is to be conducted.",
+      "context": "Validation of computerized systems Validation reports should be produced to document the results of the validation tests you performed. The results should clearly indicate that the system can be used as intended and is performing as specified.",
+      "fingerprint": "0b8eeb9df2cf6d18f77176df87a0a91b75500e485993880c6506ecd9335b543c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 19,
+      "anchor": "paragraph-85",
+      "statement": "Validation reports should be produced to document the results of the validation tests you performed. The results should clearly indicate that the system can be used as intended and is performing as specified.",
+      "context": "There should be an assessment to determine if adequate validation has been completed on an electronic system used to capture, process, manage or archive pharmacovigilance activities. Adequacy should be assessed based on the criticality of the system and its intended use. Validation confirms that the system is reliable, credible and will perform as expected. You should document how validation, testing, and re-validation is to be conducted. Modifications or additions made to the electronic system, such as software upgrades or data migration, can affect performance. These can, in turn, affect the quality of the validated applications, and thus the integrity of electronic information. The system’s reliability can also be questioned.",
+      "fingerprint": "601bec2d2c478c497bc41163b2363ffcea3b81f4d80e021150c8e8344ffd9718",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 20,
+      "anchor": "paragraph-87",
+      "statement": "For these reasons, you should assess and approve all changes, using your change control system, to hardware or software used in pharmacovigilance activities. This assessment will also help determine if re-validation is needed and the scope of re-validation.",
+      "context": "Modifications or additions made to the electronic system, such as software upgrades or data migration, can affect performance. These can, in turn, affect the quality of the validated applications, and thus the integrity of electronic information. The system’s reliability can also be questioned. When conducting a risk-assessment regarding the validation of a computerized system, including when there is a change to the system, ask yourself the following questions such as:",
+      "fingerprint": "45ee8e78cd85594677598fe0159e11ce7754db317e3c7ee0f5aa8aaacde0b5ef",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 21,
+      "anchor": "paragraph-101",
+      "statement": "Qualified alternate(s) should be identified to carry out duties when responsible personnel is/are absent.",
+      "context": "handle label update such as the regulatory affairs department You should ensure that employees:",
+      "fingerprint": "e44c365b988de0adae41e375c3e095fb0f535a9cd8264a7128a90ea3ff8592d4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 22,
+      "anchor": "paragraph-102",
+      "statement": "You should ensure that employees:",
+      "context": "Qualified alternate(s) should be identified to carry out duties when responsible personnel is/are absent. receive the level of training that aligns with their title and responsibilities",
+      "fingerprint": "bda29ef2f71b2fcf19b3c4351b337398228fac9c7d39be1f6f6bdde8561aea3c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 23,
+      "anchor": "paragraph-106",
+      "statement": "You should maintain records for in-house and contracted personnel such as:",
+      "context": "have the practical experiences that align with their title and responsibilities",
+      "fingerprint": "9e900e0fb0b5949e25c2393c0614fc088098bbcfba71c67ee84323ce2f1a3e9e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 24,
+      "anchor": "paragraph-114",
+      "statement": "In addition to the above overall considerations, you should identify a person designated to lead and oversee all pharmacovigilance activities to ensure that all requirements are met. You should also designate an alternative person with the required experience to act in the absence of this designated person. This designated person can either be the same individual or a different individual than the qualified healthcare professional.",
+      "context": "Designated person to oversee pharmacovigilance activities Qualified healthcare professional",
+      "fingerprint": "2b3036112e5457db2a86679412a3f00f6847cf3e5506e594e6c9ed8d519d5fa6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 25,
+      "anchor": "paragraph-116",
+      "statement": "The QHCP should be involved in or oversee key pharmacovigilance activities such as:",
+      "context": "The qualified healthcare professional (QHCP) is a medically-qualified person such as a physician, dentist, pharmacist, nurse, coroner, or an individual with appropriate healthcare education and therapeutic expertise. evaluating whether the new information obtained from follow-up efforts is considered clinically or medically significant/relevant that requires expedited reporting",
+      "fingerprint": "61a12a8c036b23c8631360df77401fe9b46824da2c74ef593f3521b1a20b1d8b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 26,
+      "anchor": "paragraph-123",
+      "statement": "There may be delegation of certain operational activities. The risk-based strategy and process on delegation of these key activities should be justified and documented to enable meaningful collection and assessment of safety information and compliance.",
+      "context": "determining if the foreign action is related to a serious risk of injury to human health and relevant to the safety of the drug in Canada",
+      "fingerprint": "127965658bbedd564d37d16a0dda5545c53b2a5a20cdda7f16e58d8c4c7173cf",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 27,
+      "anchor": "paragraph-125",
+      "statement": "You may delegate a pharmacovigilance activity to a third party. However, if you do, you continue to be ultimately responsible for meeting all regulatory requirements and principles of GVP described in this guidance document. You must ensure processes are in place to control outsourced activities.",
+      "context": "Delegation of pharmacovigilance activities You should have a written agreement that is signed and dated between your organization and the third party.",
+      "fingerprint": "0cefa010b3ba94069b552e0d48270e34088231aec2db1af6038e1126f99b842b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 28,
+      "anchor": "paragraph-126",
+      "statement": "You should have a written agreement that is signed and dated between your organization and the third party.",
+      "context": "You may delegate a pharmacovigilance activity to a third party. However, if you do, you continue to be ultimately responsible for meeting all regulatory requirements and principles of GVP described in this guidance document. You must ensure processes are in place to control outsourced activities. At minimum, a contractual agreement should exist between the MAH and the following parties:",
+      "fingerprint": "dfd483bb39de018f3d268f3d86a92481310bd02d6ad4aa73650f81cd72bd2d13",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 29,
+      "anchor": "paragraph-127",
+      "statement": "At minimum, a contractual agreement should exist between the MAH and the following parties:",
+      "context": "You should have a written agreement that is signed and dated between your organization and the third party. unless processes are already outlined in corporate procedures",
+      "fingerprint": "7dae28835193a7863253b371217ebaff0d22b4658a1dd3be92ce8b1fd1fb1f40",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 30,
+      "anchor": "paragraph-137",
+      "statement": "Your contractual agreement or its annex, where applicable, should include the following, at minimum:",
+      "context": "Elements of a contractual agreement on pharmacovigilance activities roles and responsibilities of each party for each specific delegated activity",
+      "fingerprint": "60f56c94aabdcac743846c7f4a44aa217a7a13090beddb9aad2ca170f51baaab",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 31,
+      "anchor": "paragraph-149",
+      "statement": "Your contractual agreement or its annex should also consider the following, where relevant, according to the risk of impact on your pharmacovigilance system:",
+      "context": "contact information of both parties a reconciliation process for pharmacovigilance data, as applicable, outlining the methodology and frequency, to ensure that any missed communication about ADR reports or signals are addressed in a timely manner",
+      "fingerprint": "ce57aa8aa9c200d75f2573d26c19a258dbb9451704593f1a11782bf7c5cd274b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 32,
+      "anchor": "paragraph-155",
+      "statement": "The agreement should be reviewed periodically to reflect current requirements and practices.",
+      "context": "communication of any potential impacts on pharmacovigilance activities between you and the third party",
+      "fingerprint": "3fbdd2991913677c2ab3ee8d1e86e4ec1dca49c51b28d9424410aa8ff3c7645f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 33,
+      "anchor": "paragraph-156",
+      "statement": "Each party (licensor and licensee) is responsible for pharmacovigilance activities on its own DIN(s). When your drug is a cross-licensed product, your contractual agreement should ensure that proper communication takes place to enable you and your cross-licensed partner (between the licensor and licensee) to individually fulfill your responsibilities. For example:",
+      "context": "the licensor and licensee should take proactive efforts to update the product label or monograph as necessary",
+      "fingerprint": "0c9aaebedc266aa74047620b106f0cd3c334cf77a3d6ad95971dbbe1288bb726",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 34,
+      "anchor": "paragraph-157",
+      "statement": "the licensor and licensee should take proactive efforts to update the product label or monograph as necessary",
+      "context": "Each party (licensor and licensee) is responsible for pharmacovigilance activities on its own DIN(s). When your drug is a cross-licensed product, your contractual agreement should ensure that proper communication takes place to enable you and your cross-licensed partner (between the licensor and licensee) to individually fulfill your responsibilities. For example: the licensor should take proactive efforts to communicate with the licensee about any safety signals and considerations on actions for safety reasons",
+      "fingerprint": "71a469e9d7c223be4b6a1d60be24435383c41d8800ecd0e54e3d7744eeb597ec",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 35,
+      "anchor": "paragraph-158",
+      "statement": "the licensor should take proactive efforts to communicate with the licensee about any safety signals and considerations on actions for safety reasons",
+      "context": "the licensor and licensee should take proactive efforts to update the product label or monograph as necessary the licensee should take proactive efforts to communicate with the licensor about any safety signals and considerations on actions for safety reasons",
+      "fingerprint": "600c652d2554dcd8636562bbdb2fdbadd6d7e7136f876edd8745ebaff332ccbc",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 36,
+      "anchor": "paragraph-159",
+      "statement": "the licensee should take proactive efforts to communicate with the licensor about any safety signals and considerations on actions for safety reasons",
+      "context": "the licensor should take proactive efforts to communicate with the licensee about any safety signals and considerations on actions for safety reasons",
+      "fingerprint": "6fedd675b1e270ccc558ae80d0e3f43c16025cc5a9abfb2bfc14a07519e323d8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 37,
+      "anchor": "paragraph-161",
+      "statement": "Compliance with requirements set out in the regulations and the GVP principles in this guidance document must continue during transition periods such as a merger, acquisition, or migration of pharmacovigilance databases. A contractual agreement should be in place to outline roles and responsibilities to ensure compliance. You must minimize any impact on ongoing pharmacovigilance activities.",
+      "context": "Please refer to the Business continuity plan, Validation of computerized systems, and Maintenance of records sections for further information regarding expectations during transition periods.",
+      "fingerprint": "b08b6247e874983d0a62cc705e81515af8f3d26048145e96fd0fa99ad824e96a",
+      "review_status": "pending"
+    }
+  ],
+  "retrieved_at": "2026-11-01T17:22:15.823Z"
+}
