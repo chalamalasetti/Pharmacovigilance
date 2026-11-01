@@ -24,11 +24,11 @@ export async function archiveOriginal(bytes,kind,doc,cfg,{fetchImpl=fetch}={}){
  return archive_path;
 }
 export async function fetchOfficialDocument(d,{fetchDocument=safeFetch}={}){
-  const fetchOpts={binary:true,tries:1,timeoutMs:10000,maxBytes:8*1024*1024,validateUrl:url=>officialUrl(url,d.agency)};
+  const fetchOpts={headers:{accept:"application/pdf, text/html;q=0.95, application/xhtml+xml;q=0.9, */*;q=0.5"},binary:true,tries:1,timeoutMs:10000,maxBytes:8*1024*1024,validateUrl:url=>officialUrl(url,d.agency)};
   officialUrl(d.url,d.agency);let res=await fetchDocument(d.url,fetchOpts);officialUrl(res.url,d.agency);
   if(/html/i.test(res.contentType)&&/<title[^>]*>\s*(?:Access Denied|Just a moment|Request Rejected|Attention Required)|verify that you(?:.re| are) not a robot/i.test(res.body.toString('utf8')))throw Error('Source unavailable');
   if(/html/i.test(res.contentType)){const download=documentDownload(res.body.toString('utf8'),res.url,d);if(download)res=await fetchDocument(download,fetchOpts);else if(/\/search-fda-guidance-documents\//.test(res.url))throw Error('Unsupported document landing page; select its guidance PDF URL');}
-  officialUrl(res.url,d.agency);const pdf=res.body.subarray(0,5).toString()==='%PDF-';
+  officialUrl(res.url,d.agency);if(!res.body.length)throw Error('Empty source response');const pdf=res.body.subarray(0,5).toString()==='%PDF-';
   if(!pdf&&!/html|xhtml/i.test(res.contentType))throw Error('Unsupported document format');
   return res;
 }

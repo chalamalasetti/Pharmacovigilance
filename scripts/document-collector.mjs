@@ -13,7 +13,7 @@ export async function collectPublicDocuments({probe=false}={}){
  const response=await fetch(cfg.supabaseUrl+'/rest/v1/pv_documents?status=eq.active&select=*&order=id&limit=101',{headers:{apikey:cfg.supabaseKey},signal:AbortSignal.timeout(15000)});if(!response.ok)throw Error('Source register could not load');const docs=await response.json();if(docs.length>100)throw Error('Split the schedule before exceeding 100 sources');
  let ok=0,failed=0;for(const d of docs){
   let source;try{source=await fetchOfficialDocument(d);if(source.body.length>3*1024*1024)throw Error('Document exceeds relay size limit');}
-  catch(e){failed++;console.log(`${d.id}: source unavailable (${e.status??e.code??'format/size'}); prior copies preserved`);if(!probe)await deliver({id:d.id,config:d.updated_at,failure:'source_unavailable'}).catch(()=>{});continue;}
+  catch(e){failed++;console.log(`${d.id}: source unavailable (${e.status??e.code??e.message.slice(0,120)}); prior copies preserved`);if(!probe)await deliver({id:d.id,config:d.updated_at,failure:'source_unavailable'}).catch(()=>{});continue;}
   if(probe){const kind=source.body.subarray(0,5).toString()==='%PDF-'?'pdf':'html';const parsed=await extractIsolated(source.body,kind).catch(()=>({candidates:[]}));console.log(`${d.id}: source reachable (${source.body.length} bytes), ${parsed.candidates.length} normative candidates`);ok++;continue;}
   try{const result=await deliver({id:d.id,config:d.updated_at,url:source.url,content_type:source.body.subarray(0,5).toString()==='%PDF-'?'application/pdf':'text/html',bytes_base64:source.body.toString('base64')});ok++;console.log(`${d.id}: ${result.unchanged?'unchanged':result.status} · ${result.candidates} candidates`);}catch(e){failed++;console.log(`${d.id}: ${e.message}`);}
  }
