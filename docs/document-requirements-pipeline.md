@@ -40,3 +40,19 @@ Guidance landing pages can resolve an unambiguous official PDF link; GVP Module 
 ## Verification
 
 `test/documents.test.mjs` exercises real PDF worker parsing, HTML boundaries, bounded extraction, qualifiers, matching/omission rules, official URL rules, collection idempotency/failures, archive integrity, candidate handoff and impact-draft readiness. `test/document-pipeline.sql` uses rolled-back synthetic fixtures to verify service/admin separation, source lineage, candidate promotion without approval, private/team isolation, draft concurrency, designated reviewer rules and closure gating. `test/browser/documents.smoke.cjs` covers the complete public-document-to-company-closure journey on desktop/mobile plus editorial concurrency, source registration and a capture failure. Existing browser journeys remain in CI; baseline country/agency/lifecycle filters are also verified.
+
+
+## Public key-information copy in GitHub
+
+The hourly document workflow also extracts key information on the GitHub runner during downloading, without a GPT API or extra paid service. It publishes JSON to the **`regulatory-document-cache`** branch of this repository, separately from application code. `index.json` lists the latest file per source, last check/success, extraction status, candidate count and preceding version. Each immutable `documents/<source-id>/<digest>.json` contains:
+
+- Allowlisted source-register title, country, agency, edition, topic, document type, lifecycle, legal basis, applicability and dates. These are labelled as register metadata requiring verification; no publication/effective date is inferred from download time.
+- Official source URL, SHA-256 of the downloaded original, parser/schema version and retrieval time.
+- English normative requirement candidates with statement, neighboring context, page/section anchor, text fingerprint and pending-review status.
+- Explicit partial, failed or zero-candidate status and parsing limitations. These are extraction candidates, not approved baseline requirements or company-specific impact decisions.
+
+The content identity covers source bytes, metadata and extraction outcome. Repeated unchanged checks retain the same version path. The publisher preserves earlier files and commits each batch atomically without force. Unavailable sources keep their previous latest extraction and last-success time, with an explicit failure status. A failure in database delivery does not prevent publishing already collected public snapshots. The workflow remains visibly failed if any source or delivery fails.
+
+Only public official-document derivatives are exported. No database dumps, company profiles, private assessments, reviewer identities, login emails, credentials or original PDF/HTML files are exported. Contacts and narrative-like individual fields continue to be excluded from candidates. Official originals remain in the existing document archive. The snapshot branch disables Vercel deployments through both branch settings and the existing ignore-build fallback; the FDA hourly deploy hook and SEO are unchanged.
+
+For a read-only database collection that writes only local public JSON, run `node scripts/document-collector.mjs --snapshot-only --snapshot-dir=/tmp/pv-document-snapshots`. `--probe` remains read-only and never publishes. The scheduled job publishes through its scoped GitHub token; it does not require a new secret. Historical JSON remains in GitHub when an agency is later deactivated: consumers must also check the current source register, timestamps and status. Extraction files do not mirror later editorial approval or rejection in the application.
