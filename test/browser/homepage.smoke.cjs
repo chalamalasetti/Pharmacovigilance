@@ -144,7 +144,7 @@ const { chromium } = require("playwright"),
     .getByRole("button", { name: "Remove filter: United States", exact: true })
     .click();
   await page.getByLabel("Topic", { exact: true }).selectOption("guideline");
-  await page.getByText("News coverage", { exact: true }).first().waitFor();
+  await page.locator("#list .badge-news").first().waitFor();
   assert.equal(await page.locator("#list .card").count(), 1);
   await page
     .getByRole("button", { name: "Reset filters", exact: true })
