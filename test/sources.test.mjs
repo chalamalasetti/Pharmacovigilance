@@ -121,6 +121,7 @@ test("a host name that resolves to a private address is refused at connect time"
 let hits = 0;
 const server = http.createServer((req, res) => {
   const rss = '<?xml version="1.0"?><rss><channel><item><title>Drug safety communication on examplazole</title><link>https://reg.example/a</link><pubDate>Wed, 28 Oct 2026 10:00:00 GMT</pubDate></item><item><title>Bakery opens</title><link>https://reg.example/b</link></item></channel></rss>';
+  if (req.url === "/binary") return res.writeHead(200,{"content-type":"application/pdf"}).end(Buffer.from([0x25,0x50,0x44,0x46,0x2d,0xff,0x00,0xe9]));
   if (req.url === "/feed") return res.writeHead(200, { "content-type": "application/rss+xml" }).end(rss);
   if (req.url === "/gz") return res.writeHead(200, { "content-type": "application/rss+xml", "content-encoding": "gzip" }).end(zlib.gzipSync(rss));
   if (req.url === "/to-feed") return res.writeHead(301, { location: "/feed" }).end();
@@ -141,6 +142,7 @@ test("safe fetch follows safe redirects, unpacks gzip, retries temporary failure
   const r = await safeFetch(at("/to-feed"), local);
   assert.equal(r.status, 200);
   assert.equal(r.redirects.length, 1);
+  assert.deepEqual((await safeFetch(at("/binary"),{...local,binary:true})).body,Buffer.from([0x25,0x50,0x44,0x46,0x2d,0xff,0x00,0xe9]));
   const checked=[];await safeFetch(at("/to-feed"),{...local,validateUrl:u=>checked.push(u)});assert.equal(checked.length,2);
   await assert.rejects(safeFetch(at("/to-feed"),{...local,validateUrl:u=>{if(u!==at("/to-feed"))throw new BlockedError("Agency redirect refused");}}),/Agency redirect refused/);
   assert.match((await safeFetch(at("/gz"), local)).body, /examplazole/);

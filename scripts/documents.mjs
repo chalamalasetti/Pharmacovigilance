@@ -24,7 +24,7 @@ export async function archiveOriginal(bytes,kind,doc,cfg,{fetchImpl=fetch}={}){
  return archive_path;
 }
 export async function fetchOfficialDocument(d,{fetchDocument=safeFetch}={}){
-  const fetchOpts={tries:1,timeoutMs:10000,maxBytes:8*1024*1024,validateUrl:url=>officialUrl(url,d.agency)};
+  const fetchOpts={binary:true,tries:1,timeoutMs:10000,maxBytes:8*1024*1024,validateUrl:url=>officialUrl(url,d.agency)};
   officialUrl(d.url,d.agency);let res=await fetchDocument(d.url,fetchOpts);officialUrl(res.url,d.agency);
   if(/html/i.test(res.contentType)&&/<title[^>]*>\s*(?:Access Denied|Just a moment|Request Rejected|Attention Required)|verify that you(?:.re| are) not a robot/i.test(res.body.toString('utf8')))throw Error('Source unavailable');
   if(/html/i.test(res.contentType)){const download=documentDownload(res.body.toString('utf8'),res.url,d);if(download)res=await fetchDocument(download,fetchOpts);else if(/\/search-fda-guidance-documents\//.test(res.url))throw Error('Unsupported document landing page; select its guidance PDF URL');}
@@ -57,10 +57,11 @@ export async function captureDocument(id,{cfg=cloudConfig(),request=dbRequest,fe
   await request(cfg,'rpc/record_pv_document_failure',{method:'POST',body:{p_id:id,p_note:note}}).catch(()=>{});throw Object.assign(Error(note),{stage,code:e.status??e.code??'operation'});
  }
 }
-export async function collectDocuments({cfg=cloudConfig(),request=dbRequest,capture=captureDocument}={}){
+export async function collectDocuments({cfg=cloudConfig(),request=dbRequest,capture=captureDocument,bootstrap=false}={}){
  if(!cfg.url||!cfg.serviceKey){console.log('documents: collector skipped (no server database configuration)');return {skipped:true};}
  const docs=await request(cfg,'pv_documents?status=eq.active&select=id&order=id&limit=101');if(docs.length>100)throw Error('Collector source limit reached; split the source schedule before adding more');
- let ok=0,failed=0;const queue=[...docs];await Promise.all([0,1].map(async()=>{while(queue.length){const d=queue.shift();try{await capture(d.id,{cfg,request});ok++;}catch{failed++;}}}));
+ let skip=new Set();if(bootstrap){const captured=await request(cfg,'pv_document_versions?content_kind=neq.metadata&select=document_id&limit=10001');if(captured.length>10000)throw Error('Bootstrap history limit reached');skip=new Set(captured.map(v=>v.document_id));}
+ let ok=0,failed=0;const queue=docs.filter(d=>!skip.has(d.id));await Promise.all([0,1].map(async()=>{while(queue.length){const d=queue.shift();try{await capture(d.id,{cfg,request});ok++;}catch{failed++;}}}));
  console.log(`documents: ${ok} sources checked, ${failed} unavailable; prior captures preserved`);return {ok,failed};
 }
-if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)collectDocuments().catch(()=>{console.error('documents: collector unavailable; previous library preserved');process.exitCode=0;});
+if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)collectDocuments({bootstrap:process.argv.includes('--bootstrap')}).catch(()=>{console.error('documents: collector unavailable; previous library preserved');process.exitCode=0;});

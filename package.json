@@ -5,7 +5,7 @@
   "description": "Pharmacovigilance and drug regulatory updates from every major regulator, in one place.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/aggregate.mjs && node scripts/seo.mjs",
+    "build": "node scripts/aggregate.mjs && node scripts/documents.mjs --bootstrap && node scripts/seo.mjs",
     "seo": "node scripts/seo.mjs --write",
     "aggregate": "node scripts/aggregate.mjs",
     "research": "node scripts/research.mjs",
