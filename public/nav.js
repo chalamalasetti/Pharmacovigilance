@@ -42,7 +42,6 @@ const readSite = () => {
 };
 arrangeNav(readSite());
 watchAdmin({onHide:()=>{adminAllowed=false;adminLink.hidden=true;arrangeNav(latestSite);},onAdmin:()=>{adminAllowed=true;adminLink.hidden=false;arrangeNav(latestSite);}});
-refreshAdminLink();
 const siteP = fetch("data/site.json", { cache: "no-cache" })
   .then((r) => (r.ok ? r.json() : null))
   .catch(() => null)
