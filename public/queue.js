@@ -53,6 +53,7 @@ function queueCard(t) {
     u.companyContext ? el("p",{class:"whyhere"},`${u.companyContext.companyName} · ${(u.companyContext.markets??[]).join(", ")} · ${u.companyContext.evidenceKind === "paper" ? "Research assessment" : "Portfolio assessment"}`) : null,
     line,
     el("div", { class: "src" }, el("span", {}, u.source ?? ""), when ? el("time", { datetime: u.published, title: when.toLocaleString() }, ago(when)) : null),
+    u.companyContext ? el("a", {class:"act",href:`action-center.html?scope=team&item=${encodeURIComponent(t.update_id)}`}, "Manage in Action Center") : null,
     toggle,
     box,
   );

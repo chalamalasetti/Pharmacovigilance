@@ -209,3 +209,18 @@ assessment decisions are not overwritten; snapshots preserve the confirmed scope
 product evidence, match explanation and portfolio revision. Research is a review
 candidate, not a regulatory obligation. Team assignment remains email-only. No new
 database table or schema migration is needed.
+
+
+## My Company Action Center
+
+Open `action-center.html` or **Action Center** in the shared menu. Send a scoped update or research paper from My Company Briefing, then use **Continue in Action Center**. Existing assessment handoffs are offered as candidates; **Start case** explicitly opens one case per source key and visibility scope. Repeated starts return the existing case. Legacy assessment/assignment notes remain in the original queue; they are not treated as approved applicability decisions. The Action Center is the authoritative workflow for its cases.
+
+Choose **This browser only**, **My private account**, or a specific team. Browser-only cases use a separate local key (`pv-company-action-cases-v1`) and are never automatically synced or published. Account cases and team cases are separate records; no implicit personal-to-team migration occurs. The dashboard shows awaiting assessment, actions due, overdue, awaiting verification and closed, filtered by company and monitored market. Date-only deadlines are compared against the browser's local calendar date. Counts cover loaded cases (up to 10,000 per scope).
+
+Applicability requires a reason. Relevant cases require an action type, email-only owner, due date and instructions. Uncertain cases stay in assessment. Not-relevant dispositions still require evidence and verification before closure. Completion records what changed and supporting HTTPS document links. Uploading files is intentionally unsupported; evidence access remains governed by its document provider, and expiring/signed links should not be stored. No emails or notifications are sent automatically.
+
+Team action owners and reviewers must be current team members. Only the assigned owner can submit an action's completion, and only a designated different teammate can approve or return it. Personal closure is explicitly self-reviewed. Rework and reopening require reasons; every change retains an event in case history. Cloud state transitions are server-stamped, serialized with row locks and expected-version checks; direct client writes are forbidden. Browser-only records are editable by anyone with that browser profile and are not a tamper-resistant audit record. This feature does not claim electronic-signature, Part 11, or regulated-system validation.
+
+Apply `supabase/migrations/20261031232110_company_action_center.sql` for an existing database. The new `company_cases` table has authenticated SELECT-only grants and RLS for the personal owner or current team members. The two authenticated workflow RPCs check the same authorization explicitly. Internal validation helpers have no API-role execution grants. Case data is never written to public build files. Administrative database access still applies; this is not end-to-end encryption. Free-text identifier screening is a guard, not a guarantee of detecting arbitrary personal details. Organizational information only; the only requested human identity is email.
+
+Validation: `test/action-center.test.mjs` tests state gates, expiry-free date comparison, dashboard scope and safe inputs; `test/browser/action-center.smoke.cjs` exercises the full browser workflow; `test/company-action-center.sql` checks RPC authorization, isolation and workflow gates in a transaction and rolls back all synthetic fixtures. The browser smoke test uses synthetic local fixtures and makes no production writes.

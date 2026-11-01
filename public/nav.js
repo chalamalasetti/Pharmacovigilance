@@ -9,6 +9,11 @@ import { ago, dataHealth } from "./lib.js";
 
 const nav = document.getElementById("site-nav");
 const btn = document.querySelector(".menu-btn");
+const actionLink = document.createElement("a");
+actionLink.href = "action-center.html";
+actionLink.textContent = "Action Center";
+actionLink.dataset.nav = "action-center";
+if (nav) nav.insertBefore(actionLink, nav.querySelector('[data-nav="team"]') ?? nav.querySelector('.signin'));
 let adminAllowed = false;
 // Hide until the server confirms this account's role. Never trust cached menu settings.
 const adminLink = document.createElement("a");

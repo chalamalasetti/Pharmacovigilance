@@ -114,7 +114,7 @@ function itemCard(item) {
     item.confirmedProducts.length>8?el('p',{class:'hint'},`And ${item.confirmedProducts.length-8} additional confirmed product records; the full scope is saved with the assessment.`):null,
     item.scopeOutside?el('p',{class:'warn'},'Outside your selected markets. Monitoring relevance only.'):null,
     isPaper?el('p',{class:'hint'},`${item.peerReview==='preprint'?'Preprint—not peer reviewed. ':''}Research does not establish causality or a regulatory obligation.`):null,
-    button,feedback,el('div',{class:'company-assessment'}));
+    button,feedback,el('a',{class:'act',href:`action-center.html?${new URLSearchParams({item:key,...(cloud.team.id?{scope:'team'}:{})})}`},'Continue in Action Center'),el('div',{class:'company-assessment'}));
 }
 function renderBriefing() {
   const valid=portfolioState(portfolio(),company)==='confirmed';
