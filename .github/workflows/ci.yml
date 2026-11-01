@@ -47,3 +47,4 @@ jobs:
           node test/browser/company-briefing.smoke.cjs
           node test/browser/action-center.smoke.cjs
           node test/browser/navigation.smoke.cjs
+          node test/browser/requirements.smoke.cjs

@@ -30,7 +30,7 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
  await page.getByLabel('Move Action Center up',{exact:true}).click();assert.equal(await page.getByLabel('Move Action Center up',{exact:true}).evaluate(n=>n===document.activeElement),true);
  await page.getByLabel('Move group Knowledge up',{exact:true}).click();
  await page.getByRole('button',{name:'Save menu',exact:true}).click();
- const reordered=await page.evaluate(()=>window.savedMenus[1]);assert.equal(reordered.groups[2].id,'resources');assert.equal(reordered.groups[2].items[3].id,'action-center');
+ const reordered=await page.evaluate(()=>window.savedMenus[1]);assert.equal(reordered.groups[2].id,'resources');assert.equal(reordered.groups[2].items.at(-2).id,'action-center');
  await page.getByLabel('Label for Action Center',{exact:true}).fill('Changed draft');await page.evaluate(()=>window.failSave=true);await page.getByRole('button',{name:'Save menu',exact:true}).click();await page.getByText('Synthetic conflict: reload before saving',{exact:true}).waitFor();assert.equal(await page.getByLabel('Label for Action Center',{exact:true}).inputValue(),'Changed draft');
  await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:'/tmp/pv-navigation-studio-desktop.png',fullPage:true});
  await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await page.screenshot({path:'/tmp/pv-navigation-studio-mobile.png',fullPage:true});
