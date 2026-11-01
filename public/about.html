@@ -30,7 +30,7 @@
   <a class="skip" href="#main">Skip to content</a>
   <header class="top">
     <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>PV Info</span></a>
-    <p class="tagline">Pharmacovigilance information for safety and systems teams</p>
+    <p class="tagline">Pharmacovigilance and regulatory updates from every major regulator</p>
     <button type="button" class="menu-btn" aria-controls="site-nav" aria-expanded="false">Menu</button>
     <nav class="toplinks" id="site-nav" aria-label="Main">
       <a href="./">Updates</a>
@@ -49,28 +49,25 @@
   <main class="page prose">
     <h1>About PV Info</h1>
     <p>PV Info gathers drug safety and regulatory news for pharmacovigilance, drug safety and regulatory affairs teams into one page you can filter by region, country and topic.</p>
-    <h2 id="how-it-works">Where the updates come from</h2>
+    <h2>Where the updates come from</h2>
     <ul>
-      <li><strong>Regulator feeds</strong>, marked <em>Regulator feed</em>: configured official feeds such as FDA safety alerts, EMA news, MHRA updates, Health Canada recalls and WHO news. The <a href="coverage.html">source list</a> identifies currently configured coverage. Sources can be paused or unavailable; the agency directory does not guarantee a collected feed for every regulator.</li>
+      <li><strong>Regulator feeds</strong>, marked <em>Official</em>: FDA (MedWatch safety alerts, drug and biologics updates, press releases, recalls), EMA news, MHRA Drug Safety Update and alerts, Health Canada recalls and safety alerts, TGA safety alerts and WHO news.</li>
       <li><strong>News searches</strong> for every other agency in the <a href="agencies.html">directory</a> (PMDA, CDSCO, NMPA, MFDS, ANVISA, Swissmedic, SAHPRA, SFDA and more), and for PV topics such as safety signals, boxed warnings, PSURs, GVP, ICH E2 and nitrosamines. These are kept only when they mention medicines, safety or regulation.</li>
     </ul>
     <p>The full list, with what each source covers, is on <a href="coverage.html">Sources we cover</a>. Admins manage it in the app, so a moved feed or a new source is picked up without a code change.</p>
-    <p>Collection and site refresh are scheduled hourly. Scheduling, publishing and source availability can delay new items; an hourly schedule does not mean every agency publishes each hour. Updates stay in the main feed for 60 days. If a source can't be reached, its earlier updates stay on the site. Each one is placed in a country (official feeds by their regulator, news by the agencies and countries it names) and in a topic by plain keyword rules: safety alerts and signals, recalls and quality, label changes, guidelines, regulatory changes, policy, inspections and enforcement, approvals, or general industry news.</p>
+    <p>Updates are refreshed every hour and kept for 60 days. If a source can't be reached, its earlier updates stay on the site. Each one is placed in a country (official feeds by their regulator, news by the agencies and countries it names) and in a topic by plain keyword rules: safety alerts and signals, recalls and quality, label changes, guidelines, regulatory changes, policy, inspections and enforcement, approvals, or general industry news.</p>
     <h2>Ask PV Info and the PV Globe</h2>
     <p>The chat bubble in the corner answers questions such as “FDA safety alerts this week”, “PMDA label changes” or “nitrosamine recalls” with the matching updates, each linked to its source. It searches this site's updates only and is not an AI, so it never invents an answer.</p>
     <p>The <a href="globe.html">PV Globe</a> is a spinning 3D map of the same updates: countries glow by how many updates they have, red pulses mark a safety alert or recall in the last 7 days, and the EU and international bodies (WHO, ICH, CIOMS, UMC) have markers of their own. Tap a country to see its latest updates.</p>
     <h2>My PV Briefing and impact cards</h2>
-    <p><a href="briefing.html">My PV Briefing</a> is a short daily view built from your role, countries, topics and watchlist. Every update opens into an impact card: the available source excerpt, who may be affected, potential business and technical impact, the dates the source states (publication, effective date, consultation deadline, transition period), and the evidence behind it. You can save, follow, assess, assign or dismiss an update with a reason.</p>
+    <p><a href="briefing.html">My PV Briefing</a> is a short daily view built from your role, countries, topics and watchlist. Every update opens into an impact card: what changed (quoted from the source), who may be affected, potential business and technical impact, the dates the source states (publication, effective date, consultation deadline, transition period), and the evidence behind it. You can save, follow, assess, assign or dismiss an update with a reason.</p>
     <p>The briefing has views for case processing and operations, safety scientists and physicians, QPPV and compliance, PV systems and configuration, and PV leaders (a weekly summary with pending assessments and coverage gaps). Switch views at any time, rename them under Groups, or add groups of your own.</p>
-    <p>Impact cards are produced by keyword rules, not AI. Each potential implication shows the words that triggered it and is a prompt for review. It is PV Info’s interpretation and has not been approved by the regulator. Source excerpts retain the source’s wording when supplied; headline-only items are labeled, and a publication date is left unknown if the feed does not supply one. Your profile and actions are stored in this browser; use Export to move them elsewhere, or sign in to keep them on every device.</p>
+    <p>Impact cards are produced by keyword rules, not AI. Each “potential” implication shows the words that triggered it and is a prompt to check, not a conclusion. Your profile and actions are stored in this browser; use Export to move them elsewhere, or sign in to keep them on every device.</p>
     <h2>Accounts, teams and the archive</h2>
     <p><a href="account.html">Sign in</a> with your email (we send a link; there is no password) and your briefing profile, groups and actions sync across your devices. Create a team and invite colleagues by link to share one review queue: assessments, assignments and dismissals from any impact card appear on the <a href="team.html">Team</a> page for everyone in the team, with an activity log of who changed what and when.</p>
     <p>The <a href="archive.html">Archive</a> keeps every update PV Info has collected, long after it leaves the 60-day list. Search it by words, country, topic and dates.</p>
     <h2>Follow updates elsewhere</h2>
     <p>Subscribe to <a href="feed.xml">the RSS feed</a> in Outlook, Teams, Slack or any feed reader. Any filtered view can be bookmarked or shared: the filters are part of the address.</p>
-    <h2 id="feedback">Report a missing or incorrect update</h2>
-    <p>Use <em>Suggest a correction</em> on an update card to open a prefilled <a href="https://github.com/chalamalasetti/Pharmacovigilance/issues/new" target="_blank" rel="noopener noreferrer">GitHub feedback draft</a>, or open a new issue for a missing publication. Include the original public source link and explain the missing item, incorrect tag, date, excerpt or link.</p>
-    <p>GitHub feedback is public and may require a GitHub account. PV Info does not ask for your name, email or other personal details in this flow. Include public publication information only; keep patient information and private company assessments out of the report. An editor must verify a report against the original source before changing the app.</p>
     <h2>Please note</h2>
     <p>PV Info is a reading aid, not a regulatory record. Topic and country tags are automatic and can be wrong, and some regulators publish only in their own language or without a feed. Always confirm details with the official source before acting.</p>
   </main>
