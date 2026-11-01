@@ -6,14 +6,12 @@
 // refreshed.
 
 import { ago, dataHealth } from "./lib.js";
+import { renderNavigation, closeGroups } from "./navigation-view.js";
 
 const nav = document.getElementById("site-nav");
 const btn = document.querySelector(".menu-btn");
-const actionLink = document.createElement("a");
-actionLink.href = "action-center.html";
-actionLink.textContent = "Action Center";
-actionLink.dataset.nav = "action-center";
-if (nav) nav.insertBefore(actionLink, nav.querySelector('[data-nav="team"]') ?? nav.querySelector('.signin'));
+const accountLink = nav?.querySelector('[data-nav="account"]');
+let latestSite = null;
 let adminAllowed = false;
 // Hide until the server confirms this account's role. Never trust cached menu settings.
 const adminLink = document.createElement("a");
@@ -31,32 +29,19 @@ async function refreshAdminLink() {
     adminAllowed = await isAdmin() === true;
   } catch { /* Keep admin navigation hidden if authorization cannot be checked. */ }
   adminLink.hidden = !adminAllowed;
+  arrangeNav(latestSite);
 }
-refreshAdminLink();
 
 // "/briefing", "/briefing.html" and "/" all resolve; paper and review pages belong to Research.
 const page = (location.pathname.split("/").pop() || "index").replace(/\.html$/, "");
-const current = page === "paper" || page === "research-admin" ? "research" : ["company", "company-briefing"].includes(page) ? "companies" : page.startsWith("admin") ? "admin" : page;
-const targetOf = (a) => (a.getAttribute("href") === "./" ? "index" : a.getAttribute("href")).replace(/\.html$/, "");
-for (const a of nav?.querySelectorAll("a") ?? []) {
-  if (targetOf(a) === current) a.setAttribute("aria-current", "page");
-  else a.removeAttribute("aria-current");
-}
+const current = page === "paper" || page === "research-admin" ? "research" : page === "company" ? "companies" : page.startsWith("admin") ? "admin" : page;
 
 // Menu order and hidden links. The last copy is kept in this browser, so the menu is
 // arranged at once on the next page, and refreshed from the site in the background.
 const SITE_KEY = "pv-site";
 export function arrangeNav(site, links = nav) {
-  if (!links || !site) return;
-  const all = [...links.querySelectorAll("a")];
-  const byTarget = new Map(all.map((a) => [targetOf(a), a]));
-  const signin = links.querySelector(".signin");
-  for (const t of site.navOrder ?? []) {
-    const a = byTarget.get(t);
-    if (a && a !== signin) links.insertBefore(a, signin);
-  }
-  const hide = new Set(site.hiddenNav ?? []);
-  for (const a of all) a.hidden = a.hasAttribute("data-admin-only") ? !adminAllowed : hide.has(targetOf(a)) && a !== signin;
+  latestSite = site;
+  renderNavigation(links,site,{current,account:accountLink,admin:adminLink,adminAllowed});
 }
 const readSite = () => {
   try {
@@ -66,6 +51,7 @@ const readSite = () => {
   }
 };
 arrangeNav(readSite());
+refreshAdminLink();
 const siteP = fetch("data/site.json", { cache: "no-cache" })
   .then((r) => (r.ok ? r.json() : null))
   .catch(() => null)
@@ -85,12 +71,14 @@ function setOpen(open) {
 
 btn?.addEventListener("click", () => setOpen(!document.body.classList.contains("menu-open")));
 document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeGroups(nav,true);
   if (e.key === "Escape" && document.body.classList.contains("menu-open")) {
     setOpen(false);
     btn?.focus();
   }
 });
 document.addEventListener("click", (e) => {
+  if (!nav?.contains(e.target) || !e.target.closest(".nav-group")) closeGroups(nav);
   if (document.body.classList.contains("menu-open") && !e.target.closest(".top")) setOpen(false);
 });
 

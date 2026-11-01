@@ -10,6 +10,7 @@
 
 import { cloudConfig } from "./cloud.mjs";
 import { normName } from "./registry.mjs";
+import { PAGES, normalizeNavigation } from "../public/navigation.js";
 
 export const SITE_URL = (process.env.SITE_URL || "https://pharmacovigilance-info.vercel.app").replace(/\/$/, "");
 
@@ -153,7 +154,7 @@ export function applyOverlay(manifest, overlay) {
 
 // The menu's pages ("index" is Updates), in their default order. Admins may reorder all
 // of them and hide any but Updates; Sign in always stays last.
-export const NAV = ["index", "briefing", "research", "resources", "companies", "action-center", "team", "archive", "globe", "agencies", "about"];
+export const NAV = Object.keys(PAGES);
 export const HIDEABLE_NAV = NAV.filter((x) => x !== "index");
 
 // data/site.json: settings every page reads (nav.js). The status strip is for admins
@@ -167,6 +168,7 @@ export function siteSettings(overlay, now = new Date().toISOString()) {
   const ordered = Array.isArray(order) ? [...new Set(order.filter((x) => NAV.includes(x)))] : [];
   return {
     built: now,
+    navigation: normalizeNavigation(get("navigation"), {navOrder:Array.isArray(order)?order:[],hiddenNav:Array.isArray(hidden)?hidden:[]}),
     navOrder: [...ordered, ...NAV.filter((x) => !ordered.includes(x))],
     hiddenNav: Array.isArray(hidden) ? hidden.filter((x) => HIDEABLE_NAV.includes(x)) : [],
     statusStrip: get("status_strip") === "everyone" ? "everyone" : "admins",
