@@ -11,7 +11,7 @@ begin
  begin perform public.admin_version_requirement('SYNTHETIC-REQ',b,null);raise exception 'Nonadmin mutation allowed';exception when others then if sqlerrm<>'Admin access required' then raise;end if;end;
  begin update public.pv_requirement_versions set review_status='approved';raise exception 'Direct write allowed';exception when insufficient_privilege then null;end;
  perform set_config('request.jwt.claims',jsonb_build_object('sub',a,'email','requirements-admin@example.invalid','role','authenticated')::text,true);
- begin perform public.admin_version_requirement('SYNTHETIC-REQ',b||'{"source_url":"https://www.fda.gov.evil.invalid/x"}',null);raise exception 'Host accepted';exception when others then if sqlerrm not like 'Only official%' then raise;end if;end;
+ begin perform public.admin_version_requirement('SYNTHETIC-REQ',b||'{"source_url":"https://www.fda.gov.evil.invalid/x"}',null);raise exception 'Host accepted';exception when others then if sqlerrm not like 'Use an approved official%' then raise;end if;end;
  begin perform public.admin_version_requirement('SYNTHETIC-REQ',b||'{"statement":"Contact person@example.invalid"}',null);raise exception 'Contact accepted';exception when others then if sqlerrm not like 'Remove public%' then raise;end if;end;
  begin perform public.admin_version_requirement('SYNTHETIC-REQ',b||'{"valid_from":"2026-02-30"}',null);raise exception 'Date accepted';exception when datetime_field_overflow then null;end;
  begin perform public.admin_version_requirement('SYNTHETIC-REQ',b||'{"unknown":"extra data"}',null);raise exception 'Unknown field accepted';exception when others then if sqlerrm<>'Unknown requirement field' then raise;end if;end;

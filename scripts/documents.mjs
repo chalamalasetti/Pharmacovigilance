@@ -24,11 +24,11 @@ export async function archiveOriginal(bytes,kind,doc,cfg,{fetchImpl=fetch}={}){
  return archive_path;
 }
 export async function fetchOfficialDocument(d,{fetchDocument=safeFetch}={}){
-  const fetchOpts={headers:{accept:"application/pdf, text/html;q=0.95, application/xhtml+xml;q=0.9, */*;q=0.5"},binary:true,tries:1,timeoutMs:10000,maxBytes:8*1024*1024,validateUrl:url=>officialUrl(url,d.agency)};
-  officialUrl(d.url,d.agency);let res=await fetchDocument(d.url,fetchOpts);officialUrl(res.url,d.agency);
+  const fetchOpts={headers:{accept:"application/pdf, text/html;q=0.95, application/xhtml+xml;q=0.9, */*;q=0.5"},binary:true,tries:1,timeoutMs:10000,maxBytes:8*1024*1024,validateUrl:url=>officialUrl(url,d.agency,d.agencyPolicy)};
+  officialUrl(d.url,d.agency,d.agencyPolicy);let res=await fetchDocument(d.url,fetchOpts);officialUrl(res.url,d.agency,d.agencyPolicy);
   if(/html/i.test(res.contentType)&&/<title[^>]*>\s*(?:Access Denied|Just a moment|Request Rejected|Attention Required)|verify that you(?:.re| are) not a robot/i.test(res.body.toString('utf8')))throw Error('Source unavailable');
   if(/html/i.test(res.contentType)){const download=documentDownload(res.body.toString('utf8'),res.url,d);if(download)res=await fetchDocument(download,fetchOpts);else if(/\/search-fda-guidance-documents\//.test(res.url))throw Error('Unsupported document landing page; select its guidance PDF URL');}
-  officialUrl(res.url,d.agency);if(!res.body.length)throw Error('Empty source response');const pdf=res.body.subarray(0,5).toString()==='%PDF-';
+  officialUrl(res.url,d.agency,d.agencyPolicy);if(!res.body.length)throw Error('Empty source response');const pdf=res.body.subarray(0,5).toString()==='%PDF-';
   if(!pdf&&!/html|xhtml/i.test(res.contentType))throw Error('Unsupported document format');
   return res;
 }
@@ -36,9 +36,10 @@ export async function captureDocument(id,{cfg=cloudConfig(),request=dbRequest,fe
  if(!cfg.url||!cfg.serviceKey)return {skipped:true,reason:'Collector database key is not configured'};
  const [d]=await request(cfg,`pv_documents?id=eq.${encodeURIComponent(id)}&select=*`);if(!d||d.status!=='active')throw Error('Document source is unavailable or inactive');
  if(expectedConfig&&d.updated_at!==expectedConfig)throw Error('Source configuration changed');
+ const [policy]=await request(cfg,`pv_agencies?id=eq.${encodeURIComponent(d.agency)}&select=*`);if(!policy||policy.status!=='verified'||policy.country!==d.country)throw Error('Agency is not approved for capture');d.agencyPolicy=policy;
  let stage='read';try{
   const [prev]=await request(cfg,`pv_document_versions?document_id=eq.${encodeURIComponent(id)}&select=*&order=revision.desc&limit=1`);
-  stage='fetch';const res=sourceResponse??await fetchOfficialDocument(d,{fetchDocument});officialUrl(res.url,d.agency);const pdf=res.body.subarray(0,5).toString()==='%PDF-';
+  stage='fetch';const res=sourceResponse??await fetchOfficialDocument(d,{fetchDocument});officialUrl(res.url,d.agency,d.agencyPolicy);const pdf=res.body.subarray(0,5).toString()==='%PDF-';
   const kind=pdf?'pdf':/html|xhtml/i.test(res.contentType)?'html':null;if(!kind)throw Error('Unsupported or oversized document');
   const original_hash=hash(res.body);stage='archive';const archive_path=prev?.original_hash===original_hash&&prev.archive_path?prev.archive_path:await archive(res.body,kind,d,cfg);
   stage='extract';let candidates=[],capture={original_hash,archive_path,content_hash:prev?.content_hash??hash(''),source_url:res.url,content_kind:kind,partial:false,excluded:0};
@@ -59,9 +60,8 @@ export async function captureDocument(id,{cfg=cloudConfig(),request=dbRequest,fe
 }
 export async function collectDocuments({cfg=cloudConfig(),request=dbRequest,capture=captureDocument,bootstrap=false}={}){
  if(!cfg.url||!cfg.serviceKey){console.log('documents: collector skipped (no server database configuration)');return {skipped:true};}
- const docs=await request(cfg,'pv_documents?status=eq.active&select=id&order=id&limit=101');if(docs.length>100)throw Error('Collector source limit reached; split the source schedule before adding more');
- let skip=new Set();if(bootstrap){const captured=await request(cfg,'pv_document_versions?content_kind=neq.metadata&select=document_id&limit=10001');if(captured.length>10000)throw Error('Bootstrap history limit reached');skip=new Set(captured.map(v=>v.document_id));}
- let ok=0,failed=0;const queue=docs.filter(d=>!skip.has(d.id));await Promise.all([0,1].map(async()=>{while(queue.length){const d=queue.shift();try{await capture(d.id,{cfg,request});ok++;}catch{failed++;}}}));
+ const docs=await request(cfg,`pv_document_schedule?select=id&order=checked_at.asc.nullsfirst,id&limit=${bootstrap?3:24}${bootstrap?'&has_capture=eq.false':''}`);
+ let ok=0,failed=0;const queue=[...docs];await Promise.all([0,1].map(async()=>{while(queue.length){const d=queue.shift();try{await capture(d.id,{cfg,request});ok++;}catch{failed++;}}}));
  console.log(`documents: ${ok} sources checked, ${failed} unavailable; prior captures preserved`);return {ok,failed};
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)collectDocuments({bootstrap:process.argv.includes('--bootstrap')}).catch(()=>{console.error('documents: collector unavailable; previous library preserved');process.exitCode=0;});

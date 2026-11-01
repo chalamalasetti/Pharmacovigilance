@@ -68,7 +68,7 @@ export function matchCandidates(next,previous=[],requirements=[],{partial=false}
 export function documentDownload(html,url,doc){
  const {document}=parseHTML(html),links=[...document.querySelectorAll('a[href]')];
  const expected=doc.id==='ema-gvp-i'?/module-i-pharmacovigilance-systems-and-their-quality-systems.*\.pdf$/i:null;
- let choices=links.flatMap(a=>{try{return [{url:new URL(a.getAttribute('href'),url).href,text:tidy(a.textContent)}];}catch{return [];}}).filter(a=>{try{officialUrl(a.url,doc.agency);return !/superseded/i.test(a.url)&&(expected?expected.test(a.url):/\/media\/\d+\/download|\.pdf(?:$|\?)/i.test(a.url)&&/download|guidance|view|pdf/i.test(a.text));}catch{return false;}});
+ let choices=links.flatMap(a=>{try{return [{url:new URL(a.getAttribute('href'),url).href,text:tidy(a.textContent)}];}catch{return [];}}).filter(a=>{try{officialUrl(a.url,doc.agency,doc.agencyPolicy);return !/superseded/i.test(a.url)&&(expected?expected.test(a.url):/\/media\/\d+\/download|\.pdf(?:$|\?)/i.test(a.url)&&/download|guidance|view|pdf/i.test(a.text));}catch{return false;}});
  choices=[...new Map(choices.map(x=>[x.url,x])).values()];
  const preferred=choices.filter(x=>/download.*(?:guidance|final)|final.*guidance/i.test(x.text));
  if(preferred.length===1)return preferred[0].url;
