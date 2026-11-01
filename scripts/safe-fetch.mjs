@@ -95,7 +95,7 @@ export function guardedLookup(lookup = dns.lookup) {
   };
 }
 
-function once(u, { headers, timeoutMs, maxBytes, lookup }) {
+function once(u, { headers, timeoutMs, maxBytes, lookup, binary }) {
   const mod = u.protocol === "https:" ? https : http;
   return new Promise((resolve, reject) => {
     const req = mod.request(u, { method: "GET", headers: { "user-agent": UA, accept: ACCEPT, "accept-encoding": "gzip, deflate, br", ...headers }, lookup, timeout: timeoutMs }, (res) => {
@@ -110,7 +110,7 @@ function once(u, { headers, timeoutMs, maxBytes, lookup }) {
           reject(new Error(`The response is larger than ${Math.round(maxBytes / 1048576)} MB.`));
         } else chunks.push(c);
       });
-      stream.on("end", () => resolve({ status: res.statusCode, headers: res.headers, body: Buffer.concat(chunks).toString("utf8") }));
+      stream.on("end", () => resolve({ status: res.statusCode, headers: res.headers, body: binary ? Buffer.concat(chunks) : Buffer.concat(chunks).toString("utf8") }));
       stream.on("error", reject);
     });
     req.on("timeout", () => req.destroy(Object.assign(new Error(`No answer within ${Math.round(timeoutMs / 1000)} seconds.`), { code: "ETIMEDOUT" })));
@@ -124,11 +124,12 @@ export const isTemporary = (e) => !(e instanceof BlockedError) && (TEMPORARY.has
 
 // One GET with redirects. Returns { status, url, redirects, contentType, body }; throws
 // on a blocked address, a non-2xx status (err.status) or a network failure (err.code).
-export async function fetchOnce(raw, { headers = {}, timeoutMs = 20000, maxBytes = MAX_BYTES, lookup = guardedLookup(), ports } = {}) {
+export async function fetchOnce(raw, { headers = {}, timeoutMs = 20000, maxBytes = MAX_BYTES, lookup = guardedLookup(), ports, binary = false, validateUrl = () => {} } = {}) {
   let u = checkUrl(raw, { ports });
+  validateUrl(u.href);
   const redirects = [];
   for (;;) {
-    const res = await once(u, { headers, timeoutMs, maxBytes, lookup });
+    const res = await once(u, { headers, timeoutMs, maxBytes, lookup, binary });
     if (res.status >= 300 && res.status < 400 && res.headers.location) {
       if (redirects.length >= MAX_REDIRECTS) throw new BlockedError(`More than ${MAX_REDIRECTS} redirects.`);
       let next;
@@ -140,6 +141,7 @@ export async function fetchOnce(raw, { headers = {}, timeoutMs = 20000, maxBytes
       if (u.protocol === "https:" && next.protocol === "http:") throw new BlockedError(`The server redirected from https to an insecure http address (${next.host}).`);
       redirects.push({ status: res.status, to: next.href });
       u = checkUrl(next.href, { ports });
+      validateUrl(u.href);
       continue;
     }
     if (res.status < 200 || res.status >= 300) throw Object.assign(new Error(`HTTP ${res.status}`), { status: res.status, url: u.href, redirects });

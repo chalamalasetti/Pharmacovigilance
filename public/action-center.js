@@ -1,3 +1,4 @@
+import {impactDraftPanel,assertLocalDraftsReady} from './impact-requirements.js';
 import * as W from './workspace.js';
 import * as C from './cloud.js';
 import {el} from './impact-view.js';
@@ -55,6 +56,7 @@ async function command(row,verb,raw,form){
  if(busy)return;busy=true;const buttons=[...form.querySelectorAll('button')];buttons.forEach(b=>b.disabled=true);
  try{
   const payload=payloadFor(verb,raw);
+  if(scope==='local'&&verb==='approve')assertLocalDraftsReady(row);
   // The local validator is for usability; the server independently enforces team rules.
   transition(row,verb,payload,user?.email??'local');
   let next;
@@ -120,12 +122,12 @@ function renderDetail(){
  const history=el('details',{},el('summary',{},`Case history (${row.history?.length??0} events)`),...(row.history??[]).slice().reverse().map(h=>el('div',{class:'action-event'},el('strong',{},`${h.command} · version ${h.version}`),el('p',{class:'hint'},`${h.at} · ${h.by??'local'}`),h.detail?el('p',{},JSON.stringify(h.detail)):null)));
  const exportButton=el('button',{class:'act',type:'button',onclick:()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(row,null,2)],{type:'application/json'}));const a=el('a',{href:url,download:'pv-company-case.json'});a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}},'Export this private case');
  replace($('case-detail'),el('h2',{},s.title),el('p',{class:'meta'},`${c.companyName} · ${c.markets.join(', ')} · ${STAGES[row.stage]} · Version ${row.version}`),
-  el('section',{class:'action-evidence'},el('h3',{},'1. Review evidence'),c.sourceItem?.startsWith('requirement:')?el('p',{},el('a',{href:`requirements.html?version=${encodeURIComponent(c.sourceItem.slice(12))}`},'Open pinned requirement version and comparison')):null,link(s.link,c.evidenceKind==='paper'?'Open paper and original publication links':'Open original source'),el('p',{},`${s.source??''} · Published ${s.published?s.published.slice(0,10):'date not reported'}`),el('p',{},'Why it matched: ',c.reason??'Not reported'),el('p',{},c.scopeReason??''),el('p',{class:'hint'},`Portfolio revision ${c.portfolioRevision??'unknown'} · confirmed ${c.portfolioConfirmedAt??'date unknown'}. Frozen evidence snapshot; a match does not establish applicability.`),...(c.products??[]).slice(0,12).map(p=>el('p',{},`${p.brand} · ${p.market} · ${p.authId}`))),
+  el('section',{class:'action-evidence'},el('h3',{},'1. Review evidence'),c.sourceItem?.startsWith('candidate:')?el('p',{},el('a',{href:`documents.html?candidate=${encodeURIComponent(c.sourceItem.slice(10))}`},'Open pinned document extraction and comparison')):null,c.sourceItem?.startsWith('requirement:')?el('p',{},el('a',{href:`requirements.html?version=${encodeURIComponent(c.sourceItem.slice(12))}`},'Open pinned requirement version and comparison')):null,link(s.link,c.evidenceKind==='paper'?'Open paper and original publication links':'Open original source'),el('p',{},`${s.source??''} · Published ${s.published?s.published.slice(0,10):'date not reported'}`),el('p',{},'Why it matched: ',c.reason??'Not reported'),el('p',{},c.scopeReason??''),el('p',{class:'hint'},`Portfolio revision ${c.portfolioRevision??'unknown'} · confirmed ${c.portfolioConfirmedAt??'date unknown'}. Frozen evidence snapshot; a match does not establish applicability.`),...(c.products??[]).slice(0,12).map(p=>el('p',{},`${p.brand} · ${p.market} · ${p.authId}`))),
   row.decision?el('p',{class:'whyhere'},`${DECISIONS[row.decision.decision]}: ${row.decision.reason}`):null,
   row.action?el('p',{},`${row.action.type} · ${row.action.owner} · Due ${row.action.due}: ${row.action.instruction}`):null,
   row.completion?el('section',{class:'action-evidence'},el('h3',{},'Submitted closure evidence'),el('p',{},row.completion.changed),...row.completion.evidence.map(e=>el('p',{},link(e.url,e.label))),el('p',{class:'hint'},`Submitted by ${row.completion.by} · ${row.completion.at}`)):null,
   row.approval?el('p',{class:'whyhere'},`${row.approval.selfReview?'Self-reviewed':'Independently verified'} by ${row.approval.by} · ${row.approval.at}: ${row.approval.reason}`):null,
-  ...forms,history,exportButton);
+  ...forms,impactDraftPanel({row,scope,user,sb,members:C.team.members}),history,exportButton);
 }
 function render(){
  filters();const scoped=rows.filter(r=>matchesCase(r,{...query,status:'all'})),counts=dashboard(scoped);

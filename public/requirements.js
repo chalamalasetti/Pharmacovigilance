@@ -4,6 +4,7 @@ import * as W from './workspace.js';
 import {portfolioState} from './company-briefing-lib.js';
 import {FIELDS,CHANGE_KINDS,label,validateBody,historyFor,baseline,upcoming,compare,latest,assessmentSnapshot} from './requirements-lib.js';
 const $=id=>document.getElementById(id),replace=(n,...x)=>n.replaceChildren(...x.flat().filter(x=>x!=null&&x!==false));
+const sourceFilter=new URLSearchParams(location.search).get('source');
 const ws=W.load();let rows=[],shown=[],selected=new URLSearchParams(location.search).get('version'),sb,admin=false,live=false,busy=false;
 const today=new Date().toISOString().slice(0,10);$('req-effective').value=today;$('req-known').value=today;
 const msg=(s,bad=false)=>{$('req-status').textContent=s;$('req-status').className=bad?'req-notice':'hint';};
@@ -15,12 +16,13 @@ function filtered(){
  let result=mode==='baseline'?baseline(rows,day,known):mode==='upcoming'?upcoming(rows,day,known):latest(rows);
  if(mode==='pending')result=result.filter(r=>r.review_status==='pending');
  const q=$('req-search').value.toLowerCase().trim();
- return result.filter(r=>(!$('req-agency').value||r.body.agency===$('req-agency').value)&&(!$('req-topic').value||r.body.topic===$('req-topic').value)&&(!$('req-lifecycle').value||r.body.lifecycle===$('req-lifecycle').value||r.body.lifecycle==='Both')&&(!q||[r.requirement_key,...Object.values(r.body)].join(' ').toLowerCase().includes(q))).sort((a,b)=>a.body.agency.localeCompare(b.body.agency)||a.body.title.localeCompare(b.body.title));
+ return result.filter(r=>(!sourceFilter||r.body.source_family===sourceFilter)&&(!$('req-country').value||(r.body.agency==='FDA'?'US':'EU')===$('req-country').value)&&(!$('req-agency').value||r.body.agency===$('req-agency').value)&&(!$('req-topic').value||r.body.topic===$('req-topic').value)&&(!$('req-lifecycle').value||r.body.lifecycle===$('req-lifecycle').value||r.body.lifecycle==='Both')&&(!q||[r.requirement_key,...Object.values(r.body)].join(' ').toLowerCase().includes(q))).sort((a,b)=>a.body.agency.localeCompare(b.body.agency)||a.body.title.localeCompare(b.body.title));
 }
 function render(){
  const heads=latest(rows);replace($('req-stats'),...[[heads.length,'Captured requirements'],[heads.filter(r=>r.review_status==='pending').length,'Awaiting expert review'],[baseline(rows,today,today).length,'Approved & dated today'],[new Set(rows.map(r=>r.body.source_family)).size,'Source families']].map(([n,t])=>el('div',{class:'req-stat'},el('strong',{},n),t)));
  shown=filtered();$('req-count').textContent=`${shown.length} records · ${$('req-mode').value==='baseline'?'Only approved, dated interpretations known by the selected date. Unknown start dates are excluded.':'Latest capture can be unapproved. Open history to inspect earlier versions.'}`;
  replace($('req-list'),...shown.map(r=>el('button',{type:'button',class:'req-card','aria-pressed':r.id===selected,onclick:()=>select(r.id,true)},el('div',{class:'req-badges'},badge(r.body.agency==='EMA'?'EU / EMA':'FDA'),badge(r.review_status,r.review_status),badge(r.body.norm)),el('strong',{},r.body.title),el('span',{class:'hint'},`${r.requirement_key} · v${r.revision} · ${r.body.topic}`))),!shown.length?el('p',{class:'req-notice'},'No records meet these criteria. No complete approved baseline can be inferred from an empty result. Review pending captures and coverage gaps.'):null);
+ if(sourceFilter)$('req-count').append(' · Source: '+sourceFilter+' · ',el('a',{href:'requirements.html'},'Clear source filter'));
  renderDetail();renderSources();
 }
 function select(id,focus=false){selected=id;history.replaceState(null,'',`?version=${encodeURIComponent(id)}`);render();if(focus)$('req-detail').focus();}
@@ -30,7 +32,7 @@ function renderDetail(){
  const r=rows.find(r=>r.id===selected);if(!r){replace($('req-detail'),el('p',{},selected?'This version is unavailable. Reload the library or select another record.':'Select a requirement to see evidence, version history and assessment options.'));return;}
  const b=r.body,h=historyFor(rows,r.requirement_key),before=rows.find(x=>x.id===r.supersedes),changes=compare(before,r);
  const compareBox=el('details',{class:'req-section'},el('summary',{},'Compare with predecessor'),!before?el('p',{class:'req-notice'},'Earlier clause text has not been captured. A first library capture is not evidence of a new regulatory obligation.'):el('div',{},el('p',{},`Compared with v${before.revision} (${before.review_status}). Change classification: ${b.change_kind}. ${b.change_summary}`),el('table',{class:'req-compare'},el('thead',{},el('tr',{},...['Field','Before','This version'].map(s=>el('th',{scope:'col'},s)))),el('tbody',{},...changes.map(c=>el('tr',{},el('th',{scope:'row'},label(c.field)),el('td',{},c.before||'Not captured'),el('td',{},c.after||'Not captured'))))),!changes.length?el('p',{},'No captured fields changed.'):null));
- replace($('req-detail'),el('div',{class:'req-badges'},badge(`${r.requirement_key} · v${r.revision}`),badge(r.review_status,r.review_status),badge(b.source_status),badge(b.norm)),el('h2',{},b.title),el('p',{},b.statement),
+ replace($('req-detail'),el('div',{class:'req-badges'},badge(`${r.requirement_key} · v${r.revision}`),badge(r.review_status,r.review_status),badge(b.source_status),badge(b.norm)),el('h2',{},b.title),r.document_version_id?el('p',{},el('a',{href:`documents.html?doc=${encodeURIComponent(b.source_family)}&capture=${r.document_version_id}`},'Open captured source document and extraction history')):null,el('p',{},b.statement),
  r.review_status!=='approved'?el('p',{class:'req-notice'},'This interpretation is not approved. Use it as a review candidate.'):el('p',{class:'hint'},'Approved library interpretation. Company applicability remains undecided.'),
  el('dl',{},...dt('Source',external(b.source_url,b.source_title)),...dt('Edition / clause',`${b.source_edition} · ${b.clause}`),...dt('Legal basis',b.legal_basis),...dt('Applies from',b.valid_from),...dt('Applies until',b.valid_to?b.valid_to+' (exclusive)':''),...dt('Publication date',b.published_on),...dt('Captured',r.created_at),...dt('Reviewed',r.reviewed_at),...dt('Review rationale',r.review_note)),
  ...[['Who may be affected',b.applicability],['Qualifications & exceptions',b.exceptions],['Processes to assess',b.processes],['Systems to assess',b.systems],['Historical coverage',b.predecessor_note]].map(([t,s])=>el('section',{class:'req-section'},el('h3',{},t),el('p',{},s))),
@@ -88,7 +90,7 @@ async function load(){
  const topic=$('req-topic').value;replace($('req-topic'),el('option',{value:''},'All topics'),...[...new Set(rows.map(r=>r.body.topic))].sort().map(t=>el('option',{selected:t===topic},t)));
  if(!live){admin=false;$('req-admin').hidden=true;}$('req-mode').querySelector('[value=baseline]').disabled=!live;$('req-mode').querySelector('[value=upcoming]').disabled=!live;if(!live&&['baseline','upcoming'].includes($('req-mode').value))$('req-mode').value='latest';render();
 }
-for(const id of ['req-search','req-agency','req-topic','req-lifecycle','req-mode','req-effective','req-known'])$(id).addEventListener(id==='req-search'?'input':'change',render);
+for(const id of ['req-search','req-country','req-agency','req-topic','req-lifecycle','req-mode','req-effective','req-known'])$(id).addEventListener(id==='req-search'?'input':'change',render);
 $('req-new').addEventListener('click',()=>editor());
 $('req-export').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([JSON.stringify({exported_at:new Date().toISOString(),live,coverage:'Incomplete curated library; no company information included',effective_on:$('req-effective').value,known_by:$('req-known').value,view:$('req-mode').value,versions:shown},null,2)],{type:'application/json'}));const a=el('a',{href:url,download:'pv-requirements.json'});a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 (async()=>{try{await load();await C.initCloud(ws,renderDetail);admin=live&&await C.isAdmin();$('req-admin').hidden=!admin;renderDetail();}catch(e){msg(`The library could not load. ${e.message} Refresh to retry.`,true);}})();

@@ -21,6 +21,9 @@ jobs:
       - name: Live feed check
         continue-on-error: true
         run: npm run aggregate
+      - name: Official document reachability (read-only; no ingestion)
+        continue-on-error: true
+        run: npm run documents:probe
       # Shows whether the FDA Orange Book and EMA downloads still parse. Informational:
       # the weekly registry workflow is what updates the committed registry.
       - name: Company registry source check
@@ -48,3 +51,4 @@ jobs:
           node test/browser/action-center.smoke.cjs
           node test/browser/navigation.smoke.cjs
           node test/browser/requirements.smoke.cjs
+          node test/browser/documents.smoke.cjs

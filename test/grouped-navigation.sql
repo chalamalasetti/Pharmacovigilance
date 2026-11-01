@@ -5,7 +5,7 @@ declare v jsonb; original timestamptz; saved timestamptz; a uuid:=gen_random_uui
 begin
  insert into public.research_admins(email) values('menu-test-admin@example.invalid');
  v:=jsonb_build_object('version',1,'groups',jsonb_build_array(jsonb_build_object('id','all-pages','label','Synthetic group','items',(
- select jsonb_agg(jsonb_build_object('id',p,'label',p,'hidden',false)) from unnest(array['index','briefing','company-briefing','action-center','team','research','companies','globe','resources','requirements','agencies','archive','about']) p))));
+ select jsonb_agg(jsonb_build_object('id',p,'label',p,'hidden',false)) from unnest(array['index','briefing','company-briefing','action-center','team','research','companies','globe','resources','documents','requirements','agencies','archive','about']) p))));
  select updated_at into original from public.site_settings where key='navigation';
  perform set_config('request.jwt.claims',jsonb_build_object('sub',a,'email','non-admin@example.invalid','role','authenticated')::text,true);
  execute 'set local role authenticated';
