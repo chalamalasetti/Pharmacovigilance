@@ -1,7 +1,7 @@
 -- Authorization, immutable evidence lineage, matching review, private drafting and closure gates; all fixtures roll back.
 begin;
 do $$
-declare a uuid:=gen_random_uuid();b uuid:=gen_random_uuid();outsider uuid:=gen_random_uuid();t uuid:=gen_random_uuid();d public.pv_documents;v public.pv_document_versions;v2 public.pv_document_versions;cand public.pv_document_candidates;req public.pv_requirement_versions;cas public.company_cases;draft public.pv_impact_requirements;otherdraft public.pv_impact_requirements;body jsonb;snap jsonb;cap jsonb;items jsonb;n integer;
+declare a uuid:=gen_random_uuid();b uuid:=gen_random_uuid();outsider uuid:=gen_random_uuid();t uuid:=gen_random_uuid();d public.pv_documents;v public.pv_document_versions;v2 public.pv_document_versions;cand public.pv_document_candidates;req public.pv_requirement_versions;cas public.company_cases;draft public.pv_impact_requirements;otherdraft public.pv_impact_requirements;body jsonb;snap jsonb;cap jsonb;items jsonb;n integer;draft_kind text;
 begin
  insert into auth.users(id,aud,role,email) values(a,'authenticated','authenticated','pipeline-admin@example.invalid'),(b,'authenticated','authenticated','pipeline-reviewer@example.invalid'),(outsider,'authenticated','authenticated','pipeline-outsider@example.invalid');
  insert into public.research_admins(email) values('pipeline-admin@example.invalid');
@@ -59,6 +59,20 @@ begin
  cas:=public.advance_company_case(cas.id,cas.version,'complete','{"changed":"Synthetic configuration verified","reviewer":"pipeline-reviewer@example.invalid","evidence":[{"label":"Synthetic evidence","url":"https://documents.example/validation"}]}');
  perform set_config('request.jwt.claims',jsonb_build_object('sub',b,'email','pipeline-reviewer@example.invalid','role','authenticated')::text,true);
  begin perform public.advance_company_case(cas.id,cas.version,'approve','{"reason":"Attempt closure with a draft pending"}');raise exception 'Closure ignored draft';exception when others then if sqlerrm not like 'Approve the latest impact requirement drafts%' then raise;end if;end;
+ -- Complete the same team case with independent approval of all four impact types.
+ perform set_config('request.jwt.claims',jsonb_build_object('sub',a,'email','pipeline-admin@example.invalid','role','authenticated')::text,true);
+ otherdraft:=public.review_pv_impact_requirement(otherdraft.id,'submit','Synthetic data review requested','pipeline-reviewer@example.invalid');
+ perform set_config('request.jwt.claims',jsonb_build_object('sub',b,'email','pipeline-reviewer@example.invalid','role','authenticated')::text,true);
+ otherdraft:=public.review_pv_impact_requirement(otherdraft.id,'approve','Synthetic independent data verification',null);
+ foreach draft_kind in array array['business','process'] loop
+  perform set_config('request.jwt.claims',jsonb_build_object('sub',a,'email','pipeline-admin@example.invalid','role','authenticated')::text,true);
+  draft:=public.save_pv_impact_requirement(cas.id,draft_kind,'{"statement":"Implement the approved synthetic organizational control","acceptance_criteria":"Synthetic acceptance tests demonstrate the control and exception","rationale":"Synthetic source impact","system_scope":"Synthetic organization"}',null);
+  draft:=public.review_pv_impact_requirement(draft.id,'submit','Synthetic independent review requested','pipeline-reviewer@example.invalid');
+  perform set_config('request.jwt.claims',jsonb_build_object('sub',b,'email','pipeline-reviewer@example.invalid','role','authenticated')::text,true);
+  draft:=public.review_pv_impact_requirement(draft.id,'approve','Synthetic independent requirement verification',null);
+ end loop;
+ cas:=public.advance_company_case(cas.id,cas.version,'approve','{"reason":"All four synthetic requirement types and evidence independently verified"}');
+ if cas.stage<>'closed' then raise exception 'Verified team closure failed';end if;
  execute 'reset role';execute 'set local role anon';
  select count(*) into n from public.pv_document_candidates where document_version_id=v.id;if n<>1 then raise exception 'Public source evidence missing';end if;
  begin select count(*) into n from public.pv_impact_requirements;raise exception 'Anonymous private draft read allowed';exception when insufficient_privilege then null;end;
