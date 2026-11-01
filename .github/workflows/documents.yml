@@ -1,0 +1,32 @@
+name: Collect regulatory source documents
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/documents.yml'
+      - 'scripts/document*.mjs'
+      - 'api/document-collect.js'
+      - 'public/documents-lib.js'
+permissions:
+  contents: read
+  id-token: write
+concurrency:
+  group: pv-regulatory-documents
+  cancel-in-progress: false
+jobs:
+  collect:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Collect official public copies and deliver using short-lived GitHub identity
+        run: node scripts/document-collector.mjs

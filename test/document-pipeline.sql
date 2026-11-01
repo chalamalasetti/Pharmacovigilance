@@ -20,6 +20,10 @@ begin
  v:=public.capture_pv_document(d.id,d.updated_at,null,cap,items);
  v2:=public.capture_pv_document(d.id,d.updated_at,v.id,cap,'[]');if v.id<>v2.id then raise exception 'Duplicate capture created';end if;
  select * into cand from public.pv_document_candidates where document_version_id=v.id;
+ execute 'set local role authenticated';
+ d:=public.admin_save_pv_document((to_jsonb(d)-'updated_at')||'{"capture_note":"Correct source edition metadata","edition":"Corrected synthetic edition","published_on":"","effective_on":""}',d.updated_at);
+ execute 'reset role';
+ v2:=public.capture_pv_document(d.id,d.updated_at,v.id,cap,items);if v2.id=v.id or v2.revision<>2 or v2.edition<>'Corrected synthetic edition' then raise exception 'Source metadata correction was silently ignored';end if;
  select r.body into body from public.pv_requirement_versions r order by requirement_key limit 1;
  body:=body||jsonb_build_object('source_family',d.id,'source_title',d.title,'source_url',v.source_url,'source_edition',v.edition,'agency','FDA','statement',cand.statement,'valid_from','2026-01-01');
  perform set_config('request.jwt.claims',jsonb_build_object('sub',outsider,'email','pipeline-outsider@example.invalid','role','authenticated')::text,true);execute 'set local role authenticated';
