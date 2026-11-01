@@ -29,7 +29,7 @@ let site = null; // data/site.json: the menu and status-strip settings the site 
 let menu = null; // the menu being arranged: { order, hidden }
 
 // The menu's pages ("index" is Updates); keep in step with NAV in scripts/admin.mjs.
-const NAV_LABELS = { index: "Updates", briefing: "My Briefing", research: "Research", resources: "Resources", companies: "Companies", team: "Team", archive: "Archive", globe: "Globe", agencies: "Agencies", about: "About" };
+const NAV_LABELS = { index: "Updates", briefing: "My Briefing", research: "Research", resources: "Resources", companies: "Companies", "action-center": "Action Center", team: "Team", archive: "Archive", globe: "Globe", agencies: "Agencies", about: "About" };
 
 const time = (iso) => (iso ? el("time", { datetime: iso, title: new Date(iso).toLocaleString() }, ago(new Date(iso))) : "never");
 const slug = (s) => s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
