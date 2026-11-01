@@ -6,36 +6,36 @@
       "country": "CA",
       "agency": "CA_HC",
       "title": "GUI-0102: The regulations",
-      "latest": "documents/ca-hc-gvp-regulations/46791e9ec7a590ad4ff694baf9462f7889e0971b8ba005d5dfe1882015bc2046.json",
-      "last_checked_at": "2026-11-01T20:58:01.147Z",
-      "last_success_at": "2026-11-01T20:58:01.147Z",
+      "latest": "documents/ca-hc-gvp-regulations/0962c316e6677634b1d7725015748fe8b7b6169b2f6a25a14ba2c934b08b1bf7.json",
+      "last_checked_at": "2026-11-01T20:59:14.518Z",
+      "last_success_at": "2026-11-01T20:59:14.518Z",
       "status": "partial",
       "candidate_count": 252,
-      "previous": "documents/ca-hc-gvp-regulations/18a4a7ba550fd83f9fed4576d5241e253fffd810ed47e498ce2945a7435da24d.json"
+      "previous": "documents/ca-hc-gvp-regulations/46791e9ec7a590ad4ff694baf9462f7889e0971b8ba005d5dfe1882015bc2046.json"
     },
     "ca-hc-gvp-system": {
       "document_id": "ca-hc-gvp-system",
       "country": "CA",
       "agency": "CA_HC",
       "title": "GUI-0102: Pharmacovigilance system",
-      "latest": "documents/ca-hc-gvp-system/03a03bbabf1b7c0c1955a58a6f7f7a2dff520972b7c7f155350713709240f13e.json",
-      "last_checked_at": "2026-11-01T20:58:07.490Z",
-      "last_success_at": "2026-11-01T20:58:07.490Z",
+      "latest": "documents/ca-hc-gvp-system/e646352ebb881055aeda6d9942ef97cd5f904d9c7b98334ab47519b7007a9b74.json",
+      "last_checked_at": "2026-11-01T20:59:19.407Z",
+      "last_success_at": "2026-11-01T20:59:19.407Z",
       "status": "partial",
       "candidate_count": 119,
-      "previous": "documents/ca-hc-gvp-system/b006abe7b4afebc8803231dfa1409c9cdabae3d61c706e004229c8746037bf3b.json"
+      "previous": "documents/ca-hc-gvp-system/03a03bbabf1b7c0c1955a58a6f7f7a2dff520972b7c7f155350713709240f13e.json"
     },
     "gb-mhra-pv-procedures": {
       "document_id": "gb-mhra-pv-procedures",
       "country": "GB",
       "agency": "GB_MHRA",
       "title": "Guidance on pharmacovigilance procedures",
-      "latest": "documents/gb-mhra-pv-procedures/e4b7337fce165ee7d52309ba9eb16d69f313de7ffaf10feb956133ec67cae003.json",
-      "last_checked_at": "2026-11-01T20:58:09.383Z",
-      "last_success_at": "2026-11-01T20:58:09.383Z",
+      "latest": "documents/gb-mhra-pv-procedures/1d307a8f41833cef0bdb863912f78c27a48663209ddbc33b27ce2ef291ba2c45.json",
+      "last_checked_at": "2026-11-01T20:59:21.199Z",
+      "last_success_at": "2026-11-01T20:59:21.199Z",
       "status": "partial",
       "candidate_count": 83,
-      "previous": "documents/gb-mhra-pv-procedures/eac2325e0c0220903414d11d4c62ed771d720994525fc47fe280e0e70a8ed632.json"
+      "previous": "documents/gb-mhra-pv-procedures/e4b7337fce165ee7d52309ba9eb16d69f313de7ffaf10feb956133ec67cae003.json"
     },
     "ema-gvp-i": {
       "document_id": "ema-gvp-i",
@@ -43,8 +43,8 @@
       "agency": "EMA",
       "title": "GVP Module I — PV systems and quality systems",
       "latest": "documents/ema-gvp-i/9216d670790b3e072aa2ba014216d2e3a3bfa5f8268753e56eb9dc6573578eee.json",
-      "last_checked_at": "2026-11-01T20:58:12.125Z",
-      "last_success_at": "2026-11-01T20:58:12.125Z",
+      "last_checked_at": "2026-11-01T20:59:24.154Z",
+      "last_success_at": "2026-11-01T20:59:24.154Z",
       "status": "partial",
       "candidate_count": 150,
       "previous": "documents/ema-gvp-i/dcfa0b85f28f3227c6fedd4a3c2a3db896c63efc60c83e1c0d4592dc1689a802.json"
@@ -55,7 +55,7 @@
       "agency": "EMA",
       "title": "Commission Implementing Regulation (EU) No 520/2012",
       "latest": null,
-      "last_checked_at": "2026-11-01T20:58:12.766Z",
+      "last_checked_at": "2026-11-01T20:59:28.134Z",
       "status": "source_unavailable",
       "note": "Previous extraction preserved; source could not be retrieved."
     },
@@ -65,8 +65,8 @@
       "agency": "FDA",
       "title": "AEMS electronic submissions",
       "latest": "documents/fda-aems-esg/891e7f3c24d1f8660a49afccbe9219b857182e3dea19c060ef9f4fe16628c2b6.json",
-      "last_checked_at": "2026-11-01T20:58:13.307Z",
-      "last_success_at": "2026-11-01T20:58:13.307Z",
+      "last_checked_at": "2026-11-01T20:59:28.775Z",
+      "last_success_at": "2026-11-01T20:59:28.775Z",
       "status": "candidates_extracted",
       "candidate_count": 8,
       "previous": "documents/fda-aems-esg/ef545cd2711a23d9fdf259a1326a94627b473938e9dbcb8725b0e5d12e0ccdb9.json"
@@ -77,8 +77,8 @@
       "agency": "FDA",
       "title": "E2D(R1) Post-Approval Safety Data",
       "latest": "documents/fda-e2d/2f27587e258fbdc3e7c6e3e6061a397c8e22de84899481c4198949adefe41f99.json",
-      "last_checked_at": "2026-11-01T20:58:15.254Z",
-      "last_success_at": "2026-11-01T20:58:15.254Z",
+      "last_checked_at": "2026-11-01T20:59:30.629Z",
+      "last_success_at": "2026-11-01T20:59:30.629Z",
       "status": "partial",
       "candidate_count": 104,
       "previous": "documents/fda-e2d/8d75a3600fc455f96a9cdb7de6e24192f29199f346b91c3d358f35721de5c5a8.json"
@@ -89,7 +89,7 @@
       "agency": "FDA",
       "title": "21 CFR 312.32",
       "latest": "documents/fda-31232/c4f818891f402ee849a0aecacd058dee920564f77020a1eb3a1ac10d75c55988.json",
-      "last_checked_at": "2026-11-01T20:58:16.158Z",
+      "last_checked_at": "2026-11-01T20:59:32.964Z",
       "last_success_at": "2026-11-01T17:22:52.948Z",
       "status": "source_unavailable",
       "candidate_count": 13,
@@ -101,7 +101,7 @@
       "agency": "FDA",
       "title": "21 CFR 314.80",
       "latest": "documents/fda-31480/710e5ff96af2a730045aaa8b8f3fbcb156a9c5a9bc75fc882fa7e77d05feda8f.json",
-      "last_checked_at": "2026-11-01T20:58:16.452Z",
+      "last_checked_at": "2026-11-01T20:59:33.248Z",
       "last_success_at": "2026-11-01T17:22:53.620Z",
       "status": "source_unavailable",
       "candidate_count": 14,
@@ -113,7 +113,7 @@
       "agency": "AU_TGA",
       "title": "Pharmacovigilance responsibilities of medicine sponsors",
       "latest": null,
-      "last_checked_at": "2026-11-01T20:58:26.870Z",
+      "last_checked_at": "2026-11-01T20:59:43.515Z",
       "status": "source_unavailable",
       "note": "Previous extraction preserved; source could not be retrieved."
     }

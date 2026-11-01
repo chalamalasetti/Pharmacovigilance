@@ -1,0 +1,700 @@
+{
+  "schema_version": "public-document-key-info-v1",
+  "document_id": "gb-mhra-pv-procedures",
+  "metadata": {
+    "title": "Guidance on pharmacovigilance procedures",
+    "country": "GB",
+    "agency": "GB_MHRA",
+    "edition": "Web guidance updated 2026-09-30",
+    "norm": "Guidance",
+    "topic": "PV reporting and procedures",
+    "lifecycle": "Marketed",
+    "legal_basis": "MHRA guidance explaining UK pharmacovigilance procedures; verify current legislation, product authorization and territorial arrangements.",
+    "applicability": "UK marketing authorisation holders. Review the source and current guidance for distinctions affecting Great Britain, Northern Ireland and applicable authorisation routes.",
+    "published_on": "2020-12-31",
+    "effective_on": "",
+    "source_status": "current"
+  },
+  "metadata_verification": "Source-register metadata; dates and legal status require human verification.",
+  "source_url": "https://www.gov.uk/government/publications/guidance-on-pharmacovigilance-procedures/guidance-on-pharmacovigilance-procedures",
+  "original_sha256": "25e6d2a1fd6a4325486a79bbe749e9d8e720b67f8a6ba752ff03d43f6bae36c0",
+  "content_kind": "html",
+  "parser_version": "normative-rules-v3",
+  "extraction_status": "partial",
+  "candidate_count": 83,
+  "excluded_paragraphs": 0,
+  "candidate_limit_reached": true,
+  "review_status": "pending",
+  "limitations": [
+    "English rule-based extraction; no GPT or paid API.",
+    "Candidates are not approved requirements. Read the original, qualifications and exceptions.",
+    "Scans, tables, other languages and implicit obligations may be missed. Zero candidates does not establish zero requirements."
+  ],
+  "candidates": [
+    {
+      "ordinal": 1,
+      "anchor": "paragraph-5",
+      "statement": "Where we have identified any third party copyright information you will need to obtain permission from the copyright holders concerned.",
+      "context": "This publication is licensed under the terms of the Open Government Licence v3.0 except where otherwise stated. To view this licence, visit nationalarchives.gov.uk/doc/open-government-licence/version/3 or write to the Information Policy Team, The National Archives, Kew, London TW9 4DU, or email: [official contact omitted; consult source]. This publication is available at https://www.gov.uk/government/publications/guidance-on-pharmacovigilance-procedures/guidance-on-pharmacovigilance-procedures",
+      "fingerprint": "4966163cfee0d1fa006d7f0084d00720f0245ad9ada22e48d6d71e6731c7c1fa",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 2,
+      "anchor": "general-approach-to-the-operation-of-pharmacovigilance / paragraph-16",
+      "statement": "The Good Vigilance Practices (GVP) modules will remain in force but a guidance note on the exceptions and modifications to the EU guidance on good vigilance practices has been published and you should refer to these guidelines when preparing your submissions",
+      "context": "These will be assessed taking into account all relevant information and decisions will be made reflecting UK clinical practice to best support patient safety in the UK. In addition to these requirements, you are reminded that you are obliged to notify us of any information that you consider might influence the evaluation of the benefits and risks of your product as soon as is reasonably practicable after you become aware of it, including where the use of the product is restricted in any country. This is particularly important where any new information may potentially impact the clinical management of patients, including where proactive communications to healthcare professionals may be required.",
+      "fingerprint": "be043dab1c7f10f5e393272a80ef5e55ab926218e7882914477f932b6ef69373",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 3,
+      "anchor": "general-approach-to-the-operation-of-pharmacovigilance / paragraph-17",
+      "statement": "In addition to these requirements, you are reminded that you are obliged to notify us of any information that you consider might influence the evaluation of the benefits and risks of your product as soon as is reasonably practicable after you become aware of it, including where the use of the product is restricted in any country. This is particularly important where any new information may potentially impact the clinical management of patients, including where proactive communications to healthcare professionals may be required.",
+      "context": "The Good Vigilance Practices (GVP) modules will remain in force but a guidance note on the exceptions and modifications to the EU guidance on good vigilance practices has been published and you should refer to these guidelines when preparing your submissions You are also reminded that you are responsible for ensuring that the information for your product is kept up to date with current scientific knowledge. This includes checking the MHRA website, the European Medicines Agency (EMA) and Head of Medicines Agencies (HMA) websites for the outcome of procedures which affect the product information and, unless advised otherwise, you should implement the updates to the product information in the UK via the appropriate variation application.",
+      "fingerprint": "6f126254d81efcf093fa08651e88c4fe2c72c1ee48b03d6b4e43d219d7d4988d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 4,
+      "anchor": "general-approach-to-the-operation-of-pharmacovigilance / paragraph-18",
+      "statement": "You are also reminded that you are responsible for ensuring that the information for your product is kept up to date with current scientific knowledge. This includes checking the MHRA website, the European Medicines Agency (EMA) and Head of Medicines Agencies (HMA) websites for the outcome of procedures which affect the product information and, unless advised otherwise, you should implement the updates to the product information in the UK via the appropriate variation application.",
+      "context": "In addition to these requirements, you are reminded that you are obliged to notify us of any information that you consider might influence the evaluation of the benefits and risks of your product as soon as is reasonably practicable after you become aware of it, including where the use of the product is restricted in any country. This is particularly important where any new information may potentially impact the clinical management of patients, including where proactive communications to healthcare professionals may be required. More information on specific areas is given as follows:",
+      "fingerprint": "cd1d415a572989ecb1ad3fc67912c1f834b6e5b36250427651757025dfcffedc",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 5,
+      "anchor": "actions-for-submitting-and-receiving-icsrs / paragraph-21",
+      "statement": "We require submission of all UK (including Northern Ireland) ICSRs (serious and non-serious) and serious ICSRs from other countries via the MHRA Gateway and/or ICSR Submissions portal.",
+      "context": "2. Actions for submitting and receiving ICSRs Further information on sending and receiving information on adverse drug reactions (ADRs) to the UK can be found at Adverse drug reactions (ADRs)",
+      "fingerprint": "79ec00e91fa8a52a7d6f9da650dcceaf825b60ab2525c32409f74c2bf27249d1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 6,
+      "anchor": "actions-for-submitting-and-receiving-icsrs / paragraph-24",
+      "statement": "For products placed on the market in Northern Ireland you should continue to submit ICSRs according to EU requirements to the Eudravigilance database including all serious reports from the UK and other countries and non-serious reports that occur in the EEA or in Northern Ireland. These cases should be identified by using the country code “XI” in the field primary source country for regulatory purposes. Organisations have the option to use either the country code “XI” or “GB” as the first two characters of the worldwide case ID and the safety report ID.",
+      "context": "You can register on the MHRA-Gateway and/or ICSR Submissions portal to enable configuration to your systems. For UK cases that relate to Northern Ireland which were initially submitted before 1 January 2021, the worldwide case ID should not be changed, however, in line with GVP module VI guidance when sending follow-up reports organisations can change the safety report case ID if needed.",
+      "fingerprint": "6f31d933ceb57404e081f7e78c054d7e1455bfcecd668b607b294559f3b3af7b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 7,
+      "anchor": "actions-for-submitting-and-receiving-icsrs / paragraph-25",
+      "statement": "For UK cases that relate to Northern Ireland which were initially submitted before 1 January 2021, the worldwide case ID should not be changed, however, in line with GVP module VI guidance when sending follow-up reports organisations can change the safety report case ID if needed.",
+      "context": "For products placed on the market in Northern Ireland you should continue to submit ICSRs according to EU requirements to the Eudravigilance database including all serious reports from the UK and other countries and non-serious reports that occur in the EEA or in Northern Ireland. These cases should be identified by using the country code “XI” in the field primary source country for regulatory purposes. Organisations have the option to use either the country code “XI” or “GB” as the first two characters of the worldwide case ID and the safety report ID. The country code “GB” should be used for all reportable SUSARs occurring in the UK. Although it is possible for organisations to use the country code “XI” for SUSAR reporting, it will not be a requirement as reporting requirements between Northern Ireland and the rest of UK for clinical trial cases will not differ.",
+      "fingerprint": "1e3d9a2c789c1288f917b3d4b6c6396e508c222ac8818a2f7d2ca54e17672bb8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 8,
+      "anchor": "actions-for-submitting-and-receiving-icsrs / paragraph-26",
+      "statement": "The country code “GB” should be used for all reportable SUSARs occurring in the UK. Although it is possible for organisations to use the country code “XI” for SUSAR reporting, it will not be a requirement as reporting requirements between Northern Ireland and the rest of UK for clinical trial cases will not differ.",
+      "context": "For UK cases that relate to Northern Ireland which were initially submitted before 1 January 2021, the worldwide case ID should not be changed, however, in line with GVP module VI guidance when sending follow-up reports organisations can change the safety report case ID if needed.",
+      "fingerprint": "92879bb9941767a9668f3b39b02aa864099cf9073f819f3e1b3ab400053b5aaf",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 9,
+      "anchor": "signal-detection / paragraph-28",
+      "statement": "Your signal detection systems need to enable you to meet your requirements for cumulative signal detection across all available data sources. The MHRA does not require you to conduct signal detection against our own database, as we will make relevant UK data available for inclusion in your systems.",
+      "context": "The MHRA will carry out assessment of signals and issue decisions for signals identified by the MHRA as well as those highlighted internationally.",
+      "fingerprint": "dd94b5ed042ae4d9c6bd2a70c07325ef8a365b726a9ae1f6309cdf44316be1ce",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 10,
+      "anchor": "signal-detection / paragraph-30",
+      "statement": "For all products authorised in the UK you are obliged to notify us of new information arising from any data source (except our database) which impact on the marketing authorisation. This includes standalone signal notifications submitted by you to the EMA that are relevant to your UK products as well as signals raised by the EMA. However, you do not need to inform us of signals once they are on the PRAC agenda.",
+      "context": "The MHRA will carry out assessment of signals and issue decisions for signals identified by the MHRA as well as those highlighted internationally. Details of how to notify the MHRA of this new information is provided below.",
+      "fingerprint": "ca8f561ceb00bcd3afd9a11c6fcb7d6a96fa32ffcaa93a9e08d4fc4337046287",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 11,
+      "anchor": "signal-detection / paragraph-32",
+      "statement": "You should inform us in the following circumstances:",
+      "context": "Details of how to notify the MHRA of this new information is provided below. 3.1 Emerging safety issues",
+      "fingerprint": "52fd92490beeaa775a1b42d67f36606bfd9284fd8e93e5342d5a33ac785d94e1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 12,
+      "anchor": "emerging-safety-issues / paragraph-34",
+      "statement": "You are obliged to notify the MHRA of emerging safety issues within 3 working days after establishing that a signal or a safety issue from any source which meets the definition of an emerging safety issue (see GVP-Module IX Signal Management)",
+      "context": "3.1 Emerging safety issues You should notify the MHRA at [official contact omitted; consult source]",
+      "fingerprint": "5e5c172cb30e4c82c09ecc492474c70d497ce8986ab44324f39c689492cc6172",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 13,
+      "anchor": "emerging-safety-issues / paragraph-35",
+      "statement": "You should notify the MHRA at [official contact omitted; consult source]",
+      "context": "You are obliged to notify the MHRA of emerging safety issues within 3 working days after establishing that a signal or a safety issue from any source which meets the definition of an emerging safety issue (see GVP-Module IX Signal Management) 3.2 Signals for UK authorised products",
+      "fingerprint": "1eba37b83ac1ec33321504ea28c53b32d76c8d0f2c567073553078cc47917c4f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 14,
+      "anchor": "signals-for-uk-authorised-products / paragraph-37",
+      "statement": "You should inform us of signals only once they have been validated. Validation of your signal should include a thorough analysis of ICSR data available and be complemented by an assessment of other relevant information including whether the risk is addressed in other UK-authorised products.",
+      "context": "3.2 Signals for UK authorised products You should notify us of these validated signals by the following routes:",
+      "fingerprint": "1d97b1395f8fba20f04b48fae4901bc2a4ffaa3177b65a9f563dbbf7a1e085a5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 15,
+      "anchor": "signals-for-uk-authorised-products / paragraph-38",
+      "statement": "You should notify us of these validated signals by the following routes:",
+      "context": "You should inform us of signals only once they have been validated. Validation of your signal should include a thorough analysis of ICSR data available and be complemented by an assessment of other relevant information including whether the risk is addressed in other UK-authorised products.",
+      "fingerprint": "1262a1ee3439097ac77b9f13045c5f35ed13e5a134d3c1d2b63360886a4e755b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 16,
+      "anchor": "variation-of-the-ma / paragraph-40",
+      "statement": "Where you conclude, based on your assessment that there is a new or changed risk which requires a change to the product information and /or Risk Management Plan (RMP) you should submit a variation application. In this case a separate standalone signal notification is not required as the proposed changes and supportive evidence will be assessed within the variation procedure by the licensing authority.",
+      "context": "Where a variation to address a signal has been submitted to the EU and affects products authorised in the UK, you should also submit the variation to the MHRA. Where relevant, the variation can be submitted via the reliance route and, in this case, the EU assessment report, CHMP opinion and EC decision (where relevant) should be submitted once available. In these circumstances MHRA will consider the EU outcome in the context of the UK clinical situation. Normally, we would expect a reliance procedure to be submitted once the CHMP opinion is available, however, where new information might influence the evaluation of the benefits and risks, is likely to impact clinical management of patients and/or require proactive communications (e.g., via a DHPC) you are obliged to inform us as soon as possible. In these circumstances you should submit the variation to the MHRA in parallel to the EU irr",
+      "fingerprint": "7fda1681bf8fba54376075beab9ecbefabd93b7a81725e25ae2bdc13b0bf68e2",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 17,
+      "anchor": "variation-of-the-ma / paragraph-41",
+      "statement": "Where a variation to address a signal has been submitted to the EU and affects products authorised in the UK, you should also submit the variation to the MHRA. Where relevant, the variation can be submitted via the reliance route and, in this case, the EU assessment report, CHMP opinion and EC decision (where relevant) should be submitted once available. In these circumstances MHRA will consider the EU outcome in the context of the UK clinical situation. Normally, we would expect a reliance procedure to be submitted once the CHMP opinion is available, however, where new information might influence the evaluation of the benefits and risks, is likely to impact clinical management of patients and/or require proactive communications (e.g., via a DHPC) you are obliged to inform us as soon as possible. In these circumstances you should submit the variation to the MHRA in parallel to the EU irrespective of whether the reliance route is to be used. Where the reliance procedure is to be used the MHRA will generally not conclude the variation until there is an EU decision (either CHMP opinion or EC decision, where relevant).",
+      "context": "Where you conclude, based on your assessment that there is a new or changed risk which requires a change to the product information and /or Risk Management Plan (RMP) you should submit a variation application. In this case a separate standalone signal notification is not required as the proposed changes and supportive evidence will be assessed within the variation procedure by the licensing authority. Where you have submitted a variation to any regulatory authority outside of the UK and the change impacts products authorised in the UK you should make an assessment as to whether the variation should also be submitted to us.",
+      "fingerprint": "f04e749757a3aa3ede9eb6d536247980bf5f89b20a0bbe1433262f9857d5a7bb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 18,
+      "anchor": "variation-of-the-ma / paragraph-42",
+      "statement": "Where you have submitted a variation to any regulatory authority outside of the UK and the change impacts products authorised in the UK you should make an assessment as to whether the variation should also be submitted to us.",
+      "context": "Where a variation to address a signal has been submitted to the EU and affects products authorised in the UK, you should also submit the variation to the MHRA. Where relevant, the variation can be submitted via the reliance route and, in this case, the EU assessment report, CHMP opinion and EC decision (where relevant) should be submitted once available. In these circumstances MHRA will consider the EU outcome in the context of the UK clinical situation. Normally, we would expect a reliance procedure to be submitted once the CHMP opinion is available, however, where new information might influence the evaluation of the benefits and risks, is likely to impact clinical management of patients and/or require proactive communications (e.g., via a DHPC) you are obliged to inform us as soon as possible. In these circumstances you should submit the variation to the MHRA in parallel to the EU irr",
+      "fingerprint": "1b591f3616c47bd11e7cf38dc872981e1ca86d01bc5551c77ad3ae8624e1c342",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 19,
+      "anchor": "inclusion-in-the-periodic-safety-update-report-psur / paragraph-44",
+      "statement": "If a PSUR is due to be submitted within 6 months of the completion of your assessment of the signal, the signal should be reported in the PSUR, and a separate standalone signal notification is not required unless we advise you otherwise. However, if the PSUR includes a signal that corresponds to an important risk (see GVP Annex 1), you should notify us separately at [official contact omitted; consult source] at the time of submission of the PSUR. This also applies if you have been asked to assess a signal by another regulatory authority outside of the UK. Refuted signals need only be reported in PSURs.",
+      "context": "Inclusion in the Periodic Safety Update Report (PSUR) Standalone signal notification",
+      "fingerprint": "c3e0891ebf8262593b652b9d1df27e38c88b9b6805fc271214ee66d7c6bbb946",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 20,
+      "anchor": "standalone-signal-notification / paragraph-46",
+      "statement": "Where the above circumstances do not apply further analysis can be sought from us where a validated signal cannot be refuted nor confirmed as a new or changed risk by your assessment. In this case you should submit the signal as a standalone signal notification at [official contact omitted; consult source]",
+      "context": "Standalone signal notification",
+      "fingerprint": "89944e0b2da8f4dee26fa2d9abdfeb0da8b671279fb5f6da28d6d44f23e4b321",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 21,
+      "anchor": "refuted-signals / paragraph-49",
+      "statement": "If you are notifying us of a signal in circumstances other than those described above you should provide an explanation as to why you are doing so and how the validated signal impacts products authorised in the UK, together with your proposed action.",
+      "context": "Refuted signals need only be reported in PSURs 3.3 EU-led signal assessments",
+      "fingerprint": "4c80f662256baca3e5ff08715fb7c5824c276859cc83998620776284377996f2",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 22,
+      "anchor": "eu-led-signal-assessments / paragraph-51",
+      "statement": "For signals on the Pharmacovigilance Risk Assessment Committee (PRAC) agenda we request that you keep us updated with any further information available to you, including the outcome of the assessment and, where relevant, your proposed actions regarding your UK product. We request that any PRAC signal assessment reports available to you are shared with us once the PRAC recommendation is available. Signal assessment reports should be submitted to [official contact omitted; consult source].",
+      "context": "3.3 EU-led signal assessments 3.4 Products authorised for use in Northern Ireland",
+      "fingerprint": "6315ecc343913cabc6d68581b5dec41f991d6de2cd24a8d4d36e96ea8d1ee727",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 23,
+      "anchor": "products-authorised-for-use-in-northern-ireland / paragraph-53",
+      "statement": "For products authorised in Northern Ireland, in addition to the above requirements, where you detect a new signal when monitoring EudraVigilance you should validate the signal and inform the EMA.",
+      "context": "3.4 Products authorised for use in Northern Ireland You are additionally required to report to the EMA those safety signals that are considered to meet the definition of an emerging safety issue (see GVP-Module IX Signal Management).",
+      "fingerprint": "f2ba7331e93d9753a7ad88c5c867fa14ed2a4e2859b81aa32c73833b1c918fb5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 24,
+      "anchor": "risk-management-plans-rmps / paragraph-56",
+      "statement": "Submission of a new Risk Management Plan (RMP) or an update to an existing RMP may be required at any time during the product’s lifecycle. RMPs should continue to follow the EU template GVP module V Risk Management Systems Where your product has an approved RMP you should consider whether changes to the RMP are required whenever new data becomes available. Situations where an updated RMP is required include new safety concerns or where there is a new or significant change in the existing pharmacovigilance or additional risk minimisation activities.",
+      "context": "4. Risk Management Plans (RMPs) If your product does not have an approved RMP (products authorised prior to July 2012), circumstances where you should introduce one include where there are significant changes to the MA or where there are new or changed safety concerns that affect the balance of the benefits and risk of the product.",
+      "fingerprint": "911e2c01648c401e3fb1c249dd43326ac9beafc5a12698882f33240af04b0832",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 25,
+      "anchor": "risk-management-plans-rmps / paragraph-57",
+      "statement": "If your product does not have an approved RMP (products authorised prior to July 2012), circumstances where you should introduce one include where there are significant changes to the MA or where there are new or changed safety concerns that affect the balance of the benefits and risk of the product.",
+      "context": "Submission of a new Risk Management Plan (RMP) or an update to an existing RMP may be required at any time during the product’s lifecycle. RMPs should continue to follow the EU template GVP module V Risk Management Systems Where your product has an approved RMP you should consider whether changes to the RMP are required whenever new data becomes available. Situations where an updated RMP is required include new safety concerns or where there is a new or significant change in the existing pharmacovigilance or additional risk minimisation activities. We continue to accept approved versions of the EU RMP but where there is GB/UK specific information this can be provided in a GB/UK specific annex using this format. We encourage you to use this format where appropriate but where you have already had an RMP-annex approved in a different format there is no need to convert to this format.",
+      "fingerprint": "c2512537f65dc62fde94907bd849081e6265a204299ded22dac0a10b6c0d5c99",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 26,
+      "anchor": "risk-management-plans-rmps / paragraph-58",
+      "statement": "We continue to accept approved versions of the EU RMP but where there is GB/UK specific information this can be provided in a GB/UK specific annex using this format. We encourage you to use this format where appropriate but where you have already had an RMP-annex approved in a different format there is no need to convert to this format.",
+      "context": "If your product does not have an approved RMP (products authorised prior to July 2012), circumstances where you should introduce one include where there are significant changes to the MA or where there are new or changed safety concerns that affect the balance of the benefits and risk of the product. Where you are applying for a new MA or other procedure which necessitates a GB/UK specific RMP you can either submit a GB/UK RMP or use the approved EU RMP, if one is available, with a specific GB/UK annex. The GB/UK-specific RMP annex should be attached to the corresponding EU RMP, placing the GB/UK-specific annex first and the EU RMP second in a single document. In cases where the differences between GB/UK and EU RMPs are extensive and affect the majority of sections in the RMP, a standalone GB/UK RMP should be prepared using the EU RMP template.",
+      "fingerprint": "1a8523e034bbb6a5060ca7a19e4a060b25679a434cf34c45704da248ebf1c1bd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 27,
+      "anchor": "risk-management-plans-rmps / paragraph-59",
+      "statement": "Where you are applying for a new MA or other procedure which necessitates a GB/UK specific RMP you can either submit a GB/UK RMP or use the approved EU RMP, if one is available, with a specific GB/UK annex. The GB/UK-specific RMP annex should be attached to the corresponding EU RMP, placing the GB/UK-specific annex first and the EU RMP second in a single document. In cases where the differences between GB/UK and EU RMPs are extensive and affect the majority of sections in the RMP, a standalone GB/UK RMP should be prepared using the EU RMP template.",
+      "context": "We continue to accept approved versions of the EU RMP but where there is GB/UK specific information this can be provided in a GB/UK specific annex using this format. We encourage you to use this format where appropriate but where you have already had an RMP-annex approved in a different format there is no need to convert to this format. Where a new or updated RMP needs to be submitted outside of a regulatory procedure it should be submitted to the MHRA using the appropriate variation procedure. This includes circumstances where you have an approved GB/UK RMP but wish to apply to update it in line with the approved EU RMP.",
+      "fingerprint": "396c2701313225487e157f6049a4c6b5e3f704c044a816d348092425e7da9e54",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 28,
+      "anchor": "risk-management-plans-rmps / paragraph-60",
+      "statement": "Where a new or updated RMP needs to be submitted outside of a regulatory procedure it should be submitted to the MHRA using the appropriate variation procedure. This includes circumstances where you have an approved GB/UK RMP but wish to apply to update it in line with the approved EU RMP.",
+      "context": "Where you are applying for a new MA or other procedure which necessitates a GB/UK specific RMP you can either submit a GB/UK RMP or use the approved EU RMP, if one is available, with a specific GB/UK annex. The GB/UK-specific RMP annex should be attached to the corresponding EU RMP, placing the GB/UK-specific annex first and the EU RMP second in a single document. In cases where the differences between GB/UK and EU RMPs are extensive and affect the majority of sections in the RMP, a standalone GB/UK RMP should be prepared using the EU RMP template. If the RMP needs to be updated because of a PSUR assessment it should be submitted to the MHRA via a variation procedure. The MHRA PSUR portal cannot accept RMPs.",
+      "fingerprint": "a970cfa8f4bc807f1aba12a0dc9959d42797da24543d362689d3f67f06b1e522",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 29,
+      "anchor": "risk-management-plans-rmps / paragraph-61",
+      "statement": "If the RMP needs to be updated because of a PSUR assessment it should be submitted to the MHRA via a variation procedure. The MHRA PSUR portal cannot accept RMPs.",
+      "context": "Where a new or updated RMP needs to be submitted outside of a regulatory procedure it should be submitted to the MHRA using the appropriate variation procedure. This includes circumstances where you have an approved GB/UK RMP but wish to apply to update it in line with the approved EU RMP. 4.1 Additional Risk Minimisation Measures (aRMMs)",
+      "fingerprint": "b64acdc2127443dc5702f4c8cab608457a829a2d55144c49aabbb311f2ca3e95",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 30,
+      "anchor": "additional-risk-minimisation-measures-armms / paragraph-63",
+      "statement": "The MHRA is responsible for the oversight of additional risk minimisation measures (aRMMs) required for products authorised in the UK. Additional risk minimisation measures should be submitted to the MHRA for agreement before implementation in the UK. Where the aRMMs are in the form of educational materials these need to be submitted to us together with details about their distribution to [official contact omitted; consult source]. Further guidance on educational materials can be found at Guidance on educational materials. Where there is a requirement for implementation of additional risk minimisation measures with respect to Northern Ireland (for example, for a centrally authorised product) the case for any differences in approach for the rest of the UK should be discussed with the MHRA.",
+      "context": "4.1 Additional Risk Minimisation Measures (aRMMs) 5. Periodic Safety Update Reports (PSURs)",
+      "fingerprint": "31717df30ece3e65c687e1324dda2d0aa84ffa0bd10affc843dde32d5d615954",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 31,
+      "anchor": "format-and-content-of-psurs / paragraph-66",
+      "statement": "The format and content of the PSUR is set out GVP module VI and the associated exceptions document. The expectation is that where a PSUR is required to be submitted to both the MHRA and EU, the same PSUR will be submitted to both authorities. However, where the MHRA has made a specific request for information or where there is UK-specific information relevant to the benefit/ risk assessment, this should be included in a specific annex. There is no template for this annex as the content will depend on the specific issues to be covered but if you have concerns about the information to include, please contact us for further advice at [official contact omitted; consult source].",
+      "context": "5.1 Format and content of PSURs",
+      "fingerprint": "3f37ccf2263bf2780ab11e352dbd4fe8008ae1336f4995bd779835ad7e1b9c46",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 32,
+      "anchor": "submission-of-psurs / paragraph-68",
+      "statement": "PSURs for UK products should continue to be submitted according to the EU Reference Date (EURD) list. If your active is removed from the EURD list you should continue with the PSUR frequency last presented in the EURD list unless you are informed otherwise. In order to support this, it is recommended that you retain a copy of the EURD list that last contained the entry for your active.",
+      "context": "Unless the marketing authorisation specifies differently, PSURs for actives/combinations not currently on the EURD list, should be submitted at least six monthly during the first 2 years following placing on the market, once a year for the following 2 years and every 3 years after that. The exception to this is where the product is authorised under Article 10(I) or 10a, in these circumstances PSURs are not required unless there are specific requirements in the MA.",
+      "fingerprint": "979b9fe212c516812c9613b19e2310ebb37092f3d20f089879be1750e7974023",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 33,
+      "anchor": "submission-of-psurs / paragraph-69",
+      "statement": "Unless the marketing authorisation specifies differently, PSURs for actives/combinations not currently on the EURD list, should be submitted at least six monthly during the first 2 years following placing on the market, once a year for the following 2 years and every 3 years after that. The exception to this is where the product is authorised under Article 10(I) or 10a, in these circumstances PSURs are not required unless there are specific requirements in the MA.",
+      "context": "PSURs for UK products should continue to be submitted according to the EU Reference Date (EURD) list. If your active is removed from the EURD list you should continue with the PSUR frequency last presented in the EURD list unless you are informed otherwise. In order to support this, it is recommended that you retain a copy of the EURD list that last contained the entry for your active. PSURs for Category 1 products should be submitted to us via our PSUR portal (please see below). PSURs for Category 2 products should be submitted to the EU PSUR repository. We do not require these PSURs to be submitted separately to us provided that we have access to them from the EU PSUR repository. Further information on submission requirements is provided below:",
+      "fingerprint": "e031a25a66f433d54a801ebac266a6c097240f9ca485d36f097e52e6ed59be8e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 34,
+      "anchor": "submission-of-psurs / paragraph-70",
+      "statement": "PSURs for Category 1 products should be submitted to us via our PSUR portal (please see below). PSURs for Category 2 products should be submitted to the EU PSUR repository. We do not require these PSURs to be submitted separately to us provided that we have access to them from the EU PSUR repository. Further information on submission requirements is provided below:",
+      "context": "Unless the marketing authorisation specifies differently, PSURs for actives/combinations not currently on the EURD list, should be submitted at least six monthly during the first 2 years following placing on the market, once a year for the following 2 years and every 3 years after that. The exception to this is where the product is authorised under Article 10(I) or 10a, in these circumstances PSURs are not required unless there are specific requirements in the MA. PSURs for Category 1 products",
+      "fingerprint": "01ec39e944ec8904d01439eab91b5ed462660549aaf7ac73e0d5cae409730360",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 35,
+      "anchor": "psurs-for-category-1-products / paragraph-72",
+      "statement": "Submission of PSURs for Category 1 products to the MHRA should follow the EU reference date (EURD) list unless separate submission requirements have been put in place.",
+      "context": "PSURs for Category 1 products For products authorised in the UK before the MA is granted in the EU you will be advised of PSUR submission requirements at the time of authorisation. There will be the facility to request alignment of submission with the EURD list later, depending on when the product is authorised in the EU. Where this applies you should contact us to discuss the specific circumstances.",
+      "fingerprint": "992ab68d948a4b90109c6944c81baedc171450bf0ec70994d323153aefcfdf04",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 36,
+      "anchor": "psurs-for-category-1-products / paragraph-73",
+      "statement": "For products authorised in the UK before the MA is granted in the EU you will be advised of PSUR submission requirements at the time of authorisation. There will be the facility to request alignment of submission with the EURD list later, depending on when the product is authorised in the EU. Where this applies you should contact us to discuss the specific circumstances.",
+      "context": "Submission of PSURs for Category 1 products to the MHRA should follow the EU reference date (EURD) list unless separate submission requirements have been put in place. You should submit your PSUR to us via our PSUR submission portal. Detailed requirements for how to submit to our portal can be found at making submissions to the MHRA but PSURs can be submitted to the portal in PDF or word format or as part of a zip file format. You should submit your PSUR via the procedure number on the portal. This will be the same as the procedure number on the EURD list without the ‘USA’ e.g.PS/12345678/123456. Submissions are not required as part of the eCTD lifecycle in the UK.",
+      "fingerprint": "afa0340a4ef594a7ccfd8a8dac6ed041012e789b48921c9ba4805fc6ba9936c8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 37,
+      "anchor": "psurs-for-category-1-products / paragraph-74",
+      "statement": "You should submit your PSUR to us via our PSUR submission portal. Detailed requirements for how to submit to our portal can be found at making submissions to the MHRA but PSURs can be submitted to the portal in PDF or word format or as part of a zip file format. You should submit your PSUR via the procedure number on the portal. This will be the same as the procedure number on the EURD list without the ‘USA’ e.g.PS/12345678/123456. Submissions are not required as part of the eCTD lifecycle in the UK.",
+      "context": "For products authorised in the UK before the MA is granted in the EU you will be advised of PSUR submission requirements at the time of authorisation. There will be the facility to request alignment of submission with the EURD list later, depending on when the product is authorised in the EU. Where this applies you should contact us to discuss the specific circumstances. Submission requirements for Category 2 Products",
+      "fingerprint": "599a9772159b85b01aa0417083289cc90c8bdea06220c3923840d76a8261be6e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 38,
+      "anchor": "submission-requirements-for-category-2-products / paragraph-76",
+      "statement": "PSURs for category 2 products should be submitted to the EMA via the EU PSUR repository. These PSURs are also required by MHRA, however, as we have access to the EU PSUR repository, to avoid dual submission. You are not required to submit the PSUR to the MHRA. This is provided your PSUR has been submitted to the EU PSUR repository and we have access to it from there. We do, however, ask you to e-mail at [official contact omitted; consult source] and inform us when you submit your PSUR to the EU PSUR Repository. If you are not able to submit the PSUR to the EU PSUR repository you must submit to the MHRA via our portal.",
+      "context": "Submission requirements for Category 2 Products In some circumstances, we may request submission of the PSUR via our portal where we consider it necessary, and you should follow the instructions for submission to our portal where required (please see further details above).",
+      "fingerprint": "802a0ddaff97f0e158b00f02705998d8196ef3540fa86f1ae3697dad26b1a154",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 39,
+      "anchor": "submission-requirements-for-category-2-products / paragraph-77",
+      "statement": "In some circumstances, we may request submission of the PSUR via our portal where we consider it necessary, and you should follow the instructions for submission to our portal where required (please see further details above).",
+      "context": "PSURs for category 2 products should be submitted to the EMA via the EU PSUR repository. These PSURs are also required by MHRA, however, as we have access to the EU PSUR repository, to avoid dual submission. You are not required to submit the PSUR to the MHRA. This is provided your PSUR has been submitted to the EU PSUR repository and we have access to it from there. We do, however, ask you to e-mail at [official contact omitted; consult source] and inform us when you submit your PSUR to the EU PSUR Repository. If you are not able to submit the PSUR to the EU PSUR repository you must submit to the MHRA via our portal. Informal PSUSA follow-up procedure",
+      "fingerprint": "4d760d896612df8ac5e11f20637e540561b046cbd6706e947120e56a59d02739",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 40,
+      "anchor": "informal-psusa-follow-up-procedure / paragraph-79",
+      "statement": "Where your PSUR is subject to an informal PSUSA follow-up procedure (please refer to the CMDh website for further details on this procedure) please inform us by e-mail at [official contact omitted; consult source] when the procedure is initiated. You should continue to submit the information regarding the procedure via the route specific for this procedure (i.e., via CESP not the EU PSUR repository or MHRA submission portal). Outcomes should be implemented via the same type of variation procedure as in the EU and where the MHRA have additional requirements we will inform you.",
+      "context": "Informal PSUSA follow-up procedure",
+      "fingerprint": "a16811aa6814ccc582c21f33ca723765b496f38b9a5955b40ecd2cd25506abd1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 41,
+      "anchor": "fees / paragraph-81",
+      "statement": "A fee of £1,066 will be payable for PSURs which are required to be submitted to our portal and are for actives/ combinations which are currently listed on the EURD (or UK reference date list). There will be a reduction to £533 for each PSUR where more than one PSUR is involved in the procedure and submitted to the MHRA. Please note you will need a purchase order (PO) ready when you submit. No further fee will be payable for the amendment of the product information as a result of the UK assessment which should be made by a Type IA variation.",
+      "context": "5.4 Assessment and outcomes",
+      "fingerprint": "129ee3cd2932914c03937d1042816e9a87abda64511b6f1c8b881489296e1705",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 42,
+      "anchor": "psurs-subject-to-the-eu-single-assessment-process / paragraph-84",
+      "statement": "Where the EU assessment results in an amendment to the product information, please notify us of the PRAC recommendation as soon as possible and submit a copy of the CMDh Decision or CHMP opinion as soon as available. This information should be submitted by e-mail to [official contact omitted; consult source]. This will allow us to take the EU recommendation into account in our assessment and avoid any unnecessary divergence. We will inform MAHs directly if, following our assessment, we have any additional requirements to the EU. Provided information regarding the EU assessment is submitted to us in a timely manner this will be communicated before or shortly after (within 14 calendar days) the publication of the EU outcome, otherwise the EU outcome should be implemented by the same type of procedure as in the EU. A delay in providing the necessary information to the MHRA may result in additional requests being made outside this timeframe.",
+      "context": "PSURs subject to the EU single assessment process Where the outcome for the corresponding centrally authorised product is implemented as part of the EC Decision without a separate variation, unless you are advised otherwise, a Type IAIN variation should be submitted to implement the same outcome for the Great Britain-only MA.",
+      "fingerprint": "4c8e3c0dfd6296b384ab939817521a2ae06b1b5b49a2db0a3690a98a97306fa6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 43,
+      "anchor": "psurs-subject-to-the-eu-single-assessment-process / paragraph-85",
+      "statement": "Where the outcome for the corresponding centrally authorised product is implemented as part of the EC Decision without a separate variation, unless you are advised otherwise, a Type IAIN variation should be submitted to implement the same outcome for the Great Britain-only MA.",
+      "context": "Where the EU assessment results in an amendment to the product information, please notify us of the PRAC recommendation as soon as possible and submit a copy of the CMDh Decision or CHMP opinion as soon as available. This information should be submitted by e-mail to [official contact omitted; consult source]. This will allow us to take the EU recommendation into account in our assessment and avoid any unnecessary divergence. We will inform MAHs directly if, following our assessment, we have any additional requirements to the EU. Provided information regarding the EU assessment is submitted to us in a timely manner this will be communicated before or shortly after (within 14 calendar days) the publication of the EU outcome, otherwise the EU outcome should be implemented by the same type of procedure as in the EU. A delay in providing the necessary information to the MHRA may result in add",
+      "fingerprint": "2f8a9b5aa1bc9f3cdbabd05d90e76e263b17d2f6e8ed5c9f67f213f614ab9f07",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 44,
+      "anchor": "pass-protocols-and-results / paragraph-93",
+      "statement": "Where the study is imposed i.e. is a specific obligation or a condition of the UK MA (category 1 and 2 studies), the draft protocol should be submitted to the MHRA prior to the start of the study. Where the MA applies in Northern Ireland, the draft study protocol should also be submitted to the Pharmacovigilance Risk Assessment Committee (PRAC). The exception to this is a study that is only to be conducted in the UK at the request of the MHRA, in which case the protocol should only be submitted to the MHRA. For studies that are a condition of a GB MA or an UK MA, where the study is to be conducted in the UK at the request of the MHRA, the MHRA will assess the protocol and contact you within 60 days.",
+      "context": "The following advice refers to non-interventional studies, for PASS which fall under the definition of a clinical trial please refer to the relevant guidance. Where the PASS is imposed, any significant amendments to the draft protocol should also be submitted to the MHRA and where the MA applies in Northern Ireland, additionally to the PRAC (unless the study is only being conducted in the UK at the request of the MHRA). The definition of significant amendment is in line with that provided in Good Vigilance Practice Module VIII.",
+      "fingerprint": "ac40727dc7968f5fbbb27e4909ef499b42341c973a2dce0d61c2dcb395269d9b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 45,
+      "anchor": "pass-protocols-and-results / paragraph-94",
+      "statement": "Where the PASS is imposed, any significant amendments to the draft protocol should also be submitted to the MHRA and where the MA applies in Northern Ireland, additionally to the PRAC (unless the study is only being conducted in the UK at the request of the MHRA). The definition of significant amendment is in line with that provided in Good Vigilance Practice Module VIII.",
+      "context": "Where the study is imposed i.e. is a specific obligation or a condition of the UK MA (category 1 and 2 studies), the draft protocol should be submitted to the MHRA prior to the start of the study. Where the MA applies in Northern Ireland, the draft study protocol should also be submitted to the Pharmacovigilance Risk Assessment Committee (PRAC). The exception to this is a study that is only to be conducted in the UK at the request of the MHRA, in which case the protocol should only be submitted to the MHRA. For studies that are a condition of a GB MA or an UK MA, where the study is to be conducted in the UK at the request of the MHRA, the MHRA will assess the protocol and contact you within 60 days. There is no specific requirement to submit draft protocols for PASS which are voluntary (not a condition of the MA) including non-imposed studies that are requested as part of the RMP (catego",
+      "fingerprint": "a1a1bbd156ff50622cc34ceb0bb2f40d08aa9abfab371360ec2066c6cac56f20",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 46,
+      "anchor": "pass-protocols-and-results / paragraph-95",
+      "statement": "There is no specific requirement to submit draft protocols for PASS which are voluntary (not a condition of the MA) including non-imposed studies that are requested as part of the RMP (category 3 studies). However, we may request submission where we consider that an assessment is required, in this case the protocol should be submitted as Type II (standard) variation.",
+      "context": "Where the PASS is imposed, any significant amendments to the draft protocol should also be submitted to the MHRA and where the MA applies in Northern Ireland, additionally to the PRAC (unless the study is only being conducted in the UK at the request of the MHRA). The definition of significant amendment is in line with that provided in Good Vigilance Practice Module VIII.",
+      "fingerprint": "83ad6df921901589dfa9930a19aa3c7d400db2d874f4773efdaecb6ccd4b1735",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 47,
+      "anchor": "pass-results / paragraph-97",
+      "statement": "Final study reports for all non-interventional PASS (either voluntary or imposed) that involve collection of safety data from patients/healthcare professionals should be submitted to the MHRA.",
+      "context": "The final study report should be submitted within 12-months of the end of data collection.",
+      "fingerprint": "4b5991d91ec72756a425a4845af2f0fe4cfde03dcbb4aff45411d6e694891063",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 48,
+      "anchor": "pass-results / paragraph-98",
+      "statement": "The final study report should be submitted within 12-months of the end of data collection.",
+      "context": "Final study reports for all non-interventional PASS (either voluntary or imposed) that involve collection of safety data from patients/healthcare professionals should be submitted to the MHRA. Interim reports for PASS which are a condition of the UK MA should also be submitted to the MHRA.",
+      "fingerprint": "f9203f987611db2907346cea50e1281f5c760b03fa96e294ebe560d2cb8d1b78",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 49,
+      "anchor": "pass-results / paragraph-99",
+      "statement": "Interim reports for PASS which are a condition of the UK MA should also be submitted to the MHRA.",
+      "context": "The final study report should be submitted within 12-months of the end of data collection. Where the MA applies in Northern Ireland, interim reports for PASS which are a condition of the MA and all final study reports for non-interventional PASS, should also be submitted to the PRAC (unless the study was only conducted in the UK and not at the request of PRAC)",
+      "fingerprint": "6cbdc94ac1dbdf3e995e6452917290969e71edb4ef407df15d3aac20c1ebe60a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 50,
+      "anchor": "pass-results / paragraph-100",
+      "statement": "Where the MA applies in Northern Ireland, interim reports for PASS which are a condition of the MA and all final study reports for non-interventional PASS, should also be submitted to the PRAC (unless the study was only conducted in the UK and not at the request of PRAC)",
+      "context": "Interim reports for PASS which are a condition of the UK MA should also be submitted to the MHRA. Interim reports for non-imposed studies are generally not required, but where we require interim reports for these PASS, we will inform you.",
+      "fingerprint": "f0f36b19a2d9161c2da9868ad0022304c66b1c2b20f9c1fd5f868bc502861671",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 51,
+      "anchor": "pass-results / paragraph-101",
+      "statement": "Interim reports for non-imposed studies are generally not required, but where we require interim reports for these PASS, we will inform you.",
+      "context": "Where the MA applies in Northern Ireland, interim reports for PASS which are a condition of the MA and all final study reports for non-interventional PASS, should also be submitted to the PRAC (unless the study was only conducted in the UK and not at the request of PRAC) 6.1.2 Submission and fees",
+      "fingerprint": "e0fedd46c12cd44d6cc920fa22f406d184d743803aabe12a423ba72c0111549e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 52,
+      "anchor": "imposed-pass / paragraph-105",
+      "statement": "Protocol and final study reports should be submitted to the MHRA when available.",
+      "context": "Protocol and Final Study reports Where protocols and final study reports are also submitted to the PRAC, the MHRA will take the EU decision into consideration and the relevant EU documentation (assessment report, CHMP opinion etc.) should be provided as soon as available. A reduced fee of £734 will apply and to facilitate submission, protocols and final study reports should be submitted to the MHRA using a Type II (standard) variation procedure (classification C.I.13).",
+      "fingerprint": "8721ab5bfccaf8c76cfc6f4d23d500535d5dd2cc052c53349da9ab9672f7b860",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 53,
+      "anchor": "imposed-pass / paragraph-106",
+      "statement": "Where protocols and final study reports are also submitted to the PRAC, the MHRA will take the EU decision into consideration and the relevant EU documentation (assessment report, CHMP opinion etc.) should be provided as soon as available. A reduced fee of £734 will apply and to facilitate submission, protocols and final study reports should be submitted to the MHRA using a Type II (standard) variation procedure (classification C.I.13).",
+      "context": "Protocol and final study reports should be submitted to the MHRA when available. Where the PASS is to be conducted only in the UK or relates to a product authorised only in Great Britain and the protocol and final study report have not been submitted to the PRAC, the protocol and final study reports should be submitted to the MHRA. A fee of £8,309 will apply in this case and to facilitate submission, protocols and final study reports which fall into this category should be submitted via a Type II (complex) variation procedure (classification C.I.13).",
+      "fingerprint": "8b2f2af2d08ecc0cdd976b258f7579672d7509c3311e79294baa50fb9c332da9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 54,
+      "anchor": "imposed-pass / paragraph-107",
+      "statement": "Where the PASS is to be conducted only in the UK or relates to a product authorised only in Great Britain and the protocol and final study report have not been submitted to the PRAC, the protocol and final study reports should be submitted to the MHRA. A fee of £8,309 will apply in this case and to facilitate submission, protocols and final study reports which fall into this category should be submitted via a Type II (complex) variation procedure (classification C.I.13).",
+      "context": "Where protocols and final study reports are also submitted to the PRAC, the MHRA will take the EU decision into consideration and the relevant EU documentation (assessment report, CHMP opinion etc.) should be provided as soon as available. A reduced fee of £734 will apply and to facilitate submission, protocols and final study reports should be submitted to the MHRA using a Type II (standard) variation procedure (classification C.I.13). Significant amendments and interim study reports",
+      "fingerprint": "3e5c1a924b7d94cc1c5deadee3d3ed96a0389dd9a9eeda1102b72acc3ee423ba",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 55,
+      "anchor": "imposed-pass / paragraph-109",
+      "statement": "Significant amendments to study protocols and interim study reports for imposed PASS should be submitted to the MHRA as post authorisation measures/ commitments via the information update route and will not incur a fee. It should be clearly stated in the cover letter that the amendment or interim report relates to an imposed PASS. These submissions will be dealt with as post authorisation measures (PAMs) (please see section 10).",
+      "context": "Significant amendments and interim study reports",
+      "fingerprint": "bc01c23bb1abe635db894f97166b9befe7fe9a5ca728e851c8cd72011effce46",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 56,
+      "anchor": "non-imposed-pass / paragraph-111",
+      "statement": "This includes PASS requested in RMPs (category 3 studies). Where draft protocols are requested, they should be submitted via the Type II (standard) variation route. Final study reports for non-imposed PASS should always be submitted to us, usually via a Type II (standard) variation procedure but where the final study report is also submitted to the PRAC, the same route of submission can be used for the MHRA (either Type II or as a. post authorisation measure) (also see section 10 on post-authorisation measures). The type II variation route should always be used where the product information is affected.",
+      "context": "Where protocols and final study reports are also submitted to the PRAC, the MHRA will take the EU decision into consideration and the relevant EU documentation (assessment report, CHMP opinion etc.) should be included in the submission to us.",
+      "fingerprint": "b34ec41d4221ae9d55b489d46f92dc400c243cd1cb6a010c5f6c98f56c72d132",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 57,
+      "anchor": "non-imposed-pass / paragraph-112",
+      "statement": "Where protocols and final study reports are also submitted to the PRAC, the MHRA will take the EU decision into consideration and the relevant EU documentation (assessment report, CHMP opinion etc.) should be included in the submission to us.",
+      "context": "This includes PASS requested in RMPs (category 3 studies). Where draft protocols are requested, they should be submitted via the Type II (standard) variation route. Final study reports for non-imposed PASS should always be submitted to us, usually via a Type II (standard) variation procedure but where the final study report is also submitted to the PRAC, the same route of submission can be used for the MHRA (either Type II or as a. post authorisation measure) (also see section 10 on post-authorisation measures). The type II variation route should always be used where the product information is affected. Where interim reports are required for non-imposed PASS these should be submitted to us as post authorisation measures/ commitments via the information update route and will not incur a fee (please see section 10)",
+      "fingerprint": "504edbbca6f28ae9a1b87fb28767bddf8aa38f00b6cc4dac655fd20d877717c6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 58,
+      "anchor": "non-imposed-pass / paragraph-113",
+      "statement": "Where interim reports are required for non-imposed PASS these should be submitted to us as post authorisation measures/ commitments via the information update route and will not incur a fee (please see section 10)",
+      "context": "Where protocols and final study reports are also submitted to the PRAC, the MHRA will take the EU decision into consideration and the relevant EU documentation (assessment report, CHMP opinion etc.) should be included in the submission to us. 6.1.3 Updates to product information to reflect study results",
+      "fingerprint": "cfbe1fb1baa4f20a6fc50b5960dde2d7d4bc4d2c3c4b02aec686d68ca4728cd7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 59,
+      "anchor": "updates-to-product-information-to-reflect-study-results / paragraph-115",
+      "statement": "Where the results of any PASS study affect the product information, the amendments should be submitted via a type II variation. The results and amendments can be submitted as part of the same variation provided the appropriate fee is paid (£734 where the study results and amendments are also submitted to the PRAC, otherwise £ 8,309).",
+      "context": "6.1.3 Updates to product information to reflect study results The submission requirements for PASS are summarised in Figs 1 and 2.",
+      "fingerprint": "dd5ff44cb02d043b310f6d1bc9219fe7202bb5f0836b4d2af50b21189e9e3ea8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 60,
+      "anchor": "safety-referrals / paragraph-118",
+      "statement": "UK products continue to be part of Union referral procedures in respect of Northern Ireland. The scientific opinion and Commission or CMDh Decision will include UK products in respect of Northern Ireland. You should implement the outcome via the relevant variation procedure where your MA covers Northern Ireland.",
+      "context": "Where you hold a Great Britain-only MA, and the outcome of an EU referral is to be reflected in your MA you should submit a Type II variation application together with all relevant documentation regarding the referral. This will be assessed by the MHRA, taking into account the EU decision, to determine the necessary actions.",
+      "fingerprint": "9331dfebc49b20464dbb48e27a8b37fbabf5b1800a63587649d13f57a6b3e4c9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 61,
+      "anchor": "safety-referrals / paragraph-119",
+      "statement": "Where you hold a Great Britain-only MA, and the outcome of an EU referral is to be reflected in your MA you should submit a Type II variation application together with all relevant documentation regarding the referral. This will be assessed by the MHRA, taking into account the EU decision, to determine the necessary actions.",
+      "context": "UK products continue to be part of Union referral procedures in respect of Northern Ireland. The scientific opinion and Commission or CMDh Decision will include UK products in respect of Northern Ireland. You should implement the outcome via the relevant variation procedure where your MA covers Northern Ireland. You are reminded that where new information comes to light which might influence the evaluation of the benefits and risks of your product you are obliged to inform us as soon as is reasonably practical. We therefore expect to be informed of the initiation of a referral procedure that affects products authorised in the UK and kept informed of the relevant data and assessment. Please inform us at [official contact omitted; consult source].",
+      "fingerprint": "7b59394737ab2ae73dfc85a97282b4b4f04b482e44e9f3067672ce86c23092b0",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 62,
+      "anchor": "safety-referrals / paragraph-120",
+      "statement": "You are reminded that where new information comes to light which might influence the evaluation of the benefits and risks of your product you are obliged to inform us as soon as is reasonably practical. We therefore expect to be informed of the initiation of a referral procedure that affects products authorised in the UK and kept informed of the relevant data and assessment. Please inform us at [official contact omitted; consult source].",
+      "context": "Where you hold a Great Britain-only MA, and the outcome of an EU referral is to be reflected in your MA you should submit a Type II variation application together with all relevant documentation regarding the referral. This will be assessed by the MHRA, taking into account the EU decision, to determine the necessary actions.",
+      "fingerprint": "cec30e8b745a9ddf4027f015193a71e8299c8041371ac7b0a53bf31dd75f27d7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 63,
+      "anchor": "fig-2-submission-requirements---final-study-report-or-interim-study-results-for-non-interventional-pass / paragraph-128",
+      "statement": "Where you hold a MA for an affected product, you will be notified of the start of and reasons for the review. You will also be provided with a list of questions that should be addressed by all MAHs along with the deadline by which the requested information should be submitted.",
+      "context": "In these circumstances we will publicly announce the initiation of the review, outlining the reasons for the review, the list of affected active substances and products, and the timescales for the review. In the first instance, this correspondence will be done via the Qualified Person for Pharmacovigilance (QPPV) but a different or additional contact for future correspondence can be nominated. The outcome of the review will be published. Where the recommendations include proposals for regulatory action the details of the measures to be taken including any changes to the product information will be published.",
+      "fingerprint": "716c06126c525cdc4aa4ceea5a3002dda3e6b258884364ed7636212a033e40ad",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 64,
+      "anchor": "specific-obligations-sob / paragraph-145",
+      "statement": "Specific obligations (SOB), imposed on marketing authorisations granted under exceptional circumstances or on conditional authorisations, form the basis of the annual re-assessment or annual renewal. SOBs may also be additional pharmacovigilance activity and included in the RMP (category 2 studies). SOBs are binding conditions and any modification with regards to the description should be submitted within an appropriate procedure, either the annual re-assessment, annual renewal or via a variation. Interim results which do not affect the product information, which are submitted outside the annual re-assessment or renewal can be submitted via the PAM submission route as described below. Final results leading to fulfillment of a SOB should be submitted within the appropriate procedure (annual re-assessment, the annual renewal, or a variation application).",
+      "context": "Specific obligations (SOB) Annex II conditions (ANX)",
+      "fingerprint": "953308ab9a893136b85c3eb267c7b3c81ec99247b0bbfafd1808b18ffc78d755",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 65,
+      "anchor": "annex-ii-conditions-anx / paragraph-147",
+      "statement": "Annex II conditions, imposed obligations to conduct post-authorisation measures, are considered to be key to the benefit risk of the product and may also be additional Pharmacovigilance activity and included in the RMP (category 1 studies). As they are binding conditions any modification with regards to the description should be submitted via a variation procedure. Interim results which do not affect the product information can be submitted via the PAM submission route as described below. Final results leading to fulfillment of an Annex II condition should be submitted via a variation application.",
+      "context": "Annex II conditions (ANX) Additional pharmacovigilance activity in the risk-management plan (MEA)",
+      "fingerprint": "0cb7f2fca7494b7702f8df2204f18cd6de9d64e0e5e36ed831fadcf517d54db4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 66,
+      "anchor": "additional-pharmacovigilance-activity-in-the-risk-management-plan-mea / paragraph-149",
+      "statement": "Additional pharmacovigilance activities in the RMP (category 3 studies) are studies required to investigate a safety concern. Any changes to additional pharmacovigilance activities agreed within the RMP should be submitted via the appropriate variation procedure to amend the RMP. Information not impacting on the product information or description/ or due date of the measure itself can be submitted via the PAM route as described below. Final results leading to fulfillment of a MEA should be submitted via a variation application.",
+      "context": "Additional pharmacovigilance activity in the risk-management plan (MEA) Legally binding measures (LEG)",
+      "fingerprint": "703fd3dec4bd356b5dde1d47a74cebbd2e78b43de398dcc66d22c25ee81b2cac",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 67,
+      "anchor": "legally-binding-measures-leg / paragraph-151",
+      "statement": "Where a LEG procedure is initiated in the EU, please inform us by e-mail [official contact omitted; consult source] once the procedure has been initiated. Subsequent information should be submitted via the PAM route (see below).",
+      "context": "Legally binding measures (LEG)",
+      "fingerprint": "3e6b1e7d4d31b3c8d0c46f86c6f8f537d52bfdaa30359214574a9a40f5d1d964",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 68,
+      "anchor": "recommendations-rec / paragraph-154",
+      "statement": "Where any information regarding a PAM affects the product information you should submit a variation application as appropriate.",
+      "context": "Recommendations are non-binding to the MA but where they are made information concerning the REC can be submitted as a PAM other than where there is an impact of the product information. 10.2 Standalone PAM submission route",
+      "fingerprint": "7ce5ea9019231f6715210a77f985f32ebb784aac5d7bb4a8454abd70545c2f4c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 69,
+      "anchor": "standalone-pam-submission-route / paragraph-156",
+      "statement": "Information concerning PAMs which is not submitted as part of other procedures and does not impact the product information should be submitted to the MHRA as a post-authorisation commitment via the MHRA portal using the information update route, clearly stating the nature of the PAM.",
+      "context": "10.2 Standalone PAM submission route",
+      "fingerprint": "1ae3f99567030431ebf806d51ba8ec2ebfa0f765670d1c0f00dca5b62cd3e668",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 70,
+      "anchor": "assessment-of-pams / paragraph-158",
+      "statement": "Where PAM applies in the EU we will take into account the EU decision and the submission should be made to us be made once the CHMP opinion is available. The CHMP opinion and other relevant EU documentation (AR assessment report etc. where available etc.) should be provided as part of your submission. However, where new information might influence the evaluation of the benefit and risks of the product you are obliged to inform us of this. This information should be provided to the MHRA as soon as is reasonably practicable and this includes where the information comes to light as part of an EU assessment (please refer to section 11 for further information).",
+      "context": "In most circumstances the MHRA will not issue a separate approval for information submitted as a standalone PAM unless we have additional requirements, or the PAM is at the request of the MHRA.",
+      "fingerprint": "d837a5ab7236a6658e69c7093b7d78dbc1438317768a68758064c025d6b99c7a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 71,
+      "anchor": "implementation-of-outcomes-of-eu-safety-referrals-and-procedures-concerning-psurs-pass-signal-assessments-and-pams / paragraph-161",
+      "statement": "You are reminded that you must ensure that the information for your product is kept up to date with current scientific knowledge. MAHs should continue to monitor the EMA and Heads of Medicines Agencies (for CMDh outcomes) websites and implement the outcomes from EU decisions as appropriate. Where you hold a UK MA which covers Northern Ireland, the EU outcome should be implemented, unless you are advised otherwise, and the same type of variation procedure as recommended in the EU procedure should be used to implement the change for the UK MA.",
+      "context": "11. Implementation of outcomes of EU safety referrals and procedures concerning PSURs, PASS, signal assessments and PAMs For Great Britain-only MAs, the expectation is that you will follow EU outcomes and make the same changes to the Great Britain-only MA as made to the corresponding EU MA. In order to do so you will need to submit the corresponding procedure to the MHRA.",
+      "fingerprint": "a2b7305065203636424309dfa9446c980e7dd57e59fa0c113bafbf879231b11c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 72,
+      "anchor": "implementation-of-outcomes-of-eu-safety-referrals-and-procedures-concerning-psurs-pass-signal-assessments-and-pams / paragraph-162",
+      "statement": "For Great Britain-only MAs, the expectation is that you will follow EU outcomes and make the same changes to the Great Britain-only MA as made to the corresponding EU MA. In order to do so you will need to submit the corresponding procedure to the MHRA.",
+      "context": "You are reminded that you must ensure that the information for your product is kept up to date with current scientific knowledge. MAHs should continue to monitor the EMA and Heads of Medicines Agencies (for CMDh outcomes) websites and implement the outcomes from EU decisions as appropriate. Where you hold a UK MA which covers Northern Ireland, the EU outcome should be implemented, unless you are advised otherwise, and the same type of variation procedure as recommended in the EU procedure should be used to implement the change for the UK MA. In exceptional circumstances, the MHRA may consider that your MA should not be updated in line with the EU decision, where this applies we will inform MAHs within 14 days of the publication of the EU outcome where this is the case. In all other circumstances, an appropriate variation should be submitted.",
+      "fingerprint": "24dc3af5a84f649cf520feef957d59c82695b6680baafe58d0db0e02d29ee2ec",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 73,
+      "anchor": "implementation-of-outcomes-of-eu-safety-referrals-and-procedures-concerning-psurs-pass-signal-assessments-and-pams / paragraph-163",
+      "statement": "In exceptional circumstances, the MHRA may consider that your MA should not be updated in line with the EU decision, where this applies we will inform MAHs within 14 days of the publication of the EU outcome where this is the case. In all other circumstances, an appropriate variation should be submitted.",
+      "context": "For Great Britain-only MAs, the expectation is that you will follow EU outcomes and make the same changes to the Great Britain-only MA as made to the corresponding EU MA. In order to do so you will need to submit the corresponding procedure to the MHRA. Where the outcome for the corresponding centrally authorised product is implemented as part of the EC Decision without a separate variation, unless you are advised otherwise, a Type IAIN variation should be submitted to implement the same outcome for the Great Britain-only MA. Where we have UK specific requirements for submission of procedures these are detailed in the relevant sections of this guidance.",
+      "fingerprint": "3d16ea45071e4e79fb98ecf3732b87eecf449a8883092d168331835fd778ac0f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 74,
+      "anchor": "implementation-of-outcomes-of-eu-safety-referrals-and-procedures-concerning-psurs-pass-signal-assessments-and-pams / paragraph-164",
+      "statement": "Where the outcome for the corresponding centrally authorised product is implemented as part of the EC Decision without a separate variation, unless you are advised otherwise, a Type IAIN variation should be submitted to implement the same outcome for the Great Britain-only MA. Where we have UK specific requirements for submission of procedures these are detailed in the relevant sections of this guidance.",
+      "context": "In exceptional circumstances, the MHRA may consider that your MA should not be updated in line with the EU decision, where this applies we will inform MAHs within 14 days of the publication of the EU outcome where this is the case. In all other circumstances, an appropriate variation should be submitted. Unless otherwise stated in this guidance (please see specific advice regarding PASS and referrals) the reliance route can be used to implement the outcome for the corresponding EU procedure for a Great Britain-only MA. In this case you must provide all relevant EU documentation (CHMP opinion, assessment report and, where applicable, the EC decision). Reliance route applications should normally be submitted once there is a CHMP opinion, and your application should include the CHMP opinion and the corresponding assessment report. Where an EC decision is required, we will not conclude the a",
+      "fingerprint": "73066c54ca1421ad871c8e316279d4e166b23134ee8ce9f5fe606b0a589421d7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 75,
+      "anchor": "implementation-of-outcomes-of-eu-safety-referrals-and-procedures-concerning-psurs-pass-signal-assessments-and-pams / paragraph-165",
+      "statement": "Unless otherwise stated in this guidance (please see specific advice regarding PASS and referrals) the reliance route can be used to implement the outcome for the corresponding EU procedure for a Great Britain-only MA. In this case you must provide all relevant EU documentation (CHMP opinion, assessment report and, where applicable, the EC decision). Reliance route applications should normally be submitted once there is a CHMP opinion, and your application should include the CHMP opinion and the corresponding assessment report. Where an EC decision is required, we will not conclude the application until you have submitted this to us.",
+      "context": "Where the outcome for the corresponding centrally authorised product is implemented as part of the EC Decision without a separate variation, unless you are advised otherwise, a Type IAIN variation should be submitted to implement the same outcome for the Great Britain-only MA. Where we have UK specific requirements for submission of procedures these are detailed in the relevant sections of this guidance. However, the reliance route is not a substitute for MAH obligations to submit pharmacovigilance data and information to the MHRA and to keep the MA up to date with current scientific knowledge. Where there is new information which might impact the evaluation of the benefit and risks of your product, is likely to impact clinical management of patients and/or require proactive communications (e.g., via a DHPC), including information in the EU assessment this should be submitted to us as so",
+      "fingerprint": "f28f1856c3074a858675105ec5e170a88897228bf74285df35294bb41a662eb1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 76,
+      "anchor": "implementation-of-outcomes-of-eu-safety-referrals-and-procedures-concerning-psurs-pass-signal-assessments-and-pams / paragraph-166",
+      "statement": "However, the reliance route is not a substitute for MAH obligations to submit pharmacovigilance data and information to the MHRA and to keep the MA up to date with current scientific knowledge. Where there is new information which might impact the evaluation of the benefit and risks of your product, is likely to impact clinical management of patients and/or require proactive communications (e.g., via a DHPC), including information in the EU assessment this should be submitted to us as soon as possible, and you should not wait until the CHMP opinion is available (also see section 12 regarding safety communications).",
+      "context": "Unless otherwise stated in this guidance (please see specific advice regarding PASS and referrals) the reliance route can be used to implement the outcome for the corresponding EU procedure for a Great Britain-only MA. In this case you must provide all relevant EU documentation (CHMP opinion, assessment report and, where applicable, the EC decision). Reliance route applications should normally be submitted once there is a CHMP opinion, and your application should include the CHMP opinion and the corresponding assessment report. Where an EC decision is required, we will not conclude the application until you have submitted this to us. Where the MHRA assessment results in additional UK-specific requirements we will contact MAHs directly before or shortly after (within 14 calendar days) the publication of the EU outcome. However, where the necessary information, as outlined above, has not b",
+      "fingerprint": "56f9973264b407e1ae8d8854891dc22f8e6ddafa3418fdb24bb40d0591a31518",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 77,
+      "anchor": "safety-communications / paragraph-169",
+      "statement": "The principles of safety communication outlined in GVP module XV continue to apply to all UK authorised products. The responsibilities of MAHs in relation to public announcements on pharmacovigilance concerns, in relation to the use of medicinal products authorised in Northern Ireland and products authorised in Great Britain-only are set out in the guidance note on the exceptions and modifications to the EU guidance on good vigilance practices. MHRA would like to be made aware of any planned communications as soon as possible and MAHs should provide us with all available documentation, including that from the EU assessment, where appropriate. We consider this to be part of your obligation to inform us where there is any new information which might impact on the evaluation of benefits and risks.",
+      "context": "12. Safety communications 12.1 Direct healthcare professional communications (DHPCs)",
+      "fingerprint": "23bd67755d084f78868e0cc86850aa93d1879f9a5513d53b48daa23928f09f5b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 78,
+      "anchor": "direct-healthcare-professional-communications-dhpcs / paragraph-172",
+      "statement": "Irrespective of the route of authorisation, the content of a DHPC and communication plan should be agreed with the MHRA before dissemination in the UK. Draft DHPCs should be sent to [official contact omitted; consult source]",
+      "context": "Guidance for marketing authorisation holders on drafting direct healthcare professional communications (DHPCs) can be found at How to draft a DHPC Where the DHPC is a result of an EU assessment, to avoid delay in the dissemination of the DHPC in the UK, as stated above you should inform us as soon as you are aware that a communication may be required and supply all necessary information when available. Once a core EU DHPC, setting out core EU messages, is agreed the final version of the DHPC and communication plan should be sent to the MHRA for review. You should wait until you receive comments and agreement from the MHRA before disseminating the DHPC in the UK.",
+      "fingerprint": "0a8af8bd122b8880f7d9f2a5dd6d12beaa5940dc86a17850913fc36f7c075bfc",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 79,
+      "anchor": "direct-healthcare-professional-communications-dhpcs / paragraph-173",
+      "statement": "Where the DHPC is a result of an EU assessment, to avoid delay in the dissemination of the DHPC in the UK, as stated above you should inform us as soon as you are aware that a communication may be required and supply all necessary information when available. Once a core EU DHPC, setting out core EU messages, is agreed the final version of the DHPC and communication plan should be sent to the MHRA for review. You should wait until you receive comments and agreement from the MHRA before disseminating the DHPC in the UK.",
+      "context": "Irrespective of the route of authorisation, the content of a DHPC and communication plan should be agreed with the MHRA before dissemination in the UK. Draft DHPCs should be sent to [official contact omitted; consult source] The timing of dissemination may be adapted according to the urgency of the situation.",
+      "fingerprint": "83e5ca397007de3a520fa2b141015b156328f66d8f6662b5740e9aa650b4ed34",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 80,
+      "anchor": "requirements-for-mas-granted-via-the-unfettered-access-route / paragraph-176",
+      "statement": "Where you have a Great Britain-only MA granted via the unfettered access route, all pharmacovigilance obligations continue to apply. To ensure the safety of patients in Great Britain you must provide any new information that may impact on the terms of the MA and/ or impact on the balance of benefits and risk of the product. This includes information from clinical trials and data on the use of the product outside the terms of the MA. Unless otherwise stated, the same data/submission as that provided to the EU should be submitted to the MHRA. Other requirements are set out below",
+      "context": "13. Requirements for MAs granted via the Unfettered Access route",
+      "fingerprint": "ac79406f9235684fbd5f5d448897c0ed11d6491e372fa917f8010609fce74d3f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 81,
+      "anchor": "submitting-icsrs / paragraph-178",
+      "statement": "You should submit to the MHRA reports of all serious suspected adverse reactions that occur in the UK and other countries, and all non-serious suspected adverse reactions that occur in the UK via the MHRA Gateway and/or ICSR submissions portal.",
+      "context": "13.2 Provision of other Pharmacovigilance data",
+      "fingerprint": "570a8bac4c0268894e41d6b46758fee044786774449407a7b4690b279e1635e6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 82,
+      "anchor": "provision-of-other-pharmacovigilance-data / paragraph-180",
+      "statement": "You should submit copies of the Periodic Safety Update Reports (PSURs) to the MHRA portal. We will accept copies of the PSUR submitted to the EU in line with the frequency set by the EU.",
+      "context": "13.2 Provision of other Pharmacovigilance data All other pharmacovigilance data submitted to the EU, including RMPs, PASS protocols and final study reports etc. should also be submitted to the MHRA, and we will accept copies of the same information submitted to the EU.",
+      "fingerprint": "060bfb8ecb8eaf46dab99ce382a52eee81b75a350892f7957e37f2c87057a350",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 83,
+      "anchor": "provision-of-other-pharmacovigilance-data / paragraph-181",
+      "statement": "All other pharmacovigilance data submitted to the EU, including RMPs, PASS protocols and final study reports etc. should also be submitted to the MHRA, and we will accept copies of the same information submitted to the EU.",
+      "context": "You should submit copies of the Periodic Safety Update Reports (PSURs) to the MHRA portal. We will accept copies of the PSUR submitted to the EU in line with the frequency set by the EU.",
+      "fingerprint": "0044ffd1aa9df04bcae20330ac1803e5e62649b7c94d8f64c9d7744b6bb0e343",
+      "review_status": "pending"
+    }
+  ],
+  "retrieved_at": "2026-11-01T20:59:21.190Z"
+}
