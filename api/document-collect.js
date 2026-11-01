@@ -14,7 +14,7 @@ export default async function handler(req,res){
  const send=(status,body)=>{res.statusCode=status;res.setHeader('content-type','application/json');res.setHeader('cache-control','no-store');res.end(JSON.stringify(body));};
  if(req.method!=='POST')return send(405,{error:'Use authenticated POST'});
  const token=/^Bearer (\S+)$/i.exec(req.headers.authorization??'')?.[1];if(!token)return send(403,{error:'Trusted collection job required'});
- try{await verifyDocumentJob(token);}catch{return send(403,{error:'Trusted collection job required'});}
+ try{await verifyDocumentJob(token);}catch(e){return send(403,{error:'Trusted collection job required',code:e.code??'OIDC_PROVENANCE',claim:e.claim??null});}
  let body;try{body=req.body;if(body===undefined){let s='';for await(const c of req){s+=c;if(s.length>MAX_RELAY_BYTES*4/3+4000)return send(413,{error:'Source exceeds relay limit'});}body=JSON.parse(s);}if(typeof body==='string')body=JSON.parse(body);body=decodeDocumentRelay(body);}catch{return send(400,{error:'Invalid public document payload'});}
  try{
  const cfg=cloudConfig();if(!cfg.serviceKey)return send(503,{error:'Server collector configuration unavailable'});

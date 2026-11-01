@@ -5,5 +5,5 @@ const keys=createRemoteJWKSet(new URL('https://token.actions.githubusercontent.c
 export function trustedDocumentJob(p){return p.repository===RELAY_REPO&&p.repository_id==='1439636720'&&p.ref==='refs/heads/main'&&p.sub===`repo:${RELAY_REPO}:ref:refs/heads/main`&&p.workflow_ref===`${RELAY_REPO}/.github/workflows/documents.yml@refs/heads/main`&&['push','schedule','workflow_dispatch'].includes(p.event_name);}
 export async function verifyDocumentJob(token,keySet=keys){
  const {payload}=await jwtVerify(token,keySet,{issuer:'https://token.actions.githubusercontent.com',audience:RELAY_AUDIENCE,algorithms:['RS256'],maxTokenAge:'10m',clockTolerance:5,requiredClaims:['exp','iat','sub','repository','repository_id','ref','workflow_ref','event_name']});
- if(!trustedDocumentJob(payload))throw Error('Untrusted document collection job');return payload;
+ if(!trustedDocumentJob(payload)){const expected={repository:RELAY_REPO,repository_id:'1439636720',ref:'refs/heads/main',sub:`repo:${RELAY_REPO}:ref:refs/heads/main`,workflow_ref:`${RELAY_REPO}/.github/workflows/documents.yml@refs/heads/main`};const fields=Object.keys(expected).filter(k=>payload[k]!==expected[k]);if(!['push','schedule','workflow_dispatch'].includes(payload.event_name))fields.push('event_name');throw Object.assign(Error('Untrusted document collection job'),{code:'OIDC_'+fields.join('_')});}return payload;
 }
