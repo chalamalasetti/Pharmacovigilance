@@ -4,6 +4,13 @@
   "installCommand": "npm ci",
   "buildCommand": "npm run build",
   "outputDirectory": "public",
+  "git": {
+    "deploymentEnabled": {
+      "codex/*": false,
+      "claude/*": false,
+      "fda-feed-cache": false
+    }
+  },
   "functions": {
     "api/source-test.js": {
       "maxDuration": 30,
