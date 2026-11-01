@@ -5,6 +5,7 @@ export const PAGES = {
  'company-briefing':{label:'Company Briefing',href:'company-briefing.html',hint:'Confirm products and markets',icon:'▦'},
  'action-center':{label:'Action Center',href:'action-center.html',hint:'Assess, assign and verify closure',icon:'✓'},
  team:{label:'Team queue',href:'team.html',hint:'Shared assessments and assignments',icon:'♧'},
+ events:{label:'Events & Training',href:'events.html',hint:'Verified dates and calendar downloads',icon:'◷'},
  research:{label:'Research',href:'research.html',hint:'Papers, ideas and innovation',icon:'⌕'},
  companies:{label:'Companies',href:'companies.html',hint:'Explore company products and evidence',icon:'▦'},
  globe:{label:'Global view',href:'globe.html',hint:'Explore updates around the world',icon:'◉'},
@@ -15,7 +16,7 @@ export const PAGES = {
  archive:{label:'Archive',href:'archive.html',hint:'Search previously collected updates',icon:'◷'},
  about:{label:'About PV Info',href:'about.html',hint:'Coverage, sources and how it works',icon:'ⓘ'},
 };
-const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','action-center','team']],['explore','Explore',['research','companies','globe']],['resources','Resources',['resources','documents','requirements','agencies','archive','about']]];
+const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','action-center','team']],['explore','Explore',['research','companies','globe','events']],['resources','Resources',['resources','documents','requirements','agencies','archive','about']]];
 export const defaultNavigation=()=>({version:1,groups:GROUPS.map(([id,label,items])=>({id,label,items:items.map(id=>({id,label:PAGES[id].label,hidden:false}))}))});
 export const cleanLabel=(value,fallback)=>typeof value==='string'&&value.trim()?value.trim().slice(0,32):fallback;
 export function normalizeNavigation(raw,{navOrder=[],hiddenNav=[]}={}) {
