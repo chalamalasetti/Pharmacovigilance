@@ -3,18 +3,23 @@ import {createHash} from 'node:crypto';
 import {parseHTML} from 'linkedom';
 import {publicText,unsafeNarrative} from '../public/privacy.js';
 import {officialUrl} from '../public/documents-lib.js';
-export const EXTRACTOR='normative-rules-v2';
+export const EXTRACTOR='normative-rules-v3';
 export const hash=v=>createHash('sha256').update(v).digest('hex');
 const tidy=s=>String(s??'').replace(/\u00ad/g,'').replace(/\s+/g,' ').trim();
 const contact=/[\w.+-]+@[\w.-]+\.[a-z]{2,}|\+\d[\d ().-]{7,}\d|\(\d{3}\)\s*\d{3}[- .]\d{4}|\b(?:contact|fax|telephone|tel|author|prepared by|signed by|patient name|patient id|reporter name|date of birth|dob|address)\s*[:=]|\b(?:Mr|Mrs|Ms|Dr)\.\s+[A-Z]|\b(?:John Doe|Jane Doe)\b/i;
-const obligation=/\b(?:shall|must|should|is required to|are required to)\b/i;
+const obligation=/\b(?:shall|must|should|is required to|are required to|we require|(?:is|are) obliged to|(?:is|are) subject to|no later than|needs? to)\b/i;
+const candidateParagraph=s=>safeParagraph(tidy(s).replace(/[\w.+-]+@[\w.-]+\.[a-z]{2,}/gi,'[official contact omitted; consult source]'));
+const isList=p=>p?.kind==='list'||/^[•●▪–-]\s/.test(p?.text??'');
 export function safeParagraph(s){s=tidy(s);return s.length>=25&&s.length<=1800&&!contact.test(s)&&!unsafeNarrative(s)&&publicText(s)===s?s:null;}
 export function htmlParagraphs(html){
  const {document}=parseHTML(html);document.querySelectorAll('script,style,nav,header,footer,form,aside,[role=navigation],.toc').forEach(n=>n.remove());
  const main=['article .main-content','article','main','[role=main]','#main-content','.main-content'].map(selector=>document.querySelector(selector)).find(Boolean)??document.body;
  // eCFR puts a second section copy in enhanced-content controls. Prefer the regulatory text.
- const root=main?.querySelector('.section[data-section]')??main;let n=0;
- return [...(root?.querySelectorAll('p,li,h2,h3,h4,h5')??[])].filter(e=>!e.querySelector('p,li')).map(e=>({anchor:(e.id||e.closest('[id]')?.id||`paragraph-${++n}`).slice(0,180),text:tidy(e.textContent)})).filter(x=>x.text);
+ const root=main?.querySelector('.section[data-section]')??main;let n=0,heading='';
+ return [...(root?.querySelectorAll('p,li,h2,h3,h4,h5')??[])].filter(e=>!e.querySelector('p,li')).map(e=>{
+  const number=++n,kind=/^H[2-5]$/.test(e.tagName)?'heading':e.tagName==='LI'?'list':'paragraph';if(kind==='heading')heading=e.id||tidy(e.textContent).slice(0,100);
+  return {anchor:(e.id||(heading?`${heading} / paragraph-${number}`:`paragraph-${number}`)).slice(0,180),kind,text:tidy(e.textContent)};
+ }).filter(x=>x.text);
 }
 export async function pdfParagraphs(bytes,{maxPages=120}={}){
  const {getDocument}=await import('pdfjs-dist/legacy/build/pdf.mjs');
@@ -38,15 +43,20 @@ export async function pdfParagraphs(bytes,{maxPages=120}={}){
  });return out;
 }
 export function extractCandidates(paragraphs,{maxCandidates=300}={}){
- const seen=new Set(),found=[];let excluded=0,limited=false;
+ const seen=new Set(),found=[];let excluded=0,limited=false,listLead=null;
  for(let i=0;i<paragraphs.length;i++){
-  const p=paragraphs[i];if(!obligation.test(p.text))continue;const s=safeParagraph(p.text);if(!s){excluded++;continue;}
-  // Exclude general navigation, nonbinding boilerplate and contact directions; retain qualifications beside candidates.
+  const p=paragraphs[i],inherited=isList(p)&&listLead;
+  if(!isList(p))listLead=obligation.test(p.text)&&/:$/.test(p.text)?p:null;
+  if(!obligation.test(p.text)&&!inherited)continue;
+  const s=candidateParagraph(p.text)||(inherited&&p.text.length<25?candidateParagraph(listLead.text+' '+p.text):null);if(!s){excluded++;continue;}
   if(/guidances? (?:do not|does not) establish|should be viewed only as|contact (?:the|your)|subscribe|privacy policy|cookie|enable javascript|verify.*(?:human|robot)|captcha/i.test(s))continue;
   const fingerprint=hash(s.toLowerCase());if(seen.has(fingerprint))continue;seen.add(fingerprint);
   if(found.length>=maxCandidates){limited=true;continue;}
-  const neighbors=[paragraphs[i-1]?.text,paragraphs[i+1]?.text].filter(Boolean).map(safeParagraph).filter(Boolean).join(' ').slice(0,900);
-  found.push({anchor:String(p.anchor).slice(0,200),statement:s,context:neighbors,fingerprint});
+  const contextParts=inherited?[`List governed by ${listLead.anchor}: ${listLead.text}`,paragraphs[i+1]?.text]:[paragraphs[i-1]?.text,paragraphs[i+1]?.text];
+  // A contact address must not cause the adjacent substantive exception to disappear.
+  const fullContext=contextParts.filter(Boolean).map(candidateParagraph).filter(Boolean).join(' ');
+  if(fullContext.length>900||s!==tidy(p.text))limited=true;
+  found.push({anchor:String(p.anchor).slice(0,200),statement:s,context:fullContext.slice(0,900),fingerprint});
  }
  return {candidates:found,excluded,limited};
 }
