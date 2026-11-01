@@ -8,7 +8,7 @@ import path from "node:path";
 import { cleanSource, urlProblem, sourceHealth, summaryCounts, publicCoverage, fillSecrets, redact, sourceUrl } from "../public/sources-lib.js";
 import { loadRegistry, buildFeeds, writeRegistryFiles } from "../scripts/sources.mjs";
 import { importSql } from "../scripts/sources-sql.mjs";
-import { isBlockedIp, checkUrl, guardedLookup, safeFetch, explainError } from "../scripts/safe-fetch.mjs";
+import { BlockedError, isBlockedIp, checkUrl, guardedLookup, safeFetch, explainError } from "../scripts/safe-fetch.mjs";
 import { parseItems, parseJson, parseHtml, detectFormat } from "../scripts/parse.mjs";
 import { feedStatus, sourceRun, aggregate } from "../scripts/aggregate.mjs";
 import { testSource, adminEmail } from "../api/source-test.js";
@@ -141,6 +141,8 @@ test("safe fetch follows safe redirects, unpacks gzip, retries temporary failure
   const r = await safeFetch(at("/to-feed"), local);
   assert.equal(r.status, 200);
   assert.equal(r.redirects.length, 1);
+  const checked=[];await safeFetch(at("/to-feed"),{...local,validateUrl:u=>checked.push(u)});assert.equal(checked.length,2);
+  await assert.rejects(safeFetch(at("/to-feed"),{...local,validateUrl:u=>{if(u!==at("/to-feed"))throw new BlockedError("Agency redirect refused");}}),/Agency redirect refused/);
   assert.match((await safeFetch(at("/gz"), local)).body, /examplazole/);
   await assert.rejects(safeFetch(at("/to-metadata"), local), /private or reserved/);
   const flaky = await safeFetch(at("/flaky"), { ...local, backoffMs: [10] });

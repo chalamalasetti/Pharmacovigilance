@@ -5,7 +5,7 @@
   "description": "Pharmacovigilance and drug regulatory updates from every major regulator, in one place.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/aggregate.mjs && node scripts/seo.mjs",
+    "build": "node scripts/aggregate.mjs && node scripts/documents.mjs && node scripts/seo.mjs",
     "seo": "node scripts/seo.mjs --write",
     "aggregate": "node scripts/aggregate.mjs",
     "research": "node scripts/research.mjs",
@@ -14,10 +14,15 @@
     "resources:sql": "node scripts/resources-sql.mjs",
     "test": "node --test test/*.test.mjs",
     "app": "node scripts/app.mjs",
-    "start": "node scripts/app.mjs"
+    "start": "node scripts/app.mjs",
+    "documents": "node scripts/documents.mjs"
   },
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=22.13.0"
+  },
   "dependencies": {
-    "fast-xml-parser": "4.5.0"
+    "fast-xml-parser": "4.5.0",
+    "linkedom": "0.18.14",
+    "pdfjs-dist": "6.4.299"
   }
 }

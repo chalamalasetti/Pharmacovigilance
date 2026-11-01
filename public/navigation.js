@@ -9,12 +9,13 @@ export const PAGES = {
  companies:{label:'Companies',href:'companies.html',hint:'Explore company products and evidence',icon:'▦'},
  globe:{label:'Global view',href:'globe.html',hint:'Explore updates around the world',icon:'◉'},
  resources:{label:'Safety resources',href:'resources.html',hint:'Public safety databases and reference tools',icon:'▤'},
+ documents:{label:'Source documents',href:'documents.html',hint:'Country, agency, versions and extracted clauses',icon:'▤'},
  requirements:{label:'Requirements Library',href:'requirements.html',hint:'Source evidence, baselines and changes',icon:'▤'},
  agencies:{label:'Regulators',href:'agencies.html',hint:'Countries and regulatory agencies',icon:'◇'},
  archive:{label:'Archive',href:'archive.html',hint:'Search previously collected updates',icon:'◷'},
  about:{label:'About PV Info',href:'about.html',hint:'Coverage, sources and how it works',icon:'ⓘ'},
 };
-const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','action-center','team']],['explore','Explore',['research','companies','globe']],['resources','Resources',['resources','requirements','agencies','archive','about']]];
+const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','action-center','team']],['explore','Explore',['research','companies','globe']],['resources','Resources',['resources','documents','requirements','agencies','archive','about']]];
 export const defaultNavigation=()=>({version:1,groups:GROUPS.map(([id,label,items])=>({id,label,items:items.map(id=>({id,label:PAGES[id].label,hidden:false}))}))});
 export const cleanLabel=(value,fallback)=>typeof value==='string'&&value.trim()?value.trim().slice(0,32):fallback;
 export function normalizeNavigation(raw,{navOrder=[],hiddenNav=[]}={}) {

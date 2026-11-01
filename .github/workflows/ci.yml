@@ -48,3 +48,4 @@ jobs:
           node test/browser/action-center.smoke.cjs
           node test/browser/navigation.smoke.cjs
           node test/browser/requirements.smoke.cjs
+          node test/browser/documents.smoke.cjs

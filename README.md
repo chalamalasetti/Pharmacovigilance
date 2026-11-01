@@ -235,3 +235,8 @@ The shared header groups **Action Center**, Company Briefing and the team queue 
 The new `navigation` site setting takes precedence over the old `nav_order` and `hidden_nav` settings; old visibility and item ordering are retained when no grouped layout has been saved. Invalid cached layouts are normalized without accepting unknown links or dropping required pages. A missing/new registered page is restored safely. The build and browser share the same registry and normalization. The public settings contain only page labels/layout, never account identity or private company selections.
 
 Migration `20261101005846_grouped_navigation.sql` adds the setting and an admin-only atomic `admin_save_navigation` RPC. Other site settings and the existing SEO/Search Console and hourly workflow configuration are preserved. Test coverage includes config validation, migration defaults, keyboard/touch disclosure, mobile overflow, editor save/conflict handling, and SQL authorization/concurrency checks using rolled-back synthetic fixtures.
+
+
+### Document-led regulatory requirements
+
+Open **Resources → Source documents** to filter FDA/EU-EMA source families by jurisdiction and agency, inspect archived captures and extraction candidates, and hand a pinned clause to a private company assessment. Admins can manage sources and capture now. Active documents are checked by the existing hourly build/deployment flow. The collector uses the existing Supabase server key; no LLM credential is needed. Business/system/data/process drafts and review gates live in Action Center. See [implementation, boundaries and operations](docs/document-requirements-pipeline.md).

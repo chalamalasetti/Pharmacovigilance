@@ -124,8 +124,9 @@ export const isTemporary = (e) => !(e instanceof BlockedError) && (TEMPORARY.has
 
 // One GET with redirects. Returns { status, url, redirects, contentType, body }; throws
 // on a blocked address, a non-2xx status (err.status) or a network failure (err.code).
-export async function fetchOnce(raw, { headers = {}, timeoutMs = 20000, maxBytes = MAX_BYTES, lookup = guardedLookup(), ports } = {}) {
+export async function fetchOnce(raw, { headers = {}, timeoutMs = 20000, maxBytes = MAX_BYTES, lookup = guardedLookup(), ports, validateUrl = () => {} } = {}) {
   let u = checkUrl(raw, { ports });
+  validateUrl(u.href);
   const redirects = [];
   for (;;) {
     const res = await once(u, { headers, timeoutMs, maxBytes, lookup });
@@ -140,6 +141,7 @@ export async function fetchOnce(raw, { headers = {}, timeoutMs = 20000, maxBytes
       if (u.protocol === "https:" && next.protocol === "http:") throw new BlockedError(`The server redirected from https to an insecure http address (${next.host}).`);
       redirects.push({ status: res.status, to: next.href });
       u = checkUrl(next.href, { ports });
+      validateUrl(u.href);
       continue;
     }
     if (res.status < 200 || res.status >= 300) throw Object.assign(new Error(`HTTP ${res.status}`), { status: res.status, url: u.href, redirects });
