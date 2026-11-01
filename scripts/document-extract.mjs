@@ -3,7 +3,7 @@ import {createHash} from 'node:crypto';
 import {parseHTML} from 'linkedom';
 import {publicText,unsafeNarrative} from '../public/privacy.js';
 import {officialUrl} from '../public/documents-lib.js';
-export const EXTRACTOR='normative-rules-v1';
+export const EXTRACTOR='normative-rules-v2';
 export const hash=v=>createHash('sha256').update(v).digest('hex');
 const tidy=s=>String(s??'').replace(/\u00ad/g,'').replace(/\s+/g,' ').trim();
 const contact=/[\w.+-]+@[\w.-]+\.[a-z]{2,}|\+\d[\d ().-]{7,}\d|\(\d{3}\)\s*\d{3}[- .]\d{4}|\b(?:contact|fax|telephone|tel|author|prepared by|signed by|patient name|patient id|reporter name|date of birth|dob|address)\s*[:=]|\b(?:Mr|Mrs|Ms|Dr)\.\s+[A-Z]|\b(?:John Doe|Jane Doe)\b/i;
@@ -11,9 +11,9 @@ const obligation=/\b(?:shall|must|should|is required to|are required to)\b/i;
 export function safeParagraph(s){s=tidy(s);return s.length>=25&&s.length<=1800&&!contact.test(s)&&!unsafeNarrative(s)&&publicText(s)===s?s:null;}
 export function htmlParagraphs(html){
  const {document}=parseHTML(html);document.querySelectorAll('script,style,nav,header,footer,form,aside,[role=navigation],.toc').forEach(n=>n.remove());
- const main=document.querySelector('article .main-content,article,main,[role=main],#main-content,.main-content')??document.body;
+ const main=['article .main-content','article','main','[role=main]','#main-content','.main-content'].map(selector=>document.querySelector(selector)).find(Boolean)??document.body;
  // eCFR puts a second section copy in enhanced-content controls. Prefer the regulatory text.
- const root=main?.querySelector('.section[data-section],.section')??main;let n=0;
+ const root=main?.querySelector('.section[data-section]')??main;let n=0;
  return [...(root?.querySelectorAll('p,li,h2,h3,h4,h5')??[])].filter(e=>!e.querySelector('p,li')).map(e=>({anchor:(e.id||e.closest('[id]')?.id||`paragraph-${++n}`).slice(0,180),text:tidy(e.textContent)})).filter(x=>x.text);
 }
 export async function pdfParagraphs(bytes,{maxPages=120}={}){
@@ -68,7 +68,7 @@ export function matchCandidates(next,previous=[],requirements=[],{partial=false}
 export function documentDownload(html,url,doc){
  const {document}=parseHTML(html),links=[...document.querySelectorAll('a[href]')];
  const expected=doc.id==='ema-gvp-i'?/module-i-pharmacovigilance-systems-and-their-quality-systems.*\.pdf$/i:null;
- let choices=links.flatMap(a=>{try{return [{url:new URL(a.getAttribute('href'),url).href,text:tidy(a.textContent)}];}catch{return [];}}).filter(a=>{try{officialUrl(a.url,doc.agency);return !/superseded/i.test(a.url)&&(expected?expected.test(a.url):/\/media\/\d+\/download|\.pdf(?:$|\?)/i.test(a.url)&&/download|guidance|view|pdf/i.test(a.text));}catch{return false;}});
+ let choices=links.flatMap(a=>{try{return [{url:new URL(a.getAttribute('href'),url).href,text:tidy(a.textContent)}];}catch{return [];}}).filter(a=>{try{officialUrl(a.url,doc.agency,doc.agencyPolicy);return !/superseded/i.test(a.url)&&(expected?expected.test(a.url):/\/media\/\d+\/download|\.pdf(?:$|\?)/i.test(a.url)&&/download|guidance|view|pdf/i.test(a.text));}catch{return false;}});
  choices=[...new Map(choices.map(x=>[x.url,x])).values()];
  const preferred=choices.filter(x=>/download.*(?:guidance|final)|final.*guidance/i.test(x.text));
  if(preferred.length===1)return preferred[0].url;

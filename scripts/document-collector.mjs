@@ -10,13 +10,13 @@ async function deliver(payload){
 }
 export async function collectPublicDocuments({probe=false}={}){
  const cfg=await fetch(SITE+'/config.json',{signal:AbortSignal.timeout(15000)}).then(r=>r.json());if(!cfg.supabaseUrl||!cfg.supabaseKey)throw Error('Public source register is unavailable');
- const response=await fetch(cfg.supabaseUrl+'/rest/v1/pv_documents?status=eq.active&select=*&order=id&limit=101',{headers:{apikey:cfg.supabaseKey},signal:AbortSignal.timeout(15000)});if(!response.ok)throw Error('Source register could not load');const docs=await response.json();if(docs.length>100)throw Error('Split the schedule before exceeding 100 sources');
+ const response=await fetch(cfg.supabaseUrl+'/rest/v1/pv_document_schedule?select=*&order=checked_at.asc.nullsfirst,id&limit=24',{headers:{apikey:cfg.supabaseKey},signal:AbortSignal.timeout(15000)});if(!response.ok)throw Error('Source register could not load');const docs=await response.json();if(!docs.length)return {ok:0,failed:0};const agencyIds=[...new Set(docs.map(d=>d.agency))].map(encodeURIComponent).join(',');const agencyResponse=await fetch(cfg.supabaseUrl+`/rest/v1/pv_agencies?id=in.(${agencyIds})&select=*`,{headers:{apikey:cfg.supabaseKey},signal:AbortSignal.timeout(15000)});if(!agencyResponse.ok)throw Error('Agency register could not load');const agencies=await agencyResponse.json();
  let ok=0,failed=0;for(const d of docs){
-  let source;try{source=await fetchOfficialDocument(d);if(source.body.length>3*1024*1024)throw Error('Document exceeds relay size limit');}
+  let source;try{d.agencyPolicy=agencies.find(a=>a.id===d.agency);if(!d.agencyPolicy||d.agencyPolicy.status!=='verified')throw Error('Agency not approved');source=await fetchOfficialDocument(d);if(source.body.length>3*1024*1024)throw Error('Document exceeds relay size limit');}
   catch(e){failed++;console.log(`${d.id}: source unavailable (${e.status??e.code??e.message.slice(0,120)}); prior copies preserved`);if(!probe)await deliver({id:d.id,config:d.updated_at,failure:'source_unavailable'}).catch(()=>{});continue;}
   if(probe){const kind=source.body.subarray(0,5).toString()==='%PDF-'?'pdf':'html';const parsed=await extractIsolated(source.body,kind).catch(()=>({candidates:[]}));console.log(`${d.id}: source reachable (${source.body.length} bytes), ${parsed.candidates.length} normative candidates`);ok++;continue;}
   try{const result=await deliver({id:d.id,config:d.updated_at,url:source.url,content_type:source.body.subarray(0,5).toString()==='%PDF-'?'application/pdf':'text/html',bytes_base64:source.body.toString('base64')});ok++;console.log(`${d.id}: ${result.unchanged?'unchanged':result.status} · ${result.candidates} candidates`);}catch(e){failed++;console.log(`${d.id}: ${e.message}`);}
  }
- console.log(`documents: ${ok} sources delivered/probed, ${failed} unavailable`);return {ok,failed};
+ console.log(`documents: ${ok} sources delivered/probed, ${failed} unavailable (oldest-check-first batch, maximum 24)`);return {ok,failed};
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)collectPublicDocuments({probe:process.argv.includes('--probe')}).then(r=>{process.exitCode=r.failed?1:0;}).catch(()=>{console.error('Document collection unavailable; previous library preserved');process.exitCode=1;});

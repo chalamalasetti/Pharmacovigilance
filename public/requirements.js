@@ -1,3 +1,4 @@
+import {catalog,loadCatalog,agencyCountry,agencyLabel} from './regulatory-catalog.js';
 import {el} from './impact-view.js';
 import * as C from './cloud.js';
 import * as W from './workspace.js';
@@ -16,12 +17,12 @@ function filtered(){
  let result=mode==='baseline'?baseline(rows,day,known):mode==='upcoming'?upcoming(rows,day,known):latest(rows);
  if(mode==='pending')result=result.filter(r=>r.review_status==='pending');
  const q=$('req-search').value.toLowerCase().trim();
- return result.filter(r=>(!sourceFilter||r.body.source_family===sourceFilter)&&(!$('req-country').value||(r.body.agency==='FDA'?'US':'EU')===$('req-country').value)&&(!$('req-agency').value||r.body.agency===$('req-agency').value)&&(!$('req-topic').value||r.body.topic===$('req-topic').value)&&(!$('req-lifecycle').value||r.body.lifecycle===$('req-lifecycle').value||r.body.lifecycle==='Both')&&(!q||[r.requirement_key,...Object.values(r.body)].join(' ').toLowerCase().includes(q))).sort((a,b)=>a.body.agency.localeCompare(b.body.agency)||a.body.title.localeCompare(b.body.title));
+ return result.filter(r=>(!sourceFilter||r.body.source_family===sourceFilter)&&(!$('req-country').value||agencyCountry(r.body.agency)===$('req-country').value)&&(!$('req-agency').value||r.body.agency===$('req-agency').value)&&(!$('req-topic').value||r.body.topic===$('req-topic').value)&&(!$('req-lifecycle').value||r.body.lifecycle===$('req-lifecycle').value||r.body.lifecycle==='Both')&&(!q||[r.requirement_key,...Object.values(r.body)].join(' ').toLowerCase().includes(q))).sort((a,b)=>a.body.agency.localeCompare(b.body.agency)||a.body.title.localeCompare(b.body.title));
 }
 function render(){
  const heads=latest(rows);replace($('req-stats'),...[[heads.length,'Captured requirements'],[heads.filter(r=>r.review_status==='pending').length,'Awaiting expert review'],[baseline(rows,today,today).length,'Approved & dated today'],[new Set(rows.map(r=>r.body.source_family)).size,'Source families']].map(([n,t])=>el('div',{class:'req-stat'},el('strong',{},n),t)));
  shown=filtered();$('req-count').textContent=`${shown.length} records · ${$('req-mode').value==='baseline'?'Only approved, dated interpretations known by the selected date. Unknown start dates are excluded.':'Latest capture can be unapproved. Open history to inspect earlier versions.'}`;
- replace($('req-list'),...shown.map(r=>el('button',{type:'button',class:'req-card','aria-pressed':r.id===selected,onclick:()=>select(r.id,true)},el('div',{class:'req-badges'},badge(r.body.agency==='EMA'?'EU / EMA':'FDA'),badge(r.review_status,r.review_status),badge(r.body.norm)),el('strong',{},r.body.title),el('span',{class:'hint'},`${r.requirement_key} · v${r.revision} · ${r.body.topic}`))),!shown.length?el('p',{class:'req-notice'},'No records meet these criteria. No complete approved baseline can be inferred from an empty result. Review pending captures and coverage gaps.'):null);
+ replace($('req-list'),...shown.map(r=>el('button',{type:'button',class:'req-card','aria-pressed':r.id===selected,onclick:()=>select(r.id,true)},el('div',{class:'req-badges'},badge(agencyLabel(r.body.agency)),badge(r.review_status,r.review_status),badge(r.body.norm)),el('strong',{},r.body.title),el('span',{class:'hint'},`${r.requirement_key} · v${r.revision} · ${r.body.topic}`))),!shown.length?el('p',{class:'req-notice'},'No records meet these criteria. No complete approved baseline can be inferred from an empty result. Review pending captures and coverage gaps.'):null);
  if(sourceFilter)$('req-count').append(' · Source: '+sourceFilter+' · ',el('a',{href:'requirements.html'},'Clear source filter'));
  renderDetail();renderSources();
 }
@@ -41,18 +42,18 @@ function renderDetail(){
 function assessmentPanel(r){
  const portfolios=Object.values(ws.companyPortfolios??{}).filter(p=>p.confirmedAt),co=el('select',{'aria-label':'Company portfolio'},el('option',{value:''},'Choose a confirmed company portfolio'),...portfolios.map(p=>el('option',{value:p.companyId},p.companyName)));
  const destination=el('select',{'aria-label':'Assessment destination'},el('option',{value:'personal'},'My private workspace'),...C.team.list.map(t=>el('option',{value:t.id},`Team: ${t.name}`)));
- const feedback=el('p',{role:'status',class:'hint'}),button=el('button',{class:'btn primary',type:'button',onclick:async()=>{
+ const outside=el('input',{type:'checkbox','aria-label':'Monitor outside confirmed markets'});const feedback=el('p',{role:'status',class:'hint'}),button=el('button',{class:'btn primary',type:'button',onclick:async()=>{
  button.disabled=true;try{
   const p=ws.companyPortfolios?.[co.value];if(!p)throw Error('Choose a confirmed portfolio.');
   const res=await fetch(`data/companies/${encodeURIComponent(p.companyId)}.json`,{cache:'no-cache'});if(!res.ok)throw Error('Cannot verify portfolio freshness. Try again later.');
   const company=await res.json();if(portfolioState(p,company)!=='confirmed')throw Error('Product coverage changed. Reconfirm the company scope in Company Briefing.');
-  const snapshot=assessmentSnapshot(r,p,company),key=snapshot.id,isTeam=destination.value!=='personal';
+  const snapshot=assessmentSnapshot(r,p,company,{allowOutside:outside.checked}),key=snapshot.id,isTeam=destination.value!=='personal';
   if(isTeam){await C.setActiveTeam(ws,destination.value);if(!C.team.items.has(key))await C.teamAction(snapshot,{assess:{status:'open',at:new Date().toISOString()}});}
   else if(!W.item(ws,key).assess)W.update(ws,key,{snapshot:W.snapshot(snapshot),assess:{status:'open',at:new Date().toISOString()}});
   replace(feedback,'Evidence and company scope saved. ',el('a',{href:`action-center.html?${new URLSearchParams({item:key,...(isTeam?{scope:'team'}:{})})}`},'Open Action Center to start the assessment →'));
  }catch(e){feedback.textContent=e.message;}finally{button.disabled=false;}
  }},'Send this version for assessment');
- return el('section',{class:'req-section req-assess'},el('h3',{},'Assess for my company'),el('p',{},'Jurisdiction is a screening signal only. Review the role, clinical/marketed scope and exceptions. This preserves the exact requirement version and confirmed portfolio revision.'),co,destination,button,feedback,el('a',{href:'company-briefing.html'},'Set up or reconfirm company products and markets'));
+ return el('section',{class:'req-section req-assess'},el('h3',{},'Assess for my company'),el('p',{},'Jurisdiction is a screening signal only. Review the role, clinical/marketed scope and exceptions. This preserves the exact requirement version and confirmed portfolio revision.'),co,destination,el('label',{},outside,'Assess outside my confirmed markets (monitoring only)'),button,feedback,el('a',{href:'company-briefing.html'},'Set up or reconfirm company products and markets'));
 }
 function reviewPanel(r){
  const note=el('textarea',{'aria-label':'Editorial review rationale',maxlength:1000,placeholder:'Why is this interpretation accurate, or why is it rejected? Public organizational rationale only.'}),feedback=el('p',{role:'status'});
@@ -62,8 +63,8 @@ function reviewPanel(r){
  }},status==='approved'?'Approve interpretation':'Reject interpretation')),feedback);
  return box;
 }
-const opts={agency:['FDA','EMA'],lifecycle:['Clinical','Marketed','Both'],norm:['Regulation','Guidance','Technical instruction'],source_status:['current','draft','superseded','withdrawn','uncertain'],change_kind:CHANGE_KINDS};
 async function editor(r=null){
+ const opts={agency:catalog().agencies.filter(a=>a.status==='verified').map(a=>a.id),lifecycle:['Clinical','Marketed','Both'],norm:['Regulation','Guidance','Technical instruction'],source_status:['current','draft','superseded','withdrawn','uncertain'],change_kind:CHANGE_KINDS};
  if(busy)return;
  const b=r?.body??{},form=el('form',{class:'req-editor'}),inputs={};let limits=await fetch('requirements-fields.json').then(r=>r.json());
  const key=el('input',{required:true,maxlength:80,value:r?.requirement_key??'',...(r?{readonly:true}:{})});form.append(el('label',{class:'wide'},'Stable requirement ID (retain this when revising the same obligation)',key));
@@ -83,10 +84,11 @@ async function editor(r=null){
 }
 async function load(){
  try{
- sb=await C.client();if(!sb)throw Error('Cloud connection is not configured.');let all=[];
+ sb=await C.client();if(!sb)throw Error('Cloud connection is not configured.');try{await loadCatalog(sb);}catch{}let all=[];
  for(let start=0;start<20000;start+=1000){const {data,error}=await sb.from('pv_requirement_versions').select('*').order('requirement_key').order('revision').range(start,start+999);if(error)throw error;all.push(...data);if(data.length<1000)break;if(start===19000)throw Error('Library exceeds the current loading limit.');}
  rows=all;live=true;msg('Live library · source editions and review states loaded from the database. No automatic legal approval.');
  }catch{rows=(await fetch('data/requirements.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Starter file unavailable.');return r.json();})).versions;live=false;msg('Live library unavailable. Showing the initial unapproved starter set. Newer versions and reviews may be missing; do not use this copy as a current baseline.',true);}
+ for(const [id,options,title] of [['req-country',catalog().jurisdictions.map(c=>[c.code,c.name]),'All countries / jurisdictions'],['req-agency',catalog().agencies.map(a=>[a.id,agencyLabel(a.id)]),'All agencies']]){const old=$(id).value;replace($(id),el('option',{value:''},title),...options.map(([v,t])=>el('option',{value:v,selected:old===v},t)));}
  const topic=$('req-topic').value;replace($('req-topic'),el('option',{value:''},'All topics'),...[...new Set(rows.map(r=>r.body.topic))].sort().map(t=>el('option',{selected:t===topic},t)));
  if(!live){admin=false;$('req-admin').hidden=true;}$('req-mode').querySelector('[value=baseline]').disabled=!live;$('req-mode').querySelector('[value=upcoming]').disabled=!live;if(!live&&['baseline','upcoming'].includes($('req-mode').value))$('req-mode').value='latest';render();
 }

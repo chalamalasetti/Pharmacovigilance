@@ -1,7 +1,6 @@
 import {verifyDocumentJob} from '../scripts/document-relay-auth.mjs';
 import {captureDocument,dbRequest} from '../scripts/documents.mjs';
 import {cloudConfig} from '../scripts/cloud.mjs';
-import {officialUrl} from '../public/documents-lib.js';
 export const MAX_RELAY_BYTES=3*1024*1024;
 export function decodeDocumentRelay(body){
  if(!body||typeof body!=='object'||!/^[a-z0-9][a-z0-9-]{2,79}$/.test(body.id??'')||typeof body.config!=='string'||body.config.length>60)throw Error('Invalid source identity');
@@ -21,7 +20,6 @@ export default async function handler(req,res){
  const [doc]=await dbRequest(cfg,`pv_documents?id=eq.${encodeURIComponent(body.id)}&select=*`);
  if(!doc||doc.status!=='active'||doc.updated_at!==body.config)return send(409,{error:'Source configuration changed or deactivated'});
  if(body.failure){await dbRequest(cfg,'rpc/record_pv_document_failure',{method:'POST',body:{p_id:body.id,p_note:'Source unavailable; previous capture preserved'}});return send(200,{id:body.id,status:'failed'});}
- officialUrl(body.sourceResponse.url,doc.agency);
  return send(200,await captureDocument(body.id,{cfg,expectedConfig:body.config,sourceResponse:body.sourceResponse}));
  }catch(e){return send(502,{error:'Capture could not complete; prior copies preserved',stage:e.stage??'configuration',code:e.code??'operation'});}
 }
