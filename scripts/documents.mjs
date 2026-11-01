@@ -5,7 +5,7 @@ import {pathToFileURL} from 'node:url';
 import {cloudConfig} from './cloud.mjs';
 import {safeFetch} from './safe-fetch.mjs';
 import {officialUrl} from '../public/documents-lib.js';
-import {hash,matchCandidates,documentDownload} from './document-extract.mjs';
+import {EXTRACTOR,hash,matchCandidates,documentDownload} from './document-extract.mjs';
 export const authHeaders=key=>({apikey:key,...(key.startsWith('eyJ')?{authorization:`Bearer ${key}`}:{})});
 export async function dbRequest(cfg,route,{method='GET',body,fetchImpl=fetch}={}){
  const res=await fetchImpl(`${cfg.url}/rest/v1/${route}`,{method,headers:{...authHeaders(cfg.serviceKey),'content-type':'application/json'},...(body!==undefined?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(15000)});
@@ -42,17 +42,17 @@ export async function captureDocument(id,{cfg=cloudConfig(),request=dbRequest,fe
   stage='fetch';const res=sourceResponse??await fetchOfficialDocument(d,{fetchDocument});officialUrl(res.url,d.agency,d.agencyPolicy);const pdf=res.body.subarray(0,5).toString()==='%PDF-';
   const kind=pdf?'pdf':/html|xhtml/i.test(res.contentType)?'html':null;if(!kind)throw Error('Unsupported or oversized document');
   const original_hash=hash(res.body);stage='archive';const archive_path=prev?.original_hash===original_hash&&prev.archive_path?prev.archive_path:await archive(res.body,kind,d,cfg);
-  stage='extract';let candidates=[],capture={original_hash,archive_path,content_hash:prev?.content_hash??hash(''),source_url:res.url,content_kind:kind,partial:false,excluded:0};
-  if(prev?.original_hash!==original_hash||prev?.metadata?.updated_at!==d.updated_at){
+  stage='extract';let candidates=[],capture={original_hash,archive_path,content_hash:prev?.content_hash??hash(''),source_url:res.url,content_kind:kind,parser_version:EXTRACTOR,partial:false,excluded:0};
+  if(prev?.original_hash!==original_hash||prev?.metadata?.updated_at!==d.updated_at||prev?.parser_version!==EXTRACTOR){
    let parsed;try{parsed=await extract(res.body,kind);}catch{parsed={candidates:[],limited:false,excluded:0};}const previous=prev&&prev.content_kind!=='metadata'?await request(cfg,`pv_document_candidates?document_version_id=eq.${prev.id}&select=*&order=ordinal&limit=600`):[];
    const requirements=await request(cfg,`pv_requirement_versions?body->>source_family=eq.${encodeURIComponent(id)}&select=*&order=revision.desc&limit=500`);
    const latest=new Map();for(const r of requirements)if(!latest.has(r.requirement_key))latest.set(r.requirement_key,r);
-   const partial=parsed.limited||parsed.excluded>0||prev?.capture_status==='partial'||parsed.candidates.length===0;
+   const partial=prev?.parser_version!==EXTRACTOR||parsed.limited||parsed.excluded>0||prev?.capture_status==='partial'||parsed.candidates.length===0;
    candidates=matchCandidates(parsed.candidates,previous,[...latest.values()],{partial});
    capture={...capture,content_hash:hash(JSON.stringify(parsed.candidates)),partial:parsed.limited||parsed.excluded>0,excluded:parsed.excluded};
   }
   stage='persist';const v=await request(cfg,'rpc/capture_pv_document',{method:'POST',body:{p_id:id,p_config:d.updated_at,p_previous:prev?.id??null,p_capture:capture,p_candidates:candidates}});
-  return {id,version:v.id,revision:v.revision,status:v.capture_status,unchanged:prev?.id===v.id,candidates:candidates.length};
+  return {id,version:v.id,revision:v.revision,status:v.capture_status,unchanged:prev?.id===v.id,reprocessed:prev?.original_hash===original_hash&&prev?.parser_version!==EXTRACTOR,candidates:candidates.length};
  }catch(e){
   const note=/Unsupported|oversized|extraction/.test(e.message)?'Unsupported or oversized document; manual capture required':/changed|deactivated/.test(e.message)?'Collection deferred; retry next check':'Source unavailable; previous capture preserved';
   await request(cfg,'rpc/record_pv_document_failure',{method:'POST',body:{p_id:id,p_note:note}}).catch(()=>{});throw Object.assign(Error(note),{stage,code:e.status??e.code??'operation'});
