@@ -2,7 +2,7 @@
 
 Pharmacovigilance and drug regulatory updates from every major regulator, in one page. Built for drug safety, PV and regulatory affairs teams: safety alerts and signals, recalls, label changes, new guidelines, regulatory and policy changes, inspections and approvals, filterable by region, country and topic.
 
-Modelled on [Just Visual News](https://github.com/chalamalasetti/Justvisualnews): a Node script gathers public feeds into a JSON file, and a static site with no framework renders it.
+How it is built: a Node script gathers public feeds into a JSON file, and a static site with no framework renders it.
 
 ## How it works
 
