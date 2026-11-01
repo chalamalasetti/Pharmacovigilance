@@ -362,10 +362,7 @@ function menuSection() {
     // Keep the same editor instance/draft and refresh publish status without resetting input.
     await load();render();return data;
   }});
-  const strip=setting('status_strip',site?.statusStrip??'admins');
-  return el('div',{},menu,el('section',{class:'profile'},el('h3',{},'Data status line'),
-    el('p',{class:'hint'},'Show refresh times and source availability below the header.'),
-    el('div',{class:'row'},[['admins','Admins only'],['everyone','Everyone']].map(([v,label])=>el('label',{class:'check'},el('input',{type:'radio',name:'strip',value:v,checked:strip===v||null,onchange:()=>act($('strip-msg'),async()=>check(await sb.rpc('admin_set_setting',{k:'status_strip',v})))}),label))),msg('strip-msg')));
+  return el('div',{},menu,el('section',{class:'profile'},el('h3',{},'Feed status visibility'),el('p',{class:'hint'},'Refresh diagnostics, source health and the source-status dashboard are shown only to signed-in site admins.'),el('a',{href:'status.html'},'Open admin feed status →')));
 }
 
 function render() {

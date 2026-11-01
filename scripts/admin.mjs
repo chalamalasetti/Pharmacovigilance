@@ -157,8 +157,8 @@ export function applyOverlay(manifest, overlay) {
 export const NAV = Object.keys(PAGES);
 export const HIDEABLE_NAV = NAV.filter((x) => x !== "index");
 
-// data/site.json: settings every page reads (nav.js). The status strip is for admins
-// unless an admin chose to show it to everyone.
+// data/site.json: settings every page reads (nav.js). Source status is for verified
+// admins only; legacy public-strip settings are ignored.
 export function siteSettings(overlay, now = new Date().toISOString()) {
   const get = (k) => (overlay?.settings ?? []).find((x) => x.key === k)?.value;
   const hidden = get("hidden_nav");
@@ -171,7 +171,7 @@ export function siteSettings(overlay, now = new Date().toISOString()) {
     navigation: normalizeNavigation(get("navigation"), {navOrder:Array.isArray(order)?order:[],hiddenNav:Array.isArray(hidden)?hidden:[]}),
     navOrder: [...ordered, ...NAV.filter((x) => !ordered.includes(x))],
     hiddenNav: Array.isArray(hidden) ? hidden.filter((x) => HIDEABLE_NAV.includes(x)) : [],
-    statusStrip: get("status_strip") === "everyone" ? "everyone" : "admins",
+    statusStrip: "admins",
   };
 }
 

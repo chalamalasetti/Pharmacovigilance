@@ -109,5 +109,5 @@ test("menu settings: a saved order comes first, later pages keep their place, Up
   assert.deepEqual(s.navOrder.slice(0, 3), ["research", "index", "briefing"]);
   assert.equal(s.navOrder.length, NAV.length);
   assert.deepEqual(s.hiddenNav, ["companies"]);
-  assert.equal(s.statusStrip, "everyone");
+  assert.equal(s.statusStrip, "admins");
 });
