@@ -1,0 +1,2052 @@
+{
+  "schema_version": "public-document-key-info-v1",
+  "document_id": "ca-hc-gvp-regulations",
+  "metadata": {
+    "title": "GUI-0102: The regulations",
+    "country": "CA",
+    "agency": "CA_HC",
+    "edition": "GUI-0102 issued 2026-05-22",
+    "norm": "Guidance",
+    "topic": "Postmarket reporting and records",
+    "lifecycle": "Marketed",
+    "legal_basis": "Health Canada administrative guidance interpreting the Food and Drug Regulations; the chapter title does not make this guidance legislation. Read the current legal provisions.",
+    "applicability": "Manufacturers and market authorization holders with in-scope marketed human drugs. This is one chapter, not the entire guideline. Read the overview, system chapter and qualifications.",
+    "published_on": "2026-05-22",
+    "effective_on": "2026-05-22",
+    "source_status": "current"
+  },
+  "metadata_verification": "Source-register metadata; dates and legal status require human verification.",
+  "source_url": "https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-manufacturing-practices/guidance-documents/pharmacovigilance-guidelines-0102/regulations.html",
+  "original_sha256": "d0c41d199109fb04d88d1c86ad7eb8391e298335213cf3ecbfb0e81173943650",
+  "content_kind": "html",
+  "parser_version": "normative-rules-v3",
+  "extraction_status": "partial",
+  "candidate_count": 252,
+  "excluded_paragraphs": 7,
+  "candidate_limit_reached": true,
+  "review_status": "pending",
+  "limitations": [
+    "English rule-based extraction; no GPT or paid API.",
+    "Candidates are not approved requirements. Read the original, qualifications and exceptions.",
+    "Scans, tables, other languages and implicit obligations may be missed. Zero candidates does not establish zero requirements."
+  ],
+  "candidates": [
+    {
+      "ordinal": 1,
+      "anchor": "On this page / paragraph-11",
+      "statement": "For each section below, the exact text from the regulations are provided first. This is followed by the rationale (why the rule is important) and our interpretation (what you should do to be compliant), where needed.",
+      "context": "To sell a drug, the manufacturer or MAH must comply with the regulations and apply Good Pharmacovigilance Practices (GVP) as described in this guidance. As a manufacturer or MAH, you must ensure that your products are safe and effective throughout their lifecycle.",
+      "fingerprint": "3932b7b8c14fdb841575bbc6444a031209dbe0e0734c0937370da7539b3bff95",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 2,
+      "anchor": "On this page / paragraph-12",
+      "statement": "To sell a drug, the manufacturer or MAH must comply with the regulations and apply Good Pharmacovigilance Practices (GVP) as described in this guidance. As a manufacturer or MAH, you must ensure that your products are safe and effective throughout their lifecycle.",
+      "context": "For each section below, the exact text from the regulations are provided first. This is followed by the rationale (why the rule is important) and our interpretation (what you should do to be compliant), where needed. The act defines “sell” as:",
+      "fingerprint": "318d5d3e930c755acc07e07af1ded1706d47b3b1fae7b7a72235fdda0e0b3c0e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 3,
+      "anchor": "C.01.014.21 of the regulations / paragraph-27",
+      "statement": "(2) The Minister shall notify, in writing, the manufacturer to whom a document was issued under subsection C.01.014.2(1) that sets out the drug identification number of any terms and conditions imposed on the drug identification number and of any amendment to those terms and conditions.",
+      "context": "(iii) a supplement to a new drug submission or abbreviated new drug submission under section C.08.003. (3) The following definitions apply in this section.",
+      "fingerprint": "a0d08731180d059eb24f57fb6df0519797cb2be664bfbe38c5e09227ec543290",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 4,
+      "anchor": "Interpretation / paragraph-36",
+      "statement": "This section should be read along with the following guidance documents. You are expected to fulfill all the requirements outlined within:",
+      "context": "Submission of targeted risk management plans and follow-up commitments for prescription opioid-containing products – Guidance for industry",
+      "fingerprint": "78e7def08a2a5559385d69e28158b6433179e6028f15cd8df4ae2c507718a1f3",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 5,
+      "anchor": "Interpretation / paragraph-37",
+      "statement": "Submission of targeted risk management plans and follow-up commitments for prescription opioid-containing products – Guidance for industry",
+      "context": "List governed by Interpretation / paragraph-36: This section should be read along with the following guidance documents. You are expected to fulfill all the requirements outlined within: Guidance on the Food and Drug Regulations for public health emergency drugs",
+      "fingerprint": "9a52d9cb808638aca26665e9058484c37d82759a870c49499298c8136e4e1c95",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 6,
+      "anchor": "Interpretation / paragraph-38",
+      "statement": "Guidance on the Food and Drug Regulations for public health emergency drugs",
+      "context": "List governed by Interpretation / paragraph-36: This section should be read along with the following guidance documents. You are expected to fulfill all the requirements outlined within: Submitting risk management plans guidance document",
+      "fingerprint": "33f0d09704c49374028617ae91b790c1cac16b44947712172a288b174fa496cd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 7,
+      "anchor": "Interpretation / paragraph-39",
+      "statement": "Submitting risk management plans guidance document",
+      "context": "List governed by Interpretation / paragraph-36: This section should be read along with the following guidance documents. You are expected to fulfill all the requirements outlined within: A new T&C may be imposed on a drug identification number (DIN) or the existing T&Cs on a DIN may be amended at any time. As the MAH/manufacturer, you must comply with them.",
+      "fingerprint": "f186fd0fd6d514e5ee19a3365b04f8dfe13e30fc9ecb37643b370de81a0c0685",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 8,
+      "anchor": "Interpretation / paragraph-40",
+      "statement": "A new T&C may be imposed on a drug identification number (DIN) or the existing T&Cs on a DIN may be amended at any time. As the MAH/manufacturer, you must comply with them.",
+      "context": "Submitting risk management plans guidance document T&Cs vary depending on the product and can include pharmacovigilance and risk minimization activities/measures.",
+      "fingerprint": "7533a8a2fb0463c6f54cf5f89f5419ef4ee0199296635a97a04e5d916c93c4c5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 9,
+      "anchor": "Interpretation / paragraph-42",
+      "statement": "You should have a system and process in place to execute the activities/measures outlined in the T&Cs in a timely manner or within the specified timelines. All elements of a pharmacovigilance system should be applied. You should also monitor the progress on these activities and resolve any challenges to ensure proper execution of the T&Cs.",
+      "context": "T&Cs vary depending on the product and can include pharmacovigilance and risk minimization activities/measures.",
+      "fingerprint": "1b1c6410602bfcae8b1329ee1c20bf77797ca0743224133a766d2f47528d4e43",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 10,
+      "anchor": "C.01.016 of the regulations / paragraph-46",
+      "statement": "No manufacturer shall sell a drug unless the manufacturer complies with the conditions set out in sections C.01.017 to C.01.019.",
+      "context": "Serious adverse drug reaction (ADR) reporting",
+      "fingerprint": "55b66d374cc14819e94a4dae995c6b05ccc6436fd5ffb0aaa87f1b3fce7de748",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 11,
+      "anchor": "C.01.017 of the regulations / paragraph-50",
+      "statement": "The manufacturer shall submit to the Minister a report of all information relating to the following serious adverse drug reactions within 15 days after receiving or becoming aware of the information, whichever occurs first:",
+      "context": "(a) any serious adverse drug reaction that has occurred in Canada with respect to the drug; and",
+      "fingerprint": "e398da6d5f2eb09da08276018074957a4171df33b393720c8a65168df1cbd49b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 12,
+      "anchor": "C.01.017 of the regulations / paragraph-51",
+      "statement": "(a) any serious adverse drug reaction that has occurred in Canada with respect to the drug; and",
+      "context": "List governed by C.01.017 of the regulations / paragraph-50: The manufacturer shall submit to the Minister a report of all information relating to the following serious adverse drug reactions within 15 days after receiving or becoming aware of the information, whichever occurs first: (b) any serious unexpected adverse drug reaction that has occurred outside Canada with respect to the drug.",
+      "fingerprint": "d65ae0f123213f109fbd30c5d803bacdb09fc980363d596e7feef41c0b27cea0",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 13,
+      "anchor": "C.01.017 of the regulations / paragraph-52",
+      "statement": "(b) any serious unexpected adverse drug reaction that has occurred outside Canada with respect to the drug.",
+      "context": "List governed by C.01.017 of the regulations / paragraph-50: The manufacturer shall submit to the Minister a report of all information relating to the following serious adverse drug reactions within 15 days after receiving or becoming aware of the information, whichever occurs first:",
+      "fingerprint": "655b3488b550c4bf4af7584dfbdd1de5480bfed0f3bc9f1029382187344f0398",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 14,
+      "anchor": "Rationale / paragraph-54",
+      "statement": "As the manufacturer, you must collect, evaluate, and submit adverse drug reactions (ADRs) in a timely manner. This allows you to monitor the safety and effectiveness of drugs being sold and submit ADR information to us accordingly.",
+      "context": "",
+      "fingerprint": "e963b3e46f80dab5d6f15af8feae7f83a14c2aec8c596e9ffe93774b82edd352",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 15,
+      "anchor": "Interpretation / paragraph-56",
+      "statement": "This section should be read along with the following guidance document. You are expected to fulfill all the requirements outlined within:",
+      "context": "Reporting adverse reactions to marketed health products – Guidance document for industry",
+      "fingerprint": "3012efd525b975577068fe4ad5ed27ac3d6d6100236e6a9c680077b07dbceefd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 16,
+      "anchor": "Interpretation / paragraph-57",
+      "statement": "Reporting adverse reactions to marketed health products – Guidance document for industry",
+      "context": "List governed by Interpretation / paragraph-56: This section should be read along with the following guidance document. You are expected to fulfill all the requirements outlined within:",
+      "fingerprint": "cddae08ae7f6ab9e79ea721e07baac7248022c579f8c693a053dc8100ecd50b1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 17,
+      "anchor": "Overall considerations / paragraph-59",
+      "statement": "Domestic serious ADRs and foreign serious unexpected ADRs are subject to expedited reporting. You should have approved written procedures and instructions for receiving, handling, documenting, processing, evaluating, and submitting ADR. All elements of a pharmacovigilance system should be applied. Documented information on domestic and foreign ADRs should be accurate, complete, and consistent. You must submit this information to us within 15 calendar days of receiving a report, if the Individual Case Safety Report (ICSR) qualifies for expedited reporting.",
+      "context": "Receiving, handling, documenting, and processing ADR data",
+      "fingerprint": "56ca41b3bd783890d2a19e23fd60bea95d6fce57660d4f53524ff72fadc8ae4d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 18,
+      "anchor": "Overview / paragraph-67",
+      "statement": "You should ensure your systems and procedures:",
+      "context": "the entity that handles customer service or marketing activities that are owned, controlled, or operated by you for example, ADRs and serious ADRs",
+      "fingerprint": "83dfa091c68e210c49422329daa4ba1c76746cc2a4effce2bfd18700bed8001a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 19,
+      "anchor": "Overview / paragraph-68",
+      "statement": "for example, ADRs and serious ADRs",
+      "context": "List governed by Overview / paragraph-67: You should ensure your systems and procedures: enable the receipt and handling of incoming correspondences that represent potential domestic and foreign ADRs",
+      "fingerprint": "2503ddbdc4da7132736fb158b3dd9805b04096544a433c703c1465ca352f7210",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 20,
+      "anchor": "Overview / paragraph-69",
+      "statement": "enable the receipt and handling of incoming correspondences that represent potential domestic and foreign ADRs",
+      "context": "List governed by Overview / paragraph-67: You should ensure your systems and procedures: consider the need to set up contractual agreements, as applicable",
+      "fingerprint": "2be969485ea215b10c0e7a130a006f95d650a761be09d1f7258a9ebcc7c841e6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 21,
+      "anchor": "Overview / paragraph-70",
+      "statement": "consider the need to set up contractual agreements, as applicable",
+      "context": "List governed by Overview / paragraph-67: You should ensure your systems and procedures: identify the responsible personnel or contact person who receives incoming correspondences from the contact point identified on the product label, advertising material, or digital platform",
+      "fingerprint": "50a6c270a83d8544a59104ac563adf8a37a9166feee1ed7f23c1f1dcdfc9ca45",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 22,
+      "anchor": "Overview / paragraph-71",
+      "statement": "identify the responsible personnel or contact person who receives incoming correspondences from the contact point identified on the product label, advertising material, or digital platform",
+      "context": "List governed by Overview / paragraph-67: You should ensure your systems and procedures: assign an unique identifier to each incoming case",
+      "fingerprint": "79e7a9307fe30eebcaba9d516d2c33378062b4b4c54e146211e4327d186b9b72",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 23,
+      "anchor": "Overview / paragraph-72",
+      "statement": "assign an unique identifier to each incoming case",
+      "context": "List governed by Overview / paragraph-67: You should ensure your systems and procedures: define day zero (day 0) as the day when all 4 minimum criteria of the ICSR are available to you or the party delegated to conduct pharmacovigilance activities on your behalf",
+      "fingerprint": "f9c13b646af911eaf104ae59ef3aa0ac7141535329fce4779db8fcf5a820310b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 24,
+      "anchor": "Overview / paragraph-73",
+      "statement": "define day zero (day 0) as the day when all 4 minimum criteria of the ICSR are available to you or the party delegated to conduct pharmacovigilance activities on your behalf",
+      "context": "List governed by Overview / paragraph-67: You should ensure your systems and procedures: The record of invalidated cases should be maintained for inspection/audit purposes",
+      "fingerprint": "d15bc76901d8e5ada39a7584591b0fb525660423fd5be9eee655a29fc07d1df4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 25,
+      "anchor": "Overview / paragraph-74",
+      "statement": "The record of invalidated cases should be maintained for inspection/audit purposes",
+      "context": "List governed by Overview / paragraph-67: You should ensure your systems and procedures: define timelines and workflow for triaging safety information to the pharmacovigilance department for processing",
+      "fingerprint": "049315b3fdf27e2773a526744d71793d2f12e53f86b848344afbc03017bee1e9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 26,
+      "anchor": "Overview / paragraph-75",
+      "statement": "define timelines and workflow for triaging safety information to the pharmacovigilance department for processing",
+      "context": "List governed by Overview / paragraph-67: You should ensure your systems and procedures: for example, timeline for handling incoming voice messages and incoming text messages via digital platforms",
+      "fingerprint": "72ccdd2c2808bc5ac298ca8468e40eb944d38073d8a7c61e44ebdd73fa462fa6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 27,
+      "anchor": "Overview / paragraph-76",
+      "statement": "for example, timeline for handling incoming voice messages and incoming text messages via digital platforms",
+      "context": "List governed by Overview / paragraph-67: You should ensure your systems and procedures: clarify who is responsible and the process for translating AE/ADR correspondence into English or French, when necessary",
+      "fingerprint": "6de9e4abd3eb0cf11839823d5d568587253e0179eecb085904c05e162e5f49d3",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 28,
+      "anchor": "Overview / paragraph-77",
+      "statement": "clarify who is responsible and the process for translating AE/ADR correspondence into English or French, when necessary",
+      "context": "List governed by Overview / paragraph-67: You should ensure your systems and procedures: To ensure completeness of ADR information, you should exercise due diligence in seeking and recording key data elements. You should:",
+      "fingerprint": "6c36ad46b23281c8647f08cfa5c0ca1b6103076a776de776047c8a8d25e229a3",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 29,
+      "anchor": "Overview / paragraph-78",
+      "statement": "To ensure completeness of ADR information, you should exercise due diligence in seeking and recording key data elements. You should:",
+      "context": "clarify who is responsible and the process for translating AE/ADR correspondence into English or French, when necessary obtain consent to follow-up when necessary, document any follow-up attempts, and information obtained from follow-up",
+      "fingerprint": "0f804271c72bd9719f83acd179c7fb805b6cc7a93eb647ef4520cb2a9fc7cafe",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 30,
+      "anchor": "Overview / paragraph-79",
+      "statement": "obtain consent to follow-up when necessary, document any follow-up attempts, and information obtained from follow-up",
+      "context": "List governed by Overview / paragraph-78: To ensure completeness of ADR information, you should exercise due diligence in seeking and recording key data elements. You should: query the reporter to obtain the most complete information possible, while ensuring to avoid inferences and imputations",
+      "fingerprint": "5b176bfd42f48b96925cf018c54a4d3178dc6e56c17f68ef067bd58876e27ec2",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 31,
+      "anchor": "Overview / paragraph-80",
+      "statement": "query the reporter to obtain the most complete information possible, while ensuring to avoid inferences and imputations",
+      "context": "List governed by Overview / paragraph-78: To ensure completeness of ADR information, you should exercise due diligence in seeking and recording key data elements. You should: include the verbatim term used by the reporter, or an accurate translation if provided in a language other than English or French",
+      "fingerprint": "0a239701c8d77df61217113f2520149d65badebc2c6cb6ccd8bddfda68c9da8a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 32,
+      "anchor": "Overview / paragraph-81",
+      "statement": "include the verbatim term used by the reporter, or an accurate translation if provided in a language other than English or French",
+      "context": "List governed by Overview / paragraph-78: To ensure completeness of ADR information, you should exercise due diligence in seeking and recording key data elements. You should: provide an unbiased and unfiltered report of information received",
+      "fingerprint": "0722adaeaf1a7e67524521a09333e743b0e4e3fefc0653e3326899f473995d1c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 33,
+      "anchor": "Overview / paragraph-82",
+      "statement": "provide an unbiased and unfiltered report of information received",
+      "context": "List governed by Overview / paragraph-78: To ensure completeness of ADR information, you should exercise due diligence in seeking and recording key data elements. You should: Note: Please refer to the Environmental scanning section for guidance on conducting literature searches. While reviewing the scientific literature, you may become aware of ICSRs qualifying for expedited reporting under C.01.017 of the regulations.",
+      "fingerprint": "4d4742b1c357a1e3f397e37cb3c6aceee0d8a890046cd19e6765d3e8ae76836c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 34,
+      "anchor": "Overview / paragraph-84",
+      "statement": "Note: Compulsory licence holders of Canada’s Access Medicines Regime (CAMR) are subject to the requirements for reporting foreign ADRs on drugs sold under CAMR.",
+      "context": "Note: Please refer to the Environmental scanning section for guidance on conducting literature searches. While reviewing the scientific literature, you may become aware of ICSRs qualifying for expedited reporting under C.01.017 of the regulations.",
+      "fingerprint": "5abf069bd044eb4190840a5114e544c22799f5c5b2684369524ad35cd7b582fc",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 35,
+      "anchor": "coding / paragraph-86",
+      "statement": "You are encouraged to use the Medical Dictionary for Regulatory Activities (MedDRA) for coding. To promote accurate and consistent term selection when different options are possible, you should use recommendations detailed in the MedDRA® Term Selection: Points to consider document.",
+      "context": "Your approved procedures and instructions should ensure that:",
+      "fingerprint": "2b8cdca3696c619e9da31a352815b7e7d4cd150ab396529fef44c66d0c75d05d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 36,
+      "anchor": "coding / paragraph-87",
+      "statement": "Your approved procedures and instructions should ensure that:",
+      "context": "You are encouraged to use the Medical Dictionary for Regulatory Activities (MedDRA) for coding. To promote accurate and consistent term selection when different options are possible, you should use recommendations detailed in the MedDRA® Term Selection: Points to consider document. any inconsistencies should be justified and documented by the Qualified Healthcare Professional (QHCP)",
+      "fingerprint": "283fa79e586fae09f53295bf98e41fc0c59e531eecf6e2cda3a58b5a1be0811a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 37,
+      "anchor": "coding / paragraph-88",
+      "statement": "any inconsistencies should be justified and documented by the Qualified Healthcare Professional (QHCP)",
+      "context": "List governed by coding / paragraph-87: Your approved procedures and instructions should ensure that: MedDRA: Support documentation",
+      "fingerprint": "65f391eaa4fad4551312cb406ff85ef581feda6dfa9b4721c0fd5aa8e3779058",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 38,
+      "anchor": "coding / paragraph-89",
+      "statement": "MedDRA: Support documentation",
+      "context": "List governed by coding / paragraph-87: Your approved procedures and instructions should ensure that: a risk-based strategy is identified that requires the QHCP to verify the coding selection of complex or less-intuitive AEs/ADRs",
+      "fingerprint": "b62a87a524cd5ed1370a5fa71746250890c30a1ed38ef07071ea36e3ede368d8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 39,
+      "anchor": "coding / paragraph-90",
+      "statement": "a risk-based strategy is identified that requires the QHCP to verify the coding selection of complex or less-intuitive AEs/ADRs",
+      "context": "List governed by coding / paragraph-87: Your approved procedures and instructions should ensure that: the MedDRA version update process is outlined and that any impact analysis and risk-based review will be conducted",
+      "fingerprint": "e008cb3309d745ba4e4477ef0e8e5aa08d1b60c08d8a6c135fe5c3d2e48a5687",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 40,
+      "anchor": "coding / paragraph-91",
+      "statement": "the MedDRA version update process is outlined and that any impact analysis and risk-based review will be conducted",
+      "context": "List governed by coding / paragraph-87: Your approved procedures and instructions should ensure that:",
+      "fingerprint": "39925ebceac4213b8cda6e1985c4cdbd49f10b7978d3a64f7449afdbadc574b1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 41,
+      "anchor": "duplicates / paragraph-93",
+      "statement": "Your approved procedures and instructions should describe:",
+      "context": "the strategy or algorithm in place to find ICSRs that are potential duplicates",
+      "fingerprint": "495675fd79cc5b0eb2b832997614195b47338936bd4cef7e7ae49fc43418a0f7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 42,
+      "anchor": "duplicates / paragraph-94",
+      "statement": "the strategy or algorithm in place to find ICSRs that are potential duplicates",
+      "context": "List governed by duplicates / paragraph-93: Your approved procedures and instructions should describe: the verification process when potential duplicates in your pharmacovigilance database are identified",
+      "fingerprint": "6c90ac425973dbf0d6542b3d46820ae6eef1ed539779a52026a782f089c45148",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 43,
+      "anchor": "duplicates / paragraph-95",
+      "statement": "the verification process when potential duplicates in your pharmacovigilance database are identified",
+      "context": "List governed by duplicates / paragraph-93: Your approved procedures and instructions should describe: how to manage duplicates in the database once validated",
+      "fingerprint": "4f960080e04f4141a78e8875acf8237e75157b06137735716a73d012d59c00ae",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 44,
+      "anchor": "duplicates / paragraph-96",
+      "statement": "how to manage duplicates in the database once validated",
+      "context": "List governed by duplicates / paragraph-93: Your approved procedures and instructions should describe: effectiveness evaluations on the strategies or algorithms used and necessary steps to address any inadequacies",
+      "fingerprint": "24b5e213eb160152def5013d491ba77075d90a5b705bb13e8386508eee3f4d1c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 45,
+      "anchor": "duplicates / paragraph-97",
+      "statement": "effectiveness evaluations on the strategies or algorithms used and necessary steps to address any inadequacies",
+      "context": "List governed by duplicates / paragraph-93: Your approved procedures and instructions should describe: If you identify duplicates within your database after the reports have been submitted to us, you should nullify the duplicate via submission to Canada Vigilance and ensure that a master case is retained in your system and in Canada Vigilance. If the duplicate contained additional information, then the duplicate may need to be merged with the master case before you nullify it.",
+      "fingerprint": "a409ad65db761409da8f32be5bd1317cae2216f4910195d9c10de14d5fcd8e3b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 46,
+      "anchor": "duplicates / paragraph-98",
+      "statement": "If you identify duplicates within your database after the reports have been submitted to us, you should nullify the duplicate via submission to Canada Vigilance and ensure that a master case is retained in your system and in Canada Vigilance. If the duplicate contained additional information, then the duplicate may need to be merged with the master case before you nullify it.",
+      "context": "effectiveness evaluations on the strategies or algorithms used and necessary steps to address any inadequacies The above-mentioned principles are important for proper ADR evaluations, ADR submissions, Annual Summary Report (ASR) preparation and Issue-Related Summary Report (IRSR) preparation.",
+      "fingerprint": "731c3e3fd5b590c6b452b346a2d2eb626f2d3ef9a139e2edac6136715868a2fb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 47,
+      "anchor": "follow-up / paragraph-101",
+      "statement": "You should have approved procedures and instructions for following up with the reporter or patient. For example, you should:",
+      "context": "Following up with the reporter or patient seek the reporter’s or patient’s consent to follow-up, where necessary",
+      "fingerprint": "678bd0094ddb9741e002fd6b906aaacdeea8e2880b42b44214c67a51a65fcbcd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 48,
+      "anchor": "follow-up / paragraph-102",
+      "statement": "seek the reporter’s or patient’s consent to follow-up, where necessary",
+      "context": "List governed by follow-up / paragraph-101: You should have approved procedures and instructions for following up with the reporter or patient. For example, you should: update corresponding data fields",
+      "fingerprint": "2188a9dac7384a92d20511cc616f1ba6d5f15582fbd4f9f84a4a0d1f699a8a68",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 49,
+      "anchor": "follow-up / paragraph-103",
+      "statement": "update corresponding data fields",
+      "context": "List governed by follow-up / paragraph-101: You should have approved procedures and instructions for following up with the reporter or patient. For example, you should: identify new information and date of receiving follow-up information",
+      "fingerprint": "51c6e174498637c581d132fe554045317fb42d60ba47f00581dd869649deeb77",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 50,
+      "anchor": "follow-up / paragraph-104",
+      "statement": "identify new information and date of receiving follow-up information",
+      "context": "List governed by follow-up / paragraph-101: You should have approved procedures and instructions for following up with the reporter or patient. For example, you should: ensure that the date of receipt on follow-up information does not precede the latest date of previous report versions",
+      "fingerprint": "943b98714a66a0a0739d9d44cb53a7d25355a9121f506454085b65cd2adea4fd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 51,
+      "anchor": "follow-up / paragraph-105",
+      "statement": "ensure that the date of receipt on follow-up information does not precede the latest date of previous report versions",
+      "context": "List governed by follow-up / paragraph-101: You should have approved procedures and instructions for following up with the reporter or patient. For example, you should: 4 minimum criteria of the ICSR",
+      "fingerprint": "7d9ae8b66c356fe7806a3cb73e66f205ff7e18fb774cac045ed31e606551a4fd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 52,
+      "anchor": "follow-up / paragraph-106",
+      "statement": "4 minimum criteria of the ICSR",
+      "context": "List governed by follow-up / paragraph-101: You should have approved procedures and instructions for following up with the reporter or patient. For example, you should:",
+      "fingerprint": "afbe298591483fca6251a7dc536bb89cfb80940fea5b9e3d14756c1a935d2260",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 53,
+      "anchor": "follow-up / paragraph-107",
+      "statement": "You should have approved procedures and instructions for following up with the reporter or patient. For example, you should: key data elements",
+      "context": "List governed by follow-up / paragraph-101: You should have approved procedures and instructions for following up with the reporter or patient. For example, you should: verify duplicate information and resolve any information that conflicts with the original information that was collected",
+      "fingerprint": "6f2790009c5778073c41941151648eeb2a118f8eed8867bf360ad59af3aa010f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 54,
+      "anchor": "follow-up / paragraph-108",
+      "statement": "verify duplicate information and resolve any information that conflicts with the original information that was collected",
+      "context": "List governed by follow-up / paragraph-101: You should have approved procedures and instructions for following up with the reporter or patient. For example, you should: document decisions and justifications to either not follow-up or to discontinue follow-up efforts",
+      "fingerprint": "536c640827a295aeaf07734686429f50d6320279508f8b1aaa92f780b889039d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 55,
+      "anchor": "follow-up / paragraph-109",
+      "statement": "document decisions and justifications to either not follow-up or to discontinue follow-up efforts",
+      "context": "List governed by follow-up / paragraph-101: You should have approved procedures and instructions for following up with the reporter or patient. For example, you should: involve QHCPs with the appropriate level of pharmacovigilance training and therapeutic expertise in the collection of information and direct follow-up of reported cases, when possible",
+      "fingerprint": "3007e4be7b538946bcf5566da76bef06ac829b9061be8152e3e8c7e82e628d3f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 56,
+      "anchor": "follow-up / paragraph-110",
+      "statement": "involve QHCPs with the appropriate level of pharmacovigilance training and therapeutic expertise in the collection of information and direct follow-up of reported cases, when possible",
+      "context": "List governed by follow-up / paragraph-101: You should have approved procedures and instructions for following up with the reporter or patient. For example, you should: document information received from follow-up systematically",
+      "fingerprint": "b4a2ba3b285ab474fc8ad0348d41cf0510293b2de621f57f1199bcc66c030140",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 57,
+      "anchor": "follow-up / paragraph-111",
+      "statement": "document information received from follow-up systematically",
+      "context": "List governed by follow-up / paragraph-101: You should have approved procedures and instructions for following up with the reporter or patient. For example, you should: Note: Although some of these cases may not be subject to expedited reporting, you should still pursue follow-up on these reports.",
+      "fingerprint": "a122e32f00b63d0ef77d7e3279465795df886987f77abaf7563000e5b2a36aa9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 58,
+      "anchor": "follow-up / paragraph-112",
+      "statement": "Note: Although some of these cases may not be subject to expedited reporting, you should still pursue follow-up on these reports.",
+      "context": "List governed by follow-up / paragraph-101: You should have approved procedures and instructions for following up with the reporter or patient. For example, you should: have a risk-appropriate strategy based on QHCP’s judgment, to determine the amount of follow-up as appropriate",
+      "fingerprint": "9be1e2e76f5f5ffaa5fd238a4d2711608d628b85ab347b580c84544badb12a6f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 59,
+      "anchor": "follow-up / paragraph-113",
+      "statement": "have a risk-appropriate strategy based on QHCP’s judgment, to determine the amount of follow-up as appropriate",
+      "context": "List governed by follow-up / paragraph-101: You should have approved procedures and instructions for following up with the reporter or patient. For example, you should: in the case of pregnancy or lactation exposure, collect information on the outcome of the pregnancy, health of the newborn, and, where appropriate, development of the child. Note: this follow-up is not expected for cases of exposure during pregnancy for products specifically indicated for use during pregnancy, if not associated with an AE/ADR.",
+      "fingerprint": "d460719c0f2fb5081282c71d479c074927594ea6567d9e9f43c777ebc766d340",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 60,
+      "anchor": "follow-up / paragraph-114",
+      "statement": "in the case of pregnancy or lactation exposure, collect information on the outcome of the pregnancy, health of the newborn, and, where appropriate, development of the child. Note: this follow-up is not expected for cases of exposure during pregnancy for products specifically indicated for use during pregnancy, if not associated with an AE/ADR.",
+      "context": "List governed by follow-up / paragraph-101: You should have approved procedures and instructions for following up with the reporter or patient. For example, you should: Note: When additional clinically or medically significant/relevant information is received from an ICSR previously submitted to the Canada Vigilance Program, the regulatory reporting time clock of this follow-up information begins again. You must report it within 15 calendar days of receipt.",
+      "fingerprint": "3e4b70f40234179c5e7d131f9796cc0e58e01108dcc9014b438cb408791233e2",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 61,
+      "anchor": "follow-up / paragraph-115",
+      "statement": "Note: When additional clinically or medically significant/relevant information is received from an ICSR previously submitted to the Canada Vigilance Program, the regulatory reporting time clock of this follow-up information begins again. You must report it within 15 calendar days of receipt.",
+      "context": "in the case of pregnancy or lactation exposure, collect information on the outcome of the pregnancy, health of the newborn, and, where appropriate, development of the child. Note: this follow-up is not expected for cases of exposure during pregnancy for products specifically indicated for use during pregnancy, if not associated with an AE/ADR. You should submit follow-up on clinically or medically significant/relevant information, for example:",
+      "fingerprint": "804079ff36683c9589c14dd6c70702424070654cffddb3baa9fd72c07d2da544",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 62,
+      "anchor": "follow-up / paragraph-116",
+      "statement": "You should submit follow-up on clinically or medically significant/relevant information, for example:",
+      "context": "Note: When additional clinically or medically significant/relevant information is received from an ICSR previously submitted to the Canada Vigilance Program, the regulatory reporting time clock of this follow-up information begins again. You must report it within 15 calendar days of receipt. new or changed suspected adverse reaction(s)",
+      "fingerprint": "08dda4b1c3d75c8d0df1be0f52d4b7cff708ed6f12f6c3d216ecabdf4ed6abae",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 63,
+      "anchor": "follow-up / paragraph-117",
+      "statement": "new or changed suspected adverse reaction(s)",
+      "context": "List governed by follow-up / paragraph-116: You should submit follow-up on clinically or medically significant/relevant information, for example: additional or changed suspect product(s)",
+      "fingerprint": "5baba7921ebabf56312cc286d03a75bba42ea386763dbd88a15a3315438caf5d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 64,
+      "anchor": "follow-up / paragraph-118",
+      "statement": "additional or changed suspect product(s)",
+      "context": "List governed by follow-up / paragraph-116: You should submit follow-up on clinically or medically significant/relevant information, for example: a change in the causality assessment",
+      "fingerprint": "8b5fb49e08d543818628377c5bd9e0c8c18495146aa7ecc458b4874d86c26ef7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 65,
+      "anchor": "follow-up / paragraph-119",
+      "statement": "a change in the causality assessment",
+      "context": "List governed by follow-up / paragraph-116: You should submit follow-up on clinically or medically significant/relevant information, for example: any new or updated information about the case that affects its medical interpretation",
+      "fingerprint": "e536b3978494f69cebb9c3087c54bd2a8a383bdbc06d95f0e2bc69074a727645",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 66,
+      "anchor": "follow-up / paragraph-120",
+      "statement": "any new or updated information about the case that affects its medical interpretation",
+      "context": "List governed by follow-up / paragraph-116: You should submit follow-up on clinically or medically significant/relevant information, for example: You should seek the clinical or medical judgment of a QHCP on significant/relevant new information that requires expedited reporting.",
+      "fingerprint": "80b11d19a47e2c53a481c38456a256c085d9a4c9b27735e2b4ae6a515b4c809f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 67,
+      "anchor": "follow-up / paragraph-121",
+      "statement": "You should seek the clinical or medical judgment of a QHCP on significant/relevant new information that requires expedited reporting.",
+      "context": "any new or updated information about the case that affects its medical interpretation The above-mentioned principles are important for proper ADR evaluations, ADR submissions, ASR preparation and IRSR preparation.",
+      "fingerprint": "717aeef1ac5956fdc1545189c58b04276f3cb2230b6f43f45a191770fb8beb46",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 68,
+      "anchor": "evaluating / paragraph-124",
+      "statement": "You should have approved procedures and instructions for evaluating AE/ADR reports you received and retrieved. For your AE/ADR report, you should:",
+      "context": "consider how serious ADRs are defined in the regulations and based on the ICH official definition of seriousness",
+      "fingerprint": "b30fd4bd04edb8f433d965b7358715fe757bea7b060ee736f1f2bf2b140fd519",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 69,
+      "anchor": "evaluating / paragraph-125",
+      "statement": "consider how serious ADRs are defined in the regulations and based on the ICH official definition of seriousness",
+      "context": "List governed by evaluating / paragraph-124: You should have approved procedures and instructions for evaluating AE/ADR reports you received and retrieved. For your AE/ADR report, you should: consider medically important events consistently when assessing “seriousness”",
+      "fingerprint": "4b8b125762967fba629a638fca9b7d28d7aafab056dc0f3bbc2c8859f42d9b37",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 70,
+      "anchor": "evaluating / paragraph-126",
+      "statement": "consider medically important events consistently when assessing “seriousness”",
+      "context": "List governed by evaluating / paragraph-124: You should have approved procedures and instructions for evaluating AE/ADR reports you received and retrieved. For your AE/ADR report, you should: determine the expectedness for both domestic and foreign AE/ADR reports from the current product monograph, labelling standards, information approved for market authorization, or product label",
+      "fingerprint": "af508dba2ca4c4eab67e1bc2e1b2c4f4b44842b81717bcefc556e41f81021267",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 71,
+      "anchor": "evaluating / paragraph-127",
+      "statement": "determine the expectedness for both domestic and foreign AE/ADR reports from the current product monograph, labelling standards, information approved for market authorization, or product label",
+      "context": "List governed by evaluating / paragraph-124: You should have approved procedures and instructions for evaluating AE/ADR reports you received and retrieved. For your AE/ADR report, you should: If solicited, you must assess causality before submitting a report to us. In addition, you must respect the opinion or causality assessment of the reporter, that is, not downgrade the report even if you disagree with the reporter.",
+      "fingerprint": "9c24d5016e99980180c46168b2bede04eb54bc13c0326e73a2d2454b603c736f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 72,
+      "anchor": "evaluating / paragraph-128",
+      "statement": "If solicited, you must assess causality before submitting a report to us. In addition, you must respect the opinion or causality assessment of the reporter, that is, not downgrade the report even if you disagree with the reporter.",
+      "context": "List governed by evaluating / paragraph-124: You should have approved procedures and instructions for evaluating AE/ADR reports you received and retrieved. For your AE/ADR report, you should: If spontaneous, ADR reports have implied causality. As such, your causality assessment will not affect whether the report should be submitted to us.",
+      "fingerprint": "14f25e742759bc9045517d9d16e6a46d2f6af2a50a34d3574ead3d6125fb6c99",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 73,
+      "anchor": "evaluating / paragraph-129",
+      "statement": "If spontaneous, ADR reports have implied causality. As such, your causality assessment will not affect whether the report should be submitted to us.",
+      "context": "List governed by evaluating / paragraph-124: You should have approved procedures and instructions for evaluating AE/ADR reports you received and retrieved. For your AE/ADR report, you should: record the opinions or assessment of both the reporter and you if there is disagreement about the seriousness or causal relationship between the suspected product and the reported AE/ADR",
+      "fingerprint": "3d48900d915afd064f6a8ff2afe890a92beb03c74861be5729a0d4b9d372013c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 74,
+      "anchor": "evaluating / paragraph-130",
+      "statement": "record the opinions or assessment of both the reporter and you if there is disagreement about the seriousness or causal relationship between the suspected product and the reported AE/ADR",
+      "context": "List governed by evaluating / paragraph-124: You should have approved procedures and instructions for evaluating AE/ADR reports you received and retrieved. For your AE/ADR report, you should: evaluate and document the assessment if follow-up information changes the seriousness, expectedness and/or causality assessment",
+      "fingerprint": "2a4c9aa204fa3646f038c883eeb502852043ac6de90310ef55ffaa8124665ae7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 75,
+      "anchor": "evaluating / paragraph-131",
+      "statement": "evaluate and document the assessment if follow-up information changes the seriousness, expectedness and/or causality assessment",
+      "context": "List governed by evaluating / paragraph-124: You should have approved procedures and instructions for evaluating AE/ADR reports you received and retrieved. For your AE/ADR report, you should: evaluate if follow-up yields clinically or medically significant/relevant information that prompts the need to submit a report to us",
+      "fingerprint": "656d23e0724c13cae5895e87837fe3c306285792c5470b956c4d6b05129c662f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 76,
+      "anchor": "evaluating / paragraph-132",
+      "statement": "evaluate if follow-up yields clinically or medically significant/relevant information that prompts the need to submit a report to us",
+      "context": "List governed by evaluating / paragraph-124: You should have approved procedures and instructions for evaluating AE/ADR reports you received and retrieved. For your AE/ADR report, you should: justify the evaluation of an AE/ADR and document the QHCP’s medical assessment",
+      "fingerprint": "ad136eb07d33bee53f4ca25d263097167b256bdfc98606ccc21043215bf24fb4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 77,
+      "anchor": "evaluating / paragraph-133",
+      "statement": "justify the evaluation of an AE/ADR and document the QHCP’s medical assessment",
+      "context": "List governed by evaluating / paragraph-124: You should have approved procedures and instructions for evaluating AE/ADR reports you received and retrieved. For your AE/ADR report, you should:",
+      "fingerprint": "96e28092c83dc85605258b0a4bce383657ed9d9f726ddcf964e21e9f1c90d0f9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 78,
+      "anchor": "submitting / paragraph-135",
+      "statement": "You should have approved procedures and instructions for submitting an ICSR. For example, you should:",
+      "context": "require that domestic serious ADRs and foreign serious unexpected ADRs be submitted to us within 15 calendar days of receiving or becoming aware of the adverse drug reaction (refer to the day 0 definition in the Glossary)",
+      "fingerprint": "72365a7d616faef5843535a6c0ca6ffa415969dd4f1f81d5250a5a5b89bcc527",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 79,
+      "anchor": "submitting / paragraph-136",
+      "statement": "require that domestic serious ADRs and foreign serious unexpected ADRs be submitted to us within 15 calendar days of receiving or becoming aware of the adverse drug reaction (refer to the day 0 definition in the Glossary)",
+      "context": "List governed by submitting / paragraph-135: You should have approved procedures and instructions for submitting an ICSR. For example, you should: complete all the processes (triage, transfer of safety information, processing, documentation, evaluation) in time to meet the 15-calendar day timeline of submission after receiving or becoming aware of the ADR",
+      "fingerprint": "0e2495b5fb60c41fd949ad96fbeb2b4034b9bf057bb1ded004d70ece864bbc68",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 80,
+      "anchor": "submitting / paragraph-137",
+      "statement": "complete all the processes (triage, transfer of safety information, processing, documentation, evaluation) in time to meet the 15-calendar day timeline of submission after receiving or becoming aware of the ADR",
+      "context": "List governed by submitting / paragraph-135: You should have approved procedures and instructions for submitting an ICSR. For example, you should: verify that your reporting rules meet the Canadian reporting requirements if you use an electronic pharmacovigilance system",
+      "fingerprint": "30e19252d244cf7a1f91dd963e1a3cbae168d0ed8c8a4667eef05737caf8471d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 81,
+      "anchor": "submitting / paragraph-138",
+      "statement": "verify that your reporting rules meet the Canadian reporting requirements if you use an electronic pharmacovigilance system",
+      "context": "List governed by submitting / paragraph-135: You should have approved procedures and instructions for submitting an ICSR. For example, you should: submit clinically or medically significant/relevant follow-up information related to a previously submitted ADR report to us within 15 calendar days of receiving such follow-up information",
+      "fingerprint": "df57b2775b5322c168b843dd9c05b4200451f9c28618149b86292c89a750f22a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 82,
+      "anchor": "submitting / paragraph-139",
+      "statement": "submit clinically or medically significant/relevant follow-up information related to a previously submitted ADR report to us within 15 calendar days of receiving such follow-up information",
+      "context": "List governed by submitting / paragraph-135: You should have approved procedures and instructions for submitting an ICSR. For example, you should: The record of nullification and associated documents should be maintained.",
+      "fingerprint": "914c67614dfe3cf14a7ed467b36d05fd783d5270ab95e78d8f3e5c1fc1e409d0",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 83,
+      "anchor": "submitting / paragraph-140",
+      "statement": "The record of nullification and associated documents should be maintained.",
+      "context": "List governed by submitting / paragraph-135: You should have approved procedures and instructions for submitting an ICSR. For example, you should: Documented procedure and process should be in place describing when ADR reports may be nullified.",
+      "fingerprint": "97d3d06730f64d6248b67b17a6589b0ab16461c75afedb1065fc9ef84835ec7e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 84,
+      "anchor": "submitting / paragraph-141",
+      "statement": "Documented procedure and process should be in place describing when ADR reports may be nullified.",
+      "context": "List governed by submitting / paragraph-135: You should have approved procedures and instructions for submitting an ICSR. For example, you should: A nullified case is one that should no longer be considered for scientific evaluation.",
+      "fingerprint": "20dbd34acc132c05c2fcef371ac5907a242e1e30bc8d7e169007a735331ac4ea",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 85,
+      "anchor": "submitting / paragraph-142",
+      "statement": "A nullified case is one that should no longer be considered for scientific evaluation.",
+      "context": "List governed by submitting / paragraph-135: You should have approved procedures and instructions for submitting an ICSR. For example, you should: Note: ICSRs from post-authorization safety studies based on secondary use of data are not subject to expedited reporting. However, they should be considered as part of environmental scanning when preparing ASRs.",
+      "fingerprint": "63cd60b87bf8684ee753e298642979f3e51ec4cfc8044ed590def730e6f9879a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 86,
+      "anchor": "submitting / paragraph-143",
+      "statement": "Note: ICSRs from post-authorization safety studies based on secondary use of data are not subject to expedited reporting. However, they should be considered as part of environmental scanning when preparing ASRs.",
+      "context": "A nullified case is one that should no longer be considered for scientific evaluation. Annual summary report (ASR) and case reports",
+      "fingerprint": "4c2228d1c8c217c2f2735eb9f06b9c956a50b06fe06cc162445cf8b252213acf",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 87,
+      "anchor": "C.01.018 of the regulations / paragraph-147",
+      "statement": "(1) The manufacturer shall prepare an annual summary report of all information relating to adverse drug reactions and serious adverse drug reactions to the drug that it received or became aware of during the previous 12 months.",
+      "context": "(2) The annual summary report shall contain a concise, critical analysis of the adverse drug reactions and serious adverse drug reactions to the drug.",
+      "fingerprint": "d75be08f89a4be6035dc8be9a4435117699b35a9dbe8d2c4e04b7fd8155e9322",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 88,
+      "anchor": "C.01.018 of the regulations / paragraph-148",
+      "statement": "(2) The annual summary report shall contain a concise, critical analysis of the adverse drug reactions and serious adverse drug reactions to the drug.",
+      "context": "(1) The manufacturer shall prepare an annual summary report of all information relating to adverse drug reactions and serious adverse drug reactions to the drug that it received or became aware of during the previous 12 months. (3) In preparing the annual summary report, the manufacturer shall determine, on the basis of the analysis referred to in subsection (2), whether there has been a significant change in what is known about the risks and benefits of the drug during the period covered by the report and shall include its conclusions in this regard in the summary report.",
+      "fingerprint": "ccac1ba4c10ab4f0225a61178b3b3e3a27d089a60186c78dd3c74edda9774289",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 89,
+      "anchor": "C.01.018 of the regulations / paragraph-149",
+      "statement": "(3) In preparing the annual summary report, the manufacturer shall determine, on the basis of the analysis referred to in subsection (2), whether there has been a significant change in what is known about the risks and benefits of the drug during the period covered by the report and shall include its conclusions in this regard in the summary report.",
+      "context": "(2) The annual summary report shall contain a concise, critical analysis of the adverse drug reactions and serious adverse drug reactions to the drug. (4) If, in preparing the annual summary report, the manufacturer concludes that there has been a significant change, it shall notify the Minister without delay, in writing, unless this has already been done.",
+      "fingerprint": "53c126bb9642bb75c927673991081968f745bf7f9da9012fb47c5e2403ea1943",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 90,
+      "anchor": "C.01.018 of the regulations / paragraph-150",
+      "statement": "(4) If, in preparing the annual summary report, the manufacturer concludes that there has been a significant change, it shall notify the Minister without delay, in writing, unless this has already been done.",
+      "context": "(3) In preparing the annual summary report, the manufacturer shall determine, on the basis of the analysis referred to in subsection (2), whether there has been a significant change in what is known about the risks and benefits of the drug during the period covered by the report and shall include its conclusions in this regard in the summary report. (a) the annual summary reports",
+      "fingerprint": "1df1ef8478dbf173573bb2ede1bf905bbcc25420bd50fdbf748a535a0ca8c52d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 91,
+      "anchor": "C.01.018 of the regulations / paragraph-153",
+      "statement": "(6) The Minister shall, after giving the manufacturer an opportunity to be heard, specify a period for the submission of the annual summary reports or case reports, or both, that is reasonable in the circumstances, and the manufacturer shall submit the reports within that period.",
+      "context": "(b) the case reports relating to the adverse drug reactions and serious adverse drug reactions to the drug that are known to the manufacturer.",
+      "fingerprint": "6c70054d5bcd4360ed22af3f9ca55cbaadcdea67139c808f76740fcf5f72a290",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 92,
+      "anchor": "Interpretation / paragraph-157",
+      "statement": "This section should be read with the following guidance documents. You are expected to fulfill all the requirements within:",
+      "context": "Guidance on preparing and submitting summary reports for marketed drugs and natural health products",
+      "fingerprint": "6047206d06ca1cb3d6144f8823ac7d087ab36d35dbf075b9b6a6c04c0f319b26",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 93,
+      "anchor": "Interpretation / paragraph-158",
+      "statement": "Guidance on preparing and submitting summary reports for marketed drugs and natural health products",
+      "context": "List governed by Interpretation / paragraph-157: This section should be read with the following guidance documents. You are expected to fulfill all the requirements within:",
+      "fingerprint": "6a62de7426f50039c9d04352949c87f3c2d6b02800baf07cfc8efd7c5d792879",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 94,
+      "anchor": "Preparing ASRs / paragraph-160",
+      "statement": "The ASR should provide a concise and critical analysis of interval safety data. The preparation of an ASR is an ongoing activity throughout the reporting period linked to signal management processes and monitoring activities. Continuous and periodic signal management processes and monitoring activities, such as environmental scanning, are important for the preparation of an ASR. As the manufacturer, you should conduct regular, systematic analyses of safety data to identify new or emerging information on a drug’s benefits and risks.",
+      "context": "A significant change in what is known about the risks and benefits of a drug can occur at any time during the preparation of the ASR, depending on the available evidence. The ASR does not need to be complete for you to conclude that there has been a significant change. If there is a significant change in what is known about a drug’s risks and benefits, you must notify us without delay.",
+      "fingerprint": "ceb90d4a3683da4bf137d7ee8354d1bbcde45295d5c68008a1f2f4595639005a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 95,
+      "anchor": "Preparing ASRs / paragraph-161",
+      "statement": "A significant change in what is known about the risks and benefits of a drug can occur at any time during the preparation of the ASR, depending on the available evidence. The ASR does not need to be complete for you to conclude that there has been a significant change. If there is a significant change in what is known about a drug’s risks and benefits, you must notify us without delay.",
+      "context": "The ASR should provide a concise and critical analysis of interval safety data. The preparation of an ASR is an ongoing activity throughout the reporting period linked to signal management processes and monitoring activities. Continuous and periodic signal management processes and monitoring activities, such as environmental scanning, are important for the preparation of an ASR. As the manufacturer, you should conduct regular, systematic analyses of safety data to identify new or emerging information on a drug’s benefits and risks. Refer to the Guidance on preparing and submitting summary reports for marketed drugs and natural health products for the definition of significant change and to obtain information on what to include in the notification to us.",
+      "fingerprint": "7fc487567aa43b9839dd0fac313274f12cd1ecbdc37b8a02007f01b473579c0d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 96,
+      "anchor": "Preparing ASRs / paragraph-163",
+      "statement": "You should have a system including approved procedures and instructions. All elements of a pharmacovigilance system should be applied. Your system should enable you to:",
+      "context": "Refer to the Guidance on preparing and submitting summary reports for marketed drugs and natural health products for the definition of significant change and to obtain information on what to include in the notification to us. involve the qualified healthcare professional (QHCP), where appropriate",
+      "fingerprint": "d2da885f101ec92f0221b504bdfc85e92325277f36112eafc78fc3fbccfc7cab",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 97,
+      "anchor": "Preparing ASRs / paragraph-164",
+      "statement": "involve the qualified healthcare professional (QHCP), where appropriate",
+      "context": "List governed by Preparing ASRs / paragraph-163: You should have a system including approved procedures and instructions. All elements of a pharmacovigilance system should be applied. Your system should enable you to: include all the sections and information expected by ICH E2C (R2) periodic benefit-risk evaluation report (PBRER), ICH E2C (R1) periodic safety update report (PSUR), or non-standardized format and as explained in Guidance on preparing and submitting summary reports for marketed drugs and natural health products",
+      "fingerprint": "c43823506a431411bb8f51495dfcf29b96a5c3683e85ce84ae6985165cc6ea0f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 98,
+      "anchor": "Preparing ASRs / paragraph-165",
+      "statement": "include all the sections and information expected by ICH E2C (R2) periodic benefit-risk evaluation report (PBRER), ICH E2C (R1) periodic safety update report (PSUR), or non-standardized format and as explained in Guidance on preparing and submitting summary reports for marketed drugs and natural health products",
+      "context": "List governed by Preparing ASRs / paragraph-163: You should have a system including approved procedures and instructions. All elements of a pharmacovigilance system should be applied. Your system should enable you to: justify, document, and indicate the impact when the process has changed",
+      "fingerprint": "382f7fd2ef80ed9a1e9a93bd22e7ba57e81ad1fc32293f5ba2a6c26245682097",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 99,
+      "anchor": "Preparing ASRs / paragraph-166",
+      "statement": "justify, document, and indicate the impact when the process has changed",
+      "context": "List governed by Preparing ASRs / paragraph-163: You should have a system including approved procedures and instructions. All elements of a pharmacovigilance system should be applied. Your system should enable you to: conduct signal management and environmental scanning in order for the ASR to include the outcome of these activities",
+      "fingerprint": "4c426c3c6e92e9e191b3008f1cee8ae328f7e984ec00683a65e273464b47e54d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 100,
+      "anchor": "Preparing ASRs / paragraph-167",
+      "statement": "conduct signal management and environmental scanning in order for the ASR to include the outcome of these activities",
+      "context": "List governed by Preparing ASRs / paragraph-163: You should have a system including approved procedures and instructions. All elements of a pharmacovigilance system should be applied. Your system should enable you to: assess and notify us without delay if you conclude that there has been a significant change",
+      "fingerprint": "b1aecfc43a6c5cabcd2e2615ee1225c91e9ec050279e95f292cff75d4cd38e80",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 101,
+      "anchor": "Preparing ASRs / paragraph-168",
+      "statement": "assess and notify us without delay if you conclude that there has been a significant change",
+      "context": "List governed by Preparing ASRs / paragraph-163: You should have a system including approved procedures and instructions. All elements of a pharmacovigilance system should be applied. Your system should enable you to: submit ASR and case reports if requested or necessary",
+      "fingerprint": "02c8f30e4258f33869c835ad1a673dde9cee962899a0a3f55fc0eb596fd4b88a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 102,
+      "anchor": "Preparing ASRs / paragraph-169",
+      "statement": "submit ASR and case reports if requested or necessary",
+      "context": "List governed by Preparing ASRs / paragraph-163: You should have a system including approved procedures and instructions. All elements of a pharmacovigilance system should be applied. Your system should enable you to:",
+      "fingerprint": "8eb2297c04e9155947eeb7bf8d2ac2ff74002b3ec4d2b9be6dc6647f5c968d0a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 103,
+      "anchor": "signal-management / paragraph-175",
+      "statement": "As part of preparing the ASR, you should have a written procedure for your signal management practices.",
+      "context": "suggests a new potentially causal association, or a new aspect of a known association, between an intervention and an event or set of related events (adverse or beneficial).",
+      "fingerprint": "333efebfa9c1e1f5ad4164e18c53c2c81bc1dd02d4c3288220068b981ffcdb65",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 104,
+      "anchor": "Overall considerations / paragraph-178",
+      "statement": "document and justify the search terms being used such as the MedDRA term, the level of MedDRA hierarchy, and the MedDRA version",
+      "context": "List governed by Overall considerations / paragraph-177: You should ensure that: justify changes, if any, made to the search strategy",
+      "fingerprint": "8e880748715d83c07db147657cac7e3bc9d10d5e952a5d8b3c94ba7da602dd09",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 105,
+      "anchor": "Overall considerations / paragraph-179",
+      "statement": "justify changes, if any, made to the search strategy",
+      "context": "List governed by Overall considerations / paragraph-177: You should ensure that: demonstrate the data retrieved using the previous and new search terms are comparable (note any differences and document impact analysis)",
+      "fingerprint": "273cc084cd7db192687c7cd69b4c36b9aa26343aa3d6aaeeb20e0b1a9bf4203d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 106,
+      "anchor": "Overall considerations / paragraph-180",
+      "statement": "demonstrate the data retrieved using the previous and new search terms are comparable (note any differences and document impact analysis)",
+      "context": "List governed by Overall considerations / paragraph-177: You should ensure that: the pharmacovigilance department meets regularly with a periodicity based on risk to review and discuss safety signals",
+      "fingerprint": "b536aa10a26e8a4e83727b38b6bcb629dce18c647f2f6180e26c9ba12b7d0fdd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 107,
+      "anchor": "Overall considerations / paragraph-181",
+      "statement": "the pharmacovigilance department meets regularly with a periodicity based on risk to review and discuss safety signals",
+      "context": "List governed by Overall considerations / paragraph-177: You should ensure that: you involve QHCPs with the relevant area of expertise in the signal management process",
+      "fingerprint": "77eef062a4823e9dc29be3e78bbdc4e419b5df27eaa382a17ff27fe5d15cae7b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 108,
+      "anchor": "Overall considerations / paragraph-182",
+      "statement": "you involve QHCPs with the relevant area of expertise in the signal management process",
+      "context": "List governed by Overall considerations / paragraph-177: You should ensure that:",
+      "fingerprint": "17ad470eabee9a9e011f19aed66260d6f3386e08da2f2a2cf79b4a31f579ffe0",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 109,
+      "anchor": "Overall considerations / paragraph-183",
+      "statement": "You should ensure that: trigger or origin",
+      "context": "List governed by Overall considerations / paragraph-177: You should ensure that: its assessment or justification,",
+      "fingerprint": "e442843b32bfb61fe2b0e9f3ac248febee091dcc9e377f2d983426aee466bfcc",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 110,
+      "anchor": "Overall considerations / paragraph-184",
+      "statement": "its assessment or justification,",
+      "context": "List governed by Overall considerations / paragraph-177: You should ensure that: follow-up actions such as necessary updates to the product label or risk management plan (RMP) for Canada and its proposed timelines,",
+      "fingerprint": "08232030074ee05c20d20d8150c9fd66cbad41e4df71fa4ef485b6d54dde5872",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 111,
+      "anchor": "Overall considerations / paragraph-185",
+      "statement": "follow-up actions such as necessary updates to the product label or risk management plan (RMP) for Canada and its proposed timelines,",
+      "context": "List governed by Overall considerations / paragraph-177: You should ensure that: any significant change in what is known about the risks and benefits of the drug",
+      "fingerprint": "49dd49fefc58f2cdd3511af58e9d4569e7d9998822b7c4645cfe1c8fc15db14c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 112,
+      "anchor": "Overall considerations / paragraph-186",
+      "statement": "any significant change in what is known about the risks and benefits of the drug",
+      "context": "List governed by Overall considerations / paragraph-177: You should ensure that: you perform signal management in a timely manner",
+      "fingerprint": "01aa4275472ce9345fd41923be77e1ac83fa93a283f851a5bc64172c5054b850",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 113,
+      "anchor": "Overall considerations / paragraph-187",
+      "statement": "you perform signal management in a timely manner",
+      "context": "List governed by Overall considerations / paragraph-177: You should ensure that: if it applies to a cross-licensed product, you have a contractual agreement in place between the licensor and licensee describing 2-way responsibilities for the exchange and assessment of safety information",
+      "fingerprint": "2e16753de555598015182431ddd24e3aec5d065b8ce528b6126c7e3c6dd92267",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 114,
+      "anchor": "Overall considerations / paragraph-188",
+      "statement": "if it applies to a cross-licensed product, you have a contractual agreement in place between the licensor and licensee describing 2-way responsibilities for the exchange and assessment of safety information",
+      "context": "List governed by Overall considerations / paragraph-177: You should ensure that: you keep case reports and any information related to the signal management process for 25 years from when they are created as per C.01.020 of the regulations",
+      "fingerprint": "062562b290adbcb870b644ee2d4db9e9185bf8215ee707c919b49201669c5d23",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 115,
+      "anchor": "Overall considerations / paragraph-189",
+      "statement": "you keep case reports and any information related to the signal management process for 25 years from when they are created as per C.01.020 of the regulations",
+      "context": "List governed by Overall considerations / paragraph-177: You should ensure that:",
+      "fingerprint": "5c2163630a88fc7196a48cfdcfa5d6f841fba2177dab749ac1dafc500f579d5c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 116,
+      "anchor": "signal-detection / paragraph-192",
+      "statement": "You should: volume of ADRs received",
+      "context": "List governed by signal-detection / paragraph-191: You should: known or specific emerging issues",
+      "fingerprint": "d0e6c21d9fd097a75be26251566cb249d27d50a53bbd168cc13b0fe71f5dd73f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 117,
+      "anchor": "signal-detection / paragraph-193",
+      "statement": "known or specific emerging issues",
+      "context": "List governed by signal-detection / paragraph-191: You should: the drug’s risk and uncertainty profile",
+      "fingerprint": "6ae7f04db3b6db7e1608442a1df3559c464984f589bcb05fb0fbf9443ba038be",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 118,
+      "anchor": "signal-detection / paragraph-194",
+      "statement": "the drug’s risk and uncertainty profile",
+      "context": "List governed by signal-detection / paragraph-191: You should: scheduled timing or preparation of the ASR",
+      "fingerprint": "a4258bf47bd03eb1da234ebfb78d907793e33d19e8b95ad642decf28f2b723e9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 119,
+      "anchor": "signal-detection / paragraph-195",
+      "statement": "scheduled timing or preparation of the ASR",
+      "context": "List governed by signal-detection / paragraph-191: You should: justify and document the decision that the agreed upon periodicity to conduct signal detection is sufficient",
+      "fingerprint": "1abe6c330089c2de22dff45f221dd2fd315fc4ee5b56ebf3181f2e853a6ea012",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 120,
+      "anchor": "signal-detection / paragraph-196",
+      "statement": "justify and document the decision that the agreed upon periodicity to conduct signal detection is sufficient",
+      "context": "List governed by signal-detection / paragraph-191: You should: ensure that the types of report being accounted for in the ASR of a product are consistently used across all reporting intervals",
+      "fingerprint": "6f4b3e6c248fb9323c105e38ada6efdde11df9e774fde292465660a006489910",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 121,
+      "anchor": "signal-detection / paragraph-197",
+      "statement": "ensure that the types of report being accounted for in the ASR of a product are consistently used across all reporting intervals",
+      "context": "List governed by signal-detection / paragraph-191: You should: identify and document search criteria used and results in signal detection",
+      "fingerprint": "9b186a66f0a17a534c4db3f4d72c5d3f9256ade07e9751ebabb8137d03c93122",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 122,
+      "anchor": "signal-detection / paragraph-198",
+      "statement": "identify and document search criteria used and results in signal detection",
+      "context": "List governed by signal-detection / paragraph-191: You should: use them consistently across different reporting intervals and justify changes where applicable",
+      "fingerprint": "a1b4bd8b57cbb23725a0a5b732589b9a712f27598031d879769aef564489e7db",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 123,
+      "anchor": "signal-detection / paragraph-199",
+      "statement": "use them consistently across different reporting intervals and justify changes where applicable",
+      "context": "List governed by signal-detection / paragraph-191: You should: document medical assessment and statistical considerations to identify an appropriate threshold",
+      "fingerprint": "86220d11c618af54694a14d894533a56f0e69178b9c4582ea55fea289eb79a10",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 124,
+      "anchor": "signal-detection / paragraph-200",
+      "statement": "document medical assessment and statistical considerations to identify an appropriate threshold",
+      "context": "List governed by signal-detection / paragraph-191: You should:",
+      "fingerprint": "ab8554e2b4ad71412e02940caec5736bbf1278a4f6d4c9eebf0db74309df7059",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 125,
+      "anchor": "signal-evaluation / paragraph-203",
+      "statement": "You should: causality analysis",
+      "context": "List governed by signal-evaluation / paragraph-202: You should: utilization and exposure analysis",
+      "fingerprint": "357afce19883196812b0d9d9b855c6975a74da54092e4eeb40a7699dda2ff84c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 126,
+      "anchor": "signal-evaluation / paragraph-204",
+      "statement": "utilization and exposure analysis",
+      "context": "List governed by signal-evaluation / paragraph-202: You should:",
+      "fingerprint": "133e0787ea7d521ed1f3a47755b17b24305457d265b70680e539c223cef581d1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 127,
+      "anchor": "signal-evaluation / paragraph-205",
+      "statement": "You should: medical analysis",
+      "context": "List governed by signal-evaluation / paragraph-202: You should:",
+      "fingerprint": "678d8d03b85ddad8a8f7f01194e6dea35ca4cc021afa29f73fc38c3feee6cd39",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 128,
+      "anchor": "signal-evaluation / paragraph-206",
+      "statement": "You should: scientific analysis",
+      "context": "List governed by signal-evaluation / paragraph-202: You should: assessment of previous actions taken",
+      "fingerprint": "7ba431beae7d366a1c3022c6766e5950cfc24aa8dff5aea4d7266676656b204c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 129,
+      "anchor": "signal-evaluation / paragraph-207",
+      "statement": "assessment of previous actions taken",
+      "context": "List governed by signal-evaluation / paragraph-202: You should: review of Canadian and international perspectives and considerations",
+      "fingerprint": "49a777b39f79a094699718f374b19f05162d35e2cda10e8306cf319e42aaf130",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 130,
+      "anchor": "signal-evaluation / paragraph-208",
+      "statement": "review of Canadian and international perspectives and considerations",
+      "context": "List governed by signal-evaluation / paragraph-202: You should: assessment of actions from other regulatory agencies",
+      "fingerprint": "75f9f263f0cd91ef5371e8c62152d7903fca8a77c70082bfef49619a0b4d6dd0",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 131,
+      "anchor": "signal-evaluation / paragraph-209",
+      "statement": "assessment of actions from other regulatory agencies",
+      "context": "List governed by signal-evaluation / paragraph-202: You should: date, sign, and document any justifications and decisions on signals such as those that are closed or ongoing (time stamps attributable to a user or other methods of authenticated activity logging may also be used)",
+      "fingerprint": "bd112ff17c97c8231a3ecff858900e28df9255f8c5ef5c9f74b53df424474a66",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 132,
+      "anchor": "signal-evaluation / paragraph-210",
+      "statement": "date, sign, and document any justifications and decisions on signals such as those that are closed or ongoing (time stamps attributable to a user or other methods of authenticated activity logging may also be used)",
+      "context": "List governed by signal-evaluation / paragraph-202: You should: establish and document the timeline to resolve any ongoing signals, supported by risk-relevant information",
+      "fingerprint": "c6e43f3ecdcb0b575e98b2894238070bbbee24416a5c8b5c9c6dd90300df8f3b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 133,
+      "anchor": "signal-evaluation / paragraph-211",
+      "statement": "establish and document the timeline to resolve any ongoing signals, supported by risk-relevant information",
+      "context": "List governed by signal-evaluation / paragraph-202: You should: communicate the outcome of signal evaluation to all relevant stakeholders",
+      "fingerprint": "b61d4dfd1647145825ce24de933c266f4b266ec8db4fd79bbd25e2f972734785",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 134,
+      "anchor": "signal-evaluation / paragraph-212",
+      "statement": "communicate the outcome of signal evaluation to all relevant stakeholders",
+      "context": "List governed by signal-evaluation / paragraph-202: You should:",
+      "fingerprint": "fc3d4ba9876bc5df41aa277772a8fa134090203f068d1d00190f8d533914e764",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 135,
+      "anchor": "environmental-scanning / paragraph-214",
+      "statement": "To conduct a critical analysis of the ADRs and serious ADRs to the drug, continuous monitoring activities such as environmental scanning is needed. Environmental scanning should include literature searches, Canadian regulatory authority database searches, and foreign regulatory authority database searches. Please also refer to the Foreign action section for specific classes of products subject to C.01.050 of the regulations.",
+      "context": "Consolidated efforts on environmental scanning among different MAHs may be acceptable if:",
+      "fingerprint": "918f95f12c6c50f67f7c09adbefaec48bb76c0bbc619e8b9af81e13639189167",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 136,
+      "anchor": "environmental-scanning / paragraph-221",
+      "statement": "Conduct a literature search for ADRs and safety concerns at least once every two weeks or provide a rationale to justify a reasonable risk-based search frequency. A similar process should be put in place to systematically retrieve ADRs and safety concerns from other sources of environmental scanning.",
+      "context": "Noted: MAHs do not have to submit the ADR if they have documented evidence that the contractual partner has already submitted the same ADR to Canada Vigilance.",
+      "fingerprint": "f5442a7b487010d6da1ae4cb8967f37831b7b4c52870a2e36038b8ebf0d2033f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 137,
+      "anchor": "environmental-scanning / paragraph-223",
+      "statement": "You should: the search frequency",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: the search strategy such as terms, limits, and sources",
+      "fingerprint": "14d00f42b505aedc71e5c8561447fd5e0294bb93d93d80d380eade46c8a26624",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 138,
+      "anchor": "environmental-scanning / paragraph-224",
+      "statement": "the search strategy such as terms, limits, and sources",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: how to determine if the literature is within scope of the drug in question",
+      "fingerprint": "5ce74df05a49ff25f866844bb9c86c9b33585a28080fed399734a6daf2b6cdf2",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 139,
+      "anchor": "environmental-scanning / paragraph-225",
+      "statement": "how to determine if the literature is within scope of the drug in question",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: large reference databases",
+      "fingerprint": "2531103618f38a53067666335b7a51b0ab71e9100b0a8314bd2ab7c311fb117d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 140,
+      "anchor": "environmental-scanning / paragraph-226",
+      "statement": "large reference databases",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: scientific journals that are not indexed in worldwide databases",
+      "fingerprint": "abde8f0a2ebf30534ea8c0d4b6f1e4767e88e4e37ede16ecf4163aa2306869fc",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 141,
+      "anchor": "environmental-scanning / paragraph-227",
+      "statement": "scientific journals that are not indexed in worldwide databases",
+      "context": "List governed by environmental-scanning / paragraph-222: You should:",
+      "fingerprint": "0e78441b5c181519fd39525a5defb1a7d2caa4e0244125b6408d7fe51cb7ac01",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 142,
+      "anchor": "environmental-scanning / paragraph-228",
+      "statement": "You should: specialized publications",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: keep the list of Canadian and international literature sources updated, adding relevant new journals as necessary",
+      "fingerprint": "22bab59e64260c77db7fd0847145436d4882da1f8eb514a2257a02dcd2323b67",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 143,
+      "anchor": "environmental-scanning / paragraph-229",
+      "statement": "keep the list of Canadian and international literature sources updated, adding relevant new journals as necessary",
+      "context": "List governed by environmental-scanning / paragraph-222: You should:",
+      "fingerprint": "e8be32e8ce4028ff350a12d514ff71345f1bdc756ca5ad612ec7fa0098359317",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 144,
+      "anchor": "environmental-scanning / paragraph-230",
+      "statement": "You should: indexed terms",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: consider the same combination of active ingredients even if the formulation, dosage form, strength, route of administration or indication vary",
+      "fingerprint": "c527293a7b62b58837e4714efef12fe7ce7c6b8a0a1723e4c5c6d26b267655d4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 145,
+      "anchor": "environmental-scanning / paragraph-231",
+      "statement": "consider the same combination of active ingredients even if the formulation, dosage form, strength, route of administration or indication vary",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: chemical or brand names, active metabolites or names previously used in clinical trials",
+      "fingerprint": "a40d9fdb0e0a40408e46d65d4f6832bf0cda9d5c62deee33a3704dbbf83485a7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 146,
+      "anchor": "environmental-scanning / paragraph-232",
+      "statement": "chemical or brand names, active metabolites or names previously used in clinical trials",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: medically relevant variants or compounds of the active ingredient that would be considered the same drug",
+      "fingerprint": "e9d75a8d25b5e9a2a92155235752337b7c5c069bab6aba093a57259c25f8524e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 147,
+      "anchor": "environmental-scanning / paragraph-233",
+      "statement": "medically relevant variants or compounds of the active ingredient that would be considered the same drug",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: product brand name or alternate product names of the same drug sold by other manufacturers or MAHs locally and globally",
+      "fingerprint": "e8a23afe74e1cc9e2aa755c004bdde840f7fa957eb84a295675a7d7f8261784f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 148,
+      "anchor": "environmental-scanning / paragraph-234",
+      "statement": "product brand name or alternate product names of the same drug sold by other manufacturers or MAHs locally and globally",
+      "context": "List governed by environmental-scanning / paragraph-222: You should:",
+      "fingerprint": "be1af97b2e8389f0eaa18ea625cf548d51881c9593c9f7c7e2f375170acb10a4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 149,
+      "anchor": "environmental-scanning / paragraph-235",
+      "statement": "You should: class of drug",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: have a process for monitoring automated literature retrievals, to ensure they continue to function effectively and generate the intended results",
+      "fingerprint": "5f02dd9798c2006fc857d2ee763bfc792b77f40b6d8ac865bb3bce46efdbfca1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 150,
+      "anchor": "environmental-scanning / paragraph-236",
+      "statement": "have a process for monitoring automated literature retrievals, to ensure they continue to function effectively and generate the intended results",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: note: Individual Case Safety Report (ICSR) submission is not required for studies based on secondary use of data. However, the analysis derived from it should be considered and included in ASRs.",
+      "fingerprint": "3b6c4e7c6cf9598291251371f4cb351bd681b873fa40247c6d43b6aff1638e58",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 151,
+      "anchor": "environmental-scanning / paragraph-237",
+      "statement": "note: Individual Case Safety Report (ICSR) submission is not required for studies based on secondary use of data. However, the analysis derived from it should be considered and included in ASRs.",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: account for safety findings such as interactions, overdose, drug abuse, misuse, off-label use, pregnancy or lactation exposure, experience in vulnerable sub-population, long-term exposure effects",
+      "fingerprint": "360aed5f18e23b99494ae924e58a9e6d51e43ce00b6da10a2b3071ee5629418d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 152,
+      "anchor": "environmental-scanning / paragraph-238",
+      "statement": "account for safety findings such as interactions, overdose, drug abuse, misuse, off-label use, pregnancy or lactation exposure, experience in vulnerable sub-population, long-term exposure effects",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: always document the literature reference and verify if any duplication exists within your pharmacovigilance database",
+      "fingerprint": "4171df12444631bfc34176bd385cc841d001c2c8bf55a42416d3864d8653af5f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 153,
+      "anchor": "environmental-scanning / paragraph-239",
+      "statement": "always document the literature reference and verify if any duplication exists within your pharmacovigilance database",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: retrieve the complete article that may be relevant for ICSR submission or summary report",
+      "fingerprint": "4951bf0739f3e3a2ae4df71a4d2059f833965174a2e33d5c85f04efd7fe63334",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 154,
+      "anchor": "environmental-scanning / paragraph-240",
+      "statement": "retrieve the complete article that may be relevant for ICSR submission or summary report",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: accounting for terms such as “risks under active surveillance” that regulatory authorities may have requested",
+      "fingerprint": "df53e091eba609287bb7ee52eddd9c2fa7bfad36684c3d0ad4cbb1c704cdb34a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 155,
+      "anchor": "environmental-scanning / paragraph-241",
+      "statement": "accounting for terms such as “risks under active surveillance” that regulatory authorities may have requested",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: ensure that there are no gaps on the date ranges used for the searches",
+      "fingerprint": "7ad75080f988b3b397504bb1187cf5853f35616742f61cb87219f327725347d7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 156,
+      "anchor": "environmental-scanning / paragraph-242",
+      "statement": "ensure that there are no gaps on the date ranges used for the searches",
+      "context": "List governed by environmental-scanning / paragraph-222: You should:",
+      "fingerprint": "211227941fb96fc6033485419ebd0e41b419221bff1727e56a638c7216674be5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 157,
+      "anchor": "environmental-scanning / paragraph-243",
+      "statement": "You should: search strategies",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: sources or databases searched",
+      "fingerprint": "58c37d1ae89a3db439c66930f5f517724a0f6c0cf4bb09fb171eab6ef4ac9dbf",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 158,
+      "anchor": "environmental-scanning / paragraph-244",
+      "statement": "sources or databases searched",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: search results for a given date range, even when the search did not yield any results",
+      "fingerprint": "2cfe6026ddc0f5dee0094a3b8afe5da5b549b838dd6cdb81060b90ce631b7b43",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 159,
+      "anchor": "environmental-scanning / paragraph-245",
+      "statement": "search results for a given date range, even when the search did not yield any results",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: important decisions made during the literature search",
+      "fingerprint": "f19a5ce2d47b51bb63068ecc5c49a90af635dba222953c496bdcccd4419ea5ad",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 160,
+      "anchor": "environmental-scanning / paragraph-246",
+      "statement": "important decisions made during the literature search",
+      "context": "List governed by environmental-scanning / paragraph-222: You should: Actions taken based on your analysis for safety reasons",
+      "fingerprint": "6611409992922695b3a518a0c4431a9033adeec30727ca6e553977d2322f6efa",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 161,
+      "anchor": "actions-taken / paragraph-248",
+      "statement": "Your ASR should address and assess the need for actions taken for safety reasons. This can include changes to the product label or the introduction of/update to the RMP for Canada and summarize changes as appropriate.",
+      "context": "Actions taken based on your analysis for safety reasons If no follow-up actions are necessary, you should document your justification.",
+      "fingerprint": "0c15576cd057e40b15545db7ed9d691d23ae6989b0e844b1de9769c24ad7d07d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 162,
+      "anchor": "actions-taken / paragraph-249",
+      "statement": "If no follow-up actions are necessary, you should document your justification.",
+      "context": "Your ASR should address and assess the need for actions taken for safety reasons. This can include changes to the product label or the introduction of/update to the RMP for Canada and summarize changes as appropriate. You should continuously evaluate whether any revision of the product label is needed when new safety information arises. This ensures ASRs are prepared based on the latest information on the label. Refer to the Label update section for more information.",
+      "fingerprint": "cd14ec8bbf346c1a3117a0d018e51173f6731b282dcd5d9cca24c96529e3ab6f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 163,
+      "anchor": "actions-taken / paragraph-250",
+      "statement": "You should continuously evaluate whether any revision of the product label is needed when new safety information arises. This ensures ASRs are prepared based on the latest information on the label. Refer to the Label update section for more information.",
+      "context": "If no follow-up actions are necessary, you should document your justification. The proposal to update label or introduce or update the RMP should be included in the ASR. Your system and processes should allow implementation of these proposals. In the event where the RMP or element(s) of the RMP is a T&C applied on your DIN, refer to the Terms and conditions section for more information.",
+      "fingerprint": "c4d357004c746a8ceecd04107a31b4e2ce25a817c3a5450626eae2da5065c162",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 164,
+      "anchor": "actions-taken / paragraph-251",
+      "statement": "The proposal to update label or introduce or update the RMP should be included in the ASR. Your system and processes should allow implementation of these proposals. In the event where the RMP or element(s) of the RMP is a T&C applied on your DIN, refer to the Terms and conditions section for more information.",
+      "context": "You should continuously evaluate whether any revision of the product label is needed when new safety information arises. This ensures ASRs are prepared based on the latest information on the label. Refer to the Label update section for more information. Note: If there is a significant change on what is known about the risks and benefits of the drug, you must notify us without delay. Refer to Guidance on preparing and submitting summary reports for marketed drugs and natural health products on notifications to us.",
+      "fingerprint": "55904aa6a32788017d93b0192a531a9bc5f5f527bdc64147da09bd409a94ab35",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 165,
+      "anchor": "actions-taken / paragraph-252",
+      "statement": "Note: If there is a significant change on what is known about the risks and benefits of the drug, you must notify us without delay. Refer to Guidance on preparing and submitting summary reports for marketed drugs and natural health products on notifications to us.",
+      "context": "The proposal to update label or introduce or update the RMP should be included in the ASR. Your system and processes should allow implementation of these proposals. In the event where the RMP or element(s) of the RMP is a T&C applied on your DIN, refer to the Terms and conditions section for more information. Issue-related summary report (IRSR)",
+      "fingerprint": "75052d8b3fe12b41fc20dd2594276cac9682b09097e5e7cc31abbad1377b030c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 166,
+      "anchor": "C.01.019 of the regulations / paragraph-257",
+      "statement": "(2) The report shall contain a concise, critical analysis of the adverse drug reactions and serious adverse drug reactions to the drug, as well as case reports of all or specified adverse drug reactions and serious adverse drug reactions to the drug that are known to the manufacturer in respect of the issue that the Minister directs the manufacturer to analyze in the report.",
+      "context": "(1) The Minister may, for the purposes of assessing the safety and effectiveness of the drug, request in writing that the manufacturer submit to the Minister an issue-related summary report. (3) The Minister shall, after giving the manufacturer an opportunity to be heard, specify a period for the submission of the report that is reasonable in the circumstances. The Minister may only specify a period that is less than 30 days if the Minister needs the information in the report to determine whether the drug poses a serious and imminent risk to human health.",
+      "fingerprint": "93c44436689aeeaf30469f35eed6a30adc66ed21425171f8824bb4d18e2db046",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 167,
+      "anchor": "C.01.019 of the regulations / paragraph-258",
+      "statement": "(3) The Minister shall, after giving the manufacturer an opportunity to be heard, specify a period for the submission of the report that is reasonable in the circumstances. The Minister may only specify a period that is less than 30 days if the Minister needs the information in the report to determine whether the drug poses a serious and imminent risk to human health.",
+      "context": "(2) The report shall contain a concise, critical analysis of the adverse drug reactions and serious adverse drug reactions to the drug, as well as case reports of all or specified adverse drug reactions and serious adverse drug reactions to the drug that are known to the manufacturer in respect of the issue that the Minister directs the manufacturer to analyze in the report. (4) The manufacturer shall submit the report within the specified period.",
+      "fingerprint": "bf503ee0f2619c7c511afa973d2f870bf3647210b4aec0702b268867626d1ab1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 168,
+      "anchor": "C.01.019 of the regulations / paragraph-259",
+      "statement": "(4) The manufacturer shall submit the report within the specified period.",
+      "context": "(3) The Minister shall, after giving the manufacturer an opportunity to be heard, specify a period for the submission of the report that is reasonable in the circumstances. The Minister may only specify a period that is less than 30 days if the Minister needs the information in the report to determine whether the drug poses a serious and imminent risk to human health.",
+      "fingerprint": "e249ab6c2ca7adf838a5347ceda7ba4948982aa3b0949dd60188386995954a15",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 169,
+      "anchor": "Interpretation / paragraph-263",
+      "statement": "This section should be read with the following guidance documents. You are expected to fulfill all the requirements outlined within:",
+      "context": "Guidance on preparing and submitting summary reports for marketed drugs and natural health products",
+      "fingerprint": "ee17ebde7309deb518cfc13cb5f1a8482da13dc9ec3c24da9699ccd0ba1d6b6e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 170,
+      "anchor": "Interpretation / paragraph-265",
+      "statement": "As the manufacturer, you should have a system including approved procedures and instructions to prepare, review, approve and submit an IRSR. All elements of a pharmacovigilance system should be applied.",
+      "context": "Guidance on preparing and submitting summary reports for marketed drugs and natural health products",
+      "fingerprint": "a52e26ecc42c6b32ba5b8a3eb7bb19e4e652122c3f91ecde43c9b1f454278e62",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 171,
+      "anchor": "Interpretation / paragraph-267",
+      "statement": "provide the IRSR within the timeframe specified by the Minister",
+      "context": "List governed by Interpretation / paragraph-266: You should: ensure the pharmacovigilance department has mechanisms in place, within its own department or in collaboration with relevant departments, so that IRSR requests are received, triaged to the appropriate department, prepared and reviewed by responsible personnel, and submitted to us by the specified timeline",
+      "fingerprint": "d579fedbcccd374d85b5984a20b31838e3a8425bef2309798070c373730bf41a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 172,
+      "anchor": "Interpretation / paragraph-268",
+      "statement": "ensure the pharmacovigilance department has mechanisms in place, within its own department or in collaboration with relevant departments, so that IRSR requests are received, triaged to the appropriate department, prepared and reviewed by responsible personnel, and submitted to us by the specified timeline",
+      "context": "List governed by Interpretation / paragraph-266: You should: document discussions with us if the search strategy was revised to retrieve a more comprehensive set of safety data",
+      "fingerprint": "fd149941bb966a8f657ad66bffb49935a0d34c316f2ad5db6f19dd9dd3e1c187",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 173,
+      "anchor": "Interpretation / paragraph-269",
+      "statement": "document discussions with us if the search strategy was revised to retrieve a more comprehensive set of safety data",
+      "context": "List governed by Interpretation / paragraph-266: You should: document the rationale of the search strategy (such as the particular MedDRA level and search terms being included) if not already specified by the IRSR request",
+      "fingerprint": "25529f034e6c33df354092b114a20191d6afaa1d1d0c5d4def1e84969e90f057",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 174,
+      "anchor": "Interpretation / paragraph-270",
+      "statement": "document the rationale of the search strategy (such as the particular MedDRA level and search terms being included) if not already specified by the IRSR request",
+      "context": "List governed by Interpretation / paragraph-266: You should: verify that all the relevant data are provided as per the IRSR request",
+      "fingerprint": "bdfa546141446c07e0b923076df8a54d362041d5277a3f134cedc46cf6f01bbf",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 175,
+      "anchor": "Interpretation / paragraph-271",
+      "statement": "verify that all the relevant data are provided as per the IRSR request",
+      "context": "List governed by Interpretation / paragraph-266: You should: justify and document if aspects of the requested safety issue have been excluded",
+      "fingerprint": "4dd3618f643c5518d5bb150cf8d30ca71ef1fb11fcd5c0a848b314ed135f228a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 176,
+      "anchor": "Interpretation / paragraph-272",
+      "statement": "justify and document if aspects of the requested safety issue have been excluded",
+      "context": "List governed by Interpretation / paragraph-266: You should: ensure the data used in the IRSR analysis are complete and accurate",
+      "fingerprint": "9e00a324d5d80db6f8fbb286a5363a380c6f742bdea64d768f9828d699d936a9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 177,
+      "anchor": "Interpretation / paragraph-273",
+      "statement": "ensure the data used in the IRSR analysis are complete and accurate",
+      "context": "List governed by Interpretation / paragraph-266: You should: maintain and make available upon request the IRSR and all data used to compile the report",
+      "fingerprint": "579dd717b969053f0209cef668c2d086f9c8818d896234d9d3298c76171f7ae4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 178,
+      "anchor": "Interpretation / paragraph-274",
+      "statement": "maintain and make available upon request the IRSR and all data used to compile the report",
+      "context": "List governed by Interpretation / paragraph-266: You should: involve the Qualified Healthcare Professional (QHCP) to write, review and/or approve the IRSR",
+      "fingerprint": "06d37d982d860a2a11634e3f5f430ebac3ce040c4f650fa3a9c1a3c57a977fb0",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 179,
+      "anchor": "Interpretation / paragraph-275",
+      "statement": "involve the Qualified Healthcare Professional (QHCP) to write, review and/or approve the IRSR",
+      "context": "List governed by Interpretation / paragraph-266: You should: follow record retention principles as per section C.01.020 of the regulations to safeguard the integrity of the historical data",
+      "fingerprint": "6a2fe0f933b56b2bf3529c00a3773528ae6878e44e52473b67b8a3dce447a24a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 180,
+      "anchor": "Interpretation / paragraph-276",
+      "statement": "follow record retention principles as per section C.01.020 of the regulations to safeguard the integrity of the historical data",
+      "context": "List governed by Interpretation / paragraph-266: You should:",
+      "fingerprint": "5da6ad23076d189139d79496b66eccca57bf15acfd249aaefa811f354dfc5e76",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 181,
+      "anchor": "C.01.020 of the regulations / paragraph-280",
+      "statement": "(1) The manufacturer shall maintain records of the reports and case reports referred to in sections C.01.017 to C.01.019.",
+      "context": "(2) The manufacturer shall retain the records for 25 years after the day on which they were created.",
+      "fingerprint": "8f08aab293ce2d82e98065632e5a1fb00d13017a9a8a776c8fd77ae2ffba77d5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 182,
+      "anchor": "C.01.020 of the regulations / paragraph-281",
+      "statement": "(2) The manufacturer shall retain the records for 25 years after the day on which they were created.",
+      "context": "(1) The manufacturer shall maintain records of the reports and case reports referred to in sections C.01.017 to C.01.019.",
+      "fingerprint": "53ecb78e437f0dd618d62602eac1a57e6a39fd342500bb9e8c4c5e1ad2f08057",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 183,
+      "anchor": "record-retention / paragraph-286",
+      "statement": "Documentation may be paper-based and/or in electronic form. The various types of documents and different forms of documentation used should be fully defined through written procedures of the pharmacovigilance system.",
+      "context": "As the manufacturer, you are responsible for maintaining and retaining records related to sections C.01.017-C.01.019 of the regulations for 25 years, regardless of the form of documentation (paper records or electronic records). This responsibility applies to you even when a pharmacovigilance activity is delegated to a third-party vendor. To fulfill this responsibility, you should have oversight on record keeping practices by third-party vendors.",
+      "fingerprint": "bd949237f3bf37e1342250b260a14b6d9000b3a998e6907706f1b101a202ceb2",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 184,
+      "anchor": "record-retention / paragraph-287",
+      "statement": "As the manufacturer, you are responsible for maintaining and retaining records related to sections C.01.017-C.01.019 of the regulations for 25 years, regardless of the form of documentation (paper records or electronic records). This responsibility applies to you even when a pharmacovigilance activity is delegated to a third-party vendor. To fulfill this responsibility, you should have oversight on record keeping practices by third-party vendors.",
+      "context": "Documentation may be paper-based and/or in electronic form. The various types of documents and different forms of documentation used should be fully defined through written procedures of the pharmacovigilance system. You should have approved and up-to-date procedures and instructions for record maintenance and retention. Record retention involves:",
+      "fingerprint": "ade946b325930c09e28fc57926410d75a951bc71977f4739a68d4a771f06baf2",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 185,
+      "anchor": "record-retention / paragraph-288",
+      "statement": "You should have approved and up-to-date procedures and instructions for record maintenance and retention. Record retention involves:",
+      "context": "As the manufacturer, you are responsible for maintaining and retaining records related to sections C.01.017-C.01.019 of the regulations for 25 years, regardless of the form of documentation (paper records or electronic records). This responsibility applies to you even when a pharmacovigilance activity is delegated to a third-party vendor. To fulfill this responsibility, you should have oversight on record keeping practices by third-party vendors. all records, including source documents, follow-up, evaluations, submissions, of adverse drug reactions (ADRs)/case reports/unusual failure in efficacy (UFIE)",
+      "fingerprint": "5acab62c9e762eea3d2b4a857025fc1d559c23fe462c0df25740b163ed007ab4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 186,
+      "anchor": "record-retention / paragraph-289",
+      "statement": "all records, including source documents, follow-up, evaluations, submissions, of adverse drug reactions (ADRs)/case reports/unusual failure in efficacy (UFIE)",
+      "context": "List governed by record-retention / paragraph-288: You should have approved and up-to-date procedures and instructions for record maintenance and retention. Record retention involves: Annual summary reports (ASRs), the data used, and related communications with us",
+      "fingerprint": "927225ae6a4d341ec15503055e048bae7feb120945629d1e2c4a862c5755d311",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 187,
+      "anchor": "record-retention / paragraph-290",
+      "statement": "Annual summary reports (ASRs), the data used, and related communications with us",
+      "context": "List governed by record-retention / paragraph-288: You should have approved and up-to-date procedures and instructions for record maintenance and retention. Record retention involves: Issue-related summary reports (IRSRs), the data used, and related communications with us",
+      "fingerprint": "5a97ecfb783dfaa8e355cf92cad70b2026ed5328581536248db750603a64fc60",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 188,
+      "anchor": "record-retention / paragraph-291",
+      "statement": "Issue-related summary reports (IRSRs), the data used, and related communications with us",
+      "context": "List governed by record-retention / paragraph-288: You should have approved and up-to-date procedures and instructions for record maintenance and retention. Record retention involves: accessing records within a reasonable timeframe during the retention period",
+      "fingerprint": "5c6d355097a2354f3f00a187b51a7e3c422a807a86666a17aab5f7f1917b0bbd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 189,
+      "anchor": "record-retention / paragraph-292",
+      "statement": "accessing records within a reasonable timeframe during the retention period",
+      "context": "List governed by record-retention / paragraph-288: You should have approved and up-to-date procedures and instructions for record maintenance and retention. Record retention involves: providing documentation requested by us in 1 of the official languages",
+      "fingerprint": "1c4ec4912f4687675fdd134473380a2c1b22eb9473aaf6f8b204815a15112533",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 190,
+      "anchor": "record-retention / paragraph-293",
+      "statement": "providing documentation requested by us in 1 of the official languages",
+      "context": "List governed by record-retention / paragraph-288: You should have approved and up-to-date procedures and instructions for record maintenance and retention. Record retention involves: outlining the procedure used to maintain ADR records, including the filing system or electronic database used to retrieve these records",
+      "fingerprint": "4e4113d7853767ff6f443fd33c7524c51496c6d9806cd0dd0c4d6360924f2cf4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 191,
+      "anchor": "record-retention / paragraph-294",
+      "statement": "outlining the procedure used to maintain ADR records, including the filing system or electronic database used to retrieve these records",
+      "context": "List governed by record-retention / paragraph-288: You should have approved and up-to-date procedures and instructions for record maintenance and retention. Record retention involves: refer to the Data integrity, Business continuity plan and Validation of automated computerized systems sections for principles related to records maintenance and retention",
+      "fingerprint": "ae3019ca8975176f9c57eb65cf83de95eb5ec6c176298c9a8116f3f4ee8dfda2",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 192,
+      "anchor": "record-retention / paragraph-295",
+      "statement": "refer to the Data integrity, Business continuity plan and Validation of automated computerized systems sections for principles related to records maintenance and retention",
+      "context": "List governed by record-retention / paragraph-288: You should have approved and up-to-date procedures and instructions for record maintenance and retention. Record retention involves: data back up at regular and predefined intervals to protect against potential data loss due to system issues or data corruption or unexpected events",
+      "fingerprint": "4b59e36a4b139a531b431a00da90df2149327d1f720722356f3764cfd2ea9b4a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 193,
+      "anchor": "record-retention / paragraph-296",
+      "statement": "data back up at regular and predefined intervals to protect against potential data loss due to system issues or data corruption or unexpected events",
+      "context": "List governed by record-retention / paragraph-288: You should have approved and up-to-date procedures and instructions for record maintenance and retention. Record retention involves: applying good documentation principles to demonstrate that the QHCP was involved in key pharmacovigilance activities",
+      "fingerprint": "15eaf96f581dd37046c27e1a9d7acad2910dcab0c60a74fdcc2c1447b9c3ce92",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 194,
+      "anchor": "record-retention / paragraph-297",
+      "statement": "applying good documentation principles to demonstrate that the QHCP was involved in key pharmacovigilance activities",
+      "context": "List governed by record-retention / paragraph-288: You should have approved and up-to-date procedures and instructions for record maintenance and retention. Record retention involves:",
+      "fingerprint": "480e86fc3c365b77d46ded5f055e86e9a1eb879236cbefbc071b35e8c21d46d9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 195,
+      "anchor": "data-integrity / paragraph-299",
+      "statement": "You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should:",
+      "context": "ensure that documentation is reliable, complete, consistent and accurate",
+      "fingerprint": "c832fe16f1d835a40fa912339f6abfc631912c7a1e2f281b4b17f366ce54ada1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 196,
+      "anchor": "data-integrity / paragraph-300",
+      "statement": "ensure that documentation is reliable, complete, consistent and accurate",
+      "context": "List governed by data-integrity / paragraph-299: You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should: have procedures that outline management’s expectations for how data should be acquired, modified, reviewed and stored",
+      "fingerprint": "47928aa435c08c3d355b4ce7cf209f8318406820a71dc630aac50f318bdd35c4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 197,
+      "anchor": "data-integrity / paragraph-301",
+      "statement": "have procedures that outline management’s expectations for how data should be acquired, modified, reviewed and stored",
+      "context": "List governed by data-integrity / paragraph-299: You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should: when applicable, having validated computer systems",
+      "fingerprint": "41cc3bd42753f10e37d3fcd55d7e798a15653588c806aec6b7a2a5afd4b643d3",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 198,
+      "anchor": "data-integrity / paragraph-302",
+      "statement": "when applicable, having validated computer systems",
+      "context": "List governed by data-integrity / paragraph-299: You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should: apply the general principles of good documentation practices to all records, including those that are modified",
+      "fingerprint": "67072ffe7d8558270ffe12e13e674145d834977b78891230d7f0ac527c8fc30b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 199,
+      "anchor": "data-integrity / paragraph-303",
+      "statement": "apply the general principles of good documentation practices to all records, including those that are modified",
+      "context": "List governed by data-integrity / paragraph-299: You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should: physical or electronic initials and signatures",
+      "fingerprint": "75dadae59cbe039b93c434c961efca2cf7032520ed032dd51d2bfcb5cbba838a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 200,
+      "anchor": "data-integrity / paragraph-304",
+      "statement": "physical or electronic initials and signatures",
+      "context": "List governed by data-integrity / paragraph-299: You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should: secure user identification",
+      "fingerprint": "802a3698dd5b9fea13436fc83fd08102442c178b4851db0e679706dbe81023d8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 201,
+      "anchor": "data-integrity / paragraph-305",
+      "statement": "secure user identification",
+      "context": "List governed by data-integrity / paragraph-299: You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should:",
+      "fingerprint": "fca41695ca9174b22078436c5ade10f815eeae113c6a7680183e395df218b7e9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 202,
+      "anchor": "data-integrity / paragraph-306",
+      "statement": "You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should: time and date stamps",
+      "context": "List governed by data-integrity / paragraph-299: You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should: change history and audit trails that capture relevant information, such as the assessment or any change on seriousness, expectedness, causality and other entries such as date of receipt",
+      "fingerprint": "7d1376221449e5ccfd01b91a1a8004f5ad1a10decceab6b6879b3617692f3c24",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 203,
+      "anchor": "data-integrity / paragraph-307",
+      "statement": "change history and audit trails that capture relevant information, such as the assessment or any change on seriousness, expectedness, causality and other entries such as date of receipt",
+      "context": "List governed by data-integrity / paragraph-299: You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should: having legible records, with no parts of the data obscured or removed. If archived, they must be retrievable in a timely way. Any changes to records must also be documented and traceable",
+      "fingerprint": "83d370be4cf86ef3cb202595012ac1d4c41830086b2f68feac17f13a5fff1a76",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 204,
+      "anchor": "data-integrity / paragraph-308",
+      "statement": "having legible records, with no parts of the data obscured or removed. If archived, they must be retrievable in a timely way. Any changes to records must also be documented and traceable",
+      "context": "List governed by data-integrity / paragraph-299: You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should: ensuring that data are recorded, documented or saved when they’re generated, with reliable evidence that this was done",
+      "fingerprint": "43ca4a547d12257dc55d68f9c3131b543a12a588391c236630304018deb71617",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 205,
+      "anchor": "data-integrity / paragraph-309",
+      "statement": "ensuring that data are recorded, documented or saved when they’re generated, with reliable evidence that this was done",
+      "context": "List governed by data-integrity / paragraph-299: You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should: granting access to view, create, modify, and store data to authorized personnel only, to protect personal information, as well as ensure confidentiality and accuracy",
+      "fingerprint": "34ba7294fbcc710fede5a4c3ae0cb58a180f239f4ef7be8502ae521ce7339444",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 206,
+      "anchor": "data-integrity / paragraph-310",
+      "statement": "granting access to view, create, modify, and store data to authorized personnel only, to protect personal information, as well as ensure confidentiality and accuracy",
+      "context": "List governed by data-integrity / paragraph-299: You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should: ensuring that records are kept in their original format as an original record or as a true copy which has undergone a qualified conversion process that maintains data integrity",
+      "fingerprint": "57699099782c597c8bff6bcfd88d5ad1209c28b264c821d05c1ce7d198e03825",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 207,
+      "anchor": "data-integrity / paragraph-311",
+      "statement": "ensuring that records are kept in their original format as an original record or as a true copy which has undergone a qualified conversion process that maintains data integrity",
+      "context": "List governed by data-integrity / paragraph-299: You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should: cloud computing servers are to be treated as a delegated service, with risks identified and addressed, and responsibilities clearly outlined in a contractual agreement",
+      "fingerprint": "8a27462d269f2ecf432fdf79a6c2cb57ad5b0615e97bacbd6c38ce92d8cb87c8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 208,
+      "anchor": "data-integrity / paragraph-312",
+      "statement": "cloud computing servers are to be treated as a delegated service, with risks identified and addressed, and responsibilities clearly outlined in a contractual agreement",
+      "context": "List governed by data-integrity / paragraph-299: You are responsible for establishing a data governance system that ensures the integrity of the retained data. You should: Additional considerations for electronic records",
+      "fingerprint": "f961106d62af6b7ac5ef587d3211d348fe14e55e917adda46d38f168294699df",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 209,
+      "anchor": "additional-considerations / paragraph-314",
+      "statement": "If you use an electronic system to create, modify or store records required under section C.01.020 of the regulations, you should validate the system for its intended use.",
+      "context": "Additional considerations for electronic records",
+      "fingerprint": "43753a6d40bead94238ed80c8a09e5f498549aec9f99debef7c96add96ed214b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 210,
+      "anchor": "additional-considerations / paragraph-316",
+      "statement": "control all access and user rights in electronic systems to prevent system users from compromising data integrity",
+      "context": "List governed by additional-considerations / paragraph-315: You should: keep an up-to-date list of individuals who are authorized to access the system with defined user rights that support their roles and responsibilities",
+      "fingerprint": "eb3cf70c28b791d0acdd35fe1bed9f14fba8754b0a7279bb373cdd162b2be5a3",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 211,
+      "anchor": "additional-considerations / paragraph-317",
+      "statement": "keep an up-to-date list of individuals who are authorized to access the system with defined user rights that support their roles and responsibilities",
+      "context": "List governed by additional-considerations / paragraph-315: You should: can only be created and modified by authorized personnel",
+      "fingerprint": "65dbe973881f6c7b0f8b689be53314742e1e38e5c3c528d04fc11ddb90be80f0",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 212,
+      "anchor": "additional-considerations / paragraph-318",
+      "statement": "can only be created and modified by authorized personnel",
+      "context": "List governed by additional-considerations / paragraph-315: You should: are protected against intentional or accidental deletion",
+      "fingerprint": "0d3c6d2be37b83399b7e8badefc64f7983a72d42f95caf7d78a3e7b63c34b862",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 213,
+      "anchor": "additional-considerations / paragraph-319",
+      "statement": "are protected against intentional or accidental deletion",
+      "context": "List governed by additional-considerations / paragraph-315: You should: are named and organized so they can be traced easily",
+      "fingerprint": "efd4be0b2ff2ea1510fa48ad453b977cb6ecfdd6c2682da6943776725283a6ad",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 214,
+      "anchor": "additional-considerations / paragraph-320",
+      "statement": "are named and organized so they can be traced easily",
+      "context": "List governed by additional-considerations / paragraph-315: You should: changes made to the record",
+      "fingerprint": "b22fba3b8ea2d9886ba0c5a2c09247199e48ac26250bc5a5ce1fa0429db23c83",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 215,
+      "anchor": "additional-considerations / paragraph-321",
+      "statement": "changes made to the record",
+      "context": "List governed by additional-considerations / paragraph-315: You should:",
+      "fingerprint": "afd3f93a7b9f9d0707b5e1e924e55393f52ccd341c1a8340f9e81c683d29fcc7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 216,
+      "anchor": "additional-considerations / paragraph-322",
+      "statement": "You should: who made the change",
+      "context": "List governed by additional-considerations / paragraph-315: You should: the time and date the record was changed",
+      "fingerprint": "3ef9b29dd14a7351d50d9b742d0a3eeb2b17ef460512668492a5791c41fc6cb3",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 217,
+      "anchor": "additional-considerations / paragraph-323",
+      "statement": "the time and date the record was changed",
+      "context": "List governed by additional-considerations / paragraph-315: You should: the reason the record was changed, if applicable",
+      "fingerprint": "243a8d7779d563c44f9e02cf90caf12678b1d57fab67b2290fd463e022aa7f36",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 218,
+      "anchor": "additional-considerations / paragraph-324",
+      "statement": "the reason the record was changed, if applicable",
+      "context": "List governed by additional-considerations / paragraph-315: You should: are available for review during an inspection/audit and can be easily retrieved in a suitable format",
+      "fingerprint": "9df271d900c8480d962eaff2ded16a8c7710ce58e5ddcd2c0042552c66f3f30a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 219,
+      "anchor": "additional-considerations / paragraph-325",
+      "statement": "are available for review during an inspection/audit and can be easily retrieved in a suitable format",
+      "context": "List governed by additional-considerations / paragraph-315: You should: include all necessary metadata",
+      "fingerprint": "338d90e6a7764dea7e7d9d827e4501c0f9ab9ed4ba29e4c6f4f2dcf911a2213a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 220,
+      "anchor": "additional-considerations / paragraph-326",
+      "statement": "include all necessary metadata",
+      "context": "List governed by additional-considerations / paragraph-315: You should: When signatures are required, an electronic signature is an acceptable alternative to a handwritten signature. Ensure appropriate controls are in place for electronic signatures, including:",
+      "fingerprint": "31ce3325c48da492560a163a2e88c951e701fb8a4359d584e0bc1da0571ef81a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 221,
+      "anchor": "C.01.050 of the regulations / paragraph-340",
+      "statement": "(3) The information shall be provided to the Minister within 72 hours after the holder receives or becomes aware of it, whichever occurs first.",
+      "context": "(c) recalls, reassessments and suspensions or revocations of authorizations, including licences, in respect of any drug, that have taken place within the jurisdiction of any foreign regulatory authority that is set out in Part C of the list referred to in paragraph (a).",
+      "fingerprint": "9fce04929d6d5a5f62057ee6e91a9310e7448584fe12d4c10ef99a1b73b3fe11",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 222,
+      "anchor": "C.01.050 of the regulations / paragraph-342",
+      "statement": "(b) drugs that are required to be sold under a prescription by Part G, the Benzodiazepines and Other Targeted Substances Regulations or the Narcotic Control Regulations; and",
+      "context": "(c) drugs that are permitted to be sold without a prescription but that are to be administered only under the supervision of a practitioner.",
+      "fingerprint": "01d38ac633e2d6265dd221aa61cd8c4184355c8551117103870d3fd6e2c059c8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 223,
+      "anchor": "Interpretation / paragraph-351",
+      "statement": "This section should be read with the following guidance document. You are expected to fulfill all the requirements outlined within:",
+      "context": "Notifying Health Canada of foreign actions – Guidance Document for Industry",
+      "fingerprint": "cdc66cbd969910dbf3cdce2e601890567f94dd4f3e8bca5a19b27ada2204e1c9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 224,
+      "anchor": "Interpretation / paragraph-352",
+      "statement": "Notifying Health Canada of foreign actions – Guidance Document for Industry",
+      "context": "List governed by Interpretation / paragraph-351: This section should be read with the following guidance document. You are expected to fulfill all the requirements outlined within: As the MAH who holds a Drug Identification Number (DIN) and Notice Of Compliance (NOC), you must provide us with information on foreign actions that have taken place within 72 hours after you receive or become aware of the information, whichever occurs first.",
+      "fingerprint": "889d27a6bc560a814c3630b478bf34dd8fafbbe8050f69bbea28481cc3dcc9d9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 225,
+      "anchor": "Interpretation / paragraph-353",
+      "statement": "As the MAH who holds a Drug Identification Number (DIN) and Notice Of Compliance (NOC), you must provide us with information on foreign actions that have taken place within 72 hours after you receive or become aware of the information, whichever occurs first.",
+      "context": "Notifying Health Canada of foreign actions – Guidance Document for Industry As the responsibility to report foreign actions remains with the MAH, you must define roles and responsibilities with any global counterparts, affiliates, and any third-party vendors through procedures and contractual agreements. Contractual agreement that allows timely information exchange without delay is needed when you delegate part of the responsibility of identifying foreign action to an affiliate or third-party. The MAH should notify HC within 72 hours of becoming aware of a foreign action that has taken place.",
+      "fingerprint": "eaa66267be8e63934acdabea9efc809abaf7a644a6ac426c6ba12c145b55d86f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 226,
+      "anchor": "Interpretation / paragraph-354",
+      "statement": "As the responsibility to report foreign actions remains with the MAH, you must define roles and responsibilities with any global counterparts, affiliates, and any third-party vendors through procedures and contractual agreements. Contractual agreement that allows timely information exchange without delay is needed when you delegate part of the responsibility of identifying foreign action to an affiliate or third-party. The MAH should notify HC within 72 hours of becoming aware of a foreign action that has taken place.",
+      "context": "As the MAH who holds a Drug Identification Number (DIN) and Notice Of Compliance (NOC), you must provide us with information on foreign actions that have taken place within 72 hours after you receive or become aware of the information, whichever occurs first. Your procedures and/or contractual agreements should enable your organization to regularly receive or become aware of foreign actions and provide this information to us in a timely manner, when applicable. The procedure and/or contractual agreements should include information on, for example:",
+      "fingerprint": "67e95f8bbabb48b70ca5288d000f04510e1bf7a50b0d3dbb33e89a7e7df78f66",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 227,
+      "anchor": "Interpretation / paragraph-355",
+      "statement": "Your procedures and/or contractual agreements should enable your organization to regularly receive or become aware of foreign actions and provide this information to us in a timely manner, when applicable. The procedure and/or contractual agreements should include information on, for example:",
+      "context": "As the responsibility to report foreign actions remains with the MAH, you must define roles and responsibilities with any global counterparts, affiliates, and any third-party vendors through procedures and contractual agreements. Contractual agreement that allows timely information exchange without delay is needed when you delegate part of the responsibility of identifying foreign action to an affiliate or third-party. The MAH should notify HC within 72 hours of becoming aware of a foreign action that has taken place. roles and responsibilities to receive or become aware of foreign actions, recommend actions to be taken in Canada, and notify us",
+      "fingerprint": "f35d033b03d47774377a2e197692af24e720e457d7e9123db7c81c48a9758904",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 228,
+      "anchor": "Interpretation / paragraph-356",
+      "statement": "roles and responsibilities to receive or become aware of foreign actions, recommend actions to be taken in Canada, and notify us",
+      "context": "List governed by Interpretation / paragraph-355: Your procedures and/or contractual agreements should enable your organization to regularly receive or become aware of foreign actions and provide this information to us in a timely manner, when applicable. The procedure and/or contractual agreements should include information on, for example: how you receive and become aware of foreign actions",
+      "fingerprint": "8b9dc5d04e7a01cb37a2851ed2a3767208b8f31a5139851bc65980759772d88a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 229,
+      "anchor": "Interpretation / paragraph-357",
+      "statement": "how you receive and become aware of foreign actions",
+      "context": "List governed by Interpretation / paragraph-355: Your procedures and/or contractual agreements should enable your organization to regularly receive or become aware of foreign actions and provide this information to us in a timely manner, when applicable. The procedure and/or contractual agreements should include information on, for example: how a serious risk of injury to human health is defined and document your medical assessment",
+      "fingerprint": "a1a4c323ea93f90e45d618d80375bd6a8540646741860ec6024ec703781e1f9e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 230,
+      "anchor": "Interpretation / paragraph-358",
+      "statement": "how a serious risk of injury to human health is defined and document your medical assessment",
+      "context": "List governed by Interpretation / paragraph-355: Your procedures and/or contractual agreements should enable your organization to regularly receive or become aware of foreign actions and provide this information to us in a timely manner, when applicable. The procedure and/or contractual agreements should include information on, for example: how to determine relevance to the safety of the drug you sell and document your medical assessment",
+      "fingerprint": "42c9c9f8ee4a78dc83f1e51c596b9f06e4a7b0668b0ac4d1a94746059ef93775",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 231,
+      "anchor": "Interpretation / paragraph-359",
+      "statement": "how to determine relevance to the safety of the drug you sell and document your medical assessment",
+      "context": "List governed by Interpretation / paragraph-355: Your procedures and/or contractual agreements should enable your organization to regularly receive or become aware of foreign actions and provide this information to us in a timely manner, when applicable. The procedure and/or contractual agreements should include information on, for example: maintaining records that notifications have been submitted to us",
+      "fingerprint": "6230facf2ea14fba0576dfd4d81d6c8d8320370e408b89ba4b659acdfeaaabe6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 232,
+      "anchor": "Interpretation / paragraph-360",
+      "statement": "maintaining records that notifications have been submitted to us",
+      "context": "List governed by Interpretation / paragraph-355: Your procedures and/or contractual agreements should enable your organization to regularly receive or become aware of foreign actions and provide this information to us in a timely manner, when applicable. The procedure and/or contractual agreements should include information on, for example: Although you may rely on communications with foreign affiliates as a way to receive and become aware of foreign actions, you should also consider the need to scan information sources from listed authorities:",
+      "fingerprint": "7174fc903907efc528736cadccecdcbf6ed4ff9f3bfc9fba70940e46949ecc6c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 233,
+      "anchor": "Interpretation / paragraph-361",
+      "statement": "Although you may rely on communications with foreign affiliates as a way to receive and become aware of foreign actions, you should also consider the need to scan information sources from listed authorities:",
+      "context": "maintaining records that notifications have been submitted to us agency’s publishing history",
+      "fingerprint": "a765286cbcd6b3072a4279e40273a0fc1c9704300f655c6866441410bd619468",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 234,
+      "anchor": "Interpretation / paragraph-362",
+      "statement": "agency’s publishing history",
+      "context": "List governed by Interpretation / paragraph-361: Although you may rely on communications with foreign affiliates as a way to receive and become aware of foreign actions, you should also consider the need to scan information sources from listed authorities: the product’s risk profile",
+      "fingerprint": "bbf507117316da8f9566472de82c313a343ebf7dd570cdfc5d9cc4c5979b3c73",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 235,
+      "anchor": "Interpretation / paragraph-363",
+      "statement": "the product’s risk profile",
+      "context": "List governed by Interpretation / paragraph-361: Although you may rely on communications with foreign affiliates as a way to receive and become aware of foreign actions, you should also consider the need to scan information sources from listed authorities: known or specific emerging issues",
+      "fingerprint": "1c3b05e93cbd366d5d6e233fe933ad858fba14d1211e4f7314c6d7f5b73daee5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 236,
+      "anchor": "Interpretation / paragraph-365",
+      "statement": "scheduling of any summary report",
+      "context": "List governed by Interpretation / paragraph-361: Although you may rely on communications with foreign affiliates as a way to receive and become aware of foreign actions, you should also consider the need to scan information sources from listed authorities: document and apply scanning strategies that identify foreign actions on products that are within scope",
+      "fingerprint": "f536ce886e1d121dde50eaa91be46955a4ab9b73ffbf1b21a8e71eb0fbfb5ff1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 237,
+      "anchor": "Interpretation / paragraph-366",
+      "statement": "document and apply scanning strategies that identify foreign actions on products that are within scope",
+      "context": "List governed by Interpretation / paragraph-361: Although you may rely on communications with foreign affiliates as a way to receive and become aware of foreign actions, you should also consider the need to scan information sources from listed authorities: document and date scan results",
+      "fingerprint": "bc50cdb8898f84a9691eac14899243b0999ba9ece5f291f6679abc106db36e2f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 238,
+      "anchor": "Interpretation / paragraph-367",
+      "statement": "document and date scan results",
+      "context": "List governed by Interpretation / paragraph-361: Although you may rely on communications with foreign affiliates as a way to receive and become aware of foreign actions, you should also consider the need to scan information sources from listed authorities: have a manual scanning process, with established timelines if foreign regulatory authorities do not have an automated alert system",
+      "fingerprint": "3593133099e1a6994fb3deec32a578d152671e03bacbc99d82052d66951aba45",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 239,
+      "anchor": "Interpretation / paragraph-368",
+      "statement": "have a manual scanning process, with established timelines if foreign regulatory authorities do not have an automated alert system",
+      "context": "List governed by Interpretation / paragraph-361: Although you may rely on communications with foreign affiliates as a way to receive and become aware of foreign actions, you should also consider the need to scan information sources from listed authorities: have a process for receiving automated alert systems, to ensure they continue to function effectively and generate the intended results",
+      "fingerprint": "00fcd6b59e06a8f88e3dbae9587dcc96c705ee7ff18dcea3922132a7f6b557d8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 240,
+      "anchor": "Interpretation / paragraph-369",
+      "statement": "have a process for receiving automated alert systems, to ensure they continue to function effectively and generate the intended results",
+      "context": "List governed by Interpretation / paragraph-361: Although you may rely on communications with foreign affiliates as a way to receive and become aware of foreign actions, you should also consider the need to scan information sources from listed authorities: Unusual failure in efficacy",
+      "fingerprint": "3bfb813bd4b1999d7e41effbcca6dfec5a35491af65cfeec862bfa215d30c8bb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 241,
+      "anchor": "C.08.007 (1)(h) and C.08.008 (c) of the regulations / paragraph-375",
+      "statement": "No manufacturer shall sell a new drug unless the manufacturer has, with respect to all the manufacturer’s previous sales of that new drug, furnished to the Minister",
+      "context": "(c) a summary of a record respecting any information referred to in paragraph C.08.007(1)(g) or (h) within 15 days after the day on which the manufacturer established the record.",
+      "fingerprint": "f8369571215940fae0808d1af8c914b97a9654a7f5607db6dc73cecf3c8ca307",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 242,
+      "anchor": "Rationale / paragraph-378",
+      "statement": "As a manufacturer, you must collect, evaluate, maintain, and submit records on Unusual Failure in Efficacy (UFIE). This allows you to monitor the safety and effectiveness of drugs being sold and submit UFIE information to us accordingly.",
+      "context": "",
+      "fingerprint": "929d76c4674fc84996903bde89952fb7b8e3d5f17c99a4d98ad4c5dfd4f057eb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 243,
+      "anchor": "Interpretation / paragraph-383",
+      "statement": "As a manufacturer, you should have systems and procedures to report UFIEs to us within 15 calendar days of receiving such information on new drugs marketed in Canada. All elements of a pharmacovigilance system should be applied.",
+      "context": "Please refer to the Reporting adverse reactions to marketed health products – Guidance document for industry for the definition of UFIE.",
+      "fingerprint": "7d2333ff2e71b0c3ac976f0ca5c750a03469779c7d0d7934a577304fafc8f507",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 244,
+      "anchor": "Interpretation / paragraph-385",
+      "statement": "follow the principles discussed in section C.01.017 when receiving, handling, documenting, processing, following up, evaluating and submitting UFIE reports",
+      "context": "List governed by Interpretation / paragraph-384: You should: refer to section C.01.020 regarding record maintenance and retention for unusual failure in efficacy reports as they are subject to annual summary reports (ASRs) and issue-related summary reports (IRSRs)",
+      "fingerprint": "3f5b874316d929b5a66d0057b0c450be2333f8cd08d68edba0544905dc2c0396",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 245,
+      "anchor": "Interpretation / paragraph-386",
+      "statement": "refer to section C.01.020 regarding record maintenance and retention for unusual failure in efficacy reports as they are subject to annual summary reports (ASRs) and issue-related summary reports (IRSRs)",
+      "context": "List governed by Interpretation / paragraph-384: You should: have a Qualified Healthcare Professional (QHCP) evaluate and document if the case qualifies for expedited 15 calendar days reporting",
+      "fingerprint": "7179765386f2bf89cab1bc0099d9a60780867254750c4c73d57a842bd7b648b0",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 246,
+      "anchor": "Interpretation / paragraph-387",
+      "statement": "have a Qualified Healthcare Professional (QHCP) evaluate and document if the case qualifies for expedited 15 calendar days reporting",
+      "context": "List governed by Interpretation / paragraph-384: You should:",
+      "fingerprint": "101d5dc6da0fdca4f9ff2011bea88a00d0795d695fe5c58dcef8b6a0075c667b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 247,
+      "anchor": "Interpretation / paragraph-399",
+      "statement": "Guidance Document: Product Monograph",
+      "context": "List governed by Interpretation / paragraph-398: This section should be read along with the following guidance documents. You are expected to fulfill all the requirements outlined within: Guidance Document: Post-Notice of Compliance (NOC) Changes: Safety and Efficacy Document (for pharmaceutical, biologic and radiopharmaceutical drugs for human use only)",
+      "fingerprint": "50b66e52d047894fe00a534ef4ef7b5ad094ddb1c86bcd03020ae5026a7f1f91",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 248,
+      "anchor": "Interpretation / paragraph-400",
+      "statement": "Guidance Document: Post-Notice of Compliance (NOC) Changes: Safety and Efficacy Document (for pharmaceutical, biologic and radiopharmaceutical drugs for human use only)",
+      "context": "List governed by Interpretation / paragraph-398: This section should be read along with the following guidance documents. You are expected to fulfill all the requirements outlined within: Guidance document: Administrative processing of submissions and applications involving human or disinfectant drugs",
+      "fingerprint": "500c7db8f1a79e0575b3e8bf14aa821dbb18d419c173830474e8d09cb0ae3853",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 249,
+      "anchor": "Interpretation / paragraph-401",
+      "statement": "Guidance document: Administrative processing of submissions and applications involving human or disinfectant drugs",
+      "context": "List governed by Interpretation / paragraph-398: This section should be read along with the following guidance documents. You are expected to fulfill all the requirements outlined within: It is your responsibility to update product labels to be consistent with current scientific information and medical treatment.",
+      "fingerprint": "0ed50fe1277d77453893bfa375fae2d242004a19cdf41fdc73b4f8055a18a46a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 250,
+      "anchor": "Interpretation / paragraph-403",
+      "statement": "If an update to the product label is warranted, you should have a system and procedures in place to allow timely label update. All elements of a pharmacovigilance system should be applied. You should:",
+      "context": "It is your responsibility to update product labels to be consistent with current scientific information and medical treatment. establish a tracking system to monitor product safety updates that are pending, submitted, approved and implemented",
+      "fingerprint": "7df08f951f0a0e2b1d385ca1c92c44d2b7f1e43a503372ef604c2ed0879f7587",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 251,
+      "anchor": "Interpretation / paragraph-404",
+      "statement": "establish a tracking system to monitor product safety updates that are pending, submitted, approved and implemented",
+      "context": "List governed by Interpretation / paragraph-403: If an update to the product label is warranted, you should have a system and procedures in place to allow timely label update. All elements of a pharmacovigilance system should be applied. You should: outline a risk-based process with your regulatory affairs department to ensure that product safety updates are communicated with us or submitted in a timely manner",
+      "fingerprint": "4663b5a3c78bb08e23f21fc9488b5ae054c803f99bb9599bab9efb29dce4b627",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 252,
+      "anchor": "Interpretation / paragraph-405",
+      "statement": "outline a risk-based process with your regulatory affairs department to ensure that product safety updates are communicated with us or submitted in a timely manner",
+      "context": "List governed by Interpretation / paragraph-403: If an update to the product label is warranted, you should have a system and procedures in place to allow timely label update. All elements of a pharmacovigilance system should be applied. You should:",
+      "fingerprint": "b6ab2bb62a065b3adff25853694e4656c4d72164ba8cea79c383dded0b0c107c",
+      "review_status": "pending"
+    }
+  ],
+  "retrieved_at": "2026-11-01T20:58:01.130Z"
+}
