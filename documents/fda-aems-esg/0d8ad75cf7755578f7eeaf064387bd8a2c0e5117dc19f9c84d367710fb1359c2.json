@@ -1,0 +1,100 @@
+{
+  "schema_version": "public-document-key-info-v1",
+  "document_id": "fda-aems-esg",
+  "metadata": {
+    "title": "AEMS electronic submissions",
+    "country": "US",
+    "agency": "FDA",
+    "edition": "Notice announced April 6, 2026",
+    "norm": "Technical instruction",
+    "topic": "Electronic reporting",
+    "lifecycle": "Marketed",
+    "legal_basis": "FDA electronic submission requirements and referenced Federal Register notice.",
+    "applicability": "Human drugs, biologics and drug- or biologic-led combination products using ESG NextGen.",
+    "published_on": "2026-04-06",
+    "effective_on": "2026-10-01",
+    "source_status": "current"
+  },
+  "metadata_verification": "Source-register metadata; dates and legal status require human verification.",
+  "source_url": "https://www.fda.gov/drugs/fda-adverse-event-monitoring-system-aems/fda-adverse-event-monitoring-system-aems-electronic-submissions",
+  "original_sha256": "4de220f69abe2f142b27539538744f8a9d92636479cec14a3ed6982b00ac47df",
+  "content_kind": "html",
+  "parser_version": "normative-rules-v3",
+  "extraction_status": "candidates_extracted",
+  "candidate_count": 8,
+  "excluded_paragraphs": 0,
+  "candidate_limit_reached": false,
+  "review_status": "pending",
+  "limitations": [
+    "English rule-based extraction; no GPT or paid API.",
+    "Candidates are not approved requirements. Read the original, qualifications and exceptions.",
+    "Scans, tables, other languages and implicit obligations may be missed. Zero candidates does not establish zero requirements."
+  ],
+  "candidates": [
+    {
+      "ordinal": 1,
+      "anchor": "FDA Adverse Event Monitoring System (AEMS) / paragraph-9",
+      "statement": "On April 6, 2026, FDA announced that starting October 1, 2026, postmarketing individual case safety reports (ICSRs) for human drug products, biological products, and drug- or biologic-led combination products that are submitted via the Electronic Submissions Gateway Next Generation (ESG NextGen) must be reported using the E2B(R3) data standards (see 91 FR 17284). This announcement extends the previously recommended E2B(R3) implementation period by six months. FDA will continue to accept ICSRs prepared in accordance with the E2B(R2) data standards through September 30, 2026, by companies that have not yet transitioned to use of E2B(R3) data standards. Once a company with reporting requirements has begun submitting ICSRs in the E2B(R3) data standards format, all ICSR submissions are expected to use this data standard.",
+      "context": "This page is intended to assist industry when making certain regulatory submissions in electronic format to the FDA’s AEMS database for the Center for Drug Evaluation and Research (CDER) and the Center for Biologics Evaluation and Research (CBER). Alignment with the ICH E2D(R1) Guideline",
+      "fingerprint": "a1c1e2a4793e2e04e2307843acc34e0720c42a21919c4a7b88b50306b6c90b3f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 2,
+      "anchor": "Timelines / paragraph-18",
+      "statement": "Beginning October 1, 2026, all ICSRs submitted via the ESG NextGen must be submitted to the AEMS database using E2B(R3) data standards.",
+      "context": "On January 16, 2024, FDA began accepting electronic submissions of both expedited and non-expedited postmarketing ICSRs for human drug products, biological products, and drug- and biologic-led combination products, in electronic format using the E2B(R3) data standards endorsed by ICH and adopted by FDA. If you are submitting ICSRs via the Safety Reporting Portal (SRP) no action is required.",
+      "fingerprint": "f0a12093a3b26375cf7430112361c3468b6e1175ee5e4f602467e40bff2dd211",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 3,
+      "anchor": "Submitting Individual Case Safety Reports (ICSRs), Periodic Safety Reports (PSRs): / paragraph-32",
+      "statement": "ICSRs should be submitted in XML format using the E2B(R3) data standards below via ESG NextGen. These documents are posted on the FDA AEMS - E2B(R3) data standards web page to help companies implement the E2B(R3) data standards for the electronic submission of postmarketing ICSRs:",
+      "context": "Option A: Database-to-Database Transmission (“E2B”) E2B(R3) Electronic Transmission of Individual Case Safety Reports (ICSRs) Implementation Guide – Data Elements and Message Specification",
+      "fingerprint": "123fcebf9317b10901fc39cc2fb12aabc064e7c5974f963e2d7eda81cb8d5bbc",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 4,
+      "anchor": "Submitting Individual Case Safety Reports (ICSRs), Periodic Safety Reports (PSRs): / paragraph-33",
+      "statement": "E2B(R3) Electronic Transmission of Individual Case Safety Reports (ICSRs) Implementation Guide – Data Elements and Message Specification",
+      "context": "List governed by Submitting Individual Case Safety Reports (ICSRs), Periodic Safety Reports (PSRs): / paragraph-32: ICSRs should be submitted in XML format using the E2B(R3) data standards below via ESG NextGen. These documents are posted on the FDA AEMS - E2B(R3) data standards web page to help companies implement the E2B(R3) data standards for the electronic submission of postmarketing ICSRs: Technical Specifications Document - FDA Regional Implementation Guide for E2B(R3) Electronic Transmission of Individual Case Safety Reports for Drug and Biological Products",
+      "fingerprint": "24d39ac5418a35e1ef8a9db19fb45fbdbe631876250c9206a37ce8644601c563",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 5,
+      "anchor": "Submitting Individual Case Safety Reports (ICSRs), Periodic Safety Reports (PSRs): / paragraph-34",
+      "statement": "Technical Specifications Document - FDA Regional Implementation Guide for E2B(R3) Electronic Transmission of Individual Case Safety Reports for Drug and Biological Products",
+      "context": "List governed by Submitting Individual Case Safety Reports (ICSRs), Periodic Safety Reports (PSRs): / paragraph-32: ICSRs should be submitted in XML format using the E2B(R3) data standards below via ESG NextGen. These documents are posted on the FDA AEMS - E2B(R3) data standards web page to help companies implement the E2B(R3) data standards for the electronic submission of postmarketing ICSRs: FDA E2B(R3) Core and Regional Data Elements and Business Rules",
+      "fingerprint": "144bae25ccac5d005eebd9f6196a911447ab837fdbdc33b195ae9204db76b81f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 6,
+      "anchor": "Submitting Individual Case Safety Reports (ICSRs), Periodic Safety Reports (PSRs): / paragraph-35",
+      "statement": "FDA E2B(R3) Core and Regional Data Elements and Business Rules",
+      "context": "List governed by Submitting Individual Case Safety Reports (ICSRs), Periodic Safety Reports (PSRs): / paragraph-32: ICSRs should be submitted in XML format using the E2B(R3) data standards below via ESG NextGen. These documents are posted on the FDA AEMS - E2B(R3) data standards web page to help companies implement the E2B(R3) data standards for the electronic submission of postmarketing ICSRs: Option B: Safety Reporting Portal (SRP)",
+      "fingerprint": "79ade3017345607f1106ad86d25eca2bb681aff5790768fe571176cc4e2f8f28",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 7,
+      "anchor": "Submitting Individual Case Safety Reports (ICSRs), Periodic Safety Reports (PSRs): / paragraph-37",
+      "statement": "Applicants for human drug products, biological products, and responsible persons for companies with reporting requirements who do not have E2B capability may submit premarketing ICSRs, postmarketing ICSRs, and respective attachments electronically via SRP by manually entering the data into a web form. To submit via SRP, you must first establish an SRP account. A Gateway partner (i.e., a company that submits ICSRs electronically via the ESG NextGen) cannot use SRP to submit ICSRs, and respective attachments.",
+      "context": "Option B: Safety Reporting Portal (SRP) Contact [official contact omitted; consult source] to advise FDA of your intent to begin submitting via the SRP and establish an account.",
+      "fingerprint": "b34df2cbb0d5c4ce1ec65f5beddc18abe532cf6655a521a494324bbe609aa218",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 8,
+      "anchor": "Submitting Individual Case Safety Reports (ICSRs), Periodic Safety Reports (PSRs): / paragraph-46",
+      "statement": "Must be submitted as described above for electronic submission of ICSRs and on or before the PSR due date. Please do NOT re-submit any ICSRs that were previously submitted.",
+      "context": "Indicate in the descriptive portion that the ICSRs have been submitted electronically as XML files to the ESG NextGen or via the SRP.",
+      "fingerprint": "d045171bae5689e9a59a185bb1fd6d5f36d9d515863bf5a53b95cf187b570826",
+      "review_status": "pending"
+    }
+  ],
+  "retrieved_at": "2026-11-02T01:32:14.960Z"
+}

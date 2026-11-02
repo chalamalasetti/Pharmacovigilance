@@ -1,0 +1,988 @@
+{
+  "schema_version": "public-document-key-info-v1",
+  "document_id": "ca-hc-gvp-system",
+  "metadata": {
+    "title": "GUI-0102: Pharmacovigilance system",
+    "country": "CA",
+    "agency": "CA_HC",
+    "edition": "GUI-0102 issued 2026-05-22",
+    "norm": "Guidance",
+    "topic": "PV systems and quality",
+    "lifecycle": "Marketed",
+    "legal_basis": "Health Canada administrative guidance, GUI-0102. Legislation prevails; read with the overview, regulations chapter, glossary and references.",
+    "applicability": "Manufacturers and market authorization holders with in-scope marketed human drugs. This is one chapter, not the entire guideline. Confirm exclusions and the source overview.",
+    "published_on": "2026-05-22",
+    "effective_on": "2026-05-22",
+    "source_status": "current"
+  },
+  "metadata_verification": "Source-register metadata; dates and legal status require human verification.",
+  "source_url": "https://www.canada.ca/en/health-canada/services/drugs-health-products/compliance-enforcement/good-manufacturing-practices/guidance-documents/pharmacovigilance-guidelines-0102/pharmacovigilance-system.html",
+  "original_sha256": "a18bdc8af43f92ee3f182443ecee7570f2e13c8690789a5506586f2ae479199e",
+  "content_kind": "html",
+  "parser_version": "normative-rules-v3",
+  "extraction_status": "partial",
+  "candidate_count": 119,
+  "excluded_paragraphs": 0,
+  "candidate_limit_reached": true,
+  "review_status": "pending",
+  "limitations": [
+    "English rule-based extraction; no GPT or paid API.",
+    "Candidates are not approved requirements. Read the original, qualifications and exceptions.",
+    "Scans, tables, other languages and implicit obligations may be missed. Zero candidates does not establish zero requirements."
+  ],
+  "candidates": [
+    {
+      "ordinal": 1,
+      "anchor": "a1 / paragraph-16",
+      "statement": "To build a robust pharmacovigilance system, you should:",
+      "context": "take reliable and timely actions based on the available evidence set out a decision-making process with deliverables for consistency in all activities",
+      "fingerprint": "aeb4d56fbed777457da4cf55d16a82e8ede0f24c34d4226f63a967bd52def4f4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 2,
+      "anchor": "a1 / paragraph-17",
+      "statement": "set out a decision-making process with deliverables for consistency in all activities",
+      "context": "List governed by a1 / paragraph-16: To build a robust pharmacovigilance system, you should: assign personnel who perform or oversee the deliverables",
+      "fingerprint": "ad538b2f06ecf7feee5f7bed5ce08ca65ad27553f0cf704d444b04af38fb72c8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 3,
+      "anchor": "a1 / paragraph-18",
+      "statement": "assign personnel who perform or oversee the deliverables",
+      "context": "List governed by a1 / paragraph-16: To build a robust pharmacovigilance system, you should: ensure that responsibilities are well understood by internal and external parties",
+      "fingerprint": "93b6fb671b9494e6793b0f49d99d2bc9b3d98e5c3a6f89bb31ce7476865f5f71",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 4,
+      "anchor": "a1 / paragraph-19",
+      "statement": "ensure that responsibilities are well understood by internal and external parties",
+      "context": "List governed by a1 / paragraph-16: To build a robust pharmacovigilance system, you should: ensure that an adequate number of qualified and trained personnel are available",
+      "fingerprint": "af5496f3d912c492a34f93eada4e0b343f9997edd65bcabb88591f89aca413a3",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 5,
+      "anchor": "a1 / paragraph-20",
+      "statement": "ensure that an adequate number of qualified and trained personnel are available",
+      "context": "List governed by a1 / paragraph-16: To build a robust pharmacovigilance system, you should: identify and evaluate performance indicators",
+      "fingerprint": "88649da7d001fa9c1f636b4410199346f6ca2436240ba6beb26832605ed4906a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 6,
+      "anchor": "a1 / paragraph-21",
+      "statement": "identify and evaluate performance indicators",
+      "context": "List governed by a1 / paragraph-16: To build a robust pharmacovigilance system, you should: address any deficiencies in a timely manner",
+      "fingerprint": "e9d766cf329053b06046d45cec539f0738c50ad163daeb494a22f4d855001390",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 7,
+      "anchor": "a1 / paragraph-22",
+      "statement": "address any deficiencies in a timely manner",
+      "context": "List governed by a1 / paragraph-16: To build a robust pharmacovigilance system, you should: carry out and monitor corrective and risk mitigation measures, as necessary",
+      "fingerprint": "64061077e48898fe04e282f92c945f4e4b6b064bea1cc5a7e3f953dbd14f7515",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 8,
+      "anchor": "a1 / paragraph-23",
+      "statement": "carry out and monitor corrective and risk mitigation measures, as necessary",
+      "context": "List governed by a1 / paragraph-16: To build a robust pharmacovigilance system, you should: document all activities to demonstrate that you met the deliverables",
+      "fingerprint": "0bd865f205f018615541a02dd8a664f4bfb2ac4d08abaef2ba9cbe3971dd6d47",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 9,
+      "anchor": "a1 / paragraph-24",
+      "statement": "document all activities to demonstrate that you met the deliverables",
+      "context": "List governed by a1 / paragraph-16: To build a robust pharmacovigilance system, you should:",
+      "fingerprint": "fb008a701a9694342d3cfe1a3c43749de396e56e03d7df47189d425d90c3ed2a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 10,
+      "anchor": "Overall considerations / paragraph-27",
+      "statement": "You should prepare and document written procedures outlining pharmacovigilance processes with step-by-step instructions for relevant personnel and departments. These procedures should have unique identifiers.",
+      "context": "Periodic reviews, as per established timelines, ensure that the written procedures continue to adhere to current regulations, expectations, and accurately reflect current practices. The revision history, reason(s) for revision, revision number, and effective dates for written procedures should be documented accordingly.",
+      "fingerprint": "5d49a8b97ffd983163128a350ef8020692ce0299290c3abae55097bebef1902c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 11,
+      "anchor": "Overall considerations / paragraph-28",
+      "statement": "Periodic reviews, as per established timelines, ensure that the written procedures continue to adhere to current regulations, expectations, and accurately reflect current practices. The revision history, reason(s) for revision, revision number, and effective dates for written procedures should be documented accordingly.",
+      "context": "You should prepare and document written procedures outlining pharmacovigilance processes with step-by-step instructions for relevant personnel and departments. These procedures should have unique identifiers. Designated personnel should date, approve, and sign any revisions to the procedures (Refer to the Personnel and training section). All personnel and departments involved in pharmacovigilance should know when a procedure is revised and be trained before a revised procedure takes effect.",
+      "fingerprint": "e83c4613293e897d744a47a69a21dbbb9d3f71c3bc94faf095003b77ab08f600",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 12,
+      "anchor": "Overall considerations / paragraph-29",
+      "statement": "Designated personnel should date, approve, and sign any revisions to the procedures (Refer to the Personnel and training section). All personnel and departments involved in pharmacovigilance should know when a procedure is revised and be trained before a revised procedure takes effect.",
+      "context": "Periodic reviews, as per established timelines, ensure that the written procedures continue to adhere to current regulations, expectations, and accurately reflect current practices. The revision history, reason(s) for revision, revision number, and effective dates for written procedures should be documented accordingly. When pharmacovigilance activities are contracted to a third party, you must ensure that roles and responsibilities, as well as step-by-step instructions are clearly documented in the respective written procedures or contractual agreements. They should be easy to follow to allow contractors to comply with the applicable regulatory requirements (Refer to the Contractual agreements section). Copies of procedures belonging to a third party and contractual agreements should be made available during inspections/audits.",
+      "fingerprint": "bdb4dc5e0b6d3cab6fac2cd6faccf5c619a4a968eea2c356001ef1f1cbadd813",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 13,
+      "anchor": "Overall considerations / paragraph-30",
+      "statement": "When pharmacovigilance activities are contracted to a third party, you must ensure that roles and responsibilities, as well as step-by-step instructions are clearly documented in the respective written procedures or contractual agreements. They should be easy to follow to allow contractors to comply with the applicable regulatory requirements (Refer to the Contractual agreements section). Copies of procedures belonging to a third party and contractual agreements should be made available during inspections/audits.",
+      "context": "Designated personnel should date, approve, and sign any revisions to the procedures (Refer to the Personnel and training section). All personnel and departments involved in pharmacovigilance should know when a procedure is revised and be trained before a revised procedure takes effect. Documentation should show that the procedures have been put into practice.",
+      "fingerprint": "1d5cafd4f0e5dfd0e472b5a8284fb7c90af460b4fb56a4a5f9917bfec84f05ce",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 14,
+      "anchor": "Overall considerations / paragraph-31",
+      "statement": "Documentation should show that the procedures have been put into practice.",
+      "context": "When pharmacovigilance activities are contracted to a third party, you must ensure that roles and responsibilities, as well as step-by-step instructions are clearly documented in the respective written procedures or contractual agreements. They should be easy to follow to allow contractors to comply with the applicable regulatory requirements (Refer to the Contractual agreements section). Copies of procedures belonging to a third party and contractual agreements should be made available during inspections/audits.",
+      "fingerprint": "22bcc7e06f405efa10d89077f00001b4be6b07e7e217ddd2e72d38b9617e5f99",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 15,
+      "anchor": "deviations / paragraph-34",
+      "statement": "In a planned deviation, the departure should be documented, evaluated and approved before the change is implemented.",
+      "context": "A deviation is a change or departure from the steps and/or instructions outlined in an approved written procedure. These can be planned or unplanned. In an unplanned deviation, the departure is unexpected and could suggest a systematic deficiency which needs to be resolved.",
+      "fingerprint": "ac9191824b37258ab4c1c51aa66874da5e47cb46ad4c8bfb3a93dfdfa591d581",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 16,
+      "anchor": "deviations / paragraph-35",
+      "statement": "In an unplanned deviation, the departure is unexpected and could suggest a systematic deficiency which needs to be resolved.",
+      "context": "In a planned deviation, the departure should be documented, evaluated and approved before the change is implemented. A systematic deficiency is a fundamental inadequacy that exists within the processes or mechanisms of a pharmacovigilance system. It can arise from inadequate planning, design, or oversight of the system. This deficiency impacts the system’s ability to function effectively, consistently, and achieve its intended goal. It is widespread instead of isolated. A widespread incident is one that is part of a series or pattern of similar occurrences.",
+      "fingerprint": "dd457d9734e7dafbdee51b750bedaed1fd70d8dbcafa3eb5c58bf382c5d84d6a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 17,
+      "anchor": "deviations / paragraph-37",
+      "statement": "When there is an unplanned deviation, you should:",
+      "context": "A systematic deficiency is a fundamental inadequacy that exists within the processes or mechanisms of a pharmacovigilance system. It can arise from inadequate planning, design, or oversight of the system. This deficiency impacts the system’s ability to function effectively, consistently, and achieve its intended goal. It is widespread instead of isolated. A widespread incident is one that is part of a series or pattern of similar occurrences. document the deviation in a timely manner",
+      "fingerprint": "9cbf74d6b30c86dff367d37f0a4e291bfe0c2cb461fe13cfc42ab0099baf35d8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 18,
+      "anchor": "deviations / paragraph-38",
+      "statement": "document the deviation in a timely manner",
+      "context": "List governed by deviations / paragraph-37: When there is an unplanned deviation, you should: carry out an investigation",
+      "fingerprint": "48070feea07d70dc69952e657fb74d4deaa1b08539b5ec97432550ebf94fd344",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 19,
+      "anchor": "deviations / paragraph-39",
+      "statement": "carry out an investigation",
+      "context": "List governed by deviations / paragraph-37: When there is an unplanned deviation, you should: evaluate if there is a systematic deficiency",
+      "fingerprint": "af4b742cdbeecd73da68acecb9629106caed2ba6634e701d188a56aee2cb6a23",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 20,
+      "anchor": "deviations / paragraph-40",
+      "statement": "evaluate if there is a systematic deficiency",
+      "context": "List governed by deviations / paragraph-37: When there is an unplanned deviation, you should: perform a root cause analysis, as necessary, to assess the cause and impact",
+      "fingerprint": "25e04497f8a6fa853cd80d38e077fb804a2c5e570e029f07145d3af1535834ab",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 21,
+      "anchor": "deviations / paragraph-41",
+      "statement": "perform a root cause analysis, as necessary, to assess the cause and impact",
+      "context": "List governed by deviations / paragraph-37: When there is an unplanned deviation, you should: identify and carry out an effective corrective and preventative action plan (CAPA), if appropriate",
+      "fingerprint": "75e422544df2b5850ff3910a3ce1a796761671c57cc2deb10457102bf910b3be",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 22,
+      "anchor": "deviations / paragraph-42",
+      "statement": "identify and carry out an effective corrective and preventative action plan (CAPA), if appropriate",
+      "context": "List governed by deviations / paragraph-37: When there is an unplanned deviation, you should: evaluate, as necessary, if the corrective and preventative actions taken addressed the root cause of the deviation",
+      "fingerprint": "99b73ca91d1eefe7717ec5cb8dea903ec2ff7be6b91c5bfe38bf45ae18144983",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 23,
+      "anchor": "deviations / paragraph-43",
+      "statement": "evaluate, as necessary, if the corrective and preventative actions taken addressed the root cause of the deviation",
+      "context": "List governed by deviations / paragraph-37: When there is an unplanned deviation, you should: Good quality control practices should be in place to detect deviations. You may periodically perform:",
+      "fingerprint": "7731ec65df9f8b6c9c697fc717d78f74b20f77b97afd98598eb23d004ccb6d6f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 24,
+      "anchor": "deviations / paragraph-44",
+      "statement": "Good quality control practices should be in place to detect deviations. You may periodically perform:",
+      "context": "evaluate, as necessary, if the corrective and preventative actions taken addressed the root cause of the deviation",
+      "fingerprint": "2d26b91bdbc1501c2b36cbad0548d971d7b960d3738f65c7eb4179cb8120ede1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 25,
+      "anchor": "deviations / paragraph-45",
+      "statement": "Good quality control practices should be in place to detect deviations. You may periodically perform: data quality checks",
+      "context": "List governed by deviations / paragraph-44: Good quality control practices should be in place to detect deviations. You may periodically perform: trend analysis of metrics",
+      "fingerprint": "edb5a28d133f7188de5fc981b9834352380eac7de422c776dfda6a3a0120bef4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 26,
+      "anchor": "deviations / paragraph-46",
+      "statement": "trend analysis of metrics",
+      "context": "List governed by deviations / paragraph-44: Good quality control practices should be in place to detect deviations. You may periodically perform: Periodic review of trends, performance, and processes will inform continual process improvements that are necessary to enable compliance and maintain a state of control.",
+      "fingerprint": "b5b38c5d0276d23645ecb356c46b02ca4a9f22bc08d8f9d99896f6214899e8fb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 27,
+      "anchor": "Change control / paragraph-49",
+      "statement": "Establish a change control system to allow ongoing process optimization and a continuing state of control. The department responsible for the change should document, evaluate the impact, and approve all changes, as well as identify the appropriate effective date. Any significant change that impacts compliance of your pharmacovigilance responsibilities may require re-validation or verification of systems or processes.",
+      "context": "",
+      "fingerprint": "a4c675fa13d4d2a90e9e92ff41b9d0c8a17a27d1179828ec513653f1caf6d762",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 28,
+      "anchor": "Overall considerations / paragraph-52",
+      "statement": "You should establish a risk-based business continuity plan, which can be implemented to enable you to continue critical operations during scenarios such as:",
+      "context": "periods of absence from regular business hours",
+      "fingerprint": "53dd82078097ec2acd059fd0d4d2d241f8b43c6c7c9e8264234b6968feeb1e9b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 29,
+      "anchor": "Overall considerations / paragraph-53",
+      "statement": "periods of absence from regular business hours",
+      "context": "List governed by Overall considerations / paragraph-52: You should establish a risk-based business continuity plan, which can be implemented to enable you to continue critical operations during scenarios such as: an information technology breach",
+      "fingerprint": "8465777f3a42d02783c497f97fdab8bec3f10a63ffa72a6e8fb12bf7bd36daca",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 30,
+      "anchor": "Overall considerations / paragraph-54",
+      "statement": "an information technology breach",
+      "context": "List governed by Overall considerations / paragraph-52: You should establish a risk-based business continuity plan, which can be implemented to enable you to continue critical operations during scenarios such as: a network or system failure",
+      "fingerprint": "cb903734452338c00af70826145d6bc5e1bbe212c83457bd0d28422a760c2cfa",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 31,
+      "anchor": "Overall considerations / paragraph-55",
+      "statement": "a network or system failure",
+      "context": "List governed by Overall considerations / paragraph-52: You should establish a risk-based business continuity plan, which can be implemented to enable you to continue critical operations during scenarios such as:",
+      "fingerprint": "40191809e0a06c1235a02f4ba71d41de78825082e35fae9ef7755012160337f4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 32,
+      "anchor": "Overall considerations / paragraph-56",
+      "statement": "You should establish a risk-based business continuity plan, which can be implemented to enable you to continue critical operations during scenarios such as: a catastrophic accident",
+      "context": "List governed by Overall considerations / paragraph-52: You should establish a risk-based business continuity plan, which can be implemented to enable you to continue critical operations during scenarios such as:",
+      "fingerprint": "6ca725c8a83c0a5e37e9c76404b3cdb7824f549931bc10910a2f32f8094eb320",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 33,
+      "anchor": "Overall considerations / paragraph-57",
+      "statement": "You should establish a risk-based business continuity plan, which can be implemented to enable you to continue critical operations during scenarios such as: a natural disaster",
+      "context": "List governed by Overall considerations / paragraph-52: You should establish a risk-based business continuity plan, which can be implemented to enable you to continue critical operations during scenarios such as: a public health emergency",
+      "fingerprint": "127d9a0279a2a084e1ec1d45f4c7d8946ce1c94a17e2008b39428d508a55f93e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 34,
+      "anchor": "Overall considerations / paragraph-58",
+      "statement": "a public health emergency",
+      "context": "List governed by Overall considerations / paragraph-52: You should establish a risk-based business continuity plan, which can be implemented to enable you to continue critical operations during scenarios such as: a sudden influx of litigation cases",
+      "fingerprint": "3721b60ef6913fb1edb276791be02ceda36491f434b09875202afd2c526805ca",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 35,
+      "anchor": "Overall considerations / paragraph-59",
+      "statement": "a sudden influx of litigation cases",
+      "context": "List governed by Overall considerations / paragraph-52: You should establish a risk-based business continuity plan, which can be implemented to enable you to continue critical operations during scenarios such as:",
+      "fingerprint": "fddc1bc58c6b19ba236e571d5c9ddb4a74f9dfc6ac3ea30f5c9789615a3197f4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 36,
+      "anchor": "Overall considerations / paragraph-60",
+      "statement": "You should establish a risk-based business continuity plan, which can be implemented to enable you to continue critical operations during scenarios such as: a geopolitical conflict",
+      "context": "List governed by Overall considerations / paragraph-52: You should establish a risk-based business continuity plan, which can be implemented to enable you to continue critical operations during scenarios such as: transition periods such as merging or migrating of pharmacovigilance databases",
+      "fingerprint": "3cd88c5c65bd59ca461029c290144720211106d40612968f24620c84b198f301",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 37,
+      "anchor": "Overall considerations / paragraph-61",
+      "statement": "transition periods such as merging or migrating of pharmacovigilance databases",
+      "context": "List governed by Overall considerations / paragraph-52: You should establish a risk-based business continuity plan, which can be implemented to enable you to continue critical operations during scenarios such as: Merging or migrating databases",
+      "fingerprint": "b3c6208e98991a0c997cbdf87d6bb00ba37aef64fd82e38c6c6fa5c26e07370c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 38,
+      "anchor": "Merging or migrating databases / paragraph-63",
+      "statement": "When merging or migrating pharmacovigilance databases, you should consider the following:",
+      "context": "Merging or migrating databases principles on record retention, data integrity, and maintain an audit trail of the migration process",
+      "fingerprint": "74e9e78d417c487c0cacdfd4f0379cd9301a640c715cf25b8da8cd9956382ba5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 39,
+      "anchor": "Merging or migrating databases / paragraph-64",
+      "statement": "principles on record retention, data integrity, and maintain an audit trail of the migration process",
+      "context": "List governed by Merging or migrating databases / paragraph-63: When merging or migrating pharmacovigilance databases, you should consider the following: principles on validation of computerized systems",
+      "fingerprint": "105b0f35f5048a86824fb2bb6e766f464951a7d215806a6e41f0d15d4cb63ce6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 40,
+      "anchor": "Merging or migrating databases / paragraph-65",
+      "statement": "principles on validation of computerized systems",
+      "context": "List governed by Merging or migrating databases / paragraph-63: When merging or migrating pharmacovigilance databases, you should consider the following: identify vulnerable areas of the pharmacovigilance system that may require testing, validation or re-validation, as well as assess the change or compatibility of data format",
+      "fingerprint": "a64229af1f0bde665d79c325c091f2e94acc8af230c30886198580238e716fab",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 41,
+      "anchor": "Merging or migrating databases / paragraph-66",
+      "statement": "identify vulnerable areas of the pharmacovigilance system that may require testing, validation or re-validation, as well as assess the change or compatibility of data format",
+      "context": "List governed by Merging or migrating databases / paragraph-63: When merging or migrating pharmacovigilance databases, you should consider the following: ensure merged or migrated data are stored properly",
+      "fingerprint": "373f0dd9d1d34a978a7e55e384c2c40e3474151ad761f8cf7b93e3a38ea45d1d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 42,
+      "anchor": "Merging or migrating databases / paragraph-67",
+      "statement": "ensure merged or migrated data are stored properly",
+      "context": "List governed by Merging or migrating databases / paragraph-63: When merging or migrating pharmacovigilance databases, you should consider the following: Develop a risk mitigation strategy to ensure that original data is not lost or altered",
+      "fingerprint": "eb25f03270c25c06d11a1188db7fb089cb7ec1944070270e75c1ba7e22a19c34",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 43,
+      "anchor": "Merging or migrating databases / paragraph-68",
+      "statement": "Develop a risk mitigation strategy to ensure that original data is not lost or altered",
+      "context": "List governed by Merging or migrating databases / paragraph-63: When merging or migrating pharmacovigilance databases, you should consider the following:",
+      "fingerprint": "c5fbd1ef5cac3e29a353273eeeaf8019ab5743c0b86a6bc2e4d4710ac4395817",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 44,
+      "anchor": "a4 / paragraph-70",
+      "statement": "Audits (previously known as self-inspection) help you monitor your organization’s compliance, including the compliance of third-party vendors that you delegate responsibilities to. Your contractual agreements should outline your right and responsibility to conduct periodic audits on third-party vendors according to your risk-based strategy.",
+      "context": "",
+      "fingerprint": "d1b627c8301d3f09d2b944e676655f0d01ec88f7f26b33bf74e367295e4d311e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 45,
+      "anchor": "Scope / paragraph-72",
+      "statement": "The scope of your audit program should cover all departments or third parties that take part in your pharmacovigilance activities, for example, those that:",
+      "context": "receive, handle, document, process, evaluate, and submit adverse drug reactions (ADRs) and unusual failure in efficacy (UFIE) data",
+      "fingerprint": "1595c3fbf5cf53916c7e3bdab6c0622678398924b735dc3e982cc9268b9ad0c9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 46,
+      "anchor": "Scope / paragraph-73",
+      "statement": "receive, handle, document, process, evaluate, and submit adverse drug reactions (ADRs) and unusual failure in efficacy (UFIE) data",
+      "context": "List governed by Scope / paragraph-72: The scope of your audit program should cover all departments or third parties that take part in your pharmacovigilance activities, for example, those that: conduct environmental scanning such as literature searches and regulatory authority database searches",
+      "fingerprint": "f4725c40e5db4042f1570f263c9a340d8a633265bc95a31db922b2982dce1fb4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 47,
+      "anchor": "Scope / paragraph-74",
+      "statement": "conduct environmental scanning such as literature searches and regulatory authority database searches",
+      "context": "List governed by Scope / paragraph-72: The scope of your audit program should cover all departments or third parties that take part in your pharmacovigilance activities, for example, those that:",
+      "fingerprint": "84edc144d5a628458bf01db7a4ebc08324c79e60b600b8041f0e78093ce2fb22",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 48,
+      "anchor": "Scope / paragraph-75",
+      "statement": "The scope of your audit program should cover all departments or third parties that take part in your pharmacovigilance activities, for example, those that: manage signals",
+      "context": "List governed by Scope / paragraph-72: The scope of your audit program should cover all departments or third parties that take part in your pharmacovigilance activities, for example, those that: prepare, review, approve and submit notifications, annual summary reports (ASRs), and issue-related summary reports (IRSRs)",
+      "fingerprint": "0627e683741d38a6ff0b07ec2fbc2d917489bf63294bfdad3f2cd53cbfb9f15a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 49,
+      "anchor": "Scope / paragraph-76",
+      "statement": "prepare, review, approve and submit notifications, annual summary reports (ASRs), and issue-related summary reports (IRSRs)",
+      "context": "List governed by Scope / paragraph-72: The scope of your audit program should cover all departments or third parties that take part in your pharmacovigilance activities, for example, those that: monitor and notify us of foreign actions related to serious risk of injury",
+      "fingerprint": "4cbe35375736cf0b08d25558e1bdfaa480c2501e430fd8fe8e6e9d3554f69860",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 50,
+      "anchor": "Scope / paragraph-77",
+      "statement": "monitor and notify us of foreign actions related to serious risk of injury",
+      "context": "List governed by Scope / paragraph-72: The scope of your audit program should cover all departments or third parties that take part in your pharmacovigilance activities, for example, those that: implement terms and conditions or risk management plans",
+      "fingerprint": "8b9c211b089d4be5b9ed4832b7919b034ae2b038029bc0083c65a4e7066714c9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 51,
+      "anchor": "Scope / paragraph-78",
+      "statement": "implement terms and conditions or risk management plans",
+      "context": "List governed by Scope / paragraph-72: The scope of your audit program should cover all departments or third parties that take part in your pharmacovigilance activities, for example, those that: maintain and retain records",
+      "fingerprint": "420021502b24bb431ac931fa43f9c98070b58f90a20d72391de978e4e53cdbce",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 52,
+      "anchor": "Scope / paragraph-79",
+      "statement": "maintain and retain records",
+      "context": "List governed by Scope / paragraph-72: The scope of your audit program should cover all departments or third parties that take part in your pharmacovigilance activities, for example, those that:",
+      "fingerprint": "a9a1a098236705967f7f7d76b99623a3f9430d10f2355fad5819038fa2ad87a1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 53,
+      "anchor": "Overall considerations / paragraph-81",
+      "statement": "Your audit program should include:",
+      "context": "a comprehensive written procedure that describes the functions of your audit program and must address all areas of the applicable regulations",
+      "fingerprint": "0b9461a542037174bb3c32b0748682619fb0152256b0fc55dc220ecb76e8b1e8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 54,
+      "anchor": "Overall considerations / paragraph-82",
+      "statement": "a comprehensive written procedure that describes the functions of your audit program and must address all areas of the applicable regulations",
+      "context": "List governed by Overall considerations / paragraph-81: Your audit program should include: Note: audit of pharmacovigilance activities internal to the MAH should be conducted by personnel independent from the pharmacovigilance department. However, audits on third-party vendors may be conducted by the pharmacovigilance department.",
+      "fingerprint": "8395628c52f5df8f6f33e66805559c5fc4bc1a34623a1d03da2323f375b41cfe",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 55,
+      "anchor": "Overall considerations / paragraph-83",
+      "statement": "Note: audit of pharmacovigilance activities internal to the MAH should be conducted by personnel independent from the pharmacovigilance department. However, audits on third-party vendors may be conducted by the pharmacovigilance department.",
+      "context": "List governed by Overall considerations / paragraph-81: Your audit program should include: the frequency of audits based on a documented risk-based strategy",
+      "fingerprint": "6ed109a5c2bdf388a35c39af3bc1fe59eb666fb63ea52eedc646f65e421bc327",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 56,
+      "anchor": "Overall considerations / paragraph-84",
+      "statement": "the frequency of audits based on a documented risk-based strategy",
+      "context": "List governed by Overall considerations / paragraph-81: Your audit program should include: prioritization of key processes that impact compliance with the regulations",
+      "fingerprint": "1f5740918b7306c5924cec0286bb1d077cbb0c51dc6a36f1ce1ee0cc43f34f44",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 57,
+      "anchor": "Overall considerations / paragraph-85",
+      "statement": "prioritization of key processes that impact compliance with the regulations",
+      "context": "List governed by Overall considerations / paragraph-81: Your audit program should include: documentation and investigation of the root cause and impact when there is a deviation",
+      "fingerprint": "7951fd94e9b395ca2b01231894985c0e1d6aa25b7ff4b1b626a38da03a97f997",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 58,
+      "anchor": "Overall considerations / paragraph-86",
+      "statement": "documentation and investigation of the root cause and impact when there is a deviation",
+      "context": "List governed by Overall considerations / paragraph-81: Your audit program should include: a review of any audit findings by senior management, with an appropriate implementation timeline for each CAPA",
+      "fingerprint": "d165afd8ef7713a6f96628c4d97d33266fcc8f2c06b1db7f73ebe833f478e902",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 59,
+      "anchor": "Overall considerations / paragraph-87",
+      "statement": "a review of any audit findings by senior management, with an appropriate implementation timeline for each CAPA",
+      "context": "List governed by Overall considerations / paragraph-81: Your audit program should include: follow-up to ensure that all CAPA are completed in an appropriate time",
+      "fingerprint": "930d993520cf4c9390ad6d2fecfcdc61a363cb702977248cab39a72fe876debd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 60,
+      "anchor": "Overall considerations / paragraph-88",
+      "statement": "follow-up to ensure that all CAPA are completed in an appropriate time",
+      "context": "List governed by Overall considerations / paragraph-81: Your audit program should include: Validation of computerized systems",
+      "fingerprint": "2d246b9390f9dad7f3adce332d175c3d96ae941f0af63f01e164feaf14f22677",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 61,
+      "anchor": "a5 / paragraph-90",
+      "statement": "There should be an assessment to determine if adequate validation has been completed on an electronic system used to capture, process, manage or archive pharmacovigilance activities. Adequacy should be assessed based on the criticality of the system and its intended use. Validation confirms that the system is reliable, credible and will perform as expected. You should document how validation, testing, and re-validation is to be conducted.",
+      "context": "Validation of computerized systems Validation reports should be produced to document the results of the validation tests you performed. The results should clearly indicate that the system can be used as intended and is performing as specified.",
+      "fingerprint": "0b8eeb9df2cf6d18f77176df87a0a91b75500e485993880c6506ecd9335b543c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 62,
+      "anchor": "a5 / paragraph-91",
+      "statement": "Validation reports should be produced to document the results of the validation tests you performed. The results should clearly indicate that the system can be used as intended and is performing as specified.",
+      "context": "There should be an assessment to determine if adequate validation has been completed on an electronic system used to capture, process, manage or archive pharmacovigilance activities. Adequacy should be assessed based on the criticality of the system and its intended use. Validation confirms that the system is reliable, credible and will perform as expected. You should document how validation, testing, and re-validation is to be conducted. Modifications or additions made to the electronic system, such as software upgrades or data migration, can affect performance. These can, in turn, affect the quality of the validated applications, and thus the integrity of electronic information. The system’s reliability can also be questioned.",
+      "fingerprint": "601bec2d2c478c497bc41163b2363ffcea3b81f4d80e021150c8e8344ffd9718",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 63,
+      "anchor": "a5 / paragraph-93",
+      "statement": "For these reasons, you should assess and approve all changes, using your change control system, to hardware or software used in pharmacovigilance activities. This assessment will also help determine if re-validation is needed and the scope of re-validation.",
+      "context": "Modifications or additions made to the electronic system, such as software upgrades or data migration, can affect performance. These can, in turn, affect the quality of the validated applications, and thus the integrity of electronic information. The system’s reliability can also be questioned. When conducting a risk-assessment regarding the validation of a computerized system, including when there is a change to the system, ask yourself the following questions such as:",
+      "fingerprint": "45ee8e78cd85594677598fe0159e11ce7754db317e3c7ee0f5aa8aaacde0b5ef",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 64,
+      "anchor": "Overall considerations / paragraph-108",
+      "statement": "Qualified alternate(s) should be identified to carry out duties when responsible personnel is/are absent.",
+      "context": "handle label update such as the regulatory affairs department You should ensure that employees:",
+      "fingerprint": "e44c365b988de0adae41e375c3e095fb0f535a9cd8264a7128a90ea3ff8592d4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 65,
+      "anchor": "Overall considerations / paragraph-109",
+      "statement": "You should ensure that employees:",
+      "context": "Qualified alternate(s) should be identified to carry out duties when responsible personnel is/are absent. receive the level of training that aligns with their title and responsibilities",
+      "fingerprint": "bda29ef2f71b2fcf19b3c4351b337398228fac9c7d39be1f6f6bdde8561aea3c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 66,
+      "anchor": "Overall considerations / paragraph-110",
+      "statement": "receive the level of training that aligns with their title and responsibilities",
+      "context": "List governed by Overall considerations / paragraph-109: You should ensure that employees: receive continuous training relevant to their title and responsibilities",
+      "fingerprint": "714f416fb66e244efce8cadec41dbd7bd14b0e5c7474537fecd41a6bb3e8fcfd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 67,
+      "anchor": "Overall considerations / paragraph-111",
+      "statement": "receive continuous training relevant to their title and responsibilities",
+      "context": "List governed by Overall considerations / paragraph-109: You should ensure that employees: have the practical experiences that align with their title and responsibilities",
+      "fingerprint": "6fe0adc874d11e67bb15122f8e45a90b6e9dc1cc0e0e8a88a52ba434ee651489",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 68,
+      "anchor": "Overall considerations / paragraph-112",
+      "statement": "have the practical experiences that align with their title and responsibilities",
+      "context": "List governed by Overall considerations / paragraph-109: You should ensure that employees: You should maintain records for in-house and contracted personnel such as:",
+      "fingerprint": "d39f78cddb40d5ec90c51b5e08c0ead684de6307191b9e76cd244555a8efef29",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 69,
+      "anchor": "Overall considerations / paragraph-113",
+      "statement": "You should maintain records for in-house and contracted personnel such as:",
+      "context": "have the practical experiences that align with their title and responsibilities",
+      "fingerprint": "9e900e0fb0b5949e25c2393c0614fc088098bbcfba71c67ee84323ce2f1a3e9e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 70,
+      "anchor": "Overall considerations / paragraph-114",
+      "statement": "You should maintain records for in-house and contracted personnel such as: organizational charts",
+      "context": "List governed by Overall considerations / paragraph-113: You should maintain records for in-house and contracted personnel such as:",
+      "fingerprint": "403072173311cff317a73d7e8bcb0439b5fd7961728c9ea6ee6a9cacbd43c95b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 71,
+      "anchor": "Overall considerations / paragraph-115",
+      "statement": "You should maintain records for in-house and contracted personnel such as: proof of qualifications",
+      "context": "List governed by Overall considerations / paragraph-113: You should maintain records for in-house and contracted personnel such as: written work description with specific pharmacovigilance duties",
+      "fingerprint": "0e6fbed27766aa31f8f973c34a1e571990491f7125bac9398295fc3109ff2803",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 72,
+      "anchor": "Overall considerations / paragraph-116",
+      "statement": "written work description with specific pharmacovigilance duties",
+      "context": "List governed by Overall considerations / paragraph-113: You should maintain records for in-house and contracted personnel such as:",
+      "fingerprint": "6ed6b279c103f780f89d1f92c03eff58219fb6e5125f371c15fa488d9f183270",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 73,
+      "anchor": "Overall considerations / paragraph-117",
+      "statement": "You should maintain records for in-house and contracted personnel such as: training records",
+      "context": "List governed by Overall considerations / paragraph-113: You should maintain records for in-house and contracted personnel such as: name of the designated person who oversee pharmacovigilance activities",
+      "fingerprint": "7418cc202f7ab7be3cc6864e5fd614ce754a829504ba44991c364359323e48ca",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 74,
+      "anchor": "Overall considerations / paragraph-118",
+      "statement": "name of the designated person who oversee pharmacovigilance activities",
+      "context": "List governed by Overall considerations / paragraph-113: You should maintain records for in-house and contracted personnel such as: name(s) of qualified healthcare professional",
+      "fingerprint": "7904a32fce6667f3ea6907672675c6edd3486ae546da870dd2190fcf207e9fde",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 75,
+      "anchor": "Overall considerations / paragraph-119",
+      "statement": "name(s) of qualified healthcare professional",
+      "context": "List governed by Overall considerations / paragraph-113: You should maintain records for in-house and contracted personnel such as: Designated person to oversee pharmacovigilance activities",
+      "fingerprint": "feb4d4b34039937a766133256f8914cf0893b29ff67fb23e31a9894d8e288013",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 76,
+      "anchor": "Designated person to oversee pharmacovigilance activities / paragraph-121",
+      "statement": "In addition to the above overall considerations, you should identify a person designated to lead and oversee all pharmacovigilance activities to ensure that all requirements are met. You should also designate an alternative person with the required experience to act in the absence of this designated person. This designated person can either be the same individual or a different individual than the qualified healthcare professional.",
+      "context": "Designated person to oversee pharmacovigilance activities Qualified healthcare professional",
+      "fingerprint": "2b3036112e5457db2a86679412a3f00f6847cf3e5506e594e6c9ed8d519d5fa6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 77,
+      "anchor": "healthcare / paragraph-124",
+      "statement": "The QHCP should be involved in or oversee key pharmacovigilance activities such as:",
+      "context": "The qualified healthcare professional (QHCP) is a medically-qualified person such as a physician, dentist, pharmacist, nurse, coroner, or an individual with appropriate healthcare education and therapeutic expertise. evaluating whether the new information obtained from follow-up efforts is considered clinically or medically significant/relevant that requires expedited reporting",
+      "fingerprint": "61a12a8c036b23c8631360df77401fe9b46824da2c74ef593f3521b1a20b1d8b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 78,
+      "anchor": "healthcare / paragraph-125",
+      "statement": "evaluating whether the new information obtained from follow-up efforts is considered clinically or medically significant/relevant that requires expedited reporting",
+      "context": "List governed by healthcare / paragraph-124: The QHCP should be involved in or oversee key pharmacovigilance activities such as: verifying coding selection of complex/less intuitive ADRs",
+      "fingerprint": "03d4c2bfcd7f9f2b2bd9c9295808d936ef095c23f9e5e26a5ab0010f87e359fe",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 79,
+      "anchor": "healthcare / paragraph-126",
+      "statement": "verifying coding selection of complex/less intuitive ADRs",
+      "context": "List governed by healthcare / paragraph-124: The QHCP should be involved in or oversee key pharmacovigilance activities such as: providing medical knowledge on evaluations or changes to evaluations related to the seriousness, expectedness, and causality of ADRs, as well as assessments on UFIE",
+      "fingerprint": "01f7f2a54a4725b1b9ded6a9c3bfb7aadc59b7669fae60017ecab7d1c99f0ed6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 80,
+      "anchor": "healthcare / paragraph-127",
+      "statement": "providing medical knowledge on evaluations or changes to evaluations related to the seriousness, expectedness, and causality of ADRs, as well as assessments on UFIE",
+      "context": "List governed by healthcare / paragraph-124: The QHCP should be involved in or oversee key pharmacovigilance activities such as: writing, reviewing, and/or approving annual summary reports (ASRs) and issue-related summary reports (IRSRs)",
+      "fingerprint": "e31697a04c8a10277b66759230e5c7d615ee2129ee3fa42a0bbc6f532b7f086c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 81,
+      "anchor": "healthcare / paragraph-128",
+      "statement": "writing, reviewing, and/or approving annual summary reports (ASRs) and issue-related summary reports (IRSRs)",
+      "context": "List governed by healthcare / paragraph-124: The QHCP should be involved in or oversee key pharmacovigilance activities such as: providing clinical or medical judgments on signal management activities, as well as any follow-up actions or risk mitigation strategies",
+      "fingerprint": "37a9e0b280f34e4d3f12a08030ee07a74200f212f45a7fa9bdd7c8bb3a77044a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 82,
+      "anchor": "healthcare / paragraph-129",
+      "statement": "providing clinical or medical judgments on signal management activities, as well as any follow-up actions or risk mitigation strategies",
+      "context": "List governed by healthcare / paragraph-124: The QHCP should be involved in or oversee key pharmacovigilance activities such as: determining if the foreign action is related to a serious risk of injury to human health and relevant to the safety of the drug in Canada",
+      "fingerprint": "460d5b68af24cdecd47b74409d793f840de00a1263f038dcdf92a0a99d65ba46",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 83,
+      "anchor": "healthcare / paragraph-130",
+      "statement": "determining if the foreign action is related to a serious risk of injury to human health and relevant to the safety of the drug in Canada",
+      "context": "List governed by healthcare / paragraph-124: The QHCP should be involved in or oversee key pharmacovigilance activities such as: There may be delegation of certain operational activities. The risk-based strategy and process on delegation of these key activities should be justified and documented to enable meaningful collection and assessment of safety information and compliance.",
+      "fingerprint": "6e31aeb1ed8aa3feb8171889ef8c61aeb07ba2bdd3e96ca5738aae725f0229db",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 84,
+      "anchor": "healthcare / paragraph-131",
+      "statement": "There may be delegation of certain operational activities. The risk-based strategy and process on delegation of these key activities should be justified and documented to enable meaningful collection and assessment of safety information and compliance.",
+      "context": "determining if the foreign action is related to a serious risk of injury to human health and relevant to the safety of the drug in Canada",
+      "fingerprint": "127965658bbedd564d37d16a0dda5545c53b2a5a20cdda7f16e58d8c4c7173cf",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 85,
+      "anchor": "Delegation of pharmacovigilance activities / paragraph-134",
+      "statement": "You may delegate a pharmacovigilance activity to a third party. However, if you do, you continue to be ultimately responsible for meeting all regulatory requirements and principles of GVP described in this guidance document. You must ensure processes are in place to control outsourced activities.",
+      "context": "Delegation of pharmacovigilance activities You should have a written agreement that is signed and dated between your organization and the third party.",
+      "fingerprint": "0cefa010b3ba94069b552e0d48270e34088231aec2db1af6038e1126f99b842b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 86,
+      "anchor": "Delegation of pharmacovigilance activities / paragraph-135",
+      "statement": "You should have a written agreement that is signed and dated between your organization and the third party.",
+      "context": "You may delegate a pharmacovigilance activity to a third party. However, if you do, you continue to be ultimately responsible for meeting all regulatory requirements and principles of GVP described in this guidance document. You must ensure processes are in place to control outsourced activities. At minimum, a contractual agreement should exist between the MAH and the following parties:",
+      "fingerprint": "dfd483bb39de018f3d268f3d86a92481310bd02d6ad4aa73650f81cd72bd2d13",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 87,
+      "anchor": "Delegation of pharmacovigilance activities / paragraph-136",
+      "statement": "At minimum, a contractual agreement should exist between the MAH and the following parties:",
+      "context": "You should have a written agreement that is signed and dated between your organization and the third party. unless processes are already outlined in corporate procedures",
+      "fingerprint": "7dae28835193a7863253b371217ebaff0d22b4658a1dd3be92ce8b1fd1fb1f40",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 88,
+      "anchor": "Delegation of pharmacovigilance activities / paragraph-137",
+      "statement": "unless processes are already outlined in corporate procedures",
+      "context": "List governed by Delegation of pharmacovigilance activities / paragraph-136: At minimum, a contractual agreement should exist between the MAH and the following parties: perform literature searches",
+      "fingerprint": "6f7b0718c4772b8b28e544f529649dc1bd829b677e3b51e2a51189d61c39cbae",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 89,
+      "anchor": "Delegation of pharmacovigilance activities / paragraph-138",
+      "statement": "perform literature searches",
+      "context": "List governed by Delegation of pharmacovigilance activities / paragraph-136: At minimum, a contractual agreement should exist between the MAH and the following parties: execute terms and conditions",
+      "fingerprint": "1f1d4c20ce6d2b5e7f587ce7fdd8b3d0fbae283ba942a43714aec7e82184676f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 90,
+      "anchor": "Delegation of pharmacovigilance activities / paragraph-139",
+      "statement": "execute terms and conditions",
+      "context": "List governed by Delegation of pharmacovigilance activities / paragraph-136: At minimum, a contractual agreement should exist between the MAH and the following parties:",
+      "fingerprint": "550d05ef48295b19dbdca43d88ad71a4f526b995b83f15f48c2c8116ff0efe40",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 91,
+      "anchor": "Delegation of pharmacovigilance activities / paragraph-140",
+      "statement": "At minimum, a contractual agreement should exist between the MAH and the following parties: post-marketing studies",
+      "context": "List governed by Delegation of pharmacovigilance activities / paragraph-136: At minimum, a contractual agreement should exist between the MAH and the following parties: carry out risk minimization measures",
+      "fingerprint": "e19e379473326992eac868a884d5745af2904b5602500642f3b55cd0c710f534",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 92,
+      "anchor": "Delegation of pharmacovigilance activities / paragraph-141",
+      "statement": "carry out risk minimization measures",
+      "context": "List governed by Delegation of pharmacovigilance activities / paragraph-136: At minimum, a contractual agreement should exist between the MAH and the following parties: external parties who will receive ADRs or safety data on your behalf",
+      "fingerprint": "70156f0a0eb0f4b89872d27390883952935fe60fa1cb1794c108e7cfc8a49eed",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 93,
+      "anchor": "Delegation of pharmacovigilance activities / paragraph-142",
+      "statement": "external parties who will receive ADRs or safety data on your behalf",
+      "context": "List governed by Delegation of pharmacovigilance activities / paragraph-136: At minimum, a contractual agreement should exist between the MAH and the following parties: companies whose names or contact information is/are included in the physical or electronic product label or electronic platforms such as the Canadian importer or third-party private labelers",
+      "fingerprint": "2bf3231d049e424ef6c9df54a9fdb1cb8c107e8285b1702dcaf64eacbfb4cb8d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 94,
+      "anchor": "Delegation of pharmacovigilance activities / paragraph-143",
+      "statement": "companies whose names or contact information is/are included in the physical or electronic product label or electronic platforms such as the Canadian importer or third-party private labelers",
+      "context": "List governed by Delegation of pharmacovigilance activities / paragraph-136: At minimum, a contractual agreement should exist between the MAH and the following parties: MAHs of cross-licensed product",
+      "fingerprint": "74a1e912676e980392dda8609adcf1dbd71783da6841fafd01ac1c111a1e4f66",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 95,
+      "anchor": "Delegation of pharmacovigilance activities / paragraph-144",
+      "statement": "MAHs of cross-licensed product",
+      "context": "List governed by Delegation of pharmacovigilance activities / paragraph-136: At minimum, a contractual agreement should exist between the MAH and the following parties: Elements of a contractual agreement on pharmacovigilance activities",
+      "fingerprint": "6cdb9d8a3bf08060175b7140c758717ece4e7e090474e797178ac5883504b147",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 96,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-146",
+      "statement": "Your contractual agreement or its annex, where applicable, should include the following, at minimum:",
+      "context": "Elements of a contractual agreement on pharmacovigilance activities roles and responsibilities of each party for each specific delegated activity",
+      "fingerprint": "60f56c94aabdcac743846c7f4a44aa217a7a13090beddb9aad2ca170f51baaab",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 97,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-147",
+      "statement": "roles and responsibilities of each party for each specific delegated activity",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-146: Your contractual agreement or its annex, where applicable, should include the following, at minimum: effective date of the agreement",
+      "fingerprint": "ec57fcaad2d67bc270ea6ccf62305929384336a60f0719d0e39e705d98f388ee",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 98,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-148",
+      "statement": "effective date of the agreement",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-146: Your contractual agreement or its annex, where applicable, should include the following, at minimum: a list of products that are in scope",
+      "fingerprint": "58f81c1c78b3a8806881de1b8e42c2b84be405b5a634fbf6d3ac55b6650ac782",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 99,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-149",
+      "statement": "a list of products that are in scope",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-146: Your contractual agreement or its annex, where applicable, should include the following, at minimum: definition of all relevant pharmacovigilance terms",
+      "fingerprint": "2fb77d8e222171e3cff9788b6d493dc177df9df311192849865099c2c8f93ffd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 100,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-150",
+      "statement": "definition of all relevant pharmacovigilance terms",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-146: Your contractual agreement or its annex, where applicable, should include the following, at minimum: timeline and scope of safety information to be exchanged",
+      "fingerprint": "2ebef5d81e26eba24f9e644ecad7d48ecdd75f8a43274e13412315640a6b9320",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 101,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-151",
+      "statement": "timeline and scope of safety information to be exchanged",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-146: Your contractual agreement or its annex, where applicable, should include the following, at minimum: require written authorization from you if a third-party subcontracts work to another party",
+      "fingerprint": "577b13ba31a23188580522a8f5914b68fd5ba04a612ee14afbf579f8cca358a6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 102,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-152",
+      "statement": "require written authorization from you if a third-party subcontracts work to another party",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-146: Your contractual agreement or its annex, where applicable, should include the following, at minimum: your right and responsibility to audit third-party vendors according to your risk-based strategy",
+      "fingerprint": "051f3cb6bf668ae782678812692322125a828eb8d32c84f746b537986db4db93",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 103,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-153",
+      "statement": "your right and responsibility to audit third-party vendors according to your risk-based strategy",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-146: Your contractual agreement or its annex, where applicable, should include the following, at minimum: need for the third party to provide all records and respond to questions related to the outsourced activities in a timely manner when requested",
+      "fingerprint": "74ca98e3f5d6e9b4ea4b23a88b333686e80eaae9ce4cb5bb27ca0a44f2afe955",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 104,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-154",
+      "statement": "need for the third party to provide all records and respond to questions related to the outsourced activities in a timely manner when requested",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-146: Your contractual agreement or its annex, where applicable, should include the following, at minimum: need for record retention on activities conducted by the third-party in accordance with regulatory requirements",
+      "fingerprint": "3cf6fb8ac56786596426951db4f647c319edc515c5bbf8db53e2d2fe6adc08f5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 105,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-155",
+      "statement": "need for record retention on activities conducted by the third-party in accordance with regulatory requirements",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-146: Your contractual agreement or its annex, where applicable, should include the following, at minimum: dated signature or equivalent legally binding approval of the relevant officials from both parties",
+      "fingerprint": "983834f8a04529325c414316b67ad9c2d8054e073b5cd3c436c67a08ee71078c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 106,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-156",
+      "statement": "dated signature or equivalent legally binding approval of the relevant officials from both parties",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-146: Your contractual agreement or its annex, where applicable, should include the following, at minimum: contact information of both parties",
+      "fingerprint": "b0407c8dd053f3beb042a4e8fbffbc5eba1fd149735c808b0a96b3d0cb0c96dc",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 107,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-157",
+      "statement": "contact information of both parties",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-146: Your contractual agreement or its annex, where applicable, should include the following, at minimum: Your contractual agreement or its annex should also consider the following, where relevant, according to the risk of impact on your pharmacovigilance system:",
+      "fingerprint": "781bf685360594f264dba0756a2cb0b74dbe0742bea61f5a143882679dcaab32",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 108,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-158",
+      "statement": "Your contractual agreement or its annex should also consider the following, where relevant, according to the risk of impact on your pharmacovigilance system:",
+      "context": "contact information of both parties a reconciliation process for pharmacovigilance data, as applicable, outlining the methodology and frequency, to ensure that any missed communication about ADR reports or signals are addressed in a timely manner",
+      "fingerprint": "ce57aa8aa9c200d75f2573d26c19a258dbb9451704593f1a11782bf7c5cd274b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 109,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-159",
+      "statement": "a reconciliation process for pharmacovigilance data, as applicable, outlining the methodology and frequency, to ensure that any missed communication about ADR reports or signals are addressed in a timely manner",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-158: Your contractual agreement or its annex should also consider the following, where relevant, according to the risk of impact on your pharmacovigilance system: a change control system governing changes to the pharmacovigilance system(s)",
+      "fingerprint": "2c0abd2ba6d5eb3043ab61808ed9a25e6894d573cd514a8553c6c77a746dae38",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 110,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-160",
+      "statement": "a change control system governing changes to the pharmacovigilance system(s)",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-158: Your contractual agreement or its annex should also consider the following, where relevant, according to the risk of impact on your pharmacovigilance system: requirements for you to provide the third party with information needed to carry out the contracted operations",
+      "fingerprint": "4ae15c20e01b7251e54e4e877169da003d26cd328074e8263005ee512d7491df",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 111,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-161",
+      "statement": "requirements for you to provide the third party with information needed to carry out the contracted operations",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-158: Your contractual agreement or its annex should also consider the following, where relevant, according to the risk of impact on your pharmacovigilance system: metrics when both parties need to be notified on changes or deviations to the pharmacovigilance system",
+      "fingerprint": "1e514757b40375c55545c584a74e06b400af911feef558c2481637d1da06b422",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 112,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-162",
+      "statement": "metrics when both parties need to be notified on changes or deviations to the pharmacovigilance system",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-158: Your contractual agreement or its annex should also consider the following, where relevant, according to the risk of impact on your pharmacovigilance system: communication of any potential impacts on pharmacovigilance activities between you and the third party",
+      "fingerprint": "59ee0be42e66f743d4391bcee526e134deb2c9b159cfb7377485a5f8ce061657",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 113,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-163",
+      "statement": "communication of any potential impacts on pharmacovigilance activities between you and the third party",
+      "context": "List governed by Elements of a contractual agreement on pharmacovigilance activities / paragraph-158: Your contractual agreement or its annex should also consider the following, where relevant, according to the risk of impact on your pharmacovigilance system: The agreement should be reviewed periodically to reflect current requirements and practices.",
+      "fingerprint": "0b22a7b546e7d284d3ad1552caee57be802d9f51ab7a66e1bde9303867f63679",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 114,
+      "anchor": "Elements of a contractual agreement on pharmacovigilance activities / paragraph-164",
+      "statement": "The agreement should be reviewed periodically to reflect current requirements and practices.",
+      "context": "communication of any potential impacts on pharmacovigilance activities between you and the third party",
+      "fingerprint": "3fbdd2991913677c2ab3ee8d1e86e4ec1dca49c51b28d9424410aa8ff3c7645f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 115,
+      "anchor": "cross-licensed / paragraph-166",
+      "statement": "Each party (licensor and licensee) is responsible for pharmacovigilance activities on its own DIN(s). When your drug is a cross-licensed product, your contractual agreement should ensure that proper communication takes place to enable you and your cross-licensed partner (between the licensor and licensee) to individually fulfill your responsibilities. For example:",
+      "context": "the licensor and licensee should take proactive efforts to update the product label or monograph as necessary",
+      "fingerprint": "0c9aaebedc266aa74047620b106f0cd3c334cf77a3d6ad95971dbbe1288bb726",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 116,
+      "anchor": "cross-licensed / paragraph-167",
+      "statement": "the licensor and licensee should take proactive efforts to update the product label or monograph as necessary",
+      "context": "List governed by cross-licensed / paragraph-166: Each party (licensor and licensee) is responsible for pharmacovigilance activities on its own DIN(s). When your drug is a cross-licensed product, your contractual agreement should ensure that proper communication takes place to enable you and your cross-licensed partner (between the licensor and licensee) to individually fulfill your responsibilities. For example: the licensor should take proactive efforts to communicate with the licensee about any safety signals and considerations on actions for safety reasons",
+      "fingerprint": "71a469e9d7c223be4b6a1d60be24435383c41d8800ecd0e54e3d7744eeb597ec",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 117,
+      "anchor": "cross-licensed / paragraph-168",
+      "statement": "the licensor should take proactive efforts to communicate with the licensee about any safety signals and considerations on actions for safety reasons",
+      "context": "List governed by cross-licensed / paragraph-166: Each party (licensor and licensee) is responsible for pharmacovigilance activities on its own DIN(s). When your drug is a cross-licensed product, your contractual agreement should ensure that proper communication takes place to enable you and your cross-licensed partner (between the licensor and licensee) to individually fulfill your responsibilities. For example: the licensee should take proactive efforts to communicate with the licensor about any safety signals and considerations on actions for safety reasons",
+      "fingerprint": "600c652d2554dcd8636562bbdb2fdbadd6d7e7136f876edd8745ebaff332ccbc",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 118,
+      "anchor": "cross-licensed / paragraph-169",
+      "statement": "the licensee should take proactive efforts to communicate with the licensor about any safety signals and considerations on actions for safety reasons",
+      "context": "List governed by cross-licensed / paragraph-166: Each party (licensor and licensee) is responsible for pharmacovigilance activities on its own DIN(s). When your drug is a cross-licensed product, your contractual agreement should ensure that proper communication takes place to enable you and your cross-licensed partner (between the licensor and licensee) to individually fulfill your responsibilities. For example:",
+      "fingerprint": "6fedd675b1e270ccc558ae80d0e3f43c16025cc5a9abfb2bfc14a07519e323d8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 119,
+      "anchor": "Merger and acquisition / paragraph-171",
+      "statement": "Compliance with requirements set out in the regulations and the GVP principles in this guidance document must continue during transition periods such as a merger, acquisition, or migration of pharmacovigilance databases. A contractual agreement should be in place to outline roles and responsibilities to ensure compliance. You must minimize any impact on ongoing pharmacovigilance activities.",
+      "context": "Please refer to the Business continuity plan, Validation of computerized systems, and Maintenance of records sections for further information regarding expectations during transition periods.",
+      "fingerprint": "b08b6247e874983d0a62cc705e81515af8f3d26048145e96fd0fa99ad824e96a",
+      "review_status": "pending"
+    }
+  ],
+  "retrieved_at": "2026-11-02T01:32:08.787Z"
+}
