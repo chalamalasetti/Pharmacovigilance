@@ -12,7 +12,11 @@ export async function publishRuntime({post,root='public'}={}){
 async function main(){
  const post=body=>jobPost(DATA_AUDIENCE,{...body,lease:process.env.RUN_LEASE});
  if(process.argv[2]==='prepare'){
-  const inputs=await post({action:'inputs'});if(!inputs.registry?.sources||!inputs.resources?.rows||!inputs.overlay)throw Error('Current publication configuration unavailable');
+  let inputs;
+  // The first main push starts this worker while the one-time app release builds.
+  // Wait only for a missing/unavailable endpoint; never retry denied identities.
+  for(let attempt=0;attempt<10;attempt++){try{inputs=await post({action:'inputs'});break;}catch(e){if(![404,503].includes(e.status)||attempt===9)throw e;console.log('Waiting for the application publication endpoint.');await new Promise(resolve=>setTimeout(resolve,20000));}}
+  if(!inputs.registry?.sources||!inputs.resources?.rows||!inputs.overlay)throw Error('Current publication configuration unavailable');
   await writeFile('/tmp/runtime-inputs.json',JSON.stringify(inputs));await writeFile('/tmp/runtime-source-registry.json',JSON.stringify(inputs.registry));return;
  }
  const inputs=JSON.parse(await readFile('/tmp/runtime-inputs.json','utf8'));
