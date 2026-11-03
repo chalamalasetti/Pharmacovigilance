@@ -28,8 +28,9 @@ async function main(){
  const {aggregate}=await import('./aggregate.mjs');const protectedIds=new Set(inputs.protectedIds);
  await aggregate({registryOverride:{...inputs.registry,from:'last build',secrets:new Map()},overlayOverride:{...inputs.overlay,from:'database'},resourcesOverride:{...inputs.resources,from:'database'},fdaSnapshotOverride:JSON.parse(await readFile('/tmp/fda-feeds.json','utf8')),sourceLoader:feed=>protectedIds.has(feed.id)?post({action:'source',id:feed.id}):null});
  const {writeSubstances}=await import('./substances.mjs');await writeSubstances();
+ const {collectLabels}=await import('./labels.mjs');await collectLabels();
  const result=await publishRuntime({post});
- try{let offset=0,done=false;for(let i=0;i<500&&!done;i++){const r=await post({action:'archive',id:result.snapshot_id,offset});offset=r.next;done=r.done;}await post({action:'history',id:result.snapshot_id});}catch{console.warn('Public snapshot published; permanent archive or source-history synchronization needs attention.');}
+ try{let offset=0,done=false;for(let i=0;i<500&&!done;i++){const r=await post({action:'archive',id:result.snapshot_id,offset});offset=r.next;done=r.done;}await post({action:'history',id:result.snapshot_id});let labelOffset=0;for(let i=0;i<25;i++){const r=await post({action:'labels',id:result.snapshot_id,offset:labelOffset});labelOffset=r.next;if(r.done)break;}}catch{console.warn('Public snapshot published; permanent archive or source-history synchronization needs attention.');}
  const status=JSON.parse(await readFile('public/data/status.json','utf8'));
  const stats={checked:status.sources.length,matched:status.sources.reduce((n,s)=>n+(s.count??0),0),failed:status.sources.filter(s=>!s.ok||s.stale||s.collectorOk===false).length};
  await writeFile('/tmp/runtime-publication-result.json',JSON.stringify({stats,...result}));console.log(`Published complete public snapshot: ${result.files} files, ${stats.checked} sources checked`);

@@ -46,6 +46,13 @@
       "summary": "Search ingredients, inspect source-linked holder records and distinguish company relationships from manufacturing evidence."
     },
     {
+      "id": "label-intelligence",
+      "title": "Label Change Intelligence",
+      "group": "Regulatory review",
+      "audience": "Everyone",
+      "summary": "Review source-marked safety wording, inspect limitations and pin evidence for private company assessment."
+    },
+    {
       "id": "company-briefing",
       "title": "Confirm My Company Briefing",
       "group": "Company work",
@@ -194,6 +201,7 @@
     "admin-refresh.html": "admin-operations",
     "status.html": "admin-operations",
     "substances.html": "substances",
-    "substance.html": "substances"
+    "substance.html": "substances",
+    "labels.html": "label-intelligence"
   }
 }
