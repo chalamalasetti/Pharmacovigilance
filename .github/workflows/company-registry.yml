@@ -8,11 +8,17 @@ name: Refresh company registry
 
 on:
   schedule:
-    - cron: "30 4 * * 1"
+    - cron: "9,24,39,54 * * * *"
   workflow_dispatch:
+    inputs:
+      force:
+        description: Run immediately even if paused or not due
+        type: boolean
+        default: true
 
 permissions:
   contents: write
+  id-token: write
 
 concurrency:
   group: company-registry
@@ -27,10 +33,21 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - run: npm ci --ignore-scripts
+      - name: Check managed schedule and acquire run lease
+        id: managed
+        env:
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force }}
+        run: node scripts/refresh-control.mjs claim products
       - name: Build the registry
-        run: npm run registry
+        id: collect
+        if: steps.managed.outputs.run == 'true'
+        run: |
+          npm run registry
+          cp companies/registry.json /tmp/refresh-products-result.json
       - name: Commit if changed
+        id: publish
+        if: steps.managed.outputs.run == 'true'
         run: |
           if git diff --quiet -- companies/registry.json && git ls-files --error-unmatch companies/registry.json >/dev/null 2>&1; then
             echo "Registry unchanged."
@@ -41,3 +58,10 @@ jobs:
           git add companies/registry.json
           git commit -m "Refresh company registry from FDA and EMA data"
           git push
+      - name: Record managed collection outcome
+        if: always() && steps.managed.outputs.run == 'true'
+        env:
+          RUN_LEASE: ${{ steps.managed.outputs.lease }}
+          RUN_RESULT: ${{ steps.collect.outcome }}
+          PUBLICATION: ${{ steps.publish.outcome }}
+        run: node scripts/refresh-control.mjs finish products

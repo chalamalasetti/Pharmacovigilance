@@ -1,3 +1,4 @@
+import {createHash} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
 import {safeFetch} from './safe-fetch.mjs';
 export const FIELDS='NCTId,BriefTitle,OverallStatus,StudyType,Phase,Condition,LeadSponsorName,CollaboratorName,InterventionType,InterventionName,InterventionArmGroupLabel,ArmGroupLabel,ArmGroupType,StartDate,StartDateType,CompletionDate,CompletionDateType,LastUpdatePostDate,LocationCountry,ConditionBrowseBranchAbbrev,ConditionBrowseBranchName,ConditionMeshId,ConditionMeshTerm,ConditionAncestorId,ConditionAncestorTerm';
@@ -12,7 +13,7 @@ export async function companyTrialContext(id){if(!contextPromise)contextPromise=
  const ambiguous=new Set((manifest.ambiguous??[]).map(a=>sponsorKey(a.term)));
  const searchNames=texts([p.name,p.legal,...p.aliases??[],...(p.entities??[]).map(e=>e.name)]).filter(x=>x.length>=4&&x.length<=160&&!ambiguous.has(sponsorKey(x))).slice(0,12);
  const exactNames=texts([...searchNames,...registry.products.filter(x=>x.company===id).map(x=>x.holder)],2000).filter(x=>!ambiguous.has(sponsorKey(x)));
- return {id,name:p.name,searchNames,exactNames,mappingVersion:`${manifest.version}|${registry.built}`,mappingStatus:manifest.status};}
+ return {id,name:p.name,searchNames,exactNames,mappingVersion:`${manifest.version}|names:${createHash("sha256").update(JSON.stringify([searchNames.map(sponsorKey).sort(),exactNames.map(sponsorKey).sort()])).digest("hex").slice(0,24)}`,legacyMappingVersion:`${manifest.version}|${registry.built}`,mappingStatus:manifest.status};}
 function trialDate(x){const value=clean(x?.date,40);if(!/^\d{4}(?:-\d{2}(?:-\d{2})?)?$/.test(value))return {value:null,precision:'unknown',type:'UNKNOWN'};const parts=value.split('-').map(Number);if(value.length>=7&&(parts[1]<1||parts[1]>12)||value.length===10&&(parts[2]<1||parts[2]>new Date(Date.UTC(parts[0],parts[1],0)).getUTCDate()))return {value:null,precision:'unknown',type:'UNKNOWN'};return {value,precision:value.length===10?'day':value.length===7?'month':'year',type:['ACTUAL','ESTIMATED'].includes(x?.type)?x.type:'UNKNOWN'};}
 export function normalizeStudy(raw,context){const p=raw?.protocolSection,id=clean(p?.identificationModule?.nctId,12);if(!/^NCT\d{8}$/.test(id))return null;const exact=new Set(context.exactNames.map(sponsorKey)),sp=p.sponsorCollaboratorsModule??{},roles=[];if(exact.has(sponsorKey(sp.leadSponsor?.name)))roles.push({role:'lead_sponsor',name:clean(sp.leadSponsor.name,160)});for(const c of list(sp.collaborators))if(exact.has(sponsorKey(c.name)))roles.push({role:'collaborator',name:clean(c.name,160)});if(!roles.length)return null;
  const arms=list(p.armsInterventionsModule?.armGroups).map(a=>({label:clean(a.label,100),type:clean(a.type,50)}));
