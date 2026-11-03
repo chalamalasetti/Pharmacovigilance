@@ -75,7 +75,7 @@ node scripts/aggregate.mjs --fixtures test/fixtures   # sample data, no network
 
 ## User Guide
 
-[Open the searchable User Guide](https://www.pvinfo.org/user-guide.html) or [browse the versioned GitHub wiki-style pages](docs/user-guide/README.md). The 21 chapters cover every current screen, account approval/recovery, public discovery, company/clinical portfolios, baseline and change review, private actions/closure, calendar downloads and administrator operations. Use **Resources → User Guide**, full-text search, audience filters or **Read complete guide → Print / save as PDF**. Source chapters and the rendered in-app guide are maintained together with `npm run guide`; no Markdown attachments are added to app workflows.
+[Open the searchable User Guide](https://www.pvinfo.org/user-guide.html) or [browse the versioned GitHub wiki-style pages](docs/user-guide/README.md). The 22 chapters cover every current screen, account approval/recovery, public discovery, company/clinical portfolios, baseline and change review, private actions/closure, calendar downloads and administrator operations. Use **Resources → User Guide**, full-text search, audience filters or **Read complete guide → Print / save as PDF**. Source chapters and the rendered in-app guide are maintained together with `npm run guide`; no Markdown attachments are added to app workflows.
 
 ## Hosting
 
@@ -345,3 +345,9 @@ Before merging: preserve concurrent work, review migration impact, run checks re
 Five starter indexes cover FDA, EMA, MHRA, Health Canada and TGA. Admins can configure HTML, RSS/Atom or a single sitemap URL list, scope keywords, frequency and pause/resume. The existing hourly document collector checks up to five due indexes (daily by default), retaining admin-only run status and prior candidates on failure. Discovery is bounded and does not recursively crawl or promise complete coverage. See [source discovery operations and limits](docs/source-discovery.md).
 
 The separate [GxP Readiness Foundation release](https://github.com/chalamalasetti/Pharmacovigilance/issues/57) is in the backlog.
+
+### Substance Explorer
+
+Explore → Substances searches source ingredients and reviewed naming variants, including the paracetamol/acetaminophen pilot. Ingredient pages show company relationships, product evidence and source capture dates. FDA application holders and EMA authorization holders remain distinct from manufacturers; physical manufacturing is not inferred. Source-level companies without a curated company profile are included. Presentation-level FDA records preserve product numbers and ingredient/strength/form relationships; EMA records retain their authorization-level granularity.
+
+The product collector stages the legacy company registry and detailed substance product companion atomically on the non-deploying product cache branch. The public runtime publisher creates a bounded 64-shard substance catalog; data refresh does not trigger app deployments. Naming rules are reviewed, versioned repository configuration in `substances/aliases.json`. See the [Substance Explorer guide](docs/user-guide/substances.md).

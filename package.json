@@ -5,7 +5,7 @@
   "description": "Pharmacovigilance and drug regulatory updates from every major regulator, in one place.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-user-guide.mjs && node scripts/clinical-import.mjs && node scripts/aggregate.mjs && node scripts/documents.mjs --bootstrap && node scripts/seo.mjs",
+    "build": "node scripts/build-user-guide.mjs && node scripts/clinical-import.mjs && node scripts/aggregate.mjs && node scripts/substances.mjs && node scripts/documents.mjs --bootstrap && node scripts/seo.mjs",
     "seo": "node scripts/seo.mjs --write",
     "aggregate": "node scripts/aggregate.mjs",
     "research": "node scripts/research.mjs",
@@ -19,7 +19,8 @@
     "documents:probe": "node scripts/document-collector.mjs --probe",
     "dev": "node scripts/app.mjs --no-open --no-refresh",
     "clinical:backfill": "node scripts/clinical-bulk.mjs",
-    "guide": "node scripts/build-user-guide.mjs"
+    "guide": "node scripts/build-user-guide.mjs",
+    "substances": "node scripts/substances.mjs"
   },
   "engines": {
     "node": ">=22.13.0"

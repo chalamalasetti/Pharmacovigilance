@@ -91,12 +91,13 @@ function obDate(s) {
 
 // products.txt is tilde-delimited with a header row. One authorisation per application
 // (NDA or ANDA number), carrying all of its strengths and forms.
-export function parseOrangeBook(text) {
+export function parseOrangeBook(text, { granular=false } = {}) {
   const lines = String(text).split(/\r?\n/).filter((l) => l.trim());
   const head = lines.shift().split("~").map((h) => h.trim().toLowerCase());
   const col = (name) => head.indexOf(name);
   const at = {
     ingredient: col("ingredient"),
+    product: col("product_no"),
     form: col("df;route"),
     trade: col("trade_name"),
     applicant: col("applicant"),
@@ -108,14 +109,17 @@ export function parseOrangeBook(text) {
     full: col("applicant_full_name"),
   };
   if (at.no < 0 || at.ingredient < 0 || at.applicant < 0) throw new Error("Orange Book products file: expected columns not found");
+  if(granular&&at.product<0)throw Error("Orange Book product numbers missing; no presentation-level records inferred");
   const byApp = new Map();
   for (const line of lines) {
     const f = line.split("~").map((x) => x.trim());
-    const key = `${f[at.type]}${f[at.no]}`;
+    const key = `${f[at.type]}${f[at.no]}${granular?"|"+f[at.product]:""}`;
+    if(granular&&!f[at.product])throw Error("Missing source product number");
     let a = byApp.get(key);
     if (!a) {
       const kind = f[at.type] === "A" ? "ANDA" : "NDA";
       a = {
+        ...(granular&&{productNumber:f[at.product],recordKey:`fda-orange-book|US|${key}`,granularity:"Source product presentation"}),
         src: "fda-orange-book",
         market: "US",
         authId: `${kind} ${f[at.no]}`,
@@ -130,10 +134,11 @@ export function parseOrangeBook(text) {
         date: null,
         generic: kind === "ANDA",
         url: `https://www.accessdata.fda.gov/scripts/cder/ob/results_product.cfm?Appl_Type=${f[at.type]}&Appl_No=${f[at.no]}`,
-        locator: `Orange Book products file, application ${kind} ${f[at.no]}`,
+        locator: `Orange Book products file, application ${kind} ${f[at.no]}${granular?", product "+f[at.product]:""}`,
       };
       byApp.set(key, a);
     }
+    if(granular&&(JSON.stringify(a.ingredients)!==JSON.stringify(f[at.ingredient].split(';').map(s=>s.trim()).filter(Boolean))||a.holder!==(f[at.full]||f[at.applicant])||a.brand!==f[at.trade]))throw Error('Conflicting source presentation evidence');
     if (f[at.form]) a.forms.add(f[at.form]);
     if (f[at.strength] && a.strengths.size < 8) a.strengths.add(f[at.strength]);
     if (f[at.market]) a.markets.add(f[at.market].toUpperCase());
@@ -176,7 +181,7 @@ const EMA_COLUMNS = {
 };
 
 // The report opens with a few title rows; the header is the first row naming the medicine column.
-export function parseEma(rows) {
+export function parseEma(rows, {evidence=false}={}) {
   const h = rows.findIndex((r) => r.some((c) => EMA_COLUMNS.name.test(c)));
   if (h < 0) throw new Error("EMA medicines report: header row not found");
   const head = rows[h];
@@ -191,7 +196,7 @@ export function parseEma(rows) {
     const status = get(r, "status") || "Unknown";
     // Refused or withdrawn applications never gave anyone an authorisation to hold.
     if (/refused|not authori[sz]ed|withdrawn application/i.test(status)) continue;
-    const substances = (get(r, "inn") || get(r, "active")).split(/\s*\/\s*|\s*;\s*/).map((s) => s.trim()).filter(Boolean);
+    const substances = (get(r, "inn") || get(r, "active")).split(evidence?/\s+\/\s+|\s*;\s*/:/\s*\/\s*|\s*;\s*/).map((s) => s.trim()).filter(Boolean);
     const number = get(r, "number");
     out.push({
       src: "ema-medicines",
@@ -237,6 +242,11 @@ const READERS = {
   "ema-medicines": { fixture: "ema.xlsx", parse: (buf) => parseEma(readXlsx(buf)) },
 };
 
+function detailedRecords(id,buf){
+ if(id==='fda-orange-book'){const files=unzip(buf),name=[...files.keys()].find(n=>/products\.txt$/i.test(n));if(!name)throw Error('Missing products.txt');return parseOrangeBook(files.get(name).toString('latin1'),{granular:true});}
+ return parseEma(readXlsx(buf),{evidence:true}).map(r=>({...r,evidenceRole:/application withdrawn|opinion|refused|not authori[sz]ed|rolling review/i.test(r.status)?'applicant':'mah',recordKey:`${r.src}|${r.market}|${r.authId||r.url||r.brand}`,granularity:'Authorization record; presentation not supplied'}));
+}
+
 // Links each source record to a company. Unlinked holders are counted so editors can
 // see which large holders the manifest does not cover yet.
 export function linkRecords(records, match) {
@@ -275,6 +285,9 @@ export async function buildRegistry({ fixturesDir = null, out = REGISTRY, now = 
   try {
     previous = JSON.parse(await readFile(out, "utf8"));
   } catch {}
+  const companion=path.join(path.dirname(out),'substance-products.json');let previousDetailed=null;
+  try{const x=JSON.parse(await readFile(companion,'utf8'));if(x.schema===1&&x.registryBuilt===previous?.built&&Array.isArray(x.records))previousDetailed=x;}catch{}
+  const fullRecords=[];
   const match = holderMatcher(manifest);
   const sources = [];
   let products = [];
@@ -286,9 +299,12 @@ export async function buildRegistry({ fixturesDir = null, out = REGISTRY, now = 
     try {
       const buf = fixturesDir ? await readFile(path.join(fixturesDir, reader.fixture)) : await fetchImpl(s.url);
       const records = reader.parse(buf);
+      const detailed=detailedRecords(s.id,buf).map(r=>{const mapped=match(r.holder,r.applicant);const {applicant,...safe}=r;return {...safe,company:mapped?.id??null,mapping:mapped?.id?'Company directory mapping':mapped?.conflict?'Unresolved company mapping':'Not mapped to Company Explorer'};});
+      if(!detailed.length)throw Error('No detailed source records');
       if (!records.length) throw new Error("no records parsed");
       const linked = linkRecords(records, match);
       products.push(...linked.products);
+      fullRecords.push(...detailed);
       unmapped.push(...linked.unmapped);
       conflicts.push(...linked.conflicts);
       sources.push({ id: s.id, name: s.name, ok: true, retrieved: now, lastSuccess: now, hash: createHash("sha256").update(buf).digest("hex").slice(0, 16), records: records.length, mapped: linked.products.length });
@@ -297,6 +313,7 @@ export async function buildRegistry({ fixturesDir = null, out = REGISTRY, now = 
       // Keep the last good rows for this source and say they are stale.
       const kept = (previous?.products ?? []).filter((p) => p.src === s.id);
       products.push(...kept);
+      fullRecords.push(...(previousDetailed?.records??[]).filter(r=>r.src===s.id));
       unmapped.push(...(previous?.unmapped ?? []).filter((u) => u.src === s.id));
       sources.push({ id: s.id, name: s.name, ok: false, error: String(e.message).slice(0, 160), retrieved: now, lastSuccess: prev?.lastSuccess ?? null, hash: prev?.hash ?? null, records: prev?.records ?? 0, mapped: kept.length, stale: kept.length > 0 });
       console.warn(`registry: ${s.id} FAILED (${e.message}); kept ${kept.length} rows from ${prev?.lastSuccess ?? "never"}`);
@@ -313,6 +330,7 @@ export async function buildRegistry({ fixturesDir = null, out = REGISTRY, now = 
     conflicts,
   };
   if (!products.length && !fixturesDir) throw new Error("No registry rows at all; leaving the existing registry untouched.");
+  await writeFile(companion,JSON.stringify({schema:1,built:now,registryBuilt:now,sources,records:fullRecords,companies:manifest.companies.map(c=>({id:c.id,name:c.name}))})+'\n');
   await writeFile(out, JSON.stringify(data, null, 0).replace(/\},\{"company"/g, '},\n{"company"') + "\n");
   console.log(`registry: wrote ${products.length} product rows for ${new Set(products.map((p) => p.company)).size} companies`);
   return data;

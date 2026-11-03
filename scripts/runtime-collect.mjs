@@ -27,6 +27,7 @@ async function main(){
  const {importClinical}=await import('./clinical-import.mjs');await importClinical();
  const {aggregate}=await import('./aggregate.mjs');const protectedIds=new Set(inputs.protectedIds);
  await aggregate({registryOverride:{...inputs.registry,from:'last build',secrets:new Map()},overlayOverride:{...inputs.overlay,from:'database'},resourcesOverride:{...inputs.resources,from:'database'},fdaSnapshotOverride:JSON.parse(await readFile('/tmp/fda-feeds.json','utf8')),sourceLoader:feed=>protectedIds.has(feed.id)?post({action:'source',id:feed.id}):null});
+ const {writeSubstances}=await import('./substances.mjs');await writeSubstances();
  const result=await publishRuntime({post});
  try{let offset=0,done=false;for(let i=0;i<500&&!done;i++){const r=await post({action:'archive',id:result.snapshot_id,offset});offset=r.next;done=r.done;}await post({action:'history',id:result.snapshot_id});}catch{console.warn('Public snapshot published; permanent archive or source-history synchronization needs attention.');}
  const status=JSON.parse(await readFile('public/data/status.json','utf8'));
