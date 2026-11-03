@@ -45,5 +45,11 @@ begin
  end loop;
  execute 'reset role';select count(*) into retained from public.pv_runtime_snapshots where published_at is not null;if retained<>3 then raise exception 'Runtime retention failed: %',retained;end if;
  if exists(select 1 from pv_refresh.runtime_chunks where snapshot_id=s) then raise exception 'Staging chunks retained';end if;
+ execute 'set local role service_role';
+ c:=public.refresh_worker_claim('updates','999999999998',true);s:=public.refresh_runtime_begin('999999999998',(c->>'lease')::uuid,m);
+ perform public.refresh_worker_finish('updates','999999999998',(c->>'lease')::uuid,'failed','{}','failed');
+ c:=public.refresh_worker_claim('updates','999999999999',true);cur:=public.refresh_runtime_begin('999999999999',(c->>'lease')::uuid,m);
+
+ execute 'reset role';if exists(select 1 from public.pv_runtime_snapshots where id=s) then raise exception 'Abandoned staging retained';end if;if not exists(select 1 from public.pv_runtime_snapshots where id=cur and published_at is null) then raise exception 'Current staging removed';end if;
 end $$;
 rollback;

@@ -14,7 +14,7 @@ No visitor session or private company record is included in this cache. No GPT A
 
 ## Retention boundaries
 
-- Runtime generated cache: last **three completed snapshots**. Pending snapshots older than **three hours** are removed on the next successful publication. No cleanup occurs when publication fails. Source PDFs, source versions, approved baseline versions, company assessments and audit history are excluded.
+- Runtime generated cache: last **three completed snapshots**. Abandoned staging from an expired or completed prior lease is removed when the next authorized publication begins. A current run can retry its same manifest. Pending snapshots older than **three hours** are also removed on a successful publication. Source PDFs, source versions, approved baseline versions, company assessments and audit history are excluded.
 - Publication limits: 600 files, 16 MiB compressed per file, 64 MiB compressed per snapshot, 64 MiB decompressed per file. These limits prevent unbounded generated-cache growth. Public base64 storage adds approximately one third to compressed bytes, plus database/WAL overhead; monitor Supabase usage independently.
 - Vercel recommended deployment policy: 7 days for previews, errors and canceled deployments; 14 days for eligible production deployments, preserving the active production deployment and platform-protected rollback deployments. This is an account setting, **not applied by `vercel.json` or this document**. Record and verify the actual project policy after changing it. Do not manually purge deployments as part of this release.
 - Existing regulatory evidence, user/company work and audit retention are unchanged. Never treat generated-cache retention as a GxP record-retention policy.
