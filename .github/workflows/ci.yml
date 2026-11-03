@@ -58,3 +58,4 @@ jobs:
           node test/browser/documents.smoke.cjs
           node test/browser/events.smoke.cjs
           node test/browser/refresh-center.smoke.cjs
+          node test/browser/changes.smoke.cjs

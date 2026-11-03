@@ -67,6 +67,7 @@ export function matchesCase(row,{company='',market='',status='all',q='',today=da
 }
 export function dashboard(rows,today=dayKey()) {return {assessment:rows.filter(r=>r.stage==='assessment').length,due:rows.filter(r=>r.stage==='action'&&!isOverdue(r,today)).length,overdue:rows.filter(r=>isOverdue(r,today)).length,verification:rows.filter(r=>r.stage==='verification').length,closed:rows.filter(r=>r.stage==='closed').length};}
 export function localCase(snapshot,key,now=new Date().toISOString()) {
+ if(key.startsWith('candidate:')||key.startsWith('regchange:')||/^(candidate|regchange):/.test(snapshot?.companyContext?.sourceItem??''))throw Error('Complete human triage in Regulatory Change Review and open a signed-in assessment first.');
  if(!snapshot?.companyContext?.companyId||!snapshot.companyContext.markets?.length)throw Error('This item needs company and market context from My Company Briefing.');
  return {id:key,source_key:key,snapshot,stage:'assessment',version:1,created_at:now,updated_at:now,history:[{command:'created',at:now,by:'local',version:1}]};
 }
