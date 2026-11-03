@@ -68,14 +68,18 @@
         <label>Password <input type="password" id="login-password" required maxlength="1024" autocomplete="current-password"></label>
         <button type="submit" class="primary">Sign in securely</button>
       </form>
-      <p class="hint">Email sign-in links, self-service registration and email password recovery are temporarily unavailable. Contact the site administrator if you need account access.</p>
+      <p class="hint">Self-service registration and email password reset requests remain paused. You can request a sign-in link for an existing account below.</p>
+      <details id="magic-option"><summary>Sign in by email instead</summary>
+        <form id="signin-form" class="imp-form"><label>Existing account email <input type="email" id="email" required maxlength="254" autocomplete="email"></label><button type="submit">Email me a sign-in link</button></form>
+        <p class="hint">Email delivery is limited to 2 requests per hour on the current provider. Password login uses no email quota. Use the newest sign-in email and avoid repeated requests.</p>
+      </details>
       <p class="hint" id="signin-msg" role="status" aria-live="polite"></p>
     </section>
 
     <section class="profile" id="me" hidden aria-label="Your account">
       <h2 id="me-title">Signed in</h2>
       <p class="hint" id="sync-msg" role="status"></p>
-      <p class="hint">Use an alias instead of a real name. Password sign-in is active; email-based access is temporarily unavailable. Your professional role never grants access permissions.</p>
+      <p class="hint">Use an alias instead of a real name. Password and email-link sign-in are available. Your professional role never grants access permissions.</p>
       <form id="profile-form" class="imp-form">
         <label>User ID (optional) <input id="profile-alias" maxlength="32" autocomplete="username" autocapitalize="none" spellcheck="false"></label>
         <label>Professional role (optional) <select id="profile-role" aria-label="Profile professional role"></select></label>

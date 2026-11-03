@@ -7,7 +7,7 @@ import {callbackError} from "./auth-callback.js";
 const linkError=callbackError(location.href);
 import { el } from "./impact-view.js";
 import * as cloud from "./cloud.js";
-import {PROFESSIONAL_ROLES,loginAlias,newPassword,passwordSignIn} from "./account-auth.js";
+import {PROFESSIONAL_ROLES,loginAlias,newPassword,passwordSignIn,emailSignIn} from "./account-auth.js";
 let recovery=false;
 try{recovery=new URLSearchParams(location.hash.slice(1)).get("type")==="recovery"||sessionStorage.getItem("pv-password-recovery")==="1";}catch{}
 
@@ -164,6 +164,7 @@ async function main() {
 function roleOptions(id){$(id).replaceChildren(el('option',{value:''},'Choose a role (optional)'),...PROFESSIONAL_ROLES.map(r=>el('option',{value:r},r)));}
 function formAction(id,msg,fn){$(id).addEventListener('submit',async e=>{e.preventDefault();const button=e.target.querySelector('button[type="submit"]');button.disabled=true;try{await busy($(msg),fn);}finally{button.disabled=false;}});}
 function setupLogin(sb){
+ formAction('signin-form','signin-msg',async()=>{await emailSignIn(sb,$('email').value,new URL('account.html',location.href).href);$('signin-msg').textContent='If this is an eligible existing account, check your email for the newest sign-in link. After signing in, use Account → Set or change password to set a password.';});
  formAction('password-login','signin-msg',async()=>{await passwordSignIn(sb,$('login-id').value,$('login-password').value);$('login-password').value='';location.reload();});
  // Defer navigation until the SDK releases its Auth callback lock.
  window.addEventListener('pv-auth-change',e=>{if(e.detail?.event==='PASSWORD_RECOVERY'||e.detail?.event==='SIGNED_IN')setTimeout(()=>location.reload(),0);});
