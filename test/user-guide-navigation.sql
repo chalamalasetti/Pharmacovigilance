@@ -1,0 +1,10 @@
+begin;
+do $$declare v jsonb:='{"version":1,"groups":[{"id":"updates","label":"Updates","items":[{"id":"index","label":"Updates","hidden":false}]},{"id":"my-briefing","label":"My Briefing","items":[{"id":"briefing","label":"My Briefing","hidden":false},{"id":"company-briefing","label":"Company Briefing","hidden":false},{"id":"company-inbox","label":"Company Change Inbox","hidden":false},{"id":"action-center","label":"Action Center","hidden":false},{"id":"team","label":"Team queue","hidden":false},{"id":"account-settings","label":"Account & team","hidden":false}]},{"id":"explore","label":"Explore","items":[{"id":"research","label":"Research","hidden":false},{"id":"companies","label":"Companies","hidden":false},{"id":"globe","label":"Global view","hidden":false},{"id":"events","label":"Events & Training","hidden":false}]},{"id":"resources","label":"Resources","items":[{"id":"resources","label":"Safety resources","hidden":false},{"id":"documents","label":"Source documents","hidden":false},{"id":"changes","label":"Regulatory Change Review","hidden":false},{"id":"requirements","label":"Requirements Library","hidden":false},{"id":"agencies","label":"Regulators","hidden":false},{"id":"archive","label":"Archive","hidden":false},{"id":"user-guide","label":"User Guide","hidden":false},{"id":"about","label":"About PV Info","hidden":false}]}]}';old jsonb;bad jsonb;begin
+ perform public.validate_site_navigation(v);
+ select jsonb_set(v,'{groups}',jsonb_agg(jsonb_set(g,'{items}',(select jsonb_agg(i) from jsonb_array_elements(g->'items') i where i->>'id'<>'user-guide')))) into old from jsonb_array_elements(v->'groups') g;
+ perform public.validate_site_navigation(old);
+ bad:=jsonb_set(v,'{groups,0,items,0,id}','"unknown-guide-page"');
+ begin perform public.validate_site_navigation(bad);raise exception 'Unknown route allowed';exception when others then if sqlerrm<>'Invalid, duplicate or unknown page' then raise;end if;end;
+ execute 'set local role anon';begin perform public.validate_site_navigation(v);raise exception 'Anonymous validator access';exception when insufficient_privilege then null;end;execute 'reset role';
+end $$;
+rollback;

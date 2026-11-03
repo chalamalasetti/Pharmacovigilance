@@ -73,6 +73,10 @@ npm test           # offline tests against test/fixtures
 node scripts/aggregate.mjs --fixtures test/fixtures   # sample data, no network
 ```
 
+## User Guide
+
+[Open the searchable User Guide](https://www.pvinfo.org/user-guide.html) or [browse the versioned GitHub wiki-style pages](docs/user-guide/README.md). The 21 chapters cover every current screen, account approval/recovery, public discovery, company/clinical portfolios, baseline and change review, private actions/closure, calendar downloads and administrator operations. Use **Resources → User Guide**, full-text search, audience filters or **Read complete guide → Print / save as PDF**. Source chapters and the rendered in-app guide are maintained together with `npm run guide`; no Markdown attachments are added to app workflows.
+
 ## Hosting
 
 Import the repository into Vercel. `vercel.json` installs with `npm ci`, runs `npm run build` and serves `public/` plus the serverless API routes. The canonical production address is **https://www.pvinfo.org**; the legacy `pharmacovigilance-info.vercel.app` host redirects there. `SITE_URL` controls where collection reads the previous published data; `SEO_SITE_URL` controls canonical URLs.
