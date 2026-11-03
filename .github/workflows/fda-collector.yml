@@ -1,11 +1,11 @@
-name: Collect official FDA feeds
+name: Refresh public PV data
 on:
   schedule:
     - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
     inputs:
       force:
-        description: Rebuild even if this main revision refreshed within 50 minutes
+        description: Refresh data immediately even if paused or not due
         type: boolean
         default: false
   push:
@@ -14,6 +14,8 @@ on:
       - 'scripts/fda-snapshot.mjs'
       - 'scripts/refresh-gate.cjs'
       - '.github/workflows/fda-collector.yml'
+      - 'scripts/runtime-*.mjs'
+      - 'api/data-refresh.js'
 permissions:
   contents: write
   actions: read
@@ -24,7 +26,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -37,6 +39,14 @@ jobs:
         env:
           FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force }}
         run: node scripts/refresh-control.mjs claim updates
+      - name: Read current publication settings
+        if: steps.managed.outputs.run == 'true'
+        env:
+          RUN_LEASE: ${{ steps.managed.outputs.lease }}
+        run: node scripts/runtime-collect.mjs prepare
+      - name: Read latest product cache
+        if: steps.managed.outputs.run == 'true'
+        run: bash scripts/read-product-cache.sh
       - name: Read previous snapshot
         if: steps.managed.outputs.run == 'true'
         uses: actions/github-script@v7
@@ -50,6 +60,8 @@ jobs:
       - name: Collect from FDA using active source settings
         id: collect
         if: steps.managed.outputs.run == 'true'
+        env:
+          PV_REGISTRY_PATH: /tmp/runtime-source-registry.json
         run: node scripts/fda-snapshot.mjs /tmp/fda-feeds.json /tmp/previous-fda.json
       - name: Publish sanitized snapshot
         if: steps.managed.outputs.run == 'true'
@@ -68,13 +80,12 @@ jobs:
             catch(e) { if(e.status !== 404) throw e; }
             await github.rest.repos.createOrUpdateFileContents({...context.repo, branch, path:'fda-feeds.json', sha,
               message:'Refresh privacy-screened official FDA feeds', content:fs.readFileSync('/tmp/fda-feeds.json').toString('base64')});
-      - name: Rebuild Vercel after snapshot publication
+      - name: Publish complete runtime data snapshot
         id: publish
         if: steps.managed.outputs.run == 'true'
         env:
-          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
-        run: |
-          if [ -n "$HOOK" ]; then curl -fsS -X POST "$HOOK"; else exit 1; fi
+          RUN_LEASE: ${{ steps.managed.outputs.lease }}
+        run: node scripts/runtime-collect.mjs
       - name: Record managed collection outcome
         if: always() && steps.managed.outputs.run == 'true'
         env:

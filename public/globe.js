@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 // PV Globe: a spinning 3D globe of where pharmacovigilance and regulatory updates
 // come from. Countries glow by how many updates they have; a red pulse marks a
 // fresh safety alert or recall. Bodies that aren't one country (EMA, WHO, ICH…)
@@ -262,9 +263,9 @@ let labels = new Map();
 
 async function load() {
   const [geo, data, agencies] = await Promise.all([
-    world ? Promise.resolve(world) : fetch("map/globe.json").then((r) => r.json()),
-    fetch("data/updates.json", { cache: "no-cache" }).then((r) => r.json()),
-    fetch("data/agencies.json").then((r) => r.json()),
+    world ? Promise.resolve(world) : fetchData("map/globe.json").then((r) => r.json()),
+    fetchData("data/updates.json", { cache: "no-cache" }).then((r) => r.json()),
+    fetchData("data/agencies.json").then((r) => r.json()),
   ]);
   world = geo;
   labels = new Map(data.categories.map((c) => [c.id, c.label]));

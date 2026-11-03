@@ -10,6 +10,7 @@
 
 import { readFile, writeFile, appendFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
+import {readRuntime,runtimeFile} from './runtime-read.mjs';
 import { dataHealth } from "../public/lib.js";
 
 const SITE_URL = (process.env.SITE_URL || "https://pharmacovigilance-info.vercel.app").replace(/\/$/, "");
@@ -23,7 +24,7 @@ export function healthReport(status, now = Date.now()) {
     `**Status:** ${alerts.length ? "needs attention" : level === "ok" ? "all sources healthy" : "minor issues, no alert"}`,
     "",
     `- Last successful update: ${when(status?.updated)}`,
-    `- Last rebuild: ${when(status?.checked)}`,
+    `- Last data check: ${when(status?.checked)}`,
     status?.feeds ? `- Sources reachable: ${status.feeds.ok} of ${status.feeds.total}` : null,
     "",
   ];
@@ -37,6 +38,8 @@ export function healthReport(status, now = Date.now()) {
 async function load(arg) {
   if (arg) return JSON.parse(await readFile(arg, "utf8"));
   try {
+    const cr=await fetch(`${SITE_URL}/config.json`,{signal:AbortSignal.timeout(10000)});
+    if(cr.ok){const c=await cr.json();if(c.runtimeData){const cfg={url:c.supabaseUrl,publicKey:c.supabaseKey},snapshot=await readRuntime(cfg);if(snapshot)return JSON.parse(await runtimeFile(cfg,snapshot,'data/status.json'));}}
     const res = await fetch(`${SITE_URL}/data/status.json`, { cache: "no-store", signal: AbortSignal.timeout(20000) });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.json();

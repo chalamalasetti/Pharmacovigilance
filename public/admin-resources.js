@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 // Admin → Safety data resources (admin-resources.html). Maintains the Public Safety Data
 // Resources directory (supabase/schema.sql, "Safety data resources"): add and edit
 // resources, verify them, categorize them, flag broken links, publish, retire and
@@ -346,7 +347,7 @@ async function main() {
     $("lede").textContent = error ? `The admin features are not set up in the database yet (${error.message}).` : `Signed in as ${me.email}, which is not an admin.`;
     return;
   }
-  published = await fetch("data/resources.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  published = await fetchData("data/resources.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
   try {
     await load();
   } catch (e) {

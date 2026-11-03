@@ -1,11 +1,7 @@
 name: Refresh company registry
 
-# Checks the admin-managed schedule every 15 minutes (weekly collection by default).
-# Downloads FDA Orange Book and EMA medicines data, links each record
-# to a company in companies/manifest.json (scripts/registry.mjs), and commits
-# companies/registry.json when it changed. That push redeploys the site. The hourly
-# builds only read the committed file, so a source outage never empties a company page.
-# Free: uses only the built-in GITHUB_TOKEN. Run it by hand from the Actions tab too.
+# Product refreshes stage data on a non-deploying cache branch.
+# Completion queues the updates pipeline, which publishes a complete runtime snapshot.
 
 on:
   schedule:
@@ -40,25 +36,28 @@ jobs:
         env:
           FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force }}
         run: node scripts/refresh-control.mjs claim products
+      - name: Read previous product data
+        if: steps.managed.outputs.run == 'true'
+        run: bash scripts/read-product-cache.sh
       - name: Build the registry
         id: collect
         if: steps.managed.outputs.run == 'true'
         run: |
           npm run registry
           cp companies/registry.json /tmp/refresh-products-result.json
-      - name: Commit if changed
+      - name: Stage product registry without an app deployment
         id: publish
         if: steps.managed.outputs.run == 'true'
-        run: |
-          if git diff --quiet -- companies/registry.json && git ls-files --error-unmatch companies/registry.json >/dev/null 2>&1; then
-            echo "Registry unchanged."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add companies/registry.json
-          git commit -m "Refresh company registry from FDA and EMA data"
-          git push
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs'), branch = 'product-data-cache';
+            try { await github.rest.git.getRef({...context.repo, ref:`heads/${branch}`}); }
+            catch(e) { if(e.status !== 404) throw e; await github.rest.git.createRef({...context.repo,ref:`refs/heads/${branch}`,sha:context.sha}); }
+            let sha;
+            try { sha=(await github.rest.repos.getContent({...context.repo,path:'registry.json',ref:branch})).data.sha; }
+            catch(e) { if(e.status !== 404) throw e; }
+            await github.rest.repos.createOrUpdateFileContents({...context.repo,branch,path:'registry.json',sha,message:'Stage public product registry',content:fs.readFileSync('companies/registry.json').toString('base64')});
       - name: Record managed collection outcome
         if: always() && steps.managed.outputs.run == 'true'
         env:

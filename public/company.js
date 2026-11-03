@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 import {clinicalCoverageText} from './clinical-coverage.js';
 import {portfolioView} from './portfolio-view.js';
 // One company's public page: Overview, Related updates, Products & markets, Research,
@@ -294,7 +295,7 @@ async function main() {
     return;
   }
   try {
-    const res = await fetch(`data/companies/${state.id}.json`, { cache: "no-cache" });
+    const res = await fetchData(`data/companies/${state.id}.json`, { cache: "no-cache" });
     if (!res.ok) throw new Error(res.status);
     data = await res.json();
   } catch {

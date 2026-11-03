@@ -1,22 +1,14 @@
-name: Refresh updates on Vercel
-
-# Manual rebuild. The hourly FDA collector now triggers this same deploy hook
-# after publishing its snapshot, so each scheduled refresh sees the latest FDA data.
-# Set the hook URL as the repo secret VERCEL_DEPLOY_HOOK (see README).
-
+name: Request public data refresh
 on:
   workflow_dispatch:
-
+permissions:
+  actions: write
 jobs:
-  rebuild:
+  refresh:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Vercel deploy hook
-        env:
-          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
-        run: |
-          if [ -z "$HOOK" ]; then
-            echo "::notice::VERCEL_DEPLOY_HOOK secret is not set yet; skipping."
-            exit 0
-          fi
-          curl -fsS -X POST "$HOOK"
+      - name: Start data-only refresh
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({...context.repo,workflow_id:'fda-collector.yml',ref:'main',inputs:{force:'true'}});

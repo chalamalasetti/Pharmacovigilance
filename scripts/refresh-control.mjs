@@ -9,7 +9,8 @@ else if(action==='finish'){
  const json=async path=>JSON.parse(await readFile(path,'utf8'));
  try{if(pipeline==='clinical'){const d=await json('/tmp/clinical-cache/index.json'),rows=Object.values(d.companies);stats={companies:rows.length,complete:rows.filter(x=>x.status==='complete').length,partial:rows.filter(x=>x.status==='partial').length,failed:rows.filter(x=>x.status==='failed').length,checked:rows.reduce((n,x)=>n+x.scanned,0),matched:rows.reduce((n,x)=>n+x.studies,0)};for(const key of ['added','changed','archived'])stats[key]=rows.reduce((n,x)=>n+(x.changes?.[key]??0),0);if(result==='success'&&stats.complete!==stats.companies)result='partial';}
  if(pipeline==='products'){const d=await json('/tmp/refresh-products-result.json');stats={checked:d.sources.length,matched:d.products.length,failed:d.sources.filter(s=>!s.ok).length};if(result==='success'&&stats.failed)result='partial';}
- if(pipeline==='updates'){const d=await json('/tmp/fda-feeds.json');stats={checked:d.entries.length,matched:d.entries.reduce((n,s)=>n+(s.items?.length??0),0),failed:d.entries.filter(s=>!s.ok).length};if(result==='success'&&stats.failed)result='partial';}}
+ if(pipeline==='updates'){const d=await json('/tmp/runtime-publication-result.json');stats=d.stats;if(result==='success'&&stats.failed)result='partial';}}
  catch{result='failed';}
- await rpc({action,pipeline,lease:process.env.RUN_LEASE,result,stats,publication:process.env.PUBLICATION==='failure'?'failed':process.env.PUBLICATION==='success'?(pipeline==='products'?'automatic':'requested'):'not-requested'});console.log(`Recorded ${pipeline}: ${result}`);
+ if(process.env.PUBLICATION==='failure')result='failed';
+ await rpc({action,pipeline,lease:process.env.RUN_LEASE,result,stats,publication:process.env.PUBLICATION==='failure'?'failed':process.env.PUBLICATION==='success'?(pipeline==='updates'?'published':'staged'):'not-requested'});console.log(`Recorded ${pipeline}: ${result}`);
 }else throw Error('Unknown refresh command');

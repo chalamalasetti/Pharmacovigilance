@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 // "Ask PV Info": a chat bubble in the bottom-right corner. Readers ask about a
 // country, agency, topic or drug and get the matching updates back, each linked
 // to its regulator notice or news report. Answers come from chat-lib.js over the
@@ -17,7 +18,7 @@ function el(tag, props = {}, children = []) {
 
 async function json(url) {
   try {
-    const res = await fetch(url, { cache: "no-cache" });
+    const res = await fetchData(url, { cache: "no-cache" });
     return res.ok ? await res.json() : null;
   } catch {
     return null;

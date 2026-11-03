@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 // Renders public/data/research.json as Latest research (filterable list), the
 // Innovation timeline (dated events for one topic) and My watchlist (saved papers,
 // followed topics and saved searches).
@@ -361,7 +362,7 @@ async function main() {
   readUrl();
   wire();
   try {
-    const res = await fetch("data/research.json", { cache: "no-cache" });
+    const res = await fetchData("data/research.json", { cache: "no-cache" });
     if (!res.ok) throw new Error(res.status);
     data = await res.json();
     R.applyReviews(data.papers);

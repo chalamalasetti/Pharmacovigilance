@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 import {approvalRequired} from './approval-gate.js';
 // My PV Briefing: a short daily view of the updates that matter to one reader,
 // picked by their view (audience), countries, topics and watchlist, each with an
@@ -457,7 +458,7 @@ async function main() {
   if(await approvalRequired('My Briefing'))return;
   wire();
   try {
-    const res = await fetch("data/updates.json", { cache: "no-cache" });
+    const res = await fetchData("data/updates.json", { cache: "no-cache" });
     if (!res.ok) throw new Error(res.status);
     data = await res.json();
   } catch {
@@ -479,7 +480,7 @@ async function main() {
   // Followed companies are optional: only fetch names when the reader follows any.
   if (loadFollowed().length) {
     try {
-      const res = await fetch("data/companies/index.json", { cache: "no-cache" });
+      const res = await fetchData("data/companies/index.json", { cache: "no-cache" });
       if (res.ok) {
         coNames = new Map((await res.json()).companies.map((c) => [c.id, c.name]));
         render();

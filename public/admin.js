@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 // The Admin console (admin.html). Signed-in app admins (supabase/schema.sql:
 // research_admins) approve the company list, add, edit or hide companies, answer
 // company requests, manage who is an admin, see failing data sources and the research
@@ -34,7 +35,7 @@ const slug = (s) => s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").re
 const lines = (s) => [...new Set(String(s ?? "").split(/\n/).map((x) => x.trim()).filter(Boolean))];
 const norm = (x) => (Array.isArray(x) ? [...x].sort() : x ?? null);
 const same = (a, b) => JSON.stringify(norm(a)) === JSON.stringify(norm(b));
-const getJson = (url) => fetch(url, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+const getJson = (url) => fetchData(url, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
 const companyName = (id) => live?.companies.find((c) => c.id === id)?.name ?? live?.hidden?.find((c) => c.id === id)?.name ?? db.overrides.find((o) => o.company_id === id)?.data?.name ?? id;
 
 // Runs an action, shows its outcome next to the button, and reloads what it changed.
@@ -77,27 +78,11 @@ function pendingChanges() {
 }
 
 function publishSection() {
-  const p = db.publish;
-  const pending = pendingChanges();
-  const built = status?.checked ?? live?.built;
-  return el("section", { class: "profile", id: "publish" },
-    el("h2", {}, "Publish"),
-    el("p", {}, `The site was last built `, time(built), `. `, pending ? el("b", {}, `${pending} saved change${pending > 1 ? "s are" : " is"} not live yet. `) : "Everything saved here is live. ",
-      "The site rebuilds every hour (at about 17 minutes past), and a build takes a few minutes."),
-    p?.hook
-      ? el("div", { class: "row" },
-          el("button", { type: "button", class: "primary", onclick: (e) => act($("pub-msg"), async () => check(await sb.rpc("admin_publish")), "Rebuild started. The site updates in a few minutes; reload this page then.") }, "Publish now"),
-          el("span", { class: "hint" }, "Last used ", time(p.lastPublish)))
-      : null,
-    msg("pub-msg"),
-    el("details", { class: "st-more" },
-      el("summary", {}, p?.hook ? "Change or turn off the Publish now button" : "Set up a Publish now button"),
-      el("p", { class: "hint" }, "In Vercel, open the pharmacovigilance project → Settings → Git → Deploy Hooks, create a hook named “Admin publish” for the main branch, and paste its URL here. It is kept in the database and never sent back to a browser. Leave it empty and save to turn the button off."),
-      el("form", { class: "row", onsubmit: (e) => (e.preventDefault(), act($("hook-msg"), async () => check(await sb.rpc("admin_set_deploy_hook", { hook: e.target.hook.value })), "Saved.")) },
-        el("input", { type: "url", name: "hook", placeholder: "https://api.vercel.com/v1/integrations/deploy/…", "aria-label": "Vercel deploy hook URL", style: "flex:1;min-width:240px" }),
-        el("button", { type: "submit" }, "Save")),
-      msg("hook-msg")),
-  );
+ const pending=pendingChanges(),checked=status?.checked??live?.built;
+ return el("section",{class:"profile",id:"publish"},el("h2",{},"Publish data"),
+  el("p",{},"Latest data check: ",time(checked),". ",pending?`${pending} saved changes may await the next refresh. `:"", "Refresh updates, research and company data without rebuilding the app. The scheduler checks queued work every 15 minutes; GitHub may delay runs."),
+  el("button",{type:"button",class:"primary",onclick:()=>act($("pub-msg"),async()=>check(await sb.rpc("admin_publish")),"Data refresh queued. Check the Data Refresh Center for collection and publication results.")},"Refresh published data"),
+  el("p",{class:"hint"},"Last requested ",time(db.publish?.lastPublish)),msg("pub-msg"));
 }
 
 // ── Company list approval ───────────────────────────────────────────────────

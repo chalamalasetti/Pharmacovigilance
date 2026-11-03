@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 // Admin → Data sources (admin-sources.html). The registry of everything the hourly build
 // collects (supabase/schema.sql, "Data sources"). Admins add a source, test it, preview
 // what it would give and activate it; edit one and test the change before it applies;
@@ -37,7 +38,7 @@ const check = ({ data, error }) => {
   return data;
 };
 const msg = (id) => el("p", { class: "hint", id, role: "status" });
-const getJson = (url) => fetch(url, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+const getJson = (url) => fetchData(url, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
 const slug = (s) => s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
 const health = (s) => sourceHealth(s, stats.get(s.id));
 const byId = (id) => sources.find((s) => s.id === id);
@@ -261,7 +262,7 @@ function testBlock(result, { compact = false } = {}) {
 
 async function callTest(src, secrets = {}) {
   const { data } = await sb.auth.getSession();
-  const res = await fetch("/api/source-test", {
+  const res = await fetchData("/api/source-test", {
     method: "POST",
     headers: { "content-type": "application/json", authorization: `Bearer ${data.session?.access_token ?? ""}` },
     body: JSON.stringify({ source: { id: src.id, name: src.name, type: src.type, classification: src.classification, regions: src.regions, url: src.url, settings: src.settings }, secrets }),

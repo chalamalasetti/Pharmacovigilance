@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 // Shared header behaviour for every page with the top links: marks the current page,
 // folds the links behind a Menu button on small screens, and points the skip link
 // at the page's main content. The links are identical in every page's HTML; the order
@@ -47,7 +48,7 @@ if(accountLink) accountLink.textContent="Account";
 cloud.navOnly?.().catch(()=>{if(accountLink)accountLink.textContent="Sign in";});
 window.addEventListener("pv-auth-change",()=>cloud.markNav?.());
 watchAdmin({onHide:()=>{adminAllowed=false;adminLink.hidden=true;arrangeNav(latestSite);},onAdmin:()=>{adminAllowed=true;adminLink.hidden=false;arrangeNav(latestSite);}});
-const siteP = fetch("data/site.json", { cache: "no-cache" })
+const siteP = fetchData("data/site.json", { cache: "no-cache" })
   .then((r) => (r.ok ? r.json() : null))
   .catch(() => null)
   .then((site) => {
@@ -95,7 +96,7 @@ function freshness() {
   if(!top||page==='status'||page==='index')return;
   let strip=null;
   watchAdmin({onHide:()=>{strip?.remove();strip=null;},onAdmin:async current=>{
-    let status;try{const res=await fetch('data/status.json',{cache:'no-cache',signal:AbortSignal.timeout(6000)});if(!res.ok)return;status=await res.json();}catch{return;}
+    let status;try{const res=await fetchData('data/status.json',{cache:'no-cache',signal:AbortSignal.timeout(6000)});if(!res.ok)return;status=await res.json();}catch{return;}
     if(!current()||!status?.feeds||!Array.isArray(status.sources))return;
   const { level, problems } = dataHealth(status);
   const when = new Date(status.updated);

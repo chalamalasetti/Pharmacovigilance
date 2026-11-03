@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 import {clinicalCoverageText} from './clinical-coverage.js';
 // Company Explorer: search by company, alias, brand or substance, browse by region and
 // type, and the coverage manifest's limits. Data from data/companies/index.json and,
@@ -45,7 +46,7 @@ function writeUrl() {
 async function loadProducts() {
   if (products) return products;
   try {
-    const res = await fetch("data/companies/products.json", { cache: "no-cache" });
+    const res = await fetchData("data/companies/products.json", { cache: "no-cache" });
     if (res.ok) products = await res.json();
   } catch {}
   return products;
@@ -255,7 +256,7 @@ function wire() {
 async function main() {
   readUrl();
   try {
-    const res = await fetch("data/companies/index.json", { cache: "no-cache" });
+    const res = await fetchData("data/companies/index.json", { cache: "no-cache" });
     if (!res.ok) throw new Error(res.status);
     index = await res.json();
   } catch {

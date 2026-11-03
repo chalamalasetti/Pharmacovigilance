@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 // Sources we cover (coverage.html): the public list of active sources, from
 // data/coverage.json, which the build derives from the data source registry. It has no
 // addresses, settings, credentials or collection health.
@@ -13,8 +14,8 @@ const el = (tag, attrs = {}, ...kids) => {
 };
 
 const [cov, agencies] = await Promise.all([
-  fetch("data/coverage.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null),
-  fetch("data/agencies.json").then((r) => r.json()).catch(() => []),
+  fetchData("data/coverage.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+  fetchData("data/agencies.json").then((r) => r.json()).catch(() => []),
 ]);
 const names = new Map(agencies.map((c) => [c.code, c.country]));
 const place = (code) => `${flag(code)} ${names.get(code) ?? code}`;

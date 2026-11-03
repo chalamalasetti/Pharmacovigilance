@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 // Public Safety Data Resources (resources.html): the curated directory of public safety
 // databases, from data/resources.json (built from Admin → Safety data resources).
 // Readers filter by country, category, product type, access and data availability, ask
@@ -230,8 +231,8 @@ async function main() {
     set({ q: $("q").value.trim(), guide: "" });
   });
   const [res, ag] = await Promise.all([
-    fetch("data/resources.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null),
-    fetch("data/agencies.json").then((r) => r.json()).catch(() => []),
+    fetchData("data/resources.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+    fetchData("data/agencies.json").then((r) => r.json()).catch(() => []),
   ]);
   countries = ag;
   names = new Map(ag.map((c) => [c.code, c.country]));
