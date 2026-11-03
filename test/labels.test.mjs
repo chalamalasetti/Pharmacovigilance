@@ -9,3 +9,14 @@ const company={profile:{id:'synthetic',name:'Synthetic'},products:[{src:'fda-ora
 test('company matching is exact, market-scoped, synonym-reviewed and fails on stale portfolios',()=>{assert.equal(labelMatches(r,portfolio,company).length,1);assert.equal(labelMatches(r,portfolio,company,{outside:true}).length,2);assert.equal(labelMatches({...r,classScope:true,authId:null},portfolio,company).length,0);assert.equal(labelMatches(r,{...portfolio,fingerprint:'stale'},company).length,0);assert.throws(()=>labelContext(r,portfolio,company,{reason:'short'}));const ctx=labelContext(r,portfolio,company,{reason:'Review this source for the confirmed product.'});assert.equal(ctx.products.length,1);assert.equal(labelEvidence({records:[r]},company,portfolio)[0].key,labelSourceItem(r)+':synthetic');assert.deepEqual(parseLabelSourceItem(labelSourceItem(r)),{id:r.id,hash:r.hash});assert.equal(filterLabels([r],{q:'paracetamol'}).length,1);});
 import {mkdtemp,readFile,writeFile,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';import {collectLabels} from '../scripts/labels.mjs';
 test('a fresh bootstrap is written into the runtime publication before collection is skipped',async()=>{const dir=await mkdtemp(join(tmpdir(),'pv-label-bootstrap-'));try{const bootstrap=join(dir,'bootstrap.json'),file=join(dir,'labels.json'),data={schema:1,checked:new Date().toISOString(),records:[r],sources:[]};await writeFile(bootstrap,JSON.stringify(data));await collectLabels({file,bootstrapFile:bootstrap});assert.deepEqual(JSON.parse(await readFile(file,'utf8')),data);}finally{await rm(dir,{recursive:true,force:true});}});
+
+import {labelSessionAction} from '../public/labels-lib.js';
+test('session reconfirmation and token refresh retain the same user; signout/account/approval changes clear private state',()=>{
+ const user={id:'account-a',role:'authenticated'};
+ for(const event of ['INITIAL_SESSION','SIGNED_IN','TOKEN_REFRESHED','USER_UPDATED'])assert.equal(labelSessionAction(user,event,{...user}), 'retain');
+ assert.equal(labelSessionAction(user,'SIGNED_OUT',null),'clear');
+ assert.equal(labelSessionAction(user,'SIGNED_IN',{id:'account-b',role:'authenticated'}),'reload');
+ assert.equal(labelSessionAction(user,'USER_UPDATED',{...user,role:'pv_pending'}),'reload');
+ assert.equal(labelSessionAction(null,'SIGNED_IN',user),'reload');
+ assert.equal(labelSessionAction(user,'PASSWORD_RECOVERY',user),'ignore');
+});
