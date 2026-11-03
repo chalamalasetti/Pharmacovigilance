@@ -54,13 +54,6 @@ export async function isAdmin() {
 
 export const displayName = (user) => user?.email || "";
 
-// Emails a one-time sign-in link that brings the reader back to the account page.
-export async function signIn(email) {
-  const sb = await client();
-  const { error } = await sb.auth.signInWithOtp({ email, options: { emailRedirectTo: new URL("account.html", location.href).href } });
-  if (error) throw error;
-}
-
 export async function signOut() {
   const sb = await client();
   const result = await sb?.auth.signOut();

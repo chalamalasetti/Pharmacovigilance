@@ -1,7 +1,7 @@
 // Alias resolution stays on the server. The browser never receives another user's
 // email. Native Supabase Auth validates passwords and owns sessions/rate limits.
 import {cloudConfig} from '../scripts/cloud.mjs';
-const invalid={error:'Sign-in failed. Check your user ID and password, or use email recovery.'};
+const invalid={error:'Sign-in failed. Check your user ID and password, or contact the site administrator.'};
 export async function passwordLogin(req,res,{cfg=cloudConfig(),fetchImpl=fetch}={}){
  res.setHeader('cache-control','no-store');res.setHeader('content-type','application/json');
  const send=(status,body)=>{res.statusCode=status;res.end(JSON.stringify(body));};
