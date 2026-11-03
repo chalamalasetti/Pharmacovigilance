@@ -10,6 +10,8 @@ on:
       - 'scripts/document*.mjs'
       - 'scripts/document-snapshot-publish.cjs'
       - 'api/document-collect.js'
+      - 'api/document-discovery.js'
+      - 'scripts/discovery.mjs'
       - 'public/documents-lib.js'
 permissions:
   contents: write

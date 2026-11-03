@@ -1,0 +1,20 @@
+// Bounded link discovery only. It never downloads proposed documents or approves requirements.
+import {parseHTML} from 'linkedom';
+import {XMLParser} from 'fast-xml-parser';
+import {createHash} from 'node:crypto';
+import {safeFetch} from './safe-fetch.mjs';
+import {officialAgencyUrl} from '../public/regulatory-catalog.js';
+import {publicNarrative} from '../public/documents-lib.js';
+export const DISCOVERY_LIMIT=50,DISCOVERY_BYTES=1024*1024;
+const tidy=s=>String(s??'').replace(/\s+/g,' ').trim();
+export function canonicalDiscoveryUrl(raw,base,policy){const u=new URL(raw,base);u.hash='';for(const k of [...u.searchParams.keys()])if(/^utm_|^(fbclid|gclid)$/i.test(k))u.searchParams.delete(k);u.searchParams.sort();officialAgencyUrl(u.href,policy.id,policy);if(/\.(?:jpg|png|gif|zip|xlsx?|csv|docx?)$/i.test(u.pathname))throw Error('Not a document link');return u.href;}
+export function parseDiscovery(bytes,connector,policy,base=connector.url){
+ if(bytes.length>DISCOVERY_BYTES)throw Error('Index exceeds limit');const text=Buffer.from(bytes).toString('utf8');if(/<!DOCTYPE|<!ENTITY/i.test(text)&&connector.format!=='html')throw Error('XML entities are not supported');
+ let links=[];
+ if(connector.format==='html'){const {document}=parseHTML(text);document.querySelectorAll('script,style,nav,header,footer,form,aside').forEach(n=>n.remove());const root=document.querySelector('main')??document.querySelector('article')??document;links=[...root.querySelectorAll('a[href]')].slice(0,5000).map(a=>({url:a.getAttribute('href'),title:tidy(a.getAttribute('aria-label')||a.getAttribute('title')||a.textContent)}));}
+ else {const x=new XMLParser({ignoreAttributes:false,processEntities:false}).parse(text),arr=x=>x==null?[]:Array.isArray(x)?x:[x];if(connector.format==='sitemap'&&!x.urlset)throw Error('Use a single sitemap URL list; recursive indexes are not supported');if(connector.format==='rss'&&!x.rss&&!x.feed)throw Error('Expected RSS or Atom');if(connector.format==='sitemap')links=arr(x.urlset?.url).map(r=>({url:r.loc,title:r.loc}));else if(connector.format==='rss'){links=arr(x.rss?.channel?.item).map(r=>({url:r.link,title:r.title}));links.push(...arr(x.feed?.entry).map(r=>({url:arr(r.link).find(l=>!l['@_rel']||l['@_rel']==='alternate')?.['@_href'],title:typeof r.title==='string'?r.title:r.title?.['#text']})));}else throw Error('Unsupported discovery format');}
+ const terms=connector.keywords.split(',').map(s=>s.trim().toLowerCase()).filter(Boolean),found=new Map();let excluded=0;
+ for(const r of links){try{const url=canonicalDiscoveryUrl(r.url,base,policy);let title=tidy(r.title);if(!title||title===r.url||title.length<12||/^(?:download|english|pdf)(?:\s|$)/i.test(title))title=decodeURIComponent(new URL(url).pathname.split('/').filter(Boolean).pop()??'').replace(/[-_]/g,' ').replace(/\.pdf$/i,'');title=publicNarrative(title,240);if(title.length<12||!terms.some(k=>(title+' '+url).toLowerCase().includes(k)))throw Error('Outside scope');if(/\b(contact|privacy|cookies|subscribe|sign in|register for|job vacancies)\b/i.test(title))throw Error('Navigation');if(url===canonicalDiscoveryUrl(connector.url,connector.url,policy))continue;found.set(url,{url,title,key:createHash('sha256').update(url).digest('hex')});}catch{excluded++;}}
+ const rows=[...found.values()].sort((a,b)=>a.url.localeCompare(b.url));return {items:rows.slice(0,DISCOVERY_LIMIT),found:rows.length,excluded,truncated:rows.length>DISCOVERY_LIMIT};
+}
+export async function fetchDiscovery(connector,policy,{fetchImpl=safeFetch}={}){officialAgencyUrl(connector.url,policy.id,policy);const r=await fetchImpl(connector.url,{tries:1,timeoutMs:10000,maxBytes:DISCOVERY_BYTES,validateUrl:url=>officialAgencyUrl(url,policy.id,policy)});officialAgencyUrl(r.url,policy.id,policy);if(/<title[^>]*>\s*(Access Denied|Just a moment|Request Rejected)|verify.*(?:human|robot)/i.test(r.body))throw Error('Publication index unavailable');return {...parseDiscovery(Buffer.from(r.body),connector,policy,r.url),index_hash:createHash('sha256').update(r.body).digest('hex'),resolved_url:r.url};}

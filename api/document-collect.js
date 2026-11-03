@@ -1,3 +1,4 @@
+import {runDiscovery} from './document-discovery.js';
 import {verifyDocumentJob} from '../scripts/document-relay-auth.mjs';
 import {captureDocument,dbRequest} from '../scripts/documents.mjs';
 import {cloudConfig} from '../scripts/cloud.mjs';
@@ -14,9 +15,11 @@ export default async function handler(req,res){
  if(req.method!=='POST')return send(405,{error:'Use authenticated POST'});
  const token=/^Bearer (\S+)$/i.exec(req.headers.authorization??'')?.[1];if(!token)return send(403,{error:'Trusted collection job required'});
  try{await verifyDocumentJob(token);}catch(e){return send(403,{error:'Trusted collection job required',code:e.code??'OIDC_PROVENANCE',claim:e.claim??null});}
- let body;try{body=req.body;if(body===undefined){let s='';for await(const c of req){s+=c;if(s.length>MAX_RELAY_BYTES*4/3+4000)return send(413,{error:'Source exceeds relay limit'});}body=JSON.parse(s);}if(typeof body==='string')body=JSON.parse(body);body=decodeDocumentRelay(body);}catch{return send(400,{error:'Invalid public document payload'});}
+ let body;try{body=req.body;if(body===undefined){let s='';for await(const c of req){s+=c;if(s.length>MAX_RELAY_BYTES*4/3+4000)return send(413,{error:'Source exceeds relay limit'});}body=JSON.parse(s);}if(typeof body==='string')body=JSON.parse(body);if(body?.action==='discovery_schedule'){}else if(body?.action==='discover'){if(!/^[a-z0-9-]{3,80}$/.test(body.id??''))throw Error('Invalid connector');}else body=decodeDocumentRelay(body);}catch{return send(400,{error:'Invalid public document payload'});}
  try{
  const cfg=cloudConfig();if(!cfg.serviceKey)return send(503,{error:'Server collector configuration unavailable'});
+ if(body.action==='discovery_schedule'){const rows=await dbRequest(cfg,'pv_discovery_connectors?active=eq.true&select=id,checked_at,interval_minutes&order=checked_at.asc.nullsfirst,id');return send(200,rows.filter(c=>!c.checked_at||Date.now()-Date.parse(c.checked_at)>=c.interval_minutes*60000).slice(0,5).map(c=>({id:c.id})));}
+ if(body.action==='discover')return send(200,await runDiscovery(body.id,{cfg}));
  const [doc]=await dbRequest(cfg,`pv_documents?id=eq.${encodeURIComponent(body.id)}&select=*`);
  if(!doc||doc.status!=='active'||doc.updated_at!==body.config)return send(409,{error:'Source configuration changed or deactivated'});
  if(body.failure){await dbRequest(cfg,'rpc/record_pv_document_failure',{method:'POST',body:{p_id:body.id,p_note:'Source unavailable; previous capture preserved'}});return send(200,{id:body.id,status:'failed'});}
