@@ -15,7 +15,7 @@ const FIELDS_LIST = [
   ["aliases", "Other names people search for", "Search only. One per line."],
   ["former", "Former names", "One per line."],
   ["mentions", "Phrases that identify it in news and papers", "Exact and case-sensitive. Keep them specific, so a common word does not match. One per line. Left empty for a new company, its name is used."],
-  ["holders", "Authorisation-holder names in FDA and EMA records", "Name prefixes, one per line, e.g. ACME PHARMA. Products are linked at the weekly registry refresh."],
+  ["holders", "Authorisation-holder names in FDA and EMA records", "Name prefixes, one per line, e.g. ACME PHARMA. Products are linked at the next registry refresh; its schedule is managed in Data Refresh Center."],
 ];
 
 let sb = null;
@@ -272,7 +272,7 @@ function hideForm() {
 function companiesSection() {
   return el("section", { class: "profile", id: "companies" },
     el("h2", {}, "Companies"),
-    el("p", { class: "hint" }, "Add a company, change its names and matching phrases, or hide it. Changes are applied over the repository list at each build; undo one and the repository entry comes back. New companies are matched to updates and papers straight away, and get their FDA and EMA products at the weekly registry refresh (Mondays)."),
+    el("p", { class: "hint" }, "Add a company, change its names and matching phrases, or hide it. Changes are applied over the repository list at each build; undo one and the repository entry comes back. New companies are matched to updates and papers straight away, and get their FDA and EMA products at the next registry refresh. Manage its frequency in Data Refresh Center."),
     requestsBlock(),
     changesBlock(),
     editor(),
