@@ -1,0 +1,5 @@
+// Server-only transport; never log request bodies, Auth responses or passwords.
+import {cloudConfig} from './cloud.mjs';
+export const serverHeaders=key=>({apikey:key,'content-type':'application/json',...(key.startsWith('eyJ')?{authorization:`Bearer ${key}`}:{})});
+export async function managedRpc(action,data,{cfg=cloudConfig(),fetchImpl=fetch}={}){const r=await fetchImpl(`${cfg.url}/rest/v1/rpc/managed_accounts_worker`,{method:'POST',headers:serverHeaders(cfg.serviceKey),body:JSON.stringify({p_action:action,p_data:data}),signal:AbortSignal.timeout(15000)});if(!r.ok)throw Error('Account operation could not be completed. Reload and retry; activated accounts cannot be reissued.');return r.json();}
+export async function nativeAuth(path,method,data,{cfg=cloudConfig(),fetchImpl=fetch}={}){const r=await fetchImpl(`${cfg.url}/auth/v1/${path}`,{method,headers:serverHeaders(cfg.serviceKey),...(data&&{body:JSON.stringify(data)}),signal:AbortSignal.timeout(12000)});if(!r.ok)throw Error('Auth account operation failed. Reload before retrying.');return r.json();}

@@ -35,6 +35,9 @@
     },
     "api/password-login.js": {
       "maxDuration": 30
+    },
+    "api/account-access.js": {
+      "maxDuration": 60
     }
   },
   "headers": [

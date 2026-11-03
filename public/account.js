@@ -126,7 +126,7 @@ async function main() {
   }
 
   $("lede").textContent = "You're signed in.";
-  $("me-title").textContent = `Signed in as ${user.email}`;
+  $("me-title").textContent = user.app_metadata?.pv_managed ? "Signed in" : `Signed in as ${user.email}`;
   $("me").hidden = false;
   cloud.isAdmin().then((yes) => ($("admin-link").hidden = !yes));
   await setupProfile(sb,user);
@@ -164,14 +164,15 @@ async function main() {
 function roleOptions(id){$(id).replaceChildren(el('option',{value:''},'Choose a role (optional)'),...PROFESSIONAL_ROLES.map(r=>el('option',{value:r},r)));}
 function formAction(id,msg,fn){$(id).addEventListener('submit',async e=>{e.preventDefault();const button=e.target.querySelector('button[type="submit"]');button.disabled=true;try{await busy($(msg),fn);}finally{button.disabled=false;}});}
 function setupLogin(sb){
+ formAction('first-password','signin-msg',async()=>{const password=newPassword($('first-new-password').value,$('first-new-confirm').value);if(password.length>72)throw Error('Use 12–72 characters.');const r=await fetch('/api/account-access',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'change',alias:$('login-id').value.trim().toLowerCase(),password:$('login-password').value,newPassword:password})});const result=await r.json();if(!r.ok)throw Error(result.error??'Password setup failed.');$('login-password').value='';$('first-new-password').value='';$('first-new-confirm').value='';$('first-password').hidden=true;$('signin-msg').textContent='Permanent password saved. Sign in above with your user ID and new password.';});
  formAction('signin-form','signin-msg',async()=>{await emailSignIn(sb,$('email').value,new URL('account.html',location.href).href);$('signin-msg').textContent='If this is an eligible existing account, check your email for the newest sign-in link. After signing in, use Account → Set or change password to set a password.';});
- formAction('password-login','signin-msg',async()=>{await passwordSignIn(sb,$('login-id').value,$('login-password').value);$('login-password').value='';location.reload();});
+ formAction('password-login','signin-msg',async()=>{const result=await passwordSignIn(sb,$('login-id').value,$('login-password').value);if(result?.changeRequired){$('first-password').hidden=false;$('signin-msg').textContent='Temporary password verified. Choose a permanent password below before accessing PV Info.';return;}$('login-password').value='';location.reload();});
  // Defer navigation until the SDK releases its Auth callback lock.
  window.addEventListener('pv-auth-change',e=>{if(e.detail?.event==='PASSWORD_RECOVERY'||e.detail?.event==='SIGNED_IN')setTimeout(()=>location.reload(),0);});
 }
 async function setupProfile(sb,user){
  roleOptions('profile-role');let loaded=false;
- try{const r=await sb.from('account_profiles').select('login_alias,professional_role').eq('user_id',user.id).maybeSingle();if(r.error)throw r.error;$('profile-alias').value=r.data?.login_alias??'';$('profile-role').value=r.data?.professional_role??'';loaded=true;}catch{$('profile-msg').textContent='Account preferences could not load. Reload before editing.';}
+ try{const r=await sb.from('account_profiles').select('login_alias,professional_role').eq('user_id',user.id).maybeSingle();if(r.error)throw r.error;$('profile-alias').value=r.data?.login_alias??'';if(r.data?.login_alias)$('me-title').textContent=`Signed in as ${r.data.login_alias}`;$('profile-role').value=r.data?.professional_role??'';loaded=true;}catch{$('profile-msg').textContent='Account preferences could not load. Reload before editing.';}
  $('profile-form').querySelector('button').disabled=!loaded;
  formAction('profile-form','profile-msg',async()=>{if(!loaded)throw Error('Reload account preferences first.');const r=await sb.from('account_profiles').upsert({user_id:user.id,login_alias:loginAlias($('profile-alias').value,{optional:true}),professional_role:$('profile-role').value||null,updated_at:new Date().toISOString()});if(r.error)throw Error('Preferences could not be saved. That user ID may already be in use.');$('profile-msg').textContent='Saved. Your permissions have not changed.';});
  formAction('set-password','password-msg',async()=>{const password=newPassword($('new-password').value,$('new-password-confirm').value);const r=await sb.auth.updateUser({password});if(r.error)throw Error(r.error.code==='same_password'?'Choose a different new password.':'Password could not be changed. Contact the site administrator for account recovery.');$('new-password').value='';$('new-password-confirm').value='';try{sessionStorage.removeItem('pv-password-recovery');}catch{}recovery=false;$('password-msg').textContent='Password updated. You can now sign in with your email or saved user ID.';});

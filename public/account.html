@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- seo:end -->
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="account.css">
+  <link rel="stylesheet" href="account.css"><link rel="stylesheet" href="account-access.css">
   <!-- Vercel Web Analytics and Speed Insights (enable both in the Vercel dashboard) -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -68,7 +68,14 @@
         <label>Password <input type="password" id="login-password" required maxlength="1024" autocomplete="current-password"></label>
         <button type="submit" class="primary">Sign in securely</button>
       </form>
-      <p class="hint">Self-service registration and email password reset requests remain paused. You can request a sign-in link for an existing account below.</p>
+      <p class="hint">New accounts are provisioned by an administrator. Request access below; existing accounts can also use an email sign-in link.</p>
+      <form id="first-password" class="imp-form" hidden aria-label="First login password setup">
+        <h3>Choose your permanent password</h3><p class="hint">A temporary password cannot open your workspace. Use a different password with 12–72 characters.</p>
+        <label>Permanent password <input id="first-new-password" type="password" required minlength="12" maxlength="72" autocomplete="new-password"></label>
+        <label>Confirm permanent password <input id="first-new-confirm" type="password" required minlength="12" maxlength="72" autocomplete="new-password"></label>
+        <button type="submit">Save permanent password</button>
+      </form>
+      <p><a href="request-access.html">Request access from the administrator →</a></p>
       <details id="magic-option"><summary>Sign in by email instead</summary>
         <form id="signin-form" class="imp-form"><label>Existing account email <input type="email" id="email" required maxlength="254" autocomplete="email"></label><button type="submit">Email me a sign-in link</button></form>
         <p class="hint">Email delivery is limited to 2 requests per hour on the current provider. Password login uses no email quota. Use the newest sign-in email and avoid repeated requests.</p>
