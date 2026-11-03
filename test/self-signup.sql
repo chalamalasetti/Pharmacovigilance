@@ -1,0 +1,41 @@
+-- Synthetic users and recovery hashes only; rolled back in full.
+begin;
+do $$
+declare a uuid:=gen_random_uuid();u uuid:=gen_random_uuid();v uuid:=gen_random_uuid();declined uuid:=gen_random_uuid();hashes jsonb;result jsonb;lease uuid;ref uuid;h text;
+begin
+ select jsonb_agg(encode(extensions.digest('synthetic-code-'||n,'sha256'),'hex')) into hashes from generate_series(1,8)n;h:=hashes->>0;
+ insert into auth.users(id,aud,role,email,raw_user_meta_data,raw_app_meta_data,banned_until) values(a,'authenticated','authenticated','self-editor@example.invalid','{}','{}',null),(u,'authenticated','authenticated','self-internal@example.invalid','{"login_alias":"synthetic-self"}','{"pv_self_signup":true}',now()+interval '100 years'),(v,'authenticated','authenticated','self-outsider@example.invalid','{}','{}',null),(declined,'authenticated','authenticated','self-declined@example.invalid','{"login_alias":"synthetic-declined"}','{"pv_self_signup":true}',now()+interval '100 years');
+ insert into public.research_admins(email) values('self-editor@example.invalid');
+ execute 'set local role service_role';
+ result:=public.self_accounts_worker('register',jsonb_build_object('user',u,'hashes',hashes));
+ if result->>'reference' is null then raise exception 'Missing signup reference';end if;
+ result:=public.resolve_login_alias('synthetic-self');if not (result->>'approvalPending')::boolean then raise exception 'Pending alias not gated';end if;
+ result:=public.self_accounts_worker('recovery-claim',jsonb_build_object('identifier','synthetic-self','hash',h));if (result->>'valid')::boolean then raise exception 'Pending account recovery bypass';end if;
+ begin perform public.self_accounts_worker('approval-claim',jsonb_build_object('actor',v,'user',u));raise exception 'Nonadmin approved signup';exception when others then if sqlerrm<>'Admin required' then raise;end if;end;
+ result:=public.self_accounts_worker('approval-claim',jsonb_build_object('actor',a,'user',u));lease:=(result->>'lease')::uuid;
+ begin perform public.self_accounts_worker('approval-finish',jsonb_build_object('actor',a,'user',u,'lease',lease));raise exception 'Approved while native Auth still blocked';exception when others then if sqlerrm<>'Native account still blocked' then raise;end if;end;
+ execute 'reset role';update auth.users set banned_until=null where id=u;execute 'set local role service_role';
+ perform public.self_accounts_worker('approval-finish',jsonb_build_object('actor',a,'user',u,'lease',lease));
+ result:=public.resolve_login_alias('synthetic-self');if (result->>'approvalPending')::boolean then raise exception 'Approved alias remains gated';end if;
+ result:=public.self_accounts_worker('recovery-claim',jsonb_build_object('identifier','synthetic-self','hash',h));if not (result->>'valid')::boolean or result ? 'access_token' then raise exception 'Recovery claim invalid';end if;
+ result:=public.self_accounts_worker('recovery-claim',jsonb_build_object('identifier','synthetic-self','hash',h));if (result->>'valid')::boolean then raise exception 'Recovery replay accepted';end if;
+ result:=public.self_accounts_worker('recovery-claim',jsonb_build_object('identifier','wrong-user','hash',hashes->>1));if (result->>'valid')::boolean then raise exception 'Wrong owner code accepted';end if;
+ perform public.self_accounts_worker('codes',jsonb_build_object('user',v,'hashes',hashes));
+ begin perform public.self_accounts_worker('codes',jsonb_build_object('user',v,'hashes',hashes));raise exception 'Code rotation throttle missing';exception when others then if sqlerrm<>'Wait one minute before replacing recovery codes' then raise;end if;end;
+ result:=public.self_accounts_worker('support','{"identifier":"synthetic-self"}');ref:=(result->>'reference')::uuid;
+ perform public.self_accounts_worker('support-review',jsonb_build_object('actor',a,'reference',ref,'outcome','Identity verification needed'));
+ result:=public.self_accounts_worker('register',jsonb_build_object('user',declined,'hashes',hashes));perform public.self_accounts_worker('decline',jsonb_build_object('actor',a,'user',declined));
+ result:=public.resolve_login_alias('synthetic-declined');if not (result->>'approvalPending')::boolean then raise exception 'Declined alias allowed';end if;
+ execute 'reset role';
+ if not exists(select 1 from auth.users where id=declined and banned_until>now()) then raise exception 'Declined native sign-in unlocked';end if;
+ if (select count(*) from pv_accounts.recovery_codes where user_id=u and used_at is not null)<>1 then raise exception 'Recovery consumption wrong';end if;
+ if exists(select 1 from auth.users where id=u and encrypted_password is not null and encrypted_password<>'') then raise exception 'Support review changed password';end if;
+ if exists(select 1 from pv_accounts.recovery_codes where code_hash !~ '^[a-f0-9]{64}$') then raise exception 'Plaintext recovery code stored';end if;
+ execute 'set local role authenticated';
+ begin perform public.self_accounts_worker('list',jsonb_build_object('actor',a));raise exception 'Authenticated worker accessible';exception when insufficient_privilege then null;end;
+ begin perform * from pv_accounts.recovery_codes;raise exception 'Recovery hashes exposed';exception when insufficient_privilege then null;end;
+ execute 'reset role';execute 'set local role anon';
+ begin perform public.self_accounts_worker('support','{"identifier":"forged"}');raise exception 'Anonymous RPC accessible';exception when insufficient_privilege then null;end;
+ execute 'reset role';
+end $$;
+rollback;
