@@ -1,4 +1,4 @@
-// One-time, resumable public registry backfill. Persist normalized fields only.
+// Resumable public registry backfill and scheduled full refresh. Persist normalized fields only.
 import {readFile,writeFile,mkdir,rename,unlink} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
 import {companyTrialContext,collectTrialPage} from './clinical-trials.mjs';

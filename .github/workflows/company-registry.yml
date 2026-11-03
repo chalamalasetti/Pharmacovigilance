@@ -1,6 +1,7 @@
 name: Refresh company registry
 
-# Once a week, downloads the FDA Orange Book and EMA medicines data, links each record
+# Checks the admin-managed schedule every 15 minutes (weekly collection by default).
+# Downloads FDA Orange Book and EMA medicines data, links each record
 # to a company in companies/manifest.json (scripts/registry.mjs), and commits
 # companies/registry.json when it changed. That push redeploys the site. The hourly
 # builds only read the committed file, so a source outage never empties a company page.
