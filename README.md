@@ -333,3 +333,11 @@ A validation-package draft has been prepared separately with intended-use/risk a
 `npm test` runs the Node suites. GitHub CI also runs synthetic browser journeys for signup/approval, pending-user public browsing, private feature gates, company briefing/inbox, Action Center, navigation, sources/requirements/baselines, clinical portfolios, events and refresh controls. SQL regression files under `test/` and `supabase/tests/` cover selected real database permissions/workflows; execute only through an authorized test connection and follow each file’s rollback instructions.
 
 Before merging: preserve concurrent work, review migration impact, run checks relevant to the change and document unresolved limitations. Existing automated tests and supplier CI are not a substitute for executed customer qualification. Keep credentials, recovery keys, private company work and patient information out of issues, screenshots and committed fixtures.
+
+## Source Discovery and Coverage
+
+**Admin → Source Discovery** (`admin-discovery.html`), also linked from Source Documents management, finds candidate document links on approved official publication indexes. Review the original and edition, defer/reject with a reason, or register a source for the existing capture/extraction workflow. Registration never approves requirements. Existing URLs deduplicate; similar titles only suggest an edition check.
+
+Five starter indexes cover FDA, EMA, MHRA, Health Canada and TGA. Admins can configure HTML, RSS/Atom or a single sitemap URL list, scope keywords, frequency and pause/resume. The existing hourly document collector checks up to five due indexes (daily by default), retaining admin-only run status and prior candidates on failure. Discovery is bounded and does not recursively crawl or promise complete coverage. See [source discovery operations and limits](docs/source-discovery.md).
+
+The separate [GxP Readiness Foundation release](https://github.com/chalamalasetti/Pharmacovigilance/issues/57) is in the backlog.

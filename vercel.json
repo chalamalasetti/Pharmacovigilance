@@ -41,6 +41,9 @@
     },
     "api/self-account.js": {
       "maxDuration": 60
+    },
+    "api/document-discovery.js": {
+      "maxDuration": 30
     }
   },
   "headers": [
