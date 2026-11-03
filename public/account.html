@@ -68,7 +68,7 @@
         <label>Password <input type="password" id="login-password" required maxlength="1024" autocomplete="current-password"></label>
         <button type="submit" class="primary">Sign in securely</button>
       </form>
-      <p class="hint">New users choose their own password at signup, then wait for admin approval. Existing accounts can also use an email sign-in link.</p>
+      <p class="hint">New users choose their own password at signup, then sign in to view approval status and messages. Existing accounts can also use an email sign-in link.</p>
       <form id="first-password" class="imp-form" hidden aria-label="First login password setup">
         <h3>Choose your permanent password</h3><p class="hint">A temporary password cannot open your workspace. Use a different password with 12–72 characters.</p>
         <label>Permanent password <input id="first-new-password" type="password" required minlength="12" maxlength="72" autocomplete="new-password"></label>
@@ -76,9 +76,9 @@
         <button type="submit">Save permanent password</button>
       </form>
       <p><a href="request-access.html">Create an account with your own password →</a></p>
-      <details id="code-recovery"><summary>Forgot password? Use a recovery code</summary>
-        <form id="recover-form" class="imp-form"><label>User ID or existing account email <input id="recover-id" required maxlength="254" autocomplete="username"></label><label>One unused recovery code <input id="recover-code" required maxlength="80" autocomplete="off" spellcheck="false"></label><label>New permanent password <input id="recover-password" type="password" required minlength="12" maxlength="72" autocomplete="new-password"></label><label>Confirm permanent password <input id="recover-confirm" type="password" required minlength="12" maxlength="72" autocomplete="new-password"></label><button type="submit">Reset password using a code</button><p id="recover-msg" role="status"></p></form>
-        <details><summary>Lost both your password and recovery codes?</summary><form id="support-form" class="imp-form"><label>Account user ID or email <input id="support-id" required maxlength="254" autocomplete="username"></label><button type="submit">Request administrator assistance</button><p id="support-msg" role="status"></p></form><p class="hint">An assistance request cannot authorize a password reset. The administrator must verify your identity separately. No automatic email is sent.</p></details>
+      <details id="code-recovery"><summary>Forgot password? Use your recovery key</summary>
+        <form id="recover-form" class="imp-form"><label>User ID or existing account email <input id="recover-id" required maxlength="254" autocomplete="username"></label><label>Recovery key (an older unused recovery code also works) <input id="recover-code" required maxlength="80" autocomplete="off" spellcheck="false"></label><label>New permanent password <input id="recover-password" type="password" required minlength="12" maxlength="72" autocomplete="new-password"></label><label>Confirm permanent password <input id="recover-confirm" type="password" required minlength="12" maxlength="72" autocomplete="new-password"></label><button type="submit">Reset password using a key</button><p id="recover-msg" role="status"></p></form><section id="reset-key" class="access-secret" hidden aria-label="Replacement recovery key"></section>
+        <details><summary>Lost both your password and recovery key?</summary><form id="support-form" class="imp-form"><label>Account user ID or email <input id="support-id" required maxlength="254" autocomplete="username"></label><button type="submit">Request administrator assistance</button><p id="support-msg" role="status"></p></form><p class="hint">An assistance request cannot authorize a password reset. The administrator must verify your identity separately. No automatic email is sent.</p></details>
       </details>
       <details id="magic-option"><summary>Sign in by email instead</summary>
         <form id="signin-form" class="imp-form"><label>Existing account email <input type="email" id="email" required maxlength="254" autocomplete="email"></label><button type="submit">Email me a sign-in link</button></form>
@@ -103,7 +103,8 @@
           <button type="submit">Save new password</button><p id="password-msg" role="status"></p>
         </form>
       </details>
-      <details id="recovery-settings"><summary>Recovery codes · reset without email</summary><p class="hint">Generate eight one-time recovery codes and save them privately. Replacing codes invalidates every older code. Anyone holding a code can reset your password.</p><button type="button" id="generate-recovery">Generate or replace recovery codes</button><p id="codes-msg" role="status"></p><section id="account-codes" class="access-secret" hidden aria-label="Your recovery codes"></section></details>
+      <details id="recovery-settings"><summary>Recovery key · reset without email</summary><p class="hint">Keep one recovery key privately. Replacing it invalidates older keys and codes. Anyone holding your key can reset your password.</p><button type="button" id="generate-recovery">Generate or replace recovery key</button><p id="codes-msg" role="status"></p><section id="account-codes" class="access-secret" hidden aria-label="Your recovery codes"></section></details>
+      <p><a href="account-status.html">Approval status & administrator messages →</a></p>
       <p><a href="company-inbox.html">Open My Company Change Inbox →</a></p>
       <button type="button" id="signout">Sign out</button>
       <p id="admin-link" hidden style="margin-top:12px"><a class="btn" href="admin.html">Open the Admin console</a></p>

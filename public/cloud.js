@@ -10,6 +10,8 @@ import { ASSESSMENT } from "./workspace.js";
 const SUPABASE_JS = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm";
 const ARCHIVE_COLUMNS = "id,title,link,summary,source,kind,country,region,agency,category,tags,priority,published,retrieved";
 
+export const restrictedUser=user=>user?.role==='pv_pending';
+function restrictedRoute(user){if(restrictedUser(user)&&!/(?:^|\/)account-status(?:\.html)?\/?$/.test(location.pathname))setTimeout(()=>location.replace(new URL('account-status.html',location.href).href),0);}
 let clientP = null;
 let authUser = null;
 let authKnown = false;
@@ -23,7 +25,7 @@ export function client() {
     const sb = createClient(cfg.supabaseUrl, cfg.supabaseKey);
     // Synchronous callback: never await Auth/database calls inside this SDK lock.
     sb.auth.onAuthStateChange((event,session)=>{
-      authUser=session?.user??null;authKnown=true;
+      authUser=session?.user??null;authKnown=true;restrictedRoute(authUser);
       if(event==='PASSWORD_RECOVERY'){try{sessionStorage.setItem('pv-password-recovery','1');}catch{}}
       team.me=authUser;markNav();
       window.dispatchEvent(new CustomEvent('pv-auth-change',{detail:{event}}));
@@ -40,14 +42,14 @@ export async function currentUser() {
   const sb = await client();
   if (!sb) return null;
   const { data } = await sb.auth.getSession();
-  authUser=data.session?.user??null;authKnown=true;
+  authUser=data.session?.user??null;authKnown=true;restrictedRoute(authUser);
   return authUser;
 }
 
 // Whether the signed-in reader is an app admin (supabase/schema.sql: research_admins).
 export async function isAdmin() {
   const sb = await client();
-  if (!sb || !(await currentUser())) return false;
+  if (!sb) return false;const who=await currentUser();if(!who||restrictedUser(who))return false;
   const { data, error } = await sb.rpc("is_app_admin");
   return !error && data === true;
 }
@@ -99,9 +101,9 @@ async function pull(ws, user, onChange) {
 // Pulls the synced copy, then pushes every later change a moment after it happens.
 export async function startSync(ws, onChange) {
   const user = await currentUser();
-  if (!user) return null;
+  if (!user||restrictedUser(user)) return null;
   const run = async (fn) => {
-    if(authKnown && authUser?.id!==user.id)return;
+    if(authKnown && (authUser?.id!==user.id||restrictedUser(authUser)))return;
     setSync("syncing");
     try {
       await fn();
@@ -331,6 +333,7 @@ export function markNav() {
 // the reader is signed in. onChange redraws the page with the synced data.
 export async function initCloud(ws, onChange) {
   if (!(await client())) return null;
+  const signed=await currentUser();if(restrictedUser(signed)){team.me=signed;markNav();return signed;}
   const user = await startSync(ws, onChange);
   team.me = user;
   if (user) {
