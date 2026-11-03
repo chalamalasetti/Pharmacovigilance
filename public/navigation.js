@@ -3,6 +3,9 @@ export const PAGES = {
  index:{label:'Updates',href:'./',hint:'Latest safety and regulatory news',icon:'◈'},
  briefing:{label:'My Briefing',href:'briefing.html',hint:'Your saved updates and daily priorities',icon:'◎'},
  'company-briefing':{label:'Company Briefing',href:'company-briefing.html',hint:'Confirm products and markets',icon:'▦'},
+ 'company-inbox':{label:'Company Change Inbox',href:'company-inbox.html',hint:'New evidence and your company priorities',icon:'▣'},
+ 'account-settings':{label:'Account & team',href:'account.html',hint:'Password, user ID and private team settings',icon:'◎'},
+ changes:{label:'Regulatory Change Review',href:'changes.html',hint:'Compare source evidence and record human triage',icon:'⇄'},
  'action-center':{label:'Action Center',href:'action-center.html',hint:'Assess, assign and verify closure',icon:'✓'},
  team:{label:'Team queue',href:'team.html',hint:'Shared assessments and assignments',icon:'♧'},
  events:{label:'Events & Training',href:'events.html',hint:'Verified dates and calendar downloads',icon:'◷'},
@@ -16,7 +19,7 @@ export const PAGES = {
  archive:{label:'Archive',href:'archive.html',hint:'Search previously collected updates',icon:'◷'},
  about:{label:'About PV Info',href:'about.html',hint:'Coverage, sources and how it works',icon:'ⓘ'},
 };
-const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','action-center','team']],['explore','Explore',['research','companies','globe','events']],['resources','Resources',['resources','documents','requirements','agencies','archive','about']]];
+const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','company-inbox','action-center','team','account-settings']],['explore','Explore',['research','companies','globe','events']],['resources','Resources',['resources','documents','changes','requirements','agencies','archive','about']]];
 export const defaultNavigation=()=>({version:1,groups:GROUPS.map(([id,label,items])=>({id,label,items:items.map(id=>({id,label:PAGES[id].label,hidden:false}))}))});
 export const cleanLabel=(value,fallback)=>typeof value==='string'&&value.trim()?value.trim().slice(0,32):fallback;
 export function normalizeNavigation(raw,{navOrder=[],hiddenNav=[]}={}) {
