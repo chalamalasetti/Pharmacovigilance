@@ -42,6 +42,12 @@ The designated team reviewer reviews the submitted work and evidence, enters Rev
 If evidence is insufficient, enter Rework reason and Return to work. Do not close merely to clear an overdue counter. After closure, Reopen case requires a reason and records another event; it is preferable to pretending a prior decision never existed.
 
 ## History, export and save conflicts
-Case history records supported transitions, versions, actors and timestamps. Export this private case downloads the case JSON; regulatory-change cases include the supported pinned evidence package. Store it securely and inspect completeness for your intended use. It is not automatically a validated e-signature package or a full database audit export.
+Case history records supported transitions, versions, actors and timestamps. Export this private case downloads the case JSON; regulatory-change and label-change cases include their supported pinned source evidence packages. Store it securely and inspect completeness for your intended use. It is not automatically a validated e-signature package or a full database audit export.
 
 If the app reports that another tab/user changed the case, your unsaved form is retained where possible. Copy necessary text, Refresh, compare the current version, and retry deliberately. Do not keep clicking Save to bypass concurrency checks.
+
+## Start from the right evidence screen
+
+Use [Label Intelligence](label-intelligence.md) to review an official label source and confirm products before label-case handoff. The source confirmation is not approval of applicability or closure. Reopening the same evidence/company/privacy scope returns the same case; changed source versions retain distinct evidence identities.
+
+[Safety Topic Explorer](safety-topics.md) supplies discovery routes to label review, paper details and Company Briefing. It does not automatically create an Action Center case or approve a safety signal. [Substance Explorer](substances.md) helps investigate product relationships, while the confirmed company portfolio defines private assessment scope.

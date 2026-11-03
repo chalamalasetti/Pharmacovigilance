@@ -6,6 +6,12 @@ Resolve common reading, account, workflow and refresh problems without losing ev
 | Symptom | Check and next step |
 | --- | --- |
 | No updates/research | Clear filters, widen the date window and reload. Empty loaded results do not prove no publications exist. |
+| Ingredient name or manufacturer is missing | Try the source spelling or supported reviewed synonym in Substance Explorer. Salts/esters remain separate. Applicant/authorization-holder datasets do not establish manufacturers. |
+| Label change is missing or index-only | Clear filters and inspect coverage. FDA discovery/detail capture is bounded; EMA recommendations require original wording review. Missing capture does not prove no change. |
+| Label assessment asks for sign-in | Refresh the page once after an app update and confirm the current account/approval state. Same-account session reconfirmations should preserve an assessment draft; do not request repeated email links merely to work around an old page. |
+| Label assessment cannot open | Confirm current portfolio products/markets, source review, a sufficient rationale and authorized privacy scope. If the pinned version is not published yet, retry after refresh; do not bypass evidence pinning. |
+| Topic timeline has no matches | Reset type/source/date filters and inspect available collections. Negative/background mentions may match phrases; absent matches do not prove absent risk. |
+| Some topic collections are unavailable | Reload later. Available evidence remains usable, but results are incomplete; this is not a complete all-source search. |
 | A company/product/study is missing | Inspect Sources & coverage and mapping/collection status. Use the organizational company request route if appropriate. |
 | Portfolio changed | Reconfirm products/markets in Company Briefing before a new assessment. Existing case snapshots remain pinned. |
 | Pending after sign-in | Open Approval status & messages. Public browsing remains available; personal/team saves wait for approval. |

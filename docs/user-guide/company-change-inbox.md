@@ -11,7 +11,7 @@ Triage new evidence and continue company work without confusing reading status w
 If the screen asks you to reconfirm a changed portfolio, return to Company Briefing first. Do not assume the app's previous product selection still represents the latest source records.
 
 ## Filter the evidence queue
-Search evidence narrows available items. Evidence type separates product updates, research, regulatory source reviews and clinical studies. Reading state offers Unread & updated, All reading states, Seen and Updated since seen. Reset filters returns to the default view and Show next 30 reveals further items.
+Search evidence narrows available items. Evidence type separates product updates, research, regulatory source reviews, clinical studies and label changes. Reading state offers Unread & updated, All reading states, Seen and Updated since seen. Reset filters returns to the default view and Show next 30 reveals further items.
 
 The evidence queue contains what matched available company context. It is not an exhaustive list of every publication or every company obligation. Clinical evidence and regulator-wide reviews may have broader matching logic than a directly identified product.
 
@@ -35,3 +35,9 @@ Your open work summarizes awaiting assessment, actions due, overdue and awaiting
 
 ## Troubleshooting
 If reading status cannot be saved, retry before assuming the marker persisted. If assessment status cannot load, do not create a duplicate to bypass the error. Reload the inbox, check sign-in/approval, then continue the existing case. If no items appear, clear the reading-state filter and verify both the company scope and source coverage.
+
+## Label and topic discovery
+
+Matched label records use **Review label evidence** before assessment. Complete the official-source review in [Label Intelligence](label-intelligence.md), verify the confirmed company products and privacy scope, then open or continue the pinned case. An EMA recommendation index does not prove that local wording has changed.
+
+[Safety Topic Explorer](safety-topics.md) is a public discovery view, not another private inbox. Opening a topic does not mark company evidence as seen, decide applicability or create a case. [Substance Explorer](substances.md) provides public ingredient/product evidence; your private scope still requires Company Briefing confirmation.

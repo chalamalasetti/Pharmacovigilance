@@ -32,3 +32,7 @@ Counts describe records in the captured FDA Orange Book and EMA medicine dataset
 New product collection feeds the same data-only publication pipeline as other public datasets. Code deployment is independent of data refresh. If collection fails, a prior captured dataset may remain available with its capture date; an unavailable initial dataset shows an explanatory empty state.
 
 Naming rules are versioned editorial configuration in the repository for this release. Changes require reviewed evidence and a code review; there is no automatic fuzzy-name merge or public alias editing. Clinical medicines, global API supplier discovery and substance-specific signal interpretation are outside this initial release.
+
+## Related review workflows
+
+Use [Label Intelligence](label-intelligence.md) for captured safety wording and [Safety Topic Explorer](safety-topics.md) for topic evidence across labels, updates and research. Neither view turns a public ingredient relationship into company applicability automatically. Continue through [Company Briefing](company-briefing.md), [Change Inbox](company-change-inbox.md) and [Action Center](action-center.md) for private decisions and actions.
