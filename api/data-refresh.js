@@ -43,6 +43,6 @@ export async function dataRefreshHandler(req,res,{cfg=cloudConfig(),request=dbRe
  const get=async path=>{const rows=await request(cfg,`pv_runtime_files?snapshot_id=eq.${b.id}&path=eq.${encodeURIComponent(path)}&select=content`,{fetchImpl});return JSON.parse(gunzipSync(Buffer.from(rows[0].content,'base64'),{maxOutputLength:64*1024*1024}).toString());};
  if(b.action==='archive'){if(!Number.isSafeInteger(b.offset)||b.offset<0||b.offset>100000)throw Error();const data=await get('data/updates.json');const batch=data.updates.slice(b.offset,b.offset+200);await archiveUpdates(batch,{cfg,fetchImpl,withSourceId:true,batch:200});return send(200,{next:b.offset+batch.length,done:b.offset+batch.length>=data.updates.length});}
  const status=await get('data/status.json');await recordRuns(status.sources.map(s=>({source_id:s.id,run_at:status.checked,ok:s.ok&&!s.stale&&s.collectorOk!==false,items_seen:s.count??0,items_kept:s.count??0,items_new:0,attempts:1,http_status:s.ok?200:null,error:s.ok&&!s.stale&&s.collectorOk!==false?null:'Source collection failed; prior items retained'})),{cfg,fetchImpl});return send(200,{ok:true});
- }catch{return send(409,{error:'Data publication could not complete; the previous snapshot is preserved'});}
+ }catch{return send(409,{error:['archive','history'].includes(b.action)?'Published data remains available; supplementary synchronization failed':'Data publication could not complete; the previous snapshot is preserved'});}
 }
 export default dataRefreshHandler;

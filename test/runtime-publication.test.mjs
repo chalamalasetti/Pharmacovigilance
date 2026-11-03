@@ -42,3 +42,10 @@ test('publication endpoint requires pinned worker identity and an active lease, 
  assert.equal((await invoke({request:async()=>{throw Error('expired');}})).statusCode,409);
  const r=await invoke();assert.equal(r.statusCode,200);assert.deepEqual(r.body.protectedIds,['x']);assert.ok(!JSON.stringify(r.body).includes('never-public'));assert.ok(!JSON.stringify(r.body).includes('server-key'));
 });
+
+test('RSS falls back to the built feed after a runtime file outage and supports HEAD',async()=>{
+ const {feedHandler}=await import('../api/runtime-feed.js');const res=()=>({headers:{},setHeader(k,v){this.headers[k]=v;},end(body){this.body=body;}});
+ const opts={cfg:{},read:async()=>({}),load:async()=>{throw Error('Snapshot gone');},fallback:async()=>Buffer.from('<rss>last good</rss>')};
+ const get=res();await feedHandler({method:'GET'},get,opts);assert.equal(get.statusCode,200);assert.equal(get.body.toString(),'<rss>last good</rss>');assert.match(get.headers['content-type'],/rss/);
+ const head=res();await feedHandler({method:'HEAD'},head,opts);assert.equal(head.statusCode,200);assert.equal(head.body,undefined);
+});
