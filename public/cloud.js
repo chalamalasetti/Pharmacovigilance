@@ -4,6 +4,7 @@
 // works as before from this browser's storage alone.
 
 import * as workspace from "./workspace.js";
+import {callbackDestination} from "./auth-callback.js";
 import { ASSESSMENT } from "./workspace.js";
 
 const SUPABASE_JS = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm";
@@ -14,6 +15,8 @@ let authUser = null;
 let authKnown = false;
 export function client() {
   clientP ??= (async () => {
+    const callback=callbackDestination(location.href);
+    if(callback){location.replace(callback);return null;}
     const cfg = await fetch("config.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
     if (!cfg.supabaseUrl || !cfg.supabaseKey) return null;
     const { createClient } = await import(SUPABASE_JS);
