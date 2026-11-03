@@ -1,6 +1,7 @@
 // Alias resolution stays on the server. The browser never receives another user's
 // email. Native Supabase Auth validates passwords and owns sessions/rate limits.
 import {cloudConfig} from '../scripts/cloud.mjs';
+import {managedRpc} from '../scripts/managed-accounts.mjs';
 const invalid={error:'Sign-in failed. Check your user ID and password, or contact the site administrator.'};
 export async function passwordLogin(req,res,{cfg=cloudConfig(),fetchImpl=fetch}={}){
  res.setHeader('cache-control','no-store');res.setHeader('content-type','application/json');
@@ -20,6 +21,7 @@ export async function passwordLogin(req,res,{cfg=cloudConfig(),fetchImpl=fetch}=
   if(!lookup.ok)return send(503,{error:'User ID sign-in is temporarily unavailable. Try your email and password.'});
   const found=await lookup.json();
   if(!found.allowed)return send(429,{error:'Too many attempts. Try again later or sign in using your email.'});
+  if(found.pending){const check=await managedRpc('temporary',{alias,password},{cfg,fetchImpl});return check.valid?send(200,{changeRequired:true}):send(401,invalid);}
   // A fixed nonexistent address follows the same Auth path for unknown aliases.
   const auth=await fetchImpl(`${cfg.url}/auth/v1/token?grant_type=password`,{method:'POST',headers:{apikey:cfg.publicKey,'content-type':'application/json'},body:JSON.stringify({email:found.email??'unavailable@invalid.example',password}),signal:AbortSignal.timeout(10000)});
   if(!auth.ok)return send(401,invalid);
