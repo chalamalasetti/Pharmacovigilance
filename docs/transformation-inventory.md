@@ -21,7 +21,8 @@ Counts are source records and distinct substance labels, not unique molecules, i
 
 - Local Node suite: 191 tests pass, with the two pre-existing localhost-network scenarios excluded locally; CI runs the full suite.
 - New browser journeys exercise baseline releases and a synthetic 200-record portfolio with composed filters, unknown dates/stages, source details, JSON export, URL persistence, keyboard dialog behavior and mobile overflow.
-- Existing company briefing, Action Center, navigation, source document, requirements and calendar browser journeys remain in CI.
+- Existing company briefing, Action Center, navigation, source document, requirements and calendar browser journeys remain in CI. The browser runner is pinned to Ubuntu 24.04 for compatibility with Playwright 1.56.1.
+- Updated fast-xml-parser to pinned 5.11.2 after a critical advisory was reported for the existing 4.5.0 dependency. The 191 local tests pass after the update; npm audit reports zero vulnerabilities.
 - SQL tests exercise reader denial, draft RLS, verified-source/approved-interpretation gates, separate release approval and immutable published history. No real source or legal interpretation is approved during development.
 - Rollback: restore the previous application commit to hide the additive UI. Retain the new evidence tables/history; do not drop or rewrite published records. No existing table or RPC is destructively replaced.
 
