@@ -13,6 +13,7 @@ The application uses HTML/CSS/JavaScript, Node collection jobs and serverless AP
 | Updates and impact cards | Search and filter safety/regulatory updates; inspect original sources, dates and explainable potential business/technical impact. |
 | Research and innovation | Explore papers, preprints, evidence summaries and topic timelines; distinguish research from regulatory obligations. |
 | Company Explorer and Portfolio 360 | Browse sourced product relationships, clinical studies, investigational medicine labels and therapeutic-area groupings with their limitations. |
+| Drug Name Resolver | Resolve one reported medicine name with RxNorm/RxTerms source candidates and explicit identity scope; approved users save private reviewer decisions. |
 | Substance Explorer | Search ingredients and the reviewed paracetamol/acetaminophen synonym pilot; inspect source-listed products and company roles without inferring manufacturers. |
 | Label Intelligence | Review captured FDA approved-change excerpts and EMA recommendation indexes; confirm source evidence and portfolio matches before opening a pinned private assessment. |
 | Safety Topic Explorer | Explore 12 editorial topics across updates, labels and research; filter publication timelines and inspect phrase matches, source provenance and paper-status notices. |
@@ -78,7 +79,7 @@ node scripts/aggregate.mjs --fixtures test/fixtures   # sample data, no network
 
 ## User Guide
 
-[Open the searchable User Guide](https://www.pvinfo.org/user-guide.html) or [browse the versioned GitHub wiki-style pages](docs/user-guide/README.md). The 24 chapters cover every current screen, account approval/recovery, public discovery, Substance Explorer, Label Intelligence, Safety Topic Explorer, company/clinical portfolios, baseline and change review, private actions/closure, calendar downloads and administrator operations. Use **Resources → User Guide**, full-text search, audience filters or **Read complete guide → Print / save as PDF**. Source chapters and the rendered in-app guide are maintained together with `npm run guide`; no Markdown attachments are added to app workflows.
+[Open the searchable User Guide](https://www.pvinfo.org/user-guide.html) or [browse the versioned GitHub wiki-style pages](docs/user-guide/README.md). The 25 chapters cover every current screen, account approval/recovery, public discovery, Substance Explorer, Label Intelligence, Safety Topic Explorer, company/clinical portfolios, baseline and change review, private actions/closure, calendar downloads and administrator operations. Use **Resources → User Guide**, full-text search, audience filters or **Read complete guide → Print / save as PDF**. Source chapters and the rendered in-app guide are maintained together with `npm run guide`; no Markdown attachments are added to app workflows.
 
 ## Hosting
 
@@ -366,3 +367,9 @@ See [Label Change Intelligence guide](docs/user-guide/label-intelligence.md).
 ### Safety Topic Explorer
 
 Public `safety-topics.html` connects 12 editorial safety topics to collected updates, label changes and research. Filterable publication timelines explain phrase matches and retain original-source links. Label and paper routes preserve existing review workflows; no automatic assessments or clinical causality claims. Rules are versioned in `public/safety-topics-lib.js`; no licensed dictionary content or paid model API is required. See [the user guide](docs/user-guide/safety-topics.md).
+
+### Drug Name Resolver
+
+Open Substances → Resolve a medicine name (`drug-resolver.html`). Browser-to-NLM exact → normalized → approximate lookup uses active RxNorm concept names; source ranks are not probabilities. Normalized lookup can ignore salts. Candidate review shows related ingredients, RxTerms strength/form, source release/capture metadata and bounded brand-product expansion. No paid model or UMLS key is used. Requests are serialized (four starts/second per page), memory-cached for up to 12 hours, and 429/unavailable responses require retry; shared network limits still apply. No patient narratives or batch upload.
+
+Approved accounts can append private ingredient/product confirmation, rejection or unresolved decisions to `drug_name_reviews`; RLS isolates owners and excludes pending/anonymous accounts. Owner/time/ID are database defaults without client insert grants; ordinary users cannot update/delete prior decisions. Browser-observed evidence is reviewer-recorded, not validated coding or WHODrug equivalence. No global aliases, portfolio selections or assessment cases are mutated. Apply the additive `drug_name_resolution_reviews` migration before enabling private saves. See [the resolver guide](docs/user-guide/drug-name-resolver.md).

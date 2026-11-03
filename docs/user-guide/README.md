@@ -1,6 +1,6 @@
 # PV Info User Guide
 
-Version 1.0 · reviewed 3 November 2026 · application reference 9460cd4 (Safety Topic Explorer release).
+Version 1.1 · reviewed 3 November 2026 · application reference drug-name-resolver-v1.
 
 [Open the searchable in-app User Guide](https://www.pvinfo.org/user-guide.html). These are versioned wiki-style pages within the main GitHub repository, not a separate GitHub Wiki repository. The app renders a help center; it does not attach Markdown files to user workflows.
 
@@ -17,6 +17,7 @@ Version 1.0 · reviewed 3 November 2026 · application reference 9460cd4 (Safety
 - [Events, time zones and calendar downloads](events-and-calendar.md) — Find source-verified training and events, interpret date-only listings and download calendar files safely.
 - [Safety resources and reference tools](resources.md) — Use the public safety-database directory and distinguish a useful reference link from an ingested data source.
 
+- [Drug Name Resolver](drug-name-resolver.md) — Resolve one reported medicine name, review source candidates and save a private identification decision.
 - [Substance Explorer](substances.md) — Search ingredients, distinguish source company roles and inspect product evidence and naming limits.
 - [Label Change Intelligence](label-intelligence.md) — Review FDA excerpts and EMA recommendation indexes before opening a pinned private assessment.
 - [Safety Topic Explorer](safety-topics.md) — Follow topic evidence across updates, label changes and research, inspect phrase matches and continue source review.

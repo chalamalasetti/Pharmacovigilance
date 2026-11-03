@@ -42,6 +42,7 @@ Use consistent terms and locate every current page, including contextual and adm
 | Action Center | [Open](https://www.pvinfo.org/action-center.html) | [Action Center](action-center.md) |
 | Team queue | [Open](https://www.pvinfo.org/team.html) | [Briefing/workspace](personal-briefing.md) |
 | Research / paper detail | [Open research](https://www.pvinfo.org/research.html) | [Research](research.md) |
+| Drug Name Resolver | [Open](https://www.pvinfo.org/drug-resolver.html) | [Candidate identity and private decisions](drug-name-resolver.md) |
 | Substance Explorer / ingredient detail | [Open directory](https://www.pvinfo.org/substances.html) | [Substances](substances.md) |
 | Label Intelligence | [Open](https://www.pvinfo.org/labels.html) | [Label evidence and company assessment](label-intelligence.md) |
 | Safety Topic Explorer | [Open](https://www.pvinfo.org/safety-topics.html) | [Topics and evidence timelines](safety-topics.md) |
