@@ -1,0 +1,54 @@
+-- Synthetic source captures and actors: all rolled back, no real legal approval.
+begin;
+do $$
+declare a uuid:=gen_random_uuid();u uuid:=gen_random_uuid();other_user uuid:=gen_random_uuid();doc public.pv_documents;v public.pv_document_versions;b public.pv_document_versions;ch public.pv_regulatory_changes;r public.pv_change_reviews;c public.company_cases;draft public.pv_impact_requirements;k text;ctx jsonb;head uuid;pack jsonb;t uuid;tc public.company_cases;r2 public.pv_change_reviews;
+begin
+ insert into auth.users(id,aud,role,email) values(a,'authenticated','authenticated','change-editor@example.invalid'),(u,'authenticated','authenticated','change-assessor@example.invalid'),(other_user,'authenticated','authenticated','change-outsider@example.invalid');
+ insert into public.research_admins(email) values('change-editor@example.invalid');
+ select * into doc from public.pv_documents where agency='FDA' limit 1;doc.id:='synthetic-change-review';doc.title:='Synthetic FDA source for workflow verification';insert into public.pv_documents select doc.*;
+ select * into b from public.pv_document_versions where content_kind<>'metadata' and document_id<>doc.id limit 1;
+ b.id:=gen_random_uuid();b.document_id:=doc.id;b.revision:=1;b.previous_id:=null;b.source_url:=doc.url;b.original_hash:=repeat('1',64);b.content_hash:=repeat('1',64);b.sections:='[{"anchor":"section-1","text":"Synthetic firms shall preserve review evidence."}]';b.capture_status:='captured';b.metadata:=jsonb_build_object('id',doc.id,'agency','FDA','country','US','title',doc.title);insert into public.pv_document_versions select b.*;
+ v:=b;v.id:=gen_random_uuid();v.revision:=2;v.previous_id:=b.id;v.original_hash:=repeat('2',64);v.content_hash:=repeat('2',64);v.sections:='[{"anchor":"section-1","text":"Synthetic firms shall preserve reviewed change evidence."}]';insert into public.pv_document_versions select v.*;
+ select * into strict ch from public.pv_regulatory_changes where after_version=v.id;
+ if ch.comparison->0->>'status'<>'changed' then raise exception 'Comparison not pinned';end if;
+ perform set_config('request.jwt.claims',jsonb_build_object('sub',u,'email','change-assessor@example.invalid','role','authenticated')::text,true);execute 'set local role authenticated';
+ begin perform public.review_regulatory_change(ch.id,null,'company_review','potential_obligation','Synthetic summary','Synthetic rationale','{}',false);raise exception 'Noneditor triage allowed';exception when insufficient_privilege then null;end;
+ begin perform public.open_company_case('candidate:synthetic','{}',null);raise exception 'Candidate bypass allowed';exception when others then if sqlerrm not like 'Complete human triage%' then raise;end if;end;
+ begin perform public.open_company_case('disguised','{"companyContext":{"sourceItem":"regchange:unreviewed"}}',null);raise exception 'Disguised review bypass allowed';exception when others then if sqlerrm not like 'Complete human triage%' then raise;end if;end;
+ perform set_config('request.jwt.claims',jsonb_build_object('sub',a,'email','change-editor@example.invalid','role','authenticated')::text,true);
+ begin perform public.review_regulatory_change(ch.id,null,'company_review','potential_obligation','Synthetic summary','Synthetic rationale','{}',false);raise exception 'Unverified handoff allowed';exception when others then if sqlerrm not like 'Verify this exact%' then raise;end if;end;
+ perform public.review_pv_source(v.id,'verified','Guidance','English','Synthetic organizational scope',null,'Synthetic original comparison complete');
+ r:=public.review_regulatory_change(ch.id,null,'company_review','potential_obligation','Synthetic review outcome','Synthetic applicability remains undecided','{}',true);
+ begin perform public.review_regulatory_change(ch.id,null,'informational','editorial','Synthetic summary','Synthetic rationale','{}',true);raise exception 'Stale triage accepted';exception when others then if sqlerrm not like 'Triage changed%' then raise;end if;end;
+ perform set_config('request.jwt.claims',jsonb_build_object('sub',u,'email','change-assessor@example.invalid','role','authenticated')::text,true);
+ ctx:='{"companyId":"synthetic","companyName":"Synthetic company","markets":["US"],"products":[],"portfolioConfirmedAt":"2026-11-03T00:00:00Z","reason":"Synthetic confirmed scope"}';
+ c:=public.open_regulatory_change_case(r.id,ctx,null);if c.source_key not like 'regchange:%' then raise exception 'Wrong case linkage';end if;
+ c:=public.advance_company_case(c.id,c.version,'decide','{"decision":"relevant","reason":"Synthetic source applies to this organizational scope"}');
+ c:=public.advance_company_case(c.id,c.version,'assign','{"type":"Safety system / process","owner":"change-assessor@example.invalid","due":"2026-12-01","instruction":"Synthetic action instruction"}');
+ c:=public.advance_company_case(c.id,c.version,'complete','{"changed":"Synthetic controlled change completed","evidence":[{"label":"Synthetic verification evidence","url":"https://example.invalid/evidence"}],"reviewer":""}');
+ begin perform public.advance_company_case(c.id,c.version,'approve','{"reason":"Synthetic closure reviewed"}');raise exception 'Missing requirements closed';exception when others then if sqlerrm not like 'Approve business%' then raise;end if;end;
+ foreach k in array array['business','system','process','data','training'] loop
+ draft:=public.save_pv_impact_requirement(c.id,k,'{"statement":"Synthetic requirement or justified no-change outcome","acceptance_criteria":"Synthetic measurable acceptance criterion","rationale":"Synthetic scope rationale","system_scope":"Synthetic configured platform"}',null);
+ draft:=public.review_pv_impact_requirement(draft.id,'submit','Synthetic personal review',null);
+ draft:=public.review_pv_impact_requirement(draft.id,'approve','Synthetic verification complete',null);
+ end loop;
+ c:=public.advance_company_case(c.id,c.version,'approve','{"reason":"Synthetic closure verified against all approved outcomes"}');if c.stage<>'closed' then raise exception 'Journey did not close';end if;
+ pack:=public.export_regulatory_change_case(c.id,c.version);if pack->'triage_review'->'source_verification'->>'document_version_id' is distinct from v.id::text then raise exception 'Exact source verification was not frozen';end if;if jsonb_array_length(pack->'impact_requirements')<>5 or jsonb_array_length(pack->'draft_and_export_events')<>16 then raise exception 'Evidence bundle or audit history incomplete';end if;
+ t:=public.create_team('Synthetic change review team',null);
+ insert into public.team_items(team_id,update_id,snapshot) values(t,'regchange:'||r.id::text||':synthetic','{"link":"https://example.invalid/untrusted"}');
+ tc:=public.open_regulatory_change_case(r.id,ctx,t);if tc.team_id<>t or tc.snapshot->>'link'<>v.source_url then raise exception 'Team linkage or canonical evidence failed';end if;
+ begin update public.pv_change_reviews set summary='tampered' where id=r.id;raise exception 'Review overwritten';exception when insufficient_privilege then null;end;
+ perform set_config('request.jwt.claims',jsonb_build_object('sub',a,'email','change-editor@example.invalid','role','authenticated')::text,true);
+ r2:=public.review_regulatory_change(ch.id,r.id,'informational','clarification','Synthetic amended triage','Synthetic correction retained as a new review','{}',true);
+ perform set_config('request.jwt.claims',jsonb_build_object('sub',u,'email','change-assessor@example.invalid','role','authenticated')::text,true);
+ begin perform public.open_regulatory_change_case(r.id,ctx,null);raise exception 'Superseded review reused';exception when others then if sqlerrm not like 'Use the current%' then raise;end if;end;
+ pack:=public.export_regulatory_change_case(c.id,c.version);if pack->'triage_review'->>'id'<>r.id::text then raise exception 'Export did not preserve original triage';end if;
+ perform set_config('request.jwt.claims',jsonb_build_object('sub',other_user,'email','change-outsider@example.invalid','role','authenticated')::text,true);
+ begin perform public.export_regulatory_change_case(c.id,c.version);raise exception 'Outsider export allowed';exception when insufficient_privilege then null;end;
+ if exists(select 1 from public.pv_change_case_links where case_id=c.id) then raise exception 'Private case link exposed';end if;
+ execute 'reset role';perform set_config('request.jwt.claims','{"role":"anon"}',true);execute 'set local role anon';
+ if not exists(select 1 from public.pv_regulatory_changes where id=ch.id) then raise exception 'Public evidence unavailable';end if;
+ begin perform public.open_regulatory_change_case(r.id,ctx,null);raise exception 'Anonymous assessment allowed';exception when insufficient_privilege then null;end;
+ execute 'reset role';
+end $$;
+rollback;

@@ -41,6 +41,7 @@ function renderDetail(){
  compareBox,el('details',{class:'req-section'},el('summary',{},`Version timeline (${h.length})`),...h.map(v=>el('div',{class:'req-history'},el('button',{class:'act',type:'button',onclick:()=>select(v.id)},`v${v.revision} · ${v.review_status} · ${v.body.source_edition}`),el('p',{class:'hint'},`Captured ${v.created_at} · Applies from ${v.body.valid_from||'unknown'} · Reviewed ${v.reviewed_at||'not yet'}`)))),assessmentPanel(r),admin?reviewPanel(r):null);
 }
 function assessmentPanel(r){
+ if(r.review_status!=='approved')return el('p',{class:'req-notice'},'Approve this interpretation before opening a formal company assessment, or review its source change in Regulatory Change Review.');
  const portfolios=Object.values(ws.companyPortfolios??{}).filter(p=>p.confirmedAt),co=el('select',{'aria-label':'Company portfolio'},el('option',{value:''},'Choose a confirmed company portfolio'),...portfolios.map(p=>el('option',{value:p.companyId},p.companyName)));
  const destination=el('select',{'aria-label':'Assessment destination'},el('option',{value:'personal'},'My private workspace'),...C.team.list.map(t=>el('option',{value:t.id},`Team: ${t.name}`)));
  const outside=el('input',{type:'checkbox','aria-label':'Monitor outside confirmed markets'});const feedback=el('p',{role:'status',class:'hint'}),button=el('button',{class:'btn primary',type:'button',onclick:async()=>{

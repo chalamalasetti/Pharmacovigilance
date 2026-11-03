@@ -34,7 +34,8 @@ begin
  select * into req from public.pv_requirement_versions where id=cand.requirement_version_id;
  if req.document_version_id<>v.id or req.review_status<>'pending' then raise exception 'Candidate promotion lost evidence or fabricated approval';end if;
  begin perform public.admin_review_pv_candidate(cand.id,'rejected','Overwriting decision');raise exception 'Review overwritten';exception when others then if sqlerrm not like 'Extraction decision finalized%' then raise;end if;end;
- snap:=jsonb_build_object('title','Synthetic extracted clause','link',d.url,'source',d.title,'companyContext',jsonb_build_object('companyId','synthetic','companyName','Synthetic organization','markets',jsonb_build_array('US'),'sourceItem','candidate:'||cand.id::text,'evidenceKind','requirement'));
+ req:=public.admin_review_requirement(req.id,'approved','Synthetic source and interpretation verified for baseline handoff');
+ snap:=jsonb_build_object('title','Synthetic extracted clause','link',d.url,'source',d.title,'companyContext',jsonb_build_object('companyId','synthetic','companyName','Synthetic organization','markets',jsonb_build_array('US'),'sourceItem','requirement:'||req.id::text,'evidenceKind','requirement'));
  cas:=public.open_company_case('synthetic-private-pipeline',snap,null);
  begin perform public.save_pv_impact_requirement(cas.id,'business','{}',null);raise exception 'Draft created before applicability';exception when others then if sqlerrm not like 'Record a relevant%' then raise;end if;end;
  cas:=public.advance_company_case(cas.id,cas.version,'decide','{"decision":"relevant","reason":"Synthetic applicable product and scope"}');
