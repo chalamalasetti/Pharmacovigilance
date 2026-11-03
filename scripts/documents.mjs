@@ -6,11 +6,8 @@ import {cloudConfig} from './cloud.mjs';
 import {safeFetch} from './safe-fetch.mjs';
 import {officialUrl} from '../public/documents-lib.js';
 import {EXTRACTOR,hash,matchCandidates,documentDownload} from './document-extract.mjs';
-export const authHeaders=key=>({apikey:key,...(key.startsWith('eyJ')?{authorization:`Bearer ${key}`}:{})});
-export async function dbRequest(cfg,route,{method='GET',body,fetchImpl=fetch}={}){
- const res=await fetchImpl(`${cfg.url}/rest/v1/${route}`,{method,headers:{...authHeaders(cfg.serviceKey),'content-type':'application/json'},...(body!==undefined?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(15000)});
- if(!res.ok)throw Object.assign(Error('Document database operation failed'),{status:res.status});return res.status===204?null:res.json();
-}
+import {authHeaders,dbRequest} from './cloud-request.mjs';
+export {authHeaders,dbRequest};
 export function extractIsolated(bytes,kind,{timeoutMs=18000}={}){return new Promise((resolve,reject)=>{
  const worker=new Worker(path.resolve('scripts/document-worker.mjs'),{workerData:{bytes,kind},execArgv:[],resourceLimits:{maxOldGenerationSizeMb:192}});
  let settled=false;const finish=(error,value)=>{if(settled)return;settled=true;clearTimeout(timer);worker.terminate();error?reject(error):resolve(value);};

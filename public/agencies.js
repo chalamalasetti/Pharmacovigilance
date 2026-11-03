@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 import { flag, REGIONS } from "./lib.js";
 
 const el = (tag, attrs = {}, ...kids) => {
@@ -7,10 +8,10 @@ const el = (tag, attrs = {}, ...kids) => {
   return n;
 };
 
-const agencies = await (await fetch("data/agencies.json")).json();
+const agencies = await (await fetchData("data/agencies.json")).json();
 let counts = new Map();
 try {
-  const data = await (await fetch("data/updates.json", { cache: "no-cache" })).json();
+  const data = await (await fetchData("data/updates.json", { cache: "no-cache" })).json();
   counts = new Map(data.countries.map((c) => [c.code, c.count]));
 } catch {}
 

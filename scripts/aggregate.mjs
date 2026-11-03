@@ -191,14 +191,14 @@ export function sourceRun(feed, r, now) {
 }
 
 // Collects updates and writes updates.json and feed.xml. Returns how many were written.
-export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
+export async function aggregate({ fixturesDir = null, out = OUT, registryOverride=null, overlayOverride=null, fdaSnapshotOverride=null, sourceLoader=null, resourcesOverride=null } = {}) {
   const agencies = JSON.parse(await readFile(AGENCIES, "utf8"));
   const ctx = { matchers: countryMatchers(agencies), byCode: new Map(agencies.map((c) => [c.code, c])) };
   const dataDir = path.dirname(out);
   // The data source registry (Admin → Data sources) is the list of what to collect.
-  const registry = fixturesDir
+  const registry = registryOverride ?? (fixturesDir
     ? null
-    : await loadRegistry({ previous: () => previousJson(path.join(dataDir, "sources/registry.json"), "sources/registry.json") });
+    : await loadRegistry({ previous: () => previousJson(path.join(dataDir, "sources/registry.json"), "sources/registry.json") }));
   let feeds;
   let problems = [];
   if (fixturesDir) feeds = JSON.parse(await readFile(path.join(fixturesDir, "manifest.json"), "utf8"));
@@ -210,14 +210,15 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
   const prevData = fixturesDir ? null : await previousJson(out);
   const known = new Set((prevData?.updates ?? []).map((u) => u.id));
 
-  const fdaSnapshot = !fixturesDir && feeds.some(eligibleFda) ? await fetchFdaSnapshot() : null;
+  const fdaSnapshot = fdaSnapshotOverride ?? (!fixturesDir && feeds.some(eligibleFda) ? await fetchFdaSnapshot() : null);
 
   const load = async (feed) => {
     const started = Date.now();
     let body;
     let meta = { attempts: 1 };
     const secrets = registry?.secrets?.get(feed.id) ?? {};
-    const cached = !fixturesDir ? snapshotEntry(fdaSnapshot, feed) : null;
+    const relayed=sourceLoader?await sourceLoader(feed):null;
+    const cached = relayed?{items:relayed.items,collectedAt:new Date().toISOString(),stale:false,collectorOk:true}:!fixturesDir ? snapshotEntry(fdaSnapshot, feed) : null;
     if (cached) {
       const since = feed.since ? Date.parse(feed.since) : null;
       const kept = cached.items.filter(i => !since || !i.published || Date.parse(i.published) >= since).map(i => enrich(i, feed, ctx)).filter(Boolean).slice(0, MAX_PER_FEED);
@@ -281,7 +282,7 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
     // Public Safety Data Resources (Admin → Safety data resources). A reference directory,
     // not a list of feeds; a problem here must not fail the build.
     try {
-      const loaded = await loadResources({ previous: () => previousJson(path.join(dataDir, "resources.json")) });
+      const loaded = resourcesOverride ?? await loadResources({ previous: () => previousJson(path.join(dataDir, "resources.json")) });
       const r = await writeResources(dataDir, loaded, registry, now);
       console.log(`resources: published ${r.total} resources (${loaded.from})${r.skipped.length ? `, skipped ${r.skipped.map((x) => x.id).join(", ")}` : ""}`);
     } catch (e) {
@@ -306,7 +307,7 @@ export async function aggregate({ fixturesDir = null, out = OUT } = {}) {
   let overlay = null;
   try {
     // Admin page changes (approval, added or hidden companies) from the database.
-    overlay = fixturesDir ? null : await loadOverlay({ previous: () => previousJson(path.join(dataDir, "companies/admin.json"), "companies/admin.json") });
+    overlay = overlayOverride ?? (fixturesDir ? null : await loadOverlay({ previous: () => previousJson(path.join(dataDir, "companies/admin.json"), "companies/admin.json") }));
     if (overlay) console.log(`admin: applied ${overlay.overrides?.length ?? 0} company changes and ${overlay.approvals?.length ?? 0} approvals (${overlay.from})`);
     companies = await loadCompanies({ overlay });
     annotateUpdates(updates, companies.idx, companies.countryName);

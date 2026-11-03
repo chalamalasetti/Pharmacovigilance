@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 import {watchAdmin} from './admin-visibility.js';
 // Data status page: when the updates were last refreshed and how each source did,
 // from data/status.json (written by scripts/aggregate.mjs on every build).
@@ -34,7 +35,7 @@ function table(id, rows, { country = true } = {}) {
 async function main(current) {
   let status;
   try {
-    const res = await fetch("data/status.json", { cache: "no-cache" });
+    const res = await fetchData("data/status.json", { cache: "no-cache" });
     if (!res.ok) throw new Error(res.status);
     status = await res.json();
     if(!current())return;

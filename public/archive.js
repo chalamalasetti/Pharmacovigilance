@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 // Archive: searches every update PV Info has ever collected (the database keeps
 // them after they leave the 60-day feed), by words, country, topic, source type
 // and dates. Each result opens into its impact card. No sign-in needed.
@@ -74,7 +75,7 @@ async function main() {
   }
   cloud.navOnly();
   try {
-    const res = await fetch("data/updates.json", { cache: "no-cache" });
+    const res = await fetchData("data/updates.json", { cache: "no-cache" });
     if (res.ok) data = await res.json();
   } catch {}
   $("country").append(...[...data.countries].sort((a, b) => a.country.localeCompare(b.country)).map((c) => el("option", { value: c.code }, `${flag(c.code)} ${c.country}`)));

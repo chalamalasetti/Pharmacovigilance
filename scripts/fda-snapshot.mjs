@@ -49,8 +49,7 @@ export async function collectFda({ registry, previous = null, fetcher = safeFetc
   return { version: 1, attemptedAt: now.toISOString(), collector: 'github-actions', entries };
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  const r = await safeFetch('https://pharmacovigilance-info.vercel.app/data/sources/registry.json', { tries: 2, maxBytes: 512000 });
-  const registry = JSON.parse(r.body);
+  const registry = process.env.PV_REGISTRY_PATH ? JSON.parse(await readFile(process.env.PV_REGISTRY_PATH,'utf8')) : JSON.parse((await safeFetch('https://www.pvinfo.org/data/sources/registry.json', { tries: 2, maxBytes: 512000 })).body);
   if (!Array.isArray(registry.sources) || !['database','last build','repository'].includes(registry.from)) throw new Error('Registry unavailable; no FDA defaults activated');
   let previous = null;
   try { previous = JSON.parse(await readFile(process.argv[3] ?? '/tmp/previous-fda.json', 'utf8')); } catch {}

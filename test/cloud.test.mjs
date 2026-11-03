@@ -22,7 +22,7 @@ test("only the public key is written for the browser", async () => {
   const dir = mkdtempSync(path.join(tmpdir(), "pv-"));
   const file = path.join(dir, "config.json");
   assert.equal(await writePublicConfig(file, { url: "https://x.supabase.co", publicKey: "anon", serviceKey: "secret" }), true);
-  assert.deepEqual(JSON.parse(readFileSync(file, "utf8")), { supabaseUrl: "https://x.supabase.co", supabaseKey: "anon" });
+  assert.deepEqual(JSON.parse(readFileSync(file, "utf8")), { supabaseUrl: "https://x.supabase.co", supabaseKey: "anon", runtimeData: true });
   assert.equal(await writePublicConfig(file, { url: "", publicKey: "", serviceKey: "" }), false);
   assert.deepEqual(JSON.parse(readFileSync(file, "utf8")), {});
 });

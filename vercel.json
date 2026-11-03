@@ -10,7 +10,8 @@
       "claude/*": false,
       "fda-feed-cache": false,
       "regulatory-document-cache": false,
-      "clinical-data-cache": false
+      "clinical-data-cache": false,
+      "product-data-cache": false
     }
   },
   "functions": {
@@ -44,6 +45,13 @@
     },
     "api/document-discovery.js": {
       "maxDuration": 30
+    },
+    "api/data-refresh.js": {
+      "maxDuration": 60
+    },
+    "api/runtime-feed.js": {
+      "maxDuration": 30,
+      "includeFiles": "public/feed.xml"
     }
   },
   "headers": [
@@ -82,6 +90,12 @@
       ],
       "destination": "https://www.pvinfo.org/:path*",
       "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/feed.xml",
+      "destination": "/api/runtime-feed"
     }
   ]
 }

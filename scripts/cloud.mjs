@@ -23,7 +23,7 @@ export function cloudConfig(env = process.env) {
 // policies in supabase/schema.sql decide what that key may do.
 export async function writePublicConfig(file, cfg = cloudConfig()) {
   const on = Boolean(cfg.url && cfg.publicKey);
-  await writeFile(file, JSON.stringify(on ? { supabaseUrl: cfg.url, supabaseKey: cfg.publicKey } : {}) + "\n");
+  await writeFile(file, JSON.stringify(on ? { supabaseUrl: cfg.url, supabaseKey: cfg.publicKey, runtimeData: true } : {}) + "\n");
   return on;
 }
 

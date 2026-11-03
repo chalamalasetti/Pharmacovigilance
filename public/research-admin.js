@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 // The Research & Innovation editor queue (research-admin.html). Signed-in admins
 // (supabase/schema.sql: research_admins) correct topics, check summaries against the
 // abstract, hide papers with weak PV relevance, fix version links and override
@@ -226,7 +227,7 @@ async function main() {
     );
     return;
   }
-  const res = await fetch("data/research.json", { cache: "no-cache" });
+  const res = await fetchData("data/research.json", { cache: "no-cache" });
   raw = await res.json();
   try {
     await loadReviews();

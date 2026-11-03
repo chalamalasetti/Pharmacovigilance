@@ -67,13 +67,10 @@ jobs:
           git -C /tmp/clinical-publication diff --cached --quiet && exit 0
           git -C /tmp/clinical-publication commit -m 'Checkpoint sanitized company clinical portfolios'
           git -C /tmp/clinical-publication push origin HEAD:clinical-data-cache
-      - name: Publish refreshed portfolios once
+      - name: Confirm portfolios staged for data publication
         id: publish
         if: success() && steps.managed.outputs.run == 'true'
-        env:
-          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
-        run: |
-          if [ -n "$HOOK" ]; then curl -fsS -X POST "$HOOK"; else echo '::error::Deploy hook missing; snapshots await the next production build.'; exit 1; fi
+        run: test -f /tmp/clinical-cache/index.json
       - name: Record managed collection outcome
         if: always() && steps.managed.outputs.run == 'true'
         env:

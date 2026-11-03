@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 // Renders public/data/updates.json as a filterable list. Filters live in the URL
 // (so a filtered view can be shared) and followed countries live in localStorage.
 // Each update opens into an impact card with save, follow, assess, assign and dismiss.
@@ -252,7 +253,7 @@ async function main() {
   wire();
   welcome();
   try {
-    const res = await fetch("data/updates.json", { cache: "no-cache" });
+    const res = await fetchData("data/updates.json", { cache: "no-cache" });
     if (!res.ok) throw new Error(res.status);
     data = await res.json();
   } catch {
@@ -268,7 +269,7 @@ async function main() {
 
 async function loadCompanyNames() {
   try {
-    const res = await fetch("data/companies/index.json", { cache: "no-cache" });
+    const res = await fetchData("data/companies/index.json", { cache: "no-cache" });
     if (!res.ok) return;
     coNames = new Map((await res.json()).companies.map((c) => [c.id, c.name]));
     renderFilters();

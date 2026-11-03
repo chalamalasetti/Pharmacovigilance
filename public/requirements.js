@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 import {catalog,loadCatalog,agencyCountry,agencyLabel} from './regulatory-catalog.js';
 import {el} from './impact-view.js';
 import * as C from './cloud.js';
@@ -48,7 +49,7 @@ function assessmentPanel(r){
  const outside=el('input',{type:'checkbox','aria-label':'Monitor outside confirmed markets'});const feedback=el('p',{role:'status',class:'hint'}),button=el('button',{class:'btn primary',type:'button',onclick:async()=>{
  button.disabled=true;try{
   const p=ws.companyPortfolios?.[co.value];if(!p)throw Error('Choose a confirmed portfolio.');
-  const res=await fetch(`data/companies/${encodeURIComponent(p.companyId)}.json`,{cache:'no-cache'});if(!res.ok)throw Error('Cannot verify portfolio freshness. Try again later.');
+  const res=await fetchData(`data/companies/${encodeURIComponent(p.companyId)}.json`,{cache:'no-cache'});if(!res.ok)throw Error('Cannot verify portfolio freshness. Try again later.');
   const company=await res.json();if(portfolioState(p,company)!=='confirmed')throw Error('Product coverage changed. Reconfirm the company scope in Company Briefing.');
   const snapshot=assessmentSnapshot(r,p,company,{allowOutside:outside.checked}),key=snapshot.id,isTeam=destination.value!=='personal';
   if(isTeam){await C.setActiveTeam(ws,destination.value);if(!C.team.items.has(key))await C.teamAction(snapshot,{assess:{status:'open',at:new Date().toISOString()}});}
@@ -69,7 +70,7 @@ function reviewPanel(r){
 async function editor(r=null){
  const opts={agency:catalog().agencies.filter(a=>a.status==='verified').map(a=>a.id),lifecycle:['Clinical','Marketed','Both'],norm:['Regulation','Guidance','Technical instruction'],source_status:['current','draft','superseded','withdrawn','uncertain'],change_kind:CHANGE_KINDS};
  if(busy)return;
- const b=r?.body??{},form=el('form',{class:'req-editor'}),inputs={};let limits=await fetch('requirements-fields.json').then(r=>r.json());
+ const b=r?.body??{},form=el('form',{class:'req-editor'}),inputs={};let limits=await fetchData('requirements-fields.json').then(r=>r.json());
  const key=el('input',{required:true,maxlength:80,value:r?.requirement_key??'',...(r?{readonly:true}:{})});form.append(el('label',{class:'wide'},'Stable requirement ID (retain this when revising the same obligation)',key));
  for(const k of FIELDS){
  const attrs={name:k,maxlength:limits[k],...(k.endsWith('_on')||k.startsWith('valid_')?{type:'date'}:{})};
@@ -90,7 +91,7 @@ async function load(){
  sb=await (C.publicClient??C.client)();if(!sb)throw Error('Cloud connection is not configured.');try{await loadCatalog(sb);}catch{}let all=[];
  for(let start=0;start<20000;start+=1000){const {data,error}=await sb.from('pv_requirement_versions').select('*').order('requirement_key').order('revision').range(start,start+999);if(error)throw error;all.push(...data);if(data.length<1000)break;if(start===19000)throw Error('Library exceeds the current loading limit.');}
  rows=all;live=true;msg('Live library · source editions and review states loaded from the database. No automatic legal approval.');
- }catch{rows=(await fetch('data/requirements.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Starter file unavailable.');return r.json();})).versions;live=false;msg('Live library unavailable. Showing the initial unapproved starter set. Newer versions and reviews may be missing; do not use this copy as a current baseline.',true);}
+ }catch{rows=(await fetchData('data/requirements.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Starter file unavailable.');return r.json();})).versions;live=false;msg('Live library unavailable. Showing the initial unapproved starter set. Newer versions and reviews may be missing; do not use this copy as a current baseline.',true);}
  for(const [id,options,title] of [['req-country',catalog().jurisdictions.map(c=>[c.code,c.name]),'All countries / jurisdictions'],['req-agency',catalog().agencies.map(a=>[a.id,agencyLabel(a.id)]),'All agencies']]){const old=$(id).value||(id==='req-country'?new URLSearchParams(location.search).get('country')||'':'');replace($(id),el('option',{value:''},title),...options.map(([v,t])=>el('option',{value:v,selected:old===v},t)));}
  const topic=$('req-topic').value;replace($('req-topic'),el('option',{value:''},'All topics'),...[...new Set(rows.map(r=>r.body.topic))].sort().map(t=>el('option',{selected:t===topic},t)));
  if(!live){admin=false;$('req-admin').hidden=true;}$('req-mode').querySelector('[value=baseline]').disabled=!live;$('req-mode').querySelector('[value=upcoming]').disabled=!live;if(!live&&['baseline','upcoming'].includes($('req-mode').value))$('req-mode').value='latest';render();

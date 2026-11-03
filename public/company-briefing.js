@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 import {approvalRequired} from './approval-gate.js';
 import { searchCompanies, COVERAGE } from './companies-lib.js';
 import { productKey, selectableProducts, confirmPortfolio, portfolioState, scopedItems, assessmentHandoff, assessmentKey } from './company-briefing-lib.js';
@@ -27,7 +28,7 @@ async function choose(id) {
   const version=++generation;
   message('Loading company products and evidence…');
   try {
-    const res=await fetch(`data/companies/${encodeURIComponent(id)}.json`,{cache:'no-cache'});
+    const res=await fetchData(`data/companies/${encodeURIComponent(id)}.json`,{cache:'no-cache'});
     if(!res.ok)throw new Error();
     const data=await res.json();
     if(version!==generation)return;
@@ -146,7 +147,7 @@ function render() {
 async function main() {
   if(await approvalRequired('My Company Briefing'))return;
   try{
-    const r=await fetch('data/companies/index.json',{cache:'no-cache'});if(!r.ok)throw new Error();index=await r.json();
+    const r=await fetchData('data/companies/index.json',{cache:'no-cache'});if(!r.ok)throw new Error();index=await r.json();
     await cloud.initCloud(ws,()=>{if(company)render();});
     $('company-search').disabled=false;$('company-search').addEventListener('input',renderSearch);
     const id=new URLSearchParams(location.search).get('company')??ws.activeCompany;

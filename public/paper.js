@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 // One paper's detail page (paper.html?id=…): research question, approach, findings
 // and limitations quoted from the abstract, then the app's own reading of business
 // and technical relevance, clearly labelled. Section order follows the reader's lens.
@@ -205,7 +206,7 @@ async function main() {
   const id = new URLSearchParams(location.search).get("id");
   let data;
   try {
-    const res = await fetch("data/research.json", { cache: "no-cache" });
+    const res = await fetchData("data/research.json", { cache: "no-cache" });
     if (!res.ok) throw new Error(res.status);
     data = await res.json();
     R.applyReviews(data.papers);

@@ -1,3 +1,4 @@
+import {fetchData} from './data-fetch.js';
 import {approvalRequired} from './approval-gate.js';
 // Team queue: the active team's shared review queue (what teammates assessed,
 // assigned or dismissed, by tab), each update with its impact card, and the audit
@@ -112,7 +113,7 @@ async function main() {
     return;
   }
   try {
-    const res = await fetch("data/updates.json", { cache: "no-cache" });
+    const res = await fetchData("data/updates.json", { cache: "no-cache" });
     if (res.ok) data = await res.json();
   } catch {}
   const user = await cloud.initCloud(ws);
