@@ -2,7 +2,7 @@
 
 PV Info brings public pharmacovigilance, drug-safety and regulatory information together for safety operations, regulatory affairs, safety science, quality and PV systems teams. Discover updates and research, explore company products and clinical studies, trace source documents and requirements, and review company impact in a private workspace. Coverage varies by agency, source and dataset; the app does not claim exhaustive global coverage.
 
-**Live site: [www.pvinfo.org](https://www.pvinfo.org/)** · [Public coverage](https://www.pvinfo.org/coverage.html) · [Company Explorer](https://www.pvinfo.org/companies.html) · [Research](https://www.pvinfo.org/research.html)
+**Live site: [www.pvinfo.org](https://www.pvinfo.org/)** · [Public coverage](https://www.pvinfo.org/coverage.html) · [Company Explorer](https://www.pvinfo.org/companies.html) · [Research](https://www.pvinfo.org/research.html) · [Substances](https://www.pvinfo.org/substances.html) · [Label Intelligence](https://www.pvinfo.org/labels.html) · [Safety Topics](https://www.pvinfo.org/safety-topics.html)
 
 The application uses HTML/CSS/JavaScript, Node collection jobs and serverless APIs, Vercel, and optional Supabase authentication, Postgres and storage. Automated matching and extraction use explicit rules; no paid model API is required.
 
@@ -13,6 +13,9 @@ The application uses HTML/CSS/JavaScript, Node collection jobs and serverless AP
 | Updates and impact cards | Search and filter safety/regulatory updates; inspect original sources, dates and explainable potential business/technical impact. |
 | Research and innovation | Explore papers, preprints, evidence summaries and topic timelines; distinguish research from regulatory obligations. |
 | Company Explorer and Portfolio 360 | Browse sourced product relationships, clinical studies, investigational medicine labels and therapeutic-area groupings with their limitations. |
+| Substance Explorer | Search ingredients and the reviewed paracetamol/acetaminophen synonym pilot; inspect source-listed products and company roles without inferring manufacturers. |
+| Label Intelligence | Review captured FDA approved-change excerpts and EMA recommendation indexes; confirm source evidence and portfolio matches before opening a pinned private assessment. |
+| Safety Topic Explorer | Explore 12 editorial topics across updates, labels and research; filter publication timelines and inspect phrase matches, source provenance and paper-status notices. |
 | My Company Briefing | Confirm products and monitored markets, see matching updates/research and why they matched, then send an item for assessment. |
 | My Company Change Inbox | Review matched items and new evidence for a confirmed portfolio; distinguish inbox triage from the Action Center case workflow. |
 | Source documents | Filter by country/agency, inspect original captures and versions, review extraction candidates and source changes. |
@@ -75,7 +78,7 @@ node scripts/aggregate.mjs --fixtures test/fixtures   # sample data, no network
 
 ## User Guide
 
-[Open the searchable User Guide](https://www.pvinfo.org/user-guide.html) or [browse the versioned GitHub wiki-style pages](docs/user-guide/README.md). The 24 chapters cover every current screen, account approval/recovery, public discovery, company/clinical portfolios, baseline and change review, private actions/closure, calendar downloads and administrator operations. Use **Resources → User Guide**, full-text search, audience filters or **Read complete guide → Print / save as PDF**. Source chapters and the rendered in-app guide are maintained together with `npm run guide`; no Markdown attachments are added to app workflows.
+[Open the searchable User Guide](https://www.pvinfo.org/user-guide.html) or [browse the versioned GitHub wiki-style pages](docs/user-guide/README.md). The 24 chapters cover every current screen, account approval/recovery, public discovery, Substance Explorer, Label Intelligence, Safety Topic Explorer, company/clinical portfolios, baseline and change review, private actions/closure, calendar downloads and administrator operations. Use **Resources → User Guide**, full-text search, audience filters or **Read complete guide → Print / save as PDF**. Source chapters and the rendered in-app guide are maintained together with `npm run guide`; no Markdown attachments are added to app workflows.
 
 ## Hosting
 

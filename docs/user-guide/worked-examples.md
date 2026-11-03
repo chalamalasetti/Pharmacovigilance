@@ -48,3 +48,17 @@ Choose More information needed when source scope, dates or company applicability
 
 ## Evidence to check during a pilot
 Use one source document and one company scope. Check navigation, permissions, source citations, versions, saved rationale, owner/due date, implementation-draft review, evidence links, reviewer access, closed status and export. Record any gap rather than marking the workflow complete because the screens render. Organization-specific qualification/validation is a separate activity from this functional walkthrough.
+
+## Example E: topic discovery to a label assessment
+
+Scenario: a safety reviewer investigates hypersensitivity for a hypothetical confirmed portfolio. This is a practice scenario, not a clinical conclusion.
+
+1. Open [Safety Topic Explorer](safety-topics.md), select Hypersensitivity and inspect the publication timeline. Filter to label evidence if useful.
+2. Open Why this matched. Read the phrase, normalized excerpt and source status; a mention is not a causal finding or an applicability decision.
+3. Open Review label & company applicability. Check the official source and distinguish an approved FDA change from an EMA recommendation index.
+4. If needed, use [Substance Explorer](substances.md) to inspect product/holder evidence. Do not infer manufacturers or merge unsupported ingredient names.
+5. Confirm products and markets in Company Briefing. In Label Intelligence select the intended company/privacy scope, review matched products, record a rationale and confirm source review.
+6. Open the pinned private assessment. Record applicability, appropriate company-specific drafts and required actions. Submit completion evidence and obtain the available reviewer verification in [Action Center](action-center.md).
+7. Reopen the item from Company Change Inbox to continue the existing case. Seen/unread is a reading marker, not approval or closure.
+
+Expected result: one source-pinned assessment in the selected company/privacy scope with a recorded decision and verification history. Public exploration remains available without sign-in; private saves require approval and authorization.

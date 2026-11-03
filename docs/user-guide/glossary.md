@@ -16,6 +16,11 @@ Use consistent terms and locate every current page, including contextual and adm
 | Known/approved by | Cutoff for review knowledge available to a historical baseline view. |
 | Company portfolio | A user's confirmed company/product/market selection, separate from the public directory. |
 | Match | A rules-based relevance association; not an applicability decision. |
+| Ingredient naming rule | A versioned editorial naming relationship, such as the paracetamol/acetaminophen pilot; not an automatic salt/ester merge. |
+| Source company role | Applicant or authorization-holder relationship recorded in a dataset; not proof of physical manufacturing. |
+| Approved-change excerpt | Captured FDA safety-label change text; regulator underlining marks additions/revisions, not reconstructed deletions. |
+| Recommendation index | A regulator recommendation listing requiring original-wording review; not proof of implemented product labeling. |
+| Safety topic | An editorial phrase-based discovery grouping; not MedDRA, an SMQ, a validated signal or an applicability decision. |
 | Reading marker | Seen/unread evidence state; not assessment or approval. |
 | Human triage | A recorded review of source changes and uncertainty before company handoff. |
 | Case | A company assessment/action record with pinned evidence, decisions and history. |
@@ -37,6 +42,9 @@ Use consistent terms and locate every current page, including contextual and adm
 | Action Center | [Open](https://www.pvinfo.org/action-center.html) | [Action Center](action-center.md) |
 | Team queue | [Open](https://www.pvinfo.org/team.html) | [Briefing/workspace](personal-briefing.md) |
 | Research / paper detail | [Open research](https://www.pvinfo.org/research.html) | [Research](research.md) |
+| Substance Explorer / ingredient detail | [Open directory](https://www.pvinfo.org/substances.html) | [Substances](substances.md) |
+| Label Intelligence | [Open](https://www.pvinfo.org/labels.html) | [Label evidence and company assessment](label-intelligence.md) |
+| Safety Topic Explorer | [Open](https://www.pvinfo.org/safety-topics.html) | [Topics and evidence timelines](safety-topics.md) |
 | Events & Training | [Open](https://www.pvinfo.org/events.html) | [Calendar](events-and-calendar.md) |
 | Safety resources | [Open](https://www.pvinfo.org/resources.html) | [Resources](resources.md) |
 | Source Documents | [Open](https://www.pvinfo.org/documents.html) | [Source Documents](source-documents.md) |
@@ -53,7 +61,7 @@ Use consistent terms and locate every current page, including contextual and adm
 | Approval status & messages | [Open](https://www.pvinfo.org/account-status.html) | [Accounts](accounts-and-access.md) |
 | User Guide | [Open](https://www.pvinfo.org/user-guide.html) | This searchable help center and matching GitHub pages. |
 
-Company and paper detail routes require a selected record ID. Start from their directories instead of inventing an ID or treating an empty detail page as a data error.
+Company, substance and paper detail routes require a selected record ID. Start from their directories instead of inventing an ID or treating an empty detail page as a data error.
 
 ## Administrator/contextual screen map
 | Screen | Route | Guide |

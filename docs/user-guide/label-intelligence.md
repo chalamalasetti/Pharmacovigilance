@@ -49,3 +49,9 @@ Public source evidence is separate from private company decisions. Signing out c
 Collection follows the existing data-only hourly worker. FDA discovery covers a rolling 100-day window; up to 24 due product pages are captured per run, with later runs continuing pending details and rechecking previously captured pages after seven days. EMA index checks run daily. The catalog is bounded to 500 captured entries, so it is not an exhaustive historical register. Published evidence versions used for assessments remain in the durable evidence table independently of the current catalog.
 
 Source failures retain prior captured entries. Collection diagnostics are visible only to administrators. Source excerpts remain unverified until a person checks the official source; automated ingestion does not publish legal interpretations or approve company decisions.
+
+## Related discovery and session behavior
+
+Use [Safety Topic Explorer](safety-topics.md) to discover label evidence alongside updates and research, or [Substance Explorer](substances.md) to investigate source-listed products and company roles. These public views do not change your private portfolio.
+
+A normal same-account session refresh should retain your assessment draft and source-review selection. An actual sign-out or account change clears the private panel. If an older cached page incorrectly asks you to sign in again, refresh once before requesting another email link.
