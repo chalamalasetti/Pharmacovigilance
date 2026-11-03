@@ -1,3 +1,4 @@
+import {approvalRequired} from './approval-gate.js';
 import { searchCompanies, COVERAGE } from './companies-lib.js';
 import { productKey, selectableProducts, confirmPortfolio, portfolioState, scopedItems, assessmentHandoff, assessmentKey } from './company-briefing-lib.js';
 import { el, impactSection } from './impact-view.js';
@@ -143,6 +144,7 @@ function render() {
   setup();renderBriefing();
 }
 async function main() {
+  if(await approvalRequired('My Company Briefing'))return;
   try{
     const r=await fetch('data/companies/index.json',{cache:'no-cache'});if(!r.ok)throw new Error();index=await r.json();
     await cloud.initCloud(ws,()=>{if(company)render();});

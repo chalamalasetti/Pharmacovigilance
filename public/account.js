@@ -114,7 +114,7 @@ async function main() {
   }
   // Coming back from the emailed link, the library reads the session from the address.
   const user = await cloud.currentUser();
-  if(cloud.restrictedUser?.(user)){location.replace("account-status.html");return;}
+  if(cloud.restrictedUser?.(user)){$('lede').textContent='You are signed in. Public browsing is available; personal and team work unlock after approval.';$('pending-account').hidden=false;cloud.team.me=user;cloud.markNav();return;}
   cloud.team.me = user;
   cloud.markNav();
   if (!user) {

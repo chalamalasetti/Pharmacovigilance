@@ -1,3 +1,4 @@
+import {approvalRequired} from './approval-gate.js';
 import {regulatoryCasePackage} from './changes-export.js';
 import {impactDraftPanel,assertLocalDraftsReady} from './impact-requirements.js';
 import * as W from './workspace.js';
@@ -136,7 +137,7 @@ function render(){
  replace($('counts'),...Object.entries({assessment:'Awaiting assessment',due:'Actions due',overdue:'Overdue',verification:'Awaiting verification',closed:'Closed'}).map(([key,label])=>el('button',{class:`tile${key==='overdue'&&counts[key]?' safety':''}`,type:'button','aria-pressed':query.status===key,onclick:()=>{query.status=query.status===key?'all':key;render();}},el('b',{},String(counts[key])),el('span',{},label))));
  renderCandidates();renderList();renderDetail();
 }
-async function main(){
+async function main(){if(await approvalRequired('My Company Action Center'))return;
  try{sb=await C.client();user=await C.currentUser();if(user)await C.initCloud(ws);else await C.navOnly();
   if(user&&params.get('team')&&C.team.list.some(t=>t.id===params.get('team')))await C.setActiveTeam(ws,params.get('team'));
   scope=user?(params.get('scope')==='team'&&C.team.id?C.team.id:'personal'):'local';await loadRows();announce('Choose an assessment handoff or an existing case.');

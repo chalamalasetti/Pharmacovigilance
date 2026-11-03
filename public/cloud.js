@@ -11,10 +11,11 @@ const SUPABASE_JS = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+
 const ARCHIVE_COLUMNS = "id,title,link,summary,source,kind,country,region,agency,category,tags,priority,published,retrieved";
 
 export const restrictedUser=user=>user?.role==='pv_pending';
-function restrictedRoute(user){if(restrictedUser(user)&&!/(?:^|\/)account-status(?:\.html)?\/?$/.test(location.pathname))setTimeout(()=>location.replace(new URL('account-status.html',location.href).href),0);}
+
 let clientP = null;
 let authUser = null;
 let authKnown = false;
+export const pendingSession=()=>restrictedUser(authUser);
 export function client() {
   clientP ??= (async () => {
     const callback=callbackDestination(location.href);
@@ -25,7 +26,7 @@ export function client() {
     const sb = createClient(cfg.supabaseUrl, cfg.supabaseKey);
     // Synchronous callback: never await Auth/database calls inside this SDK lock.
     sb.auth.onAuthStateChange((event,session)=>{
-      authUser=session?.user??null;authKnown=true;restrictedRoute(authUser);
+      authUser=session?.user??null;authKnown=true;
       if(event==='PASSWORD_RECOVERY'){try{sessionStorage.setItem('pv-password-recovery','1');}catch{}}
       team.me=authUser;markNav();
       window.dispatchEvent(new CustomEvent('pv-auth-change',{detail:{event}}));
@@ -42,9 +43,15 @@ export async function currentUser() {
   const sb = await client();
   if (!sb) return null;
   const { data } = await sb.auth.getSession();
-  authUser=data.session?.user??null;authKnown=true;restrictedRoute(authUser);
+  authUser=data.session?.user??null;authKnown=true;
   return authUser;
 }
+
+
+// Public pages use the same anonymous read access available to visitors. This
+// separate client never loads, persists or refreshes the pending user's session.
+let publicClientP=null;
+export async function publicClient(){const sb=await client();if(!sb||!restrictedUser(await currentUser()))return sb;publicClientP??=(async()=>{const cfg=await fetch('config.json',{cache:'no-cache'}).then(r=>r.json());const {createClient}=await import(SUPABASE_JS);return createClient(cfg.supabaseUrl,cfg.supabaseKey,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,storageKey:'pv-public-reader'}});})();return publicClientP;}
 
 // Whether the signed-in reader is an app admin (supabase/schema.sql: research_admins).
 export async function isAdmin() {
@@ -275,7 +282,7 @@ export function teamSummary(t) {
 // ── Archive ──────────────────────────────────────────────────────────────────
 
 export async function searchArchive({ q = "", country = "", cat = "", kind = "", from = "", to = "", offset = 0, limit = 50 } = {}) {
-  const sb = await client();
+  const sb = await publicClient();
   let query = sb.from("updates").select(ARCHIVE_COLUMNS, { count: "exact" }).order("published", { ascending: false, nullsFirst: false }).range(offset, offset + limit - 1);
   if (q.trim()) query = query.textSearch("fts", q.trim(), { type: "websearch", config: "simple" });
   if (country) query = query.eq("country", country);
@@ -289,7 +296,7 @@ export async function searchArchive({ q = "", country = "", cat = "", kind = "",
 }
 
 export async function archiveStats() {
-  const sb = await client();
+  const sb = await publicClient();
   const [all, oldest] = await Promise.all([
     sb.from("updates").select("id", { count: "exact", head: true }),
     sb.from("updates").select("published").not("published", "is", null).order("published", { ascending: true }).limit(1),
