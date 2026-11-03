@@ -1,0 +1,10 @@
+import * as cloud from './cloud.js';
+import {watchAdmin} from './admin-visibility.js';
+import {refreshView} from './admin-refresh-view.js';
+const content=document.getElementById('refresh-content'),message=document.getElementById('refresh-message'),gate=document.getElementById('refresh-gate');let sb,data,busy=false,allowed=false,revision=0,dirty=false;
+async function load(){const rev=revision;sb=await cloud.client();if(!sb||!allowed)return;const r=await sb.rpc('admin_refresh_status');if(rev!==revision||!allowed)return;if(r.error)throw Error(r.error.message);data=r.data;dirty=false;render();}
+function render(){if(!allowed||!data)return;content.replaceChildren(refreshView(data,{save:async(p,minutes)=>act('admin_refresh_save',{pipeline:p.id,minutes,expected:p.revision},'Schedule saved. It applies at the next scheduler check.'),queue:async(pipeline,requested_mode)=>act('admin_refresh_queue',{pipeline,requested_mode},'Queued for the next scheduler check. Open GitHub to start immediately.'),reload:()=>load().catch(show),busy}));content.onchange=()=>{dirty=true;};}
+function show(e){message.textContent=e.message??String(e);}
+async function act(name,args,done){if(busy)return;const rev=revision;busy=true;const controls=[...content.querySelectorAll('button,select')].map(n=>[n,n.disabled]);controls.forEach(([n])=>{n.disabled=true;});message.textContent='Saving…';let success=false;try{const r=await sb.rpc(name,args);if(rev!==revision||!allowed)return;if(r.error)throw Error(r.error.message);await load();success=true;message.textContent=done;}catch(e){if(allowed&&rev===revision)show(e);}finally{busy=false;if(success)render();else controls.forEach(([n,disabled])=>{if(n.isConnected)n.disabled=disabled;});}}
+watchAdmin({elements:[content],onHide:()=>{allowed=false;revision++;data=null;content.replaceChildren();message.textContent='';gate.hidden=false;},onAdmin:async(current)=>{allowed=true;gate.hidden=true;try{await load();if(!current()){content.replaceChildren();return;}}catch(e){show(e);}}});
+setInterval(()=>{if(allowed&&!busy&&!dirty&&!document.hidden&&!content.contains(document.activeElement))load().catch(show);},30000);

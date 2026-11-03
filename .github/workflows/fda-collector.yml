@@ -1,7 +1,7 @@
 name: Collect official FDA feeds
 on:
   schedule:
-    - cron: '7 * * * *'
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
     inputs:
       force:
@@ -17,6 +17,7 @@ on:
 permissions:
   contents: write
   actions: read
+  id-token: write
 concurrency:
   group: fda-feed-collector
   cancel-in-progress: false
@@ -30,24 +31,14 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - name: Coalesce duplicate scheduled and dispatched refreshes
-        id: refresh_gate
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const runs = (await github.rest.actions.listWorkflowRuns({...context.repo, workflow_id:'fda-collector.yml', status:'success', per_page:20})).data.workflow_runs;
-            // A skipped duplicate run is also green: only an actual successful hook step counts.
-            for (const run of runs.filter(r => r.head_sha === context.sha && Date.now() - Date.parse(r.created_at) < 50*60*1000)) {
-              const jobs = (await github.rest.actions.listJobsForWorkflowRun({...context.repo, run_id:run.id})).data.jobs;
-              run.refreshed = jobs.some(j => j.steps?.some(s => s.name === 'Rebuild Vercel after snapshot publication' && s.conclusion === 'success'));
-            }
-            const decision = require('./scripts/refresh-gate.cjs')({runs, headSha:context.sha, eventName:context.eventName, force:context.payload.inputs?.force === 'true' || context.payload.inputs?.force === true});
-            core.setOutput('run', String(decision.run));
-            core.notice(decision.reason);
       - run: npm ci --ignore-scripts
-        if: steps.refresh_gate.outputs.run == 'true'
+      - name: Check managed schedule and acquire run lease
+        id: managed
+        env:
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.force }}
+        run: node scripts/refresh-control.mjs claim updates
       - name: Read previous snapshot
-        if: steps.refresh_gate.outputs.run == 'true'
+        if: steps.managed.outputs.run == 'true'
         uses: actions/github-script@v7
         with:
           script: |
@@ -57,10 +48,11 @@ jobs:
               fs.writeFileSync('/tmp/previous-fda.json', Buffer.from(r.data.content, 'base64'));
             } catch (e) { if (e.status !== 404) throw e; }
       - name: Collect from FDA using active source settings
-        if: steps.refresh_gate.outputs.run == 'true'
+        id: collect
+        if: steps.managed.outputs.run == 'true'
         run: node scripts/fda-snapshot.mjs /tmp/fda-feeds.json /tmp/previous-fda.json
       - name: Publish sanitized snapshot
-        if: steps.refresh_gate.outputs.run == 'true'
+        if: steps.managed.outputs.run == 'true'
         uses: actions/github-script@v7
         with:
           script: |
@@ -77,8 +69,16 @@ jobs:
             await github.rest.repos.createOrUpdateFileContents({...context.repo, branch, path:'fda-feeds.json', sha,
               message:'Refresh privacy-screened official FDA feeds', content:fs.readFileSync('/tmp/fda-feeds.json').toString('base64')});
       - name: Rebuild Vercel after snapshot publication
-        if: steps.refresh_gate.outputs.run == 'true'
+        id: publish
+        if: steps.managed.outputs.run == 'true'
         env:
           HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
         run: |
-          if [ -n "$HOOK" ]; then curl -fsS -X POST "$HOOK"; fi
+          if [ -n "$HOOK" ]; then curl -fsS -X POST "$HOOK"; else exit 1; fi
+      - name: Record managed collection outcome
+        if: always() && steps.managed.outputs.run == 'true'
+        env:
+          RUN_LEASE: ${{ steps.managed.outputs.lease }}
+          RUN_RESULT: ${{ steps.collect.outcome }}
+          PUBLICATION: ${{ steps.publish.outcome }}
+        run: node scripts/refresh-control.mjs finish updates

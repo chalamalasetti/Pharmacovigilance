@@ -29,6 +29,9 @@
     "api/clinical-trials.js": {
       "maxDuration": 30,
       "includeFiles": "{companies/manifest.json,companies/registry.json}"
+    },
+    "api/refresh-worker.js": {
+      "maxDuration": 30
     }
   },
   "headers": [
