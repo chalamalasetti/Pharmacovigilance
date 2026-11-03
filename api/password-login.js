@@ -21,6 +21,7 @@ export async function passwordLogin(req,res,{cfg=cloudConfig(),fetchImpl=fetch}=
   if(!lookup.ok)return send(503,{error:'User ID sign-in is temporarily unavailable. Try your email and password.'});
   const found=await lookup.json();
   if(!found.allowed)return send(429,{error:'Too many attempts. Try again later or sign in using your email.'});
+  if(found.approvalPending)return send(403,{error:"Sign-in is unavailable while administrator approval is pending or access has been declined."});
   if(found.pending){const check=await managedRpc('temporary',{alias,password},{cfg,fetchImpl});return check.valid?send(200,{changeRequired:true}):send(401,invalid);}
   // A fixed nonexistent address follows the same Auth path for unknown aliases.
   const auth=await fetchImpl(`${cfg.url}/auth/v1/token?grant_type=password`,{method:'POST',headers:{apikey:cfg.publicKey,'content-type':'application/json'},body:JSON.stringify({email:found.email??'unavailable@invalid.example',password}),signal:AbortSignal.timeout(10000)});

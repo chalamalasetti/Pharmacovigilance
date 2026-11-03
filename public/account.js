@@ -6,6 +6,7 @@ import * as workspace from "./workspace.js";
 import {callbackError} from "./auth-callback.js";
 const linkError=callbackError(location.href);
 import { el } from "./impact-view.js";
+import {showRecoveryCodes} from "./recovery-view.js";
 import * as cloud from "./cloud.js";
 import {PROFESSIONAL_ROLES,loginAlias,newPassword,passwordSignIn,emailSignIn} from "./account-auth.js";
 let recovery=false;
@@ -126,7 +127,7 @@ async function main() {
   }
 
   $("lede").textContent = "You're signed in.";
-  $("me-title").textContent = user.app_metadata?.pv_managed ? "Signed in" : `Signed in as ${user.email}`;
+  $("me-title").textContent = (user.app_metadata?.pv_managed || user.app_metadata?.pv_self_signup) ? "Signed in" : `Signed in as ${user.email}`;
   $("me").hidden = false;
   cloud.isAdmin().then((yes) => ($("admin-link").hidden = !yes));
   await setupProfile(sb,user);
@@ -164,6 +165,8 @@ async function main() {
 function roleOptions(id){$(id).replaceChildren(el('option',{value:''},'Choose a role (optional)'),...PROFESSIONAL_ROLES.map(r=>el('option',{value:r},r)));}
 function formAction(id,msg,fn){$(id).addEventListener('submit',async e=>{e.preventDefault();const button=e.target.querySelector('button[type="submit"]');button.disabled=true;try{await busy($(msg),fn);}finally{button.disabled=false;}});}
 function setupLogin(sb){
+ formAction('recover-form','recover-msg',async()=>{const password=newPassword($('recover-password').value,$('recover-confirm').value);if(password.length>72)throw Error('Use 12–72 characters.');await publicAccount('recover',{identifier:$('recover-id').value,code:$('recover-code').value,password});$('recover-form').reset();$('recover-msg').textContent='Password reset. This recovery code is now used. Sign in with your user ID and new password.';});
+ formAction('support-form','support-msg',async()=>{const r=await publicAccount('support',{identifier:$('support-id').value});$('support-msg').textContent=`Assistance request ${r.reference} received. No password was changed; identity verification is required.`;});
  formAction('first-password','signin-msg',async()=>{const password=newPassword($('first-new-password').value,$('first-new-confirm').value);if(password.length>72)throw Error('Use 12–72 characters.');const r=await fetch('/api/account-access',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'change',alias:$('login-id').value.trim().toLowerCase(),password:$('login-password').value,newPassword:password})});const result=await r.json();if(!r.ok)throw Error(result.error??'Password setup failed.');$('login-password').value='';$('first-new-password').value='';$('first-new-confirm').value='';$('first-password').hidden=true;$('signin-msg').textContent='Permanent password saved. Sign in above with your user ID and new password.';});
  formAction('signin-form','signin-msg',async()=>{await emailSignIn(sb,$('email').value,new URL('account.html',location.href).href);$('signin-msg').textContent='If this is an eligible existing account, check your email for the newest sign-in link. After signing in, use Account → Set or change password to set a password.';});
  formAction('password-login','signin-msg',async()=>{const result=await passwordSignIn(sb,$('login-id').value,$('login-password').value);if(result?.changeRequired){$('first-password').hidden=false;$('signin-msg').textContent='Temporary password verified. Choose a permanent password below before accessing PV Info.';return;}$('login-password').value='';location.reload();});
@@ -172,6 +175,7 @@ function setupLogin(sb){
 }
 async function setupProfile(sb,user){
  roleOptions('profile-role');let loaded=false;
+ $('generate-recovery').onclick=async e=>{if(!confirm('Generate a new set of recovery codes? All older codes will stop working.'))return;const who=user.id;e.target.disabled=true;try{const {data,error}=await sb.auth.getSession();if(error||data.session?.user?.id!==who)throw Error('Sign in again before generating recovery codes.');const r=await publicAccount('codes',{},data.session.access_token);if((await cloud.currentUser())?.id!==who)throw Error('Session changed; codes were not displayed.');showRecoveryCodes($('account-codes'),r.codes);$('codes-msg').textContent='New recovery codes created. Save them privately now.';}catch(err){$('codes-msg').textContent=err.message;}finally{e.target.disabled=false;}};
  try{const r=await sb.from('account_profiles').select('login_alias,professional_role').eq('user_id',user.id).maybeSingle();if(r.error)throw r.error;$('profile-alias').value=r.data?.login_alias??'';if(r.data?.login_alias)$('me-title').textContent=`Signed in as ${r.data.login_alias}`;$('profile-role').value=r.data?.professional_role??'';loaded=true;}catch{$('profile-msg').textContent='Account preferences could not load. Reload before editing.';}
  $('profile-form').querySelector('button').disabled=!loaded;
  formAction('profile-form','profile-msg',async()=>{if(!loaded)throw Error('Reload account preferences first.');const r=await sb.from('account_profiles').upsert({user_id:user.id,login_alias:loginAlias($('profile-alias').value,{optional:true}),professional_role:$('profile-role').value||null,updated_at:new Date().toISOString()});if(r.error)throw Error('Preferences could not be saved. That user ID may already be in use.');$('profile-msg').textContent='Saved. Your permissions have not changed.';});
@@ -180,3 +184,8 @@ async function setupProfile(sb,user){
  showRecovery();window.addEventListener('pv-auth-change',e=>{if(e.detail?.event==='PASSWORD_RECOVERY')showRecovery();if(e.detail?.event==='SIGNED_OUT')location.reload();});
 }
 main().catch(e=>{$('lede').textContent='Account could not load. Please refresh and try again.';});
+
+async function publicAccount(action,data,token){const r=await fetch('/api/self-account',{method:'POST',headers:{'content-type':'application/json',...(token?{authorization:`Bearer ${token}`}:{})},body:JSON.stringify({action,...data})});const b=await r.json();if(!r.ok)throw Error(b.error??'Account operation unavailable');return b;}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){$('account-codes')?.replaceChildren();}});
+
+window.addEventListener('pv-auth-change',e=>{if(e.detail?.event==='SIGNED_OUT')$('account-codes')?.replaceChildren();});

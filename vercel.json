@@ -38,6 +38,9 @@
     },
     "api/account-access.js": {
       "maxDuration": 60
+    },
+    "api/self-account.js": {
+      "maxDuration": 60
     }
   },
   "headers": [
