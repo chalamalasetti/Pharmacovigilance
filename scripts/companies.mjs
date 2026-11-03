@@ -33,12 +33,14 @@ export async function loadCompanies({ overlay = null } = {}) {
   try {
     registry = JSON.parse(await readFile(REGISTRY, "utf8"));
   } catch {}
+  let clinical = null;
+  try { clinical = JSON.parse(await readFile("public/data/clinical/index.json", "utf8")); } catch {}
   let names = new Map();
   try {
     const agencies = JSON.parse(await readFile(fileURLToPath(new URL("../public/data/agencies.json", import.meta.url)), "utf8"));
     names = new Map(agencies.map((a) => [a.code, a.country]));
   } catch {}
-  return { manifest, register, registry, idx: buildIndex(manifest, registry), countryName: (c) => names.get(c) ?? c, admin: adminSummary({ base, result, overlay }) };
+  return { manifest, register, registry, clinical, idx: buildIndex(manifest, registry), countryName: (c) => names.get(c) ?? c, admin: adminSummary({ base, result, overlay }) };
 }
 
 const slim = (m) => ({ id: m.id, lane: m.lane });
@@ -98,7 +100,7 @@ function coverage(c, products, registry) {
 }
 
 // The data for every page, as plain objects (written to disk by writeCompanyData).
-export function buildCompanyData({ manifest, register, registry, history, now = new Date().toISOString() }) {
+export function buildCompanyData({ manifest, register, registry, clinical, history, now = new Date().toISOString() }) {
   const byCompany = new Map(manifest.companies.map((c) => [c.id, []]));
   for (const p of registry?.products ?? []) byCompany.get(p.company)?.push(p);
   const related = new Map(manifest.companies.map((c) => [c.id, { updates: [], research: [] }]));
@@ -118,6 +120,7 @@ export function buildCompanyData({ manifest, register, registry, history, now = 
   for (const c of manifest.companies) {
     const products = byCompany.get(c.id);
     const cov = coverage(c, products, registry);
+    cov.clinical = clinical?.companies?.[c.id] ?? {status:"not-checked"};
     const r = related.get(c.id);
     const holders = new Map();
     for (const p of products) holders.set(`${p.src}|${p.holder}`, (holders.get(`${p.src}|${p.holder}`) ?? 0) + 1);
@@ -136,7 +139,7 @@ export function buildCompanyData({ manifest, register, registry, history, now = 
       ...(c.distinctFrom && { distinctFrom: c.distinctFrom.map((id) => ({ id, name: nameOf.get(id) ?? id })) }),
       ...(c.verify && { verify: c.verify }),
     };
-    index.push({ ...profile, coverage: { status: cov.status, products: cov.products, markets: cov.markets }, counts: counts(r.updates) });
+    index.push({ ...profile, coverage: { status: cov.status, products: cov.products, markets: cov.markets, clinical: cov.clinical }, counts: counts(r.updates) });
     files.set(c.id, {
       built: now,
       rules: MATCH_RULES,
