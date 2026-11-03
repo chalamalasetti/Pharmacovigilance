@@ -54,5 +54,6 @@ jobs:
           node test/browser/requirements.smoke.cjs
           node test/browser/baseline.smoke.cjs
           node test/browser/portfolio.smoke.cjs
+          node test/browser/clinical.smoke.cjs
           node test/browser/documents.smoke.cjs
           node test/browser/events.smoke.cjs

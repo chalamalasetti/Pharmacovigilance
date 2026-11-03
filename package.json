@@ -16,7 +16,8 @@
     "app": "node scripts/app.mjs",
     "start": "node scripts/app.mjs",
     "documents": "node scripts/documents.mjs",
-    "documents:probe": "node scripts/document-collector.mjs --probe"
+    "documents:probe": "node scripts/document-collector.mjs --probe",
+    "dev": "node scripts/app.mjs --no-open --no-refresh"
   },
   "engines": {
     "node": ">=22.13.0"

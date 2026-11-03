@@ -9,7 +9,7 @@ import { describePage } from "./seo.js";
 
 const $ = (id) => document.getElementById(id);
 const TABS = ["overview", "portfolio", "updates", "products", "research", "sources"];
-const DEFAULTS = { id: "", tab: "overview", scope: "relevant", corp: "", market: "", days: "", topic: "", official: "", pq: "", pmarket: "", pstatus: "", pstage: "" };
+const DEFAULTS = { id: "", tab: "overview", scope: "relevant", corp: "", market: "", days: "", topic: "", official: "", pq: "", pmarket: "", pstatus: "", pstage: "", pview: "", cq: "", cphase: "", cstatus: "", carea: "", ccountry: "", crole: "", cmedicine: "" };
 const PAGE = 50;
 const CATEGORIES = { safety: "Safety alerts & signals", recall: "Recalls & quality", label: "Label changes", guideline: "Guidelines & guidance", regulation: "Regulatory changes", policy: "Policy & strategy", inspection: "Inspections & enforcement", approval: "Approvals & authorisations", news: "Industry & science news" };
 const MARKETS = { US: "United States", EU: "European Union" };
