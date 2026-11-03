@@ -1,7 +1,7 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "reviewed": "2026-11-03",
-  "appRevision": "9460cd4",
+  "appRevision": "drug-name-resolver-v1",
   "chapters": [
     {
       "id": "getting-started",
@@ -170,6 +170,13 @@
       "group": "Read and explore",
       "audience": "Everyone",
       "summary": "Explore source-linked topic evidence, transparent phrase matches and company review routes."
+    },
+    {
+      "id": "drug-name-resolver",
+      "title": "Drug Name Resolver",
+      "group": "Read and explore",
+      "audience": "Everyone",
+      "summary": "Investigate one medicine name using RxNorm candidates, source evidence and private identification decisions."
     }
   ],
   "screens": {
@@ -210,6 +217,7 @@
     "substances.html": "substances",
     "substance.html": "substances",
     "labels.html": "label-intelligence",
-    "safety-topics.html": "safety-topics"
+    "safety-topics.html": "safety-topics",
+    "drug-resolver.html": "drug-name-resolver"
   }
 }

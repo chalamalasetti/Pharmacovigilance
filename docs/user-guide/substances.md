@@ -36,3 +36,7 @@ Naming rules are versioned editorial configuration in the repository for this re
 ## Related review workflows
 
 Use [Label Intelligence](label-intelligence.md) for captured safety wording and [Safety Topic Explorer](safety-topics.md) for topic evidence across labels, updates and research. Neither view turns a public ingredient relationship into company applicability automatically. Continue through [Company Briefing](company-briefing.md), [Change Inbox](company-change-inbox.md) and [Action Center](action-center.md) for private decisions and actions.
+
+## Resolve a reported medicine name
+
+Select **Resolve a medicine name** in the directory or ingredient page. The [Drug Name Resolver](drug-name-resolver.md) uses US-focused RxNorm candidates and structured source details; it does not silently merge ingredient identities. Approved users may save private reviewer decisions without changing company portfolios or shared naming rules.

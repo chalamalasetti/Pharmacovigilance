@@ -18,6 +18,7 @@ PV Info brings public pharmacovigilance updates, research, company product evide
 | --- | --- |
 | Monitor safety and regulatory news | [Updates and discovery](updates-and-discovery.md), [My PV Briefing](personal-briefing.md) |
 | Explore company products and studies | [Company portfolios](company-portfolios.md), [Company Briefing](company-briefing.md) |
+| Identify a reported medicine name | [Drug Name Resolver](drug-name-resolver.md) |
 | Search an ingredient and its products | [Substance Explorer](substances.md) |
 | Review safety wording and company impact | [Label Intelligence](label-intelligence.md), [Change Inbox](company-change-inbox.md), [Action Center](action-center.md) |
 | Investigate a safety topic across sources | [Safety Topics](safety-topics.md), [Research](research.md) |
@@ -37,7 +38,7 @@ PV Info brings public pharmacovigilance updates, research, company product evide
 ## Navigation and guide conventions
 Menus are grouped by default into Updates, My Briefing, Explore and Resources. Administrators can rename groups, move items and hide optional links. The page names and direct links in this guide remain useful when your menu labels differ. Controls that depend on a selected record may appear only after you select it. A hidden menu entry does not replace access control.
 
-This guide describes the implemented application, not proposed backlog features. It was reviewed against the main-branch Safety Topic Explorer release (9460cd4), including Substance Explorer and Label Intelligence on 3 November 2026. Actual data coverage and review status are shown inside the app. The guide is not evidence that the application is validated for a regulated intended use.
+This guide describes the implemented application, not proposed backlog features. It was reviewed against the Drug Name Resolver release, including Substance Explorer, Label Intelligence and Safety Topic Explorer on 3 November 2026. Actual data coverage and review status are shown inside the app. The guide is not evidence that the application is validated for a regulated intended use.
 
 ## Keep work appropriate for this app
 Use organizational descriptions. Do not enter patient narratives, dates of birth, personal addresses, phone/fax numbers or credentials into searches, public annotations, requirement text, evidence links or support messages. Where a workflow explicitly requests an owner/reviewer email, enter only the authorized work identifier. Never publish passwords, recovery keys, temporary passwords or private assessment exports in GitHub issues.
