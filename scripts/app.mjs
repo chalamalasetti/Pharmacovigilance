@@ -12,9 +12,14 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { aggregate } from "./aggregate.mjs";
 import sourceTest from "../api/source-test.js";
+import clinicalTrials from "../api/clinical-trials.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../public");
-const PORT = Number(process.env.PORT) || 4330;
+const portArg = process.argv.indexOf('--port');
+const hostArg = process.argv.indexOf('--host');
+const PORT = Number(process.env.PORT ?? (portArg >= 0 ? process.argv[portArg + 1] : 4330));
+const HOST = hostArg >= 0 ? process.argv[hostArg + 1] : '127.0.0.1';
+if (!Number.isInteger(PORT) || PORT < 1024 || PORT > 65535 || !['127.0.0.1','0.0.0.0'].includes(HOST)) throw Error('Invalid development host or port');
 const REFRESH_MS = 60 * 60 * 1000;
 
 const TYPES = {
@@ -38,6 +43,7 @@ export const server = http.createServer(async (req, res) => {
   }
   // The Vercel function behind Admin → Data sources → Test now, served the same way here.
   if (urlPath === "/api/source-test") return sourceTest(req, res);
+  if (urlPath === "/api/clinical-trials") return clinicalTrials(req, res);
   const file = path.join(ROOT, urlPath.endsWith("/") ? urlPath + "index.html" : urlPath);
   if (!file.startsWith(ROOT + path.sep)) {
     res.writeHead(403).end();
@@ -82,7 +88,7 @@ server.on("error", (e) => {
   throw e;
 });
 
-server.listen(PORT, "127.0.0.1", async () => {
+server.listen(PORT, HOST, async () => {
   const url = `http://localhost:${PORT}/`;
   console.log(`PV Info is running at ${url}  (Ctrl+C to stop)`);
   if (!process.argv.includes("--no-refresh")) await refresh();
