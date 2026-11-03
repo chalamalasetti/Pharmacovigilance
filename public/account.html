@@ -61,42 +61,21 @@
     <section class="profile account-card" id="signin" hidden aria-label="Sign in">
       <p class="account-eyebrow">YOUR PRIVATE WORKSPACE</p>
       <h2>Welcome to PV Info</h2>
-      <p class="hint">Use an email or a user ID you choose. No real name is needed.</p>
-      <div class="row account-modes" aria-label="Account options">
-        <button type="button" data-auth-mode="login" aria-pressed="true">Sign in</button>
-        <button type="button" data-auth-mode="signup" aria-pressed="false">Create account</button>
-        <button type="button" data-auth-mode="recovery" aria-pressed="false">Forgot password?</button>
-      </div>
+      <p class="hint">Sign in with your user ID and password. No real name is needed.</p>
       <form id="password-login" class="imp-form">
-        <label>Email or user ID <input id="login-id" required maxlength="254" autocomplete="username" autocapitalize="none" spellcheck="false"></label>
+        <label>User ID <input id="login-id" required maxlength="254" autocomplete="username" autocapitalize="none" spellcheck="false" aria-describedby="legacy-login-hint"></label>
+        <p class="hint" id="legacy-login-hint">Existing accounts can use their account email as the user ID until an alias is saved. This sends no email.</p>
         <label>Password <input type="password" id="login-password" required maxlength="1024" autocomplete="current-password"></label>
         <button type="submit" class="primary">Sign in securely</button>
       </form>
-      <form id="signup-form" class="imp-form" hidden>
-        <label>Email for confirmation and recovery <input type="email" id="signup-email" required maxlength="254" autocomplete="email"></label>
-        <label>Choose a user ID <input id="signup-alias" required minlength="3" maxlength="32" autocomplete="username" autocapitalize="none" spellcheck="false" pattern="[a-zA-Z0-9][a-zA-Z0-9._-]{2,31}"></label>
-        <p class="hint">Use an alias, not your real name. IDs are case insensitive.</p>
-        <label>Password <input type="password" id="signup-password" required minlength="12" maxlength="1024" autocomplete="new-password"></label>
-        <label>Confirm password <input type="password" id="signup-confirm" required minlength="12" maxlength="1024" autocomplete="new-password"></label>
-        <label>Professional role (optional) <select id="signup-role" aria-label="Professional role (optional)"></select></label>
-        <p class="hint">Your professional role is a preference. It does not grant admin or approval permissions.</p>
-        <button type="submit" class="primary">Create account</button>
-      </form>
-      <form id="recovery-form" class="imp-form" hidden>
-        <p>Already use email links? Recover using the same email to set a password and keep your existing work.</p>
-        <label>Account email <input type="email" id="recovery-email" required maxlength="254" autocomplete="email"></label>
-        <button type="submit" class="primary">Send password reset email</button>
-      </form>
-      <details id="magic-option"><summary>Prefer an email sign-in link?</summary>
-        <form id="signin-form" class="imp-form"><label>Email <input type="email" id="email" required autocomplete="email"></label><button type="submit">Email me a sign-in link</button></form>
-      </details>
+      <p class="hint">Email sign-in links, self-service registration and email password recovery are temporarily unavailable. Contact the site administrator if you need account access.</p>
       <p class="hint" id="signin-msg" role="status" aria-live="polite"></p>
     </section>
 
     <section class="profile" id="me" hidden aria-label="Your account">
       <h2 id="me-title">Signed in</h2>
       <p class="hint" id="sync-msg" role="status"></p>
-      <p class="hint">Use an alias instead of a real name. Email supports sign-in and recovery. Your professional role never grants access permissions.</p>
+      <p class="hint">Use an alias instead of a real name. Password sign-in is active; email-based access is temporarily unavailable. Your professional role never grants access permissions.</p>
       <form id="profile-form" class="imp-form">
         <label>User ID (optional) <input id="profile-alias" maxlength="32" autocomplete="username" autocapitalize="none" spellcheck="false"></label>
         <label>Professional role (optional) <select id="profile-role" aria-label="Profile professional role"></select></label>

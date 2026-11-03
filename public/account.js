@@ -121,7 +121,7 @@ async function main() {
       : "Sign in to keep your briefing profile, groups and actions on every device, and to share a review queue with your team.";
     $("signin").hidden = false;
     setupLogin(sb);
-    if(linkError){document.querySelector('[data-auth-mode="recovery"]').click();$("signin-msg").textContent=linkError;history.replaceState(null,"","account.html");}
+    if(linkError){$("signin-msg").textContent=linkError;history.replaceState(null,"","account.html");}
     return;
   }
 
@@ -164,12 +164,7 @@ async function main() {
 function roleOptions(id){$(id).replaceChildren(el('option',{value:''},'Choose a role (optional)'),...PROFESSIONAL_ROLES.map(r=>el('option',{value:r},r)));}
 function formAction(id,msg,fn){$(id).addEventListener('submit',async e=>{e.preventDefault();const button=e.target.querySelector('button[type="submit"]');button.disabled=true;try{await busy($(msg),fn);}finally{button.disabled=false;}});}
 function setupLogin(sb){
- roleOptions('signup-role');
- document.querySelectorAll('[data-auth-mode]').forEach(button=>button.onclick=()=>{const mode=button.dataset.authMode;for(const [id,key]of [['password-login','login'],['signup-form','signup'],['recovery-form','recovery']])$(id).hidden=key!==mode;document.querySelectorAll('[data-auth-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));$('signin-msg').textContent='';});
  formAction('password-login','signin-msg',async()=>{await passwordSignIn(sb,$('login-id').value,$('login-password').value);$('login-password').value='';location.reload();});
- formAction('signup-form','signin-msg',async()=>{const password=newPassword($('signup-password').value,$('signup-confirm').value),alias=loginAlias($('signup-alias').value);const r=await sb.auth.signUp({email:$('signup-email').value.trim(),password,options:{emailRedirectTo:new URL('account.html',location.href).href,data:{login_alias:alias,professional_role:$('signup-role').value||null}}});if(r.error)throw Error('Could not create the account. Try another user ID, or recover your existing account using your email.');$('signup-password').value='';$('signup-confirm').value='';if(r.data.session)location.reload();else $('signin-msg').textContent='Check your email to confirm the account, then sign in. If you already have an account, use password recovery.';});
- formAction('recovery-form','signin-msg',async()=>{const r=await sb.auth.resetPasswordForEmail($('recovery-email').value.trim(),{redirectTo:new URL('account.html',location.href).href});if(r.error)throw Error(r.error.status===429?'Too many email requests. Wait a few minutes before requesting one new reset email.':'Recovery email could not be requested. Please try again later.');$('signin-msg').textContent='If this email has an eligible account, you will receive a password reset link. Check your spam folder too.';});
- formAction('signin-form','signin-msg',async()=>{await cloud.signIn($('email').value.trim());$('signin-msg').textContent='Check your email for a sign-in link.';});
  // Defer navigation until the SDK releases its Auth callback lock.
  window.addEventListener('pv-auth-change',e=>{if(e.detail?.event==='PASSWORD_RECOVERY'||e.detail?.event==='SIGNED_IN')setTimeout(()=>location.reload(),0);});
 }
@@ -178,7 +173,7 @@ async function setupProfile(sb,user){
  try{const r=await sb.from('account_profiles').select('login_alias,professional_role').eq('user_id',user.id).maybeSingle();if(r.error)throw r.error;$('profile-alias').value=r.data?.login_alias??'';$('profile-role').value=r.data?.professional_role??'';loaded=true;}catch{$('profile-msg').textContent='Account preferences could not load. Reload before editing.';}
  $('profile-form').querySelector('button').disabled=!loaded;
  formAction('profile-form','profile-msg',async()=>{if(!loaded)throw Error('Reload account preferences first.');const r=await sb.from('account_profiles').upsert({user_id:user.id,login_alias:loginAlias($('profile-alias').value,{optional:true}),professional_role:$('profile-role').value||null,updated_at:new Date().toISOString()});if(r.error)throw Error('Preferences could not be saved. That user ID may already be in use.');$('profile-msg').textContent='Saved. Your permissions have not changed.';});
- formAction('set-password','password-msg',async()=>{const password=newPassword($('new-password').value,$('new-password-confirm').value);const r=await sb.auth.updateUser({password});if(r.error)throw Error(r.error.code==='same_password'?'Choose a different new password.':'Password could not be changed. Request a fresh recovery email and try again.');$('new-password').value='';$('new-password-confirm').value='';try{sessionStorage.removeItem('pv-password-recovery');}catch{}recovery=false;$('password-msg').textContent='Password updated. You can now sign in with your email or saved user ID.';});
+ formAction('set-password','password-msg',async()=>{const password=newPassword($('new-password').value,$('new-password-confirm').value);const r=await sb.auth.updateUser({password});if(r.error)throw Error(r.error.code==='same_password'?'Choose a different new password.':'Password could not be changed. Contact the site administrator for account recovery.');$('new-password').value='';$('new-password-confirm').value='';try{sessionStorage.removeItem('pv-password-recovery');}catch{}recovery=false;$('password-msg').textContent='Password updated. You can now sign in with your email or saved user ID.';});
  const showRecovery=()=>{let flag=recovery;try{flag ||= sessionStorage.getItem('pv-password-recovery')==='1';}catch{}if(flag){$('password-settings').open=true;$('password-msg').textContent='Recovery link accepted. Choose a new password below.';$('password-settings').scrollIntoView({block:'center'});}};
  showRecovery();window.addEventListener('pv-auth-change',e=>{if(e.detail?.event==='PASSWORD_RECOVERY')showRecovery();if(e.detail?.event==='SIGNED_OUT')location.reload();});
 }
