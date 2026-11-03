@@ -163,6 +163,13 @@
       "group": "Reference",
       "audience": "Everyone",
       "summary": "Use consistent terms and locate every current page, including contextual and administrator screens."
+    },
+    {
+      "id": "safety-topics",
+      "title": "Safety Topic Explorer",
+      "group": "Read and explore",
+      "audience": "Everyone",
+      "summary": "Explore source-linked topic evidence, transparent phrase matches and company review routes."
     }
   ],
   "screens": {
@@ -202,6 +209,7 @@
     "status.html": "admin-operations",
     "substances.html": "substances",
     "substance.html": "substances",
-    "labels.html": "label-intelligence"
+    "labels.html": "label-intelligence",
+    "safety-topics.html": "safety-topics"
   }
 }

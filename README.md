@@ -75,7 +75,7 @@ node scripts/aggregate.mjs --fixtures test/fixtures   # sample data, no network
 
 ## User Guide
 
-[Open the searchable User Guide](https://www.pvinfo.org/user-guide.html) or [browse the versioned GitHub wiki-style pages](docs/user-guide/README.md). The 23 chapters cover every current screen, account approval/recovery, public discovery, company/clinical portfolios, baseline and change review, private actions/closure, calendar downloads and administrator operations. Use **Resources → User Guide**, full-text search, audience filters or **Read complete guide → Print / save as PDF**. Source chapters and the rendered in-app guide are maintained together with `npm run guide`; no Markdown attachments are added to app workflows.
+[Open the searchable User Guide](https://www.pvinfo.org/user-guide.html) or [browse the versioned GitHub wiki-style pages](docs/user-guide/README.md). The 24 chapters cover every current screen, account approval/recovery, public discovery, company/clinical portfolios, baseline and change review, private actions/closure, calendar downloads and administrator operations. Use **Resources → User Guide**, full-text search, audience filters or **Read complete guide → Print / save as PDF**. Source chapters and the rendered in-app guide are maintained together with `npm run guide`; no Markdown attachments are added to app workflows.
 
 ## Hosting
 
@@ -359,3 +359,7 @@ Explore → Label Intelligence presents captured FDA SrLC entries with regulator
 Previous wording is never reconstructed from underlining. Earlier FDA label links may skip intervening revisions. EMA index-only records require original wording review. Source corrections create new immutable evidence fingerprints; assessments pin the reviewed version and retain existing decisions. Approved users confirm source review, select a confirmed company scope, document a rationale and open a private/team Action Center case. Matching entries also appear in Company Change Inbox. Assessment exports include the pinned source record. No paid AI extraction or API is required.
 
 See [Label Change Intelligence guide](docs/user-guide/label-intelligence.md).
+
+### Safety Topic Explorer
+
+Public `safety-topics.html` connects 12 editorial safety topics to collected updates, label changes and research. Filterable publication timelines explain phrase matches and retain original-source links. Label and paper routes preserve existing review workflows; no automatic assessments or clinical causality claims. Rules are versioned in `public/safety-topics-lib.js`; no licensed dictionary content or paid model API is required. See [the user guide](docs/user-guide/safety-topics.md).
