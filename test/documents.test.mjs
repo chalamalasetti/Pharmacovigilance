@@ -32,3 +32,9 @@ test('governed bullet clauses and exceptions survive extraction, including adjac
  const r=extractCandidates(ps);assert.equal(r.candidates.length,6);assert.match(r.candidates[1].context,/List governed by/);assert.match(r.candidates[1].anchor,/training/);assert.match(r.candidates.at(-1).statement,/unless an exemption/);assert.ok(!JSON.stringify(r).includes('role@'));assert.equal(r.limited,true);assert.equal(new Set(r.candidates.map(c=>c.anchor)).size,6);
  const pdf=extractCandidates([{anchor:'page-1-a',text:'The system shall cover the following activities:'},{anchor:'page-1-b',text:'• monitoring and evaluating documented quality controls'},{anchor:'page-1-c',text:'• correcting and improving processes where necessary'}]);assert.equal(pdf.candidates.length,3);assert.match(pdf.candidates[2].context,/system shall/);
 });
+
+test('source discovery combines topic, lifecycle, type and publication dates without inventing missing dates',()=>{
+ const docs=[{id:'a',title:'Clinical source',country:'US',agency:'FDA',status:'active',topic:'Reporting',lifecycle:'Both',norm:'Regulation',published_on:'2026-02-01'},{id:'b',title:'Undated source',country:'US',agency:'FDA',status:'active',topic:'Reporting',lifecycle:'Clinical',norm:'Guidance',published_on:null}];
+ assert.deepEqual(filterDocuments(docs,{topic:'Reporting',lifecycle:'Clinical',type:'Regulation',from:'2026-01-01',to:'2026-03-01'}).map(d=>d.id),['a']);
+ assert.equal(filterDocuments(docs,{from:'2026-03-01'}).length,0);
+});
