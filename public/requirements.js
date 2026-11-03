@@ -41,6 +41,7 @@ function renderDetail(){
  compareBox,el('details',{class:'req-section'},el('summary',{},`Version timeline (${h.length})`),...h.map(v=>el('div',{class:'req-history'},el('button',{class:'act',type:'button',onclick:()=>select(v.id)},`v${v.revision} · ${v.review_status} · ${v.body.source_edition}`),el('p',{class:'hint'},`Captured ${v.created_at} · Applies from ${v.body.valid_from||'unknown'} · Reviewed ${v.reviewed_at||'not yet'}`)))),assessmentPanel(r),admin?reviewPanel(r):null);
 }
 function assessmentPanel(r){
+ if(C.pendingSession?.()||C.restrictedUser?.(C.team.me))return el('p',{class:'req-notice'},'Company assessments require approval. ',el('a',{href:'account-status.html'},'View approval status & messages'));
  if(r.review_status!=='approved')return el('p',{class:'req-notice'},'Approve this interpretation before opening a formal company assessment, or review its source change in Regulatory Change Review.');
  const portfolios=Object.values(ws.companyPortfolios??{}).filter(p=>p.confirmedAt),co=el('select',{'aria-label':'Company portfolio'},el('option',{value:''},'Choose a confirmed company portfolio'),...portfolios.map(p=>el('option',{value:p.companyId},p.companyName)));
  const destination=el('select',{'aria-label':'Assessment destination'},el('option',{value:'personal'},'My private workspace'),...C.team.list.map(t=>el('option',{value:t.id},`Team: ${t.name}`)));
@@ -86,7 +87,7 @@ async function editor(r=null){
 }
 async function load(){
  try{
- sb=await C.client();if(!sb)throw Error('Cloud connection is not configured.');try{await loadCatalog(sb);}catch{}let all=[];
+ sb=await (C.publicClient??C.client)();if(!sb)throw Error('Cloud connection is not configured.');try{await loadCatalog(sb);}catch{}let all=[];
  for(let start=0;start<20000;start+=1000){const {data,error}=await sb.from('pv_requirement_versions').select('*').order('requirement_key').order('revision').range(start,start+999);if(error)throw error;all.push(...data);if(data.length<1000)break;if(start===19000)throw Error('Library exceeds the current loading limit.');}
  rows=all;live=true;msg('Live library · source editions and review states loaded from the database. No automatic legal approval.');
  }catch{rows=(await fetch('data/requirements.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Starter file unavailable.');return r.json();})).versions;live=false;msg('Live library unavailable. Showing the initial unapproved starter set. Newer versions and reviews may be missing; do not use this copy as a current baseline.',true);}

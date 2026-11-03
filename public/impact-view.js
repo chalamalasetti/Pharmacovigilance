@@ -3,6 +3,7 @@
 // and the archive. When the reader is in a team, assessments, assignments and
 // dismissals also go to the team's shared queue (cloud.js).
 
+import * as C from "./cloud.js";
 import { impactCard, cardText, DATE_LABELS } from "./impact.js";
 import { ASSESSMENT, DISMISS_REASONS, item, update, reviewStatus, snapshot } from "./workspace.js";
 import { team, teamAction, teamSummary } from "./cloud.js";
@@ -78,6 +79,7 @@ export function impactSection(u, ctx) {
   const actions = el("div", { class: "imp-actions" });
 
   const change = (patch) => {
+    if(C.pendingSession?.()){panel.replaceChildren(el('p',{class:'hint'},'Approval is required to save personal or team work. ',el('a',{href:'account-status.html'},'View approval status & messages')));return;}
     // Keep a copy of the update so saved and assigned work outlives the 60-day feed.
     update(ctx.ws, u.id, { ...patch, snapshot: snapshot(u) });
     if (!Object.keys(rec()).some((k) => k !== "snapshot")) update(ctx.ws, u.id, { snapshot: null });
@@ -94,6 +96,7 @@ export function impactSection(u, ctx) {
   };
 
   function form(kind) {
+    if(C.pendingSession?.())return el('p',{class:'hint'},'Approval is required for assessments and assignments. ',el('a',{href:'account-status.html'},'View approval status & messages'));
     const r = rec();
     if (kind === "assess") {
       const status = el("select", { "aria-label": "Assessment" }, ASSESSMENT.map((a) => el("option", { value: a.id, selected: r.assess?.status === a.id }, a.label)));

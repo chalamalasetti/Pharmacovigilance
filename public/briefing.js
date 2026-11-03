@@ -1,3 +1,4 @@
+import {approvalRequired} from './approval-gate.js';
 // My PV Briefing: a short daily view of the updates that matter to one reader,
 // picked by their view (audience), countries, topics and watchlist, each with an
 // impact card. Each view leads with its own sections (views.js); readers switch
@@ -453,6 +454,7 @@ function wire() {
 }
 
 async function main() {
+  if(await approvalRequired('My Briefing'))return;
   wire();
   try {
     const res = await fetch("data/updates.json", { cache: "no-cache" });

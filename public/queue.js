@@ -1,3 +1,4 @@
+import {approvalRequired} from './approval-gate.js';
 // Team queue: the active team's shared review queue (what teammates assessed,
 // assigned or dismissed, by tab), each update with its impact card, and the audit
 // trail of every change. Needs sign-in and a team; see account.html.
@@ -105,6 +106,7 @@ async function renderLog() {
 }
 
 async function main() {
+  if(await approvalRequired('Team queue'))return;
   if (!(await cloud.client())) {
     $("lede").textContent = "Team queues need the site's database, which isn't connected yet. Your own work is under My Briefing → My work.";
     return;

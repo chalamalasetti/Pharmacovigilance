@@ -156,7 +156,7 @@ function feedbackForm(kind, r = null) {
     const v = Object.fromEntries(new FormData(form));
     if (v.website) return; // filled in only by bots
     status.textContent = "Sending…";
-    const sb = await cloud.client();
+    const sb = await (cloud.publicClient??cloud.client)();
     if (!sb) return void (status.textContent = "Messages can't be sent from this copy of the site, because it was built without the database.");
     const { error } = await sb.rpc("submit_resource_feedback", { kind, resource_id: r?.id ?? null, name: v.name ?? "", url: v.url ?? "", message: v.message ?? "", contact: v.contact ?? "" });
     if (error) return void (status.textContent = error.message);
@@ -245,7 +245,7 @@ async function main() {
   data = res;
   render();
   // Favorites follow a signed-in reader across devices; everyone else keeps them in this browser.
-  if (await cloud.client()) {
+  if (await (cloud.publicClient??cloud.client)()) {
     cloud.team.me = await cloud.startSync(ws, render);
     cloud.markNav();
   }

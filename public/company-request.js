@@ -20,6 +20,7 @@ async function main() {
   if (!sb) return;
   $("request-sec").hidden = false;
   const user = await cloud.currentUser();
+  if(cloud.restrictedUser?.(user)){$("request-lede").replaceChildren('Browse the public company directory now. Company requests require approval. ',el('a',{href:'account-status.html'},'View approval status & messages'));return;}
   if (!user) {
     $("request-lede").replaceChildren("The list covers large and regional groups first. ", el("a", { href: "account.html" }, "Sign in"), " to ask for a company to be added.");
     return;
