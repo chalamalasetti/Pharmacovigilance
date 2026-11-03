@@ -18,6 +18,7 @@ begin
  select count(*) into n from public.pv_baseline_drafts where document_version_id=v.id;if n<>1 then raise exception 'Duplicate draft';end if;
  begin perform public.admin_advance_baseline_draft(d.id,1,'publish',null,'Attempt','SYNTHETIC-AUTO',null,true);raise exception 'Draft skipped review';exception when others then if sqlerrm<>'Submit for review before publishing' then raise;end if;end;
  begin perform public.admin_advance_baseline_draft(d.id,1,'save',d.body||'{"source_edition":"Wrong edition"}');raise exception 'Pinned source changed';exception when others then if sqlerrm<>'Keep captured source identity pinned' then raise;end if;end;
+ begin perform public.admin_advance_baseline_draft(d.id,null,'submit');raise exception 'Missing revision accepted';exception when others then if sqlerrm<>'Draft changed. Reload before saving' then raise;end if;end;
  body:=d.body||'{"statement":"The sponsor should retain documented, controlled procedures."}';
  d:=public.admin_advance_baseline_draft(d.id,1,'save',body);
  begin perform public.admin_advance_baseline_draft(d.id,1,'submit');raise exception 'Stale revision accepted';exception when others then if sqlerrm<>'Draft changed. Reload before saving' then raise;end if;end;
