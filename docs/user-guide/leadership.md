@@ -8,7 +8,7 @@ Choose a confirmed company and My private account or an authorized team. Market 
 
 ## Configure my watch
 
-Select safety topics and functional review interests, then Save my safety watch. Products and markets come from the confirmed portfolio, not a duplicate product list. Topic phrases match only evidence already scoped to that portfolio or the applicable jurisdiction watch. Negative findings and background mentions can match; inspect the excerpt. Functions are suggested review interests, not assignments or assumptions about installed Argus, Veeva or ARISg configurations.
+Select safety topics and functional review interests, then Save my safety watch. Products and markets come from the confirmed portfolio, not a duplicate product list. Topic phrases match only evidence already scoped to that portfolio or the applicable jurisdiction watch. Available original update summaries and research abstracts enrich existing matches without adding unrelated medicines or changing case identities. When these are unavailable, the title and captured match context are used. Negative findings and background mentions can match; inspect the excerpt. Functions are suggested review interests, not assignments or assumptions about installed Argus, Veeva or ARISg configurations.
 
 Watch preferences are stored privately in the database. A server revision prevents a stale tab from overwriting a newer save. On conflict, keep your selections, reload and compare before retrying. With no selected topics the cockpit still shows portfolio evidence and open work; it does not claim all risks are covered.
 
