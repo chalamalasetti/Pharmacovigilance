@@ -50,7 +50,7 @@ export function assessmentKey(item, portfolio) {
 export function assessmentHandoff(item, portfolio, now = new Date().toISOString()) {
   if (!portfolio?.confirmedAt || !item.confirmedProducts?.length) throw new Error('Confirm portfolio and matching products first.');
   const paper = item.kind === 'paper';
-  const link = paper ? new URL(`paper.html?id=${encodeURIComponent(item.paper)}`, 'https://pharmacovigilance-info.vercel.app/').href : item.link;
+  const link = paper ? new URL(`paper.html?id=${encodeURIComponent(item.paper)}`, 'https://www.pvinfo.org/').href : item.link;
   if (!/^https?:\/\//i.test(link ?? '')) throw new Error('Original evidence link is missing.');
   return {
     id: assessmentKey(item,portfolio), title: item.title, link,

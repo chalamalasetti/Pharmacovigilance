@@ -32,6 +32,9 @@
     },
     "api/refresh-worker.js": {
       "maxDuration": 30
+    },
+    "api/password-login.js": {
+      "maxDuration": 30
     }
   },
   "headers": [
@@ -58,5 +61,18 @@
       ]
     }
   ],
-  "ignoreCommand": "node scripts/ignore-build.mjs"
+  "ignoreCommand": "node scripts/ignore-build.mjs",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "pharmacovigilance-info.vercel.app"
+        }
+      ],
+      "destination": "https://www.pvinfo.org/:path*",
+      "permanent": true
+    }
+  ]
 }

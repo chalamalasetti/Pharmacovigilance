@@ -12,6 +12,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { aggregate } from "./aggregate.mjs";
 import sourceTest from "../api/source-test.js";
+import passwordLogin from "../api/password-login.js";
 import clinicalTrials from "../api/clinical-trials.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../public");
@@ -43,6 +44,7 @@ export const server = http.createServer(async (req, res) => {
   }
   // The Vercel function behind Admin → Data sources → Test now, served the same way here.
   if (urlPath === "/api/source-test") return sourceTest(req, res);
+  if (urlPath === "/api/password-login") return passwordLogin(req, res);
   if (urlPath === "/api/clinical-trials") return clinicalTrials(req, res);
   const file = path.join(ROOT, urlPath.endsWith("/") ? urlPath + "index.html" : urlPath);
   if (!file.startsWith(ROOT + path.sep)) {

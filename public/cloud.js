@@ -10,12 +10,22 @@ const SUPABASE_JS = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+
 const ARCHIVE_COLUMNS = "id,title,link,summary,source,kind,country,region,agency,category,tags,priority,published,retrieved";
 
 let clientP = null;
+let authUser = null;
+let authKnown = false;
 export function client() {
   clientP ??= (async () => {
     const cfg = await fetch("config.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
     if (!cfg.supabaseUrl || !cfg.supabaseKey) return null;
     const { createClient } = await import(SUPABASE_JS);
-    return createClient(cfg.supabaseUrl, cfg.supabaseKey);
+    const sb = createClient(cfg.supabaseUrl, cfg.supabaseKey);
+    // Synchronous callback: never await Auth/database calls inside this SDK lock.
+    sb.auth.onAuthStateChange((event,session)=>{
+      authUser=session?.user??null;authKnown=true;
+      if(event==='PASSWORD_RECOVERY'){try{sessionStorage.setItem('pv-password-recovery','1');}catch{}}
+      team.me=authUser;markNav();
+      window.dispatchEvent(new CustomEvent('pv-auth-change',{detail:{event}}));
+    });
+    return sb;
   })().catch((e) => {
     console.warn("PV Info database unavailable:", e);
     return null;
@@ -27,7 +37,8 @@ export async function currentUser() {
   const sb = await client();
   if (!sb) return null;
   const { data } = await sb.auth.getSession();
-  return data.session?.user ?? null;
+  authUser=data.session?.user??null;authKnown=true;
+  return authUser;
 }
 
 // Whether the signed-in reader is an app admin (supabase/schema.sql: research_admins).
@@ -51,6 +62,7 @@ export async function signOut() {
   const sb = await client();
   const result = await sb?.auth.signOut();
   if (result?.error) throw result.error;
+  try{sessionStorage.removeItem("pv-password-recovery");}catch{}
 }
 
 // ── Workspace sync ───────────────────────────────────────────────────────────
@@ -93,6 +105,7 @@ export async function startSync(ws, onChange) {
   const user = await currentUser();
   if (!user) return null;
   const run = async (fn) => {
+    if(authKnown && authUser?.id!==user.id)return;
     setSync("syncing");
     try {
       await fn();
@@ -291,11 +304,12 @@ export async function archiveStats() {
 // Keeps account identity out of the header; signed-in readers can sign out directly.
 // The team link still shows the number of open items assigned to them.
 export function markNav() {
+  const me=authKnown?authUser:team.me;
   const acct = document.querySelector('[data-nav="account"]');
   if (acct) {
-    acct.textContent = team.me ? "Sign out" : "Sign in";
+    acct.textContent = me ? "Sign out" : "Sign in";
     acct.title = "";
-    acct.onclick = team.me ? async (event) => {
+    acct.onclick = me ? async (event) => {
       event.preventDefault();
       if (acct.getAttribute("aria-busy") === "true") return;
       acct.setAttribute("aria-busy", "true");

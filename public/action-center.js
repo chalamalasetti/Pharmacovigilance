@@ -10,6 +10,7 @@ const link=(url,label)=>el('a',{href:url,target:'_blank',rel:'noopener noreferre
 const ws=W.load();const LOCAL='pv-company-action-cases-v1';
 let user=null,sb=null,rows=[],selected=null,scope='local',busy=false,local={},loadGeneration=0,query={company:'',market:'',status:'all',q:''};
 const params=new URLSearchParams(location.search),incoming=params.get('item');
+query.company=params.get('company')??'';
 try{local=JSON.parse(localStorage.getItem(LOCAL)||'{}');if(!local||Array.isArray(local))local={};}catch{}
 const announce=(msg,bad=false)=>{$('notice').textContent=msg;$('notice').className=bad?'warn':'hint';};
 const teamMode=()=>scope!=='personal'&&scope!=='local';

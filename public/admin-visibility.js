@@ -35,6 +35,7 @@ export function watchAdmin({
   };
   document.addEventListener("visibilitychange", visibility);
   window.addEventListener("storage", storage);
+  window.addEventListener("pv-auth-change",refresh);
   window.addEventListener("pageshow", refresh);
   refresh();
   return () => {
@@ -42,6 +43,7 @@ export function watchAdmin({
     hide();
     document.removeEventListener("visibilitychange", visibility);
     window.removeEventListener("storage", storage);
+    window.removeEventListener("pv-auth-change",refresh);
     window.removeEventListener("pageshow", refresh);
   };
 }
