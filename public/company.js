@@ -1,3 +1,4 @@
+import {portfolioView} from './portfolio-view.js';
 // One company's public page: Overview, Related updates, Products & markets, Research,
 // and Sources & coverage, from data/companies/<id>.json. The tab and filters live in
 // the URL so a view can be shared. Public data only: nothing here reads a team or sign-in.
@@ -7,8 +8,8 @@ import * as C from "./companies-lib.js";
 import { describePage } from "./seo.js";
 
 const $ = (id) => document.getElementById(id);
-const TABS = ["overview", "updates", "products", "research", "sources"];
-const DEFAULTS = { id: "", tab: "overview", scope: "relevant", corp: "", market: "", days: "", topic: "", official: "", pq: "", pmarket: "", pstatus: "" };
+const TABS = ["overview", "portfolio", "updates", "products", "research", "sources"];
+const DEFAULTS = { id: "", tab: "overview", scope: "relevant", corp: "", market: "", days: "", topic: "", official: "", pq: "", pmarket: "", pstatus: "", pstage: "" };
 const PAGE = 50;
 const CATEGORIES = { safety: "Safety alerts & signals", recall: "Recalls & quality", label: "Label changes", guideline: "Guidelines & guidance", regulation: "Regulatory changes", policy: "Policy & strategy", inspection: "Inspections & enforcement", approval: "Approvals & authorisations", news: "Industry & science news" };
 const MARKETS = { US: "United States", EU: "European Union" };
@@ -270,7 +271,7 @@ function render() {
   tabs();
   const panel = $("panel");
   panel.setAttribute("aria-labelledby", `tab-${state.tab}`);
-  panel.replaceChildren(...[state.tab === "overview" ? overview() : state.tab === "updates" ? related("updates") : state.tab === "research" ? related("research") : state.tab === "products" ? productsTab() : sourcesTab()].flat(3).filter(Boolean));
+  panel.replaceChildren(...[state.tab === "overview" ? overview() : state.tab === "portfolio" ? portfolioView(data,state,set) : state.tab === "updates" ? related("updates") : state.tab === "research" ? related("research") : state.tab === "products" ? productsTab() : sourcesTab()].flat(3).filter(Boolean));
 }
 
 function wire() {
