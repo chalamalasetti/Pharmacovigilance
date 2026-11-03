@@ -69,3 +69,7 @@ Company and paper detail routes require a selected record ID. Start from their d
 | Data status | [Open](https://www.pvinfo.org/status.html) | [Operations](admin-operations.md) |
 
 These pages document current controls. Reading public help does not grant access to the administrator screens. Backlog ideas, including broader GxP controls or expanded chat support, are not represented as released functions.
+
+## Substance Explorer
+
+The public [ingredient directory](substances.html) links to [ingredient evidence](substance.html) through stable IDs. See the [Substance Explorer chapter](user-guide.html?chapter=substances) for company roles, reviewed synonyms and source coverage.

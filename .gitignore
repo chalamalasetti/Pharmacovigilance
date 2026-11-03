@@ -14,3 +14,6 @@ public/sitemap.xml
 public/robots.txt
 public/data/clinical/
 supabase/.temp/
+
+companies/substance-products.json
+public/data/substances/

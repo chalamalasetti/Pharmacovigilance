@@ -202,7 +202,7 @@ function productsTab() {
       "tr",
       {},
       el("td", {}, p.brand),
-      el("td", {}, p.ingredients.join(" + ")),
+      el("td", {}, ...p.ingredients.flatMap((ingredient,i)=>[i?" + ":"",el("a",{href:"substances.html?q="+encodeURIComponent(ingredient)},ingredient)])),
       el("td", {}, MARKETS[p.market] ?? p.market),
       el("td", {}, p.url ? ext(p.url, p.authId ?? "record") : p.authId ?? ""),
       el("td", {}, p.holder, el("br"), el("small", { class: "hint" }, p.role)),

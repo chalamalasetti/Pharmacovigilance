@@ -39,6 +39,13 @@
       "summary": "Explore marketed products, study medicines, therapeutic areas and source coverage before confirming a private company scope."
     },
     {
+      "id": "substances",
+      "title": "Substance Explorer: ingredients, companies and products",
+      "group": "Read and explore",
+      "audience": "Everyone",
+      "summary": "Search ingredients, inspect source-linked holder records and distinguish company relationships from manufacturing evidence."
+    },
+    {
       "id": "company-briefing",
       "title": "Confirm My Company Briefing",
       "group": "Company work",
@@ -185,6 +192,8 @@
     "admin-discovery.html": "admin-content",
     "admin.html": "admin-operations",
     "admin-refresh.html": "admin-operations",
-    "status.html": "admin-operations"
+    "status.html": "admin-operations",
+    "substances.html": "substances",
+    "substance.html": "substances"
   }
 }

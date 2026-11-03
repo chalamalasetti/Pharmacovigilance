@@ -32,7 +32,7 @@ const END = "<!-- seo:end -->";
 const BLOCK = /[ \t]*<!-- seo:start[^>]*-->[\s\S]*?<!-- seo:end -->\n?/;
 
 // Template pages: the canonical URL gains ?id=... in the browser (public/seo.js).
-export const TEMPLATES = { "paper.html": "id", "company.html": "id" };
+export const TEMPLATES = { "paper.html": "id", "company.html": "id", "substance.html": "id" };
 
 const decode = (s) => s.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
