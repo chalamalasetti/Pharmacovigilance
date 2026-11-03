@@ -1,8 +1,44 @@
 # PV Info
 
-Pharmacovigilance and drug regulatory updates from every major regulator, in one page. Built for drug safety, PV and regulatory affairs teams: safety alerts and signals, recalls, label changes, new guidelines, regulatory and policy changes, inspections and approvals, filterable by region, country and topic.
+PV Info brings public pharmacovigilance, drug-safety and regulatory information together for safety operations, regulatory affairs, safety science, quality and PV systems teams. Discover updates and research, explore company products and clinical studies, trace source documents and requirements, and review company impact in a private workspace. Coverage varies by agency, source and dataset; the app does not claim exhaustive global coverage.
 
-How it is built: a Node script gathers public feeds into a JSON file, and a static site with no framework renders it.
+**Live site: [www.pvinfo.org](https://www.pvinfo.org/)** · [Public coverage](https://www.pvinfo.org/coverage.html) · [Company Explorer](https://www.pvinfo.org/companies.html) · [Research](https://www.pvinfo.org/research.html)
+
+The application uses HTML/CSS/JavaScript, Node collection jobs and serverless APIs, Vercel, and optional Supabase authentication, Postgres and storage. Automated matching and extraction use explicit rules; no paid model API is required.
+
+## Product overview
+
+| Module | What users can do |
+| --- | --- |
+| Updates and impact cards | Search and filter safety/regulatory updates; inspect original sources, dates and explainable potential business/technical impact. |
+| Research and innovation | Explore papers, preprints, evidence summaries and topic timelines; distinguish research from regulatory obligations. |
+| Company Explorer and Portfolio 360 | Browse sourced product relationships, clinical studies, investigational medicine labels and therapeutic-area groupings with their limitations. |
+| My Company Briefing | Confirm products and monitored markets, see matching updates/research and why they matched, then send an item for assessment. |
+| My Company Change Inbox | Review matched items and new evidence for a confirmed portfolio; distinguish inbox triage from the Action Center case workflow. |
+| Source documents | Filter by country/agency, inspect original captures and versions, review extraction candidates and source changes. |
+| Requirements Library | Explore requirement interpretations, research intake, coverage gaps and links into company workflow. |
+| Baseline releases | Review pinned source/requirement snapshots and release history; separate drafting, approval and publication. |
+| Regulatory changes and Action Center | Review source differences, assess applicability, draft business/system/process/data requirements, assign action and verify closure. |
+| Events and training | Browse curated events with verification dates, timezone-aware times where confirmed and downloadable calendar files. |
+| Resources and archive | Find curated public safety databases and search retained updates. |
+| Administration | Manage signup approvals, private account messages, source connectors, refresh controls, navigation and review queues. |
+
+## Accounts and private work
+
+New users choose a unique user ID (an alias), a password and an optional professional role at `request-access.html`. Personal email is not required. Signup shows **one recovery key**: save it privately; a successful password reset rotates it to a replacement. Legacy email-link sign-in remains available for existing accounts and is subject to the email provider’s limits.
+
+| Access state | Available capabilities |
+| --- | --- |
+| Visitor | Browse public updates, research, companies, clinical studies and published regulatory/reference information. Some personal tools offer browser-only storage. |
+| Signed in, awaiting approval | Continue browsing public modules; view approval status and private admin messages; manage the recovery key. Private company/team work is gated without redirecting public pages. |
+| Approved user | Use account-backed company profiles, synchronized workspace and authorized personal/team assessment features. |
+| Site administrator | Access admin modules after server-side authorization; review signups and manage site configuration. |
+
+Approve accounts at **Admin → Accounts & access requests → Signup approvals** (`admin-accounts.html`). Use **Reload requests** to refresh the list. The same screen supports private organizational messages and password-assistance review; a support request does not authorize an automatic password reset. Advanced manual provisioning remains available for temporary-password accounts.
+
+Company selections and private case records are not published to public company pages. Browser-only data remains accessible to someone using the same browser profile; it is not a tamper-resistant regulated record. Account/team access is enforced by database policies and workflow APIs, not menu visibility alone. The header shows **Sign out** without displaying the account name or email.
+
+Use organizational information only. Do not enter patient details or unnecessary personal information. Some existing assignment/team workflows use email identifiers; signup aliases are not verified electronic-signature identities.
 
 ## How it works
 
@@ -14,13 +50,13 @@ How it is built: a Node script gathers public feeds into a JSON file, and a stat
 - **PV Globe** (`public/globe.html`, `public/globe.js`): Just Visual News' Earth Pulse globe, re-pointed at PV updates. Countries glow by number of updates, red pulses mark a safety alert or recall in the last 7 days, and markers stand in for the EU, international bodies, Singapore and Hong Kong. It tours the newest updates; drag to spin, tap a country for its list. `public/map/globe.json` and `public/vendor/d3-geo.js` are copied from Just Visual News (built there by `scripts/build-globe.mjs`).
 - **My PV Briefing** (`public/briefing.html`, `public/briefing.js`): a short daily view for one reader. They pick a role, countries, topics and a watchlist (products, substances, keywords); the page shows what is new in the last 24 hours (or since their last visit, 7 or 30 days), with watchlist hits first, new updates naming a substance they follow, a review queue ranked for their role, upcoming effective dates and consultation deadlines, and a "My work" area (saved, following, assigned, assessed, dismissed).
 - **Role-based views** (`public/views.js`): five audiences, each leading with its own sections. *Case processing & operations*: submission interruptions, reporting changes, authority communications, process implications. *Safety scientists & physicians*: watchlist hits, PRAC outcomes, safety communications. *QPPV & compliance*: regulatory changes, effective dates and consultations, inspection themes, review status. *PV systems & configuration*: E2B and validation rules, gateway notices, terminology releases, configuration impact (technical impact shown first on cards). *PV leaders*: a weekly window with the week at a glance, major changes, pending assessments and coverage gaps (countries with no updates or only news coverage, unreachable sources). A two-step first-run setup picks the view and interests; a view bar switches at any time, and `briefing.html?view=systems` opens a view directly. Under **Groups** readers rename the five views and add their own groups, each based on one view plus extra topics and keywords.
-- **Impact cards** (rules in `public/impact.js`, drawing in `public/impact-view.js`): every update, on the main page and in the briefing, opens into a structured card: what changed (quoted from the source's own summary, or the headline when there is none), who may be affected (roles, jurisdictions, substances detected by INN name pattern), potential business and technical impact (each with the words that triggered it), dates (published, effective, consultation deadline, transition period, each with the sentence it came from, or "not stated"), and evidence (source, official or news, any GVP module/article/section named, the date PV Info first retrieved it, and review status). Nothing is generated by AI; anything that is a judgement is labelled "potential". Actions: save, follow, assess (with status and note), assign (name, due date, note, and an email with the card), dismiss with a reason, copy as text.
+- **Impact cards** (rules in `public/impact.js`, drawing in `public/impact-view.js`): every update, on the main page and in the briefing, opens into a structured card: what changed (quoted from the source's own summary, or the headline when there is none), who may be affected (roles, jurisdictions, substances detected by INN name pattern), potential business and technical impact (each with the words that triggered it), dates (published, effective, consultation deadline, transition period, each with the sentence it came from, or "not stated"), and evidence (source, official or news, any GVP module/article/section named, the date PV Info first retrieved it, and review status). Nothing is generated by AI; anything that is a judgement is labelled "potential". Actions: save, follow, assess (with status and note), assign (owner, due date and note; review the available sharing action), dismiss with a reason, copy as text.
 - **Where per-user data lives**: the briefing profile and every action are kept in the browser's localStorage (`public/workspace.js`). Export/Import (JSON) moves a workspace to another browser or colleague, and the CSV export gives an assessment log. With the database connected (below), signed-in readers' workspaces also sync across devices.
 - **Database (optional, Supabase)**: tables and access rules are in `supabase/schema.sql`; build-side code in `scripts/cloud.mjs`, browser side in `public/cloud.js`. It adds:
   - **Archive** (`public/archive.html`): every update is saved by the hourly build, with its impact card fields stored as `impact` for reporting, and kept after it leaves the 60-day feed. Search by words, country, topic, source type and dates. No sign-in needed.
-  - **Sign-in and sync** (`public/account.html`): email magic link, no password. The profile, groups and saved, followed, assessed, assigned and dismissed items follow the reader to every device. If two devices both changed, item records merge newest first.
-  - **Teams** (`public/team.html`): create a team, invite colleagues by link, and share one review queue. Assessments, assignments (to a teammate by name) and dismissals from any impact card go to the queue, with tabs for Assigned to me, Action needed, All open, Closed and Dismissed, overdue flags, and an activity log. The audit trail is written by a database trigger, so browsers cannot edit or delete it. The top bar shows how many open items are assigned to you.
-  - Without the database every page works as before; the new pages say the feature isn't connected yet.
+  - **Sign-in and sync** (`public/account.html`): user ID/password with approval-gated private work; legacy email-link access remains available for existing accounts. The profile, groups and saved, followed, assessed, assigned and dismissed items follow the reader to every device. If two devices both changed, item records merge newest first.
+  - **Teams** (`public/team.html`): create a team, invite colleagues by link, and share one review queue. Assessments, assignments (to a teammate by email) and dismissals from any impact card go to the queue, with tabs for Assigned to me, Action needed, All open, Closed and Dismissed, overdue flags, and an activity log. The audit trail is written by a database trigger, so browsers cannot edit or delete it. The top bar shows how many open items are assigned to you.
+  - Without the database, public static content and supported browser-only tools remain available; authenticated/admin and server-backed workflows require the connected services.
 
 ### Topics
 
@@ -38,7 +74,16 @@ node scripts/aggregate.mjs --fixtures test/fixtures   # sample data, no network
 
 ## Hosting
 
-Same setup as Just Visual News: import the repo in Vercel (`vercel.json` runs the aggregator as the build and serves `public/`). Vercel rebuilds on every push to `main`; `.github/workflows/vercel-refresh.yml` asks it to rebuild every hour once you add a Vercel deploy hook URL as the repo secret `VERCEL_DEPLOY_HOOK`. The site lives at https://pharmacovigilance-info.vercel.app (Vercel project `pharmacovigilance`; with `pharmacovigilance-info.vercel.app` added under Settings → Domains). RSS links point there, and each build reads the live site's last `updates.json` so updates older than what the feeds still list are kept for the full 60 days. To host it elsewhere, set the `SITE_URL` environment variable to the new address.
+Import the repository into Vercel. `vercel.json` installs with `npm ci`, runs `npm run build` and serves `public/` plus the serverless API routes. The canonical production address is **https://www.pvinfo.org**; the legacy `pharmacovigilance-info.vercel.app` host redirects there. `SITE_URL` controls where collection reads the previous published data; `SEO_SITE_URL` controls canonical URLs.
+
+The checked-in build collects clinical snapshots, updates and missing document captures before generating SEO output. A rebuild can therefore change content even when the application source commit has not changed. Vercel builds and upstream sources can be delayed or fail; scheduled refreshes are targets, not an hourly delivery guarantee.
+
+- `.github/workflows/fda-collector.yml` collects the five official FDA RSS feeds and calls `VERCEL_DEPLOY_HOOK` after publishing its cache when that secret is configured.
+- `.github/workflows/vercel-refresh.yml` is **manual dispatch**, not a second hourly schedule.
+- A separate cron-job.org hourly dispatcher is part of the deployed operating setup reported by the owner. Verify its configured target in that service; its settings are not stored in this repository. Avoid configuring duplicate refresh triggers.
+- Cache and development branches are excluded through `vercel.json` and `scripts/ignore-build.mjs`. Review these before changing deployment behavior.
+
+See [FDA collection delivery](#fda-collection-delivery) and [refresh administration](#refresh-administration) for the separate collection paths. No scheduler, hook or deployment configuration is changed by this documentation.
 
 ## Search engines (www.pvinfo.org)
 
@@ -52,27 +97,29 @@ Settings (Vercel → Project → Settings → Environment Variables, both option
 
 ## Data freshness and feed alerts
 
-Each build also writes `public/data/status.json`: when the updates were last refreshed, and for every feed whether it was reachable, when it last succeeded and how long it has been failing. A strip under the menu on every page shows the last successful update and turns amber when a source is down or red when the data is more than 3 hours old; `status.html` lists every source. A feed that fails keeps its earlier updates on the site, and if every feed fails the build keeps the whole previous list instead of emptying the page.
+Each build also writes `public/data/status.json`: when the updates were last refreshed, and for every feed whether it was reachable, when it last succeeded and how long it has been failing. Feed diagnostics are shown only to administrators by default; `status.html` and the admin refresh/source screens support investigation. Public coverage is available separately without operational health details. A feed that fails keeps its earlier updates on the site, and if every feed fails the build keeps the whole previous list instead of emptying the page.
 
 `.github/workflows/feed-health.yml` runs `scripts/health.mjs` against the live site every hour (at :47, half an hour after the rebuild). If the site hasn't rebuilt for 3 hours, a regulator feed has been down for 6 hours, half the news searches fail, or a research source has failed for a day, it opens one GitHub issue labelled `feed-alert` assigned to the repo owner, so GitHub emails you. While the problem lasts it quietly updates that issue, and it comments and closes it once a check is healthy. Thresholds are in `FRESHNESS` in `public/lib.js`. Run it by hand from the Actions tab (Feed health check → Run workflow).
 
 ## Connecting the database
 
 1. **Create it.** In Vercel, open the `pharmacovigilance` project → **Storage** → **Create Database** → **Supabase**, pick the Free plan and a region near your team, and connect it to all environments. Vercel adds `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` and friends to the project.
-2. **Create the tables.** Open the database in Supabase (**Open in Supabase** from the Vercel Storage page) → **SQL Editor** → **New query**, paste all of `supabase/schema.sql` and press **Run**. Running it again later is safe.
-3. **Allow sign-in links back to the site.** Supabase → **Authentication** → **URL Configuration**: set Site URL to `https://pharmacovigilance-info.vercel.app`, and add `https://pharmacovigilance-info.vercel.app/**` and `https://pharmacovigilance-*.vercel.app/**` (preview deployments) under Redirect URLs.
-4. **Email for colleagues.** Supabase's built-in email only sends a few messages an hour, and only to members of your Supabase organisation. Before inviting colleagues, add your own SMTP under **Authentication** → **Emails** → **SMTP Settings** (Resend, SendGrid, Postmark or your company's mail server; Resend's free tier is plenty).
+2. **Create and migrate the database.** Review `supabase/schema.sql` for the base schema, then apply the required incremental files in `supabase/migrations/` in timestamp order, using tracked migration history. Several newer features are implemented in migrations, so the base file alone is insufficient. For an existing database, inspect applied migrations and apply only missing ones; do not blindly replay the entire history.
+3. **Allow sign-in links back to the site.** Supabase → **Authentication** → **URL Configuration**: set Site URL to `https://www.pvinfo.org`, and allow the required callback URLs on that host. Add specific development/preview callback origins only when needed; keep production redirects controlled.
+4. **Choose the account flow.** The current user ID/password signup and recovery-key flow does not send email. If retaining legacy email-link sign-in, configure and test the provider’s redirect URLs, delivery and rate limits. A new SMTP service is not required for password-based signup.
 5. **Redeploy** (Vercel → Deployments → ⋯ → Redeploy). The build log shows `database: sign-in and team features on` and `database: archived N updates`.
 
-Only the project URL and the public anon key reach the browser (`public/config.json`, written by the build). The service key is used only during the build to write the archive. Row-level security does the rest: anyone can read the archive, each reader sees only their own workspace, and team data only its members.
+Only the project URL and the public anon key reach the browser (`public/config.json`, written by the build). The service key is used only by trusted build jobs and server APIs, including restricted account operations. Never expose it through browser configuration or committed files. Row-level security does the rest: anyone can read the archive, each reader sees only their own workspace, and team data only its members.
 
 ## Admin console
+
+Additional admin screens include **Accounts & access requests**, **Data Refresh Center**, **Navigation Studio**, source/document management, source verification, baseline review and research review. Pending signup accounts use the restricted `pv_pending` role until approved; the approval list is provided by the server-only account worker.
 
 `admin.html` is one signed-in page for app admins (the emails in `research_admins`). It replaces editing repo files or running SQL for day-to-day admin work:
 
 - **Company list approval:** one button approves the current version of `companies/manifest.json`, with your name and today's date. A new manifest version needs a fresh approval. Withdrawing puts the draft notice back.
 - **Companies:** add a company, edit its names, matching phrases or holder prefixes, hide it, and undo any change. Signed-in readers can ask for a company from the bottom of the Companies page, and the requests wait here to be added or declined.
-- **Site menu:** reorder the menu and hide pages from it for every visitor (a hidden page still opens from a direct link; Updates and Sign in always stay). Choose who sees the data status line under the menu: admins only (the default) or everyone. Saved in `site_settings`; each build writes them to `public/data/site.json`, which `public/nav.js` applies.
+- **Site menu:** reorder the menu and hide pages from it for every visitor (a hidden page still opens from a direct link; Updates and Sign in always stay). Feed diagnostics stay admin-only by default; public coverage and internal health are distinct. Saved in `site_settings`; each build writes them to `public/data/site.json`, which `public/nav.js` applies.
 - **Admins:** add or remove admins by email (you cannot remove yourself).
 - **Data sources and research review:** failing regulator, research and registry sources with a link to [Data sources](#data-sources), and the research review backlog with a link to the queue.
 - **Publish now and activity:** rebuild the site at once instead of waiting for the hourly run, and see a log of every admin change.
@@ -221,7 +268,7 @@ Applicability requires a reason. Relevant cases require an action type, email-on
 
 Team action owners and reviewers must be current team members. Only the assigned owner can submit an action's completion, and only a designated different teammate can approve or return it. Personal closure is explicitly self-reviewed. Rework and reopening require reasons; every change retains an event in case history. Cloud state transitions are server-stamped, serialized with row locks and expected-version checks; direct client writes are forbidden. Browser-only records are editable by anyone with that browser profile and are not a tamper-resistant audit record. This feature does not claim electronic-signature, Part 11, or regulated-system validation.
 
-Apply `supabase/migrations/20261031232110_company_action_center.sql` for an existing database. The new `company_cases` table has authenticated SELECT-only grants and RLS for the personal owner or current team members. The two authenticated workflow RPCs check the same authorization explicitly. Internal validation helpers have no API-role execution grants. Case data is never written to public build files. Administrative database access still applies; this is not end-to-end encryption. Free-text identifier screening is a guard, not a guarantee of detecting arbitrary personal details. Organizational information only; the only requested human identity is email.
+Apply `supabase/migrations/20261031232110_company_action_center.sql` for an existing database. The new `company_cases` table has authenticated SELECT-only grants and RLS for the personal owner or current team members. The two authenticated workflow RPCs check the same authorization explicitly. Internal validation helpers have no API-role execution grants. Case data is never written to public build files. Administrative database access still applies; this is not end-to-end encryption. Free-text identifier screening is a guard, not a guarantee of detecting arbitrary personal details. Use organizational information only; team assignment identifiers use email, while the current signup flow uses an alias and password.
 
 Validation: `test/action-center.test.mjs` tests state gates, expiry-free date comparison, dashboard scope and safe inputs; `test/browser/action-center.smoke.cjs` exercises the full browser workflow; `test/company-action-center.sql` checks RPC authorization, isolation and workflow gates in a transaction and rolls back all synthetic fixtures. The browser smoke test uses synthetic local fixtures and makes no production writes.
 
@@ -239,4 +286,50 @@ Migration `20261101005846_grouped_navigation.sql` adds the setting and an admin-
 
 ### Document-led regulatory requirements
 
-Open **Resources → Source documents** to filter FDA/EU-EMA source families by jurisdiction and agency, inspect archived captures and extraction candidates, and hand a pinned clause to a private company assessment. Admins can manage sources and capture now. A dedicated hourly GitHub collector fetches public originals and delivers them to Vercel with verified short-lived GitHub identity. The existing Supabase server key stays on Vercel; no new shared secret or LLM credential is needed. Business/system/data/process drafts and review gates live in Action Center. See [implementation, boundaries and operations](docs/document-requirements-pipeline.md).
+Open **Resources → Source documents** to filter registered source families by jurisdiction and agency, including FDA, EMA, MHRA, Health Canada and TGA where capture is configured, inspect archived captures and extraction candidates, and hand a pinned clause to a private company assessment. Admins can manage sources and capture now. A dedicated hourly GitHub collector fetches public originals and delivers them to Vercel with verified short-lived GitHub identity. The existing Supabase server key stays on Vercel; no new shared secret or LLM credential is needed. Business/system/data/process drafts and review gates live in Action Center. See [implementation, boundaries and operations](docs/document-requirements-pipeline.md).
+
+
+## Clinical portfolios and coverage
+
+Company pages retain the authorization-product view and add **Clinical pipeline** and **Therapeutic areas**. ClinicalTrials.gov evidence distinguishes lead sponsors/collaborators, phases, study status, medicines, conditions and study countries. Therapeutic groups retain their source terms and grouping rationale; study countries are not authorization markets, and a registry match does not establish ownership or approval.
+
+Bulk collection and cached portfolios have explicit coverage states. Queryable companies are not necessarily fully loaded or fully mapped. Missing matches, partial collections and older snapshots must remain visible; do not describe the catalog as “all companies, all data.” Product and trial refreshes depend on their configured pipelines and upstream publication. See [clinical portfolio boundaries](docs/clinical-portfolio.md).
+
+## Source documents requirements and baseline releases
+
+The global directory supports country/agency discovery with explicit coverage gaps. Registered or verified agencies, captured source documents, extracted candidates and approved requirements are different coverage states. There is no exhaustive worldwide historical crawl or automatic approval of extracted legal obligations.
+
+Source captures preserve original links, retrieval metadata, checksums and versions. HTML/PDF extraction is rule-based and may miss exceptions, tables, scanned text or non-English obligations. Candidate comparisons and interpretation drafts require human review. Baseline releases pin evidence and interpretations; published snapshot bodies cannot be silently overwritten, and baseline approval requires a different user from the author.
+
+Regulatory change review can pin a source change and requirement evidence into a private company case. Action Center supports applicability decisions, business/system/process/data requirement drafts, review, action completion and verification. Research remains a review candidate, not a legal requirement.
+
+Implementation and limits:
+
+- [Document capture and extraction](docs/document-requirements-pipeline.md)
+- [Global directory and coverage](docs/global-regulatory-library.md)
+- [Requirements Library](docs/requirements-library.md) and [requirements workspace](docs/requirements-workspace.md)
+- [Governance roadmap](docs/regulatory-governance-roadmap.md)
+
+## Events and calendar downloads
+
+`events.html` presents a curated event/training pilot from official sources. Confirmed timed events use UTC instants and an organizer IANA timezone; date-only events stay date-only. Downloaded ICS files retain stable IDs and cancellation/version information. They are snapshots, not subscribed calendars: download again after an event changes. Source verification age and unknown details remain visible. Calendar-client compatibility still needs manual checks. See [calendar rules and verification](docs/events-calendar.md).
+
+## Refresh administration
+
+**Admin → Data Refresh Center** (`admin-refresh.html`) shows configured pipeline frequency, collection state and run history, and can queue work for the next scheduler check. Saving a frequency controls when a pipeline is eligible to run; it does not reschedule the external cron service or guarantee immediate execution. Some GitHub workers check more frequently than the hourly external dispatcher. Inspect each workflow and the current configuration before changing frequency.
+
+Regulatory document collection runs hourly at minute 17 with a bounded oldest-first batch; a large source catalog rotates through multiple runs. FDA RSS delivery, clinical backfill, research, product registry and document capture have different sources, schedules and limits. Check actual last-success/last-check evidence per pipeline. Preserve the existing cron-job.org dispatcher, deployment hook and SEO/Search Console setup when adjusting collection.
+
+## Quality status and GxP readiness
+
+PV Info is a regulatory intelligence and review aid. **It is not represented as a validated GxP system, Part 11 compliant product or qualified electronic-signature service.** Current controls include selected server-enforced permissions, versioned source evidence, baseline snapshot protections, reviewer separation in specific workflows and workflow-specific event histories. These are foundations, not a completed compliance assessment.
+
+Planned readiness work includes a defined regulated-use boundary, consistent organization/record permissions, complete protected audit coverage, controlled artifact promotion, retention and archival controls, complete inspection exports, and demonstrated backup/restore. Browser-only cases and personal self-review must not be mistaken for controlled company approval records. Routine content ingestion must remain distinct from an approved application release.
+
+A validation-package draft has been prepared separately with intended-use/risk assessment, IQ/OQ/PQ protocols, traceability, change control, periodic review and release templates. It is **not executed** and does not certify this deployment. Customer QA must approve applicability, scope and evidence. Informational monitoring alone does not establish GAMP Category 3 or low risk. Formal electronic signatures require a separate identity/privacy and validation decision. No paid GPT extraction is enabled; future model use requires explicit authorization and preserved human review.
+
+## Verification and contribution
+
+`npm test` runs the Node suites. GitHub CI also runs synthetic browser journeys for signup/approval, pending-user public browsing, private feature gates, company briefing/inbox, Action Center, navigation, sources/requirements/baselines, clinical portfolios, events and refresh controls. SQL regression files under `test/` and `supabase/tests/` cover selected real database permissions/workflows; execute only through an authorized test connection and follow each file’s rollback instructions.
+
+Before merging: preserve concurrent work, review migration impact, run checks relevant to the change and document unresolved limitations. Existing automated tests and supplier CI are not a substitute for executed customer qualification. Keep credentials, recovery keys, private company work and patient information out of issues, screenshots and committed fixtures.
