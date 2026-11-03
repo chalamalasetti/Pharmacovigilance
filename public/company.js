@@ -1,3 +1,4 @@
+import {clinicalCoverageText} from './clinical-coverage.js';
 import {portfolioView} from './portfolio-view.js';
 // One company's public page: Overview, Related updates, Products & markets, Research,
 // and Sources & coverage, from data/companies/<id>.json. The tab and filters live in
@@ -119,6 +120,7 @@ function overview() {
     p.entities.length ? [el("h3", {}, "Units and subsidiaries listed"), el("ul", {}, p.entities.map((e) => el("li", {}, e.id ? el("a", { href: `company.html?id=${e.id}` }, e.name) : e.name, ` (${e.relation})`)))] : null,
     el("h2", {}, "Coverage"),
     el("p", {}, data.coverage.note),
+    el("p", {class:"clinical-coverage-indicator"}, clinicalCoverageText(data.coverage.clinical), data.coverage.clinical?.retrievedAt ? ` · retrieved ${data.coverage.clinical.retrievedAt}` : "", " · Configured registry query only; not worldwide company coverage."),
     data.coverage.staleSources ? el("p", { class: "warn" }, "A registry source is failing; products from its last good copy are shown.") : null,
     el("p", { class: "hint" }, `Data built ${ago(new Date(data.built))}. See `, el("button", { type: "button", class: "link", onclick: () => set({ tab: "sources" }) }, "Sources & coverage"), " for where each relationship comes from."),
   ];

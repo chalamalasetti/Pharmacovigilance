@@ -1,3 +1,4 @@
+import {clinicalCoverageText} from './clinical-coverage.js';
 // Company Explorer: search by company, alias, brand or substance, browse by region and
 // type, and the coverage manifest's limits. Data from data/companies/index.json and,
 // once someone types a product-like query, data/companies/products.json.
@@ -64,6 +65,7 @@ function companyCard(c, via) {
     el("p", { class: "co-sub" }, `${flag(c.country)} ${c.legal ?? c.name}`, c.parent ? ` · ${c.parent.relation}` : ""),
     via ? el("p", { class: "co-via" }, `Matched ${via}`) : null,
     el("p", { class: "co-meta" }, coverageBadge(c)),
+    el("p", { class: "hint" }, clinicalCoverageText(c.coverage.clinical)),
     n ? el("p", { class: "co-sub" }, `${n} related update${n > 1 ? "s" : ""}`) : null,
   );
 }
@@ -167,7 +169,7 @@ function renderBrowse() {
   $("browse").replaceChildren(...(filtered ? list.map((c) => companyCard(c)) : []));
   if (!filtered) {
     $("browse").append(
-      el("details", { class: "co-az" }, el("summary", {}, "All companies A to Z"), el("ul", { class: "co-az-list" }, list.map((c) => el("li", {}, el("a", { href: link(c.id) }, c.name), el("span", { class: "hint" }, ` ${flag(c.country)}`))))),
+      el("details", { class: "co-az" }, el("summary", {}, "All companies A to Z"), el("ul", { class: "co-az-list" }, list.map((c) => el("li", {}, el("a", { href: link(c.id) }, c.name), el("span", { class: "hint" }, ` ${flag(c.country)} · ${clinicalCoverageText(c.coverage.clinical)}`))))),
     );
   }
 }
@@ -187,6 +189,7 @@ function renderCoverage() {
   $("draft").hidden = !draft;
   $("draft").textContent = draft ? `Draft coverage list (version ${m.version}), not yet approved. Company names, legal entities and holder mappings may change after review.` : "";
   $("coverage-body").replaceChildren(
+    el("p", {}, `Clinical bulk coverage: ${index.companies.filter(c=>c.coverage.clinical?.status==="complete").length} configured queries fully checked; ${index.companies.filter(c=>c.coverage.clinical?.status==="partial").length} partial; ${index.companies.filter(c=>c.coverage.clinical?.status==="failed").length} failed. Others not checked. This is not a claim of complete worldwide coverage.`),
     el("p", {}, `${index.companies.length} company groups are searchable (coverage list version ${m.version}, ${draft ? "draft awaiting approval" : `approved${m.approvedOn ? ` on ${m.approvedOn}` : ""}`}). Being searchable is not the same as having every product mapped: ${counts.mapped} have products mapped in both the US and EU sources, ${counts.partial} in one of them, and ${counts["not-mapped"]} have none linked yet.`),
     el("p", {}, "This is not an exhaustive list of companies or products. A company may have a page before its products are mapped. ", requestLink(""), " if one is missing."),
     el("h3", {}, "How companies were chosen"),

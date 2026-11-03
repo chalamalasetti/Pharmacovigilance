@@ -1,0 +1,53 @@
+name: Backfill public company clinical portfolios
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/clinical-backfill.yml']
+permissions:
+  contents: write
+concurrency:
+  group: clinical-backfill
+  cancel-in-progress: false
+jobs:
+  backfill:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Read previous checkpoints
+        run: |
+          mkdir -p /tmp/clinical-cache
+          if git fetch origin clinical-data-cache:refs/remotes/origin/clinical-data-cache --depth=1; then
+            git archive FETCH_HEAD clinical | tar -x -C /tmp/clinical-cache --strip-components=1
+          fi
+      - name: Collect all configured company searches (resume unfinished pages)
+        run: node scripts/clinical-bulk.mjs /tmp/clinical-cache
+      - name: Publish one checkpoint commit
+        if: always()
+        run: |
+          test -f /tmp/clinical-cache/index.json || exit 0
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if git show-ref --verify --quiet refs/remotes/origin/clinical-data-cache; then
+            git switch -C clinical-data-cache origin/clinical-data-cache
+          else
+            git switch -c clinical-data-cache
+          fi
+          mkdir -p clinical
+          cp /tmp/clinical-cache/*.json clinical/
+          git add clinical
+          git diff --cached --quiet && exit 0
+          git commit -m 'Checkpoint sanitized company clinical portfolios'
+          git push origin HEAD:clinical-data-cache
+      - name: Publish refreshed portfolios once
+        if: success()
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -n "$HOOK" ]; then curl -fsS -X POST "$HOOK"; else echo '::warning::Deploy hook missing; snapshots await the next production build.'; fi
