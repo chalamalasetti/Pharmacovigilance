@@ -1,0 +1,190 @@
+{
+  "version": "1.0",
+  "reviewed": "2026-11-03",
+  "appRevision": "908dbd2",
+  "chapters": [
+    {
+      "id": "getting-started",
+      "title": "Start here",
+      "group": "Start here",
+      "audience": "Everyone",
+      "summary": "Understand what PV Info does, choose your starting point and complete a useful first session."
+    },
+    {
+      "id": "accounts-and-access",
+      "title": "Accounts, approval and recovery",
+      "group": "Start here",
+      "audience": "Everyone",
+      "summary": "Create a user-ID account, understand approval, maintain access and recover a password without relying on email."
+    },
+    {
+      "id": "updates-and-discovery",
+      "title": "Updates, search and global discovery",
+      "group": "Read and explore",
+      "audience": "Everyone",
+      "summary": "Find updates, understand impact cards and explore the same evidence through country views, the archive and Ask PV Info."
+    },
+    {
+      "id": "personal-briefing",
+      "title": "My PV Briefing, workspace and teams",
+      "group": "Read and explore",
+      "audience": "Approved users",
+      "summary": "Tailor your reading view, maintain saved work, and distinguish local, personal and shared records."
+    },
+    {
+      "id": "company-portfolios",
+      "title": "Company Explorer and Portfolio 360",
+      "group": "Company work",
+      "audience": "Everyone",
+      "summary": "Explore marketed products, study medicines, therapeutic areas and source coverage before confirming a private company scope."
+    },
+    {
+      "id": "company-briefing",
+      "title": "Confirm My Company Briefing",
+      "group": "Company work",
+      "audience": "Approved users",
+      "summary": "Select a company, confirm products and markets, then hand relevant evidence to assessment."
+    },
+    {
+      "id": "company-change-inbox",
+      "title": "My Company Change Inbox",
+      "group": "Company work",
+      "audience": "Approved users",
+      "summary": "Triage new evidence and continue company work without confusing reading status with assessment status."
+    },
+    {
+      "id": "source-documents",
+      "title": "Source Documents and provenance",
+      "group": "Regulatory review",
+      "audience": "Everyone",
+      "summary": "Find official source documents, inspect captured versions and reach extraction and baseline review."
+    },
+    {
+      "id": "baseline-review",
+      "title": "Baseline Review: draft to publication",
+      "group": "Regulatory review",
+      "audience": "Administrators",
+      "summary": "Review automatically prepared requirements against the original document before publishing a human-reviewed version."
+    },
+    {
+      "id": "requirements-library",
+      "title": "Requirements Library and baseline releases",
+      "group": "Regulatory review",
+      "audience": "Everyone",
+      "summary": "Explore source-linked interpretations, distinguish current evidence from approved baselines and assess a pinned version for your company."
+    },
+    {
+      "id": "regulatory-change-review",
+      "title": "Regulatory Change Review",
+      "group": "Regulatory review",
+      "audience": "Approved users",
+      "summary": "Compare source captures, record human triage and open a company assessment with pinned evidence."
+    },
+    {
+      "id": "action-center",
+      "title": "Action Center: assessment to verified closure",
+      "group": "Company work",
+      "audience": "Approved users",
+      "summary": "Use the full case workflow, implementation drafts, ownership, evidence and reviewer decisions."
+    },
+    {
+      "id": "research",
+      "title": "Research, papers and innovation",
+      "group": "Read and explore",
+      "audience": "Everyone",
+      "summary": "Find papers, follow ideas over time and assess research without treating exploratory findings as established practice."
+    },
+    {
+      "id": "events-and-calendar",
+      "title": "Events, time zones and calendar downloads",
+      "group": "Read and explore",
+      "audience": "Everyone",
+      "summary": "Find source-verified training and events, interpret date-only listings and download calendar files safely."
+    },
+    {
+      "id": "resources",
+      "title": "Safety resources and reference tools",
+      "group": "Read and explore",
+      "audience": "Everyone",
+      "summary": "Use the public safety-database directory and distinguish a useful reference link from an ingested data source."
+    },
+    {
+      "id": "admin-accounts",
+      "title": "Admin: accounts and access requests",
+      "group": "Administration",
+      "audience": "Administrators",
+      "summary": "Approve signups, communicate privately and handle assistance without shared passwords or automatic identity bypass."
+    },
+    {
+      "id": "admin-content",
+      "title": "Admin: sources, discovery and editorial controls",
+      "group": "Administration",
+      "audience": "Administrators",
+      "summary": "Maintain collection connectors, discover official documents and review public editorial changes."
+    },
+    {
+      "id": "admin-operations",
+      "title": "Admin: refresh, navigation and publishing",
+      "group": "Administration",
+      "audience": "Administrators",
+      "summary": "Operate data refresh independently of app releases, inspect failures and manage menus."
+    },
+    {
+      "id": "worked-examples",
+      "title": "End-to-end worked examples",
+      "group": "Reference",
+      "audience": "Everyone",
+      "summary": "Practice the full journey with clearly hypothetical organizational examples."
+    },
+    {
+      "id": "troubleshooting",
+      "title": "Troubleshooting and safe support",
+      "group": "Reference",
+      "audience": "Everyone",
+      "summary": "Resolve common reading, account, workflow and refresh problems without losing evidence or exposing private data."
+    },
+    {
+      "id": "glossary",
+      "title": "Glossary and function map",
+      "group": "Reference",
+      "audience": "Everyone",
+      "summary": "Use consistent terms and locate every current page, including contextual and administrator screens."
+    }
+  ],
+  "screens": {
+    "index.html": "getting-started",
+    "about.html": "getting-started",
+    "user-guide.html": "getting-started",
+    "account.html": "accounts-and-access",
+    "account-status.html": "accounts-and-access",
+    "request-access.html": "accounts-and-access",
+    "archive.html": "updates-and-discovery",
+    "coverage.html": "updates-and-discovery",
+    "agencies.html": "updates-and-discovery",
+    "globe.html": "updates-and-discovery",
+    "briefing.html": "personal-briefing",
+    "team.html": "personal-briefing",
+    "companies.html": "company-portfolios",
+    "company.html": "company-portfolios",
+    "company-briefing.html": "company-briefing",
+    "company-inbox.html": "company-change-inbox",
+    "documents.html": "source-documents",
+    "baseline-review.html": "baseline-review",
+    "requirements.html": "requirements-library",
+    "baseline.html": "requirements-library",
+    "changes.html": "regulatory-change-review",
+    "action-center.html": "action-center",
+    "research.html": "research",
+    "paper.html": "research",
+    "research-admin.html": "research",
+    "events.html": "events-and-calendar",
+    "resources.html": "resources",
+    "admin-resources.html": "resources",
+    "admin-accounts.html": "admin-accounts",
+    "admin-sources.html": "admin-content",
+    "admin-discovery.html": "admin-content",
+    "admin.html": "admin-operations",
+    "admin-refresh.html": "admin-operations",
+    "status.html": "admin-operations"
+  }
+}
