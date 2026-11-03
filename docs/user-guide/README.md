@@ -17,6 +17,8 @@ Version 1.0 · reviewed 3 November 2026 · application reference 908dbd2.
 - [Events, time zones and calendar downloads](events-and-calendar.md) — Find source-verified training and events, interpret date-only listings and download calendar files safely.
 - [Safety resources and reference tools](resources.md) — Use the public safety-database directory and distinguish a useful reference link from an ingested data source.
 
+- [Safety Topic Explorer](safety-topics.md) — Follow topic evidence across updates, label changes and research, inspect phrase matches and continue source review.
+
 ## Company work
 
 - [Company Explorer and Portfolio 360](company-portfolios.md) — Explore marketed products, study medicines, therapeutic areas and source coverage before confirming a private company scope.
