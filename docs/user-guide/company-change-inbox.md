@@ -41,3 +41,7 @@ If reading status cannot be saved, retry before assuming the marker persisted. I
 Matched label records use **Review label evidence** before assessment. Complete the official-source review in [Label Intelligence](label-intelligence.md), verify the confirmed company products and privacy scope, then open or continue the pinned case. An EMA recommendation index does not prove that local wording has changed.
 
 [Safety Topic Explorer](safety-topics.md) is a public discovery view, not another private inbox. Opening a topic does not mark company evidence as seen, decide applicability or create a case. [Substance Explorer](substances.md) provides public ingredient/product evidence; your private scope still requires Company Briefing confirmation.
+
+## Leadership priorities and focused links
+
+[Leadership Cockpit and Company Safety Watch](leadership.md) summarizes the same evidence and case records. A focused Inbox link preserves the selected confirmed company, authorized team and exact evidence key; All reading states is selected so a previously seen item remains reachable. Reset filters clears the focus. An unavailable team is not silently replaced by your personal scope.

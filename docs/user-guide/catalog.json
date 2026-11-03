@@ -1,7 +1,7 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "reviewed": "2026-11-03",
-  "appRevision": "drug-name-resolver-v1",
+  "appRevision": "leadership-cockpit-v1",
   "chapters": [
     {
       "id": "getting-started",
@@ -177,6 +177,13 @@
       "group": "Read and explore",
       "audience": "Everyone",
       "summary": "Investigate one medicine name using RxNorm candidates, source evidence and private identification decisions."
+    },
+    {
+      "id": "leadership",
+      "title": "Leadership Cockpit and Company Safety Watch",
+      "group": "Company work",
+      "audience": "Approved users",
+      "summary": "Configure a private safety watch, review explainable company priorities and download a weekly leadership brief."
     }
   ],
   "screens": {
@@ -218,6 +225,7 @@
     "substance.html": "substances",
     "labels.html": "label-intelligence",
     "safety-topics.html": "safety-topics",
-    "drug-resolver.html": "drug-name-resolver"
+    "drug-resolver.html": "drug-name-resolver",
+    "leadership.html": "leadership"
   }
 }
