@@ -1,5 +1,6 @@
+import {labelMatches,labelSourceItem} from './labels-lib.js';
 import {scopedItems,assessmentKey} from './company-briefing-lib.js';
-export const INBOX_KINDS={update:'Product updates',paper:'Research',regulatory:'Regulatory source reviews',trial:'Clinical studies'};
+export const INBOX_KINDS={update:'Product updates',paper:'Research',regulatory:'Regulatory source reviews',trial:'Clinical studies',label:'Label changes'};
 export function caseUrl(row){return `action-center.html?${new URLSearchParams({item:row.source_key,...(row.team_id?{scope:'team',team:row.team_id}:{})})}`;}
 export function matchedEvidence(company,portfolio){const scoped=scopedItems(company,portfolio,{days:365});return [...scoped.updates,...scoped.research].map(raw=>({key:assessmentKey(raw,portfolio),kind:raw.kind==='paper'?'paper':'update',title:raw.title,date:raw.published,source:raw.source??raw.venue??'Original publication',url:raw.kind==='paper'?`paper.html?id=${encodeURIComponent(raw.paper)}`:raw.link,reason:raw.scopeReason,detail:raw.reason??'',raw}));}
 export function regulatoryEvidence(changes,docs,reviews,portfolio){const dm=new Map(docs.map(d=>[d.id,d])),latest=new Map(),rs=new Map();for(const c of changes){const old=latest.get(c.document_id);if(!old||c.created_at>old.created_at)latest.set(c.document_id,c);}for(const r of reviews){if(!rs.has(r.change_id)||rs.get(r.change_id).revision<r.revision)rs.set(r.change_id,r);}
@@ -10,3 +11,5 @@ export function fingerprintPayload(item,portfolio){const base=[item.key,item.kin
 export async function contentHash(item,portfolio){const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(fingerprintPayload(item,portfolio)));return [...new Uint8Array(bytes)].map(n=>n.toString(16).padStart(2,'0')).join('');}
 export function readingState(item,seen){const prior=seen.get(item.key);return !prior?'unseen':prior.content_hash===item.hash?'seen':'updated';}
 export function filterInbox(items,seen,{q='',kind='',reading='unread'}={}){return items.filter(i=>(!kind||i.kind===kind)&&(!q||`${i.title} ${i.source} ${i.detail}`.toLowerCase().includes(q.toLowerCase()))&&(reading==='all'||reading==='unread'&&readingState(i,seen)!=='seen'||reading===readingState(i,seen)));}
+
+export function labelEvidence(data,company,portfolio){return (data?.records??[]).flatMap(r=>{const products=labelMatches(r,portfolio,company);if(!products.length)return [];return [{key:labelSourceItem(r)+":"+portfolio.companyId,kind:"label",title:r.title,date:r.published,source:r.agency+" label evidence",url:"labels.html?"+new URLSearchParams({id:r.id,version:r.hash,tab:"company"}),reason:products.length+" confirmed product matches; applicability is undecided.",detail:r.comparison,raw:r}];});}

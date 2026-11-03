@@ -1,6 +1,6 @@
 export const RUNTIME_SCHEMA=1;
 export const MAX_COMPRESSED_BYTES=64*1024*1024;
-export const validRuntimePath=p=>typeof p==='string'&&(/^(?:feed\.xml|data\/(?:updates|research|site|status|coverage|resources)\.json|data\/sources\/registry\.json|data\/substances\/(?:index|shard-[0-3][0-9a-f])\.json|data\/companies\/(?:[a-z0-9][a-z0-9-]{0,79})\.json|data\/clinical\/(?:[a-z0-9][a-z0-9-]{0,79})\.json)$/.test(p));
+export const validRuntimePath=p=>typeof p==='string'&&(/^(?:feed\.xml|data\/(?:updates|research|site|status|coverage|resources|labels)\.json|data\/sources\/registry\.json|data\/substances\/(?:index|shard-[0-3][0-9a-f])\.json|data\/companies\/(?:[a-z0-9][a-z0-9-]{0,79})\.json|data\/clinical\/(?:[a-z0-9][a-z0-9-]{0,79})\.json)$/.test(p));
 export function validateManifest(m){
  if(m?.schema!==RUNTIME_SCHEMA||!m.files||Array.isArray(m.files)||typeof m.files!=='object')throw Error('Invalid runtime manifest');
  const files=Object.entries(m.files);if(!files.length||files.length>600)throw Error('Invalid runtime file count');let bytes=0;

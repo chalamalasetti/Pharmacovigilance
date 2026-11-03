@@ -10,6 +10,7 @@ export const PAGES = {
  team:{label:'Team queue',href:'team.html',hint:'Shared assessments and assignments',icon:'♧'},
  events:{label:'Events & Training',href:'events.html',hint:'Verified dates and calendar downloads',icon:'◷'},
  research:{label:'Research',href:'research.html',hint:'Papers, ideas and innovation',icon:'⌕'},
+ labels:{label:'Label Intelligence',href:'labels.html',hint:'Safety wording, evidence and company impact',icon:'⇄'},
  substances:{label:'Substances',href:'substances.html',hint:'Ingredients, products and company relationships',icon:'⌬'},
  companies:{label:'Companies',href:'companies.html',hint:'Explore company products and evidence',icon:'▦'},
  globe:{label:'Global view',href:'globe.html',hint:'Explore updates around the world',icon:'◉'},
@@ -21,7 +22,7 @@ export const PAGES = {
  'user-guide':{label:'User Guide',href:'user-guide.html',hint:'Step-by-step help for every module',icon:'▤'},
  about:{label:'About PV Info',href:'about.html',hint:'Coverage, sources and how it works',icon:'ⓘ'},
 };
-const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','company-inbox','action-center','team','account-settings']],['explore','Explore',['research','companies','substances','globe','events']],['resources','Resources',['resources','documents','changes','requirements','agencies','archive','user-guide','about']]];
+const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','company-inbox','action-center','team','account-settings']],['explore','Explore',['research','companies','substances','labels','globe','events']],['resources','Resources',['resources','documents','changes','requirements','agencies','archive','user-guide','about']]];
 export const defaultNavigation=()=>({version:1,groups:GROUPS.map(([id,label,items])=>({id,label,items:items.map(id=>({id,label:PAGES[id].label,hidden:false}))}))});
 export const cleanLabel=(value,fallback)=>typeof value==='string'&&value.trim()?value.trim().slice(0,32):fallback;
 export function normalizeNavigation(raw,{navOrder=[],hiddenNav=[]}={}) {

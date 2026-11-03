@@ -2,7 +2,7 @@ import {fetchData} from './data-fetch.js';
 import {approvalRequired} from './approval-gate.js';
 import * as C from './cloud.js';import * as W from './workspace.js';import {el} from './impact-view.js';
 import {portfolioState,assessmentHandoff} from './company-briefing-lib.js';import {changeContext} from './changes-lib.js';
-import {INBOX_KINDS,caseUrl,matchedEvidence,regulatoryEvidence,clinicalEvidence,contentHash,readingState,filterInbox} from './company-inbox-lib.js';import {dashboard,STAGES} from './action-center-lib.js';
+import {INBOX_KINDS,caseUrl,matchedEvidence,regulatoryEvidence,clinicalEvidence,labelEvidence,contentHash,readingState,filterInbox} from './company-inbox-lib.js';import {dashboard,STAGES} from './action-center-lib.js';
 const $=id=>document.getElementById(id),ws=W.load(),replace=(n,...kids)=>n.replaceChildren(...kids.flat().filter(x=>x!=null&&x!==false));
 let sb,user,company,portfolio,items=[],seen=new Map(),cases=[],generation=0,shown=30,loaded=false;
 const message=t=>{$('inbox-message').textContent=t;};
@@ -15,12 +15,13 @@ async function load(){const g=++generation,who=user?.id;loaded=false;items=[];ca
  const res=await fetchData(`data/companies/${encodeURIComponent(selected)}.json`,{cache:'no-cache'});if(!res.ok)throw Error('Company evidence could not load.');const nextCompany=await res.json();if(g!==generation||user?.id!==who)return;company=nextCompany;
  if(portfolioState(portfolio,company)!=='confirmed')throw Error('Your selected product records changed. Reconfirm products and markets in Company Briefing before assessment.');
  const errors=[];
- const parts=await Promise.allSettled([all('pv_regulatory_changes','id,document_id,after_version,flags,created_at'),all('pv_documents','id,title,agency,country'),all('pv_change_reviews','id,change_id,revision,decision,summary'),fetchData(`data/clinical/${encodeURIComponent(selected)}.json`,{cache:'no-cache'}).then(async r=>{if(!r.ok)throw Error('Clinical snapshot unavailable');return r.json();}),loadCases(portfolio,who,privacy()),(async()=>{const r=await sb.from('company_inbox_seen').select('item_key,content_hash,seen_at').eq('user_id',who).eq('company_id',selected).order('item_key').limit(5000);if(r.error)throw r.error;if(r.data.length>=5000)throw Error('Reading marker limit reached. Contact an administrator.');return r.data;})()]);
+ const parts=await Promise.allSettled([all('pv_regulatory_changes','id,document_id,after_version,flags,created_at'),all('pv_documents','id,title,agency,country'),all('pv_change_reviews','id,change_id,revision,decision,summary'),fetchData(`data/clinical/${encodeURIComponent(selected)}.json`,{cache:'no-cache'}).then(async r=>{if(!r.ok)throw Error('Clinical snapshot unavailable');return r.json();}),loadCases(portfolio,who,privacy()),(async()=>{const r=await sb.from('company_inbox_seen').select('item_key,content_hash,seen_at').eq('user_id',who).eq('company_id',selected).order('item_key').limit(5000);if(r.error)throw r.error;if(r.data.length>=5000)throw Error('Reading marker limit reached. Contact an administrator.');return r.data;})(),fetchData('data/labels.json',{cache:'no-cache'}).then(async r=>{if(!r.ok)throw Error('Label evidence unavailable');return r.json();})]);
  if(g!==generation||user?.id!==who)return;
  if(parts[4].status==='rejected')throw Error('Private assessment status could not load. Retry before starting work.');if(parts[5].status==='rejected')throw Error('Reading history could not load. Retry to avoid losing your reading status.');
  cases=parts[4].value;seen=new Map(parts[5].value.map(r=>[r.item_key,r]));items=matchedEvidence(company,portfolio);
  if(parts.slice(0,3).every(r=>r.status==='fulfilled'))items.push(...regulatoryEvidence(...parts.slice(0,3).map(r=>r.value),portfolio));else errors.push('Regulatory source reviews could not load.');
  if(parts[3].status==='fulfilled')items.push(...clinicalEvidence(parts[3].value));else errors.push('Clinical snapshot is unavailable; see the full company portfolio.');
+ if(parts[6]?.status==='fulfilled')items.push(...labelEvidence(parts[6].value,company,portfolio));else errors.push('Label evidence is unavailable.');
  items=[...new Map(items.map(i=>[i.key,i])).values()];await Promise.all(items.map(async i=>{i.hash=await contentHash(i,portfolio);}));if(g!==generation||user?.id!==who)return;
  items.sort((a,b)=>(b.date??'').localeCompare(a.date??''));loaded=true;shown=30;render();message(errors.length?`Partial inbox: ${errors.join(' ')} Other evidence remains available.`:'Your private inbox is ready. Unread means not marked as seen; it is not an applicability or approval decision.');
  }catch(e){if(g===generation){message(e.message);$('inbox-results').textContent='Inbox unavailable. Retry, or review your portfolio.';}}}
@@ -35,6 +36,7 @@ async function assess(item,button,feedback){const g=generation,who=user.id,team=
  }catch(e){if(g===generation)feedback.textContent=e.message;}finally{button.disabled=false;}}
 function card(item){const state=readingState(item,seen),existing=activeCase(item),feedback=el('p',{role:'status',class:'hint'}),markButton=el('button',{type:'button',class:'inbox-seen'},state==='seen'?'Mark unread':'Mark as seen');markButton.onclick=()=>mark(item,markButton);let action;
  if(existing)action=el('a',{class:'btn primary',href:caseUrl(existing)},existing.stage==='closed'?'View verified closure':'Continue assessment');
+ else if(item.kind==='label')action=el('a',{class:'btn',href:item.url},'Review label evidence');
  else if(item.kind==='trial')action=el('a',{class:'btn',href:`company.html?id=${encodeURIComponent(portfolio.companyId)}&tab=portfolio&pview=clinical`},'Review company trials');
  else if(item.kind==='regulatory'&&item.review?.decision!=='company_review')action=el('a',{class:'btn',href:item.url},'Review source evidence');
  else{action=el('button',{type:'button',class:'primary',onclick:()=>assess(item,action,feedback)},'Start assessment');}

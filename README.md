@@ -75,7 +75,7 @@ node scripts/aggregate.mjs --fixtures test/fixtures   # sample data, no network
 
 ## User Guide
 
-[Open the searchable User Guide](https://www.pvinfo.org/user-guide.html) or [browse the versioned GitHub wiki-style pages](docs/user-guide/README.md). The 22 chapters cover every current screen, account approval/recovery, public discovery, company/clinical portfolios, baseline and change review, private actions/closure, calendar downloads and administrator operations. Use **Resources → User Guide**, full-text search, audience filters or **Read complete guide → Print / save as PDF**. Source chapters and the rendered in-app guide are maintained together with `npm run guide`; no Markdown attachments are added to app workflows.
+[Open the searchable User Guide](https://www.pvinfo.org/user-guide.html) or [browse the versioned GitHub wiki-style pages](docs/user-guide/README.md). The 23 chapters cover every current screen, account approval/recovery, public discovery, company/clinical portfolios, baseline and change review, private actions/closure, calendar downloads and administrator operations. Use **Resources → User Guide**, full-text search, audience filters or **Read complete guide → Print / save as PDF**. Source chapters and the rendered in-app guide are maintained together with `npm run guide`; no Markdown attachments are added to app workflows.
 
 ## Hosting
 
@@ -351,3 +351,11 @@ The separate [GxP Readiness Foundation release](https://github.com/chalamalasett
 Explore → Substances searches source ingredients and reviewed naming variants, including the paracetamol/acetaminophen pilot. Ingredient pages show company relationships, product evidence and source capture dates. FDA application holders and EMA authorization holders remain distinct from manufacturers; physical manufacturing is not inferred. Source-level companies without a curated company profile are included. Presentation-level FDA records preserve product numbers and ingredient/strength/form relationships; EMA records retain their authorization-level granularity.
 
 The product collector stages the legacy company registry and detailed substance product companion atomically on the non-deploying product cache branch. The public runtime publisher creates a bounded 64-shard substance catalog; data refresh does not trigger app deployments. Naming rules are reviewed, versioned repository configuration in `substances/aliases.json`. See the [Substance Explorer guide](docs/user-guide/substances.md).
+
+### Label Change Intelligence
+
+Explore → Label Intelligence presents captured FDA SrLC entries with regulator-marked additions/revisions and EMA PRAC recommendation index entries. FDA discovery uses a rolling 100-day query and incremental detail capture (24 product pages per hourly worker run; seven-day detail rechecks). Captured entries are bounded to 500; EMA index scope starts in 2025. This is partial, explicit source coverage, not a complete global labeling database. Prior evidence survives source failures. App builds use the versioned bootstrap; ongoing collection is part of the existing data-only runtime workflow.
+
+Previous wording is never reconstructed from underlining. Earlier FDA label links may skip intervening revisions. EMA index-only records require original wording review. Source corrections create new immutable evidence fingerprints; assessments pin the reviewed version and retain existing decisions. Approved users confirm source review, select a confirmed company scope, document a rationale and open a private/team Action Center case. Matching entries also appear in Company Change Inbox. Assessment exports include the pinned source record. No paid AI extraction or API is required.
+
+See [Label Change Intelligence guide](docs/user-guide/label-intelligence.md).
