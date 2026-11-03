@@ -33,7 +33,7 @@ begin
  draft:=public.review_pv_impact_requirement(draft.id,'approve','Synthetic verification complete',null);
  end loop;
  c:=public.advance_company_case(c.id,c.version,'approve','{"reason":"Synthetic closure verified against all approved outcomes"}');if c.stage<>'closed' then raise exception 'Journey did not close';end if;
- pack:=public.export_regulatory_change_case(c.id,c.version);if jsonb_array_length(pack->'impact_requirements')<>5 or jsonb_array_length(pack->'draft_and_export_events')<>16 then raise exception 'Evidence bundle or audit history incomplete';end if;
+ pack:=public.export_regulatory_change_case(c.id,c.version);if pack->'triage_review'->'source_verification'->>'document_version_id' is distinct from v.id::text then raise exception 'Exact source verification was not frozen';end if;if jsonb_array_length(pack->'impact_requirements')<>5 or jsonb_array_length(pack->'draft_and_export_events')<>16 then raise exception 'Evidence bundle or audit history incomplete';end if;
  t:=public.create_team('Synthetic change review team',null);
  insert into public.team_items(team_id,update_id,snapshot) values(t,'regchange:'||r.id::text||':synthetic','{"link":"https://example.invalid/untrusted"}');
  tc:=public.open_regulatory_change_case(r.id,ctx,t);if tc.team_id<>t or tc.snapshot->>'link'<>v.source_url then raise exception 'Team linkage or canonical evidence failed';end if;
