@@ -60,7 +60,7 @@ function assessmentPanel(r){
 }
 function reviewPanel(r){
  const note=el('textarea',{'aria-label':'Editorial review rationale',maxlength:1000,placeholder:'Why is this interpretation accurate, or why is it rejected? Public organizational rationale only.'}),feedback=el('p',{role:'status'});
- const box=el('section',{class:'req-section req-review'},el('h3',{},'Admin review'),el('button',{type:'button',class:'act',onclick:()=>editor(r)},'Append a revised version'));
+ const box=el('section',{class:'req-section req-review'},el('h3',{},'Admin review'),el('p',{},el('a',{href:'baseline-review.html'},'Automatic extraction review desk →')),el('button',{type:'button',class:'act',onclick:()=>editor(r)},'Append a revised version'));
  if(r.review_status==='pending')box.append(note,...['approved','rejected'].map(status=>el('button',{type:'button',class:'act',onclick:async e=>{
  const buttons=box.querySelectorAll('button');buttons.forEach(b=>b.disabled=true);try{const reason=note.value.trim();if(!reason)throw Error('Enter a public review rationale.');const {error}=await sb.rpc('admin_review_requirement',{p_id:r.id,p_status:status,p_reason:reason});if(error)throw error;await load();}catch(err){feedback.textContent=err.message;}finally{buttons.forEach(b=>b.disabled=false);}
  }},status==='approved'?'Approve interpretation':'Reject interpretation')),feedback);

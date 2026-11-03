@@ -17,6 +17,7 @@ The application uses HTML/CSS/JavaScript, Node collection jobs and serverless AP
 | My Company Change Inbox | Review matched items and new evidence for a confirmed portfolio; distinguish inbox triage from the Action Center case workflow. |
 | Source documents | Filter by country/agency, inspect original captures and versions, review extraction candidates and source changes. |
 | Requirements Library | Explore requirement interpretations, research intake, coverage gaps and links into company workflow. |
+| Automatic baseline extraction | New captures prepare admin-only drafts automatically. Review source evidence, submit for review and publish a human-reviewed requirement version without JSON handling. |
 | Baseline releases | Review pinned source/requirement snapshots and release history; separate drafting, approval and publication. |
 | Regulatory changes and Action Center | Review source differences, assess applicability, draft business/system/process/data requirements, assign action and verify closure. |
 | Events and training | Browse curated events with verification dates, timezone-aware times where confirmed and downloadable calendar files. |

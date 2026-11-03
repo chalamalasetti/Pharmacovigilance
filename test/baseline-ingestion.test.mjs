@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {filterDrafts,draftKey,coverageMessage} from '../public/baseline-review-lib.js';
+const rows=[{id:'abc-def',state:'draft',body:{statement:'Maintain controls with exceptions.',clause:'page-4',title:'Quality'}},{id:'ghi',state:'published',body:{statement:'Assess safety data.',clause:'section-2',title:'Safety'}}];
+test('review desk separates draft and published records and finds original citations',()=>{assert.equal(filterDrafts(rows,{state:'draft'}).length,1);assert.equal(filterDrafts(rows,{q:'PAGE-4'})[0].id,'abc-def');assert.equal(filterDrafts(rows,{state:'published',q:'controls'}).length,0);assert.equal(draftKey(rows[0]),'AUTO-abcdef');});
+test('empty and incomplete extractions never imply no obligations or complete coverage',()=>{assert.match(coverageMessage({capture_status:'no_text'},0),/Zero drafts does not mean zero obligations/);assert.match(coverageMessage({capture_status:'partial'},8),/tables, exceptions/);assert.match(coverageMessage({capture_status:'captured'},10),/not a completeness guarantee/);});
