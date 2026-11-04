@@ -1,7 +1,7 @@
 {
   "version": "1.2",
-  "reviewed": "2026-11-03",
-  "appRevision": "leadership-cockpit-v1",
+  "reviewed": "2026-11-04",
+  "appRevision": "safety-config-workbench-v1",
   "chapters": [
     {
       "id": "getting-started",
@@ -184,6 +184,13 @@
       "group": "Company work",
       "audience": "Approved users",
       "summary": "Configure a private safety watch, review explainable company priorities and download a weekly leadership brief."
+    },
+    {
+      "id": "config-workbench",
+      "title": "Safety Configuration Workbench",
+      "group": "Company work",
+      "audience": "Safety systems and configuration managers",
+      "summary": "Capture current rules, pin source evidence, draft configuration changes and tests, review and hand off implementation."
     }
   ],
   "screens": {
@@ -226,6 +233,7 @@
     "labels.html": "label-intelligence",
     "safety-topics.html": "safety-topics",
     "drug-resolver.html": "drug-name-resolver",
-    "leadership.html": "leadership"
+    "leadership.html": "leadership",
+    "config-workbench.html": "config-workbench"
   }
 }
