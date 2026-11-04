@@ -1,6 +1,6 @@
 # PV Info User Guide
 
-Version 1.2 · reviewed 3 November 2026 · application reference leadership-cockpit-v1.
+Version 1.3 · reviewed 4 November 2026 · application reference safety-config-workbench-v1.
 
 [Open the searchable in-app User Guide](https://www.pvinfo.org/user-guide.html). These are versioned wiki-style pages within the main GitHub repository, not a separate GitHub Wiki repository. The app renders a help center; it does not attach Markdown files to user workflows.
 
@@ -43,6 +43,8 @@ Version 1.2 · reviewed 3 November 2026 · application reference leadership-cock
 - [Admin: accounts and access requests](admin-accounts.md) — Approve signups, communicate privately and handle assistance without shared passwords or automatic identity bypass.
 - [Admin: sources, discovery and editorial controls](admin-content.md) — Maintain collection connectors, discover official documents and review public editorial changes.
 - [Admin: refresh, navigation and publishing](admin-operations.md) — Operate data refresh independently of app releases, inspect failures and manage menus.
+
+- [Safety Configuration Workbench](config-workbench.md) — Private environment profiles, current-rule baselines, evidence-linked proposals, independent review and implementation handoff.
 
 ## Reference
 

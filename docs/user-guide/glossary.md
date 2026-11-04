@@ -83,3 +83,7 @@ These pages document current controls. Reading public help does not grant access
 ## Substance Explorer
 
 The public [ingredient directory](substances.html) links to [ingredient evidence](substance.html) through stable IDs. See the [Substance Explorer chapter](user-guide.html?chapter=substances) for company roles, reviewed synonyms and source coverage.
+
+## Safety configuration specifications
+
+Open **My Briefing → Configuration Workbench** at config-workbench.html to capture system/environment setup, compare a proposed configuration with current rules and prepare a source-linked specification. A specification is a draft implementation design, not a vendor import, executed protocol or legal approval. See the [workbench guide](config-workbench.md).

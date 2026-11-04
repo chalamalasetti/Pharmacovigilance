@@ -384,3 +384,11 @@ Explainable priorities distinguish overdue actions, verification, due-within-sev
 ### Data publication retries
 
 The data-only worker shares a short-lived GitHub OIDC identity across concurrent publication requests; it does not mint a token for every uploaded file. Identities remain in process memory and renew after four minutes. Identity issuance and idempotent input/source/begin/stage requests have bounded retries for temporary network, rate-limit and server failures. Authorization denials and publication conflicts are not retried, and commit is not blindly replayed. A failed staging request stops new uploads and waits for in-flight uploads before recording failure. The last complete public snapshot remains live; workflow logs identify the safe public file/part and HTTP status without exposing credentials or upstream private error text.
+
+### Safety Configuration Workbench
+
+**My Briefing → Configuration Workbench** connects private system/environment profiles and current-rule baselines to source-linked configuration proposals. Choose Argus, Veeva, ARISg or another system; enter rules or import the bounded CSV template; pin a requirement version or exact primary-source passage; generate before/after comparisons, implementation requirements and synthetic test prompts without a paid AI API.
+
+Immutable saved revision snapshots retain inputs and generated output. Optimistic concurrency prevents silent overwrites. Team-owner approval requires a different person from the creator/last editor; personal specifications cannot be self-approved. Action Center handoff preserves scope and links the captured configuration revision for implementation and closure. Read the [workbench guide](docs/user-guide/config-workbench.md).
+
+Outputs are review specifications, not vendor import files, executed tests, regulatory completeness determinations or verified release-specific adapters. No direct production-system connection is made. Existing homepage layout and independent data-refresh jobs are preserved. The additive `safety_configuration_workbench` migration creates scope-protected records and revision history; no existing user records are modified.
