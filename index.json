@@ -6,36 +6,36 @@
       "country": "CA",
       "agency": "CA_HC",
       "title": "GUI-0102: The regulations",
-      "latest": "documents/ca-hc-gvp-regulations/d7350de95faec0a34725109dd5462b3b3938f7c5ded11feb53db87d7321f0eb3.json",
-      "last_checked_at": "2026-11-04T06:28:52.151Z",
-      "last_success_at": "2026-11-04T06:28:52.151Z",
+      "latest": "documents/ca-hc-gvp-regulations/c72919556d8ab8be3851a2626440f18a39be4aee9ca2996997f921924629ce08.json",
+      "last_checked_at": "2026-11-04T15:28:10.671Z",
+      "last_success_at": "2026-11-04T15:28:10.671Z",
       "status": "partial",
       "candidate_count": 252,
-      "previous": "documents/ca-hc-gvp-regulations/35d13bcb990adea7f53c4be542f72f11d87fc0d7bdc599b7e8c686f95846dc1c.json"
+      "previous": "documents/ca-hc-gvp-regulations/d7350de95faec0a34725109dd5462b3b3938f7c5ded11feb53db87d7321f0eb3.json"
     },
     "ca-hc-gvp-system": {
       "document_id": "ca-hc-gvp-system",
       "country": "CA",
       "agency": "CA_HC",
       "title": "GUI-0102: Pharmacovigilance system",
-      "latest": "documents/ca-hc-gvp-system/1e2937352d7e2710d2394167a96b776fbad94a18f05c3843b184f754a4ab9f00.json",
-      "last_checked_at": "2026-11-04T06:28:57.602Z",
-      "last_success_at": "2026-11-04T06:28:57.602Z",
+      "latest": "documents/ca-hc-gvp-system/6837c4083734060a0c55837ab683a6f9470d03c5f006c979454d9bc0a3960633.json",
+      "last_checked_at": "2026-11-04T15:28:16.917Z",
+      "last_success_at": "2026-11-04T15:28:16.917Z",
       "status": "partial",
       "candidate_count": 119,
-      "previous": "documents/ca-hc-gvp-system/d3f0ff3cd026c2a7594491739365f3e8f27c3f9581e65a430f7bfe77b4bbe448.json"
+      "previous": "documents/ca-hc-gvp-system/1e2937352d7e2710d2394167a96b776fbad94a18f05c3843b184f754a4ab9f00.json"
     },
     "gb-mhra-pv-procedures": {
       "document_id": "gb-mhra-pv-procedures",
       "country": "GB",
       "agency": "GB_MHRA",
       "title": "Guidance on pharmacovigilance procedures",
-      "latest": "documents/gb-mhra-pv-procedures/9b77ae2e4e13c72795a5ed1c1b4e6b00c58e1d58dbcd9922ac0e649e720a9668.json",
-      "last_checked_at": "2026-11-04T06:29:00.993Z",
-      "last_success_at": "2026-11-04T06:29:00.993Z",
+      "latest": "documents/gb-mhra-pv-procedures/960e858fa1f44e6c671b7d6e960e691140036303a845ad8e1128965e9ef3905c.json",
+      "last_checked_at": "2026-11-04T15:28:18.795Z",
+      "last_success_at": "2026-11-04T15:28:18.795Z",
       "status": "partial",
       "candidate_count": 83,
-      "previous": "documents/gb-mhra-pv-procedures/d7529bec5af168365afbfe65e4cb30302b728979d371ab93fc53c81106c159c3.json"
+      "previous": "documents/gb-mhra-pv-procedures/9b77ae2e4e13c72795a5ed1c1b4e6b00c58e1d58dbcd9922ac0e649e720a9668.json"
     },
     "ema-gvp-i": {
       "document_id": "ema-gvp-i",
@@ -43,8 +43,8 @@
       "agency": "EMA",
       "title": "GVP Module I — PV systems and quality systems",
       "latest": "documents/ema-gvp-i/9216d670790b3e072aa2ba014216d2e3a3bfa5f8268753e56eb9dc6573578eee.json",
-      "last_checked_at": "2026-11-04T06:29:05.820Z",
-      "last_success_at": "2026-11-04T06:29:05.820Z",
+      "last_checked_at": "2026-11-04T15:28:21.688Z",
+      "last_success_at": "2026-11-04T15:28:21.688Z",
       "status": "partial",
       "candidate_count": 150,
       "previous": "documents/ema-gvp-i/dcfa0b85f28f3227c6fedd4a3c2a3db896c63efc60c83e1c0d4592dc1689a802.json"
@@ -55,7 +55,7 @@
       "agency": "EMA",
       "title": "Commission Implementing Regulation (EU) No 520/2012",
       "latest": null,
-      "last_checked_at": "2026-11-04T06:29:06.855Z",
+      "last_checked_at": "2026-11-04T15:28:22.192Z",
       "status": "source_unavailable",
       "note": "Previous extraction preserved; source could not be retrieved."
     },
@@ -64,12 +64,12 @@
       "country": "US",
       "agency": "FDA",
       "title": "AEMS electronic submissions",
-      "latest": "documents/fda-aems-esg/d6a3d3f5ec46bc55afe821c3d63890f237f89fbc9ea34cd42135b52f36dddb63.json",
-      "last_checked_at": "2026-11-04T06:29:07.532Z",
-      "last_success_at": "2026-11-04T06:29:07.532Z",
+      "latest": "documents/fda-aems-esg/06325b5068fb1f78d917473ade191a520c7e16e134ab7b801f779ebde811fce6.json",
+      "last_checked_at": "2026-11-04T15:28:25.939Z",
+      "last_success_at": "2026-11-04T15:28:25.939Z",
       "status": "candidates_extracted",
       "candidate_count": 8,
-      "previous": "documents/fda-aems-esg/60eec836d4710c28d31cc4aea7af21d749f6ac2236c016584a08306e82ad37d8.json"
+      "previous": "documents/fda-aems-esg/d6a3d3f5ec46bc55afe821c3d63890f237f89fbc9ea34cd42135b52f36dddb63.json"
     },
     "fda-e2d": {
       "document_id": "fda-e2d",
@@ -77,8 +77,8 @@
       "agency": "FDA",
       "title": "E2D(R1) Post-Approval Safety Data",
       "latest": "documents/fda-e2d/2f27587e258fbdc3e7c6e3e6061a397c8e22de84899481c4198949adefe41f99.json",
-      "last_checked_at": "2026-11-04T06:29:09.662Z",
-      "last_success_at": "2026-11-04T06:29:09.662Z",
+      "last_checked_at": "2026-11-04T15:28:28.363Z",
+      "last_success_at": "2026-11-04T15:28:28.363Z",
       "status": "partial",
       "candidate_count": 104,
       "previous": "documents/fda-e2d/8d75a3600fc455f96a9cdb7de6e24192f29199f346b91c3d358f35721de5c5a8.json"
@@ -89,7 +89,7 @@
       "agency": "FDA",
       "title": "21 CFR 312.32",
       "latest": "documents/fda-31232/c4f818891f402ee849a0aecacd058dee920564f77020a1eb3a1ac10d75c55988.json",
-      "last_checked_at": "2026-11-04T06:29:11.401Z",
+      "last_checked_at": "2026-11-04T15:28:28.773Z",
       "last_success_at": "2026-11-01T17:22:52.948Z",
       "status": "source_unavailable",
       "candidate_count": 13,
@@ -101,7 +101,7 @@
       "agency": "FDA",
       "title": "21 CFR 314.80",
       "latest": "documents/fda-31480/710e5ff96af2a730045aaa8b8f3fbcb156a9c5a9bc75fc882fa7e77d05feda8f.json",
-      "last_checked_at": "2026-11-04T06:29:10.917Z",
+      "last_checked_at": "2026-11-04T15:28:28.959Z",
       "last_success_at": "2026-11-01T17:22:53.620Z",
       "status": "source_unavailable",
       "candidate_count": 14,
@@ -113,7 +113,7 @@
       "agency": "AU_TGA",
       "title": "Pharmacovigilance responsibilities of medicine sponsors",
       "latest": null,
-      "last_checked_at": "2026-11-04T06:29:22.070Z",
+      "last_checked_at": "2026-11-04T15:28:39.364Z",
       "status": "source_unavailable",
       "note": "Previous extraction preserved; source could not be retrieved."
     }
