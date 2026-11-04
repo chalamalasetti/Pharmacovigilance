@@ -26,7 +26,7 @@ Mark the baseline incomplete until you have checked it for this assessment scope
 
 Open a requirement in Requirements Library and choose **Draft safety-system configuration impact**, or open an Action Center case and choose **Assess safety-system configuration impact**. You can also choose a captured requirement inside the workbench or enter a source manually.
 
-Pin the source title, URL, edition, section/page/article and exact supporting passage. The original requirement version ID is retained when selected. Check the primary source, scope, exceptions and dates yourself. Effective dates may remain unknown; document uncertainty in the applicability rationale. A captured pending requirement remains unapproved.
+Pin the source title, URL, edition, section/page/article and exact supporting passage. The original requirement version ID is retained when selected. Captured requirement interpretations are shown separately; copy the exact supporting passage from the original source. Changing the source title, URL or edition clears the prior requirement pin; editing its quotation or date requires renewed source verification. Check the primary source, scope, exceptions and dates yourself. Effective dates may remain unknown; document uncertainty in the applicability rationale. A captured pending requirement remains unapproved.
 
 Record relevant, not relevant or more information needed with a rationale. Choose expedited reporting, transmission/E2B mapping, masking/data controls, periodic reporting or workflow/SOP. For reporting changes, select the affected baseline rule, then adjust proposed values. Other areas use current-control and proposed-change descriptions. Add implementation dependencies and rollback instructions.
 
