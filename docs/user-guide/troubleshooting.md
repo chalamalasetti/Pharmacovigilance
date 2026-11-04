@@ -29,6 +29,7 @@ Resolve common reading, account, workflow and refresh problems without losing ev
 | Evidence link rejected | Use a stable HTTPS document link without credentials, personal identifiers or expiring token/signature parameters. |
 | Team work seems missing | Select the correct team and confirm membership. Personal, local and team records are separate. |
 | Calendar time looks wrong | Check the chosen display zone and whether the event actually has a verified time or only a date. Recheck the official event. |
+| Refresh collects sources but publication fails | Check the failed workflow phase. Temporary staging requests retry automatically; an exhausted retry leaves the previous complete snapshot live. Logs identify a public file/part and HTTP status. A successful feed-collection step alone is not a published refresh. |
 | Refresh queued but no change | Allow the next scheduler check and possible GitHub delay. Admins should inspect collection and publication outcomes separately. No new upstream item may exist. |
 | New data run but old page | Reload. Check Published rather than Staged/requested; a runtime outage can fall back to built data. |
 
