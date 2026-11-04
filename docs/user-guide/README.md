@@ -1,6 +1,6 @@
 # PV Info User Guide
 
-Version 1.1 · reviewed 3 November 2026 · application reference drug-name-resolver-v1.
+Version 1.2 · reviewed 3 November 2026 · application reference leadership-cockpit-v1.
 
 [Open the searchable in-app User Guide](https://www.pvinfo.org/user-guide.html). These are versioned wiki-style pages within the main GitHub repository, not a separate GitHub Wiki repository. The app renders a help center; it does not attach Markdown files to user workflows.
 
@@ -23,6 +23,8 @@ Version 1.1 · reviewed 3 November 2026 · application reference drug-name-resol
 - [Safety Topic Explorer](safety-topics.md) — Follow topic evidence across updates, label changes and research, inspect phrase matches and continue source review.
 
 ## Company work
+
+- [Leadership Cockpit and Company Safety Watch](leadership.md) — Prioritize existing company work, follow safety topics and prepare a private weekly brief.
 
 - [Company Explorer and Portfolio 360](company-portfolios.md) — Explore marketed products, study medicines, therapeutic areas and source coverage before confirming a private company scope.
 - [Confirm My Company Briefing](company-briefing.md) — Select a company, confirm products and markets, then hand relevant evidence to assessment.

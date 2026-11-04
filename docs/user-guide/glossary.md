@@ -38,6 +38,7 @@ Use consistent terms and locate every current page, including contextual and adm
 | Company Explorer | [Open](https://www.pvinfo.org/companies.html) | [Company portfolios](company-portfolios.md) |
 | Company detail / Portfolio 360 | [Open company directory first](https://www.pvinfo.org/companies.html) | [Company portfolios](company-portfolios.md) |
 | My Company Briefing | [Open](https://www.pvinfo.org/company-briefing.html) | [Company Briefing](company-briefing.md) |
+| Leadership Cockpit and Safety Watch | [Open](https://www.pvinfo.org/leadership.html) | [Company priorities and weekly brief](leadership.md) |
 | My Company Change Inbox | [Open](https://www.pvinfo.org/company-inbox.html) | [Inbox](company-change-inbox.md) |
 | Action Center | [Open](https://www.pvinfo.org/action-center.html) | [Action Center](action-center.md) |
 | Team queue | [Open](https://www.pvinfo.org/team.html) | [Briefing/workspace](personal-briefing.md) |

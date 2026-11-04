@@ -18,6 +18,7 @@ The application uses HTML/CSS/JavaScript, Node collection jobs and serverless AP
 | Label Intelligence | Review captured FDA approved-change excerpts and EMA recommendation indexes; confirm source evidence and portfolio matches before opening a pinned private assessment. |
 | Safety Topic Explorer | Explore 12 editorial topics across updates, labels and research; filter publication timelines and inspect phrase matches, source provenance and paper-status notices. |
 | My Company Briefing | Confirm products and monitored markets, see matching updates/research and why they matched, then send an item for assessment. |
+| Leadership Cockpit and Safety Watch | Configure private topic/function interests, prioritize existing company evidence and cases, inspect upcoming source-date prompts and download a private weekly brief. |
 | My Company Change Inbox | Review matched items and new evidence for a confirmed portfolio; distinguish inbox triage from the Action Center case workflow. |
 | Source documents | Filter by country/agency, inspect original captures and versions, review extraction candidates and source changes. |
 | Requirements Library | Explore requirement interpretations, research intake, coverage gaps and links into company workflow. |
@@ -79,7 +80,7 @@ node scripts/aggregate.mjs --fixtures test/fixtures   # sample data, no network
 
 ## User Guide
 
-[Open the searchable User Guide](https://www.pvinfo.org/user-guide.html) or [browse the versioned GitHub wiki-style pages](docs/user-guide/README.md). The 25 chapters cover every current screen, account approval/recovery, public discovery, Substance Explorer, Label Intelligence, Safety Topic Explorer, company/clinical portfolios, baseline and change review, private actions/closure, calendar downloads and administrator operations. Use **Resources → User Guide**, full-text search, audience filters or **Read complete guide → Print / save as PDF**. Source chapters and the rendered in-app guide are maintained together with `npm run guide`; no Markdown attachments are added to app workflows.
+[Open the searchable User Guide](https://www.pvinfo.org/user-guide.html) or [browse the versioned GitHub wiki-style pages](docs/user-guide/README.md). The 26 chapters cover every current screen, account approval/recovery, public discovery, Substance Explorer, Label Intelligence, Safety Topic Explorer, company/clinical portfolios, baseline and change review, private actions/closure, calendar downloads and administrator operations. Use **Resources → User Guide**, full-text search, audience filters or **Read complete guide → Print / save as PDF**. Source chapters and the rendered in-app guide are maintained together with `npm run guide`; no Markdown attachments are added to app workflows.
 
 ## Hosting
 
@@ -373,3 +374,9 @@ Public `safety-topics.html` connects 12 editorial safety topics to collected upd
 Open Substances → Resolve a medicine name (`drug-resolver.html`). Browser-to-NLM exact → normalized → approximate lookup uses active RxNorm concept names; source ranks are not probabilities. Normalized lookup can ignore salts. Candidate review shows related ingredients, RxTerms strength/form, source release/capture metadata and bounded brand-product expansion. No paid model or UMLS key is used. Requests are serialized (four starts/second per page), memory-cached for up to 12 hours, and 429/unavailable responses require retry; shared network limits still apply. No patient narratives or batch upload.
 
 Approved accounts can append private ingredient/product confirmation, rejection or unresolved decisions to `drug_name_reviews`; RLS isolates owners and excludes pending/anonymous accounts. Owner/time/ID are database defaults without client insert grants; ordinary users cannot update/delete prior decisions. Browser-observed evidence is reviewer-recorded, not validated coding or WHODrug equivalence. No global aliases, portfolio selections or assessment cases are mutated. Apply the additive `drug_name_resolution_reviews` migration before enabling private saves. See [the resolver guide](docs/user-guide/drug-name-resolver.md).
+
+### Leadership Cockpit and Company Safety Watch
+
+`leadership.html` joins confirmed portfolios, scoped updates/research, captured labels, regulatory source reviews, existing company cases and personal reading markers. Private preferences live in `company_safety_watches`, protected by owner RLS and revision-checked edits. Team viewing reuses existing case membership authorization; watch preferences remain personal. No automatic cases, approvals, owner assignments or control-gap claims are created.
+
+Explainable priorities distinguish overdue actions, verification, due-within-seven-days work, unverified upcoming source-date prompts and editorial watched-topic matches. Exact Inbox links preserve company/team/item context and existing case identities. Weekly text downloads summarize recorded events/current work and include scope and coverage caveats. Clinical updates remain in Inbox/Portfolio 360, and operational source diagnostics remain admin-only. Apply the additive `company_safety_watch` migration before private configuration. See [the leadership guide](docs/user-guide/leadership.md).
