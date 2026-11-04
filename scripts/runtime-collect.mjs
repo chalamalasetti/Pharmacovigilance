@@ -5,9 +5,9 @@ import {jobPost} from './job-identity.mjs';
 import {packRuntime,restoreRuntime} from './runtime-publication.mjs';
 export const DATA_AUDIENCE='https://www.pvinfo.org/api/data-refresh';
 export async function publishRuntime({post,root='public'}={}){
- const {manifest,chunks}=await packRuntime(root);const {id}=await post({action:'begin',manifest});let next=0;
- await Promise.all(Array.from({length:4},async()=>{while(next<chunks.length){const chunk=chunks[next++];await post({action:'stage',id,...chunk});}}));
- return post({action:'commit',id});
+ const {manifest,chunks}=await packRuntime(root);console.log(`Runtime publication: ${Object.keys(manifest.files).length} files, ${chunks.length} chunks.`);const {id}=await post({action:'begin',manifest});let next=0;
+ let stagingError;await Promise.all(Array.from({length:4},async()=>{while(!stagingError&&next<chunks.length){const chunk=chunks[next++];try{await post({action:'stage',id,...chunk});}catch(e){stagingError??=Object.assign(Error(`Runtime staging failed for ${chunk.path}, part ${chunk.part+1}/${chunk.parts}${e.status?` (HTTP ${e.status})`:''}. Previous snapshot preserved.`),{status:e.status});}}}));if(stagingError)throw stagingError;
+ console.log('All runtime chunks staged; verifying and publishing snapshot.');return post({action:'commit',id});
 }
 async function main(){
  const post=body=>jobPost(DATA_AUDIENCE,{...body,lease:process.env.RUN_LEASE});
@@ -35,4 +35,4 @@ async function main(){
  const stats={checked:status.sources.length,matched:status.sources.reduce((n,s)=>n+(s.count??0),0),failed:status.sources.filter(s=>!s.ok||s.stale||s.collectorOk===false).length};
  await writeFile('/tmp/runtime-publication-result.json',JSON.stringify({stats,...result}));console.log(`Published complete public snapshot: ${result.files} files, ${stats.checked} sources checked`);
 }
-if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)main().catch(()=>{console.error('Public data refresh failed; previous snapshot is preserved. Review the collection step for source failures.');process.exitCode=1;});
+if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)main().catch(e=>{console.error(e.action?`Public data refresh failed at ${e.action}${e.status?` (HTTP ${e.status})`:''}; previous snapshot is preserved.`:e.message?.startsWith('Runtime staging failed')?e.message:'Public data refresh failed; previous snapshot is preserved. Review the last completed publication phase.');process.exitCode=1;});
