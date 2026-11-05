@@ -1,0 +1,307 @@
+{
+  "schema": 1,
+  "briefs": [
+    {
+      "id": "fda-expedited-ind-2026",
+      "version": 1,
+      "title": "FDA expedited IND pilot: development readiness",
+      "agency": "FDA",
+      "country": "US",
+      "classification": "Voluntary program / process assessment",
+      "summary": "Assess program participation, submission readiness and cross-functional controls. No direct expedited safety-reporting rule change is established by this source bundle.",
+      "sources": [
+        {
+          "id": "overview",
+          "title": "Current program overview and FAQs",
+          "url": "https://www.fda.gov/industry/fda-actions-accelerate-and-modernize-early-and-late-stage-clinical-development/fda-expedited-investigational-new-drug-ind-pilot-program",
+          "location": "Application status; Program Overview; FAQs",
+          "observation": "Applications are closed; participant notification is anticipated by December 18. Participation is voluntary and regulatory standards remain applicable."
+        },
+        {
+          "id": "process",
+          "title": "Rolling submission process",
+          "url": "https://www.fda.gov/industry/fda-expedited-investigational-new-drug-ind-pilot-program/expedited-ind-rolling-submission-process-and-program-structure",
+          "location": "Rolling IND Submission",
+          "observation": "The page describes component preparation, QRI review, sponsor accountability and final package reconciliation."
+        },
+        {
+          "id": "instructions",
+          "title": "Application instructions",
+          "url": "https://www.fda.gov/industry/fda-expedited-investigational-new-drug-ind-pilot-program/expedited-investigational-new-drug-pilot-program-application-instructions",
+          "location": "Application period",
+          "observation": "Describes a 45-day application period with possible extension; reconcile against the current closed-status notice."
+        },
+        {
+          "id": "announcement",
+          "title": "FDA launch announcement",
+          "url": "https://www.fda.gov/news-events/press-announcements/fda-launches-expedited-ind-pilot-begins-accepting-applications",
+          "location": "15 September 2026 announcement",
+          "observation": "States the October 30, 2026 application cutoff."
+        },
+        {
+          "id": "ind-clock",
+          "title": "21 CFR 312.40",
+          "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-D/part-312/subpart-C/section-312.40",
+          "location": "312.40(b)",
+          "observation": "IND effectiveness depends on FDA receipt, clinical-hold provisions and possible earlier FDA notification; do not infer this from a pre-IND upload."
+        }
+      ],
+      "reconciliation": "The current overview explicitly closes applications. Retain the older window description as contextual evidence; do not recommend applying now or calculate a new deadline from retrieval time.",
+      "roles": {
+        "manager": [
+          "Record a justified no-change decision unless another source supports reporting-rule changes.",
+          "Review RIM, publishing, document and clinical-operation handoffs before assuming a safety-database change.",
+          "Confirm installed system release, ownership and actual current controls."
+        ],
+        "scientist": [
+          "Assess unresolved safety questions and readiness of the program’s scientific contribution.",
+          "Coordinate nonclinical, clinical and regulatory evidence reviews.",
+          "Distinguish scientific judgments from administrative completeness checks."
+        ],
+        "lead": [
+          "Confirm participation status and assign cross-functional ownership.",
+          "Prioritize unresolved questions and resources; do not assume eligibility from company size."
+        ]
+      },
+      "questions": [
+        {
+          "id": "us",
+          "label": "US first-in-human development program?",
+          "options": [
+            "Unknown",
+            "Yes",
+            "No"
+          ]
+        },
+        {
+          "id": "participation",
+          "label": "Pilot participation status",
+          "options": [
+            "Unknown",
+            "Applied",
+            "Selected",
+            "Not participating"
+          ]
+        },
+        {
+          "id": "controls",
+          "label": "Current controls documented?",
+          "options": [
+            "Unknown",
+            "Yes",
+            "No"
+          ]
+        }
+      ],
+      "dates": [
+        {
+          "date": "2026-10-30",
+          "kind": "Application cutoff — historical",
+          "source": "announcement",
+          "note": "Not an open invitation to apply."
+        },
+        {
+          "date": "2026-12-18",
+          "kind": "Anticipated agency milestone",
+          "source": "overview",
+          "note": "Expected notification timing; not a company compliance deadline. Confirm year and current status before planning."
+        },
+        {
+          "date": "",
+          "kind": "Event-triggered IND clock",
+          "source": "ind-clock",
+          "note": "Requires confirmed receipt and applicable regulatory conditions; no date calculated here."
+        }
+      ],
+      "proposals": [
+        {
+          "id": "BR-01",
+          "type": "Business",
+          "text": "Confirm participation and assess the program-specific operating model.",
+          "source": "overview"
+        },
+        {
+          "id": "PR-01",
+          "type": "Process",
+          "text": "Define component review, feedback resolution and final reconciliation checkpoints.",
+          "source": "process"
+        },
+        {
+          "id": "SR-01",
+          "type": "System",
+          "text": "Assess submission/document workflow traceability; do not create an unsupported expedited reporting rule.",
+          "source": "process"
+        },
+        {
+          "id": "DR-01",
+          "type": "Data",
+          "text": "Maintain program, application and component identifiers with evidence and status.",
+          "source": "process"
+        },
+        {
+          "id": "VR-01",
+          "type": "Verification",
+          "text": "Test that pre-IND component uploads do not automatically start the final IND regulatory clock.",
+          "source": "ind-clock"
+        }
+      ],
+      "unknowns": [
+        "Company participation and product scope",
+        "Current procedures, installed-system configuration and integrations",
+        "Detailed participant-specific instructions and confirmed receipt events"
+      ],
+      "area": "process",
+      "status": "unreviewed_draft",
+      "checkedOn": "2026-11-05",
+      "method": "Curated worked example; no model API or arbitrary-document impact generation",
+      "limits": "Not an approved legal baseline. Current company controls and applicability remain unconfirmed. Sources may change after this check.",
+      "contentHash": "8d31b86c6b9681ceb2ba434679cd1895597d12d241554e7a21390e428e5f95ee"
+    },
+    {
+      "id": "ema-masking-2025",
+      "version": 1,
+      "title": "EMA masking: outbound ICSR controls",
+      "agency": "EMA",
+      "country": "EU",
+      "classification": "Guidance / destination-specific data policy",
+      "summary": "The addendum defines destination-specific masking/blank/preservation groups for EudraVigilance ICSR submissions. Available data in 13 listed fields use MSK; 11 other fields are left blank. Available fields in the two preservation tables remain available under their applicable implementation guidance. Company current controls, applicability and implementation gaps remain unconfirmed.",
+      "sources": [
+        {
+          "id": "ema",
+          "title": "GVP Module VI Addendum II — masking personal data in EudraVigilance ICSRs",
+          "url": "https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/guideline-good-pharmacovigilance-practices-gvp-module-vi-addendum-ii-masking-personal-data-individual-case-safety-reports-submitted-eudravigilance_en.pdf",
+          "location": "Sections 1, 3–6 and Tables 1–4; PDF pages 1, 3–14",
+          "observation": "Supported-edition table extraction identifies 13 mask-when-available, 11 blank, 185 PV-preservation and 73 technical-preservation field references.",
+          "sha256": "53bb1c46db481ae94009a302ca87cb44325cf1a82e7908c41e33c01649878b4c"
+        }
+      ],
+      "reconciliation": "Preserve field-specific qualifications and missing-data behavior. No verified predecessor baseline or company gap is established.",
+      "roles": {
+        "manager": [
+          "Assess destination-scoped outbound mappings, transformations and overrides.",
+          "Keep reporting clocks separate from privacy policy.",
+          "Confirm installed release and field-specific implementation guidance before proposing a setting."
+        ],
+        "scientist": [
+          "Check that clinically relevant information is not removed through blanket masking.",
+          "Review qualifications on narrative and patient information with privacy and regulatory specialists."
+        ],
+        "lead": [
+          "Confirm sender responsibility, destinations and review ownership.",
+          "Approve a scoped implementation and executed validation before closure."
+        ]
+      },
+      "questions": [
+        {
+          "id": "sender",
+          "label": "Company sends ICSRs/SUSARs to EudraVigilance?",
+          "options": [
+            "Unknown",
+            "Yes",
+            "No"
+          ]
+        },
+        {
+          "id": "mapping",
+          "label": "Outbound mappings documented?",
+          "options": [
+            "Unknown",
+            "Yes",
+            "No"
+          ]
+        },
+        {
+          "id": "controls",
+          "label": "Current controls documented?",
+          "options": [
+            "Unknown",
+            "Yes",
+            "No"
+          ]
+        }
+      ],
+      "dates": [
+        {
+          "date": "2025-07-25",
+          "kind": "Stated effective date — historical",
+          "source": "ema",
+          "note": "Sender implementation timing has qualifications; do not infer a fixed grace deadline."
+        }
+      ],
+      "proposals": [
+        {
+          "id": "BR-01",
+          "type": "Business",
+          "text": "Determine all company and partner EudraVigilance sender responsibilities and clinical/marketed scope.",
+          "source": "ema"
+        },
+        {
+          "id": "SR-01",
+          "type": "System",
+          "text": "Apply the 13-field conditional MSK policy only to confirmed EudraVigilance outbound mappings.",
+          "source": "ema"
+        },
+        {
+          "id": "SR-02",
+          "type": "System",
+          "text": "Omit or leave blank the 11 Table 2 fields according to the applicable XML specification; do not use unsupported nullFlavors.",
+          "source": "ema"
+        },
+        {
+          "id": "DR-01",
+          "type": "Data",
+          "text": "Preserve available Table 3–4 data under the applicable implementation guidance and established pseudonymisation controls.",
+          "source": "ema"
+        },
+        {
+          "id": "SR-03",
+          "type": "Interface",
+          "text": "Verify destination routing, local customizations, partner transformations and report-form confidentiality options independently.",
+          "source": "ema"
+        },
+        {
+          "id": "PR-01",
+          "type": "Process",
+          "text": "Document a reasonable implementation timeframe and how the sender will achieve it in internal procedures.",
+          "source": "ema"
+        },
+        {
+          "id": "QR-01",
+          "type": "Quality",
+          "text": "Perform schema/business-rule checks plus explicit masking checks; a gateway ACK alone is insufficient evidence of the masking policy.",
+          "source": "ema"
+        },
+        {
+          "id": "PR-02",
+          "type": "Process",
+          "text": "Maintain controlled source records, vendor/partner agreements, SOPs and controlled change history.",
+          "source": "ema"
+        },
+        {
+          "id": "TR-01",
+          "type": "Training",
+          "text": "Train case processors, reporting operations, systems support, QA and relevant partners on field groups and exceptions.",
+          "source": "ema"
+        },
+        {
+          "id": "VR-01",
+          "type": "Verification",
+          "text": "Implement through company change control with backup, rollback, independent review and post-change verification.",
+          "source": "ema"
+        }
+      ],
+      "unknowns": [
+        "Company sender responsibilities and destination scope",
+        "Current mappings, overrides and vendor-specific controls",
+        "Executed test results and approved implementation timing"
+      ],
+      "area": "transmission",
+      "detail": "guidance-impact.html?id=ema-178902-2025",
+      "status": "unreviewed_draft",
+      "checkedOn": "2026-11-05",
+      "method": "Curated worked example; no model API or arbitrary-document impact generation",
+      "limits": "Not an approved legal baseline. Current company controls and applicability remain unconfirmed. Sources may change after this check.",
+      "contentHash": "fa89a9ff928a30918034bcb62a5ae6e90840c12d745811da44fcf61cead964a4"
+    }
+  ]
+}
