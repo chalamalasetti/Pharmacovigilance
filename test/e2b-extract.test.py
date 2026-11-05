@@ -10,6 +10,10 @@ class Extract(unittest.TestCase):
   lines=[('C.2.r.5 Primary Source for Regulatory Purposes',64,'61'),('                        First guidance line above its label',64,'61'),('  User Guidance         Second guidance line',64,'61'),('  Conformance           Required',64,'61'),('  Data Type             1N',64,'61'),('  Business Rule(s)      Rule and exception',64,'61'),('C.3 INFORMATION ON SENDER OF CASE SAFETY REPORT',65,'62')]
   with patch.object(m,'page_lines',return_value=lines):r=m.core_records('unused')[0]
   self.assertEqual(r['title'],'Primary Source for Regulatory Purposes');self.assertIn('First guidance line',r['attributes']['guidance']);self.assertNotIn('INFORMATION ON SENDER',r['attributes']['businessRules'])
+ def test_chapter_intro_is_not_previous_fields_business_rule(self):
+  lines=[('C.5.4 Study Type',70,'67'),('  User Guidance         Classify study type',70,'67'),('  Conformance           Conditional',70,'67'),('  Data Type             1N',70,'67'),('  Business Rule(s)      Source condition',70,'67'),('D PATIENT CHARACTERISTICS',71,'68'),('Patient section introduction',71,'68')]
+  with patch.object(m,'page_lines',return_value=lines):r=m.core_records('unused')[0]
+  self.assertNotIn('PATIENT CHARACTERISTICS',r['attributes']['businessRules']);self.assertEqual(r['location']['endPage'],70)
  def test_hidden_rows_and_columns(self):
   rows=[{'cells':{}},{'cells':{'C':'DATA ELEMENT NUMBER','K':'Post-Market Business Rule','AG':'Value'}},{'row':3,'hidden':False,'cells':{'C':'C.1.3','D':'Type','H':'Required','J':'-','K':'Postmarket condition','M':'Private premarket condition','N':'Vaccine-specific','AG':'/message/type'}},{'row':4,'hidden':True,'cells':{'C':'FDA.C.1.1','D':'Hidden vaccine field'}}]
   with patch.object(m,'workbook',return_value=[('ICSR Data Elements',rows)]):out,meta=m.fda_records('unused')
