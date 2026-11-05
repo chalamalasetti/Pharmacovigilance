@@ -1,0 +1,156 @@
+{
+  "schema_version": "public-document-key-info-v1",
+  "document_id": "e2b-ich-alignment",
+  "metadata": {
+    "title": "ICH E2B(R3) alignment with E2D(R1) information paper",
+    "country": "US",
+    "agency": "FDA",
+    "edition": "Adopted 16 December 2025",
+    "norm": "Technical instruction",
+    "topic": "E2B report and study-type classification",
+    "lifecycle": "Both",
+    "legal_basis": "ICH technical alignment paper hosted by FDA; verify regional adoption",
+    "applicability": "C.1.3 and C.5.4 technical alignment; prospective use and regional implementation need review",
+    "published_on": "",
+    "effective_on": "",
+    "source_status": "uncertain"
+  },
+  "metadata_verification": "Source-register metadata; dates and legal status require human verification.",
+  "source_url": "https://www.fda.gov/media/195119/download?attachment=",
+  "original_sha256": "5acb434ffd4b9f0fa64deb10702c42d2e1f7c6c53fd2554218d7a400a619c7c2",
+  "content_kind": "pdf",
+  "parser_version": "normative-rules-v4-tables",
+  "extraction_status": "partial",
+  "candidate_count": 15,
+  "excluded_paragraphs": 0,
+  "candidate_limit_reached": true,
+  "review_status": "pending",
+  "limitations": [
+    "English rule-based extraction; no GPT or paid API.",
+    "Candidates are not approved requirements. Read the original, qualifications and exceptions.",
+    "Scans, tables, other languages and implicit obligations may be missed. Zero candidates does not establish zero requirements."
+  ],
+  "candidates": [
+    {
+      "ordinal": 1,
+      "anchor": "page-5-paragraph-4",
+      "statement": "For example, if a case in the literature arises from spontaneous observations, “type of report” should be Spontaneous report .",
+      "context": "a separate element for the designation of the source is covered in item C.4 and is not duplicated in this section. If a case in the literature arises from a study, “type of report” should be Report from study and the differentiation between types of studies (e.g., clinical trials or others) should be given in Section C.5.4 (See the user guidance for C.5.4).",
+      "fingerprint": "6060c203a392e54c54033b7f1f457fbca4d2d06ab8832e7c907033cba8f54ad2",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 2,
+      "anchor": "page-5-paragraph-5",
+      "statement": "If a case in the literature arises from a study, “type of report” should be Report from study and the differentiation between types of studies (e.g., clinical trials or others) should be given in Section C.5.4 (See the user guidance for C.5.4).",
+      "context": "For example, if a case in the literature arises from spontaneous observations, “type of report” should be Spontaneous report . If it is unclear from the literature report whether or not the case(s) cited are spontaneous observations or whether they arise from a study, then this item should be Other .",
+      "fingerprint": "5f9866bdbc77bf145e6b643ec7ec1e4fa6598c50c60c6d166d747ddcbf2341d4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 3,
+      "anchor": "page-5-paragraph-6",
+      "statement": "If it is unclear from the literature report whether or not the case(s) cited are spontaneous observations or whether they arise from a study, then this item should be Other .",
+      "context": "If a case in the literature arises from a study, “type of report” should be Report from study and the differentiation between types of studies (e.g., clinical trials or others) should be given in Section C.5.4 (See the user guidance for C.5.4). The value ‘2’ ( Report from study) is used for studies as well as for other solicited sources, as described in E2D(R1).",
+      "fingerprint": "32a8d6d6b5467dd524645d684f82dab443fd411e5639839f3207216784baadbb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 4,
+      "anchor": "page-6-paragraph-1",
+      "statement": "o C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed User Guidance This information should be provided if the “Type of Report” (C.1.3) has been populated with “Report from study” .",
+      "context": "4 = Not available to sender (unknown) Business Rule(s) Definitions provided in ICH E2D(R1) for Patient Support Program, Market Research Program, Organised Data Collection System and Digital Platform should be taken into account.",
+      "fingerprint": "834d432568b01c4f51dcc8f5a3d32554bb6ad7e14f68dee442d6fe04564eab34",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 5,
+      "anchor": "page-6-paragraph-2",
+      "statement": "Definitions provided in ICH E2D(R1) for Patient Support Program, Market Research Program, Organised Data Collection System and Digital Platform should be taken into account.",
+      "context": "o C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed User Guidance This information should be provided if the “Type of Report” (C.1.3) has been populated with “Report from study” . The value ‘6 = Organised Data Collection System with source data from a digital platform’ should only be used if the Individual Case Safety Reports (ICSR) originated from a digital platform and none of the other study types (1-5) apply.",
+      "fingerprint": "31ea2301b12e1b44a31ca93751fcb3bd7985a53fba1942ac172a2a7c10fba9ef",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 6,
+      "anchor": "page-6-paragraph-3",
+      "statement": "The value ‘6 = Organised Data Collection System with source data from a digital platform’ should only be used if the Individual Case Safety Reports (ICSR) originated from a digital platform and none of the other study types (1-5) apply.",
+      "context": "Definitions provided in ICH E2D(R1) for Patient Support Program, Market Research Program, Organised Data Collection System and Digital Platform should be taken into account. For example, value ‘6 = Organised Data Collection System with source data from a digital platform’ should be selected if the ICSR originated from a digital platform in the context of “social listening” activity on a digital platform that is not under the responsibility of the MAH.",
+      "fingerprint": "ae05bf6b42641689c355a9026f687c9a72427cb8bd6980b6aeaeff7a6fdbf668",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 7,
+      "anchor": "page-6-paragraph-4",
+      "statement": "For example, value ‘6 = Organised Data Collection System with source data from a digital platform’ should be selected if the ICSR originated from a digital platform in the context of “social listening” activity on a digital platform that is not under the responsibility of the MAH.",
+      "context": "The value ‘6 = Organised Data Collection System with source data from a digital platform’ should only be used if the Individual Case Safety Reports (ICSR) originated from a digital platform and none of the other study types (1-5) apply. If the ICSR originated from a digital platform in the context of a Patient Support Program, then the value ‘4 = Patient Support Program’ should be selected, instead of the value ‘6 = Organised Data Collection System with source data from a digital platform’ .",
+      "fingerprint": "694dc7a8606cbd709d0a3fe87821fb3ba0237c549b61f769a872e9f7c45f6f74",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 8,
+      "anchor": "page-6-paragraph-5",
+      "statement": "If the ICSR originated from a digital platform in the context of a Patient Support Program, then the value ‘4 = Patient Support Program’ should be selected, instead of the value ‘6 = Organised Data Collection System with source data from a digital platform’ .",
+      "context": "For example, value ‘6 = Organised Data Collection System with source data from a digital platform’ should be selected if the ICSR originated from a digital platform in the context of “social listening” activity on a digital platform that is not under the responsibility of the MAH. Conformance Optional, but required if C.1.3 = 2 (Report from study). Data Type 1N OID 2.16.840.1.113883.3.989.2.1.1.8 Value Allowed 1 = Clinical trials",
+      "fingerprint": "658604b7a20d78ef07eddcb1beedbd2302647f468f353ce70958d5a39d2a6902",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 9,
+      "anchor": "page-6-paragraph-12",
+      "statement": "4 Transition The new values for data-element “ C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed ” should be used prospectively:",
+      "context": "6 = Organised Data Collection System with source data from a digital platform Business Rule(s) - ICSRs that have already been submitted to regulatory authorities do not need to be re- submitted with a new value.",
+      "fingerprint": "5424f72c52711320c015b11bbb2a106f604d92078d83daad66b4f15b70b45fea",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 10,
+      "anchor": "page-6-paragraph-13",
+      "statement": "- ICSRs that have already been submitted to regulatory authorities do not need to be re- submitted with a new value.",
+      "context": "List governed by page-6-paragraph-12: 4 Transition The new values for data-element “ C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed ” should be used prospectively: - However, when submitting a follow-up ICSR or an amendment report, the new values should be used as appropriate. For example, submitting a follow-up ICSR for a case from a market research program that was previously submitted to the regulatory",
+      "fingerprint": "a02858499701018d2dca55819f60268af3d9f8f345719ba9fcfefe3bc8f6f960",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 11,
+      "anchor": "page-6-paragraph-14",
+      "statement": "- However, when submitting a follow-up ICSR or an amendment report, the new values should be used as appropriate. For example, submitting a follow-up ICSR for a case from a market research program that was previously submitted to the regulatory",
+      "context": "List governed by page-6-paragraph-12: 4 Transition The new values for data-element “ C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed ” should be used prospectively: authorities, the new value ‘ 5 = Market Research Program’ should be used in data element “ C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed ” .",
+      "fingerprint": "502d3919b25b01fee104122548c85a6296eab6c6e5a0f81919aca8d8381a3434",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 12,
+      "anchor": "page-7-paragraph-1",
+      "statement": "authorities, the new value ‘ 5 = Market Research Program’ should be used in data element “ C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed ” .",
+      "context": "- However, when submitting a follow-up ICSR or an amendment report, the new values should be used as appropriate. For example, submitting a follow-up ICSR for a case from a market research program that was previously submitted to the regulatory - The new values should be used as appropriate for newly submitted ICSRs, not just for newly introduced solicited data sources. For example, ICSR submissions arising from a patient support program that has been running for years should use the new value ‘ 4 = Patient Support Program’ in data-element “ C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed ” for all new and follow-up ICSRs submitted from this program.",
+      "fingerprint": "06505292d50f1ab2efd85e7ee52068fb9b5c1451949ad9dcec66350705aa4d41",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 13,
+      "anchor": "page-7-paragraph-2",
+      "statement": "- The new values should be used as appropriate for newly submitted ICSRs, not just for newly introduced solicited data sources. For example, ICSR submissions arising from a patient support program that has been running for years should use the new value ‘ 4 = Patient Support Program’ in data-element “ C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed ” for all new and follow-up ICSRs submitted from this program.",
+      "context": "authorities, the new value ‘ 5 = Market Research Program’ should be used in data element “ C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed ” . It is acknowledged that the ICH E2D(R1) definition for a Patient Support Program (PSP) ( see ICH E2D(R1) sections 2.9 and 4.5) excludes certain types of programs which historically may have been considered to be PSPs (e.g., MAH activities that only allow one-way interactions such as delivery of a product to a patient’s home, or provision of vouchers or coupons ). ICSRs that have already been submitted to regulatory authorities for programs no longer considered PSPs do not need to be re-submitted with a new value. When submitting a follow-up or an amendment report for a previously submitted ICSR originating from these types of programs, the data-element “ C.1.3 Type of Report” should be updated with the value ‘ 1 = Spontaneous report’ a",
+      "fingerprint": "4cfb119cecc9f5cb55f231a1c96ac317edb178848dd6bb166c07112d3f931384",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 14,
+      "anchor": "page-7-paragraph-3",
+      "statement": "It is acknowledged that the ICH E2D(R1) definition for a Patient Support Program (PSP) ( see ICH E2D(R1) sections 2.9 and 4.5) excludes certain types of programs which historically may have been considered to be PSPs (e.g., MAH activities that only allow one-way interactions such as delivery of a product to a patient’s home, or provision of vouchers or coupons ). ICSRs that have already been submitted to regulatory authorities for programs no longer considered PSPs do not need to be re-submitted with a new value. When submitting a follow-up or an amendment report for a previously submitted ICSR originating from these types of programs, the data-element “ C.1.3 Type of Report” should be updated with the value ‘ 1 = Spontaneous report’ and the data-element “ C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed ” should be left empty. The case narrative of the follow-up ICSR should also clarify that the ICSR originates from a one-way interactions service program and not from a patient support program.",
+      "context": "- The new values should be used as appropriate for newly submitted ICSRs, not just for newly introduced solicited data sources. For example, ICSR submissions arising from a patient support program that has been running for years should use the new value ‘ 4 = Patient Support Program’ in data-element “ C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed ” for all new and follow-up ICSRs submitted from this program. 5 Regional implementation See websites of regional regulators for the implementation timelines for accepting the new values for data-element “ C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed” and additional regional considerations, as appropriate.",
+      "fingerprint": "0774a6650c9c68e036d46f99d077d09abe84ebe82d55e7851f70ddbe91e56d4f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 15,
+      "anchor": "page-7-paragraph-5",
+      "statement": "When a region has not yet implemented the new values for data-element “C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed”, the value ‘3 = Other studies (e.g., pharmacoepidemiology, pharmacoeconomics, intensive monitoring)’ should be used for ICSRs originating from patient support programs, market research programs or from organized data collection systems with source data from digital platforms.",
+      "context": "5 Regional implementation See websites of regional regulators for the implementation timelines for accepting the new values for data-element “ C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed” and additional regional considerations, as appropriate.",
+      "fingerprint": "cbbc92bf97d47137bd2541784719e748c937cb6048c0280b4129db216432e910",
+      "review_status": "pending"
+    }
+  ],
+  "retrieved_at": "2026-11-05T02:47:47.062Z"
+}

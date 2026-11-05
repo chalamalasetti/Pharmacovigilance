@@ -6,48 +6,48 @@
       "country": "CA",
       "agency": "CA_HC",
       "title": "GUI-0102: The regulations",
-      "latest": "documents/ca-hc-gvp-regulations/7a3f846cf467566d11fa85984754e92dc915098410b0e717a3116408f9cb6f11.json",
-      "last_checked_at": "2026-11-05T02:29:18.503Z",
-      "last_success_at": "2026-11-05T02:29:18.503Z",
+      "latest": "documents/ca-hc-gvp-regulations/0fab7bdcfa13fbf701103790c663b3da4208e7e665e44b7f34608483c8ef9d0c.json",
+      "last_checked_at": "2026-11-05T02:47:28.888Z",
+      "last_success_at": "2026-11-05T02:47:28.888Z",
       "status": "partial",
       "candidate_count": 252,
-      "previous": "documents/ca-hc-gvp-regulations/9380e2b10f2206e817a5e1099219e0a73563c0dad532ce4c9524c4d476459f3e.json"
+      "previous": "documents/ca-hc-gvp-regulations/7a3f846cf467566d11fa85984754e92dc915098410b0e717a3116408f9cb6f11.json"
     },
     "ca-hc-gvp-system": {
       "document_id": "ca-hc-gvp-system",
       "country": "CA",
       "agency": "CA_HC",
       "title": "GUI-0102: Pharmacovigilance system",
-      "latest": "documents/ca-hc-gvp-system/904f5561e5ae3962d34ce5887eac0cae7890df13ff7f9930cd86ef45e590ec5a.json",
-      "last_checked_at": "2026-11-05T02:29:23.147Z",
-      "last_success_at": "2026-11-05T02:29:23.147Z",
+      "latest": "documents/ca-hc-gvp-system/bac38b888a2d78979a6f5543ccfe994c61b3fb8c92229945ce09c23e975e1f7d.json",
+      "last_checked_at": "2026-11-05T02:47:32.700Z",
+      "last_success_at": "2026-11-05T02:47:32.700Z",
       "status": "partial",
       "candidate_count": 119,
-      "previous": "documents/ca-hc-gvp-system/34075278f2abc61008e5f64e238a9e4761099e2bc3ef3286df5ba86e46f7cf5b.json"
+      "previous": "documents/ca-hc-gvp-system/904f5561e5ae3962d34ce5887eac0cae7890df13ff7f9930cd86ef45e590ec5a.json"
     },
     "gb-mhra-pv-procedures": {
       "document_id": "gb-mhra-pv-procedures",
       "country": "GB",
       "agency": "GB_MHRA",
       "title": "Guidance on pharmacovigilance procedures",
-      "latest": "documents/gb-mhra-pv-procedures/72a4083d8ba9100dc301640cfe048d697264f313ea2c53545c57f81df8cc18b3.json",
-      "last_checked_at": "2026-11-05T02:29:25.696Z",
-      "last_success_at": "2026-11-05T02:29:25.696Z",
+      "latest": "documents/gb-mhra-pv-procedures/ac091c9772302ae14190641f15573da002d0afa331c4bfc6fa466d3300620e21.json",
+      "last_checked_at": "2026-11-05T02:47:35.607Z",
+      "last_success_at": "2026-11-05T02:47:35.607Z",
       "status": "partial",
       "candidate_count": 83,
-      "previous": "documents/gb-mhra-pv-procedures/9afa1a15084083c712607daa2eabd1c032e10052b520cabef21a3265b2045b75.json"
+      "previous": "documents/gb-mhra-pv-procedures/72a4083d8ba9100dc301640cfe048d697264f313ea2c53545c57f81df8cc18b3.json"
     },
     "ema-gvp-i": {
       "document_id": "ema-gvp-i",
       "country": "EU",
       "agency": "EMA",
       "title": "GVP Module I — PV systems and quality systems",
-      "latest": "documents/ema-gvp-i/9216d670790b3e072aa2ba014216d2e3a3bfa5f8268753e56eb9dc6573578eee.json",
-      "last_checked_at": "2026-11-05T02:29:31.300Z",
-      "last_success_at": "2026-11-05T02:29:31.300Z",
+      "latest": "documents/ema-gvp-i/fd010b4d00e3f59a765a6c69c52e039866dfd1e44f3d0d8409f894b53ab0224d.json",
+      "last_checked_at": "2026-11-05T02:47:41.912Z",
+      "last_success_at": "2026-11-05T02:47:41.912Z",
       "status": "partial",
       "candidate_count": 150,
-      "previous": "documents/ema-gvp-i/dcfa0b85f28f3227c6fedd4a3c2a3db896c63efc60c83e1c0d4592dc1689a802.json"
+      "previous": "documents/ema-gvp-i/9216d670790b3e072aa2ba014216d2e3a3bfa5f8268753e56eb9dc6573578eee.json"
     },
     "eu-520-2012": {
       "document_id": "eu-520-2012",
@@ -55,7 +55,7 @@
       "agency": "EMA",
       "title": "Commission Implementing Regulation (EU) No 520/2012",
       "latest": null,
-      "last_checked_at": "2026-11-05T02:29:27.331Z",
+      "last_checked_at": "2026-11-05T02:47:37.232Z",
       "status": "source_unavailable",
       "note": "Previous extraction preserved; source could not be retrieved."
     },
@@ -64,24 +64,24 @@
       "country": "US",
       "agency": "FDA",
       "title": "AEMS electronic submissions",
-      "latest": "documents/fda-aems-esg/79f741c611c39a5cb33aa5722adb4a8f0676f8c30a1dcfb409c792edcb9bc8e0.json",
-      "last_checked_at": "2026-11-05T02:29:27.828Z",
-      "last_success_at": "2026-11-05T02:29:27.828Z",
+      "latest": "documents/fda-aems-esg/c93ba40ae3cdfd858f2f1470cb87b4503c57d53e99990c469b5d807c9aa3f25d.json",
+      "last_checked_at": "2026-11-05T02:47:37.739Z",
+      "last_success_at": "2026-11-05T02:47:37.739Z",
       "status": "candidates_extracted",
       "candidate_count": 8,
-      "previous": "documents/fda-aems-esg/67aa64300a07c529e9c59a437e02ffb766b6860d475e7d78b2545d3c5ec7c09a.json"
+      "previous": "documents/fda-aems-esg/79f741c611c39a5cb33aa5722adb4a8f0676f8c30a1dcfb409c792edcb9bc8e0.json"
     },
     "fda-e2d": {
       "document_id": "fda-e2d",
       "country": "US",
       "agency": "FDA",
       "title": "E2D(R1) Post-Approval Safety Data",
-      "latest": "documents/fda-e2d/2f27587e258fbdc3e7c6e3e6061a397c8e22de84899481c4198949adefe41f99.json",
-      "last_checked_at": "2026-11-05T02:29:29.476Z",
-      "last_success_at": "2026-11-05T02:29:29.476Z",
+      "latest": "documents/fda-e2d/6d627e59c8336075e9a623f674a3e59ec0353cb1f6ae21a63f534ba0375a3838.json",
+      "last_checked_at": "2026-11-05T02:47:39.069Z",
+      "last_success_at": "2026-11-05T02:47:39.069Z",
       "status": "partial",
       "candidate_count": 104,
-      "previous": "documents/fda-e2d/8d75a3600fc455f96a9cdb7de6e24192f29199f346b91c3d358f35721de5c5a8.json"
+      "previous": "documents/fda-e2d/2f27587e258fbdc3e7c6e3e6061a397c8e22de84899481c4198949adefe41f99.json"
     },
     "fda-31232": {
       "document_id": "fda-31232",
@@ -89,7 +89,7 @@
       "agency": "FDA",
       "title": "21 CFR 312.32",
       "latest": "documents/fda-31232/c4f818891f402ee849a0aecacd058dee920564f77020a1eb3a1ac10d75c55988.json",
-      "last_checked_at": "2026-11-05T02:29:38.111Z",
+      "last_checked_at": "2026-11-05T02:47:50.578Z",
       "last_success_at": "2026-11-01T17:22:52.948Z",
       "status": "source_unavailable",
       "candidate_count": 13,
@@ -101,7 +101,7 @@
       "agency": "FDA",
       "title": "21 CFR 314.80",
       "latest": "documents/fda-31480/710e5ff96af2a730045aaa8b8f3fbcb156a9c5a9bc75fc882fa7e77d05feda8f.json",
-      "last_checked_at": "2026-11-05T02:29:37.849Z",
+      "last_checked_at": "2026-11-05T02:47:50.310Z",
       "last_success_at": "2026-11-01T17:22:53.620Z",
       "status": "source_unavailable",
       "candidate_count": 14,
@@ -113,7 +113,7 @@
       "agency": "AU_TGA",
       "title": "Pharmacovigilance responsibilities of medicine sponsors",
       "latest": null,
-      "last_checked_at": "2026-11-05T02:29:48.441Z",
+      "last_checked_at": "2026-11-05T02:48:00.909Z",
       "status": "source_unavailable",
       "note": "Previous extraction preserved; source could not be retrieved."
     },
@@ -122,44 +122,48 @@
       "country": "EU",
       "agency": "EMA",
       "title": "GVP Module VI Addendum II — masking personal data in EudraVigilance ICSRs",
-      "latest": "documents/ema-gvp-vi-addendum-ii/55f352b2f8dc062da436e18e8c840f0c77f6fda3a58030fa2b360540c8f06cbc.json",
-      "last_checked_at": "2026-11-05T02:29:12.822Z",
-      "last_success_at": "2026-11-05T02:29:12.822Z",
+      "latest": "documents/ema-gvp-vi-addendum-ii/fef0d0cb6620fae02290ad9e31df06d0f7ba6b89619eec1f8407dd96bb02e49c.json",
+      "last_checked_at": "2026-11-05T02:47:22.585Z",
+      "last_success_at": "2026-11-05T02:47:22.585Z",
       "status": "partial",
-      "candidate_count": 12
+      "candidate_count": 294,
+      "previous": "documents/ema-gvp-vi-addendum-ii/55f352b2f8dc062da436e18e8c840f0c77f6fda3a58030fa2b360540c8f06cbc.json"
     },
     "e2b-fda-regional": {
       "document_id": "e2b-fda-regional",
       "country": "US",
       "agency": "FDA",
       "title": "FDA Regional Implementation Guide for E2B(R3)",
-      "latest": "documents/e2b-fda-regional/ced469e1f3aae687b76feed38525e3ac33841e13c5b4a36f8a2e753e4a076f8d.json",
-      "last_checked_at": "2026-11-05T02:29:32.164Z",
-      "last_success_at": "2026-11-05T02:29:32.164Z",
+      "latest": "documents/e2b-fda-regional/0c79bbc5d6a2a399f44e92b56845068b6b78580a602badbbe11aff32210f0960.json",
+      "last_checked_at": "2026-11-05T02:47:44.777Z",
+      "last_success_at": "2026-11-05T02:47:44.777Z",
       "status": "partial",
-      "candidate_count": 46
+      "candidate_count": 46,
+      "previous": "documents/e2b-fda-regional/ced469e1f3aae687b76feed38525e3ac33841e13c5b4a36f8a2e753e4a076f8d.json"
     },
     "e2b-ich-alignment": {
       "document_id": "e2b-ich-alignment",
       "country": "US",
       "agency": "FDA",
       "title": "ICH E2B(R3) alignment with E2D(R1) information paper",
-      "latest": "documents/e2b-ich-alignment/c6b86238dcd06d876ed74c0743476d8b0cd5852e8c6141dba45a85347bfeac17.json",
-      "last_checked_at": "2026-11-05T02:29:34.500Z",
-      "last_success_at": "2026-11-05T02:29:34.500Z",
+      "latest": "documents/e2b-ich-alignment/70e8657faad16fb0ded7cd091c90c34ca1d335c4b7581b6acb1044cd0b2966a7.json",
+      "last_checked_at": "2026-11-05T02:47:47.064Z",
+      "last_success_at": "2026-11-05T02:47:47.064Z",
       "status": "partial",
-      "candidate_count": 15
+      "candidate_count": 15,
+      "previous": "documents/e2b-ich-alignment/c6b86238dcd06d876ed74c0743476d8b0cd5852e8c6141dba45a85347bfeac17.json"
     },
     "e2b-ich-core": {
       "document_id": "e2b-ich-core",
       "country": "US",
       "agency": "FDA",
       "title": "ICH E2B(R3) Implementation Guide — FDA edition",
-      "latest": "documents/e2b-ich-core/2449a18b7cf3e17f325f15ddb4587de91c287e1d391d1d9877d3f6146c4f4452.json",
-      "last_checked_at": "2026-11-05T02:29:36.363Z",
-      "last_success_at": "2026-11-05T02:29:36.363Z",
+      "latest": "documents/e2b-ich-core/15273533dc9d39b064f5d37daf12a78bb9e5cf78e70d156786cebda5d081fb7c.json",
+      "last_checked_at": "2026-11-05T02:47:48.687Z",
+      "last_success_at": "2026-11-05T02:47:48.687Z",
       "status": "extraction_failed",
-      "candidate_count": 0
+      "candidate_count": 0,
+      "previous": "documents/e2b-ich-core/2449a18b7cf3e17f325f15ddb4587de91c287e1d391d1d9877d3f6146c4f4452.json"
     }
   }
 }
