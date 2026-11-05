@@ -20,3 +20,14 @@ The draft preserves brief ID, version and hash; company and installed release re
 
 ## Export and limitations
 **Export pinned brief** downloads the public, unreviewed JSON package. Company work is exported separately through the workbench. Keep the exact version when reviewing changes; an unavailable requested hash is rejected rather than silently replaced. This is a curated evidence-to-decision pilot without a paid model API, autonomous legal interpretation, installed-system inspection or automatic regulatory publication.
+
+## My Company Impact Assessment
+New brief handoffs include **5 · Company impact** in Configuration Workbench. Choose an existing confirmed company portfolio, or enter the company environment in step 1. A portfolio copies its company, markets and revision reference; it does not verify current product availability or applicability. Enter the program/products, development stage and operating responsibilities, then confirm the scope.
+
+For every source-linked proposal, capture the actual current control and an organizational evidence reference. Choose **Supported**, **Potential gap**, **Unknown** or **Not applicable** and record a rationale. Potential gaps require an action. These expectations are implementation inferences from the unreviewed brief, not automatically approved legal requirements. Do not include patient data, names, contact details, credentials or case exports.
+
+Record an overall decision: change required, no change required, more information needed, or not applicable. No-change and not-applicable decisions cannot retain unknowns or potential gaps. A not-applicable decision requires every row to be not applicable. Change-required decisions need a gap and action. Supported/gap rows need current-control evidence. Server-side validation enforces these gates on submission/approval, as well as existing source verification, baseline and review requirements. A no-change decision cannot accompany a reporting-rule modification.
+
+Use **Review source and applicability** to complete step 3; the overall decision does not silently set source verification or applicability. A not-applicable overall decision may use Not relevant applicability with its rationale. All other approvals retain the existing relevant-applicability gate. Save drafts while researching unknowns. Generate & compare shows the control comparison; JSON export and revision snapshots preserve the full data. Existing team approval requires a different team owner. Use the existing Action Center handoff to assign actions and verify closure against the saved configuration revision.
+
+Older saved work remains readable and is not retroactively populated or reapproved. Start a new draft from a brief to use the company comparison. The module does not inspect installed safety systems, execute tests or publish company assessments publicly.
