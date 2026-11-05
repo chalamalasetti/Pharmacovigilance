@@ -4,7 +4,7 @@ import {DATE_KINDS,filterDates,regulatoryReminder} from './regulatory-calendar-l
 const root=document.getElementById('regulatory-calendar'),params=new URLSearchParams(location.search);
 let sb,admin=false,rows=[];
 const message=el('p',{role:'status'}),list=el('div',{class:'reg-timeline'}),filters=el('div',{class:'event-controls'}),inputs={};
-const field=(name,label,node)=>{inputs[name]=node;filters.append(el('label',{},label,node));node.addEventListener('input',draw);return node;};
+const field=(name,label,node)=>{inputs[name]=node;node.setAttribute('aria-label',label);filters.append(el('label',{},label,node));node.addEventListener('input',draw);return node;};
 field('q','Search source or scope',el('input',{type:'search',placeholder:'Substance, guidance or reporting scope'}));
 for(const [k,t] of [['agency','Agency'],['country','Country'],['kind','Date type'],['state','Verification']])field(k,t,el('select',{},el('option',{value:''},'All')));
 for(const [k,t] of [['from','From'],['to','To']])field(k,t,el('input',{type:'date'}));
@@ -18,7 +18,7 @@ function card(e){const n=el('article',{class:'event-card reg-date-card'},el('p',
  if(admin)n.append(reviewForm(e));return n;}
 function reviewForm(e){const details=el('details',{},el('summary',{},'Review date & decision history')),form=el('form',{}),values={};
  for(const [k,t] of [['date','Source-supported date'],['kind','Date type'],['scope','Product / substance and reporting scope'],['anchor','Exact page, section or table row'],['timing','Timing qualifications / implementation period'],['reason','Review rationale']]){
- const input=k==='kind'?el('select',{},...Object.entries(DATE_KINDS).map(([v,l])=>el('option',{value:v,selected:v===e.kind},l))):k==='date'?el('input',{type:'date',value:e.event_date,required:true}):el('textarea',{required:['scope','anchor','reason'].includes(k),maxlength:k==='scope'||k==='timing'?2000:1000},({scope:e.scope,anchor:e.anchor,timing:e.timing_note})[k]??'');values[k]=input;form.append(el('label',{},t,input));
+ const input=k==='kind'?el('select',{},...Object.entries(DATE_KINDS).map(([v,l])=>el('option',{value:v,selected:v===e.kind},l))):k==='date'?el('input',{type:'date',value:e.event_date,required:true}):el('textarea',{required:['scope','anchor','reason'].includes(k),maxlength:k==='scope'||k==='timing'?2000:1000},({scope:e.scope,anchor:e.anchor,timing:e.timing_note})[k]??'');input.setAttribute('aria-label',t);values[k]=input;form.append(el('label',{},t,input));
  }
  const confirm=el('input',{type:'checkbox',required:true}),feedback=el('p',{role:'status'});form.append(el('label',{},confirm,' I reviewed the original source, exact date meaning, scope and qualifications. Do not enter personal information.'));
  for(const [state,title]of [['verified','Verify & publish'],['rejected','Reject'],['withdrawn','Withdraw']])form.append(el('button',{type:'submit',value:state,class:'act'},title));
