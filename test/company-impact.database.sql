@@ -2,7 +2,13 @@ begin;
 do $$
 declare b jsonb:='{"schema":1,"engine":"config-draft-v1","title":"Synthetic assessment","profile":{"system":"argus","version":"Synthetic","environment":"Validation","company":"Synthetic Pharma","markets":"US"},"rules":[],"baselineStatus":"confirmed","area":"process","source":{"title":"Synthetic source","url":"https://www.fda.gov/synthetic","edition":"Synthetic","location":"Section 1","excerpt":"Synthetic organizational requirement","authority":"primary","verified":true},"applicability":"relevant","rationale":"Synthetic applicability","proposal":{"change":"Synthetic reviewed decision"},"implementation":"Synthetic implementation and verification","generated":{"engine":"config-draft-v1"},"companyImpact":{"schema":1,"program":"Synthetic program","stage":"Clinical","scopeConfirmed":true,"decision":"no_change","rationale":"Synthetic evidence review","controls":[{"id":"R1","expectation":"Synthetic expectation","sourceUrl":"https://www.fda.gov/synthetic","state":"unknown","reason":"Synthetic review"}]}}';
 begin
+ b:=jsonb_set(b,'{companyImpact,controls,0,accountableRole}','"governance-1"');
+ b:=jsonb_set(b,'{companyImpact,controls,0,responsibleRole}','"systems-2"');
  perform pv_config.validate_body(b,false);
+ b:=jsonb_set(b,'{companyImpact,controls,0,accountableRole}','"administrator"');
+ begin perform pv_config.validate_body(b,false);raise exception 'Unknown ownership role accepted';exception when others then if sqlerrm<>'Company ownership must use a catalog role ID' then raise;end if;end;
+ b:=jsonb_set(b,'{companyImpact,controls,0,accountableRole}','"governance-1"');
+
  begin perform pv_config.validate_body(b,true);raise exception 'Unknown controls accepted';exception when others then if sqlerrm<>'Resolve unknown company controls before approval' then raise;end if;end;
  b:=jsonb_set(b,'{companyImpact,controls,0,state}','"supported"');
  begin perform pv_config.validate_body(b,true);raise exception 'Missing evidence accepted';exception when others then if sqlerrm not like 'Current control%' then raise;end if;end;

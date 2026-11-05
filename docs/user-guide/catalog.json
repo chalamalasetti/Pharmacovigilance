@@ -1,7 +1,7 @@
 {
-  "version": "1.7",
-  "reviewed": "2026-11-04",
-  "appRevision": "guidance-impact-pilot-v1",
+  "version": "1.8",
+  "reviewed": "2026-11-05",
+  "appRevision": "pv-operating-model-v1",
   "chapters": [
     {
       "id": "getting-started",
@@ -212,6 +212,13 @@
       "group": "Regulatory intelligence",
       "audience": "Everyone",
       "summary": "Review source bundles, role-specific impact prompts and private assessment handoffs."
+    },
+    {
+      "id": "pv-roles",
+      "title": "PV Roles, Processes & My Responsibilities",
+      "group": "Regulatory intelligence",
+      "audience": "Everyone",
+      "summary": "Explore reference responsibilities, save private preferences and review role/process associations."
     }
   ],
   "screens": {
@@ -258,6 +265,7 @@
     "config-workbench.html": "config-workbench",
     "e2b-studio.html": "e2b-studio",
     "guidance-impact.html": "guidance-impact",
-    "impact-briefs.html": "impact-briefs"
+    "impact-briefs.html": "impact-briefs",
+    "pv-roles.html": "pv-roles"
   }
 }
