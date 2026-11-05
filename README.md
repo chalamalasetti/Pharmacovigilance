@@ -416,3 +416,5 @@ python scripts/e2b-structures.py --schemas /path/schema.zip --reference /path/re
 ```
 
 Review changed versions, notices and metadata before committing a new index. The importer rejects DTD/entity declarations and oversized archives; it does not execute XSD/XSLT or retain XML case values. The source packages remain separate; no FDA endorsement is implied.
+
+This product includes software developed by Health Level Seven. See the in-app third-party notices for applicable source notices and disclaimers.
