@@ -1,6 +1,6 @@
 # PV Info User Guide
 
-Version 1.3 · reviewed 4 November 2026 · application reference safety-config-workbench-v1.
+Version 1.4 · reviewed 4 November 2026 · application reference e2b-mapping-studio-v1.
 
 [Open the searchable in-app User Guide](https://www.pvinfo.org/user-guide.html). These are versioned wiki-style pages within the main GitHub repository, not a separate GitHub Wiki repository. The app renders a help center; it does not attach Markdown files to user workflows.
 
@@ -45,6 +45,8 @@ Version 1.3 · reviewed 4 November 2026 · application reference safety-config-w
 - [Admin: refresh, navigation and publishing](admin-operations.md) — Operate data refresh independently of app releases, inspect failures and manage menus.
 
 - [Safety Configuration Workbench](config-workbench.md) — Private environment profiles, current-rule baselines, evidence-linked proposals, independent review and implementation handoff.
+
+- [E2B Requirements & Mapping Studio](e2b-studio.md) — ICH/FDA source captures, reviewed baseline subsets and private system mappings.
 
 ## Reference
 
