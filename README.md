@@ -402,3 +402,17 @@ Approved users document private system/environment mappings with optimistic conc
 See the [E2B Studio user guide](docs/user-guide/e2b-studio.md). `scripts/e2b-extract.py` deterministically imports the supplied core PDF, FDA workbook and regional PDF into `public/e2b-catalog.json`; source binaries are not bundled. Its field/source hashes and coverage limits are retained. A new capture requires a controlled import and human review; the studio can read a complete newer database capture without an app deployment; hourly news refresh does not regenerate or approve E2B baselines. The additive `e2b_mapping_studio` migration supplies public provenance/review records, immutable baseline snapshots and private mappings. It registers PDF source families with the existing document catalog; the XLSX source is reference-only.
 
 The user-supplied Oracle Argus Safety Administration Guide (8.4.1, F84377-02, October 2023) supplies twelve derived configuration-reference areas. Users can pin guide/version/checksum/page references to private mappings and workbench drafts. Release mismatch warnings and synthetic review prompts help avoid assuming that an older administration guide establishes current regulatory behavior or exact field transformations. The Oracle PDF is not redistributed.
+
+### E2B schema and configuration design
+
+E2B Mapping Studio now includes an on-demand structural index of all 167 FDA-hosted ICH v2.5 XSD files (10,898 element/attribute declaration sites), two v3.1 reference XML structures and five v2.0 example XML structures. XML instance values are excluded. FDA ZIP downloads, checksums and HL7 notices remain visible. Local declarations are not expanded effective message constraints or legal obligations.
+
+Approved users can pin a declaration to a private source-linked mapping; configure module, scope, conditions, requiredness, terminology, null policy and acceptance criteria; record business/system/process/data requirement IDs; and link up to eight other version-pinned E2B references. Configurations retain existing revision history and flow intact to Configuration Workbench. These are declarative specifications, not vendor imports, executed validation or compliance certification. No paid API, patient XML upload, homepage layout change or database migration is needed.
+
+Reproduce the structural index offline after downloading FDA media 157992, 157991 and 157990:
+
+```sh
+python scripts/e2b-structures.py --schemas /path/schema.zip --reference /path/reference.zip --examples /path/examples.zip --output public/e2b-structures.json --notices public/e2b-third-party-notices.txt
+```
+
+Review changed versions, notices and metadata before committing a new index. The importer rejects DTD/entity declarations and oversized archives; it does not execute XSD/XSLT or retain XML case values. The source packages remain separate; no FDA endorsement is implied.

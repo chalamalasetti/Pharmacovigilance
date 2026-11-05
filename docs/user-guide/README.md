@@ -1,6 +1,6 @@
 # PV Info User Guide
 
-Version 1.4 · reviewed 4 November 2026 · application reference e2b-mapping-studio-v1.
+Version 1.5 · reviewed 4 November 2026 · application reference e2b-schema-configuration-v2.
 
 [Open the searchable in-app User Guide](https://www.pvinfo.org/user-guide.html). These are versioned wiki-style pages within the main GitHub repository, not a separate GitHub Wiki repository. The app renders a help center; it does not attach Markdown files to user workflows.
 
