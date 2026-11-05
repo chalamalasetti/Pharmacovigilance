@@ -1,5 +1,5 @@
 import * as C from './cloud.js';
-import {el} from './impact-view.js';
+const el=(tag,attrs={},...kids)=>{const n=document.createElement(tag);for(const [k,v]of Object.entries(attrs)){if(k==='class')n.className=v;else if(k.startsWith('on'))n.addEventListener(k.slice(2),v);else if(v!=null&&v!==false)n.setAttribute(k,v===true?'':v);}n.append(...kids.flat().filter(k=>k!=null&&k!==false));return n;};
 import {DATE_KINDS,filterDates,regulatoryReminder} from './regulatory-calendar-lib.js';
 const root=document.getElementById('regulatory-calendar'),params=new URLSearchParams(location.search);
 let sb,admin=false,rows=[];
