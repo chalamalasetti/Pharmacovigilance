@@ -205,6 +205,13 @@
       "group": "Assess and act",
       "audience": "Safety systems, regulatory reviewers and administrators",
       "summary": "Follow a public source through table-aware extraction, draft policy, configuration design and company verification; understand automation limits."
+    },
+    {
+      "id": "impact-briefs",
+      "title": "Regulatory Impact Briefs",
+      "group": "Regulatory intelligence",
+      "audience": "Everyone",
+      "summary": "Review source bundles, role-specific impact prompts and private assessment handoffs."
     }
   ],
   "screens": {
@@ -250,6 +257,7 @@
     "leadership.html": "leadership",
     "config-workbench.html": "config-workbench",
     "e2b-studio.html": "e2b-studio",
-    "guidance-impact.html": "guidance-impact"
+    "guidance-impact.html": "guidance-impact",
+    "impact-briefs.html": "impact-briefs"
   }
 }

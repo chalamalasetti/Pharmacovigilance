@@ -443,3 +443,6 @@ A changed package needs a new versioned filename/version rather than overwriting
 
 ### Source-linked regulatory dates
 Events & Training now includes a separate Regulatory Calendar timeline and admin review queue. Archived source effective dates enter as pending records; verified dates support source-linked date-only calendar reminders. New source bytes flag earlier verified dates for reconfirmation, while review decisions retain before/after history. No publication date is inferred as a deadline. EURD spreadsheet schedules, general PDF deadline extraction and portfolio-specific milestone generation remain future connectors, not claimed coverage. See the Events & Calendar User Guide.
+
+### Regulatory Impact Briefs
+The source-linked brief workspace includes FDA expedited IND and EMA masking worked examples, role-specific prompts, evidence reconciliation, typed date observations, draft business/system/process/data controls and private Configuration Workbench handoff with an integrity pin. Reach it from Safety resources, Workbench, supported source documents and matching Impact cards. Both examples remain explicitly unreviewed; this is not arbitrary-document autonomous analysis or a public editorial approval system. Company applicability, current controls and validation remain human decisions. See the Regulatory Impact Briefs User Guide.

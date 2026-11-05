@@ -59,3 +59,4 @@ Version 1.7 · reviewed 4 November 2026 · application reference guidance-impact
 Update the relevant chapter and catalog when a released function changes. Run `node scripts/build-user-guide.mjs` to regenerate the in-app content, then run `node --test test/user-guide.test.mjs`. Link existing guides rather than duplicating instructions. Never include real user data, credentials, private company examples or screenshots containing confidential records. New app features should include a guide update in their pull request.
 
 - [Guidance impact: EMA masking pilot](guidance-impact.md) — source tables, proposed controls, workbench handoff and the road to autonomous intelligence.
+- [Regulatory Impact Briefs](impact-briefs.md): source bundles, role views and private assessment handoffs.
