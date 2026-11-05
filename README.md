@@ -424,3 +424,19 @@ This product includes software developed by Health Level Seven. See the in-app t
 Updates/research default to 720 minutes. The GitHub cron wakes hourly at :23, acquires a managed lease only when due or queued, and publishes a complete runtime snapshot independently of app deployments. A failed collection is eligible for a retry after an hour; overlaps are blocked and the previous complete snapshot remains available. Product/clinical staging may queue an additional public publication. GitHub cron timing is best effort; this is not a guaranteed clock-time SLA.
 
 The published status records `refreshIntervalMinutes`; health checks use that actual cadence, not deployment age. Admin → Data Refresh Center offers Twice daily and uses cadence-aware heartbeat warnings. Schema migration `twice_daily_data_refresh` enables the new option, sets updates to 720 minutes and queues one initial collection. Other pipeline frequencies are retained. Changes take effect at the next check; administrators can run Refresh public PV data manually with Force for immediate collection.
+
+### Guidance impact pilot: EMA masking
+
+The public, unreviewed demonstration at `guidance-impact.html?id=ema-178902-2025` uses EMA/178902/2025 (supplied PDF matched to the official download) to show all 282 field references across the 13/11/185/73 masking/blank/preservation groups, ten draft company requirements and twelve unexecuted synthetic scenarios. Source Document details and matching primary-source Impact cards link to it. It is not a fresh 2026 notice, an approved legal baseline or a premium editorial release.
+
+The versioned, deterministic masking recipe adds field-level draft candidates during ordinary PDF ingestion; unknown table shapes/editions fail to manual review. The source is registered by the `ema_masking_field_policy` migration, which also permits the new parser version without changing collector access grants. Existing ingestion prepares draft baselines. The original PDF is archived by the existing collector, not bundled in Vercel. The public package is an immutable versioned release asset with a source/analysis hash; future source versions require a new reviewed package. No paid model API is used and arbitrary new guidance does not receive autonomous thorough legal analysis.
+
+Select a safety system to hand the pinned analysis to Configuration Workbench. Company scope, environment, current controls, approvals and validation remain private and unconfirmed until reviewed. JSON/CSV exports are specifications, not verified Argus import files. Existing workbench → Action Center → verified closure remains the implementation path. [Detailed workflow, capability boundaries and autonomous-service roadmap](docs/user-guide/guidance-impact.md).
+
+Reproduce the public package from the supplied public PDF and an independently downloaded official copy:
+
+```sh
+node scripts/document-impact-pilot.mjs /path/supplied-public-ema.pdf /path/official-ema.pdf
+```
+
+A changed package needs a new versioned filename/version rather than overwriting a released analysis. No patient or reporter values are collected. © European Medicines Agency and Heads of Medicines Agencies, 2025; source acknowledged.

@@ -1,0 +1,20 @@
+// Deterministic, version-bounded interpretation recipe. No model or legal approval.
+import {createHash} from 'node:crypto';
+export const MASKING_SOURCE_HASH='53bb1c46db481ae94009a302ca87cb44325cf1a82e7908c41e33c01649878b4c';
+export const MASKING_ENGINE='ema-vi-add-ii-tables-v1';
+export const MASKING_RULES={1:{key:'mask_if_available',name:'Mask when available',instruction:'For EudraVigilance, use MSK when the sender has these data. If unavailable, consider other permitted nullFlavors or blank according to the applicable ICH/EU implementation guidance; do not fabricate availability.'},2:{key:'leave_blank',name:'Leave blank',instruction:'Leave these fields blank in EudraVigilance submissions. This group does not support nullFlavors under the cited ICH guidance; confirm the exact omission representation against the applicable message specification.'},3:{key:'preserve_personal_pv',name:'Preserve available PV data',instruction:'When available, do not mask or leave these fields blank solely under this addendum. Retain required PV information with the field-specific pseudonymisation and permitted content defined by the applicable implementation guidance.'},4:{key:'preserve_technical_pv',name:'Preserve available technical data',instruction:'When available, do not mask or leave these fields blank. These technical fields are required for signal management, duplicate detection and ICSR processing.'}};
+export function maskingPolicy(paragraphs,{sourceHash}={}){
+ const text=paragraphs.map(p=>p.text).join(' ');
+ if(!/EMA\/178902\/2025/.test(text)||!/Module VI Addendum II/.test(text)||!/Masking of personal data/i.test(text))return null;
+ if(sourceHash!==MASKING_SOURCE_HASH)return {engine:MASKING_ENGINE,status:'manual_review',reason:'Source bytes differ from the supported, verified edition; no field policy is inferred.',fields:[]};
+ if(!/25 July 2025/.test(text))return {engine:MASKING_ENGINE,status:'manual_review',reason:'Unrecognised edition/effect date; no field policy is inferred.',fields:[]};
+ let table=0;const fields=[];
+ for(const p of paragraphs){const page=Number(p.anchor.match(/page-(\d+)/)?.[1]);if(!page||page<3)continue;
+ const matches=[...p.text.matchAll(/Table VI\.Add\.II\.([1-4])|\b(ICH_CSV|EU_CSV|ICH|EU)\s+([NCDEFGH](?:\.[A-Za-z0-9]+)+)\s+/g)];
+ for(let i=0;i<matches.length;i++){const m=matches[i];if(m[1]){table=Number(m[1]);continue;}if(!table)continue;const rule=MASKING_RULES[table],fieldId=m[3];fields.push({fieldId,authority:m[2],table,page,category:rule.key,anchor:`page-${page}-table-VI.Add.II.${table}-${fieldId}`,statement:`${fieldId}: ${rule.instruction}`,context:`Rule-derived table policy, not a verbatim quotation. EMA/178902/2025, section VI.Add.II.${table+2}, Table VI.Add.II.${table}, PDF page ${page}. EudraVigilance destination scope only. Source effect date and documented reasonable implementation timeframe are distinct. No company applicability or prior-control gap is confirmed.`,fingerprint:createHash('sha256').update(fieldId+'|'+rule.key+'|'+rule.instruction).digest('hex')});}}
+ const counts=Object.fromEntries([1,2,3,4].map(t=>[t,fields.filter(f=>f.table===t).length]));const unique=new Set(fields.map(f=>f.fieldId)).size===fields.length;
+ // Fail closed when tables/edition differ. This is a bounded supported recipe, not arbitrary-PDF reasoning.
+ if(!unique||counts[1]!==13||counts[2]!==11||counts[3]!==185||counts[4]!==73)return {engine:MASKING_ENGINE,status:'manual_review',reason:'Table structure/counts differ from the supported edition; inspect source and extraction before use.',counts,fields:[]};
+ return {engine:MASKING_ENGINE,status:'draft',counts,fields,reason:'282 table references extracted; classifications and all company proposals require human review.'};
+}
+export function appendMaskingCandidates(parsed,paragraphs,options){const policy=maskingPolicy(paragraphs,options);if(!policy)return parsed;if(policy.status!=='draft')return {...parsed,limited:true,analysis:policy};return {...parsed,candidates:[...parsed.candidates,...policy.fields.map(({anchor,statement,context,fingerprint})=>({anchor,statement,context,fingerprint}))],analysis:policy};}

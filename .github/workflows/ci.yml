@@ -48,6 +48,7 @@ jobs:
           python3 -m http.server 4173 --bind 127.0.0.1 --directory public &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
+          node test/browser/guidance-impact.smoke.cjs
           node test/browser/e2b-studio.smoke.cjs
           node test/browser/config-workbench.smoke.cjs
           node test/browser/leadership.smoke.cjs

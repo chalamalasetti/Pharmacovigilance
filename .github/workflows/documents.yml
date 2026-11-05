@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
+    inputs:
+      document_id:
+        description: Optional active source ID to prioritize in the bounded batch
+        type: string
+        default: ""
   push:
     branches: [main]
     paths:
@@ -23,6 +28,8 @@ jobs:
   collect:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    env:
+      PV_DOCUMENT_PRIORITY: ${{ github.event_name == 'workflow_dispatch' && inputs.document_id || github.event_name == 'push' && 'ema-gvp-vi-addendum-ii' || '' }}
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
