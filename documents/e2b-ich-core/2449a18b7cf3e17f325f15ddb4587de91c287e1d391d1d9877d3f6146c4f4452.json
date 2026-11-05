@@ -1,0 +1,35 @@
+{
+  "schema_version": "public-document-key-info-v1",
+  "document_id": "e2b-ich-core",
+  "metadata": {
+    "title": "ICH E2B(R3) Implementation Guide — FDA edition",
+    "country": "US",
+    "agency": "FDA",
+    "edition": "October 2026, Revision 2",
+    "norm": "Guidance",
+    "topic": "E2B data elements and message specification",
+    "lifecycle": "Both",
+    "legal_basis": "ICH harmonized technical guidance, FDA edition; assess applicable mandates separately",
+    "applicability": "Technical field definitions and message specifications; no company applicability inferred",
+    "published_on": "",
+    "effective_on": "",
+    "source_status": "uncertain"
+  },
+  "metadata_verification": "Source-register metadata; dates and legal status require human verification.",
+  "source_url": "https://www.fda.gov/media/81904/download",
+  "original_sha256": "e28e70bc7b46cc7f27d1dcb70ae7a79e59d72fc4df910c667dc79d34e90f5117",
+  "content_kind": "pdf",
+  "parser_version": "normative-rules-v3",
+  "extraction_status": "extraction_failed",
+  "candidate_count": 0,
+  "excluded_paragraphs": 0,
+  "candidate_limit_reached": false,
+  "review_status": "pending",
+  "limitations": [
+    "English rule-based extraction; no GPT or paid API.",
+    "Candidates are not approved requirements. Read the original, qualifications and exceptions.",
+    "Scans, tables, other languages and implicit obligations may be missed. Zero candidates does not establish zero requirements."
+  ],
+  "candidates": [],
+  "retrieved_at": "2026-11-05T02:29:36.361Z"
+}

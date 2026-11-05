@@ -1,0 +1,132 @@
+{
+  "schema_version": "public-document-key-info-v1",
+  "document_id": "ema-gvp-vi-addendum-ii",
+  "metadata": {
+    "title": "GVP Module VI Addendum II — masking personal data in EudraVigilance ICSRs",
+    "country": "EU",
+    "agency": "EMA",
+    "edition": "EMA/178902/2025 · 22 July 2025",
+    "norm": "Guidance",
+    "topic": "EudraVigilance masking and outbound E2B data policy",
+    "lifecycle": "Both",
+    "legal_basis": "Supplement to GVP Module VI; assess the cited EU legislation and field-specific implementation guidance separately.",
+    "applicability": "All in-scope ICSR/SUSAR senders to EudraVigilance. Company scope, current controls and implementation timeframe need human confirmation.",
+    "published_on": "2025-07-24",
+    "effective_on": "2025-07-25",
+    "source_status": "current"
+  },
+  "metadata_verification": "Source-register metadata; dates and legal status require human verification.",
+  "source_url": "https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/guideline-good-pharmacovigilance-practices-gvp-module-vi-addendum-ii-masking-personal-data-individual-case-safety-reports-submitted-eudravigilance_en.pdf",
+  "original_sha256": "53bb1c46db481ae94009a302ca87cb44325cf1a82e7908c41e33c01649878b4c",
+  "content_kind": "pdf",
+  "parser_version": "normative-rules-v3",
+  "extraction_status": "partial",
+  "candidate_count": 12,
+  "excluded_paragraphs": 0,
+  "candidate_limit_reached": true,
+  "review_status": "pending",
+  "limitations": [
+    "English rule-based extraction; no GPT or paid API.",
+    "Candidates are not approved requirements. Read the original, qualifications and exceptions.",
+    "Scans, tables, other languages and implicit obligations may be missed. Zero candidates does not establish zero requirements."
+  ],
+  "candidates": [
+    {
+      "ordinal": 1,
+      "anchor": "page-1-paragraph-7",
+      "statement": "* Senders of individual case safety reports should implement the instructions described in this document as soon as possible and within a reasonable timeframe. Such timeframe should be documented as part of the sender ’ s internal procedures to demonstrate when and how this will be achieved.",
+      "context": "22 July 2025 Date for coming into effect* 25 July 2025 As part of finalisation, the document was consulted with the EudraVigilance Expert Working Group . EMA/178902/2025 of 22 July 2025 Page 2/14 Table of contents VI.Add.II.1. Introduction............................................................................... 3 VI.Add.II.2. Purposes of personal data processing ............................................. 3 VI.Add.II.3. ICH-E2B(R3) data elements to be masked ...................................... 4 VI.Add.II.4. ICH-E2B(R3) data elements to be left blank .................................... 5 VI.Add.II.5. ICH-E2B(R3) data elements that may contain personal data and are required for pharmacovigilance processes ........................................................ 6 VI.Add.II.6. ICH-E2B(R3) data elements that do not contain personal data and are required for pharmacovigilance pro",
+      "fingerprint": "98196522da11c536ea4c9a64e8064ab6897c14fbe0a245005830ba4760b54829",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 2,
+      "anchor": "page-3-paragraph-1",
+      "statement": "EMA/178902/2025 of 22 July 2025 Page 3/14 VI.Add.II.1. Introduction As outcome of an EudraVigilance audit performed by the European Data Protection Supervisor (EDPS) in the context of pseudonymisation procedures and personal data masking, the EDPS recommended to the Agency to adopt, together with the joint controllers (European Commission and competent authorities in Member States), a common masking policy that should be complied with by all entities reporting to EudraVigilance (hereafter referred to as “sender”) .",
+      "context": "EMA/178902/2025 of 22 July 2025 Page 2/14 Table of contents VI.Add.II.1. Introduction............................................................................... 3 VI.Add.II.2. Purposes of personal data processing ............................................. 3 VI.Add.II.3. ICH-E2B(R3) data elements to be masked ...................................... 4 VI.Add.II.4. ICH-E2B(R3) data elements to be left blank .................................... 5 VI.Add.II.5. ICH-E2B(R3) data elements that may contain personal data and are required for pharmacovigilance processes ........................................................ 6 VI.Add.II.6. ICH-E2B(R3) data elements that do not contain personal data and are required for pharmacovigilance processes .......................................................12 This Addendum to GVP Module VI provides instructions to complement Section VI.C.6.2.2.10.",
+      "fingerprint": "89c434f34dc094a30d441e7e393ce8059b720aeb1139ec19d13a47f0ad9b0b87",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 3,
+      "anchor": "page-3-paragraph-4",
+      "statement": "All senders of ICSRs to EudraVigilance are expected to comply with the instructions set out in this Addendum to GVP Module VI, and the data fields to be masked or not to be provided should not go beyond the data fields described here.",
+      "context": "The Agency, in consultation with the joint controllers of EudraVigilance 1 , has assessed all ICH-E2B(R3) data elements (see Annex IV ICH-E2B(R3)) to determine if the information in the data elements is required in support of the pharmacovigilance and safety monitoring obligations set out in the EU pharmaceutical legislation (see VI.Add.II.2.). More specifically, this assessment has taken into account the relevant obligations placed on the Agency, competent authorities in Members States and the Pharmacovigilance Risk Assessment Committee (PRAC) (see GVP Module I). Requirements to process individual case safety reports (ICSRs) and to ensure adequate quality of the ICSRs (see GVP Module VI) have also been reviewed. The instructions do not change the current EudraVigilance Business Rules 2 , therefore no impact on the electronic submission process of ICSRs and related safety messages is exp",
+      "fingerprint": "07d001b014f47f906e2b8b1df7e8cfe682150f5388cecadc7d62bef15579bb21",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 4,
+      "anchor": "page-4-paragraph-2",
+      "statement": "• Commission Implementing Regulation (EU) 2022/20 which lays down the rules for the application of Regulation (EU) No 536/2014 and setting up the rules and procedures for the cooperation of the Member States in the safety assessment of clinical trials: In accordance with Article 5(1) of the Commission Implementing Regulation (EU) 2022/20, the safety assessing Member State shall amongst other tasks screen and assess information about all suspected unexpected serious adverse reactions reported to the EudraVigilance database in accordance with Article 42 of Regulation (EU) No 536/2014, regardless of whether they occurred in Member States or in third countries, as well as information contained in annual safety reports, in accordance with Articles 6 and 7 of the Commission Implementing Regulation (EU) 2022/20 following a risk based approach;",
+      "context": "EMA/178902/2025 of 22 July 2025 Page 4/14 2001/83/EC which provide for the minimum requirements for the monitoring of data in EudraVigilance; • GVP Module IX further outlines the signal management process and the roles and responsibilities of all parties involved.",
+      "fingerprint": "e702c9f7dfeeb089263c30bc234d84aded7d6ce29c9380b7c6567cdd27f38b65",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 5,
+      "anchor": "page-4-paragraph-6",
+      "statement": "VI.Add.II.3. ICH-E2B(R3) data elements to be masked For the 13 data elements provided in Table VI.Add.II.1. the sender of the ICSRs should determine if the use of nullFlavors is applicable, in accordance with the ICH-E2B(R3) guideline (see Annex IV ICH- E2B(R3)) and the EU I ndividual Case Safety Report Implementation Guide Implementation Guide 8 .",
+      "context": "Hence, as part of the safety monitoring responsibilities, ICSRs that contain pseudonymised personal data can be accessed by registered users of the EudraVigilance system. In this regard, the user access is protected by multi-factor authentication (MFA). The users that can access the data (depending on their roles and permissions) are those with safety officer functions in competent authorities in Member States, the European Commission and the Agency. Moreover, the access is extended according to the EMA Policy on Access to EudraVigilance Data for Medicinal Products for Human Use 7 for marketing authorisation holders, so they can fulfil their pharmacovigilance obligations, and to clinical trial sponsors to the ICSRs they have submitted to EudraVigilance, to facilitate their safety monitoring activities. This policy describes the different levels of access and the means for the access by t",
+      "fingerprint": "1d7b2d90e05ab86db67ef91ee96fd864e87b758ca433826d1fa12bb0f85c65e4",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 6,
+      "anchor": "page-4-paragraph-8",
+      "statement": "These data elements should therefore be set with the nullFlavour MSK, provided that data are available to the sender of the ICSR to EudraVigilance.",
+      "context": "These 13 data elements are not required for signal management, duplicate detection or ICSR processing. Other nullFlavours may be applicable when the data is not available to the sender (e.g. ASKU, NASK, UNK) and should be used accordingly. Alternatively, the field(s) can be left blank. Further guidance on the use of nullFlavours is provided in the EU Individual Case Safety Report Implementation Guide 9 .",
+      "fingerprint": "474aaf456d6a1f64b2dd7650fb3e07f7fac29b83d51043c41978651a30738654",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 7,
+      "anchor": "page-4-paragraph-9",
+      "statement": "Other nullFlavours may be applicable when the data is not available to the sender (e.g. ASKU, NASK, UNK) and should be used accordingly. Alternatively, the field(s) can be left blank. Further guidance on the use of nullFlavours is provided in the EU Individual Case Safety Report Implementation Guide 9 .",
+      "context": "These data elements should therefore be set with the nullFlavour MSK, provided that data are available to the sender of the ICSR to EudraVigilance. 5 Web-based fields completed by the user when populating an application form",
+      "fingerprint": "cb5bfafd9e22b9a95a5398dcddb66d2a9705231a9ec707335fc059fefcc37ef9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 8,
+      "anchor": "page-5-paragraph-3",
+      "statement": "ICH E2B(R3) d ata e lement r eference Data field name ICH C.2.r.1.1 Reporter’s Title ICH C.2.r.1.2 Reporter’s Given Name ICH C.2.r.1.3 Reporter’s Middle Name ICH C.2.r.1.4 Reporter’s Family Name ICH C.2.r.2.1 Reporter’s Organisation ICH C.2.r.2.2 Reporter’s Department ICH C.2.r.2.3 Reporter’s Street ICH C.2.r.2.6 Reporter’s Postcode ICH C.2.r.2.7 Reporter’s Telephone ICH D.1.1.1 Patient Medical Record Number(s) and Source(s) of the Record Number (GP Medical Record Number) ICH D.1.1.2 Patient Medical Record Number(s) and Source(s) of the Record Number (Specialist Record Number) ICH D.1.1.3 Patient Medical Record Number(s) and Source(s) of the Record Number (Hospital Record Number) ICH D.10.1 Parent Identification VI.Add.II.4. ICH-E2B(R3) data elements to be left blank The 11 data elements provided in Table VI.Add.II.2. are also not necessary for signal management, duplicate detection or ICSR processing. Since the use of nullFlavors is not supported by the ICH E2B(R3) guideline (see Annex IV ICH-E2B(R3)), the sender of the ICSRs should leave these 11 data elements blank when submitting ICSRs to EudraVigilance.",
+      "context": "Table VI.Add.II.1.: 13 ICSR data elements to ALWAYS be masked by the sender of ICSRs to EudraVigilance (provided that the data are available to the sender) In instances where data are submitted to EudraVigilance by a sender for any of these 11 data elements due to failure of compliance with the instructions in this Addendum, the Agency will not make the data available to the EudraVigilance users. Similarly, for legacy data held in EudraVigilance related to these",
+      "fingerprint": "e3872431efff223944bcc17e4fff7ca9863473d1094bbf936630804fc35dd299",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 9,
+      "anchor": "page-6-paragraph-2",
+      "statement": "ICH E2B(R3) d ata e lement r eference Data field name ICH C.3.3.2 Sender’s Title ICH C.3.3.3 Sender’s Given Name ICH C.3.3.4 Sender’s Middle Name ICH C.3.3.5 Sender’s Family Name ICH C.3.4.1 Sender’s Street Address ICH C.3.4.2 Sender’s City ICH C.3.4.3 Sender’s State or Province ICH C.3.4.4 Sender’s Postcode ICH C.3.4.5 Sender’s Country Code ICH C.3.4.6 Sender’s Telephone ICH C.3.4.7 Sender’s Fax VI.Add.II.5. ICH-E2B(R3) data elements that may contain personal data and are required for pharmacovigilance processes The data elements provided in Table VI.Add.II.3. may contain personal identifiers or quasi-identifiers and are required for signal management, duplicate detection and ICSR processing. When available, data related to these data elements should not be masked or not to be left blank by the senders of the ICSR to EudraVigilance.",
+      "context": "EMA/178902/2025 of 22 July 2025 Page 6/14 Table VI.Add.II.3.: ICSR data elements that may contain personal identifiers or quasi-identifiers and are required for signal management, duplicate detection and ICSR processing and should not be masked and not be left blank",
+      "fingerprint": "ee5967fc0702f21a2e305bea05ad779da6f029be88877393c378b083ecc8451b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 10,
+      "anchor": "page-6-paragraph-3",
+      "statement": "Table VI.Add.II.3.: ICSR data elements that may contain personal identifiers or quasi-identifiers and are required for signal management, duplicate detection and ICSR processing and should not be masked and not be left blank",
+      "context": "ICH E2B(R3) d ata e lement r eference Data field name ICH C.3.3.2 Sender’s Title ICH C.3.3.3 Sender’s Given Name ICH C.3.3.4 Sender’s Middle Name ICH C.3.3.5 Sender’s Family Name ICH C.3.4.1 Sender’s Street Address ICH C.3.4.2 Sender’s City ICH C.3.4.3 Sender’s State or Province ICH C.3.4.4 Sender’s Postcode ICH C.3.4.5 Sender’s Country Code ICH C.3.4.6 Sender’s Telephone ICH C.3.4.7 Sender’s Fax VI.Add.II.5. ICH-E2B(R3) data elements that may contain personal data and are required for pharmacovigilance processes The data elements provided in Table VI.Add.II.3. may contain personal identifiers or quasi-identifiers and are required for signal management, duplicate detection and ICSR processing. When available, data related to these data elements should not be masked or not to be left blank by the senders of the ICSR to EudraVigilance. ICH E2B(R3) d ata e lement r eference Data field name",
+      "fingerprint": "085b86eef1ae7e6cc1e6498d2c948ed2ea9c7eb9f69615bc227156499bdeedae",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 11,
+      "anchor": "page-12-paragraph-1",
+      "statement": "EMA/178902/2025 of 22 July 2025 Page 12/14 VI.Add.II.6. ICH-E2B(R3) data elements that do not contain personal data and are required for pharmacovigilance processes The data elements provided in Table VI.Add.II.4. do not contain personal identifiers or quasi-identifiers and are required for signal management, duplicate detection and ICSR processing. When available, data related to these data elements should not be masked and not be left blank by the senders of the ICSR to EudraVigilance.",
+      "context": "ICH H.3.r.1b Sender's Diagnosis/Syndrome and/or Reclassification of Reaction/Event (MedDRA code) ICH H.4 Sender's Comments ICH H.5.r.1a Case Summary and Reporter’s Comments Text ICH H.5.r.1b Case Summary and Reporter’s Comments Language Table VI.Add.II.4. ICSR data elements that do not contain personal identifiers or quasi-identifiers and are required for signal management, duplicate detection and ICSR processing and should not be masked and not be left blank",
+      "fingerprint": "7dca12b1cbbf67570f5b06aff2c97627c5654096498aec2344e15a35a4fc401d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 12,
+      "anchor": "page-12-paragraph-2",
+      "statement": "Table VI.Add.II.4. ICSR data elements that do not contain personal identifiers or quasi-identifiers and are required for signal management, duplicate detection and ICSR processing and should not be masked and not be left blank",
+      "context": "EMA/178902/2025 of 22 July 2025 Page 12/14 VI.Add.II.6. ICH-E2B(R3) data elements that do not contain personal data and are required for pharmacovigilance processes The data elements provided in Table VI.Add.II.4. do not contain personal identifiers or quasi-identifiers and are required for signal management, duplicate detection and ICSR processing. When available, data related to these data elements should not be masked and not be left blank by the senders of the ICSR to EudraVigilance. ICSR ICH E2B(R3) data e lement r eference Data field name ICH N.1.1 Types of Message in Batch ICH N.1.1.CSV Types of Message in Batch Code System Version ICH N.1.2 Batch Number ICH N.1.3 Batch Sender Identifier ICH N.1.4 Batch Receiver Identifier ICH N.1.5 Date of Batch Transmission ICH N.2.r.1 Message Identifier ICH N.2.r.2 Message Sender Identifier ICH N.2.r.3 Message Receiver Identifier ICH N.2.r.4 Da",
+      "fingerprint": "f1cf69b240822eacf011a786a23aea82f66ae5c7315c6b48e16ae57be4b67290",
+      "review_status": "pending"
+    }
+  ],
+  "retrieved_at": "2026-11-05T02:29:12.817Z"
+}

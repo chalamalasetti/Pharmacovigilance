@@ -1,0 +1,404 @@
+{
+  "schema_version": "public-document-key-info-v1",
+  "document_id": "e2b-fda-regional",
+  "metadata": {
+    "title": "FDA Regional Implementation Guide for E2B(R3)",
+    "country": "US",
+    "agency": "FDA",
+    "edition": "August 2024, version 3.1",
+    "norm": "Technical instruction",
+    "topic": "E2B regional implementation",
+    "lifecycle": "Both",
+    "legal_basis": "FDA technical specifications; later implementation policy may supersede individual statements",
+    "applicability": "Review jurisdiction, product scope and subsequent FDA implementation policies",
+    "published_on": "",
+    "effective_on": "",
+    "source_status": "uncertain"
+  },
+  "metadata_verification": "Source-register metadata; dates and legal status require human verification.",
+  "source_url": "https://www.fda.gov/media/180748/download",
+  "original_sha256": "7a88a44dcd245df5cfe2e73c8f3eabfdf904a8817b36a708a2b9df7e743d1707",
+  "content_kind": "pdf",
+  "parser_version": "normative-rules-v3",
+  "extraction_status": "partial",
+  "candidate_count": 46,
+  "excluded_paragraphs": 0,
+  "candidate_limit_reached": true,
+  "review_status": "pending",
+  "limitations": [
+    "English rule-based extraction; no GPT or paid API.",
+    "Candidates are not approved requirements. Read the original, qualifications and exceptions.",
+    "Scans, tables, other languages and implicit obligations may be missed. Zero candidates does not establish zero requirements."
+  ],
+  "candidates": [
+    {
+      "ordinal": 1,
+      "anchor": "page-6-paragraph-3",
+      "statement": "• Postmarketing safety reports for vaccines 7 • Whole blood or blood components • Combination products with a drug or biological product constituent part marketed under a device application • Human cellular and tissue-based products regulated solely under section 361 of the Public Health Service Act (42 U.S.C. 264) ICSRs (and any ICSR attachments) should be prepared in accordance with the ICH E2B(R3) and FDA’s regional data elements, in extensible markup language (XML) 8 file format and submitted to the FAERS database through FDA’s Electronic Submissions Gateway (ESG) (see https://www.fda.gov/industry/electronic-submissions-gateway ). Postmarketing ICSRs should not be submitted to the electronic Common Technical Document (eCTD). ICSRs from IND studies 9 and premarket IND-exempt BA/BE studies 10 should be submitted as per the published guidance. Agency information about electronic submissions will be periodically updated to reflect the evolving nature of the technology and the experiences of those using this technology.",
+      "context": "• Drug products marketed for human use with approved new drug applications (NDAs) or abbreviated new drug applications (ANDAs) • Prescription drug products marketed for human use without approved applications, including prescription drug products that are compounded by facilities registered as outsourcing facilities under section 503B of the Federal Food, Drug, and Cosmetic Act (21 U.S.C. 353b) • Nonprescription drug products marketed for human use without approved NDAs or ANDAs • Biological products with approved biologics license applications (BLAs) • Combination products with approved NDAs, ANDAs, or BLAs • Drug and biological products studied under investigational new drug applications (INDs) or IND-exempt bioavailability/bioequivalence (BA/BE) studies supporting ANDAs 6 This document does not apply to the following: 6 These types of reports will be referred to as premarketing report",
+      "fingerprint": "6d53a9411caa77d88490c8921e76504ed522f920a8ced46374c9ade6b12a7a7b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 2,
+      "anchor": "page-8-paragraph-2",
+      "statement": "3.0 FDA REGIONAL IMPLEMENTATION OF E2B(R3) FDA recognizes the need to support both the current and previous versions of ICH E2B standards and will continue to provide support for ICH E2B(R2) for postmarketing reports.",
+      "context": "specific program adoption, testing, and implementation timelines or refer to the FAERS Electronic Submissions web page (see https://www.fda.gov/drugs/questions-and-answers-fdas- adverse-event-reporting-system-faers/fda-adverse-event-reporting-system-faers-electronic- submissions-e2br3-standards ). Information about FAERS E2B(R3) validation is available on the FAERS Electronic Submissions – E2B(R3) Standards web page (see https://www.fda.gov/drugs/questions-and- answers-fdas-adverse-event-reporting-system-faers/fda-adverse-event-reporting-system-faers- electronic-submissions-e2br3-standards ).",
+      "fingerprint": "3fa20550210fa568524cb258e6c2ac5da9508d3fe6fdab3513db1d23532d68cc",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 3,
+      "anchor": "page-9-paragraph-6",
+      "statement": "Senders should follow FDA guidance for file compression in the ESG User Guide Appendix B:",
+      "context": "The current exchange of ICSRs with FDA is a one-way inbound file transaction between the ICSR sender organization and the FDA ESG. The FDA ESG supports the receipt of electronic regulatory submission of files up to 100 gigabytes (GB) in size. Creating .tar Files and Compressing Files for Submission (see https://www.fda.gov/industry/about-esg/esg-appendix-b-creating-tar-files-and-compressing-files- submission ).",
+      "fingerprint": "32ed9c0dea1bdeb17ee3edd2e08f225c52fc54ddb4ff79a822ed4c857c033f57",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 4,
+      "anchor": "page-10-paragraph-2",
+      "statement": "3.6.2.1 ESG Transaction Partners To submit files electronically to FDA, organizations should apply for a Transaction Partner account. Account requests should include the organization’s digital certificate information and",
+      "context": "3.6.2 FDA ESG Transaction Partners and Testing information about digital certificate specifications, refer to the ESG User Guide Appendix C:",
+      "fingerprint": "1a922b308812f55ac6bdfd1cb47ad8e18bf22f49984fc80062eaa39d3ef7d26c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 5,
+      "anchor": "page-10-paragraph-5",
+      "statement": "3.6.2.2 ESG Testing Senders should complete two levels of testing: (1) to establish a successful Transaction Partner account and (2) to confirm the senders’ ability to generate ICSR files per the technical specifications and accepted by FAERS. To test connectivity, senders should submit all ICSR connectivity test submissions to the appropriate Center’s \"GW_TEST CONNECTION” account using the submission type \"CONNECTION TEST,” not to the Center’s production account.",
+      "context": "Digital Certificates (see https://www.fda.gov/industry/about-esg/esg-appendix-c-digital- certificates ). Upon approval by the FDA ESG Administrator, organizations can initiate communication testing with ESG. • For more information about ESG connectivity testing, email",
+      "fingerprint": "7c892c0f5c134e9234c75df1dcc5b277da467c4177beccf2690d4427c4bf6a10",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 6,
+      "anchor": "page-10-paragraph-7",
+      "statement": "3.6.3 FDA ESG Header Information For an adverse event associated with a marketed drug evaluated under an IND that meets IND and postmarketing safety reporting requirements, the sponsor should submit two separate ICSRs to FAERS. A separate submission pathway for submitting IND safety reports to FAERS has been established to keep premarketing and postmarketing reports separate in the FAERS database. Similarly, for adverse events that occur with a marketed vaccine evaluated under an IND that meet IND and postmarketing safety reporting requirements, the sponsor should submit two separate ICSRs: one to the Vaccine Adverse Event Reporting System (VAERS) for the BLA and one to FAERS for the IND. 12 When exchanging ICSRs with the FDA ESG, senders must use one of the FAERS gateway headers described in Table 1 to ensure that the submissions are routed to the targeted receiving system.",
+      "context": "• For more information about ESG connectivity testing, email 12 Technical specifications to electronically submit postmarketing safety reports for vaccines are available at https://www.fda.gov/industry/about-esg/cber-vaccine-icsr-implementation .",
+      "fingerprint": "f3562b8c010c4ae8584711e9016a1fe9d66fa1ee29937f416ed0791b829d253c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 7,
+      "anchor": "page-11-paragraph-1",
+      "statement": "3.6.3.1 AS2 Headers and Routing IDs For safety report submissions, the sponsors should include the unique AS2 headers or routing IDs for ICSRs in one of the two ways listed in Table 1 to differentiate premarketing from postmarketing safety reports.",
+      "context": "12 Technical specifications to electronically submit postmarketing safety reports for vaccines are available at https://www.fda.gov/industry/about-esg/cber-vaccine-icsr-implementation . Table 1. AS2 Headers and Routing IDs AS2 Headers/ Routing IDs Postmarketing reports Premarketing reports for CDER Premarketing reports for CBER AS2 Headers Destination: CDER XML files: AERS Destination: CDER XML files:",
+      "fingerprint": "83b51ccce5ee6930961e96791083897e1e05752f6ce6f2940320636cb200fb0f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 8,
+      "anchor": "page-12-paragraph-4",
+      "statement": "2. Rejection: Failure to meet FAERS ICSR file validation may result in the need to correct and resubmit ICSR files.",
+      "context": "1. Acceptance: The ICSR file meets FAERS ICSR file validation specifications without requiring correction and resubmission. Note: FAERS ICSR file validation is consistent with the ICSR file validation provided in the document FDA E2B(R3) Core and Regional Data Elements and Business Rules.",
+      "fingerprint": "abdb501b912d9853789876793098bdd3e60173b8ecb107f85b6b7bf6aab4c0d2",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 9,
+      "anchor": "page-13-paragraph-3",
+      "statement": "• Separate the failed ICSRs from the successfully submitted ICSRs • Correct the failed ICSRs • Resubmit them as a new submission with a unique batch identifier For example, if there were 50 ICSRs in an original batch submission and 15 of them failed to process, then correct and resubmit the failed 15 ICSRs ONLY. The failed ICSRs should be submitted with a new unique batch identifier. The resubmission should not contain any of the successfully processed ICSRs.",
+      "context": "b. For ICSR submissions containing multiple ICSR files (batch submissions), and one or more ICSRs in the submission failed to process, do the following: 4.0 FAERS FDA REGIONAL TECHNICAL SPECIFICATIONS",
+      "fingerprint": "c020ba1ad5beff449d0344c00b1332d2f1e1321b9508e76a3444c2efc6e5238c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 10,
+      "anchor": "page-14-paragraph-4",
+      "statement": "4.1.3 Data Element N.1.2: Batch Number Each electronic submission of ICSRs must have a stakeholder-unique batch identifier (filename or number). Organizations may choose their own format to maintain uniqueness. For more information about the use of the ICSR batch number in ICSR acknowledgements, refer to Section 4.0 of the E2B(R3) Electronic Transmission of ICSRs IG (The ICSR Acknowledgment Transaction).",
+      "context": "FDA accepts only the value of “1” (ichicsr) for data element N.1.1, Types of Messages in Batch . 4.1.4 Data Element N.1.3: Batch Sender Identifier Senders should use the Data Universal Numbering System (DUNS) number for data element N.1.3 using the Dun and Bradstreet (D&B) Object Identifier 1.3.6.1.4.1.519.1. The DUNS number for Business Entity Identifiers is used to validate business entities in various FDA information systems. For more information about how to obtain a DUNS number, refer to the FDA Business Entity Identifiers web page (see https://www.fda.gov/industry/structured-product- labeling-resources/business-entity-identifiers ).",
+      "fingerprint": "65cc566760ca565f0b7b641006b1c950c311028c7a23fa7f19f49fe85d4f3022",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 11,
+      "anchor": "page-14-paragraph-5",
+      "statement": "4.1.4 Data Element N.1.3: Batch Sender Identifier Senders should use the Data Universal Numbering System (DUNS) number for data element N.1.3 using the Dun and Bradstreet (D&B) Object Identifier 1.3.6.1.4.1.519.1. The DUNS number for Business Entity Identifiers is used to validate business entities in various FDA information systems. For more information about how to obtain a DUNS number, refer to the FDA Business Entity Identifiers web page (see https://www.fda.gov/industry/structured-product- labeling-resources/business-entity-identifiers ).",
+      "context": "4.1.3 Data Element N.1.2: Batch Number Each electronic submission of ICSRs must have a stakeholder-unique batch identifier (filename or number). Organizations may choose their own format to maintain uniqueness. For more information about the use of the ICSR batch number in ICSR acknowledgements, refer to Section 4.0 of the E2B(R3) Electronic Transmission of ICSRs IG (The ICSR Acknowledgment Transaction). 4.1.5 Data Element N.1.4: Batch Receiver Identifier FAERS uses two different batch receiver identifiers for test and production submissions. These identifiers are:",
+      "fingerprint": "456f15338a8146cd84366c680856f3dfcc96161ae456c8c42ddc85baca897c9a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 12,
+      "anchor": "page-15-paragraph-1",
+      "statement": "4.1.6 Data Element N.2.r.2: Message Sender Identifier Senders should receive FDA approval of their Message Sender Identifier before beginning FAERS Submissions. The Message Sender Identifier can be the DUNS Number (9 Digit Identifier using the DUNS OID 1.3.6.1.4.1.519.1) or other Identifier with FDA approval.",
+      "context": "• For Test Postmarketing ICSR Submissions: ZZFDATST • For Test Premarketing ICSR Submissions: ZZFDATST_PREMKT • For Production Postmarketing ICSR Submissions: ZZFDA • For Production Premarketing ICSR Submissions: ZZFDA_PREMKT Refer to section 3.6 (Electronic ICSR Submissions Using the FDA ESG) of this document for more information about FDA ESG connection options and testing specifications. 4.1.7 Data Element N.2.r.3: Message Receiver Identifier These identifiers must correspond to the FDA ESG connection (e.g., WebTrader or AS2 B2B) used to send the ICSR submission to FAERS.",
+      "fingerprint": "efa06ad62ff47f4c681f898e20f730607d24f184d36e096ccc9db8dc398c24d1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 13,
+      "anchor": "page-15-paragraph-2",
+      "statement": "4.1.7 Data Element N.2.r.3: Message Receiver Identifier These identifiers must correspond to the FDA ESG connection (e.g., WebTrader or AS2 B2B) used to send the ICSR submission to FAERS.",
+      "context": "4.1.6 Data Element N.2.r.2: Message Sender Identifier Senders should receive FDA approval of their Message Sender Identifier before beginning FAERS Submissions. The Message Sender Identifier can be the DUNS Number (9 Digit Identifier using the DUNS OID 1.3.6.1.4.1.519.1) or other Identifier with FDA approval. • CDER/CBER Postmarketing ICSR: CDER • CDER IND ICSR: CDER_IND • CDER IND-exempt BA/BE ICSR: CDER_IND_EXEMPT_BA_BE • CBER IND ICSR: CBER_IND For all postmarketing ICSRs, Message Receiver Identifier (data element N.2.r.3) = CDER, the Batch Receiver Identifier (data element N.1.4) must be “ZZFDA”.",
+      "fingerprint": "46ddbb283b53a4933327fb2c31c98d5a763b5ddb4eb5181e909f85eda2a6e8e8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 14,
+      "anchor": "page-15-paragraph-3",
+      "statement": "• CDER/CBER Postmarketing ICSR: CDER • CDER IND ICSR: CDER_IND • CDER IND-exempt BA/BE ICSR: CDER_IND_EXEMPT_BA_BE • CBER IND ICSR: CBER_IND For all postmarketing ICSRs, Message Receiver Identifier (data element N.2.r.3) = CDER, the Batch Receiver Identifier (data element N.1.4) must be “ZZFDA”.",
+      "context": "4.1.7 Data Element N.2.r.3: Message Receiver Identifier These identifiers must correspond to the FDA ESG connection (e.g., WebTrader or AS2 B2B) used to send the ICSR submission to FAERS. For all premarketing ICSRs, Message Receiver Identifier (data element N.2.r.3) = CDER_IND or CBER_IND or CDER_IND_EXEMPT_BA_BE, the Batch Receiver Identifier (data element N.1.4) must be \"ZZFDA_PREMKT\".",
+      "fingerprint": "e0748df955ae4edc71ae059a2ae0fddf496cad33f2796e39d1d4c38732270440",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 15,
+      "anchor": "page-15-paragraph-4",
+      "statement": "For all premarketing ICSRs, Message Receiver Identifier (data element N.2.r.3) = CDER_IND or CBER_IND or CDER_IND_EXEMPT_BA_BE, the Batch Receiver Identifier (data element N.1.4) must be \"ZZFDA_PREMKT\".",
+      "context": "• CDER/CBER Postmarketing ICSR: CDER • CDER IND ICSR: CDER_IND • CDER IND-exempt BA/BE ICSR: CDER_IND_EXEMPT_BA_BE • CBER IND ICSR: CBER_IND For all postmarketing ICSRs, Message Receiver Identifier (data element N.2.r.3) = CDER, the Batch Receiver Identifier (data element N.1.4) must be “ZZFDA”.",
+      "fingerprint": "3f445d9a69194c0c5b4bb3363dbce95d434b8f10abbc646c918040a0caf7f195",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 16,
+      "anchor": "page-15-paragraph-9",
+      "statement": "HL7 nullFlavor codes are used to explain the reason for the lack of data on required elements and must be used for specific required data elements as defined if the data values are blank.",
+      "context": "Absence of required data elements will result in a negative acknowledgment and be rejected. The business rules defined for a data element are listed under the tab “Rejection and Warning Rules” in the FDA E2B(R3) Core Data Elements and Business Rules document. Some business rules can result in a negative acknowledgement and not be accepted by FAERS whereas others can result in a positive acknowledgement with warning message and will be accepted by FAERS. A list of business rules that will generate a rejection or a warning is included in the document FDA E2B(R3) Core and Regional Data Elements and Business Rules.",
+      "fingerprint": "c0b4173247041ea1c194a6cf67c5d06ad9723174dc8826dc50fa3fa31a01d299",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 17,
+      "anchor": "page-16-paragraph-1",
+      "statement": "4.2.2 Terminology FDA supports the recommendations of the ICH E2B(R3) concerning use of the terminology found in the Medical Dictionary for Regulatory Activities (MedDRA) 13 for coding of clinical and laboratory terms. When possible, use the Lowest Level Term (LLT) and record the LLT as the MedDRA numeric code rather than the LLT name (e.g., the LLT name is Rash ; the MedDRA numeric code for LLT Rash is 10378444). Stakeholders should refer to the E2B(R3) Electronic Transmission of ICSRs IG for data elements that specify the use of MedDRA coding.",
+      "context": "The business rules defined for a data element are listed under the tab “Rejection and Warning Rules” in the FDA E2B(R3) Core Data Elements and Business Rules document. Some business rules can result in a negative acknowledgement and not be accepted by FAERS whereas others can result in a positive acknowledgement with warning message and will be accepted by FAERS. A list of business rules that will generate a rejection or a warning is included in the document FDA E2B(R3) Core and Regional Data Elements and Business Rules. FDA supports the use of constrained Unified Codes for Units of Measurement (UCUM) (see http://www.fda.gov/ForIndustry/DataStandards/StructuredProductLabeling/ucm168397.htm ) for coding units of measure (e.g., medication dosing units), ICH E2B(R3) ICSR code lists, and European Directorate for the Quality of Medicines (EDQM) (see https://www.edqm.eu/sites/default/files/sta",
+      "fingerprint": "05ef96a3e792cc1dd84c04f8b5891bfad60ed2214e3a0c7fe76ee7f062f89cae",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 18,
+      "anchor": "page-17-paragraph-1",
+      "statement": "value of “true” should be applied for data element C.1.7. FDA has also applied a regional rule necessitating a coded response for data element FDA.C.1.7.1, Local Criteria Report Type which specifies the type of expedited or non-expedited report.",
+      "context": "16 SRS files are available for download at: https://gsrs.ncats.nih.gov/#/release . The regional Substance/Specified Substance TermID Version Date/Number (G.k.2.3.r.2a) is the date and time of the modified file downloaded from For postmarketing ICSRs, data element C.1.7.1, Local Criteria Report Type , is dependent on the selections made on data element FDA.C.1.12, Combination Product Report Indicator , and data element C.1.7, Does this Case Fulfill the Local Criteria for an Expedited Report? If data element FDA.C.1.12, Combination Product Report Indicator , is “Yes” and the case is an Expedited Report, then data element FDA.C.1.7.1, Local Criteria Report Type, value options are “5-Day” (4) or “15-Day” (1). If the data element C.1.12, Combination Product Report Indicator, is ‘Yes’ and the case is not an Expedited Report, then data element C.1.7.1, Local Criteria Report Type , value options",
+      "fingerprint": "6d69fd07165009b309b0fbfe2c56729ce6eca80c64ca66d5b0a460db036fcb24",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 19,
+      "anchor": "page-17-paragraph-8",
+      "statement": "17 The MCN should be a concatenation of three segments separated by a hyphen: “country code-company or regulator name-report number.” The country code is the two-letter ISO 3166 part 1code (ISO 3166-1 alpha-2) corresponding to the country of the primary source of the report (C.2.r.3).",
+      "context": "Refer to the FAERS Electronic Submissions web page (see https://www.fda.gov/drugs/questions-and-answers-fdas-adverse-event-reporting-system- faers/fda-adverse-event-reporting-system-faers-electronic-submissions ) for XML schema examples of correctly populating the ICH C.1.1 data element. 4.2.3.3 Correcting an Incorrect Safety Report Identifier In the event that an incorrect safety report ID has been used in a follow-up report, contact the",
+      "fingerprint": "40830944fb3da3e86afc5b456d6852e417c4d78d170ae97d45982d5d69d23741",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 20,
+      "anchor": "page-18-paragraph-4",
+      "statement": "4.2.3.6 Data Element FDA.C.5.6.r: IND Number of Cross-Reported IND This is a required data element for IND safety reports. This element describes cross-reported INDs, which are relevant INDs to which the sponsor should also submit the IND safety report. 20 This element is repeatable and the relevant IND numbers should be individually listed in separate data fields. If there are no cross-reported INDs, then an HL7 nullFlavor code NA (Not Applicable) code should be populated in this field.",
+      "context": "4.2.3.5 Data Element FDA.C.5.5b: Pre-ANDA Number where serious AE Occurred The E2B format is an acceptable form of notification to the FDA for a serious adverse event(s) required under 21 CFR 320.31(d)(3). This is a technical requirement to voluntarily submit the IND-exempt BA/BE study safety reports in the electronic E2B format. This data element describes the pre-assigned ANDA (referred to as the acronym “Pre-ANDA”) number 19 obtained by a company that plans to electronically submit serious adverse event reports from a premarketing IND-exempt BA/BE study. For instructions on requesting a Pre-ANDA number, navigate to https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/requesting- pre-assigned-application-number . 18 The “parent” IND is the IND under which clinical trials were first initiated in the United States. If the drug is being evaluated in multiple INDs, the par",
+      "fingerprint": "6022cc0071653f69755d0657cf7955ee739f29200fcfc7bee31b9854b02ae23e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 21,
+      "anchor": "page-18-paragraph-7",
+      "statement": "20 As discussed in FDA’s guidance for industry and investigators Safety Reporting Requirements for INDs and BA/BE Studies (Dec. 2012), IND safety reports should be submitted to all the sponsor’s INDs under which the drug is being administered.",
+      "context": "19 Although these are pre-assigned ANDA numbers and the term “Pre-ANDA” is being used with these numbers, each submission may or may not be associated with the Office of Generic Drug’s Pre-ANDA Program for complex drug products. See https://www.fda.gov/drugs/generic-drugs/pre-anda-program . 4.2.4. Section D: Patient Characteristics",
+      "fingerprint": "b2914e6523c0aa8ac830bb8fc2b27104e044e9f9e95b15fc7532a05599d2eff5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 22,
+      "anchor": "page-19-paragraph-5",
+      "statement": "4.2.4.2 Data Element D.1: Patient (Name or Initials) At least one of the available data elements in the E2B(R3) Electronic Transmission of ICSRs IG section D (Patient Characteristics) needs to be populated to help fulfill reporting criteria for an identifiable patient. If the patient is not the primary source reporter and other available data elements (e.g., age, date of birth, or sex) are unknown, then the HL7 nullFlavor codes NI or ASKU (Asked But Unknown) can be used. When the patient information is not provided due to regional privacy restrictions (e.g., foreign reports), FDA supports the use of the HL7 nullFlavor code MSK (Masked).",
+      "context": "a. Data element FDA.D.11.r.1 – Patient Race Code : senders may submit multiple observation codes for patient race (see FDA E2B(R3) Core and Regional Data Elements and Business Rules document) b. Data element FDA.D.12 – Patient Ethnicity Code : senders may submit only one observation code for patient ethnic group (see FDA E2B(R3) Core and Regional Data Elements and Business Rules document) For reports from outsourcing facilities or for medication error reports, use HL7 nullFlavor code NA where no patient is involved. 21 For postmarketing combination product ICSR, if a single report is reported for a malfunction without an adverse event, the data element value for Patient (name or initials) should be nullFlavor NA.",
+      "fingerprint": "f3811d784f4e9b9109e8397bcf7c7c9f98a9e2a2a8216b37cc2f20aa003e98e2",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 23,
+      "anchor": "page-19-paragraph-6",
+      "statement": "For reports from outsourcing facilities or for medication error reports, use HL7 nullFlavor code NA where no patient is involved. 21 For postmarketing combination product ICSR, if a single report is reported for a malfunction without an adverse event, the data element value for Patient (name or initials) should be nullFlavor NA.",
+      "context": "4.2.4.2 Data Element D.1: Patient (Name or Initials) At least one of the available data elements in the E2B(R3) Electronic Transmission of ICSRs IG section D (Patient Characteristics) needs to be populated to help fulfill reporting criteria for an identifiable patient. If the patient is not the primary source reporter and other available data elements (e.g., age, date of birth, or sex) are unknown, then the HL7 nullFlavor codes NI or ASKU (Asked But Unknown) can be used. When the patient information is not provided due to regional privacy restrictions (e.g., foreign reports), FDA supports the use of the HL7 nullFlavor code MSK (Masked). For postmarketing combination product ICSR, if there are multiple malfunction reports with no adverse event, then the data element value for Patient (name or initials) should be “SUMMARY”.",
+      "fingerprint": "a6e3c72e93eb73d511edea131a10d14d40711cb982a6840bd77eaf7bbce4ae35",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 24,
+      "anchor": "page-19-paragraph-7",
+      "statement": "For postmarketing combination product ICSR, if there are multiple malfunction reports with no adverse event, then the data element value for Patient (name or initials) should be “SUMMARY”.",
+      "context": "For reports from outsourcing facilities or for medication error reports, use HL7 nullFlavor code NA where no patient is involved. 21 For postmarketing combination product ICSR, if a single report is reported for a malfunction without an adverse event, the data element value for Patient (name or initials) should be nullFlavor NA. For premarketing aggregate report, the element value must be “AGGREGATE.” If data element C.1.10.r, Identification Number of the Report Which Is Linked to This Report, is populated, then data element D.1, Patient (name or initials) , should have the value “AGGREGATE.”",
+      "fingerprint": "9c3f5230a8096c09bf0e95ec10dccf9e17dfd52dc255522573606734f976a3a5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 25,
+      "anchor": "page-19-paragraph-8",
+      "statement": "For premarketing aggregate report, the element value must be “AGGREGATE.” If data element C.1.10.r, Identification Number of the Report Which Is Linked to This Report, is populated, then data element D.1, Patient (name or initials) , should have the value “AGGREGATE.”",
+      "context": "For postmarketing combination product ICSR, if there are multiple malfunction reports with no adverse event, then the data element value for Patient (name or initials) should be “SUMMARY”. 21 See FDA’s guidance for industry Adverse Event Reporting for Outsourcing Facilities Under Section 503B of the Federal Food, Drug, and Cosmetic Act (Oct. 2015).",
+      "fingerprint": "06692a3d356949e682b96725830b4cba016f0a2665abfcc0428b224b5fa272d0",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 26,
+      "anchor": "page-20-paragraph-5",
+      "statement": "4.2.5.2 Data Element G.K.2.1.1b: Medicinal Product Identifier (MPID) The FDA National Drug Code (NDC), when known, should be used as the regional MPID. 23 If the NDC or MPID is unknown, please refer to the E2B(R3) Electronic Transmission of ICSRs IG. Information about obtaining a list of the NDCs can be found on the NDC Structured Product Labeling Data Elements (\"NDSE\") web page (see https://www.fda.gov/industry/structured- product-labeling-resources/nsde ).",
+      "context": "• Medicinal Product Identifier (MPID) (ISO 11615:2012) • Medicinal Product Name as Reported by the Primary Source • Substance/Specified Substance TermID (ISO 11238:2012) • Authorization/Application Number • Pharmaceutical Dosage Form TermID (ISO 11239:2012) • FDA Additional Information on Drug • FDA Specialized Product Category 22 The maintenance and use of ICH M5-controlled terminology was integrated into the E2B Implementation Working Group work plan per decisions undertaken by the ICH Steering Committee during a Jun. 2013 meeting in Brussels.",
+      "fingerprint": "f7291b97de565f1739a62108499b94c4d9fbc238f5aee4ee4b9ad589ae1aa5f2",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 27,
+      "anchor": "page-21-paragraph-5",
+      "statement": "4.2.5.4 Data Element G.k.2.3.r.2b: Substance/Specified Substance TermID The FDA SRS UNII list should be used to populate data element G.k.2.3.r.2b:",
+      "context": "Additionally, provide the foreign product trade name in data element G.k.2.2. Substance/Specified Substance TermID and data element G.k.2.3.r.1: Substance/Specified Substance Name using the UNII Code and the substance name, respectively.",
+      "fingerprint": "0146e166404235bb806b7909096eaf3868cd951b3995b754c81dc33bdb236883",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 28,
+      "anchor": "page-23-paragraph-4",
+      "statement": "4.2.6 Section E.i: Reaction/Event as Reported by the Primary Source Applicants should follow the E2B(R3) Electronic Transmission of ICSRs IG and relevant sections within this document concerning the use of MedDRA coding. For combination products, enter MedDRA reaction/event terms instead of Patient Problem Codes. 28 For a malfunction-only combination product report, enter a MedDRA code associated with a relevant product quality issue or the MedDRA LLT code “No adverse event” for data element E.i.2.1b, Reaction / Event (MedDRA code) .",
+      "context": "These codes comprise the product types used in an IND-exempt BA/BE study and compounding products listed in the document FDA E2B(R3) Core and Regional Data Elements and Business Rules. Procedures and other examples for capturing FDA Specialized Product Categories are provided on the FAERS Electronic Submissions web page (see https://www.fda.gov/drugs/questions-and-answers-fdas-adverse-event-reporting-system- faers/fda-adverse-event-reporting-system-faers-electronic-submissions ). Recommendations on selecting the data element FDA.G.k.10a.r code for IND-exempt BA/BE study safety reports is provided in the guidance for industry Electronic Submission of Expedited Safety Reports from IND-Exempt BA/BE Studies . 4.2.7 Combination Product Information FDA has provided regional extensions to accommodate reports for Combination Products as required by 21 CFR Part 4, Subpart B, which was added by th",
+      "fingerprint": "fbdb2f3de82076fe7d89b8ef19c3adacf0679a770e2ba966e6d59f2b361e113c",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 29,
+      "anchor": "page-23-paragraph-5",
+      "statement": "4.2.7 Combination Product Information FDA has provided regional extensions to accommodate reports for Combination Products as required by 21 CFR Part 4, Subpart B, which was added by the “Postmarketing Safety Reporting for Combination Products” rule. 29 ICSR submissions using the regional extensions for a combination product with a drug constituent part that received marketing authorization under an NDA or ANDA or with a therapeutic biological product constituent part that received marketing authorization under a BLA, the information in Table 4 should be provided, as applicable.",
+      "context": "4.2.6 Section E.i: Reaction/Event as Reported by the Primary Source Applicants should follow the E2B(R3) Electronic Transmission of ICSRs IG and relevant sections within this document concerning the use of MedDRA coding. For combination products, enter MedDRA reaction/event terms instead of Patient Problem Codes. 28 For a malfunction-only combination product report, enter a MedDRA code associated with a relevant product quality issue or the MedDRA LLT code “No adverse event” for data element E.i.2.1b, Reaction / Event (MedDRA code) . 27 Refer to ICH and EDQM guides for specific user instructions on EDQM at https://www.edqm.eu/sites/default/files/standard_terms_introduction_and_guidance_for_use.pdf .",
+      "fingerprint": "55a0c5f01335aa95fdb23d5bef72efa49d0074efe92040717c89dd328411e101",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 30,
+      "anchor": "page-24-paragraph-3",
+      "statement": "FDA.G.k.12.r.1 Malfunction Malfunction is captured as a Boolean value (true or false) and should be provided for all combination products in an ICSR when the Combination Product Report Flag is “true.” FDA.G.K.12.r.3.r Device Problem Code FDA maintains a list of medical device problem codes. If there is no medical device problem associated with the ICSR, use the medical device problem code for “No Known Device Problem”. At least one medical device problem code must be provided when malfunction=true.",
+      "context": "FDA.G.k.10.1, FDA Specialized Product Category , is used to indicate which product(s) are combination products and the type of combination product. FDA.G.k.12.r.4 Device Brand Name Provide the name or ProCode for the medical device constituent part of the combination product. At least one of the following data elements should be provided for each combination product:",
+      "fingerprint": "378769fed3f9cb7b94510742f84d1b4579cda722372f94b6c336b5e7e57b3a57",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 31,
+      "anchor": "page-24-paragraph-4",
+      "statement": "FDA.G.k.12.r.4 Device Brand Name Provide the name or ProCode for the medical device constituent part of the combination product. At least one of the following data elements should be provided for each combination product:",
+      "context": "FDA.G.k.12.r.1 Malfunction Malfunction is captured as a Boolean value (true or false) and should be provided for all combination products in an ICSR when the Combination Product Report Flag is “true.” FDA.G.K.12.r.3.r Device Problem Code FDA maintains a list of medical device problem codes. If there is no medical device problem associated with the ICSR, use the medical device problem code for “No Known Device Problem”. At least one medical device problem code must be provided when malfunction=true. FDA.G.j.12.r.4, FDA.G.k.12.r.5 or FDA.G.k.12.r.6 FDA.G.k.12.r.5 Common Device Name Provide the name or ProCode for the medical device constituent part of the combination product. At least one of the following data elements should be provided for each combination product:",
+      "fingerprint": "c11ce1bb46ac36fc8412e4385369ea3cde81f4cf43265d7edeb476132839706e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 32,
+      "anchor": "page-24-paragraph-5",
+      "statement": "FDA.G.j.12.r.4, FDA.G.k.12.r.5 or FDA.G.k.12.r.6 FDA.G.k.12.r.5 Common Device Name Provide the name or ProCode for the medical device constituent part of the combination product. At least one of the following data elements should be provided for each combination product:",
+      "context": "FDA.G.k.12.r.4 Device Brand Name Provide the name or ProCode for the medical device constituent part of the combination product. At least one of the following data elements should be provided for each combination product: FDA.G.j.12.r.4, FDA.G.k.12.r.5 or FDA.G.k.12.r.6 FDA.G.k.12.r.6 Device Product Code Provide the name or ProCode for the medical device constituent part of the combination product. At least one of the following data elements should be provided for each combination product:",
+      "fingerprint": "49f7c2cb5b7b24aa072550ce45228d89506a020b776ee7f166ccb6eb3090c319",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 33,
+      "anchor": "page-24-paragraph-6",
+      "statement": "FDA.G.j.12.r.4, FDA.G.k.12.r.5 or FDA.G.k.12.r.6 FDA.G.k.12.r.6 Device Product Code Provide the name or ProCode for the medical device constituent part of the combination product. At least one of the following data elements should be provided for each combination product:",
+      "context": "FDA.G.j.12.r.4, FDA.G.k.12.r.5 or FDA.G.k.12.r.6 FDA.G.k.12.r.5 Common Device Name Provide the name or ProCode for the medical device constituent part of the combination product. At least one of the following data elements should be provided for each combination product: FDA.G.j.12.r.4, FDA.G.k.12.r.5 or FDA.G.k.12.r.6 FDA.G.k.12.r.7.1a Device Manufacturer Name Provide the name and location of the manufacturer of the medical device constituent part of the product.",
+      "fingerprint": "bc267157371a0fd8b200ccff529088dd4f397f0c4c9ad65030b2515675025c07",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 34,
+      "anchor": "page-25-paragraph-10",
+      "statement": "4.4 Forward Compatibility The forward compatibility defines the rules to migrate existing FDA regional E2B(R2) data elements to the FDA regional E2B R3 data elements. The document FDA E2B(R3) Forward Compatible Rules lists the data elements and the rules to be applied when moving from E2B(R2) to E2B(R3) format. Additionally, the guidance for industry Appendix I (B) to the ICH E2B(R3) ICSRs Implementation Guide — Backwards and Forwards Compatibility (Apr. 2022) should be referenced for data elements whose ”Source” is ICH.",
+      "context": "4.3 Submission Rules The submission rules define conditions that will result in a negative acknowledgement and not be accepted by FAERS, if not met. The document FDA E2B(R3) Core and Regional Data Elements and Business Rules defines the conformance and the business rules for each data element. The tab “Rejection and Warning Rules” lists the rejection rules that will result in a negative acknowledgement, and the warning rules that will list a warning but result in positive acknowledgement. 5.0 GENERAL DATA COMPLETION INSTRUCTION",
+      "fingerprint": "04d5cdbda9e585da0cb9bb71b35ecb6df870386f11b4fc9c3b7ee51acfd6d5a0",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 35,
+      "anchor": "page-25-paragraph-12",
+      "statement": "5.1 Required and Optional Data Elements A required data element is one that needs to be present (i.e., not to be omitted) either in the ICSR message or an instance of a repeating data element section within the ICSR message.",
+      "context": "5.0 GENERAL DATA COMPLETION INSTRUCTION A required data element may or may not allow a nullFlavor, depending on the data validation rules associated with the data element.",
+      "fingerprint": "9ea70b5f1cac5c556b2cefa7db9c1617874a243aa04afd4ae7bb659979100572",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 36,
+      "anchor": "page-26-paragraph-5",
+      "statement": "5.2 Description in English All ICSR data elements should be completed in English with the exceptions of the following elements:",
+      "context": "Regional extensions not described in the FDA E2B(R3) Core and Regional Data Elements and Business Rules document are not allowed. • “Reaction/Event as Reported by the Primary Source in Native Language” (E.i.1.1a);",
+      "fingerprint": "20ef5fdc7e2b6ce3702b6b23e44d1950c42638a59b644bf2dd54ac221bd1fc3d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 37,
+      "anchor": "page-26-paragraph-6",
+      "statement": "• “Reaction/Event as Reported by the Primary Source in Native Language” (E.i.1.1a);",
+      "context": "List governed by page-26-paragraph-5: 5.2 Description in English All ICSR data elements should be completed in English with the exceptions of the following elements: • “Case Summary and Reporter’s Comments in Native Language” (H.5.r)",
+      "fingerprint": "f3f0f1ab4a6ee65121ff7417c9a70f0b9dbfd83ae5e69af285d8510056c2cb83",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 38,
+      "anchor": "page-26-paragraph-7",
+      "statement": "• “Case Summary and Reporter’s Comments in Native Language” (H.5.r)",
+      "context": "List governed by page-26-paragraph-5: 5.2 Description in English All ICSR data elements should be completed in English with the exceptions of the following elements: 5.3 Date/Time Data Elements Actual local dates and times should be used and offset (i.e., +/-ZZzz) is attached where appropriate. A single format (CCYYMMDDhhmmss.UUUU[+/-ZZzz]) is used to represent dates and times. The minimum level of precision for the date data elements is specified in the Business Rules; however, as much information as is available (e.g., known) should be provided.",
+      "fingerprint": "960eb0a9c7e527c13290766ffda6c63bd30e569dacfb54fefe11b65b58edee99",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 39,
+      "anchor": "page-26-paragraph-8",
+      "statement": "5.3 Date/Time Data Elements Actual local dates and times should be used and offset (i.e., +/-ZZzz) is attached where appropriate. A single format (CCYYMMDDhhmmss.UUUU[+/-ZZzz]) is used to represent dates and times. The minimum level of precision for the date data elements is specified in the Business Rules; however, as much information as is available (e.g., known) should be provided.",
+      "context": "• “Case Summary and Reporter’s Comments in Native Language” (H.5.r) Future dates are not acceptable in an ICSR message.",
+      "fingerprint": "efe655f683ed4694f152ff3764d173a878bc520cdb383bee90a168892c90d52a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 40,
+      "anchor": "page-26-paragraph-10",
+      "statement": "5.4 Use of Metric Units Metric units should be used for measurement values.",
+      "context": "Future dates are not acceptable in an ICSR message. 5.5 Version of Medical Dictionary of Regulatory Activities (MedDRA) A single version of MedDRA should be used for all MedDRA coding data elements within the same ICSR (i.e., ICSR message). Therefore, the same MedDRA version should be reflected in all the populated data elements concerning MedDRA version information. However, within a safety message (i.e., a batch of ICSRs), different ICSRs can refer to different MedDRA versions.",
+      "fingerprint": "aab2eaeb0518fdd2239fc0c7de99fc0fcf10cf5865d3f69c0c4f37bdb4d2a481",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 41,
+      "anchor": "page-26-paragraph-11",
+      "statement": "5.5 Version of Medical Dictionary of Regulatory Activities (MedDRA) A single version of MedDRA should be used for all MedDRA coding data elements within the same ICSR (i.e., ICSR message). Therefore, the same MedDRA version should be reflected in all the populated data elements concerning MedDRA version information. However, within a safety message (i.e., a batch of ICSRs), different ICSRs can refer to different MedDRA versions.",
+      "context": "5.4 Use of Metric Units Metric units should be used for measurement values. 5.6 Standard Terminologies and Codelists If a data element is defined with a specific codelist (in the “Values” column of the Business Rules), the associated codelist needs to always be used. Also, when the codelist code is captured as the value of a data element, its text name should be provided in display name to make the XML code human readable.",
+      "fingerprint": "4accd050acd6839109e3bed4e5eb4e0b2e94e96bad198a820c535b2e76340684",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 42,
+      "anchor": "page-27-paragraph-1",
+      "statement": "5.6 Standard Terminologies and Codelists If a data element is defined with a specific codelist (in the “Values” column of the Business Rules), the associated codelist needs to always be used. Also, when the codelist code is captured as the value of a data element, its text name should be provided in display name to make the XML code human readable.",
+      "context": "5.5 Version of Medical Dictionary of Regulatory Activities (MedDRA) A single version of MedDRA should be used for all MedDRA coding data elements within the same ICSR (i.e., ICSR message). Therefore, the same MedDRA version should be reflected in all the populated data elements concerning MedDRA version information. However, within a safety message (i.e., a batch of ICSRs), different ICSRs can refer to different MedDRA versions. 5.7 Use of nullFlavors HL7 nullFlavor codes are used to explain the reason for the lack of data on required elements.",
+      "fingerprint": "ea8b3609014a4930790628988d484ffb2c2ab7717d08cd6f88c3f690db5ac9ff",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 43,
+      "anchor": "page-27-paragraph-4",
+      "statement": "5.8 ICSR Attachment(s) In accordance with E2B(R3) Electronic Transmission of ICSRs IG, ICSR attachments should be sent inline as embedded files using base 64 encoding (refer to E2B(R3) Electronic Transmission of ICSRs IG Section 3.5 (Document Attachments) for further information). To facilitate ICSR attachment file processing, the data element “ Attachment file name ” must be included using the <reference value> data element in the XML file, which must be placed after the <text mediaType> tag.",
+      "context": "The definitions of nullFlavor codes are from the E2B(R3) Electronic Transmission of ICSRs IG and can be used as appropriate. EXAMPLE: <reference typeCode=\"REFR\"> <document classCode=\"DOC\" moodCode=\"EVN\"> <code code=\"1\" codeSystem=\"2.16.840.1.113883.3.989.2.1.1.27\" displayName=\"documentsHeldBySender\"/> <title>Narrative Summary Report</title> <text mediaType =\"text/plain\" representation =\"B64\"> <reference value=\"Narrative Summary Report.pdf\"/> VGhlIHBhdGllbnQgd2FzIGEgMzUgeWxlIHdpdGggbm8gc== </text> </document> </reference> Special Note : the “ attachment file name ” must follow the naming convention for a valid “url”.",
+      "fingerprint": "824008638d860950f441c765bef72fe60ec577e8aa9a846a8148e99014cf5a5d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 44,
+      "anchor": "page-27-paragraph-5",
+      "statement": "EXAMPLE: <reference typeCode=\"REFR\"> <document classCode=\"DOC\" moodCode=\"EVN\"> <code code=\"1\" codeSystem=\"2.16.840.1.113883.3.989.2.1.1.27\" displayName=\"documentsHeldBySender\"/> <title>Narrative Summary Report</title> <text mediaType =\"text/plain\" representation =\"B64\"> <reference value=\"Narrative Summary Report.pdf\"/> VGhlIHBhdGllbnQgd2FzIGEgMzUgeWxlIHdpdGggbm8gc== </text> </document> </reference> Special Note : the “ attachment file name ” must follow the naming convention for a valid “url”.",
+      "context": "5.8 ICSR Attachment(s) In accordance with E2B(R3) Electronic Transmission of ICSRs IG, ICSR attachments should be sent inline as embedded files using base 64 encoding (refer to E2B(R3) Electronic Transmission of ICSRs IG Section 3.5 (Document Attachments) for further information). To facilitate ICSR attachment file processing, the data element “ Attachment file name ” must be included using the <reference value> data element in the XML file, which must be placed after the <text mediaType> tag. Letters, digits, and special characters \"a\"--\"z\", digits, as well as the characters plus (\"+\"), period (\".\"), and hyphen (\"-\") are allowed.",
+      "fingerprint": "8d362105c30063d74ca857034069336f9535b16c907b3d7cf7e5db25be733f43",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 45,
+      "anchor": "page-27-paragraph-7",
+      "statement": "If the file type in the reference value tag does not match the file extension in the file name, the file will be rejected. For example, a file with <reference value=\"SAMPLE FILE.txt\"/> must have a text file media type reported.",
+      "context": "Letters, digits, and special characters \"a\"--\"z\", digits, as well as the characters plus (\"+\"), period (\".\"), and hyphen (\"-\") are allowed. For more information about restrictions, see http://www.ietf.org/rfc/rfc1738.txt .",
+      "fingerprint": "357f0124496b39067f126046388e6c5be8328558523abbc4db0d284c3642a6c7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 46,
+      "anchor": "page-28-paragraph-2",
+      "statement": "however, the recommended ICSR submission size is less than 100 megabytes (MB). ICSR attachments should not be individually compressed.",
+      "context": "5.9 ICSR Attachment File-Size Limitations The FDA ESG supports the receipt of electronic regulatory submissions of up to 100 GB in size; The following attachment file types with corresponding media types are supported:",
+      "fingerprint": "c8979ee6f2b3bad7454d05c47d9d4e96f39f361b9f742fbe581f2ef0748d0ebe",
+      "review_status": "pending"
+    }
+  ],
+  "retrieved_at": "2026-11-05T02:29:32.160Z"
+}
