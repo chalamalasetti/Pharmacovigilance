@@ -1,7 +1,9 @@
 name: Refresh public PV data
 on:
   schedule:
-    - cron: '7,22,37,52 * * * *'
+    # Wake hourly; the database lease runs collection only when its 12-hour interval is due.
+    # An hourly catch-up also retries failed/delayed collections without a site deployment.
+    - cron: '23 * * * *'
   workflow_dispatch:
     inputs:
       force:
@@ -85,6 +87,7 @@ jobs:
         if: steps.managed.outputs.run == 'true'
         env:
           RUN_LEASE: ${{ steps.managed.outputs.lease }}
+          REFRESH_MINUTES: ${{ steps.managed.outputs.frequency }}
         run: node scripts/runtime-collect.mjs
       - name: Record managed collection outcome
         if: always() && steps.managed.outputs.run == 'true'

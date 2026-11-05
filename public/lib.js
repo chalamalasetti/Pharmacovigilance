@@ -65,22 +65,21 @@ export function keyUpdates(updates, n = 6) {
 }
 
 // ---- Data freshness ----
-// Shared by the status strip on every page, the Data status page and the hourly
-// health check that opens a GitHub issue. The site rebuilds every hour, so two missed
-// rebuilds in a row is a problem. A single failed fetch is shown on the site straight
-// away but only raises an alert once it has lasted a while, so one slow hour stays quiet.
+// Health follows the published data cadence, independently of application builds.
 export const FRESHNESS = {
   staleAfterMs: 3 * 3600000,
   officialAlertAfterMs: 6 * 3600000,
   newsAlertShare: 0.5,
   researchAlertAfterMs: 24 * 3600000,
-  // Any registry source that has failed this many hourly runs in a row alerts on its own.
+  // Any registry source that has failed this many collection runs in a row alerts on its own.
   repeatAlertRuns: 6,
 };
 
 // level: "ok", "warn" (something failed, data is still current) or "stale" (no fresh data).
 // Each problem says whether it is worth alerting the maintainer about.
 export function dataHealth(status, now = Date.now(), t = FRESHNESS) {
+  const interval=Number(status?.refreshIntervalMinutes);
+  if([60,720,1440,10080].includes(interval))t={...t,staleAfterMs:Math.max(t.staleAfterMs,interval*90000),officialAlertAfterMs:Math.max(t.officialAlertAfterMs,interval*120000)};
   const problems = [];
   const age = (iso) => (iso ? now - Date.parse(iso) : Infinity);
   const hours = (ms) => (ms === Infinity ? "ever" : `${Math.round(ms / 3600000)} h`);
@@ -91,7 +90,7 @@ export function dataHealth(status, now = Date.now(), t = FRESHNESS) {
   let stale = false;
   if (sinceCheck > t.staleAfterMs) {
     stale = true;
-    problems.push({ text: `The site has not rebuilt for ${hours(sinceCheck)}. The hourly refresh or the build may be failing.`, alert: true });
+    problems.push({ text: `Public data has not been checked for ${hours(sinceCheck)}. The scheduled data refresh may be delayed or failing.`, alert: true });
   } else if (sinceData > t.staleAfterMs) {
     stale = true;
     problems.push({ text: `No source has been reachable for ${hours(sinceData)}, so updates shown are from the last successful refresh.`, alert: true });

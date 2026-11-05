@@ -3,7 +3,7 @@ import {readFile,appendFile} from 'node:fs/promises';
 import {AUDIENCE} from '../api/refresh-worker.js';
 async function rpc(body){const u=new URL(process.env.ACTIONS_ID_TOKEN_REQUEST_URL);if(u.protocol!=='https:'||!u.hostname.endsWith('.actions.githubusercontent.com'))throw Error('Unexpected GitHub identity endpoint');u.searchParams.set('audience',AUDIENCE);const t=await fetch(u,{headers:{authorization:`Bearer ${process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}`}});if(!t.ok)throw Error('GitHub identity unavailable');const{value}=await t.json();const r=await fetch(AUDIENCE,{method:'POST',headers:{authorization:`Bearer ${value}`,'content-type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(25000)});if(!r.ok)throw Error(`Refresh controller returned ${r.status}`);return r.json();}
 const [action,pipeline]=process.argv.slice(2);
-if(action==='claim'){const r=await rpc({action,pipeline,force:process.env.FORCE==='true'});await appendFile(process.env.GITHUB_OUTPUT,`run=${r.run===true}\nlease=${r.lease??''}\nmode=${r.mode??'fresh'}\n`);console.log(r.run?'Refresh lease acquired':`Skipped: ${r.reason}`);}
+if(action==='claim'){const r=await rpc({action,pipeline,force:process.env.FORCE==='true'});await appendFile(process.env.GITHUB_OUTPUT,`run=${r.run===true}\nlease=${r.lease??''}\nmode=${r.mode??'fresh'}\nfrequency=${Number.isInteger(r.frequency)?r.frequency:60}\n`);console.log(r.run?'Refresh lease acquired':`Skipped: ${r.reason}`);}
 else if(action==='finish'){
  let result=process.env.RUN_RESULT==='success'?'success':'failed',stats={};
  const json=async path=>JSON.parse(await readFile(path,'utf8'));

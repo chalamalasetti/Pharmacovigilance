@@ -1,4 +1,4 @@
-// Hourly health check, run by .github/workflows/feed-health.yml. Reads the live site's
+// Data health check, run by .github/workflows/feed-health.yml. Reads the live site's
 // data/status.json and decides whether to alert: the workflow opens a GitHub issue
 // (which emails the repo owner) when a problem has lasted, and closes it on recovery.
 //
@@ -13,7 +13,7 @@ import { pathToFileURL } from "node:url";
 import {readRuntime,runtimeFile} from './runtime-read.mjs';
 import { dataHealth } from "../public/lib.js";
 
-const SITE_URL = (process.env.SITE_URL || "https://pharmacovigilance-info.vercel.app").replace(/\/$/, "");
+const SITE_URL = (process.env.SITE_URL || "https://www.pvinfo.org").replace(/\/$/, "");
 
 const when = (iso) => (iso ? `${iso.replace("T", " ").slice(0, 16)} UTC` : "never");
 
