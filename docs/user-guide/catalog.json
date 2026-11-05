@@ -1,7 +1,7 @@
 {
-  "version": "1.6",
+  "version": "1.7",
   "reviewed": "2026-11-04",
-  "appRevision": "twice-daily-data-refresh-v1",
+  "appRevision": "guidance-impact-pilot-v1",
   "chapters": [
     {
       "id": "getting-started",
@@ -198,6 +198,13 @@
       "group": "Company work",
       "audience": "Safety systems and configuration managers",
       "summary": "Explore source-versioned ICH/FDA captures, review baseline subsets, document private system mappings and draft configuration changes."
+    },
+    {
+      "id": "guidance-impact",
+      "title": "Guidance impact: EMA masking pilot",
+      "group": "Assess and act",
+      "audience": "Safety systems, regulatory reviewers and administrators",
+      "summary": "Follow a public source through table-aware extraction, draft policy, configuration design and company verification; understand automation limits."
     }
   ],
   "screens": {

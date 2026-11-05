@@ -1,3 +1,4 @@
+import {guidanceForUpdate} from './guidance-impact-lib.js';
 // Draws an update's impact card and its actions (save, follow, assess, assign,
 // dismiss with a reason). Used by the main list, My PV Briefing, the team queue
 // and the archive. When the reader is in a team, assessments, assignments and
@@ -66,6 +67,7 @@ export function impactSection(u, ctx) {
   const card = impactCard(u, { countryName: ctx.countryName });
   const rec = () => item(ctx.ws, u.id);
   const wrap = el("section", { class: "impact", "aria-label": "Impact card" });
+  const guidance=guidanceForUpdate(u);if(guidance)wrap.append(el('div',{class:'imp-block'},el('h4',{},'Document-level impact analysis'),el('p',{},'A source-linked draft demonstration is available: field policy, implementation proposals, exceptions and synthetic tests. Company applicability remains unconfirmed.'),el('a',{href:'guidance-impact.html?id='+guidance},'Explore detailed guidance impact →')));
   if (u.companyContext) {
     const c = u.companyContext;
     wrap.append(el("div", {class:"company-context"}, el("h3",{},`${c.companyName} · Company applicability`),

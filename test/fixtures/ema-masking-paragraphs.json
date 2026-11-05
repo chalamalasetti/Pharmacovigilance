@@ -1,0 +1,262 @@
+{
+  "source": "EMA/178902/2025, supplied copy matches official EMA download. © EMA/HMA 2025; source acknowledged.",
+  "sha256": "53bb1c46db481ae94009a302ca87cb44325cf1a82e7908c41e33c01649878b4c",
+  "paragraphs": [
+    {
+      "anchor": "page-1-paragraph-1",
+      "text": "See websites for contact details European Medicines Agency www.ema.europa.eu Heads of Medicines Agencies www.hma.eu The European Medicines Agency is an agency of the European Union © European Medicines Agency and Heads of Medicines Agencies, 2025."
+    },
+    {
+      "anchor": "page-1-paragraph-2",
+      "text": "Reproduction is authorised provided the source is acknowledged."
+    },
+    {
+      "anchor": "page-1-paragraph-3",
+      "text": "22 July 2025 EMA/178902/2025 Guideline on good pharmacovigilance practices (GVP) Module VI Addendum II – Masking of personal data in individual case safety reports submitted to EudraVigilance Draft agreed by the Agency’s P harmacovigilance Risk Assessment Committee (PRAC) and finalised by the Agency in collaboration with Member States"
+    },
+    {
+      "anchor": "page-1-paragraph-4",
+      "text": "14 May 2025 Draft agreed by the Co - ordination group for Mutual recognition and Decentralised procedures – human (CMDh)"
+    },
+    {
+      "anchor": "page-1-paragraph-5",
+      "text": "22 July 2025 Draft agreed by the Head of Human Medicines Division as final under delegated authority by the Executive Director"
+    },
+    {
+      "anchor": "page-1-paragraph-6",
+      "text": "22 July 2025 Date for coming into effect* 25 July 2025 As part of finalisation, the document was consulted with the EudraVigilance Expert Working Group ."
+    },
+    {
+      "anchor": "page-1-paragraph-7",
+      "text": "* Senders of individual case safety reports should implement the instructions described in this document as soon as possible and within a reasonable timeframe. Such timeframe should be documented as part of the sender ’ s internal procedures to demonstrate when and how this will be achieved."
+    },
+    {
+      "anchor": "page-2-paragraph-1",
+      "text": "EMA/178902/2025 of 22 July 2025 Page 2/14 Table of contents VI.Add.II.1. Introduction............................................................................... 3 VI.Add.II.2. Purposes of personal data processing ............................................. 3 VI.Add.II.3. ICH-E2B(R3) data elements to be masked ...................................... 4 VI.Add.II.4. ICH-E2B(R3) data elements to be left blank .................................... 5 VI.Add.II.5. ICH-E2B(R3) data elements that may contain personal data and are required for pharmacovigilance processes ........................................................ 6 VI.Add.II.6. ICH-E2B(R3) data elements that do not contain personal data and are required for pharmacovigilance processes .......................................................12"
+    },
+    {
+      "anchor": "page-3-paragraph-1",
+      "text": "EMA/178902/2025 of 22 July 2025 Page 3/14 VI.Add.II.1. Introduction As outcome of an EudraVigilance audit performed by the European Data Protection Supervisor (EDPS) in the context of pseudonymisation procedures and personal data masking, the EDPS recommended to the Agency to adopt, together with the joint controllers (European Commission and competent authorities in Member States), a common masking policy that should be complied with by all entities reporting to EudraVigilance (hereafter referred to as “sender”) ."
+    },
+    {
+      "anchor": "page-3-paragraph-2",
+      "text": "This Addendum to GVP Module VI provides instructions to complement Section VI.C.6.2.2.10. on data protection laws. These instructions form an integral part of the guidance in GVP Module VI."
+    },
+    {
+      "anchor": "page-3-paragraph-3",
+      "text": "The Agency, in consultation with the joint controllers of EudraVigilance 1 , has assessed all ICH-E2B(R3) data elements (see Annex IV ICH-E2B(R3)) to determine if the information in the data elements is required in support of the pharmacovigilance and safety monitoring obligations set out in the EU pharmaceutical legislation (see VI.Add.II.2.). More specifically, this assessment has taken into account the relevant obligations placed on the Agency, competent authorities in Members States and the Pharmacovigilance Risk Assessment Committee (PRAC) (see GVP Module I). Requirements to process individual case safety reports (ICSRs) and to ensure adequate quality of the ICSRs (see GVP Module VI) have also been reviewed."
+    },
+    {
+      "anchor": "page-3-paragraph-4",
+      "text": "All senders of ICSRs to EudraVigilance are expected to comply with the instructions set out in this Addendum to GVP Module VI, and the data fields to be masked or not to be provided should not go beyond the data fields described here."
+    },
+    {
+      "anchor": "page-3-paragraph-5",
+      "text": "The instructions do not change the current EudraVigilance Business Rules 2 , therefore no impact on the electronic submission process of ICSRs and related safety messages is expected. Moreover, the EU I ndividual Case Safety Report Implementation Guide 3 does also not require to be changed and remains applicable."
+    },
+    {
+      "anchor": "page-3-paragraph-6",
+      "text": "XML files of ICSRs as submitted by senders w ill be preserved in their original form by the Agency for regulatory and audit purposes. Access to these submissions is restricted to a limited number of authorised Agency staff members who can make the XML files available to competent authorities in the Member States for the purpose of inspections of sponsors of clinical trials, marketing authorisation applicants and marketing authorisation holders."
+    },
+    {
+      "anchor": "page-3-paragraph-7",
+      "text": "VI.Add.II.2. Purposes of personal data processing The EU legal requirements for the collection and submission of ICSRs to EudraVigilance are established in Directive 2001/83/EC as amended, Regulation (EC) No 726/2004 as amended and the Commission Implementing Regulation 520/2012 as amended (see GVP Module VI). The EU legal requirements for the collection and submission of suspected unexpected serious adverse reactions from interventional clinical trials are established in the Regulation (EU) No 536/2014 (see EudraLex Volume 10 of The Rules Governing Medicinal Products in the European Union 4 )."
+    },
+    {
+      "anchor": "page-3-paragraph-8",
+      "text": "The processing of personal data in relation to pharmacovigilance activities is necessary for the reasons set out in:"
+    },
+    {
+      "anchor": "page-3-paragraph-9",
+      "text": "• Chapter III of Commission Implementing Regulation (EU) 520/2012 on the performance of pharmacovigilance activities provided for in Regulation (EC) No 726/2004 and Directive"
+    },
+    {
+      "anchor": "page-3-paragraph-10",
+      "text": "1 www.ema.europa.eu - European Medicines Agency’s Data Protection Notice for EudraVigilance Human (EV) (EMA/381993/2024)"
+    },
+    {
+      "anchor": "page-3-paragraph-11",
+      "text": "2 www.ema.europa.eu"
+    },
+    {
+      "anchor": "page-3-paragraph-12",
+      "text": "3 www.ema.europa.eu"
+    },
+    {
+      "anchor": "page-3-paragraph-13",
+      "text": "4 www.health.ec.europa.eu"
+    },
+    {
+      "anchor": "page-4-paragraph-1",
+      "text": "EMA/178902/2025 of 22 July 2025 Page 4/14 2001/83/EC which provide for the minimum requirements for the monitoring of data in EudraVigilance;"
+    },
+    {
+      "anchor": "page-4-paragraph-2",
+      "text": "• Commission Implementing Regulation (EU) 2022/20 which lays down the rules for the application of Regulation (EU) No 536/2014 and setting up the rules and procedures for the cooperation of the Member States in the safety assessment of clinical trials: In accordance with Article 5(1) of the Commission Implementing Regulation (EU) 2022/20, the safety assessing Member State shall amongst other tasks screen and assess information about all suspected unexpected serious adverse reactions reported to the EudraVigilance database in accordance with Article 42 of Regulation (EU) No 536/2014, regardless of whether they occurred in Member States or in third countries, as well as information contained in annual safety reports, in accordance with Articles 6 and 7 of the Commission Implementing Regulation (EU) 2022/20 following a risk based approach;"
+    },
+    {
+      "anchor": "page-4-paragraph-3",
+      "text": "• GVP Module IX further outlines the signal management process and the roles and responsibilities of all parties involved."
+    },
+    {
+      "anchor": "page-4-paragraph-4",
+      "text": "ICSRs, recorded in EudraVigilance for the purpose of safety monitoring and patient and public health protection, contain personal data of patients and of the primary source of the ICSR in pseudonymised format. These personal data can be captured in structured 5 as well as unstructured format based on the ISO ICSR standard which is referenced in Article 26 of the Commission Implementing Regulation (EC) No 520/2012 6 ."
+    },
+    {
+      "anchor": "page-4-paragraph-5",
+      "text": "Hence, as part of the safety monitoring responsibilities, ICSRs that contain pseudonymised personal data can be accessed by registered users of the EudraVigilance system. In this regard, the user access is protected by multi-factor authentication (MFA). The users that can access the data (depending on their roles and permissions) are those with safety officer functions in competent authorities in Member States, the European Commission and the Agency. Moreover, the access is extended according to the EMA Policy on Access to EudraVigilance Data for Medicinal Products for Human Use 7 for marketing authorisation holders, so they can fulfil their pharmacovigilance obligations, and to clinical trial sponsors to the ICSRs they have submitted to EudraVigilance, to facilitate their safety monitoring activities. This policy describes the different levels of access and the means for the access by the different stakeholders according to their safety monitoring obligations."
+    },
+    {
+      "anchor": "page-4-paragraph-6",
+      "text": "VI.Add.II.3. ICH-E2B(R3) data elements to be masked For the 13 data elements provided in Table VI.Add.II.1. the sender of the ICSRs should determine if the use of nullFlavors is applicable, in accordance with the ICH-E2B(R3) guideline (see Annex IV ICH- E2B(R3)) and the EU I ndividual Case Safety Report Implementation Guide Implementation Guide 8 ."
+    },
+    {
+      "anchor": "page-4-paragraph-7",
+      "text": "These 13 data elements are not required for signal management, duplicate detection or ICSR processing."
+    },
+    {
+      "anchor": "page-4-paragraph-8",
+      "text": "These data elements should therefore be set with the nullFlavour MSK, provided that data are available to the sender of the ICSR to EudraVigilance."
+    },
+    {
+      "anchor": "page-4-paragraph-9",
+      "text": "Other nullFlavours may be applicable when the data is not available to the sender (e.g. ASKU, NASK, UNK) and should be used accordingly. Alternatively, the field(s) can be left blank. Further guidance on the use of nullFlavours is provided in the EU Individual Case Safety Report Implementation Guide 9 ."
+    },
+    {
+      "anchor": "page-4-paragraph-10",
+      "text": "5 Web-based fields completed by the user when populating an application form"
+    },
+    {
+      "anchor": "page-4-paragraph-11",
+      "text": "6 www.ema.europa.eu"
+    },
+    {
+      "anchor": "page-4-paragraph-12",
+      "text": "7 www.ema.europa.eu"
+    },
+    {
+      "anchor": "page-4-paragraph-13",
+      "text": "8 www.ema.europa.eu"
+    },
+    {
+      "anchor": "page-4-paragraph-14",
+      "text": "9 www.ema.europa.eu"
+    },
+    {
+      "anchor": "page-5-paragraph-1",
+      "text": "EMA/178902/2025 of 22 July 2025 Page 5/14 In instances where unmasked data are submitted to EudraVigilance by a sender for any of these 13 data elements due to failure of compliance with the instructions in this Addendum, the Agency will not make the unmasked data available to the EudraVigilance users. Similarly, for legacy data held in EudraVigilance related to these 13 data elements, the Agency will mask the data."
+    },
+    {
+      "anchor": "page-5-paragraph-2",
+      "text": "Table VI.Add.II.1.: 13 ICSR data elements to ALWAYS be masked by the sender of ICSRs to EudraVigilance (provided that the data are available to the sender)"
+    },
+    {
+      "anchor": "page-5-paragraph-3",
+      "text": "ICH E2B(R3) d ata e lement r eference Data field name ICH C.2.r.1.1 Reporter’s Title ICH C.2.r.1.2 Reporter’s Given Name ICH C.2.r.1.3 Reporter’s Middle Name ICH C.2.r.1.4 Reporter’s Family Name ICH C.2.r.2.1 Reporter’s Organisation ICH C.2.r.2.2 Reporter’s Department ICH C.2.r.2.3 Reporter’s Street ICH C.2.r.2.6 Reporter’s Postcode ICH C.2.r.2.7 Reporter’s Telephone ICH D.1.1.1 Patient Medical Record Number(s) and Source(s) of the Record Number (GP Medical Record Number) ICH D.1.1.2 Patient Medical Record Number(s) and Source(s) of the Record Number (Specialist Record Number) ICH D.1.1.3 Patient Medical Record Number(s) and Source(s) of the Record Number (Hospital Record Number) ICH D.10.1 Parent Identification VI.Add.II.4. ICH-E2B(R3) data elements to be left blank The 11 data elements provided in Table VI.Add.II.2. are also not necessary for signal management, duplicate detection or ICSR processing. Since the use of nullFlavors is not supported by the ICH E2B(R3) guideline (see Annex IV ICH-E2B(R3)), the sender of the ICSRs should leave these 11 data elements blank when submitting ICSRs to EudraVigilance."
+    },
+    {
+      "anchor": "page-5-paragraph-4",
+      "text": "In instances where data are submitted to EudraVigilance by a sender for any of these 11 data elements due to failure of compliance with the instructions in this Addendum, the Agency will not make the data available to the EudraVigilance users. Similarly, for legacy data held in EudraVigilance related to these"
+    },
+    {
+      "anchor": "page-5-paragraph-5",
+      "text": "11 data elements, the Agency will remove the data. Table VI.Add.II.2.: 11 ICSR data elements to ALWAYS be left blank by the sender of ICSRs to EudraVigilance (provided that the data are available to the sender)"
+    },
+    {
+      "anchor": "page-6-paragraph-1",
+      "text": "EMA/178902/2025 of 22 July 2025 Page 6/14"
+    },
+    {
+      "anchor": "page-6-paragraph-2",
+      "text": "ICH E2B(R3) d ata e lement r eference Data field name ICH C.3.3.2 Sender’s Title ICH C.3.3.3 Sender’s Given Name ICH C.3.3.4 Sender’s Middle Name ICH C.3.3.5 Sender’s Family Name ICH C.3.4.1 Sender’s Street Address ICH C.3.4.2 Sender’s City ICH C.3.4.3 Sender’s State or Province ICH C.3.4.4 Sender’s Postcode ICH C.3.4.5 Sender’s Country Code ICH C.3.4.6 Sender’s Telephone ICH C.3.4.7 Sender’s Fax VI.Add.II.5. ICH-E2B(R3) data elements that may contain personal data and are required for pharmacovigilance processes The data elements provided in Table VI.Add.II.3. may contain personal identifiers or quasi-identifiers and are required for signal management, duplicate detection and ICSR processing. When available, data related to these data elements should not be masked or not to be left blank by the senders of the ICSR to EudraVigilance."
+    },
+    {
+      "anchor": "page-6-paragraph-3",
+      "text": "Table VI.Add.II.3.: ICSR data elements that may contain personal identifiers or quasi-identifiers and are required for signal management, duplicate detection and ICSR processing and should not be masked and not be left blank"
+    },
+    {
+      "anchor": "page-6-paragraph-4",
+      "text": "ICH E2B(R3) d ata e lement r eference Data field name ICH C.1.1 Sender’s (case) Safety Report Unique Identifier ICH C.1.6.1.r.1 Documents Held by Sender ICH C.1.6.1.r.2 Included Documents ICH C.1.8.1 Worldwide Unique Case Identification ICH C.1.9.1 Other Case Identifiers in Previous Transmissions ICH C.1.9.1.r.1 Source(s) of the Case Identifier ICH C.1.9.1.r.2 Case Identifier(s) ICH C.1.10.r Identification Number of the Report Which Is Linked to This Report ICH C.2.r.2.4 Reporter’s City"
+    },
+    {
+      "anchor": "page-7-paragraph-1",
+      "text": "EMA/178902/2025 of 22 July 2025 Page 7/14"
+    },
+    {
+      "anchor": "page-7-paragraph-2",
+      "text": "ICH E2B(R3) d ata e lement r eference Data field name ICH C.2.r.2.5 Reporter’s State or Province ICH C.2.r.3 Reporter’s Country Code ICH C.3.2 Sender’s Organisation ICH C.3.3.1 Sender’s Department ICH C.3.4.8 Sender’s E -mail Address ICH C.4.r.1 Literature Reference(s) ICH C.4.r.2 Included Documents ICH C.5.1.r.1 Study Registration Number ICH C.5.1.r.2 Study Registration country ICH C.5.2 Study Name ICH C.5.3 Sponsor Study Number ICH C.5.4 Study Type Where Reaction(s) / Event(s) Were Observed ICH_CSV C.5.4.CSV Study Type Where Reaction(s) / Event(s) Were Observed Code System Version ICH D.1 Patient (name or initials) ICH D.1.1.4 Patient Medical Record Number(s) and Source(s) of the Record Number (Investigation Number) ICH D.2.1 Date of Birth ICH D.2.2a Age at Time of Onset of Reaction / Event (number) ICH D.2.2b Age at Time of Onset of Reaction / Event (unit) ICH D.2.2.1a Gestation Period When Reaction / Event Was Observed in the Foetus (number) ICH D.2.2.1b Gestation Period When Reaction/Event Was Observed in the Foetus (unit) ICH D.2.3 Patient Age Group (as per reporter) ICH D.3 Body Weight (kg) ICH D.4 Height (cm) ICH D.5 Sex ICH D.6 Last Menstrual Period Date ICH D.7.1.r.1b Medical History (disease / surgical procedure / etc.) (MedDRA code) ICH D.7.1.r.2 Start Date ICH D.7.1.r.3 Continuing ICH D.7.1.r.4 End Date ICH D.7.1.r.5 Comments ICH D.7.1.r.6 Family History ICH D.7.2 Text for Relevant Medical History and Concurrent Conditions (not including reaction/event) ICH D.7.3 Concomitant Therapies ICH D.8.r.1 Name of Drug as Reported EU D.8.r.1.EU.1 Name part - Invented name"
+    },
+    {
+      "anchor": "page-8-paragraph-1",
+      "text": "EMA/178902/2025 of 22 July 2025 Page 8/14"
+    },
+    {
+      "anchor": "page-8-paragraph-2",
+      "text": "ICH E2B(R3) d ata e lement r eference Data field name EU D.8.r.1.EU.2 Name part - Scientific name EU D.8.r.1.EU.3 Name part - Trademark name EU D.8.r.1.EU.4 Name part - Strength name EU D.8.r.1.EU.5 Name part - Form name EU D.8.r.1.EU.6 Name part - Container name EU D.8.r.1.EU.7 Name part - Device name EU D.8.r.1.EU.8 Name part - Intended use name ICH D.8.r.2b Medicinal Product Identifier (MPID) ICH D.8.r.3b Pharmaceutical Product Identifier (PhPID) EU D.8.r.EU.r.1 Substance/ Specified Substance Name EU D.8.r.EU.r.2b Substance/Specified Substance TermID EU D.8.r.EU.r.3a Strength (number) EU D.8.r.EU.r.3b Strength (unit) ICH D.8.r.4 Start Date ICH D.8.r.5 End Date ICH D.8.r.6b Indication (MedDRA code) ICH D.8.r.7b Reaction (MedDRA code) ICH D.9.1 Date of Death ICH D.9.2.r.1b Reported Cause(s) of Death (MedDRA code) ICH D.9.2.r.2 Reported Cause(s) of Death (free text) ICH D.9.3 Was Autopsy Done? ICH D.9.4.r.1b Autopsy-determined Cause(s) of Death (MedDRA code) ICH D.9.4.r.2 Autopsy-determined Cause(s) of Death (free text) ICH D.10.2.1 Date of Birth of Parent ICH D.10.2.2a Age of Parent (number) ICH D.10.2.2b Age of Parent (unit) ICH D.10.3 Last Menstrual Period Date of Parent ICH D.10.4 Body Weight (kg) of Parent ICH D.10.5 Height (cm) of Parent ICH D.10.6 Sex of Parent ICH D.10.7.1.r.1b Medical History (disease / surgical procedure / etc.) (MedDRA code) ICH D.10.7.1.r.2 Start Date ICH D.10.7.1.r.3 Continuing ICH D.10.7.1.r.4 End Date ICH D.10.7.1.r.5 Comments ICH D.10.7.2 Text for Relevant Medical History and Concurrent Conditions of Parent"
+    },
+    {
+      "anchor": "page-9-paragraph-1",
+      "text": "EMA/178902/2025 of 22 July 2025 Page 9/14"
+    },
+    {
+      "anchor": "page-9-paragraph-2",
+      "text": "ICH E2B(R3) d ata e lement r eference Data field name ICH D.10.8.r.1 Name of Drug as Reported EU D.10.8.r.1.EU.1 Name part - Invented name EU D.10.8.r.1.EU.2 Name part - Scientific name EU D.10.8.r.1.EU.3 Name part - Trademark name EU D.10.8.r.1.EU.4 Name part - Strength name EU D.10.8.r.1.EU.5 Name part - Form name EU D.10.8.r.1.EU.6 Name part - Container name EU D.10.8.r.1.EU.7 Name part - Device name EU D.10.8.r.1.EU.8 Name part - Intended use name ICH D.10.8.r.2b Medicinal Product Identifier (MPID) ICH D.10.8.r.3b Pharmaceutical Product Identifier (PhPID) EU D.10.8.r.EU.r.1 Substance/Specified Substance Name EU D.10.8.r.EU.r.2b Substance/Specified Substance TermID EU D.10.8.r.EU.r.3a Strength (number) EU D.10.8.r.EU.r.3b Strength (unit) ICH D.10.8.r.4 Start Date ICH D.10.8.r.5 End Date ICH D.10.8.r.6b Indication (MedDRA code) ICH D.10.8.r.7b Reactions (MedDRA code) ICH E.i.1.1a Reaction/Event as Reported by the Primary Source in Native Language ICH E.i.1.1b Reaction/Event as Reported by the Primary Source Language ICH E.i.1.2 Reaction/Event as Reported by the Primary Source for Translation ICH E.i.2.1b Reaction/Event (MedDRA code) ICH E.i.3.2a Results in Death ICH E.i.3.2b Life-threatening ICH E.i.3.2c Caused/Prolonged Hospitalisation ICH E.i.3.2d Disabling/Incapacitating ICH E.i.3.2e Congenital Anomaly/Birth Defect ICH E.i.3.2f Other Medically Important Condition ICH E.i.4 Date of Start of Reaction/Event ICH E.i.5 Date of End of Reaction/Event ICH E.i.6a Duration of Reaction/Event (number) ICH E.i.6b Duration of Reaction/Event (unit) ICH E.i.7 Outcome of Reaction/Event at the Time of Last Observation"
+    },
+    {
+      "anchor": "page-9-paragraph-3",
+      "text": "ICH E.i.9 Identification of the Country Where the Reaction/Event Occurred ICH F.r.1 Test Date"
+    },
+    {
+      "anchor": "page-10-paragraph-1",
+      "text": "EMA/178902/2025 of 22 July 2025 Page 10/14"
+    },
+    {
+      "anchor": "page-10-paragraph-2",
+      "text": "ICH E2B(R3) d ata e lement r eference Data field name ICH F.r.2.1 Test Name (free text) ICH F.r.2.2b Test Name (MedDRA code) ICH F.r.3.1 Test Result (code) ICH F.r.3.2 Test Result (value / qualifier) ICH F.r.3.3 Test Result (unit) ICH F.r.3.4 Result Unstructured Data (free text) ICH F.r.6 Comments (free text) ICH F.r.7 More Information Available ICH G.k.1 Characterisation of Drug Role ICH G.k.2.1.1b Medicinal Product Identifier (MPID) ICH G.k.2.1.2b Pharmaceutical Product Identifier (PhPID) ICH G.k.2.2 Medicinal Product Name as Reported by the Primary Source EU G.k.2.2.EU.1 Name part - Invented name EU G.k.2.2.EU.2 Name part - Scientific name EU G.k.2.2.EU.3 Name part - Trademark name EU G.k.2.2.EU.4 Name part - Strength name EU G.k.2.2.EU.5 Name part - Form name EU G.k.2.2.EU.6 Name part - Container name EU G.k.2.2.EU.7 Name part - Device name EU G.k.2.2.EU.8 Name part - Intended use name EU G.k.2.2.EU.9.r.1 Device Component name (free text) EU G.k.2.2.EU.9.r.3 Device Component TermID EU G.k.2.2.EU.9.r.4 Device Serial Number ICH G.k.2.3.r.1 Substance/Specified Substance Name ICH G.k.2.3.r.2b Substance/Specified Substance TermID ICH G.k.2.3.r.3a Strength (number) ICH G.k.2.3.r.3b Strength (unit) ICH G.k.2.4 Identification of the Country Where the Drug Was Obtained ICH G.k.2.5 Investigational Product Blinded ICH G.k.3.1 Authorisation/Application Number ICH G.k.3.2 Country of Authorisation/Application ICH G.k.3.3 Name of Holder/Applicant ICH G.k.4.r.1a Dose (number) ICH G.k.4.r.1b Dose (unit) ICH G.k.4.r.2 Number of Units in the Interval ICH G.k.4.r.3 Definition of the Time Interval Unit"
+    },
+    {
+      "anchor": "page-11-paragraph-1",
+      "text": "EMA/178902/2025 of 22 July 2025 Page 11/14"
+    },
+    {
+      "anchor": "page-11-paragraph-2",
+      "text": "ICH E2B(R3) d ata e lement r eference Data field name ICH G.k.4.r.4 Date and Time of Start of Drug ICH G.k.4.r.5 Date and Time of Last Administration ICH G.k.4.r.6a Duration of Drug Administration (number) ICH G.k.4.r.6b Duration of Drug Administration (unit) ICH G.k.4.r.7 Batch/Lot Number ICH G.k.4.r.8 Dosage Text ICH G.k.4.r.9.1 Pharmaceutical Dose Form (free text) ICH G.k.4.r.9.2b Pharmaceutical Dose Form TermID ICH G.k.4.r.10.1 Route of Administration (free text) ICH G.k.4.r.10.2b Route of Administration TermID ICH G.k.4.r.11.1 Parent Route of Administration (free text) ICH G.k.4.r.11.2b Parent Route of Administration TermID ICH G.k.5a Cumulative Dose to First Reaction (number) ICH G.k.5b Cumulative Dose to First Reaction (unit) ICH G.k.6a Gestation Period at Time of Exposure (number) ICH G.k.6b Gestation Period at Time of Exposure (unit) ICH G.k.7.r.1 Indication as Reported by the Primary Source ICH G.k.7.r.2b Indication (MedDRA code) ICH G.k.8 Action(s) Taken with Drug ICH G.k.9.i.2.r.2 Method of Assessment ICH G.k.9.i.2.r.3 Result of Assessment EU G.k.9.i.2.r.3.EU.1 EU Result of Assessment ICH G.k.9.i.3.2a Time Interval between Last Dose of Drug and Start of Reaction/Event (number) ICH G.k.9.i.3.2b Time Interval between Last Dose of Drug and Start of Reaction/Event (unit) ICH G.k.9.i.4 Did Reaction Recur on Re-administration? ICH G.k.10.r Additional Information on Drug (coded) (repeat as necessary) ICH G.k.11 Additional Information on Drug (free text) ICH H.1 Case Narrative Including Clinical Course, Therapeutic Measures, Outcome and Additional Relevant Information ICH H.2 Reporter's Comments"
+    },
+    {
+      "anchor": "page-11-paragraph-3",
+      "text": "ICH H.3.r.1b Sender's Diagnosis/Syndrome and/or Reclassification of Reaction/Event (MedDRA code) ICH H.4 Sender's Comments ICH H.5.r.1a Case Summary and Reporter’s Comments Text ICH H.5.r.1b Case Summary and Reporter’s Comments Language"
+    },
+    {
+      "anchor": "page-12-paragraph-1",
+      "text": "EMA/178902/2025 of 22 July 2025 Page 12/14 VI.Add.II.6. ICH-E2B(R3) data elements that do not contain personal data and are required for pharmacovigilance processes The data elements provided in Table VI.Add.II.4. do not contain personal identifiers or quasi-identifiers and are required for signal management, duplicate detection and ICSR processing. When available, data related to these data elements should not be masked and not be left blank by the senders of the ICSR to EudraVigilance."
+    },
+    {
+      "anchor": "page-12-paragraph-2",
+      "text": "Table VI.Add.II.4. ICSR data elements that do not contain personal identifiers or quasi-identifiers and are required for signal management, duplicate detection and ICSR processing and should not be masked and not be left blank"
+    },
+    {
+      "anchor": "page-12-paragraph-3",
+      "text": "ICSR ICH E2B(R3) data e lement r eference Data field name ICH N.1.1 Types of Message in Batch ICH N.1.1.CSV Types of Message in Batch Code System Version ICH N.1.2 Batch Number ICH N.1.3 Batch Sender Identifier ICH N.1.4 Batch Receiver Identifier ICH N.1.5 Date of Batch Transmission ICH N.2.r.1 Message Identifier ICH N.2.r.2 Message Sender Identifier ICH N.2.r.3 Message Receiver Identifier ICH N.2.r.4 Date of Message Creation ICH C.1.2 Date of Creation ICH C.1.3 Type of Report ICH C.1.3.CSV Type of Report Code System Version ICH C.1.4 Date Report Was First Received from Source ICH C.1.5 Date of Most Recent Information for This Report ICH C.1.6.1 Are Additional Documents Available? ICH C.1.7 Does This Case Fulfil the Local Criteria for an Expedited Report? ICH C.1.8.2 First Sender of This Case ICH_CSV C.1.8.2.CSV First Sender of This Case Code System Version ICH C.1.11.1 Report Nullification/Amendment ICH_CSV C.1.11.1.CSV Report Nullification/Amendment Code S ystem V ersion ICH C.1.11.2 Reason for Nullification/Amendment ICH C.2.r.4 Qualification ICH_CSV C.2.r.4.CSV Qualification Code System Version ICH C.2.r.5 Primary Source for Regulatory Purposes ICH C.3.1 Sender Type"
+    },
+    {
+      "anchor": "page-13-paragraph-1",
+      "text": "EMA/178902/2025 of 22 July 2025 Page 13/14"
+    },
+    {
+      "anchor": "page-13-paragraph-2",
+      "text": "ICSR ICH E2B(R3) data e lement r eference Data field name ICH_CSV C.3.1.CSV Sender Type C ode S ystem V ersion ICH_CSV D.2.3.CSV Patient Age Group (as per reporter) Code System Version ICH D.7.1.r.1a MedDRA Version for Medical History ICH D.8.r.2a MPID Version Date/Number ICH D.8.r.3a PhPID Version Date/Number EU D.8.r.EU.r.2a Substance/Specified Substance TermID Version Date/Number ICH D.8.r.6a MedDRA Version for Indication ICH D.8.r.7a MedDRA Version for Reaction ICH D.9.2.r.1a MedDRA Version for Reported Cause(s) of Death ICH D.9.4.r.1a MedDRA Version for Autopsy-determined Cause(s) of Death ICH D.10.7.1.r.1a MedDRA Version for Medical History ICH D.10.8.r.2a MPID Version Date/Number ICH D.10.8.r.3a PhPID Version Date/Number EU D.10.8.r.EU.r.2a Substance/Specified Substance TermID Version Date/Number ICH D.10.8.r.6a MedDRA Version for Indication ICH D.10.8.r.7a MedDRA Version for Reaction ICH E.i.2.1a MedDRA Version for Reaction/Event ICH E.i.3.1 Term Highlighted by the Reporter ICH_CSV E.i.3.1.CSV Term Highlighted by the Reporter Code System Version ICH_CSV E.i.7.CSV Outcome of Reaction/Event at the Time of Last Observation Code System Version ICH E.i.8 Medical Confirmation by Healthcare Professional ICH F.r.2.2a MedDRA Version for Test Name ICH_CSV F.r.3.1.CSV Test Result (code) Code System Version ICH F.r.4 Normal Low Value ICH F.r.5 Normal High Value ICH_CSV G.k.1.CSV Characterisation of Drug Role Code System Version ICH G.k.2.1.1a MPID Version Date / Number ICH G.k.2.1.2a PhPID Version Date/Number EU G.k.2.2.EU.9.r.2 Device Component TermID Version Date/Number ICH G.k.2.3.r.2a Substance/Specified Substance TermID Version Date/Number"
+    },
+    {
+      "anchor": "page-13-paragraph-3",
+      "text": "ICH G.k.4.r.9.2a Pharmaceutical Dose Form TermID Version Date/Number ICH G.k.4.r.10.2a Route of Administration TermID Version Date/Number ICH G.k.4.r.11.2a Parent Route of Administration TermID Version Date/Number ICH G.k.7.r.2a MedDRA Version for Indication ICH_CSV G.k.8.CSV Action(s) Taken with Drug Code System Version ICH G.k.9.i.1 Reaction(s)/Event(s) Assessed"
+    },
+    {
+      "anchor": "page-14-paragraph-1",
+      "text": "EMA/178902/2025 of 22 July 2025 Page 14/14"
+    },
+    {
+      "anchor": "page-14-paragraph-2",
+      "text": "ICSR ICH E2B(R3) data e lement r eference Data field name ICH G.k.9.i.2.r.1 Source of Assessment EU G.k.9.i.2.r.1.EU.1 EU Source of Assessment EU_CSV G.k.9.i.2.r.1.EU.1.CSV EU Source of Assessment Code System Version EU G.k.9.i.2.r.2.EU.1 EU Method of Assessment EU_CSV G.k.9.i.2.r.2.EU.1.CSV EU Method of Assessment Code System Version EU_CSV G.k.9.i.2.r.3.EU.1.CSV EU Result of Assessment Code System Version ICH G.k.9.i.3.1a Time Interval between Beginning of Drug Administration and Start of Reaction/Event (number) ICH G.k.9.i.3.1b Time Interval between Beginning of Drug Administration and Start of Reaction/Event (unit) ICH_CSV G.k.9.i.4.CSV Did Reaction Recur on Re-administration? Code System Version ICH_CSV G.k.10.r.CSV Additional Information on Drug (coded) (repeat as necessary) Code System Version ICH H.3.r.1a MedDRA Version for Sender's Diagnosis/Syndrome and/or Reclassification of Reaction/Event"
+    }
+  ]
+}

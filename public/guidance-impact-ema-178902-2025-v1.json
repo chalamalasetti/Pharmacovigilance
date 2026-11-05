@@ -1,0 +1,2524 @@
+{
+  "schema": 1,
+  "id": "ema-178902-2025",
+  "version": 1,
+  "status": "draft_demonstration",
+  "engine": "ema-vi-add-ii-tables-v1",
+  "source": {
+    "id": "ema-gvp-vi-addendum-ii",
+    "title": "GVP Module VI Addendum II — masking personal data in EudraVigilance ICSRs",
+    "url": "https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/guideline-good-pharmacovigilance-practices-gvp-module-vi-addendum-ii-masking-personal-data-individual-case-safety-reports-submitted-eudravigilance_en.pdf",
+    "edition": "EMA/178902/2025 · 22 July 2025",
+    "documentDate": "2025-07-22",
+    "firstPublishedOn": "2025-07-24",
+    "effectiveOn": "2025-07-25",
+    "sha256": "53bb1c46db481ae94009a302ca87cb44325cf1a82e7908c41e33c01649878b4c",
+    "origin": "Supplied copy matched byte-for-byte against the official EMA download.",
+    "binaryMatched": true,
+    "indexUrl": "https://www.ema.europa.eu/en/human-regulatory-overview/post-authorisation/pharmacovigilance-post-authorisation/good-pharmacovigilance-practices-gvp",
+    "attribution": "© European Medicines Agency and Heads of Medicines Agencies, 2025. Source acknowledged; original source governs."
+  },
+  "summary": "The addendum defines destination-specific masking/blank/preservation groups for EudraVigilance ICSR submissions. Available data in 13 listed fields use MSK; 11 other fields are left blank. Available fields in the two preservation tables remain available under their applicable implementation guidance. Company current controls, applicability and implementation gaps remain unconfirmed.",
+  "counts": {
+    "1": 13,
+    "2": 11,
+    "3": 185,
+    "4": 73
+  },
+  "extraction": {
+    "paragraphCandidates": 12,
+    "tableReferences": 282,
+    "totalCandidates": 294,
+    "limited": true,
+    "excluded": 0,
+    "status": "partial_context"
+  },
+  "fields": [
+    {
+      "fieldId": "C.2.r.1.1",
+      "authority": "ICH",
+      "table": 1,
+      "page": 5,
+      "category": "mask_if_available",
+      "e2bKey": "ICH:C.2.r.1.1"
+    },
+    {
+      "fieldId": "C.2.r.1.2",
+      "authority": "ICH",
+      "table": 1,
+      "page": 5,
+      "category": "mask_if_available",
+      "e2bKey": "ICH:C.2.r.1.2"
+    },
+    {
+      "fieldId": "C.2.r.1.3",
+      "authority": "ICH",
+      "table": 1,
+      "page": 5,
+      "category": "mask_if_available",
+      "e2bKey": "ICH:C.2.r.1.3"
+    },
+    {
+      "fieldId": "C.2.r.1.4",
+      "authority": "ICH",
+      "table": 1,
+      "page": 5,
+      "category": "mask_if_available",
+      "e2bKey": "ICH:C.2.r.1.4"
+    },
+    {
+      "fieldId": "C.2.r.2.1",
+      "authority": "ICH",
+      "table": 1,
+      "page": 5,
+      "category": "mask_if_available",
+      "e2bKey": "ICH:C.2.r.2.1"
+    },
+    {
+      "fieldId": "C.2.r.2.2",
+      "authority": "ICH",
+      "table": 1,
+      "page": 5,
+      "category": "mask_if_available",
+      "e2bKey": "ICH:C.2.r.2.2"
+    },
+    {
+      "fieldId": "C.2.r.2.3",
+      "authority": "ICH",
+      "table": 1,
+      "page": 5,
+      "category": "mask_if_available",
+      "e2bKey": "ICH:C.2.r.2.3"
+    },
+    {
+      "fieldId": "C.2.r.2.6",
+      "authority": "ICH",
+      "table": 1,
+      "page": 5,
+      "category": "mask_if_available",
+      "e2bKey": "ICH:C.2.r.2.6"
+    },
+    {
+      "fieldId": "C.2.r.2.7",
+      "authority": "ICH",
+      "table": 1,
+      "page": 5,
+      "category": "mask_if_available",
+      "e2bKey": "ICH:C.2.r.2.7"
+    },
+    {
+      "fieldId": "D.1.1.1",
+      "authority": "ICH",
+      "table": 1,
+      "page": 5,
+      "category": "mask_if_available",
+      "e2bKey": "ICH:D.1.1.1"
+    },
+    {
+      "fieldId": "D.1.1.2",
+      "authority": "ICH",
+      "table": 1,
+      "page": 5,
+      "category": "mask_if_available",
+      "e2bKey": "ICH:D.1.1.2"
+    },
+    {
+      "fieldId": "D.1.1.3",
+      "authority": "ICH",
+      "table": 1,
+      "page": 5,
+      "category": "mask_if_available",
+      "e2bKey": "ICH:D.1.1.3"
+    },
+    {
+      "fieldId": "D.10.1",
+      "authority": "ICH",
+      "table": 1,
+      "page": 5,
+      "category": "mask_if_available",
+      "e2bKey": "ICH:D.10.1"
+    },
+    {
+      "fieldId": "C.3.3.2",
+      "authority": "ICH",
+      "table": 2,
+      "page": 6,
+      "category": "leave_blank",
+      "e2bKey": "ICH:C.3.3.2"
+    },
+    {
+      "fieldId": "C.3.3.3",
+      "authority": "ICH",
+      "table": 2,
+      "page": 6,
+      "category": "leave_blank",
+      "e2bKey": "ICH:C.3.3.3"
+    },
+    {
+      "fieldId": "C.3.3.4",
+      "authority": "ICH",
+      "table": 2,
+      "page": 6,
+      "category": "leave_blank",
+      "e2bKey": "ICH:C.3.3.4"
+    },
+    {
+      "fieldId": "C.3.3.5",
+      "authority": "ICH",
+      "table": 2,
+      "page": 6,
+      "category": "leave_blank",
+      "e2bKey": "ICH:C.3.3.5"
+    },
+    {
+      "fieldId": "C.3.4.1",
+      "authority": "ICH",
+      "table": 2,
+      "page": 6,
+      "category": "leave_blank",
+      "e2bKey": "ICH:C.3.4.1"
+    },
+    {
+      "fieldId": "C.3.4.2",
+      "authority": "ICH",
+      "table": 2,
+      "page": 6,
+      "category": "leave_blank",
+      "e2bKey": "ICH:C.3.4.2"
+    },
+    {
+      "fieldId": "C.3.4.3",
+      "authority": "ICH",
+      "table": 2,
+      "page": 6,
+      "category": "leave_blank",
+      "e2bKey": "ICH:C.3.4.3"
+    },
+    {
+      "fieldId": "C.3.4.4",
+      "authority": "ICH",
+      "table": 2,
+      "page": 6,
+      "category": "leave_blank",
+      "e2bKey": "ICH:C.3.4.4"
+    },
+    {
+      "fieldId": "C.3.4.5",
+      "authority": "ICH",
+      "table": 2,
+      "page": 6,
+      "category": "leave_blank",
+      "e2bKey": "ICH:C.3.4.5"
+    },
+    {
+      "fieldId": "C.3.4.6",
+      "authority": "ICH",
+      "table": 2,
+      "page": 6,
+      "category": "leave_blank",
+      "e2bKey": "ICH:C.3.4.6"
+    },
+    {
+      "fieldId": "C.3.4.7",
+      "authority": "ICH",
+      "table": 2,
+      "page": 6,
+      "category": "leave_blank",
+      "e2bKey": "ICH:C.3.4.7"
+    },
+    {
+      "fieldId": "C.1.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 6,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.1.1"
+    },
+    {
+      "fieldId": "C.1.6.1.r.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 6,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.1.6.1.r.1"
+    },
+    {
+      "fieldId": "C.1.6.1.r.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 6,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.1.6.1.r.2"
+    },
+    {
+      "fieldId": "C.1.8.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 6,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.1.8.1"
+    },
+    {
+      "fieldId": "C.1.9.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 6,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.1.9.1"
+    },
+    {
+      "fieldId": "C.1.9.1.r.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 6,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.1.9.1.r.1"
+    },
+    {
+      "fieldId": "C.1.9.1.r.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 6,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.1.9.1.r.2"
+    },
+    {
+      "fieldId": "C.1.10.r",
+      "authority": "ICH",
+      "table": 3,
+      "page": 6,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.1.10.r"
+    },
+    {
+      "fieldId": "C.2.r.2.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 6,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.2.r.2.4"
+    },
+    {
+      "fieldId": "C.2.r.2.5",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.2.r.2.5"
+    },
+    {
+      "fieldId": "C.2.r.3",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.2.r.3"
+    },
+    {
+      "fieldId": "C.3.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.3.2"
+    },
+    {
+      "fieldId": "C.3.3.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.3.3.1"
+    },
+    {
+      "fieldId": "C.3.4.8",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.3.4.8"
+    },
+    {
+      "fieldId": "C.4.r.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.4.r.1"
+    },
+    {
+      "fieldId": "C.4.r.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.4.r.2"
+    },
+    {
+      "fieldId": "C.5.1.r.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.5.1.r.1"
+    },
+    {
+      "fieldId": "C.5.1.r.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.5.1.r.2"
+    },
+    {
+      "fieldId": "C.5.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.5.2"
+    },
+    {
+      "fieldId": "C.5.3",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.5.3"
+    },
+    {
+      "fieldId": "C.5.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:C.5.4"
+    },
+    {
+      "fieldId": "C.5.4.CSV",
+      "authority": "ICH_CSV",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.1"
+    },
+    {
+      "fieldId": "D.1.1.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.1.1.4"
+    },
+    {
+      "fieldId": "D.2.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.2.1"
+    },
+    {
+      "fieldId": "D.2.2a",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.2.2a"
+    },
+    {
+      "fieldId": "D.2.2b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.2.2b"
+    },
+    {
+      "fieldId": "D.2.2.1a",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.2.2.1a"
+    },
+    {
+      "fieldId": "D.2.2.1b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.2.2.1b"
+    },
+    {
+      "fieldId": "D.2.3",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.2.3"
+    },
+    {
+      "fieldId": "D.3",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.3"
+    },
+    {
+      "fieldId": "D.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.4"
+    },
+    {
+      "fieldId": "D.5",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.5"
+    },
+    {
+      "fieldId": "D.6",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.6"
+    },
+    {
+      "fieldId": "D.7.1.r.1b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.7.1.r.1b"
+    },
+    {
+      "fieldId": "D.7.1.r.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.7.1.r.2"
+    },
+    {
+      "fieldId": "D.7.1.r.3",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.7.1.r.3"
+    },
+    {
+      "fieldId": "D.7.1.r.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.7.1.r.4"
+    },
+    {
+      "fieldId": "D.7.1.r.5",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.7.1.r.5"
+    },
+    {
+      "fieldId": "D.7.1.r.6",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.7.1.r.6"
+    },
+    {
+      "fieldId": "D.7.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.7.2"
+    },
+    {
+      "fieldId": "D.7.3",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.7.3"
+    },
+    {
+      "fieldId": "D.8.r.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.8.r.1"
+    },
+    {
+      "fieldId": "D.8.r.1.EU.1",
+      "authority": "EU",
+      "table": 3,
+      "page": 7,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.8.r.1.EU.2",
+      "authority": "EU",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.8.r.1.EU.3",
+      "authority": "EU",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.8.r.1.EU.4",
+      "authority": "EU",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.8.r.1.EU.5",
+      "authority": "EU",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.8.r.1.EU.6",
+      "authority": "EU",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.8.r.1.EU.7",
+      "authority": "EU",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.8.r.1.EU.8",
+      "authority": "EU",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.8.r.2b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.8.r.2b"
+    },
+    {
+      "fieldId": "D.8.r.3b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.8.r.3b"
+    },
+    {
+      "fieldId": "D.8.r.EU.r.1",
+      "authority": "EU",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.8.r.EU.r.2b",
+      "authority": "EU",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.8.r.EU.r.3a",
+      "authority": "EU",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.8.r.EU.r.3b",
+      "authority": "EU",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.8.r.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.8.r.4"
+    },
+    {
+      "fieldId": "D.8.r.5",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.8.r.5"
+    },
+    {
+      "fieldId": "D.8.r.6b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.8.r.6b"
+    },
+    {
+      "fieldId": "D.8.r.7b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.9.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.9.1"
+    },
+    {
+      "fieldId": "D.9.2.r.1b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.9.2.r.1b"
+    },
+    {
+      "fieldId": "D.9.2.r.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.9.2.r.2"
+    },
+    {
+      "fieldId": "D.9.3",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.9.3"
+    },
+    {
+      "fieldId": "D.9.4.r.1b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.9.4.r.1b"
+    },
+    {
+      "fieldId": "D.9.4.r.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.9.4.r.2"
+    },
+    {
+      "fieldId": "D.10.2.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.2.1"
+    },
+    {
+      "fieldId": "D.10.2.2a",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.2.2a"
+    },
+    {
+      "fieldId": "D.10.2.2b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.2.2b"
+    },
+    {
+      "fieldId": "D.10.3",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.3"
+    },
+    {
+      "fieldId": "D.10.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.4"
+    },
+    {
+      "fieldId": "D.10.5",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.5"
+    },
+    {
+      "fieldId": "D.10.6",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.6"
+    },
+    {
+      "fieldId": "D.10.7.1.r.1b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.7.1.r.1b"
+    },
+    {
+      "fieldId": "D.10.7.1.r.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.7.1.r.2"
+    },
+    {
+      "fieldId": "D.10.7.1.r.3",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.7.1.r.3"
+    },
+    {
+      "fieldId": "D.10.7.1.r.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.7.1.r.4"
+    },
+    {
+      "fieldId": "D.10.7.1.r.5",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.7.1.r.5"
+    },
+    {
+      "fieldId": "D.10.7.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 8,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.7.2"
+    },
+    {
+      "fieldId": "D.10.8.r.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.8.r.1"
+    },
+    {
+      "fieldId": "D.10.8.r.1.EU.1",
+      "authority": "EU",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.10.8.r.1.EU.2",
+      "authority": "EU",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.10.8.r.1.EU.3",
+      "authority": "EU",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.10.8.r.1.EU.4",
+      "authority": "EU",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.10.8.r.1.EU.5",
+      "authority": "EU",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.10.8.r.1.EU.6",
+      "authority": "EU",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.10.8.r.1.EU.7",
+      "authority": "EU",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.10.8.r.1.EU.8",
+      "authority": "EU",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.10.8.r.2b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.8.r.2b"
+    },
+    {
+      "fieldId": "D.10.8.r.3b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.8.r.3b"
+    },
+    {
+      "fieldId": "D.10.8.r.EU.r.1",
+      "authority": "EU",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.10.8.r.EU.r.2b",
+      "authority": "EU",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.10.8.r.EU.r.3a",
+      "authority": "EU",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.10.8.r.EU.r.3b",
+      "authority": "EU",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.10.8.r.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.8.r.4"
+    },
+    {
+      "fieldId": "D.10.8.r.5",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.8.r.5"
+    },
+    {
+      "fieldId": "D.10.8.r.6b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.8.r.6b"
+    },
+    {
+      "fieldId": "D.10.8.r.7b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:D.10.8.r.7b"
+    },
+    {
+      "fieldId": "E.i.1.1a",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.1.1a"
+    },
+    {
+      "fieldId": "E.i.1.1b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.1.1b"
+    },
+    {
+      "fieldId": "E.i.1.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.1.2"
+    },
+    {
+      "fieldId": "E.i.2.1b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.2.1b"
+    },
+    {
+      "fieldId": "E.i.3.2a",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.3.2a"
+    },
+    {
+      "fieldId": "E.i.3.2b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.3.2b"
+    },
+    {
+      "fieldId": "E.i.3.2c",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.3.2c"
+    },
+    {
+      "fieldId": "E.i.3.2d",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.3.2d"
+    },
+    {
+      "fieldId": "E.i.3.2e",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.3.2e"
+    },
+    {
+      "fieldId": "E.i.3.2f",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.3.2f"
+    },
+    {
+      "fieldId": "E.i.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.4"
+    },
+    {
+      "fieldId": "E.i.5",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.5"
+    },
+    {
+      "fieldId": "E.i.6a",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.6a"
+    },
+    {
+      "fieldId": "E.i.6b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.6b"
+    },
+    {
+      "fieldId": "E.i.7",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.7"
+    },
+    {
+      "fieldId": "E.i.9",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:E.i.9"
+    },
+    {
+      "fieldId": "F.r.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 9,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:F.r.1"
+    },
+    {
+      "fieldId": "F.r.2.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:F.r.2.1"
+    },
+    {
+      "fieldId": "F.r.2.2b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:F.r.2.2b"
+    },
+    {
+      "fieldId": "F.r.3.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:F.r.3.1"
+    },
+    {
+      "fieldId": "F.r.3.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:F.r.3.2"
+    },
+    {
+      "fieldId": "F.r.3.3",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:F.r.3.3"
+    },
+    {
+      "fieldId": "F.r.3.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:F.r.3.4"
+    },
+    {
+      "fieldId": "F.r.6",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:F.r.6"
+    },
+    {
+      "fieldId": "F.r.7",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:F.r.7"
+    },
+    {
+      "fieldId": "G.k.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.1"
+    },
+    {
+      "fieldId": "G.k.2.1.1b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.2.1.1b"
+    },
+    {
+      "fieldId": "G.k.2.1.2b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.2.1.2b"
+    },
+    {
+      "fieldId": "G.k.2.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.2.2"
+    },
+    {
+      "fieldId": "G.k.2.2.EU.1",
+      "authority": "EU",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.2.2.EU.2",
+      "authority": "EU",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.2.2.EU.3",
+      "authority": "EU",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.2.2.EU.4",
+      "authority": "EU",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.2.2.EU.5",
+      "authority": "EU",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.2.2.EU.6",
+      "authority": "EU",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.2.2.EU.7",
+      "authority": "EU",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.2.2.EU.8",
+      "authority": "EU",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.2.2.EU.9.r.1",
+      "authority": "EU",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.2.2.EU.9.r.3",
+      "authority": "EU",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.2.2.EU.9.r.4",
+      "authority": "EU",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.2.3.r.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.2.3.r.1"
+    },
+    {
+      "fieldId": "G.k.2.3.r.2b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.2.3.r.2b"
+    },
+    {
+      "fieldId": "G.k.2.3.r.3a",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.2.3.r.3a"
+    },
+    {
+      "fieldId": "G.k.2.3.r.3b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.2.3.r.3b"
+    },
+    {
+      "fieldId": "G.k.2.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.2.4"
+    },
+    {
+      "fieldId": "G.k.2.5",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.2.5"
+    },
+    {
+      "fieldId": "G.k.3.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.3.1"
+    },
+    {
+      "fieldId": "G.k.3.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.3.2"
+    },
+    {
+      "fieldId": "G.k.3.3",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.3.3"
+    },
+    {
+      "fieldId": "G.k.4.r.1a",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.1a"
+    },
+    {
+      "fieldId": "G.k.4.r.1b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.1b"
+    },
+    {
+      "fieldId": "G.k.4.r.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.2"
+    },
+    {
+      "fieldId": "G.k.4.r.3",
+      "authority": "ICH",
+      "table": 3,
+      "page": 10,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.3"
+    },
+    {
+      "fieldId": "G.k.4.r.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.4"
+    },
+    {
+      "fieldId": "G.k.4.r.5",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.5"
+    },
+    {
+      "fieldId": "G.k.4.r.6a",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.6a"
+    },
+    {
+      "fieldId": "G.k.4.r.6b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.6b"
+    },
+    {
+      "fieldId": "G.k.4.r.7",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.7"
+    },
+    {
+      "fieldId": "G.k.4.r.8",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.8"
+    },
+    {
+      "fieldId": "G.k.4.r.9.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.9.1"
+    },
+    {
+      "fieldId": "G.k.4.r.9.2b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.9.2b"
+    },
+    {
+      "fieldId": "G.k.4.r.10.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.10.1"
+    },
+    {
+      "fieldId": "G.k.4.r.10.2b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.10.2b"
+    },
+    {
+      "fieldId": "G.k.4.r.11.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.11.1"
+    },
+    {
+      "fieldId": "G.k.4.r.11.2b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.4.r.11.2b"
+    },
+    {
+      "fieldId": "G.k.5a",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.5a"
+    },
+    {
+      "fieldId": "G.k.5b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.5b"
+    },
+    {
+      "fieldId": "G.k.6a",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.6a"
+    },
+    {
+      "fieldId": "G.k.6b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.6b"
+    },
+    {
+      "fieldId": "G.k.7.r.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.7.r.1"
+    },
+    {
+      "fieldId": "G.k.7.r.2b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.7.r.2b"
+    },
+    {
+      "fieldId": "G.k.8",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.8"
+    },
+    {
+      "fieldId": "G.k.9.i.2.r.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.9.i.2.r.2"
+    },
+    {
+      "fieldId": "G.k.9.i.2.r.3",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.9.i.2.r.3"
+    },
+    {
+      "fieldId": "G.k.9.i.2.r.3.EU.1",
+      "authority": "EU",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.9.i.3.2a",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.9.i.3.2a"
+    },
+    {
+      "fieldId": "G.k.9.i.3.2b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.9.i.3.2b"
+    },
+    {
+      "fieldId": "G.k.9.i.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.9.i.4"
+    },
+    {
+      "fieldId": "G.k.10.r",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.10.r"
+    },
+    {
+      "fieldId": "G.k.11",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:G.k.11"
+    },
+    {
+      "fieldId": "H.1",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:H.1"
+    },
+    {
+      "fieldId": "H.2",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:H.2"
+    },
+    {
+      "fieldId": "H.3.r.1b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:H.3.r.1b"
+    },
+    {
+      "fieldId": "H.4",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:H.4"
+    },
+    {
+      "fieldId": "H.5.r.1a",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:H.5.r.1a"
+    },
+    {
+      "fieldId": "H.5.r.1b",
+      "authority": "ICH",
+      "table": 3,
+      "page": 11,
+      "category": "preserve_personal_pv",
+      "e2bKey": "ICH:H.5.r.1b"
+    },
+    {
+      "fieldId": "N.1.1",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:N.1.1"
+    },
+    {
+      "fieldId": "N.1.1.CSV",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "N.1.2",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:N.1.2"
+    },
+    {
+      "fieldId": "N.1.3",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:N.1.3"
+    },
+    {
+      "fieldId": "N.1.4",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:N.1.4"
+    },
+    {
+      "fieldId": "N.1.5",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:N.1.5"
+    },
+    {
+      "fieldId": "N.2.r.1",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:N.2.r.1"
+    },
+    {
+      "fieldId": "N.2.r.2",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:N.2.r.2"
+    },
+    {
+      "fieldId": "N.2.r.3",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:N.2.r.3"
+    },
+    {
+      "fieldId": "N.2.r.4",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:N.2.r.4"
+    },
+    {
+      "fieldId": "C.1.2",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:C.1.2"
+    },
+    {
+      "fieldId": "C.1.3",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:C.1.3"
+    },
+    {
+      "fieldId": "C.1.3.CSV",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "C.1.4",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:C.1.4"
+    },
+    {
+      "fieldId": "C.1.5",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:C.1.5"
+    },
+    {
+      "fieldId": "C.1.6.1",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:C.1.6.1"
+    },
+    {
+      "fieldId": "C.1.7",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:C.1.7"
+    },
+    {
+      "fieldId": "C.1.8.2",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:C.1.8.2"
+    },
+    {
+      "fieldId": "C.1.8.2.CSV",
+      "authority": "ICH_CSV",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "C.1.11.1",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:C.1.11.1"
+    },
+    {
+      "fieldId": "C.1.11.1.CSV",
+      "authority": "ICH_CSV",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "C.1.11.2",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:C.1.11.2"
+    },
+    {
+      "fieldId": "C.2.r.4",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:C.2.r.4"
+    },
+    {
+      "fieldId": "C.2.r.4.CSV",
+      "authority": "ICH_CSV",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "C.2.r.5",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:C.2.r.5"
+    },
+    {
+      "fieldId": "C.3.1",
+      "authority": "ICH",
+      "table": 4,
+      "page": 12,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:C.3.1"
+    },
+    {
+      "fieldId": "C.3.1.CSV",
+      "authority": "ICH_CSV",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.2.3.CSV",
+      "authority": "ICH_CSV",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.7.1.r.1a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:D.7.1.r.1a"
+    },
+    {
+      "fieldId": "D.8.r.2a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:D.8.r.2a"
+    },
+    {
+      "fieldId": "D.8.r.3a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:D.8.r.3a"
+    },
+    {
+      "fieldId": "D.8.r.EU.r.2a",
+      "authority": "EU",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.8.r.6a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:D.8.r.6a"
+    },
+    {
+      "fieldId": "D.8.r.7a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:D.8.r.7a"
+    },
+    {
+      "fieldId": "D.9.2.r.1a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:D.9.2.r.1a"
+    },
+    {
+      "fieldId": "D.9.4.r.1a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:D.9.4.r.1a"
+    },
+    {
+      "fieldId": "D.10.7.1.r.1a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:D.10.7.1.r.1a"
+    },
+    {
+      "fieldId": "D.10.8.r.2a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:D.10.8.r.2a"
+    },
+    {
+      "fieldId": "D.10.8.r.3a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:D.10.8.r.3a"
+    },
+    {
+      "fieldId": "D.10.8.r.EU.r.2a",
+      "authority": "EU",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "D.10.8.r.6a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:D.10.8.r.6a"
+    },
+    {
+      "fieldId": "D.10.8.r.7a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:D.10.8.r.7a"
+    },
+    {
+      "fieldId": "E.i.2.1a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:E.i.2.1a"
+    },
+    {
+      "fieldId": "E.i.3.1",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:E.i.3.1"
+    },
+    {
+      "fieldId": "E.i.3.1.CSV",
+      "authority": "ICH_CSV",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "E.i.7.CSV",
+      "authority": "ICH_CSV",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "E.i.8",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:E.i.8"
+    },
+    {
+      "fieldId": "F.r.2.2a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:F.r.2.2a"
+    },
+    {
+      "fieldId": "F.r.3.1.CSV",
+      "authority": "ICH_CSV",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "F.r.4",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:F.r.4"
+    },
+    {
+      "fieldId": "F.r.5",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:F.r.5"
+    },
+    {
+      "fieldId": "G.k.1.CSV",
+      "authority": "ICH_CSV",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.2.1.1a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:G.k.2.1.1a"
+    },
+    {
+      "fieldId": "G.k.2.1.2a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:G.k.2.1.2a"
+    },
+    {
+      "fieldId": "G.k.2.2.EU.9.r.2",
+      "authority": "EU",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.2.3.r.2a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:G.k.2.3.r.2a"
+    },
+    {
+      "fieldId": "G.k.4.r.9.2a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:G.k.4.r.9.2a"
+    },
+    {
+      "fieldId": "G.k.4.r.10.2a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:G.k.4.r.10.2a"
+    },
+    {
+      "fieldId": "G.k.4.r.11.2a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:G.k.4.r.11.2a"
+    },
+    {
+      "fieldId": "G.k.7.r.2a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:G.k.7.r.2a"
+    },
+    {
+      "fieldId": "G.k.8.CSV",
+      "authority": "ICH_CSV",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.9.i.1",
+      "authority": "ICH",
+      "table": 4,
+      "page": 13,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:G.k.9.i.1"
+    },
+    {
+      "fieldId": "G.k.9.i.2.r.1",
+      "authority": "ICH",
+      "table": 4,
+      "page": 14,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:G.k.9.i.2.r.1"
+    },
+    {
+      "fieldId": "G.k.9.i.2.r.1.EU.1",
+      "authority": "EU",
+      "table": 4,
+      "page": 14,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.9.i.2.r.1.EU.1.CSV",
+      "authority": "EU_CSV",
+      "table": 4,
+      "page": 14,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.9.i.2.r.2.EU.1",
+      "authority": "EU",
+      "table": 4,
+      "page": 14,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.9.i.2.r.2.EU.1.CSV",
+      "authority": "EU_CSV",
+      "table": 4,
+      "page": 14,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.9.i.2.r.3.EU.1.CSV",
+      "authority": "EU_CSV",
+      "table": 4,
+      "page": 14,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.9.i.3.1a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 14,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:G.k.9.i.3.1a"
+    },
+    {
+      "fieldId": "G.k.9.i.3.1b",
+      "authority": "ICH",
+      "table": 4,
+      "page": 14,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:G.k.9.i.3.1b"
+    },
+    {
+      "fieldId": "G.k.9.i.4.CSV",
+      "authority": "ICH_CSV",
+      "table": 4,
+      "page": 14,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "G.k.10.r.CSV",
+      "authority": "ICH_CSV",
+      "table": 4,
+      "page": 14,
+      "category": "preserve_technical_pv",
+      "e2bKey": null
+    },
+    {
+      "fieldId": "H.3.r.1a",
+      "authority": "ICH",
+      "table": 4,
+      "page": 14,
+      "category": "preserve_technical_pv",
+      "e2bKey": "ICH:H.3.r.1a"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "BR-01",
+      "kind": "Business",
+      "proposal": "Determine all company and partner EudraVigilance sender responsibilities and clinical/marketed scope.",
+      "acceptance": "An approved scope matrix identifies each sender, destination and excluded jurisdiction.",
+      "status": "draft_recommendation",
+      "sourceSections": [
+        "VI.Add.II.1",
+        "VI.Add.II.3–6"
+      ],
+      "basis": "PV Info implementation inference; not wording imposed by the regulator."
+    },
+    {
+      "id": "SR-01",
+      "kind": "System",
+      "proposal": "Apply the 13-field conditional MSK policy only to confirmed EudraVigilance outbound mappings.",
+      "acceptance": "Synthetic available/unavailable branches produce reviewer-approved output for all 13 fields.",
+      "status": "draft_recommendation",
+      "sourceSections": [
+        "VI.Add.II.1",
+        "VI.Add.II.3–6"
+      ],
+      "basis": "PV Info implementation inference; not wording imposed by the regulator."
+    },
+    {
+      "id": "SR-02",
+      "kind": "System",
+      "proposal": "Omit or leave blank the 11 Table 2 fields according to the applicable XML specification; do not use unsupported nullFlavors.",
+      "acceptance": "All 11 outputs are inspected with exact omission semantics and negative tests.",
+      "status": "draft_recommendation",
+      "sourceSections": [
+        "VI.Add.II.1",
+        "VI.Add.II.3–6"
+      ],
+      "basis": "PV Info implementation inference; not wording imposed by the regulator."
+    },
+    {
+      "id": "DR-01",
+      "kind": "Data",
+      "proposal": "Preserve available Table 3–4 data under the applicable implementation guidance and established pseudonymisation controls.",
+      "acceptance": "Clinical content, identifiers and technical metadata are not lost through blanket masking.",
+      "status": "draft_recommendation",
+      "sourceSections": [
+        "VI.Add.II.1",
+        "VI.Add.II.3–6"
+      ],
+      "basis": "PV Info implementation inference; not wording imposed by the regulator."
+    },
+    {
+      "id": "SR-03",
+      "kind": "Interface",
+      "proposal": "Verify destination routing, local customizations, partner transformations and report-form confidentiality options independently.",
+      "acceptance": "EudraVigilance rules cannot unintentionally change other destinations; actual XML is verified.",
+      "status": "draft_recommendation",
+      "sourceSections": [
+        "VI.Add.II.1",
+        "VI.Add.II.3–6"
+      ],
+      "basis": "PV Info implementation inference; not wording imposed by the regulator."
+    },
+    {
+      "id": "PR-01",
+      "kind": "Process",
+      "proposal": "Document a reasonable implementation timeframe and how the sender will achieve it in internal procedures.",
+      "acceptance": "Regulatory/QA approves the recorded plan and rationale; the effect date is not converted into an invented fixed grace deadline.",
+      "status": "draft_recommendation",
+      "sourceSections": [
+        "VI.Add.II.1",
+        "VI.Add.II.3–6"
+      ],
+      "basis": "PV Info implementation inference; not wording imposed by the regulator."
+    },
+    {
+      "id": "QR-01",
+      "kind": "Quality",
+      "proposal": "Perform schema/business-rule checks plus explicit masking checks; a gateway ACK alone is insufficient evidence of the masking policy.",
+      "acceptance": "Synthetic field assertions, ACK checks and regression evidence are retained and reviewed.",
+      "status": "draft_recommendation",
+      "sourceSections": [
+        "VI.Add.II.1",
+        "VI.Add.II.3–6"
+      ],
+      "basis": "PV Info implementation inference; not wording imposed by the regulator."
+    },
+    {
+      "id": "PR-02",
+      "kind": "Process",
+      "proposal": "Maintain controlled source records, vendor/partner agreements, SOPs and controlled change history.",
+      "acceptance": "Relevant procedures and responsibilities are revised and attributable.",
+      "status": "draft_recommendation",
+      "sourceSections": [
+        "VI.Add.II.1",
+        "VI.Add.II.3–6"
+      ],
+      "basis": "PV Info implementation inference; not wording imposed by the regulator."
+    },
+    {
+      "id": "TR-01",
+      "kind": "Training",
+      "proposal": "Train case processors, reporting operations, systems support, QA and relevant partners on field groups and exceptions.",
+      "acceptance": "Role-based training and practical acceptance evidence are approved.",
+      "status": "draft_recommendation",
+      "sourceSections": [
+        "VI.Add.II.1",
+        "VI.Add.II.3–6"
+      ],
+      "basis": "PV Info implementation inference; not wording imposed by the regulator."
+    },
+    {
+      "id": "VR-01",
+      "kind": "Verification",
+      "proposal": "Implement through company change control with backup, rollback, independent review and post-change verification.",
+      "acceptance": "An authorized reviewer confirms evidence and closure; source records are retained without deleting master case data.",
+      "status": "draft_recommendation",
+      "sourceSections": [
+        "VI.Add.II.1",
+        "VI.Add.II.3–6"
+      ],
+      "basis": "PV Info implementation inference; not wording imposed by the regulator."
+    }
+  ],
+  "tests": [
+    {
+      "id": "T01",
+      "scenario": "Available Table 1 field",
+      "expected": "Represent available synthetic data using MSK; confirm the precise XML form against the applicable IG.",
+      "executed": false
+    },
+    {
+      "id": "T02",
+      "scenario": "Unavailable Table 1 field",
+      "expected": "Use only permitted alternative nullFlavor/blank behavior; do not falsely assert that masked data were available.",
+      "executed": false
+    },
+    {
+      "id": "T03",
+      "scenario": "All Table 2 fields",
+      "expected": "Verify omission/blank semantics and that no unsupported nullFlavor is generated.",
+      "executed": false
+    },
+    {
+      "id": "T04",
+      "scenario": "Reporter location exception",
+      "expected": "Check that C.2.r.2.4 and C.2.r.2.5 are preserved when available; do not apply the street/postcode rule to them.",
+      "executed": false
+    },
+    {
+      "id": "T05",
+      "scenario": "Sender contact exception",
+      "expected": "Check that C.3.4.8 is preserved when available under its applicable guidance, unlike Table 2 sender fields.",
+      "executed": false
+    },
+    {
+      "id": "T06",
+      "scenario": "Patient and narrative information",
+      "expected": "Verify field-specific content/pseudonymisation for D.1, D.2.1 and H.1; the category does not authorize unrestricted identifying content.",
+      "executed": false
+    },
+    {
+      "id": "T07",
+      "scenario": "Code-system versions and technical fields",
+      "expected": "Preserve required available metadata and validate syntactic compatibility.",
+      "executed": false
+    },
+    {
+      "id": "T08",
+      "scenario": "Non-EudraVigilance destination",
+      "expected": "Prove no unapproved output change for other destinations; assess their rules separately.",
+      "executed": false
+    },
+    {
+      "id": "T09",
+      "scenario": "Initial/follow-up/nullification and repeats",
+      "expected": "Verify relevant message types, repeating reporters/parents and updates without assuming legacy resubmission is required.",
+      "executed": false
+    },
+    {
+      "id": "T10",
+      "scenario": "Partner or customized interface",
+      "expected": "Prove inbound/outbound transformations cannot reintroduce omitted fields or suppress required content.",
+      "executed": false
+    },
+    {
+      "id": "T11",
+      "scenario": "Acceptance is not policy verification",
+      "expected": "Retain ACK/business-rule evidence and independently verify all 282 listed references applicable to the test scope.",
+      "executed": false
+    },
+    {
+      "id": "T12",
+      "scenario": "Rollback and closure",
+      "expected": "Verify rollback and independent closure evidence without deleting original case information.",
+      "executed": false
+    }
+  ],
+  "unchanged": [
+    "No change to EudraVigilance business rules is specified (section 1).",
+    "The EU ICSR implementation guide remains applicable (section 1).",
+    "No new 7-day/15-day reporting clock is established by this addendum.",
+    "EMA-side treatment of legacy submissions does not establish a blanket sender resubmission instruction."
+  ],
+  "unknowns": [
+    "No verified pre-change requirement baseline is supplied; this is a first-capture assessment, not a proven regulatory redline.",
+    "Company products, sender responsibilities, destinations, installed system release/patches and current controls need confirmation.",
+    "Exact vendor database fields, supported masking switches, XML omission representation and local customizations have not been verified.",
+    "Table 3 preservation does not authorize unrestricted personal information; assess applicable field-level IG/pseudonymisation rules."
+  ],
+  "automation": {
+    "now": [
+      "Scheduled approved-source monitoring and discovery intake",
+      "PDF capture/checksum and draft paragraph extraction",
+      "Supported EMA table-policy extraction on ingestion",
+      "Draft baseline preparation and source-linked design/test prompts"
+    ],
+    "human": [
+      "Register/approve newly discovered sources where required",
+      "Approve public editorial analysis before calling it reviewed/premium",
+      "Confirm company scope and current controls",
+      "Approve system design, execute validation and verify closure"
+    ],
+    "limits": [
+      "This supported edition recipe is not autonomous interpretation of arbitrary new guidance.",
+      "A changed or unsupported table/edition requires manual review.",
+      "No paid LLM/API, live vendor connection, patient XML or auto-approval is used.",
+      "The source is historical; publication in July 2025 is not represented as detection by PV Info at that time.",
+      "Twice-daily news refresh is separate from bounded document monitoring; immediate detection is not guaranteed."
+    ]
+  },
+  "contentHash": "e60a0cc7169bf3df97168c5dcf804843a59eec157945c487fffb5649e5ce7f88"
+}

@@ -3,7 +3,7 @@ import {createHash} from 'node:crypto';
 import {parseHTML} from 'linkedom';
 import {publicText,unsafeNarrative} from '../public/privacy.js';
 import {officialUrl} from '../public/documents-lib.js';
-export const EXTRACTOR='normative-rules-v3';
+export const EXTRACTOR='normative-rules-v4-tables';
 export const hash=v=>createHash('sha256').update(v).digest('hex');
 const tidy=s=>String(s??'').replace(/\u00ad/g,'').replace(/\s+/g,' ').trim();
 const contact=/[\w.+-]+@[\w.-]+\.[a-z]{2,}|\+\d[\d ().-]{7,}\d|\(\d{3}\)\s*\d{3}[- .]\d{4}|\b(?:contact|fax|telephone|tel|author|prepared by|signed by|patient name|patient id|reporter name|date of birth|dob|address)\s*[:=]|\b(?:Mr|Mrs|Ms|Dr)\.\s+[A-Z]|\b(?:John Doe|Jane Doe)\b/i;
