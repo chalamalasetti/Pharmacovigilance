@@ -1,3 +1,5 @@
+import {loadOperatingModel,suggestResponsibilities} from './pv-roles-lib.js';
+let operatingModelPromise;const operatingModel=()=>operatingModelPromise??=(async()=>loadOperatingModel(await C.publicClient?.()))();
 import {impactBriefForUrl} from './impact-briefs-links.js';
 import {guidanceForUpdate} from './guidance-impact-lib.js';
 // Draws an update's impact card and its actions (save, follow, assess, assign,
@@ -68,6 +70,7 @@ export function impactSection(u, ctx) {
   const card = impactCard(u, { countryName: ctx.countryName });
   const rec = () => item(ctx.ws, u.id);
   const wrap = el("section", { class: "impact", "aria-label": "Impact card" });
+  const roleBlock=el('details',{class:'imp-block'},el('summary',{},'Responsibilities & processes to consider'),el('p',{class:'hint'},'Keyword screening suggestions, not reviewed applicability or ownership. Up to 12 associations are displayed; an unmatched role may still be affected.'));wrap.append(roleBlock);operatingModel().then(model=>{const suggestions=suggestResponsibilities(u,model);roleBlock.append(suggestions.length?el('ul',{},...suggestions.map(s=>el('li',{},s.role.label+' · '+s.process.label+' · '+s.reason))):el('p',{},'No supported screening terms matched. This does not establish that no role is affected.'),el('a',{href:'pv-roles.html'},'Explore roles and set my responsibilities →'));}).catch(()=>roleBlock.append(el('a',{href:'pv-roles.html'},'Open the responsibility reference catalog →')));
   const brief=impactBriefForUrl(u.link??u.url);if(brief)wrap.append(el('div',{class:'imp-block'},el('a',{href:'impact-briefs.html?brief='+brief},'Read Regulatory Impact Brief →')));
   const guidance=guidanceForUpdate(u);if(guidance)wrap.append(el('div',{class:'imp-block'},el('h4',{},'Document-level impact analysis'),el('p',{},'A source-linked draft demonstration is available: field policy, implementation proposals, exceptions and synthetic tests. Company applicability remains unconfirmed.'),el('a',{href:'guidance-impact.html?id='+guidance},'Explore detailed guidance impact →')));
   if (u.companyContext) {

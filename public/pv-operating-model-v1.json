@@ -1,0 +1,1092 @@
+{
+  "schema": 1,
+  "revision": 1,
+  "checkedOn": "2026-11-05",
+  "status": "reference_model",
+  "notice": "Organizational reference model, not universal legal obligations, qualification requirements or access permissions. Titles may be combined or outsourced. Statutory roles need jurisdiction-specific source review.",
+  "functions": [
+    {
+      "id": "governance",
+      "label": "Leadership & governance",
+      "description": "Oversee the PV operating model, escalations and continuity."
+    },
+    {
+      "id": "operations",
+      "label": "Case operations",
+      "description": "Manage intake, processing, follow-up and delivery controls."
+    },
+    {
+      "id": "medical",
+      "label": "Medical review & case quality",
+      "description": "Assess medical content and case quality."
+    },
+    {
+      "id": "clinical",
+      "label": "Clinical safety",
+      "description": "Coordinate safety oversight for clinical development."
+    },
+    {
+      "id": "signals",
+      "label": "Signal detection & management",
+      "description": "Evaluate safety evidence and manage signal decisions."
+    },
+    {
+      "id": "benefit-risk",
+      "label": "Benefit–risk & aggregate reporting",
+      "description": "Integrate safety evidence into assessments and reports."
+    },
+    {
+      "id": "risk",
+      "label": "Risk management",
+      "description": "Plan, implement and assess risk controls."
+    },
+    {
+      "id": "epidemiology",
+      "label": "Epidemiology & real-world evidence",
+      "description": "Design and interpret population-level safety studies."
+    },
+    {
+      "id": "regulatory",
+      "label": "Regulatory intelligence & policy",
+      "description": "Monitor sources and assess reporting requirements."
+    },
+    {
+      "id": "submissions",
+      "label": "Submissions & communications",
+      "description": "Coordinate submissions and authority responses."
+    },
+    {
+      "id": "labeling",
+      "label": "Labeling & product information",
+      "description": "Assess and track safety information changes."
+    },
+    {
+      "id": "quality",
+      "label": "Quality & compliance",
+      "description": "Maintain quality oversight and improvement evidence."
+    },
+    {
+      "id": "local",
+      "label": "PSMF & local PV",
+      "description": "Maintain system descriptions and local interfaces."
+    },
+    {
+      "id": "partners",
+      "label": "Partners & outsourcing",
+      "description": "Allocate and oversee shared PV activities."
+    },
+    {
+      "id": "systems",
+      "label": "Safety systems & configuration",
+      "description": "Maintain controlled safety technology and integrations."
+    },
+    {
+      "id": "data",
+      "label": "Data & technology assurance",
+      "description": "Maintain data integrity and controlled technology changes."
+    },
+    {
+      "id": "training",
+      "label": "Training & knowledge",
+      "description": "Maintain controlled procedures and competency support."
+    },
+    {
+      "id": "interfaces",
+      "label": "Cross-functional interfaces",
+      "description": "Coordinate safety-related handoffs across disciplines."
+    }
+  ],
+  "processes": [
+    {
+      "id": "governance",
+      "label": "Safety governance",
+      "keywords": []
+    },
+    {
+      "id": "psmf",
+      "label": "PSMF management",
+      "keywords": []
+    },
+    {
+      "id": "intake",
+      "label": "Safety intake & collection",
+      "keywords": [
+        "case intake",
+        "adverse event report"
+      ]
+    },
+    {
+      "id": "case-processing",
+      "label": "Case processing & follow-up",
+      "keywords": [
+        "icsr",
+        "case processing"
+      ]
+    },
+    {
+      "id": "reconciliation",
+      "label": "Reconciliation",
+      "keywords": []
+    },
+    {
+      "id": "medical-review",
+      "label": "Medical review",
+      "keywords": []
+    },
+    {
+      "id": "case-quality",
+      "label": "ICSR quality control",
+      "keywords": []
+    },
+    {
+      "id": "clinical-safety",
+      "label": "Clinical safety monitoring",
+      "keywords": [
+        "clinical trial",
+        "pre-ind",
+        "first-in-human",
+        "investigational"
+      ]
+    },
+    {
+      "id": "aggregate-reporting",
+      "label": "Aggregate reporting",
+      "keywords": [
+        "psur",
+        "pbrer",
+        "dsur",
+        "eurd"
+      ]
+    },
+    {
+      "id": "signal-detection",
+      "label": "Signal detection",
+      "keywords": []
+    },
+    {
+      "id": "signal-management",
+      "label": "Signal management",
+      "keywords": [
+        "signal",
+        "prac"
+      ]
+    },
+    {
+      "id": "benefit-risk",
+      "label": "Benefit–risk review",
+      "keywords": []
+    },
+    {
+      "id": "risk-management",
+      "label": "Risk management & minimisation",
+      "keywords": [
+        "risk management",
+        "rmp",
+        "risk minimisation",
+        "rems"
+      ]
+    },
+    {
+      "id": "epidemiology",
+      "label": "Epidemiology / safety studies",
+      "keywords": [
+        "pass",
+        "observational study",
+        "epidemiology"
+      ]
+    },
+    {
+      "id": "reg-intelligence",
+      "label": "Regulatory intelligence",
+      "keywords": []
+    },
+    {
+      "id": "reg-reporting",
+      "label": "Reporting policy",
+      "keywords": [
+        "reporting deadline",
+        "safety reporting",
+        "expedited report"
+      ]
+    },
+    {
+      "id": "submissions",
+      "label": "Submission operations",
+      "keywords": [
+        "submission",
+        "rolling ind",
+        "pre-ind"
+      ]
+    },
+    {
+      "id": "communications",
+      "label": "Safety communications",
+      "keywords": []
+    },
+    {
+      "id": "labeling",
+      "label": "Safety labeling",
+      "keywords": [
+        "labeling",
+        "labelling",
+        "smPC",
+        "prescribing information"
+      ]
+    },
+    {
+      "id": "quality",
+      "label": "Quality system & CAPA",
+      "keywords": [
+        "inspection",
+        "audit",
+        "capa"
+      ]
+    },
+    {
+      "id": "inspection",
+      "label": "Audit & inspection readiness",
+      "keywords": []
+    },
+    {
+      "id": "local-pv",
+      "label": "Local PV interfaces",
+      "keywords": []
+    },
+    {
+      "id": "vendor-oversight",
+      "label": "Partner & vendor oversight",
+      "keywords": []
+    },
+    {
+      "id": "system-configuration",
+      "label": "Safety system configuration",
+      "keywords": [
+        "configuration",
+        "reporting rule",
+        "database"
+      ]
+    },
+    {
+      "id": "transmission",
+      "label": "E2B / transmission",
+      "keywords": [
+        "e2b",
+        "masking",
+        "eudravigilance",
+        "transmission",
+        "gateway"
+      ]
+    },
+    {
+      "id": "data-integrity",
+      "label": "Data integrity & records",
+      "keywords": [
+        "privacy",
+        "personal data",
+        "data integrity"
+      ]
+    },
+    {
+      "id": "validation",
+      "label": "Validation & change control",
+      "keywords": []
+    },
+    {
+      "id": "terminology",
+      "label": "Terminology governance",
+      "keywords": [
+        "meddra",
+        "whodrug",
+        "rxnorm"
+      ]
+    },
+    {
+      "id": "training",
+      "label": "Training & competency",
+      "keywords": [
+        "training",
+        "competency"
+      ]
+    },
+    {
+      "id": "cross-functional",
+      "label": "Cross-functional handoffs",
+      "keywords": []
+    }
+  ],
+  "roles": [
+    {
+      "id": "governance-1",
+      "label": "QPPV",
+      "function_id": "governance",
+      "responsibility": "Oversight of the PV system within the applicable jurisdiction",
+      "process_ids": [
+        "governance",
+        "psmf"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "governance-2",
+      "label": "Deputy / backup QPPV",
+      "function_id": "governance",
+      "responsibility": "Maintain documented backup arrangements and continuity",
+      "process_ids": [
+        "governance",
+        "psmf"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "governance-3",
+      "label": "Head of PV / VP Drug Safety",
+      "function_id": "governance",
+      "responsibility": "Set safety strategy, resources and escalation priorities",
+      "process_ids": [
+        "governance",
+        "psmf"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "governance-4",
+      "label": "PV governance lead",
+      "function_id": "governance",
+      "responsibility": "Coordinate governance decisions and follow-through",
+      "process_ids": [
+        "governance",
+        "psmf"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "operations-1",
+      "label": "Safety operations manager",
+      "function_id": "operations",
+      "responsibility": "Oversee delivery, resourcing, performance and service interfaces",
+      "process_ids": [
+        "intake",
+        "case-processing",
+        "reconciliation"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "operations-2",
+      "label": "PV associate / drug safety associate",
+      "function_id": "operations",
+      "responsibility": "Receive and triage safety information under controlled procedures",
+      "process_ids": [
+        "intake",
+        "case-processing",
+        "reconciliation"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "operations-3",
+      "label": "Case processor / PV officer",
+      "function_id": "operations",
+      "responsibility": "Process cases, write narratives and coordinate follow-up",
+      "process_ids": [
+        "intake",
+        "case-processing",
+        "reconciliation"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "operations-4",
+      "label": "PV executive",
+      "function_id": "operations",
+      "responsibility": "Support operational processing and database quality activities",
+      "process_ids": [
+        "intake",
+        "case-processing",
+        "reconciliation"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "operations-5",
+      "label": "Follow-up coordinator",
+      "function_id": "operations",
+      "responsibility": "Coordinate outstanding information requests and follow-up records",
+      "process_ids": [
+        "intake",
+        "case-processing",
+        "reconciliation"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "medical-1",
+      "label": "Safety physician / medical reviewer",
+      "function_id": "medical",
+      "responsibility": "Review medical information and document clinical judgments within assigned scope",
+      "process_ids": [
+        "medical-review",
+        "case-quality"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "medical-2",
+      "label": "ICSR quality specialist",
+      "function_id": "medical",
+      "responsibility": "Check case quality, consistency and review findings",
+      "process_ids": [
+        "medical-review",
+        "case-quality"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "clinical-1",
+      "label": "Clinical safety scientist",
+      "function_id": "clinical",
+      "responsibility": "Review emerging trial safety information and coordinate scientific follow-up",
+      "process_ids": [
+        "clinical-safety",
+        "aggregate-reporting"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "clinical-2",
+      "label": "Clinical safety physician",
+      "function_id": "clinical",
+      "responsibility": "Provide clinical safety assessment and escalation within program governance",
+      "process_ids": [
+        "clinical-safety",
+        "aggregate-reporting"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "clinical-3",
+      "label": "Clinical operations safety liaison",
+      "function_id": "clinical",
+      "responsibility": "Coordinate study-team safety handoffs and readiness",
+      "process_ids": [
+        "clinical-safety",
+        "aggregate-reporting"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "signals-1",
+      "label": "Signal detection analyst",
+      "function_id": "signals",
+      "responsibility": "Analyze surveillance outputs and investigate potential signals",
+      "process_ids": [
+        "signal-detection",
+        "signal-management"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "signals-2",
+      "label": "Signal scientist",
+      "function_id": "signals",
+      "responsibility": "Evaluate evidence and support documented signal assessments",
+      "process_ids": [
+        "signal-detection",
+        "signal-management"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "signals-3",
+      "label": "Signal management lead",
+      "function_id": "signals",
+      "responsibility": "Coordinate signal lifecycle, decisions and escalation",
+      "process_ids": [
+        "signal-detection",
+        "signal-management"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "benefit-risk-1",
+      "label": "Safety scientist / PV scientist",
+      "function_id": "benefit-risk",
+      "responsibility": "Synthesize safety evidence and support scientific assessments",
+      "process_ids": [
+        "benefit-risk",
+        "aggregate-reporting"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "benefit-risk-2",
+      "label": "Benefit–risk lead",
+      "function_id": "benefit-risk",
+      "responsibility": "Coordinate integrated benefit–risk evaluations and governance",
+      "process_ids": [
+        "benefit-risk",
+        "aggregate-reporting"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "benefit-risk-3",
+      "label": "Aggregate report lead",
+      "function_id": "benefit-risk",
+      "responsibility": "Plan periodic report production, review and delivery",
+      "process_ids": [
+        "benefit-risk",
+        "aggregate-reporting"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "benefit-risk-4",
+      "label": "Medical writer (PV)",
+      "function_id": "benefit-risk",
+      "responsibility": "Author and reconcile scientific safety documents",
+      "process_ids": [
+        "benefit-risk",
+        "aggregate-reporting"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "risk-1",
+      "label": "Risk management specialist / RMP lead",
+      "function_id": "risk",
+      "responsibility": "Coordinate risk-management plans and implementation needs",
+      "process_ids": [
+        "risk-management"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "risk-2",
+      "label": "REMS specialist",
+      "function_id": "risk",
+      "responsibility": "Coordinate applicable REMS activities and evidence",
+      "process_ids": [
+        "risk-management"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "risk-3",
+      "label": "Risk-minimisation specialist",
+      "function_id": "risk",
+      "responsibility": "Assess risk-minimisation implementation and effectiveness",
+      "process_ids": [
+        "risk-management"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "epidemiology-1",
+      "label": "Pharmacoepidemiologist",
+      "function_id": "epidemiology",
+      "responsibility": "Design and interpret epidemiological safety evaluations",
+      "process_ids": [
+        "epidemiology"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "epidemiology-2",
+      "label": "Observational safety study lead",
+      "function_id": "epidemiology",
+      "responsibility": "Coordinate observational safety study delivery and evidence",
+      "process_ids": [
+        "epidemiology"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "epidemiology-3",
+      "label": "Safety biostatistician",
+      "function_id": "epidemiology",
+      "responsibility": "Support statistical methods, analyses and interpretation",
+      "process_ids": [
+        "epidemiology"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "regulatory-1",
+      "label": "Regulatory intelligence analyst",
+      "function_id": "regulatory",
+      "responsibility": "Monitor primary sources and triage changes with evidence",
+      "process_ids": [
+        "reg-intelligence",
+        "reg-reporting"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "regulatory-2",
+      "label": "Reporting-policy specialist",
+      "function_id": "regulatory",
+      "responsibility": "Assess reporting policy, applicability, clocks and exceptions",
+      "process_ids": [
+        "reg-intelligence",
+        "reg-reporting"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "regulatory-3",
+      "label": "Local regulatory safety expert",
+      "function_id": "regulatory",
+      "responsibility": "Interpret local requirements within assigned jurisdiction",
+      "process_ids": [
+        "reg-intelligence",
+        "reg-reporting"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "submissions-1",
+      "label": "Safety submission specialist",
+      "function_id": "submissions",
+      "responsibility": "Coordinate submission preparation, routing and acknowledgements",
+      "process_ids": [
+        "submissions",
+        "communications"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "submissions-2",
+      "label": "Regulatory authority liaison",
+      "function_id": "submissions",
+      "responsibility": "Coordinate authority queries, commitments and responses",
+      "process_ids": [
+        "submissions",
+        "communications"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "submissions-3",
+      "label": "Safety communications lead",
+      "function_id": "submissions",
+      "responsibility": "Coordinate approved safety communications and implementation",
+      "process_ids": [
+        "submissions",
+        "communications"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "labeling-1",
+      "label": "Safety labeling lead",
+      "function_id": "labeling",
+      "responsibility": "Coordinate scientific safety labeling assessments",
+      "process_ids": [
+        "labeling"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "labeling-2",
+      "label": "Regulatory labeling specialist",
+      "function_id": "labeling",
+      "responsibility": "Coordinate local implementation and change tracking",
+      "process_ids": [
+        "labeling"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "quality-1",
+      "label": "PV quality manager",
+      "function_id": "quality",
+      "responsibility": "Coordinate quality governance, metrics and deviations",
+      "process_ids": [
+        "quality",
+        "inspection"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "quality-2",
+      "label": "PV auditor",
+      "function_id": "quality",
+      "responsibility": "Perform assigned audits with appropriate independence",
+      "process_ids": [
+        "quality",
+        "inspection"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "quality-3",
+      "label": "CAPA owner",
+      "function_id": "quality",
+      "responsibility": "Manage corrective/preventive actions and effectiveness evidence",
+      "process_ids": [
+        "quality",
+        "inspection"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "quality-4",
+      "label": "Inspection readiness lead",
+      "function_id": "quality",
+      "responsibility": "Coordinate inspection preparation and responses",
+      "process_ids": [
+        "quality",
+        "inspection"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "local-1",
+      "label": "PSMF coordinator",
+      "function_id": "local",
+      "responsibility": "Maintain the system description and coordinate documented changes",
+      "process_ids": [
+        "psmf",
+        "local-pv"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "local-2",
+      "label": "Affiliate safety lead",
+      "function_id": "local",
+      "responsibility": "Coordinate affiliate safety activities and local oversight",
+      "process_ids": [
+        "psmf",
+        "local-pv"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "local-3",
+      "label": "Local PV contact / national contact",
+      "function_id": "local",
+      "responsibility": "Provide jurisdiction-specific liaison within the applicable local role",
+      "process_ids": [
+        "psmf",
+        "local-pv"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "partners-1",
+      "label": "PV vendor manager",
+      "function_id": "partners",
+      "responsibility": "Oversee vendor performance, deliverables and escalations",
+      "process_ids": [
+        "vendor-oversight",
+        "reconciliation"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "partners-2",
+      "label": "Alliance safety lead",
+      "function_id": "partners",
+      "responsibility": "Coordinate partner safety interfaces and responsibilities",
+      "process_ids": [
+        "vendor-oversight",
+        "reconciliation"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "partners-3",
+      "label": "Safety agreement owner",
+      "function_id": "partners",
+      "responsibility": "Maintain agreement responsibilities and controlled updates",
+      "process_ids": [
+        "vendor-oversight",
+        "reconciliation"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "systems-1",
+      "label": "Safety business system owner",
+      "function_id": "systems",
+      "responsibility": "Own system intended use, priorities and business controls",
+      "process_ids": [
+        "system-configuration",
+        "transmission"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "systems-2",
+      "label": "Reporting-rule configuration manager",
+      "function_id": "systems",
+      "responsibility": "Assess evidence and implement reviewed reporting configurations",
+      "process_ids": [
+        "system-configuration",
+        "transmission"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "systems-3",
+      "label": "PV systems / database administrator",
+      "function_id": "systems",
+      "responsibility": "Maintain authorized configuration and operational support",
+      "process_ids": [
+        "system-configuration",
+        "transmission"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "systems-4",
+      "label": "E2B / integration specialist",
+      "function_id": "systems",
+      "responsibility": "Maintain transmission mappings, interfaces and acknowledgement controls",
+      "process_ids": [
+        "system-configuration",
+        "transmission"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "data-1",
+      "label": "Safety data analyst",
+      "function_id": "data",
+      "responsibility": "Analyze data, metrics and reconciliation findings",
+      "process_ids": [
+        "data-integrity",
+        "validation",
+        "terminology"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "data-2",
+      "label": "Safety data steward",
+      "function_id": "data",
+      "responsibility": "Maintain data definitions and quality ownership",
+      "process_ids": [
+        "data-integrity",
+        "validation",
+        "terminology"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "data-3",
+      "label": "Data migration lead",
+      "function_id": "data",
+      "responsibility": "Plan migration mappings, reconciliation and evidence",
+      "process_ids": [
+        "data-integrity",
+        "validation",
+        "terminology"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "data-4",
+      "label": "Computerised system validation specialist",
+      "function_id": "data",
+      "responsibility": "Coordinate risk-based validation and change assurance",
+      "process_ids": [
+        "data-integrity",
+        "validation",
+        "terminology"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "data-5",
+      "label": "PV AI / automation governance lead",
+      "function_id": "data",
+      "responsibility": "Assess automation performance, limitations and human oversight",
+      "process_ids": [
+        "data-integrity",
+        "validation",
+        "terminology"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "data-6",
+      "label": "Terminology / dictionary specialist",
+      "function_id": "data",
+      "responsibility": "Govern authorized terminology versions and coding conventions",
+      "process_ids": [
+        "data-integrity",
+        "validation",
+        "terminology"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "training-1",
+      "label": "Training & competency lead",
+      "function_id": "training",
+      "responsibility": "Coordinate training needs, delivery and competency evidence",
+      "process_ids": [
+        "training",
+        "quality"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "training-2",
+      "label": "PV process / SOP owner",
+      "function_id": "training",
+      "responsibility": "Maintain assigned procedures, controls and process improvements",
+      "process_ids": [
+        "training",
+        "quality"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "training-3",
+      "label": "Knowledge management specialist",
+      "function_id": "training",
+      "responsibility": "Maintain controlled knowledge and reference content",
+      "process_ids": [
+        "training",
+        "quality"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "interfaces-1",
+      "label": "Medical information liaison",
+      "function_id": "interfaces",
+      "responsibility": "Coordinate safety information received through medical information",
+      "process_ids": [
+        "cross-functional",
+        "data-integrity"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "interfaces-2",
+      "label": "Product quality / complaint liaison",
+      "function_id": "interfaces",
+      "responsibility": "Coordinate complaint and potential safety-information exchanges",
+      "process_ids": [
+        "cross-functional",
+        "data-integrity"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "interfaces-3",
+      "label": "Privacy & records liaison",
+      "function_id": "interfaces",
+      "responsibility": "Assess privacy, records and retention interfaces",
+      "process_ids": [
+        "cross-functional",
+        "data-integrity"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "interfaces-4",
+      "label": "Cybersecurity / access liaison",
+      "function_id": "interfaces",
+      "responsibility": "Assess security and access impacts on safety processes",
+      "process_ids": [
+        "cross-functional",
+        "data-integrity"
+      ],
+      "active": true,
+      "revision": 1
+    },
+    {
+      "id": "interfaces-5",
+      "label": "Clinical supply / manufacturing liaison",
+      "function_id": "interfaces",
+      "responsibility": "Coordinate relevant supply/manufacturing safety information interfaces",
+      "process_ids": [
+        "cross-functional",
+        "data-integrity"
+      ],
+      "active": true,
+      "revision": 1
+    }
+  ],
+  "references": [
+    {
+      "title": "EMA GVP framework",
+      "url": "https://www.ema.europa.eu/en/human-regulatory-overview/post-authorisation/pharmacovigilance-post-authorisation/good-pharmacovigilance-practices-gvp"
+    },
+    {
+      "title": "EMA GVP Module I — qualifications and QPPV role",
+      "url": "https://www.ema.europa.eu/en/documents/scientific-guideline/guideline-good-pharmacovigilance-practices-module-i-pharmacovigilance-systems-and-their-quality-systems_en.pdf"
+    },
+    {
+      "title": "MHRA QPPV and PSMF guidance",
+      "url": "https://www.gov.uk/guidance/guidance-on-qualified-person-responsible-for-pharmacovigilance-qppv-including-pharmacovigilance-system-master-files-psmf"
+    }
+  ]
+}

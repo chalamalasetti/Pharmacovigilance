@@ -1,0 +1,30 @@
+begin;
+do $$
+declare a uuid:=gen_random_uuid();b uuid:=gen_random_uuid();editor uuid:=gen_random_uuid();p public.pv_role_preferences;m public.pv_role_mappings;r public.pv_role_catalog;n integer;
+begin
+ insert into auth.users(id,aud,role,email) values(a,'authenticated','authenticated','roles-reader@example.invalid'),(b,'authenticated','authenticated','roles-other@example.invalid'),(editor,'authenticated','authenticated','roles-editor@example.invalid');
+ insert into public.research_admins(email) values('roles-editor@example.invalid');
+ perform set_config('request.jwt.claims',jsonb_build_object('sub',a,'email','roles-reader@example.invalid','role','authenticated')::text,true);execute 'set local role authenticated';
+ p:=public.save_pv_role_preferences(array['governance-1'],array['governance'],0);
+ if public.is_app_admin() then raise exception 'Selecting QPPV granted admin rights';end if;
+ begin perform public.save_pv_role_preferences(array['governance-1'],array['governance'],0);raise exception 'Stale preference write accepted';exception when others then if sqlerrm<>'Preferences changed; reload before saving' then raise;end if;end;
+ begin perform public.save_pv_role_preferences(array['administrator'],array['governance'],p.revision);raise exception 'Unknown role accepted';exception when others then if sqlerrm<>'Choose catalog responsibilities only' then raise;end if;end;
+ begin perform public.admin_save_pv_role('test-role',0,'{}','Unauthorized');raise exception 'Reader changed catalog';exception when others then if sqlerrm<>'Admin access required' then raise;end if;end;
+ begin update public.pv_role_preferences set role_ids='{}' where user_id=a;raise exception 'Direct preference update allowed';exception when insufficient_privilege then null;end;
+ perform set_config('request.jwt.claims',jsonb_build_object('sub',b,'email','roles-other@example.invalid','role','authenticated')::text,true);
+ select count(*) into n from public.pv_role_preferences where user_id=a;if n<>0 then raise exception 'Private preferences leaked';end if;
+ perform set_config('request.jwt.claims',jsonb_build_object('sub',editor,'email','roles-editor@example.invalid','role','authenticated')::text,true);
+ select * into m from public.pv_role_mappings where role_id='governance-1' limit 1;
+ m:=public.admin_review_pv_role_mapping(m.id,m.revision,'reviewed','consulted','Synthetic scope association reviewed','Program overview','Synthetic oversight decision');
+ begin perform public.admin_review_pv_role_mapping(m.id,null,'reviewed','consulted','Synthetic stale review','Program overview','Synthetic work product');raise exception 'Null mapping revision accepted';exception when others then if sqlerrm<>'Mapping changed; reload' then raise;end if;end;
+ select * into r from public.pv_role_catalog where id='governance-1';
+ r:=public.admin_save_pv_role(r.id,r.revision,r.body||jsonb_build_object('responsibility','Synthetic changed reference responsibilities'),'Synthetic editorial change');
+ select * into m from public.pv_role_mappings where id=m.id;if m.state<>'suggested' or m.reviewed_at is not null then raise exception 'Changed role kept stale reviewed mapping';end if;
+ begin update public.pv_role_audit set reason='Overwrite';raise exception 'Audit overwrite allowed';exception when insufficient_privilege then null;end;
+ execute 'reset role';perform set_config('request.jwt.claims','{"role":"anon"}',true);execute 'set local role anon';
+ select count(*) into n from public.pv_role_catalog;if n<60 then raise exception 'Public directory unavailable';end if;
+ begin select count(*) into n from public.pv_role_preferences;raise exception 'Anonymous preferences access';exception when insufficient_privilege then null;end;
+ begin select count(*) into n from public.pv_role_audit;raise exception 'Anonymous editorial audit access';exception when insufficient_privilege then null;end;
+ execute 'reset role';
+end $$;
+rollback;
