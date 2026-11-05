@@ -1,7 +1,7 @@
 {
-  "version": "1.5",
+  "version": "1.6",
   "reviewed": "2026-11-04",
-  "appRevision": "e2b-schema-configuration-v2",
+  "appRevision": "twice-daily-data-refresh-v1",
   "chapters": [
     {
       "id": "getting-started",

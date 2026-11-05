@@ -1,6 +1,6 @@
 name: Feed health check
 
-# Half an hour after each hourly rebuild, reads the live site's data/status.json.
+# Reads the published runtime data status, using its configured refresh interval.
 # If the site has stopped refreshing, or a regulator feed has been down for 6 hours,
 # it opens one GitHub issue labelled "feed-alert" (GitHub emails the repo owner),
 # keeps that issue's details current while the problem lasts, and closes it with a
@@ -53,4 +53,4 @@ jobs:
             try {
               await github.rest.issues.createLabel({ owner, repo, name: label, color: "d93f0b", description: "Opened automatically when PV Info data stops refreshing" });
             } catch {}
-            await github.rest.issues.create({ owner, repo, title: "PV Info data alert: a feed or the hourly refresh is failing", labels: [label], assignees: [owner], body });
+            await github.rest.issues.create({ owner, repo, title: "PV Info data alert: a feed or scheduled data refresh needs attention", labels: [label], assignees: [owner], body });

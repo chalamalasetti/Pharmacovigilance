@@ -102,3 +102,5 @@ test("a source failing many runs in a row alerts on its own, and is never switch
   assert.equal(p.alert, true);
   assert.match(p.text, /failed 6 collections in a row/);
 });
+
+ test("twice-daily publications stay healthy between collections and alert beyond their grace window",()=>{const s=healthy();s.refreshIntervalMinutes=720;s.checked=s.updated=iso(13*H);assert.equal(dataHealth(s,now).level,'ok');s.checked=s.updated=iso(19*H);const h=dataHealth(s,now);assert.equal(h.level,'stale');assert.match(h.problems[0].text,/Public data has not been checked/);assert.doesNotMatch(h.problems[0].text,/rebuild|hourly/);s.refreshIntervalMinutes=-1;s.checked=s.updated=iso(5*H);assert.equal(dataHealth(s,now).level,'stale');});

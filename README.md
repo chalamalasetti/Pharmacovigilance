@@ -86,11 +86,11 @@ node scripts/aggregate.mjs --fixtures test/fixtures   # sample data, no network
 
 Import the repository into Vercel. `vercel.json` installs with `npm ci`, runs `npm run build` and serves `public/` plus the serverless API routes. The canonical production address is **https://www.pvinfo.org**; the legacy `pharmacovigilance-info.vercel.app` host redirects there. `SITE_URL` controls where collection reads the previous published data; `SEO_SITE_URL` controls canonical URLs.
 
-The checked-in build collects clinical snapshots, updates and missing document captures before generating SEO output. A rebuild can therefore change content even when the application source commit has not changed. Vercel builds and upstream sources can be delayed or fail; scheduled refreshes are targets, not an hourly delivery guarantee.
+The checked-in build collects clinical snapshots, updates and missing document captures before generating SEO output. A rebuild can therefore change content even when the application source commit has not changed. Vercel builds and upstream sources can be delayed or fail; scheduled refreshes are targets; GitHub may delay execution.
 
-- `.github/workflows/fda-collector.yml` checks the admin-managed schedule every 15 minutes (hourly by default), collects FDA feeds and the other configured public sources, and publishes a compressed runtime snapshot to Supabase. It never calls a Vercel deploy hook.
+- `.github/workflows/fda-collector.yml` checks the admin-managed schedule hourly at minute 23 (every 12 hours by default), collects FDA feeds and the other configured public sources, and publishes a compressed runtime snapshot to Supabase. It never calls a Vercel deploy hook.
 - `.github/workflows/vercel-refresh.yml` is a manual shortcut to the data-only refresh worker. It does not deploy the app.
-- A separate cron-job.org hourly dispatcher is part of the deployed operating setup reported by the owner. Its settings are not stored in this repository. After verifying the new runtime publication, disable any external request to the old Vercel deploy hook; GitHub already schedules data refreshes. Until that external job is changed, it can still create unnecessary deployments.
+- GitHub provides the automatic data-only schedule. No cron-job.org account or Vercel deploy hook is required. The owner reported disabling the old deploy-hook job; keep it disabled. External dispatchers, if used, must target the GitHub data workflow and keep credentials private.
 - Cache and development branches are excluded through `vercel.json` and `scripts/ignore-build.mjs`. Review these before changing deployment behavior.
 
 See [FDA collection delivery](#fda-collection-delivery) and [refresh administration](#refresh-administration) for the separate collection paths. See [data-only publication and retention](docs/runtime-data-publication.md) for cutover, failure recovery and retention boundaries.
@@ -109,7 +109,7 @@ Settings (Vercel → Project → Settings → Environment Variables, both option
 
 Each build also writes `public/data/status.json`: when the updates were last refreshed, and for every feed whether it was reachable, when it last succeeded and how long it has been failing. Feed diagnostics are shown only to administrators by default; `status.html` and the admin refresh/source screens support investigation. Public coverage is available separately without operational health details. A feed that fails keeps its earlier updates on the site, and if every feed fails the build keeps the whole previous list instead of emptying the page.
 
-`.github/workflows/feed-health.yml` runs `scripts/health.mjs` against the live site every hour (at :47). If the data has not refreshed for 3 hours, a regulator feed has been down for 6 hours, half the news searches fail, or a research source has failed for a day, it opens one GitHub issue labelled `feed-alert` assigned to the repo owner, so GitHub emails you. While the problem lasts it quietly updates that issue, and it comments and closes it once a check is healthy. Thresholds are in `FRESHNESS` in `public/lib.js`. Run it by hand from the Actions tab (Feed health check → Run workflow).
+`.github/workflows/feed-health.yml` runs `scripts/health.mjs` against the live site every hour (at :47). Freshness thresholds follow the cadence pinned in each published snapshot (18-hour stale threshold and 24-hour persistent-source threshold at the 12-hour setting). If that threshold is exceeded, half the news searches fail, or a research source has failed for a day, it opens one GitHub issue labelled `feed-alert` assigned to the repo owner, so GitHub emails you. While the problem lasts it quietly updates that issue, and it comments and closes it once a check is healthy. Thresholds are in `FRESHNESS` in `public/lib.js`. Run it by hand from the Actions tab (Feed health check → Run workflow).
 
 ## Connecting the database
 
@@ -222,7 +222,7 @@ Topic and country tags are automatic and can be wrong. PV Info is a reading aid;
 ## FDA collection delivery
 
 The five official FDA RSS feeds are collected by `.github/workflows/fda-collector.yml`
-(schedule checks at :07, :22, :37 and :52; collection is hourly by default, with admin frequency controls). Collection
+(schedule checks hourly at :23; collection is every 12 hours by default, with admin frequency controls). Collection
 runs on GitHub Actions because production Vercel requests to these same URLs have
 returned HTTP 404 while the GitHub runner succeeds. The workflow reads the last
 published active registry, fetches only the five exact FDA endpoints, privacy-screens
@@ -238,7 +238,7 @@ hours (or from a collector whose latest attempt failed) warns; after twelve hour
 is rejected and the app tries the official URL directly. Paused sources are not
 consumed. Missing/corrupt snapshots never turn arbitrary URLs into proxy requests.
 GitHub scheduling and Vercel builds may be delayed; these are freshness targets,
-not a guarantee of hourly delivery. Check Actions → Refresh public PV data and
+not a guarantee of exact delivery times. Check Actions → Refresh public PV data and
 `status.html` when investigating gaps. No new paid service or source credential is
 required. Do not point the collector at patient-level data.
 
@@ -325,7 +325,7 @@ Implementation and limits:
 
 ## Refresh administration
 
-**Admin → Data Refresh Center** (`admin-refresh.html`) shows configured pipeline frequency, collection state and run history, and can queue work for the next scheduler check. Saving a frequency controls when a pipeline is eligible to run; it does not reschedule the external cron service or guarantee immediate execution. Some GitHub workers check more frequently than the hourly external dispatcher. Inspect each workflow and the current configuration before changing frequency.
+**Admin → Data Refresh Center** (`admin-refresh.html`) shows configured pipeline frequency, collection state and run history, and can queue work for the next scheduler check. Saving a frequency controls when a pipeline is eligible to run; it does not reschedule the external cron service or guarantee immediate execution. The updates worker wakes hourly and uses the database due time and lease to avoid duplicate collections. Inspect each workflow and the current configuration before changing frequency.
 
 Regulatory document collection runs hourly at minute 17 with a bounded oldest-first batch; a large source catalog rotates through multiple runs. FDA RSS delivery, clinical backfill, research, product registry and document capture have different sources, schedules and limits. Check actual last-success/last-check evidence per pipeline. Preserve SEO/Search Console settings. After the data-only cutover is verified, retire the external cron-job.org deploy-hook call; do not run duplicate app deployments for data freshness.
 
@@ -359,7 +359,7 @@ The product collector stages the legacy company registry and detailed substance 
 
 ### Label Change Intelligence
 
-Explore → Label Intelligence presents captured FDA SrLC entries with regulator-marked additions/revisions and EMA PRAC recommendation index entries. FDA discovery uses a rolling 100-day query and incremental detail capture (24 product pages per hourly worker run; seven-day detail rechecks). Captured entries are bounded to 500; EMA index scope starts in 2025. This is partial, explicit source coverage, not a complete global labeling database. Prior evidence survives source failures. App builds use the versioned bootstrap; ongoing collection is part of the existing data-only runtime workflow.
+Explore → Label Intelligence presents captured FDA SrLC entries with regulator-marked additions/revisions and EMA PRAC recommendation index entries. FDA discovery uses a rolling 100-day query and incremental detail capture (24 product pages per data collection run; seven-day detail rechecks). Captured entries are bounded to 500; EMA index scope starts in 2025. This is partial, explicit source coverage, not a complete global labeling database. Prior evidence survives source failures. App builds use the versioned bootstrap; ongoing collection is part of the existing data-only runtime workflow.
 
 Previous wording is never reconstructed from underlining. Earlier FDA label links may skip intervening revisions. EMA index-only records require original wording review. Source corrections create new immutable evidence fingerprints; assessments pin the reviewed version and retain existing decisions. Approved users confirm source review, select a confirmed company scope, document a rationale and open a private/team Action Center case. Matching entries also appear in Company Change Inbox. Assessment exports include the pinned source record. No paid AI extraction or API is required.
 
@@ -399,7 +399,7 @@ Outputs are review specifications, not vendor import files, executed tests, regu
 
 Approved users document private system/environment mappings with optimistic concurrency, append-only history and explicit reassessment when a source hash changes. A saved mapping opens a pinned Configuration Workbench draft; existing review and Action Center flows handle implementation. JSON exports include source evidence and synthetic test prompts. No patient XML, paid AI API, licensed dictionary content, live vendor adapter or executable schema validation is included.
 
-See the [E2B Studio user guide](docs/user-guide/e2b-studio.md). `scripts/e2b-extract.py` deterministically imports the supplied core PDF, FDA workbook and regional PDF into `public/e2b-catalog.json`; source binaries are not bundled. Its field/source hashes and coverage limits are retained. A new capture requires a controlled import and human review; the studio can read a complete newer database capture without an app deployment; hourly news refresh does not regenerate or approve E2B baselines. The additive `e2b_mapping_studio` migration supplies public provenance/review records, immutable baseline snapshots and private mappings. It registers PDF source families with the existing document catalog; the XLSX source is reference-only.
+See the [E2B Studio user guide](docs/user-guide/e2b-studio.md). `scripts/e2b-extract.py` deterministically imports the supplied core PDF, FDA workbook and regional PDF into `public/e2b-catalog.json`; source binaries are not bundled. Its field/source hashes and coverage limits are retained. A new capture requires a controlled import and human review; the studio can read a complete newer database capture without an app deployment; scheduled news refresh does not regenerate or approve E2B baselines. The additive `e2b_mapping_studio` migration supplies public provenance/review records, immutable baseline snapshots and private mappings. It registers PDF source families with the existing document catalog; the XLSX source is reference-only.
 
 The user-supplied Oracle Argus Safety Administration Guide (8.4.1, F84377-02, October 2023) supplies twelve derived configuration-reference areas. Users can pin guide/version/checksum/page references to private mappings and workbench drafts. Release mismatch warnings and synthetic review prompts help avoid assuming that an older administration guide establishes current regulatory behavior or exact field transformations. The Oracle PDF is not redistributed.
 
@@ -418,3 +418,9 @@ python scripts/e2b-structures.py --schemas /path/schema.zip --reference /path/re
 Review changed versions, notices and metadata before committing a new index. The importer rejects DTD/entity declarations and oversized archives; it does not execute XSD/XSLT or retain XML case values. The source packages remain separate; no FDA endorsement is implied.
 
 This product includes software developed by Health Level Seven. See the in-app third-party notices for applicable source notices and disclaimers.
+
+### Automatic twice-daily public refresh
+
+Updates/research default to 720 minutes. The GitHub cron wakes hourly at :23, acquires a managed lease only when due or queued, and publishes a complete runtime snapshot independently of app deployments. A failed collection is eligible for a retry after an hour; overlaps are blocked and the previous complete snapshot remains available. Product/clinical staging may queue an additional public publication. GitHub cron timing is best effort; this is not a guaranteed clock-time SLA.
+
+The published status records `refreshIntervalMinutes`; health checks use that actual cadence, not deployment age. Admin → Data Refresh Center offers Twice daily and uses cadence-aware heartbeat warnings. Schema migration `twice_daily_data_refresh` enables the new option, sets updates to 720 minutes and queues one initial collection. Other pipeline frequencies are retained. Changes take effect at the next check; administrators can run Refresh public PV data manually with Force for immediate collection.
