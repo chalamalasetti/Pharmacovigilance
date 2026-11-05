@@ -39,7 +39,7 @@ def core_records(path):
   vals={};active=None;title=[m[2]];raw=[];preamble=[]
   for offset,(line,_,_) in enumerate(lines[start:end]):
    group=ELEMENT.match(line)
-   if offset and active and group and group[2].upper()==group[2] and len(group[2].split())>2:end=start+offset;break
+   if offset and active and ((group and group[2].upper()==group[2] and len(group[2].split())>2) or re.match(r'^[CDEFGH]\s+[A-Z][A-Z /()-]{5,}$',line)):end=start+offset;break
    raw.append(line.rstrip());lm=LABEL.match(line)
    if lm:active={'User Guidance':'guidance','Conformance':'conformance','Data Type':'dataType','OID':'oid','Value Allowed':'allowed','Business Rule(s)':'businessRules'}[lm[1]];vals.setdefault(active,[]).extend((preamble if active=='guidance' else [])+[lm[2].strip()]);preamble=[]
    elif active:vals[active].append(line.strip())
