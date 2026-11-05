@@ -87,3 +87,7 @@ The public [ingredient directory](substances.html) links to [ingredient evidence
 ## Safety configuration specifications
 
 Open **My Briefing → Configuration Workbench** at config-workbench.html to capture system/environment setup, compare a proposed configuration with current rules and prepare a source-linked specification. A specification is a draft implementation design, not a vendor import, executed protocol or legal approval. See the [workbench guide](config-workbench.md).
+
+## E2B source captures and mappings
+
+The public studio at e2b-studio.html distinguishes extracted captures, verified source records and immutable published baseline subsets. A private mapping documents a field/control in one installed system environment. A source hash change flags reassessment; it does not automatically prove a control gap. See the [E2B Studio guide](e2b-studio.md).

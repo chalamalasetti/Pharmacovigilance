@@ -1,7 +1,7 @@
 {
-  "version": "1.3",
+  "version": "1.4",
   "reviewed": "2026-11-04",
-  "appRevision": "safety-config-workbench-v1",
+  "appRevision": "e2b-mapping-studio-v1",
   "chapters": [
     {
       "id": "getting-started",
@@ -191,6 +191,13 @@
       "group": "Company work",
       "audience": "Safety systems and configuration managers",
       "summary": "Capture current rules, pin source evidence, draft configuration changes and tests, review and hand off implementation."
+    },
+    {
+      "id": "e2b-studio",
+      "title": "E2B Requirements & Mapping Studio",
+      "group": "Company work",
+      "audience": "Safety systems and configuration managers",
+      "summary": "Explore source-versioned ICH/FDA captures, review baseline subsets, document private system mappings and draft configuration changes."
     }
   ],
   "screens": {
@@ -234,6 +241,7 @@
     "safety-topics.html": "safety-topics",
     "drug-resolver.html": "drug-name-resolver",
     "leadership.html": "leadership",
-    "config-workbench.html": "config-workbench"
+    "config-workbench.html": "config-workbench",
+    "e2b-studio.html": "e2b-studio"
   }
 }

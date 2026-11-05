@@ -48,6 +48,10 @@ In Action Center, review applicability, assign implementation, capture evidence 
 
 Export downloads a private JSON specification with inputs, output, state and revision. It is not an Argus or other vendor import file. The comparison CSV includes revision/source metadata, before/after values and draft test prompts; spreadsheet-formula prefixes are escaped. Print produces a saved review package. Share exported organizational configuration only with authorized recipients.
 
+## E2B mapping handoff
+
+Open the [E2B Studio](e2b-studio.md), save a private system mapping and choose Draft configuration change. The workbench retains the exact capture, field hash and mapping revision. Review the full source because the quoted passage can be partial. System mapping confirmation does not approve regulatory applicability or implementation.
+
 ## Troubleshooting and limits
 
 If the database or revision history cannot load, retry rather than recreating saved work. A sign-out or account change clears private data from the screen; ordinary token refresh retains unsaved work. Workspaces are limited to 200 per selected scope in this view; older histories show the latest 100 revisions.
