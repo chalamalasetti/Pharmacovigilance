@@ -440,3 +440,6 @@ node scripts/document-impact-pilot.mjs /path/supplied-public-ema.pdf /path/offic
 ```
 
 A changed package needs a new versioned filename/version rather than overwriting a released analysis. No patient or reporter values are collected. © European Medicines Agency and Heads of Medicines Agencies, 2025; source acknowledged.
+
+### Source-linked regulatory dates
+Events & Training now includes a separate Regulatory Calendar timeline and admin review queue. Archived source effective dates enter as pending records; verified dates support source-linked date-only calendar reminders. New source bytes flag earlier verified dates for reconfirmation, while review decisions retain before/after history. No publication date is inferred as a deadline. EURD spreadsheet schedules, general PDF deadline extraction and portfolio-specific milestone generation remain future connectors, not claimed coverage. See the Events & Calendar User Guide.
