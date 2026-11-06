@@ -239,6 +239,7 @@ async function main() {
   $("coverage-text").textContent = res?.coverage ?? R.COVERAGE_STATEMENT;
   $("suggest-form").replaceChildren(feedbackForm("suggest"));
   if (!res?.resources?.length) {
+    if ($("list").querySelector("article")) { $("count").textContent = "Build snapshot · directory refresh unavailable"; return; }
     $("count").textContent = "";
     $("list").replaceChildren(el("p", { class: "empty" }, "The directory hasn't been built yet. Run ", el("code", {}, "npm run build"), " and reload."));
     return;

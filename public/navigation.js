@@ -19,6 +19,7 @@ export const PAGES = {
  globe:{label:'Global view',href:'globe.html',hint:'Explore updates around the world',icon:'◉'},
  'e2b-studio':{label:'E2B Mapping Studio',href:'e2b-studio.html',hint:'ICH and FDA field evidence, baselines and private system mappings',icon:'⌘'},
  'content-studio':{label:'Template Library & Studio',href:'content-studio.html',hint:'Template Library and Document Studio: SOPs, training, review and downloads',icon:'▤'},
+ 'rule-templates':{label:'Rule Template Library',href:'rule-templates.html',hint:'Source-linked rule starters, forks and sandbox comparisons',icon:'▧'},
  sandbox:{label:'Synthetic Safety Sandbox',href:'sandbox.html',hint:'Create fictional cases, compare rules and export training reports',icon:'⚗'},
  resources:{label:'Safety resources',href:'resources.html',hint:'Public safety databases and reference tools',icon:'▤'},
  documents:{label:'Source documents',href:'documents.html',hint:'Country, agency, versions and extracted clauses',icon:'▤'},
@@ -28,7 +29,7 @@ export const PAGES = {
  'user-guide':{label:'User Guide',href:'user-guide.html',hint:'Step-by-step help for every module',icon:'▤'},
  about:{label:'About PV Info',href:'about.html',hint:'Coverage, sources and how it works',icon:'ⓘ'},
 };
-const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','leadership','config-workbench','company-inbox','action-center','team','account-settings']],['explore','Explore',['research','companies','substances','labels','safety-topics','globe','events']],['resources','Resources',['content-studio','sandbox','e2b-studio','resources','documents','changes','requirements','agencies','archive','user-guide','about']]];
+const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','leadership','config-workbench','company-inbox','action-center','team','account-settings']],['explore','Explore',['research','companies','substances','labels','safety-topics','globe','events']],['resources','Resources',['content-studio','sandbox','rule-templates','e2b-studio','resources','documents','changes','requirements','agencies','archive','user-guide','about']]];
 export const defaultNavigation=()=>({version:1,groups:GROUPS.map(([id,label,items])=>({id,label,items:items.map(id=>({id,label:PAGES[id].label,hidden:false}))}))});
 export const cleanLabel=(value,fallback)=>typeof value==='string'&&value.trim()?value.trim().slice(0,32):fallback;
 export function normalizeNavigation(raw,{navOrder=[],hiddenNav=[]}={}) {

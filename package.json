@@ -5,7 +5,7 @@
   "description": "Pharmacovigilance and drug regulatory updates from every major regulator, in one place.",
   "type": "module",
   "scripts": {
-    "build": "npm run content:bundle && node scripts/build-user-guide.mjs && node scripts/clinical-import.mjs && node scripts/aggregate.mjs && node scripts/substances.mjs && node scripts/labels.mjs --bootstrap && node scripts/documents.mjs --bootstrap && npm run notice:build && node scripts/seo.mjs",
+    "build": "npm run content:bundle && node scripts/build-user-guide.mjs && node scripts/clinical-import.mjs && node scripts/aggregate.mjs && node scripts/substances.mjs && node scripts/labels.mjs --bootstrap && node scripts/documents.mjs --bootstrap && npm run templates:build && npm run notice:build && node scripts/seo.mjs",
     "seo": "node scripts/seo.mjs --write",
     "aggregate": "node scripts/aggregate.mjs",
     "research": "node scripts/research.mjs",
@@ -23,7 +23,8 @@
     "substances": "node scripts/substances.mjs",
     "labels": "node scripts/labels.mjs",
     "content:bundle": "node scripts/build-content-export.mjs && node scripts/build-e2b-runtime.mjs",
-    "notice:build": "node scripts/build-safety-notice.mjs"
+    "notice:build": "node scripts/build-safety-notice.mjs",
+    "templates:build": "node scripts/build-rule-templates.mjs"
   },
   "engines": {
     "node": ">=22.13.0"

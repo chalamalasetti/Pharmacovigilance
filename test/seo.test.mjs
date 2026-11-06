@@ -37,7 +37,7 @@ test("noindex pages get no canonical and stay out of the sitemap", () => {
   assert.equal(pageMeta(hidden).noindex, true);
   assert.doesNotMatch(seoBlock("admin.html", hidden), /canonical/);
   const map = sitemap([["index.html", page()], ["admin.html", hidden], ["research.html", page()], ["paper.html", page()], ["company.html", page()]], {
-    base: "https://www.pvinfo.org", papers: [{ id: "PMC1&2", published: "2025-03-04" }], companies: [{ id: "acme" }], now: new Date("2026-10-31T00:00:00Z"),
+    base: "https://www.pvinfo.org", papers: [{ id: "PMC1&2", published: "2025-03-04" }], companies: [{ id: "acme" }], modified: {"index.html":"2026-10-31", "research.html":"2026-10-29"}, now: new Date("2026-10-31T00:00:00Z"),
   });
   assert.match(map, /<loc>https:\/\/www\.pvinfo\.org\/<\/loc><lastmod>2026-10-31<\/lastmod>/);
   assert.match(map, /research\.html/);

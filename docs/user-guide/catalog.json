@@ -291,6 +291,7 @@
     "admin-social.html": "admin-social",
     "content-studio.html": "content-studio",
     "sandbox.html": "sandbox",
-    "disclaimer.html": "getting-started"
+    "disclaimer.html": "getting-started",
+    "rule-templates.html": "config-workbench"
   }
 }

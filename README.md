@@ -468,3 +468,9 @@ A card-based case dashboard, six scenario starters and an eight-step editor guid
 ### Shared tool use notice
 
 The sandbox, E2B Studio and Configuration Workbench display the same static training/independence notice and link to `disclaimer.html`. `public/safety-notice.js` is the versioned source for the full text and export metadata. Run `npm run notice:build` after changing it, then `npm run seo`; the production build does both. Case/report PDFs (including CIOMS continuation pages), saved-case and simulation packages, E2B mapping/validation reports and configuration specifications carry the notice. The E2B ZIP also includes `PV-INFO-NOTICE.txt`. Input CSV templates retain their required schema. The notice explains scope and third-party rights; it is not a legal opinion, certification or blanket waiver of mandatory rights.
+
+### Crawlable lists and rule templates
+
+The production SEO step renders up to 30 unique latest headline links and the published resource directory into the existing list containers before JavaScript takes over. Missing runtime data retains that visible build snapshot. The snapshot refreshes on builds; runtime data refresh remains separate. Sitemap dates use Git source/asset changes and available content dates, never a fresh date simply because a build ran; pages without a trustworthy date omit it. Private/noindex exclusions are retained.
+
+`npm run templates:build` renders the public Rule Template Library with four source-linked starters; run it before `npm run notice:build` and `npm run seo` after editing the catalog. Forks and a separate template watchlist are browser-local, with reasoned revision history and JSON review exports. Workbench handoff is an unverified source-pinned draft. Sandbox handoff is explicitly a user-chosen subset of case-level controls, not an execution of regulatory template text.

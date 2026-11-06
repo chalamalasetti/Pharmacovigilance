@@ -257,6 +257,7 @@ async function main() {
     if (!res.ok) throw new Error(res.status);
     data = await res.json();
   } catch {
+    if ($("list").querySelector("article")) { $("count").textContent = "Latest build snapshot · live refresh unavailable"; return; }
     $("count").textContent = "No updates yet";
     $("list").replaceChildren(el("p", { class: "empty" }, "The update list hasn't been built. Run ", el("code", {}, "npm run aggregate"), " (or ", el("code", {}, "npm run app"), ") and reload."));
     return;
