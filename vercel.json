@@ -11,7 +11,8 @@
       "fda-feed-cache": false,
       "regulatory-document-cache": false,
       "clinical-data-cache": false,
-      "product-data-cache": false
+      "product-data-cache": false,
+      "evidence-data-cache": false
     }
   },
   "functions": {

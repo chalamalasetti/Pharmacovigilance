@@ -26,3 +26,6 @@ public/vendor/xmllint/
 public/vendor/e2b-export.js
 
 public/data/product-answers.json
+
+output/evidence*/
+scripts/evidence/__pycache__/

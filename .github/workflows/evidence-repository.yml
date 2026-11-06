@@ -1,0 +1,44 @@
+name: Build evidence repository
+on:
+  push:
+    branches: [main]
+    paths: ['scripts/evidence/**', 'evidence/**', '.github/workflows/evidence-repository.yml']
+  schedule:
+    - cron: '23 4 * * 6'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: evidence-repository
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - name: Build complete source-linked repository
+        run: python scripts/evidence/build.py --out output/evidence
+      - name: Publish immutable downloadable snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          DATA_TAG: evidence-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          gh release create "$DATA_TAG" output/evidence/assets/* --target "$GITHUB_SHA" --title "PV Info evidence dataset $DATA_TAG" --notes-file evidence/README.md --latest=false
+      - name: Publish verified indexes and atomic manifest
+        uses: actions/github-script@v7
+        env:
+          DATA_TAG: evidence-${{ github.run_id }}-${{ github.run_attempt }}
+        with:
+          script: |
+            const publish=require('./scripts/evidence/publish.cjs');
+            await publish({github,context,core});

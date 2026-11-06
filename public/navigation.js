@@ -30,8 +30,9 @@ export const PAGES = {
  about:{label:'About PV Info',href:'about.html',hint:'Coverage, sources and how it works',icon:'ⓘ'},
  'product-answers':{label:'Product Evidence Answers',href:'product-answers.html',hint:'Ask about approval dates, label mentions and supporting evidence',icon:'✦'},
  'label-analysis':{label:'Label Safety Analysis',href:'label-analysis.html',hint:'Compare product cohorts, safety wording and captured evidence timelines',icon:'◈'},
+ 'data-repository':{label:'Evidence Data Repository',href:'data-repository.html',hint:'Products, ingredients, dates, labels and downloadable source-linked datasets',icon:'◈'},
 };
-const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','leadership','config-workbench','company-inbox','action-center','team','account-settings']],['explore','Explore',['product-answers','research','companies','substances','safety-topics','globe','events']],['resources','Resources',['content-studio','sandbox','rule-templates','e2b-studio','resources','documents','changes','requirements','agencies','archive','user-guide','about']],['label-intelligence','Label Intelligence',['labels','label-analysis']]];
+const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','leadership','config-workbench','company-inbox','action-center','team','account-settings']],['explore','Explore',['product-answers','research','companies','substances','safety-topics','globe','events']],['resources','Resources',['content-studio','sandbox','rule-templates','e2b-studio','resources','documents','changes','requirements','agencies','archive','user-guide','about']],['label-intelligence','Label Intelligence',['labels','label-analysis','data-repository']]];
 export const defaultNavigation=()=>({version:1,groups:GROUPS.map(([id,label,items])=>({id,label,items:items.map(id=>({id,label:PAGES[id].label,hidden:false}))}))});
 export const cleanLabel=(value,fallback)=>typeof value==='string'&&value.trim()?value.trim().slice(0,32):fallback;
 export function normalizeNavigation(raw,{navOrder=[],hiddenNav=[]}={}) {

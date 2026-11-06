@@ -78,7 +78,7 @@ Reporting questions ask for a jurisdiction and show available source-linked plan
 
 ## Label Safety Analysis Workspace
 
-Open **Explore → Label Safety Analysis**, or use the analysis link in Label Intelligence. Select a captured market and evidence-date window, starting at 2000 if needed. This does not backfill missing history. Registry dates are application-level captured source dates, not necessarily original approvals for each presentation.
+Open **Label Intelligence → Label Safety Analysis**, or use the analysis link in Label Intelligence. Select a captured market and evidence-date window, starting at 2000 if needed. This does not backfill missing history. Registry dates are application-level captured source dates, not necessarily original approvals for each presentation.
 
 Use all captured applications or import CSV/JSON with product, company, market and application columns. Confirm each exact application match or explicitly exclude its import row. Unresolved rows block analysis. Company names, IDs and holders match exactly; aliases are not inferred. Selected rows are combined, then the market filter applies.
 
@@ -103,3 +103,11 @@ SPL effective dates, DailyMed publication dates, retrieval dates and regulatory 
 Download the history evidence package, or choose **Use retrieved versions in analysis**. Transfer uses temporary tab storage, consumed on arrival. Versions with no application number cannot join an application cohort and remain available on the history screen/export. The analysis workspace also accepts downloaded history packages. These imports remain locally supplied evidence; source hashes are not independently reverified on import. Analysis packages retain the additional SPL versions, and restored packages must be rerun.
 
 Sources: [openFDA labels](https://open.fda.gov/apis/drug/label/), [DailyMed web services](https://dailymed.nlm.nih.gov/dailymed/app-support-web-services.cfm), [DailyMed history API](https://dailymed.nlm.nih.gov/dailymed/webservices-help/v2/spls_setid_history_api.cfm). Collection is on demand; this release does not bulk-backfill all products or establish full history since 2000.
+
+## Evidence Data Repository
+
+Open **Label Intelligence → Evidence Data Repository** for the shared bulk-data repository. The page reports source-specific record counts, collection status, original references and snapshot dates. Choose a source to load its complete published metadata index; every shard is checked against its SHA-256 before results are shown. Search matches product/label metadata, not full label narratives.
+
+Download and decompress `repository.sqlite.gz` for the normalized database and full-text safety-section search. CSV and JSONL downloads provide the same source-linked tables for other analysis tools. The linked data dictionary includes SQL examples and date semantics. Product counts overlap between sources and must not be presented as unique drugs. Drug withdrawal, cancellation, discontinued status, marketing end and SPL effective dates are distinct. Official first term-addition dates remain unknown.
+
+Bulk collection runs weekly, independently of app deployment, with immutable downloadable releases and an atomic manifest. A failed core collection leaves the last published snapshot available. Additional-source failures and sources not yet connected remain visible. This is a large configured-source dataset, not worldwide completeness or a licensed terminology dictionary.
