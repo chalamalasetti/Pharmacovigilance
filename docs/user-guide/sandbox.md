@@ -1,21 +1,55 @@
 # Synthetic Safety Sandbox
 
-## Open a temporary workspace
+Use this training workspace to construct fictional clinical or marketed case scenarios and compare reporting-rule assumptions. It is not a production safety database or a complete implementation of ICH E2B(R3).
 
-Open the sandbox from the Resources page or Configuration Workbench. It runs entirely in page memory. No case data is sent to a server or saved in browser storage. Load the starter cases or create fictional cases manually. Reloading or closing clears working data; downloaded files remain on your device.
+## Open and start
 
-## Import synthetic cases
+Open Resources → Synthetic Safety Sandbox from the Resources page, or follow the Configuration Workbench link. Load starter scenarios or create a synthetic case. Everything stays in page memory. Closing or reloading clears the working session; downloaded files remain on your device. No case records are transmitted or saved in browser storage.
 
-Download the CSV template and retain the exact columns. Use SYN-prefixed fictional identifiers and only synthetic assessment values. Up to 200 cases and 200 KB are supported. No real or anonymized historical data, contact details, DOB or narrative columns are accepted. Imported IDs replace the current case set after confirmation. This is a narrow single-case schema; repeated products/events, detailed study records and full ICSR fields are future work.
+Use fictional information only. The form intentionally has no patient/reporter names, date of birth, email, phone or address fields. Short text labels are not an anonymization service: do not paste real case information into them.
 
-## Configure and run rules
+## Case form
 
-Configure current and proposed rules using country, clinical/marketed scope, seriousness, unexpectedness and relatedness. All conditions must match. Any condition can be ignored except country. Unknown case assessments remain indeterminate unless another condition definitively excludes the case. Missing or inconsistent timestamps block evaluation. Gestation zero remains a value and is flagged for review.
+1. **Case and receipt:** synthetic ID, country, clinical/marketed scope, source, reporter qualification, initial receipt, latest information, simulated submission and explicit case-level seriousness, unexpectedness and relatedness.
+2. **Patient and study:** fictional age/unit, sex, weight, height, pregnancy, gestation, study reference, phase and study type. Zero and unknown are distinct.
+3. **Products:** up to 20 independent products with stable row IDs, ingredient, role, strength, form, dose, route, indication, treatment dates, action, dechallenge and rechallenge. Each product also supports up to 20 dose regimens with amount/unit, frequency, route, dates, duration and fictional batch reference. These are training labels, not dictionary-coded medicines.
+4. **Events:** up to 20 events with stable IDs, terms, onset/end, outcome, seriousness criteria and explicit term-availability choices. No MedDRA terminology is distributed.
+5. **Assessment matrix:** causality, expectedness and a reference basis for every product–event pair. Opposite assessments for different pairs are preserved. Removing a product or event removes its associated pairs from the current draft only.
+6. **Tests and history:** repeatable structured tests/results/units and medical history with dates and ongoing status, up to 20 rows each.
+7. **Literature and linked reports:** up to 20 fictional citations with reference/DOI and language; linked case reference and amendment context.
+8. **Parent–child and death:** fictional parent demographics/history, death date/cause and autopsy context. No identity fields.
+9. **Narrative and exchange context:** fictional clinical narrative and reporter/sender comments, worldwide case reference, sender/receiver identifiers, reporter country and study sponsor/protocol. No gateway connection is created.
+10. **Revisions:** save the initial case, then record a reason and choose follow-up, correction or restore. Each save creates a new revision and preserves the previous snapshot. Initial receipt and case ID are locked after first save. Up to 100 earlier snapshots are supported. Restore creates a draft from an earlier snapshot; saving makes another revision. Latest-information time does not move backwards.
+11. **Preview and export:** check structural issues, preview the case report and download the original PV Info training PDF. PDF reflects the current form, including unsaved changes, and is labeled draft. Save first to capture a complete revision record.
 
-Set a simulation time. Deadlines use UTC receipt time plus the configured number of elapsed 24-hour calendar days. Effective dates are applied to receipt time. These demonstration policies are not agency-specific clock implementations. Business days, holidays, other clock-start events, follow-up versions, overlapping rule sets and vendor behavior are not implemented.
+The form covers the sections listed here. It does not implement every ICH/regional ICSR element, full parent drug/history repeatability, linked attachments, sender/receiver XML envelopes or licensed terminology validation. Fictional narratives are limited to 4,000 characters each; citation and parent/autopsy text are limited to 1,000 characters each.
 
-## Interpret and export
+## Rule simulation
 
-Compare triggered, not-triggered, indeterminate and blocked results. Expand each result to see matched/excluding conditions, flags and calculated deadlines. Met/missed compares the hypothetical submission time; pending/overdue uses the chosen simulation time. These results do not demonstrate actual reporting compliance.
+Save cases before running. The current and proposed rules use explicit **case-level** country, scope, seriousness, unexpectedness and relatedness; all selected conditions must match. The pair matrix is retained as evidence and is not automatically combined into a medical judgment. Unknown yields an indeterminate result unless a different condition definitively excludes the case.
 
-Download a JSON test package containing inputs, both rules, the simulation time, engine version and results. CSV imports can restore cases; JSON session restoration is not implemented. Close clears the page instance. The sandbox has no real gateway, CIOMS form, E2B XML generator, terminology dictionary or safety-system connector. Those require separate future implementation and validation.
+Times are UTC. Deadline = selected receipt timestamp + configured days × 24 hours. Initial receipt is the default. Choosing latest-information time requires an explicit rationale and is only a simulation assumption; a follow-up does not automatically reset the clock. Business-day, regional clock and vendor auto-scheduling policies are not implemented. Missing receipt, contradictory event seriousness, invalid chronology, conflicting null flavors or an incomplete pair matrix block simulation and explain why.
+
+Results distinguish not triggered, indeterminate, blocked and triggered; triggered results show pending/overdue or met/missed against the simulated submission time. They explain each condition and preserve inputs in a downloadable results package.
+
+## Save, import and restore
+
+- **Saved case package (JSON):** preserves saved cases, repeatable sections and revision history. Restore accepts the versioned synthetic format, checks IDs/history and replaces the current case collection after confirmation. Maximum 200 cases and 2 MB per imported package. Download this before closing.
+- **Legacy CSV:** fixed columns only, up to 200 cases / 200 KB. It creates simple single-product/single-event cases. CSV cannot carry repeatable sections or revision history. Use JSON to preserve richer cases.
+- **Reproducible test package:** records engine version, rules, saved cases, simulation time, clock assumptions and outcomes. This results file is evidence of a training run; restore uses the separate saved-case package.
+
+Local revisions are not a tamper-proof audit trail and have no authenticated reviewer attribution. Imported files are not evidence of regulatory approval.
+
+## Output status
+
+| Output | This release |
+| --- | --- |
+| Original PV Info case-report PDF | Available locally; synthetic/draft labels on every page; all supported sections and prior revisions |
+| Structured case JSON and simulation evidence | Available |
+| CIOMS-style training PDF | Available; reaction/patient, suspect medicines, other clinical context, and report/follow-up sections in an original PV Info layout |
+| E2B mapping-readiness JSON | Available; source-pinned candidate values, repeatable paths, missing mappings and unexecuted validation checks. No coded conversion or XML |
+| Official CIOMS form | Not implemented; layout/reuse and implementation review still required |
+| E2B(R3) XML | Disabled pending complete field mapping, schema, regional business rules, terminology and representative-example validation |
+| Agency/vendor transmission | Not available |
+
+Neither PDF reproduces the official CIOMS form. Both reflect the current draft; save before export to include the revision in the restorable package. E2B mapping coverage counts candidate source fields, not validated ICSR elements; zero validated elements are claimed. The report keeps all ICH catalog elements visible, including unsupported ones. No XML message is generated or represented as submission-ready. There are no Argus, Veeva or other safety-system connections.
