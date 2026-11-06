@@ -5,7 +5,7 @@
   "description": "Pharmacovigilance and drug regulatory updates from every major regulator, in one place.",
   "type": "module",
   "scripts": {
-    "build": "npm run content:bundle && node scripts/build-user-guide.mjs && node scripts/clinical-import.mjs && node scripts/aggregate.mjs && node scripts/substances.mjs && node scripts/labels.mjs --bootstrap && node scripts/documents.mjs --bootstrap && npm run answers:build && npm run templates:build && npm run notice:build && node scripts/seo.mjs",
+    "build": "npm run content:bundle && node scripts/build-user-guide.mjs && node scripts/clinical-import.mjs && node scripts/aggregate.mjs && node scripts/substances.mjs && node scripts/labels.mjs --bootstrap && node scripts/documents.mjs --bootstrap && npm run answers:build && npm run templates:build && npm run notice:build && node scripts/seo.mjs && node scripts/trim-deploy.mjs",
     "seo": "node scripts/seo.mjs --write",
     "aggregate": "node scripts/aggregate.mjs",
     "research": "node scripts/research.mjs",
