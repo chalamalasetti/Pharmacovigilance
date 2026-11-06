@@ -20,6 +20,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- seo:end -->
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="resources-featured.css">
   <!-- Vercel Web Analytics and Speed Insights (enable both in the Vercel dashboard) -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -46,9 +47,33 @@
       <a href="account.html" class="signin" data-nav="account">Sign in</a>
     </nav>
   </header>
-  <main class="page rs-page" id="main"><p><a class="act" href="pv-roles.html">PV Roles & Processes · My responsibilities →</a></p><p><a class="act" href="impact-briefs.html">Regulatory Impact Briefs →</a></p>
-    <h1>Public Safety Data Resources</h1>
+  <main class="page rs-page" id="main">
+    <nav class="rs-featured" aria-label="Featured workspaces">
+      <a class="rs-tool rs-tool-studio" href="content-studio.html" aria-labelledby="rs-studio-title">
+        <div class="rs-tool-copy">
+          <span class="rs-tool-kicker"><span class="rs-tool-symbol" aria-hidden="true">▤</span> CREATE &amp; DRAFT</span>
+          <strong class="rs-tool-title" id="rs-studio-title">Template Library and Document Studio</strong>
+          <p>Create evidence-linked procedures, work instructions, training and team briefings.</p>
+          <span class="rs-tool-cta">Browse reusable templates <span aria-hidden="true">↗</span></span>
+        </div>
+        <svg class="rs-tool-art" viewBox="0 0 120 130" aria-hidden="true" focusable="false"><rect x="23" y="19" width="76" height="94" rx="10" fill="currentColor" opacity=".10" transform="rotate(9 61 66)"/><rect x="14" y="10" width="76" height="94" rx="10" fill="var(--panel)" stroke="currentColor" stroke-width="2"/><rect x="29" y="27" width="28" height="7" rx="3" fill="currentColor"/><path d="M29 48h45M29 60h45M29 72h28" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".45"/><circle cx="88" cy="99" r="21" fill="currentColor"/><path d="m78 99 7 7 13-15" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="rs-tool rs-tool-sandbox" href="sandbox.html" aria-labelledby="rs-sandbox-title">
+        <div class="rs-tool-copy">
+          <span class="rs-tool-kicker"><span class="rs-tool-symbol" aria-hidden="true">⚗</span> TEST &amp; COMPARE</span>
+          <strong class="rs-tool-title" id="rs-sandbox-title">Synthetic Safety Sandbox</strong>
+          <p>Create fictional cases and compare reporting-rule scenarios locally.</p>
+          <span class="rs-tool-cta">Open sandbox <span aria-hidden="true">↗</span></span>
+        </div>
+        <svg class="rs-tool-art" viewBox="0 0 120 130" aria-hidden="true" focusable="false"><circle cx="62" cy="66" r="51" fill="currentColor" opacity=".08"/><path d="M43 17h34M49 18v35L25 97q-7 15 10 15h51q17 0 10-15L71 53V18" fill="var(--panel)" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="m36 83-9 17q-3 7 6 7h55q9 0 6-7l-9-17Z" fill="currentColor" opacity=".25"/><circle cx="52" cy="91" r="4" fill="currentColor"/><circle cx="71" cy="78" r="5" fill="currentColor" opacity=".5"/><circle cx="61" cy="65" r="3" fill="currentColor" opacity=".4"/><path d="M95 22v14m-7-7h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </a>
+    </nav>
+    <header class="rs-directory-heading">
+      <p class="rs-directory-kicker"><span aria-hidden="true">◈</span> EXPLORE OFFICIAL SOURCES</p>
+      <h1>Public Safety Data Resources</h1>
     <p class="intro">Find publicly accessible safety databases, registers and safety communications, see what each one contains and how you can use it, and open the official resource.</p>
+    </header>
+    <nav class="rs-related" aria-label="Related resources"><a href="pv-roles.html"><span aria-hidden="true">◎</span> PV Roles &amp; Processes</a><a href="impact-briefs.html"><span aria-hidden="true">↗</span> Regulatory Impact Briefs</a></nav>
     <details class="rs-coverage" id="coverage"><summary>What this directory covers</summary><p id="coverage-text"></p></details>
 
     <section class="rs-guide" aria-labelledby="guide-h">
@@ -71,7 +96,7 @@
       <p class="hint">Know a public safety resource that should be here? Tell us; an editor checks every suggestion against the official source before adding it. No sign-in needed.</p>
       <div id="suggest-form"></div>
     </section>
-  <section class="profile"><h2>Template Library and Document Studio</h2><p>Create evidence-linked procedures, work instructions, training and team briefings.</p><a href="content-studio.html">Browse reusable templates →</a></section><section class="profile"><h2>Synthetic Safety Sandbox</h2><p>Create fictional cases and compare reporting-rule scenarios locally.</p><a href="sandbox.html">Open sandbox →</a></section></main>
+  </main>
 
   <footer class="foot">
     Each resource is checked against its official website; the date on each card is when its access and details were last checked. Inclusion here does not mean PV Info collects from a resource or endorses it. See also the <a href="coverage.html">sources PV Info collects updates from</a>.
