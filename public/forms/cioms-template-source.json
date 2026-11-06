@@ -1,0 +1,7 @@
+{
+  "title": "CIOMS Form — Suspect Adverse Reaction Report",
+  "origin": "User-supplied cioms-form1.pdf in this implementation request",
+  "officialReference": "https://cioms.ch/wp-content/uploads/2017/05/cioms-form1.pdf",
+  "sha256": "e6f6bad7ad09225e30d8b0e4dec1f033732260db0464439ff94d0e17e8a805dc",
+  "use": "Original artwork retained. Synthetic case values are filled into existing fields; training labels and continuation pages are added. No agency approval is claimed."
+}

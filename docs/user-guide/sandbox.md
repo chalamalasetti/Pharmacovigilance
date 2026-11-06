@@ -40,16 +40,19 @@ Results distinguish not triggered, indeterminate, blocked and triggered; trigger
 
 Local revisions are not a tamper-proof audit trail and have no authenticated reviewer attribution. Imported files are not evidence of regulatory approval.
 
-## Output status
+## PDF and XML exports
 
-| Output | This release |
-| --- | --- |
-| Original PV Info case-report PDF | Available locally; synthetic/draft labels on every page; all supported sections and prior revisions |
-| Structured case JSON and simulation evidence | Available |
-| CIOMS-style training PDF | Available; reaction/patient, suspect medicines, other clinical context, and report/follow-up sections in an original PV Info layout |
-| E2B mapping-readiness JSON | Available; source-pinned candidate values, repeatable paths, missing mappings and unexecuted validation checks. No coded conversion or XML |
-| Official CIOMS form | Not implemented; layout/reuse and implementation review still required |
-| E2B(R3) XML | Disabled pending complete field mapping, schema, regional business rules, terminology and representative-example validation |
-| Agency/vendor transmission | Not available |
+- **PDF print:** original PV Info report, labeled synthetic/draft, including all supported sections and prior revisions.
+- **CIOMS training form:** asks you to choose the supported CIOMS PDF from your device, then fills that form without redrawing its boxes, numbering or scanned artwork. Identity is synthetic and date of birth is blank. Zero ages are retained; non-year ages stay in the description/continuation instead of being mislabeled as years. Long content continues on additional pages, which also preserve the complete supported case record. Unknown and mixed product responses do not silently become yes/no check marks. The template stays in browser memory and is never uploaded or published with the app. Closing the sandbox clears it. This editable training PDF is not an agency submission.
+- **E2B mapping-readiness JSON:** source-pinned candidate fields and gaps. This review does not execute XSD validation.
+- **Validate and download E2B training XML:** runs explicit training-profile checks, serializes a single-case ICH batch, verifies the pinned schema bundle checksum, and executes all required ICH XSD dependencies locally in WebAssembly. XML download is blocked if any check fails or the validator is unavailable. No case data goes to a server. The successful download is a ZIP containing the XML, validation report, exact current form inputs/history, the dependency XSD files for offline revalidation and a read-me. XML and input checksums bind the report to the downloaded data.
 
-Neither PDF reproduces the official CIOMS form. Both reflect the current draft; save before export to include the revision in the restorable package. E2B mapping coverage counts candidate source fields, not validated ICSR elements; zero validated elements are claimed. The report keeps all ICH catalog elements visible, including unsupported ones. No XML message is generated or represented as submission-ready. There are no Argus, Veeva or other safety-system connections.
+For XML, enter fictional sender and receiver identifiers, a worldwide case reference, a clinical narrative, message creation UTC, and an eight-digit user-supplied MedDRA code plus its version for each event. The message creation time must not precede latest receipt. These code fields are checked for format only: the app does not contain or validate membership in a licensed MedDRA dictionary.
+
+The export profile is **pvinfo-ich-r3-training/1**. It supports batch/message test headers; case identity and receipts; age/gestation/sex/weight/height; event terms/codes/dates/outcomes/seriousness; product names/ingredients/roles; regimen dates, route text and selected dose units; product–event causality references; and narratives/comments. Stable event/product UUIDs preserve associations across follow-ups. The XML uses test processing codes and a synthetic label. Prior versions stay in the companion case JSON, not in the ICSR itself.
+
+All current sandbox fields also appear as explicitly labeled supplemental JSON text within H.1. This preserves additional context without pretending it is a structured E2B mapping. In particular, full parent/history/test/literature and expectedness mappings, complete study details, regional elements, and licensed terminology validation remain outside this profile. Negative or unknown seriousness criteria use ICH NI in the true-or-NI fields; the original tri-state values remain in the supplemental context. Unsupported dose units remain text. The report lists these assumptions.
+
+**Validation scope:** passing ICH XSD and the listed PV Info training checks does not establish complete ICH business-rule conformance, FDA/EMA regional validity, clinical accuracy, dictionary validity or agency acceptance. Those checks are recorded as not executed. No live transmission or vendor connection is available.
+
+PDF and XML exports use a snapshot of the current form, including unsaved changes, and identify it as current form/draft. Save first to capture the revision in the session. Saved case-package downloads continue to use saved revisions.
