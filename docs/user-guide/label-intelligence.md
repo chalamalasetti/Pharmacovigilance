@@ -111,3 +111,14 @@ Open **Label Intelligence → Evidence Data Repository** for the shared bulk-dat
 Download and decompress `repository.sqlite.gz` for the normalized database and full-text safety-section search. CSV and JSONL downloads provide the same source-linked tables for other analysis tools. The linked data dictionary includes SQL examples and date semantics. Product counts overlap between sources and must not be presented as unique drugs. Drug withdrawal, cancellation, discontinued status, marketing end and SPL effective dates are distinct. Official first term-addition dates remain unknown.
 
 Bulk collection runs weekly, independently of app deployment, with immutable downloadable releases and an atomic manifest. A failed core collection leaves the last published snapshot available. Additional-source failures and sources not yet connected remain visible. This is a large configured-source dataset, not worldwide completeness or a licensed terminology dictionary.
+
+
+## Ask when a safety phrase first appeared
+
+Open the bottom-right **Ask PV Info** chat and ask: “When was [safety phrase] first added to [product]’s US label?” Select the market, product/application and exact DailyMed label family. The chat searches the published product repository, retrieves the available history index and reads historical narratives oldest to newest until it finds a phrase match.
+
+The answer shows the earliest retrieved matching version, its effective and publication dates, the preceding retrieved wording where available, references, fingerprints and gaps. The strongest supported result is an observed transition within the selected available label-family history. An SPL date is not an FDA approval date or proof of the product’s first-ever addition. Application-matched FDA approved-change captures appear separately and require review of the same wording and family.
+
+Searches check up to 40 new versions per pass. Use **Continue investigation** for another batch, **Retry missing versions** for failures, or **Stop investigation** / **Clear conversation** to cancel. A session supports 200 versions or 30 MB of retrieved text. Download the answer evidence before closing the tab; it includes the retrieved text and scope. The phrase field lets you investigate another literal phrase for the same family.
+
+Historical retrieval currently covers US DailyMed families. EU and Canadian product approval metadata can be explored, but their historical-label connectors are not yet connected. Literal matches include negated mentions and omit images; they do not interpret clinical significance or run a MedDRA/SMQ algorithm. Qualified human review remains mandatory.

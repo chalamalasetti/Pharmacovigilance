@@ -261,7 +261,7 @@ button.primary, .profile button.primary { background: var(--brand); border-color
 .brief-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
 .brief-head .intro { margin: 0; }
 .scope { font-size: 13px; }
-.brief-controls { display: flex; gap: 10px; align-items: center; }
+.brief-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; max-width: 100%; }
 .inline { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
 .inline select { width: auto; }
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 24px; }
@@ -865,3 +865,7 @@ input[type=search]:focus-visible,select:focus-visible{outline:3px solid color-mi
 .menu-search-label{display:grid;gap:8px;margin:20px 0;font-size:13px;font-weight:650}.menu-search-label input{max-width:520px;width:100%;box-sizing:border-box;border:1px solid var(--line);padding:12px;border-radius:12px;background:var(--panel);color:var(--ink)}.menu-item-row[hidden]{display:none!important}.brief-tile-icon{display:grid!important;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--brand-soft);color:var(--brand);font-size:20px!important;margin-bottom:9px}.tiles .tile{border-radius:17px;border:1px solid var(--line);background:var(--panel);box-shadow:0 3px 12px #12394006}
 
 .chat-panel.chat-expanded{width:min(820px,calc(100vw - 40px));height:min(850px,calc(100dvh - 90px))}.chat-expand,.chat-clear{border:0;background:transparent;color:inherit;font-size:21px;cursor:pointer;padding:5px;border-radius:7px}.chat-head>div{flex:1;min-width:0}.chat-head>div>span{line-height:1.3}.chat-gap{padding:10px;border-left:3px solid #c48a34;background:var(--brand-soft);border-radius:6px;font-size:12px}.chat-log a{overflow-wrap:anywhere}.chat-log .chat-chip{white-space:normal;text-align:left}.chat-expanded .chat-log{padding:18px}.chat-expanded .chat-msg{max-width:94%}@media(max-width:600px){.chat-panel.chat-expanded{inset:0;width:auto;height:auto}.chat-head{gap:6px}.chat-head>div>span{font-size:10px}.chat-expand,.chat-clear{padding:4px}}
+
+.chat-research-term{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.chat-research-term input{width:160px}.chat-log details{margin-top:10px;border:1px solid var(--line);padding:9px;border-radius:10px}.chat-log summary{cursor:pointer;font-weight:600}.chat-log .chat-card p{overflow-wrap:anywhere}.chat-log details p{white-space:pre-wrap;overflow-wrap:anywhere}
+
+.chat-msg{min-width:0;overflow-wrap:anywhere}
