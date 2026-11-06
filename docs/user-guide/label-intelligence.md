@@ -55,3 +55,15 @@ Source failures retain prior captured entries. Collection diagnostics are visibl
 Use [Safety Topic Explorer](safety-topics.md) to discover label evidence alongside updates and research, or [Substance Explorer](substances.md) to investigate source-listed products and company roles. These public views do not change your private portfolio.
 
 A normal same-account session refresh should retain your assessment draft and source-review selection. An actual sign-out or account change clears the private panel. If an older cached page incorrectly asks you to sign in again, refresh once before requesting another email link.
+
+## Product Evidence Answers
+
+Open **Explore → Product Evidence Answers**. Ask a question such as “Symbicort — when was it approved and when was anaphylaxis added to the label?” or follow the suggestion from Ask PV Info. Choose the exact product, market and application; use the optional exact brand/ingredient field to narrow ambiguous questions. The page uses the existing public registry, company associations, label captures and updates, with no new live regulatory search or AI medical interpretation.
+
+The approval finding shows a registry application-level date with its source and locator. It does not prove earliest worldwide, indication-specific, presentation-specific or original brand approval. Label findings require the same application and market. A captured approved-change entry mentioning the safety term is distinct from an EMA recommendation and does not establish the first label-addition date. First addition stays unresolved because the current catalog does not provide a complete approval-label history. An absent match does not prove the term is absent from the label.
+
+Check source dates and missing-dataset warnings, open original citations and download the answer evidence JSON. It includes the selected scope, matching records, hashes where available, retrieval coverage and limitations. Questions and answers are not saved to an account. Use public product questions only and obtain qualified human review.
+
+### Ask in the existing chat
+
+The bottom-right **Ask PV Info** chat is the main entry point for product approval and label-history questions. Ask naturally, then choose a product/application button within the conversation. Type US or EU to narrow market candidates, or ask “What about the EU?” after a selected product. Answers stay in chat, show citations and snapshot dates, and distinguish missing first-addition evidence. “Show sources” rechecks the current product context. Unknown follow-up scope prompts clarification instead of silently changing markets. Ordinary PV update queries retain their existing search. The detailed workspace is optional for a wider evidence view and JSON download. No model conversation or account-persisted chat history is added.

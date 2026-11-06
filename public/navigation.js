@@ -28,8 +28,9 @@ export const PAGES = {
  archive:{label:'Archive',href:'archive.html',hint:'Search previously collected updates',icon:'◷'},
  'user-guide':{label:'User Guide',href:'user-guide.html',hint:'Step-by-step help for every module',icon:'▤'},
  about:{label:'About PV Info',href:'about.html',hint:'Coverage, sources and how it works',icon:'ⓘ'},
+ 'product-answers':{label:'Product Evidence Answers',href:'product-answers.html',hint:'Ask about approval dates, label mentions and supporting evidence',icon:'✦'},
 };
-const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','leadership','config-workbench','company-inbox','action-center','team','account-settings']],['explore','Explore',['research','companies','substances','labels','safety-topics','globe','events']],['resources','Resources',['content-studio','sandbox','rule-templates','e2b-studio','resources','documents','changes','requirements','agencies','archive','user-guide','about']]];
+const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','leadership','config-workbench','company-inbox','action-center','team','account-settings']],['explore','Explore',['product-answers','research','companies','substances','labels','safety-topics','globe','events']],['resources','Resources',['content-studio','sandbox','rule-templates','e2b-studio','resources','documents','changes','requirements','agencies','archive','user-guide','about']]];
 export const defaultNavigation=()=>({version:1,groups:GROUPS.map(([id,label,items])=>({id,label,items:items.map(id=>({id,label:PAGES[id].label,hidden:false}))}))});
 export const cleanLabel=(value,fallback)=>typeof value==='string'&&value.trim()?value.trim().slice(0,32):fallback;
 export function normalizeNavigation(raw,{navOrder=[],hiddenNav=[]}={}) {
