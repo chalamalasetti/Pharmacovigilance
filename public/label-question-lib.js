@@ -4,7 +4,7 @@ export const REPOSITORY_MANIFEST='https://raw.githubusercontent.com/chalamalaset
 export const appNumber=value=>/\b(NDA|ANDA|BLA)\s*(\d{6})\b/i.exec(String(value||''))?.slice(1).join('').toUpperCase()||null;
 export function parseLabelQuestion(question){
  const q=String(question).trim();
- const markets=[[/\b(us|usa|united states|fda)\b/i,'US'],[/\b(eu|european union|ema)\b/i,'EU'],[/\b(canada|canadian|health canada)\b/i,'CA']].filter(([re])=>re.test(q)).map(([,m])=>m);if(/\bCA\b/.test(q)&&!markets.includes('CA'))markets.push('CA');const market=markets.length===1?markets[0]:null;
+ const markets=[[/\b(us|usa|united states|fda)\b/i,'US'],[/\b(eu|european union|ema)\b/i,'EU'],[/\b(canada|canadian|health canada)\b/i,'CA']].filter(([re])=>re.test(q)).map(([,m])=>m);if((/\bCA\b/.test(q)||/^ca[?. ]*$/i.test(q))&&!markets.includes('CA'))markets.push('CA');const market=markets.length===1?markets[0]:null;
  const history=/\blabel(?:s|ling|ing)?\b/i.test(q)&&/\b(first|added|introduced|included|changed|change|history|when|date|since)\b/i.test(q);
  const approval=/\b(approved|approval|authorised|authorized|authorisation|authorization)\b/i.test(q)&&/\b(when|date)\b/i.test(q);
  const tail=q.split(/when\s+(?:was|were)\s+/i).at(-1);
