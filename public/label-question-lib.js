@@ -2,6 +2,12 @@ import {norm} from './product-answers-lib.js';
 import {termMatches,compareVersions} from './label-history-lib.js';
 export const REPOSITORY_MANIFEST='https://raw.githubusercontent.com/chalamalasetti/Pharmacovigilance/evidence-data-cache/manifest.json';
 export const appNumber=value=>/\b(NDA|ANDA|BLA)\s*(\d{6})\b/i.exec(String(value||''))?.slice(1).join('').toUpperCase()||null;
+export function phraseExcerpt(text,term,limit=1800){
+ const words=norm(term).split(' ').filter(Boolean),window=[];let position=-1;
+ if(words.length)for(const token of text.matchAll(/[\p{L}\p{N}][\p{L}\p{N}\p{M}]*/gu)){window.push({word:norm(token[0]),index:token.index});if(window.length>words.length)window.shift();if(window.length===words.length&&window.every((item,i)=>item.word===words[i])){position=window[0].index;break;}}
+ const start=position>=0?Math.max(0,position-350):0,end=Math.min(text.length,start+limit);
+ return (start?'…':'')+text.slice(start,end)+(end<text.length?'…':'');
+}
 export function parseLabelQuestion(question){
  const q=String(question).trim();
  const markets=[[/\b(us|usa|united states|fda)\b/i,'US'],[/\b(eu|european union|ema)\b/i,'EU'],[/\b(canada|canadian|health canada)\b/i,'CA']].filter(([re])=>re.test(q)).map(([,m])=>m);if((/\bCA\b/.test(q)||/^ca[?. ]*$/i.test(q))&&!markets.includes('CA'))markets.push('CA');const market=markets.length===1?markets[0]:null;

@@ -869,3 +869,4 @@ input[type=search]:focus-visible,select:focus-visible{outline:3px solid color-mi
 .chat-research-term{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.chat-research-term input{width:160px}.chat-log details{margin-top:10px;border:1px solid var(--line);padding:9px;border-radius:10px}.chat-log summary{cursor:pointer;font-weight:600}.chat-log .chat-card p{overflow-wrap:anywhere}.chat-log details p{white-space:pre-wrap;overflow-wrap:anywhere}
 
 .chat-msg{min-width:0;overflow-wrap:anywhere}
+.chat-research-passage{max-height:260px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;padding:10px;background:var(--brand-soft);border-radius:8px}

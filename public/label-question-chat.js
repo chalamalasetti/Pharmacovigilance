@@ -1,6 +1,6 @@
 import {norm,safeURL} from './product-answers-lib.js';
 import {displayDate,termMatches} from './label-history-lib.js';
-import {parseLabelQuestion,repositoryCandidates,createRepositoryReader,assessLabelHistory,appNumber} from './label-question-lib.js';
+import {parseLabelQuestion,repositoryCandidates,createRepositoryReader,assessLabelHistory,appNumber,phraseExcerpt} from './label-question-lib.js';
 import {safetyNotice} from './safety-notice.js';
 
 export function createLabelQuestionChat({el,bubble,json,readRepository=createRepositoryReader(),fetcher=fetch}){
@@ -68,8 +68,8 @@ export function createLabelQuestionChat({el,bubble,json,readRepository=createRep
   const result=assessment(s),nodes=[strong(s.product.brand+' · '+s.term),p(result.status),p('Scope: US · '+s.family.setid+' · '+(s.product.application||'application not established'))];
   for(const [version,label]of [[result.before,'Earlier version'],[result.first,'Earliest retrieved matching version']])if(version)nodes.push(el('article',{className:'chat-card'},[strong(label+' · v'+version.version),p('SPL effective date: '+displayDate(version.effectiveTime)),p('DailyMed publication: '+(s.history.entries.find(e=>e.version===version.version)?.publishedDate||'not supplied')),link(version.sourceURL,'Original historical SPL ZIP ↗'),p('SHA-256: '+version.hash)]));
   if(result.before&&result.first)nodes.push(p('Observed change lies between these retrieved versions. These effective/publication dates do not establish the regulatory approval date or a product-wide first addition.'));
-  for(const section of result.diff.slice(0,4)){const sides=[];for(const [side,title]of [['before','Earlier wording'],['after','Later wording']])sides.push(strong(title),...section[side].filter(x=>x.changed).slice(0,4).map(x=>p(x.text.slice(0,2400)+(x.text.length>2400?'…':''))));nodes.push(el('details',{},[el('summary',{textContent:section.title+' · observed wording changes'}),...sides]));}
-  if(!result.before)for(const section of result.matchingSections.slice(0,3))nodes.push(el('article',{className:'chat-card'},[strong(section.title),p(section.text.slice(0,2400)+(section.text.length>2400?'…':''))]));
+  for(const section of result.diff.slice(0,4)){const sides=[];for(const [side,title]of [['before','Earlier wording'],['after','Later wording']]){const matches=section[side].filter(x=>termMatches(x.text,s.term));sides.push(strong(title),...(matches.length?matches.slice(0,4).map(x=>p(phraseExcerpt(x.text,s.term))):[p('No literal phrase match in this version’s extracted section body. The section title is also searched.')]),el('details',{},[el('summary',{textContent:'Full '+title.toLowerCase()+' · '+section.title}),el('pre',{className:'chat-research-passage',textContent:section[side].map(x=>x.text).join('\n')})]));}nodes.push(el('details',{},[el('summary',{textContent:section.title+' · observed wording changes'}),...sides]));}
+  if(!result.before)for(const section of result.matchingSections.slice(0,3))nodes.push(el('details',{},[el('summary',{textContent:section.title+' · matching wording'}),p(phraseExcerpt(section.text,s.term))]));
   const captured=(s.changes??[]).filter(r=>r.market==='US'&&r.kind==='approved_change'&&s.product.application&&appNumber(r.authId)===s.product.application&&(r.sections??[]).some(sec=>termMatches(sec.title+' '+(sec.paragraphs??[]).map(x=>x.text).join(' '),s.term)));
   nodes.push(strong('Regulatory change approval evidence'));
   if(s.changes===null)nodes.push(p('Captured regulatory-change records could not be loaded; this approval-date check is incomplete.'));
