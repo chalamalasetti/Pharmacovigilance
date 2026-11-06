@@ -1,4 +1,11 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {execFileSync} from 'node:child_process';
+import {downloadSource} from '../scripts/evidence/prepare.mjs';
+test('official source retrieval identifies the client and retries transient failures with a bounded limit',async()=>{
+ let calls=0;const waits=[];
+ const result=await downloadSource('https://www.fda.gov/media/76860/download?attachment=',{pause:async ms=>waits.push(ms),fetcher:async(url,options)=>{calls++;assert.match(options.headers['user-agent'],/^PVInfo\//);return calls===1?new Response('unavailable',{status:404}):new Response('source bytes');}});
+ assert.equal(result.toString(),'source bytes');assert.equal(calls,2);assert.deepEqual(waits,[2000]);
+ calls=0;await assert.rejects(downloadSource('https://www.fda.gov/media/76860/download?attachment=',{pause:async()=>{},fetcher:async()=>{calls++;return new Response('unavailable',{status:503});}}),/HTTP 503/);assert.equal(calls,3);
+});
 test('repository preserves approval scope, nonapproval listings, status dates, identity and text search',()=>{
  const script=String.raw`
 import sys,tempfile,pathlib,sqlite3,json,io
