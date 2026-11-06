@@ -19,3 +19,5 @@ companies/substance-products.json
 public/data/substances/
 
 public/data/labels.json
+
+public/vendor/content-export.js
