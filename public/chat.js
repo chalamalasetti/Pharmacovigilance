@@ -119,7 +119,7 @@ function open(state = true) {
     loadIndex();
     if (!log.childNodes.length) {
       bubble("bot", [el("p", { textContent: "Hi 👋 Ask about a product’s approval, a safety term in its label, or PV updates. I’ll show the captured evidence and tell you what it cannot establish." })]);
-      showChips(["Symbicort — when was it approved and when was anaphylaxis added to the label?", "🚨 Latest safety alerts", "🇺🇸 FDA this week", "🇪🇺 EMA PRAC updates", "🇮🇳 What's new in India?", "📊 Summary"]);
+      showChips(["🚨 Latest safety alerts", "🇺🇸 FDA this week", "🇪🇺 EMA PRAC updates", "🇮🇳 What's new in India?", "📊 Summary"]);
     }
     if (matchMedia("(pointer: fine)").matches) input.focus();
   } else fab.focus();
