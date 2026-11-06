@@ -51,6 +51,7 @@ jobs:
           trap 'kill "$server_pid"' EXIT
           npm run content:bundle
           node test/browser/content-studio.smoke.cjs
+          node test/browser/sandbox.smoke.cjs
           node test/browser/admin-social.smoke.cjs
           node test/browser/pv-roles.smoke.cjs
           node test/browser/impact-briefs.smoke.cjs
