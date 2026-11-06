@@ -25,6 +25,10 @@ jobs:
         with:
           python-version: '3.12'
       - run: npm ci --ignore-scripts
+      - name: Reserve disk for bulk label data on this ephemeral runner
+        run: |
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet
+          df -h /tmp
       - name: Build complete source-linked repository
         run: python scripts/evidence/build.py --out output/evidence
       - name: Publish immutable downloadable snapshot

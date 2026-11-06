@@ -141,12 +141,14 @@ CREATE VIEW product_label_links AS SELECT DISTINCT p.entity_id product_id,l.enti
   products=rows('drug');ing={};comp={};statuses={};forms={}
   for r in rows('ingred'):ing.setdefault(r[0],[]).append(r[2])
   for r in rows('comp'):
-   if len(r)>4 and 'DIN OWNER' in r[4].upper():comp.setdefault(r[0],[]).append(r[3])
+   if len(r)>4 and r[4].upper().replace('_',' ')=='DIN OWNER':comp.setdefault(r[0],[]).append(r[3])
   for r in rows('status'):statuses.setdefault(r[0],[]).append(r)
   for r in rows('form'):forms.setdefault(r[0],[]).append(r[2])
   for r in products:
    key=r[0];current=[s[2] for s in statuses.get(key,[]) if s[1].upper()=='Y'];url='https://health-products.canada.ca/dpd-bdpp/info?lang=eng&code='+key
    pid=self.product(key,'CA',r[4],'; '.join(sorted(set(comp.get(key,[])))),'DIN owner', '; '.join(current),r[2],ing.get(key,[]),'; '.join(forms.get(key,[])),url=url,locator='DPD drug code '+key+' / DIN '+r[3],raw=r);self.ident('product',pid,'CA','din',[r[3]])
+   approved=[iso(s[3]) for s in statuses.get(key,[]) if s[2]=='APPROVED'];approved=[d for d in approved if d]
+   if approved:self.db.execute('UPDATE products SET approval_date=?,approval_date_meaning=? WHERE id=?',(min(approved),'Earliest captured DPD approved-status date; original authorisation not established',pid))
    for i,s in enumerate(statuses.get(key,[])):
     status=s[2];kind='cancellation_status' if 'CANCELLED' in status else 'approval_status' if status=='APPROVED' else 'marketing_status'
     self.event(key+':'+str(i)+':'+status+':'+s[3],'CA',pid,kind,iso(s[3]),s[3],status,'Current flag '+s[1]+'; status history, not inferred safety withdrawal',url,s)
@@ -226,6 +228,7 @@ def main():
        n+=1
     if n!=int(part['records']):raise ValueError(f'Partition count mismatch: {n} vs {part["records"]}')
     repo.sourcefile(url,file,int(part['records']),n,spec['export_date']);total+=n;print(source,f'partition {i+1}: {n} records verified',flush=True)
+    if endpoint=='label' and not args.label_parts:file.unlink()
    if len(parts)==len(spec['partitions']) and total!=spec['total_records']:raise ValueError('Source total mismatch')
    if endpoint=='label':report['completeLabelSnapshot']=len(parts)==len(spec['partitions'])
    return total
