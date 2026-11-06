@@ -1,11 +1,13 @@
+import {createProductChat} from './product-chat.js';
 import {fetchData} from './data-fetch.js';
 // "Ask PV Info": a chat bubble in the bottom-right corner. Readers ask about a
 // country, agency, topic or drug and get the matching updates back, each linked
 // to its regulator notice or news report. Answers come from chat-lib.js over the
-// site's own data, so it is free to run and never makes things up.
+// site's own data, using explicit evidence and coverage limits.
 
 import { buildIndex, reply } from "./chat-lib.js";
 
+let productChat;
 const TEASED = "pv-chat-teased";
 let index = null;
 let loading = null;
@@ -35,20 +37,20 @@ fab.setAttribute("aria-controls", "chatPanel");
 
 const log = el("div", { className: "chat-log", role: "log", ariaLive: "polite" });
 const chips = el("div", { className: "chat-chips" });
-const input = el("input", { type: "text", className: "chat-input", placeholder: "Ask about a country, agency, topic or drug…", ariaLabel: "Ask about PV updates", enterKeyHint: "send", maxLength: 140, autocomplete: "off" });
+const input = el("input", { type: "text", className: "chat-input", placeholder: "Ask about a product, label history or PV updates…", ariaLabel: "Ask about PV updates", enterKeyHint: "send", maxLength: 500, autocomplete: "off" });
 const send = el("button", { type: "submit", className: "chat-send", ariaLabel: "Send", textContent: "➤" });
 const form = el("form", { className: "chat-form" }, [input, send]);
 const close = el("button", { type: "button", className: "chat-close", ariaLabel: "Close chat", textContent: "×" });
 const panel = el("section", { className: "chat-panel", id: "chatPanel", ariaLabel: "Ask PV Info", hidden: true }, [
   el("header", { className: "chat-head" }, [
     el("span", { className: "chat-avatar", ariaHidden: "true", textContent: "🛡️" }),
-    el("div", {}, [el("b", { textContent: "Ask PV Info" }), el("span", { textContent: "regulatory and safety updates · with sources" })]),
+    el("div", {}, [el("b", { textContent: "Ask PV Info" }), el("span", { textContent: "products, labels and PV updates · with sources" })]),
     close,
   ]),
   log,
   chips,
   form,
-  el("p", { className: "chat-foot", textContent: "Searches the updates on this site and links every answer to its source. Not an AI, so it won't guess. Always check the official notice." }),
+  el("p", { className: "chat-foot", textContent: "Uses captured product and safety evidence. Coverage may be incomplete; dates and gaps stay explicit. Human review required." }),
 ]);
 
 function bubble(who, children) {
@@ -79,10 +81,7 @@ function showChips(list) {
 }
 
 async function respond(q) {
-  if(/(when|date|history|added).*(approv|authori[sz]|label)|(approv|authori[sz]|label).*(when|date|history|added)/i.test(q)){
-    const link=el('a',{href:'product-answers.html',textContent:'Open Product Evidence Answers →'});link.onclick=()=>{try{sessionStorage.setItem('pv-product-question',q);}catch{}};
-    bubble('bot',[el('p',{textContent:'Check product/application dates and captured label evidence. Confirm the market and exact product; first label-addition dates may not be established.'}),link]);return;
-  }
+  if(await productChat(q))return;
 
   const typing = bubble("bot typing", [el("span"), el("span"), el("span")]);
   typing.ariaLabel = "Typing";
@@ -119,8 +118,8 @@ function open(state = true) {
   if (state) {
     loadIndex();
     if (!log.childNodes.length) {
-      bubble("bot", [el("p", { textContent: "Hi 👋 I know every safety alert, guideline and regulatory update on this site. Ask me about a country, agency, topic or drug, or tap one of these:" })]);
-      showChips(["🚨 Latest safety alerts", "🇺🇸 FDA this week", "🇪🇺 EMA PRAC updates", "🇮🇳 What's new in India?", "📊 Summary"]);
+      bubble("bot", [el("p", { textContent: "Hi 👋 Ask about a product’s approval, a safety term in its label, or PV updates. I’ll show the captured evidence and tell you what it cannot establish." })]);
+      showChips(["Symbicort — when was it approved and when was anaphylaxis added to the label?", "🚨 Latest safety alerts", "🇺🇸 FDA this week", "🇪🇺 EMA PRAC updates", "🇮🇳 What's new in India?", "📊 Summary"]);
     }
     if (matchMedia("(pointer: fine)").matches) input.focus();
   } else fab.focus();
@@ -137,6 +136,7 @@ form.onsubmit = (e) => {
   input.value = "";
 };
 
+productChat=createProductChat({el,bubble,json});
 document.body.append(panel, fab);
 
 // One gentle hint, the first time only.

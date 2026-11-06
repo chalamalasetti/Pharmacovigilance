@@ -1,6 +1,6 @@
 create or replace function public.validate_site_navigation(v jsonb) returns void
 language plpgsql immutable set search_path='' as $$
-declare g jsonb; i jsonb; gids text[]:='{}'; pages text[]:='{}'; known text[]:=array['product-answers','index','briefing','company-briefing','config-workbench','leadership','company-inbox','account-settings','changes','action-center','team','events','research','safety-topics','labels','substances','companies','globe','e2b-studio','content-studio','rule-templates','sandbox','resources','documents','requirements','agencies','archive','user-guide','about'];
+declare g jsonb; i jsonb; gids text[]:='{}'; pages text[]:='{}'; known text[]:=array['index','briefing','company-briefing','config-workbench','leadership','company-inbox','account-settings','changes','action-center','team','events','research','safety-topics','labels','substances','companies','globe','e2b-studio','content-studio','rule-templates','sandbox','resources','documents','requirements','agencies','archive','user-guide','about','product-answers'];
 begin
  if v is null or jsonb_typeof(v) is distinct from 'object' or v->'version' is distinct from '1'::jsonb or jsonb_typeof(v->'groups') is distinct from 'array' then raise exception 'Invalid navigation layout';end if;
  if jsonb_array_length(v->'groups') not between 1 and 12 then raise exception 'Use between 1 and 12 menu groups';end if;

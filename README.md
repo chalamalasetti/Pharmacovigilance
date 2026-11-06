@@ -486,3 +486,5 @@ Run `node scripts/build-navigation-sql.mjs` after changing `public/navigation.js
 ### Product Evidence Answers
 
 `npm run answers:build` publishes a public product/application search snapshot from the existing registry and company manifest. Product Evidence Answers resolves candidate identities in a question, asks for explicit market/application confirmation, and presents registry dates, exact-application label mentions and related updates with source links and coverage dates. It does not reconstruct full label histories or infer first-addition dates from mentions, recommendations or marked changes. Questions run in the browser; only public data files are fetched. The Ask PV Info bubble routes approval/label questions into this workspace. No model/API account or medical interpretation is added.
+
+Product questions are answered inside the existing bottom-right chat, with in-conversation application/market selection, bounded context follow-ups and citations. The detailed workspace is optional rather than a required redirect.
