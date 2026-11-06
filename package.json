@@ -22,7 +22,7 @@
     "guide": "node scripts/build-user-guide.mjs",
     "substances": "node scripts/substances.mjs",
     "labels": "node scripts/labels.mjs",
-    "content:bundle": "node scripts/build-content-export.mjs"
+    "content:bundle": "node scripts/build-content-export.mjs && node scripts/build-e2b-runtime.mjs"
   },
   "engines": {
     "node": ">=22.13.0"
@@ -34,9 +34,11 @@
     "esbuild": "0.25.12",
     "fast-xml-parser": "5.11.2",
     "jose": "6.2.14",
+    "jszip": "3.10.2",
     "linkedom": "0.18.14",
     "pdf-lib": "1.17.1",
     "pdfjs-dist": "6.4.299",
-    "pptxgenjs": "4.0.1"
+    "pptxgenjs": "4.0.1",
+    "xmllint-wasm": "5.3.0"
   }
 }

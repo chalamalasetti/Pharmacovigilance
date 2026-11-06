@@ -15,10 +15,10 @@ This release is a local training case model, not a full ICSR or regulated safety
 | Local case packages | Versioned JSON import/export | Roundtrip, duplicate ID and missing/altered history structural tests |
 | Rule simulation | Explicit case-level conditions; UTC elapsed days | Existing deadline tests plus clock-basis and blocking checks |
 | Original PDF | PV Info layout, every page labeled synthetic, supported sections and saved history | PDF generated and visually inspected; browser download signature check |
-| CIOMS-style training PDF | Available in original four-part PV Info layout | Not the official CIOMS form; no acceptance claim |
+| CIOMS training PDF | Supplied CIOMS form filled directly, editable fields and continuation pages | Canonical field/checkbox tests and rendered visual review; synthetic only |
 | E2B mapping-readiness JSON | Source-pinned review candidates and unsupported catalog elements | No XML or coded conversion; zero validated fields claimed |
-| Official CIOMS form | Not implemented | Establish supported layout/reuse basis and field-level output tests |
-| E2B(R3) XML | Disabled | Complete mapping, ICH XSD and regional business-rule checks, terminology versions, explicit null flavors and example-based validation required |
+| ICH E2B(R3) training XML | Available only after local training checks and official ICH 2.5 XSD validation pass | Positive initial/multi-product/event/follow-up cases; negative structure/namespace checks; hash pin and failure gating; browser-local WebAssembly |
+| Regional/dictionary/agency validation | Not implemented | No complete ICH business-rule, FDA/EMA acceptance or licensed dictionary claim |
 | Audit trail / submission | Not implemented | Local files can be edited; no authenticated attribution, gateway or regulated audit claim |
 
 The training model intentionally omits identity/contact fields. Short labels do not detect all personal data. Only fictional scenarios are permitted.
@@ -30,14 +30,12 @@ The training model intentionally omits identity/contact fields. Short labels do 
 - ICH specification and related files: https://admin.ich.org/node/348
 - CIOMS terms: https://cioms.ch/terms-and-conditions/
 
-Reference instances locate fields with data-element-number placeholders; they must not be copied as real coded output. Schema validity alone does not establish regional business-rule validity or agency acceptance. No schema artifacts are bundled in this increment.
+Reference instances locate fields with data-element-number placeholders; they must not be copied as real coded output. Schema validity alone does not establish regional business-rule validity or agency acceptance. The compressed bundle contains all 167 XSD files from the checksum-pinned official ICH 2.5 archive, retaining their original notices. The browser checks its checksum before use. The CIOMS template is selected locally by the user and is never uploaded or included in the repository; its reference/hash metadata identifies the supported layout.
 
-## Next output increment, after review
+## Implemented XML scope and remaining work
 
-1. Establish an explicit initial regional/profile scope and field-by-field coverage manifest, including unsupported mandatory fields.
-2. Extend the current training fields to cover the selected profile, including remaining required elements, terminology and repeatable parent context.
-3. Implement a profile-specific serializer against pinned official schema versions and terms. Keep unsupported profiles unavailable.
-4. Validate representative synthetic XML against the full schema set and separately test code systems, null flavors, business rules, dates, envelopes, escaping and repeatables.
-5. Add download only when all profile gates pass; retain a machine-readable validation report and training label. No live transmission in this scope.
+The profile `pvinfo-ich-r3-training/1` serializes a single-case ICH batch and validates its actual XML against `multicacheschemas/MCCI_IN200100UV01.xsd` with all dependency XSDs in the local bundle. Validation reports pin the archive/bundle/XML hashes, profile and validator versions, errors, mapped sections, and unexecuted checks. Downloads contain XML, report and exact case inputs in one ZIP. Invalid/missing data, bad schema hashes and validator failures block XML download.
 
-Human review of this staged release precedes merge. No full ICSR, CIOMS compatibility, vendor compatibility, Part 11 compliance or submission-ready claim is made.
+This is XSD validation plus explicit PV Info training checks, not a complete ICH or regional business-rule implementation. User-supplied MedDRA codes/versions receive syntax checks only. Additional current form fields remain in clearly identified supplemental narrative; prior revisions remain in companion JSON. The guide lists the exact structured coverage and assumptions.
+
+Next work is a selected regional profile with its full field mappings, pinned code lists, licensed terminology checks and documented business-rule test suite. Agency test-gateway acceptance would be a separate exercise. No live transmission is implemented.

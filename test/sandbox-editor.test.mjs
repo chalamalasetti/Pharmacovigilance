@@ -19,7 +19,7 @@ test('case editor keeps repeatable rows associated and exposes synthetic export 
   click('Add literature citation');assert.equal(c.literature.length,1);
   const narrative=host.querySelector('[aria-label="Fictional clinical narrative"]');narrative.value='Fictional clinical course';narrative.dispatchEvent(new window.Event('input'));assert.equal(c.narrative.summary,'Fictional clinical course');
   click('Save synthetic case');assert.equal(saved,c);click('Remove P-1');assert.equal(c.products.length,1);assert.equal(c.assessments.length,2);
-  assert.ok([...host.querySelectorAll('button')].find(b=>b.textContent==='E2B(R3) export — unavailable').hasAttribute('disabled'));
-  assert.match(host.textContent,/not the official CIOMS I form/);
+  assert.ok([...host.querySelectorAll('button')].find(b=>b.textContent==='Validate and download E2B training XML'));
+  assert.match(host.textContent,/CIOMS uses the supplied form layout/);
  }finally{globalThis.document=previous;Object.defineProperty(window.HTMLSelectElement.prototype,'value',select);}
 });
