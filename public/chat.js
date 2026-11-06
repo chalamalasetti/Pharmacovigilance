@@ -79,6 +79,11 @@ function showChips(list) {
 }
 
 async function respond(q) {
+  if(/(when|date|history|added).*(approv|authori[sz]|label)|(approv|authori[sz]|label).*(when|date|history|added)/i.test(q)){
+    const link=el('a',{href:'product-answers.html',textContent:'Open Product Evidence Answers →'});link.onclick=()=>{try{sessionStorage.setItem('pv-product-question',q);}catch{}};
+    bubble('bot',[el('p',{textContent:'Check product/application dates and captured label evidence. Confirm the market and exact product; first label-addition dates may not be established.'}),link]);return;
+  }
+
   const typing = bubble("bot typing", [el("span"), el("span"), el("span")]);
   typing.ariaLabel = "Typing";
   chips.replaceChildren();

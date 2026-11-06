@@ -482,3 +482,7 @@ Template expansion: 16 source-linked starters and 1,536 explicitly blank researc
 Desktop menus use searchable two-column tool cards with bounded scrolling; mobile menus use compact single-column items. Existing administrator order and hidden settings are preserved. The navigation editor supports finding items by label or route. My Briefing places My work before its metrics and generated summary sections.
 
 Run `node scripts/build-navigation-sql.mjs` after changing `public/navigation.js`. It synchronizes the final validator in `supabase/schema.sql` and the deployable `supabase/navigation-registry.sql`; apply that SQL to the database as a tracked migration. The registry test prevents new frontend pages from silently diverging from the database allowlist. Navigation saves remain admin-only, and duplicate/unknown-page checks remain enforced.
+
+### Product Evidence Answers
+
+`npm run answers:build` publishes a public product/application search snapshot from the existing registry and company manifest. Product Evidence Answers resolves candidate identities in a question, asks for explicit market/application confirmation, and presents registry dates, exact-application label mentions and related updates with source links and coverage dates. It does not reconstruct full label histories or infer first-addition dates from mentions, recommendations or marked changes. Questions run in the browser; only public data files are fetched. The Ask PV Info bubble routes approval/label questions into this workspace. No model/API account or medical interpretation is added.

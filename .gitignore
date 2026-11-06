@@ -24,3 +24,5 @@ public/vendor/content-export.js
 
 public/vendor/xmllint/
 public/vendor/e2b-export.js
+
+public/data/product-answers.json
