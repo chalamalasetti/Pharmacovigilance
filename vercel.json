@@ -52,6 +52,9 @@
     "api/runtime-feed.js": {
       "maxDuration": 30,
       "includeFiles": "public/feed.xml"
+    },
+    "api/label-history.js": {
+      "maxDuration": 30
     }
   },
   "headers": [

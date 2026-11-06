@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- seo:end -->
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="labels.css">
+  <link rel="stylesheet" href="labels.css"><link rel="stylesheet" href="label-history.css">
   <!-- Vercel Web Analytics and Speed Insights (enable both in the Vercel dashboard) -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -48,8 +48,25 @@
       <a href="account.html" class="signin" data-nav="account">Sign in</a>
     </nav>
   </header>
-  <main class="labels-shell" id="main">
-    <header class="labels-hero"><div><span class="label-eyebrow">LABEL CHANGE INTELLIGENCE</span><h1>See the change. Understand the impact.</h1><p><a class="btn" href="label-analysis.html">◈ Open Label Safety Analysis Workspace →</a></p><p>Follow safety labeling evidence from the regulator to your products, company assessment and verified action.</p></div><div id="labels-metrics" class="labels-metrics" aria-label="Captured evidence coverage"></div></header>
+  <main class="labels-shell" id="main"><!-- safety-notice:start -->
+<aside class="pv-safety-notice" aria-label="Training scope and independence notice"><strong>Training only · Not for submission</strong><p>Independent training and configuration-planning tools only. Not for regulatory submission, patient care or production safety processing. Not affiliated with or endorsed by Oracle, ICH, CIOMS or any regulator. Built with AI assistance, including Claude and ChatGPT; content may be inaccurate. Qualified human review is mandatory before reliance or use of outputs.</p><a href="disclaimer.html">Read the full use, validation, privacy and trademark notice →</a></aside>
+<!-- safety-notice:end -->
+    <header class="labels-hero"><div><span class="label-eyebrow">LABEL CHANGE INTELLIGENCE</span><h1>Label Intelligence</h1><p><a class="btn" href="label-analysis.html">◈ Open Label Safety Analysis Workspace →</a></p><p>Follow safety labeling evidence from the regulator to your products, company assessment and verified action.</p></div><div id="labels-metrics" class="labels-metrics" aria-label="Captured evidence coverage"></div></header>
+<nav class="lh-hub" aria-label="Label Intelligence tools"><a href="#label-discovery">⌕ Search &amp; compare labels</a><a href="label-analysis.html">▦ Analysis workspace</a><a href="#captured-changes">⇄ Captured regulatory changes</a><a href="#lh-coverage">◈ Coverage</a></nav>
+<section id="label-discovery" class="lh-shell"><header class="lh-heading"><p class="label-eyebrow">SEARCH → RETRIEVE → COMPARE</p><h2>Follow the wording through time.</h2><p>Discover submitted labels in openFDA, retrieve available DailyMed versions, and compare the evidence.</p></header>
+<p class="hint">US label discovery. Enter public product metadata only; searches are sent to FDA. Manufacturer listings do not establish corporate ownership. Historical versions are retrieved on demand and kept in this tab until you download or transfer them.</p>
+<form id="lh-search" class="lh-search"><label>Search by<select id="lh-field"><option value="brand">Brand name</option><option value="ingredient">Ingredient / generic name</option><option value="company">Submitted manufacturer</option><option value="term">Safety phrase in selected sections</option><option value="application">Application number</option></select></label><label>Public product or safety phrase<input id="lh-query" type="search" minlength="2" maxlength="120" required placeholder="Enter a product, company or phrase"></label><button class="btn primary" type="submit">Search submitted labels →</button></form>
+<p class="hint">Safety phrase search covers boxed warnings, warnings, warnings and cautions, adverse reactions, contraindications, precautions and interactions. Search results are paged; no complete global label corpus is claimed.</p>
+<details><summary>Have an SPL Set ID?</summary><form id="lh-direct" class="lh-search"><label>SPL Set ID<input id="lh-setid" maxlength="36" required placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"></label><button class="btn" type="submit">Open version history</button></form></details>
+<p id="lh-status" role="status" aria-live="polite">Search for a label family to begin.</p><div id="lh-found" class="lh-found"></div>
+<section id="lh-family" hidden><h3 id="lh-family-title"></h3><p>Confirmed label family: <code id="lh-family-id"></code></p><p id="lh-history-count"></p><div id="lh-history" class="lh-history"></div><div class="lh-actions"><button class="btn" id="lh-history-more" disabled>More history entries</button><button class="btn primary" id="lh-load" disabled>Retrieve selected versions</button><button class="btn" id="lh-save" disabled>↓ Download history evidence</button><button class="btn" id="lh-transfer" disabled>Use retrieved versions in analysis →</button></div>
+<p class="hint">Retrieve up to 10 versions per batch and 50 per session. A history entry is not proof that its file is available. Transfer uses only application numbers found inside retrieved SPLs; versions without them remain available here.</p>
+<div class="lh-columns"><section class="lh-card"><h3>⌕ Trace a safety phrase</h3><label>Phrase in retrieved versions<input id="lh-term" maxlength="120" placeholder="Enter a safety phrase"></label><p class="hint">Case and punctuation normalized. This is phrase matching; no clinical interpretation or SMQ algorithm is applied.</p><div id="lh-mentions"></div></section><section class="lh-card"><h3>◈ Retrieval coverage</h3><div id="lh-coverage"></div></section></div>
+<section class="lh-card"><h3>⇄ Compare two retrieved versions</h3><div class="lh-search"><label>Earlier version<select id="lh-before"></select></label><label>Later version<select id="lh-after"></select></label><button class="btn primary" id="lh-compare" disabled>Compare wording</button></div><p class="hint">Red = text removed from the earlier version. Green = text added in the later version. Ordered paragraph comparison; layout and images are excluded. Wording changes need human interpretation.</p><div id="lh-comparison"></div></section>
+<section class="lh-card"><h3>▤ Related captured regulatory changes</h3><div id="lh-related"></div></section></section>
+</section>
+
+<h2 id="captured-changes">Captured regulatory changes</h2>
     <p id="labels-notice" class="hint" role="status" aria-live="polite">Loading captured source evidence…</p>
     <div class="labels-filters" role="search" aria-label="Label change filters"><label>Find a medicine or ingredient<input id="labels-search" aria-label="Find a medicine or ingredient" type="search" placeholder="Drug name, ingredient, application or safety topic"></label><label>Agency<select id="labels-agency" aria-label="Agency"><option value="">FDA &amp; EMA</option>FDA</option><option>EMA</option></select></label><label>Label section<select id="labels-section" aria-label="Label section"><option value="">All label sections</option></select></label><label>Evidence type<select id="labels-kind" aria-label="Evidence type"><option value="">All evidence</option><option value="approved_change">Approved safety-label change</option><option value="recommendation">Recommendation index</option></select></label><button id="labels-reset" type="button" class="btn">Clear filters</button></div>
     <div class="labels-grid"><aside aria-label="Captured label change entries"><h2 id="labels-count"></h2><div id="labels-list" class="labels-list"></div><button id="labels-more" type="button" class="btn" hidden>Show next 40 entries</button></aside><section id="labels-detail" class="label-detail" aria-label="Selected label change"><p class="empty">Choose a source entry to review its evidence.</p></section></div>
@@ -57,6 +74,6 @@
   <p><a class="btn" href="product-answers.html">✦ Ask a product history question →</a></p></main>
   <script type="module">import { navOnly } from "./cloud.js"; navOnly();</script>
   <script type="module" src="nav.js"></script>
-  <script type="module" src="labels.js"></script>
+  <script type="module" src="labels.js"></script><script type="module" src="label-history.js"></script>
 </body>
 </html>

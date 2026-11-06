@@ -87,3 +87,19 @@ Enter phrases, one per line, optionally followed by `| literal`, `| variant` or 
 Run the analysis to see cohort coverage, matching passages, source links, captured registry dates, evidence dates, yearly passage counts and application timelines. Dates refer to captured change entries, not established first-addition dates. Ingredient-only recommendations are not automatically assigned to applications. Missing captures or matches cannot establish absence from a label.
 
 Record include/exclude/needs-review decisions with reasons. Decisions bind to source hashes, are local review notes and do not establish an audit trail or approved conclusions. Save the JSON analysis package before leaving; working data remains in tab memory. Evidence CSV includes review decisions and reasons. Restore loads settings and notes but requires a fresh analysis against current captures; changed source hashes do not inherit prior decisions. Exports are training/review artifacts.
+
+## Search submitted labels and compare available versions
+
+The top-level **Label Intelligence** menu contains the label discovery/change screen and the cohort analysis workspace. Older saved navigation layouts are promoted once while retaining item labels and visibility.
+
+In **Search & compare labels**, search openFDA by brand, ingredient/generic name, submitted manufacturer, application number or a phrase in selected safety sections. Results are pages of submitted label records, not counts of unique drugs. Manufacturer listings do not establish ownership or historical company relationships. Confirm an exact SPL Set ID, or enter one directly.
+
+Retrieve the DailyMed version index, then select up to 10 versions per batch (50 per session). The earliest and latest listed entries are selected by default when there are more than 10. Additional history pages are loaded explicitly. Every downloaded ZIP is checked against its internal Set ID and version number; a mismatched file is rejected. Source failures remain visible. Some archived families have indexed versions whose download endpoint is unavailable. The original public source remains the reference.
+
+Trace a phrase across the retrieved narrative sections and compare an earlier and later version. The comparison aligns sections by code (or title where no code exists), combines repeated sections in document order, and highlights added/removed paragraphs. Large sections use a clearly labeled whole-section fallback. Images and original layout are excluded; source ZIP links and SHA-256 hashes accompany each retrieved version.
+
+SPL effective dates, DailyMed publication dates, retrieval dates and regulatory approval dates are different. The earliest observed phrase in retrieved versions is not an official first-addition date. Related captured regulatory changes match US application numbers extracted from those versions; an application match does not establish the same wording change. Review the original SrLC evidence.
+
+Download the history evidence package, or choose **Use retrieved versions in analysis**. Transfer uses temporary tab storage, consumed on arrival. Versions with no application number cannot join an application cohort and remain available on the history screen/export. The analysis workspace also accepts downloaded history packages. These imports remain locally supplied evidence; source hashes are not independently reverified on import. Analysis packages retain the additional SPL versions, and restored packages must be rerun.
+
+Sources: [openFDA labels](https://open.fda.gov/apis/drug/label/), [DailyMed web services](https://dailymed.nlm.nih.gov/dailymed/app-support-web-services.cfm), [DailyMed history API](https://dailymed.nlm.nih.gov/dailymed/webservices-help/v2/spls_setid_history_api.cfm). Collection is on demand; this release does not bulk-backfill all products or establish full history since 2000.
