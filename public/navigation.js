@@ -31,13 +31,15 @@ export const PAGES = {
  'product-answers':{label:'Product Evidence Answers',href:'product-answers.html',hint:'Ask about approval dates, label mentions and supporting evidence',icon:'✦'},
  'label-analysis':{label:'Label Safety Analysis',href:'label-analysis.html',hint:'Compare product cohorts, safety wording and captured evidence timelines',icon:'◈'},
 };
-const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','leadership','config-workbench','company-inbox','action-center','team','account-settings']],['explore','Explore',['product-answers','research','companies','substances','labels','label-analysis','safety-topics','globe','events']],['resources','Resources',['content-studio','sandbox','rule-templates','e2b-studio','resources','documents','changes','requirements','agencies','archive','user-guide','about']]];
+const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','leadership','config-workbench','company-inbox','action-center','team','account-settings']],['explore','Explore',['product-answers','research','companies','substances','safety-topics','globe','events']],['resources','Resources',['content-studio','sandbox','rule-templates','e2b-studio','resources','documents','changes','requirements','agencies','archive','user-guide','about']],['label-intelligence','Label Intelligence',['labels','label-analysis']]];
 export const defaultNavigation=()=>({version:1,groups:GROUPS.map(([id,label,items])=>({id,label,items:items.map(id=>({id,label:PAGES[id].label,hidden:false}))}))});
 export const cleanLabel=(value,fallback)=>typeof value==='string'&&value.trim()?value.trim().slice(0,32):fallback;
 export function normalizeNavigation(raw,{navOrder=[],hiddenNav=[]}={}) {
  const defaults=defaultNavigation();
  const custom=raw?.version===1&&Array.isArray(raw.groups)&&raw.groups.length>0&&raw.groups.length<=12;
- const base=custom?raw.groups:defaults.groups;
+ const base=custom?structuredClone(raw.groups):defaults.groups;
+ // Promote the existing label tools once; preserve their saved labels and visibility.
+ if(custom&&!base.some(g=>g.id==='label-intelligence')&&base.length<12){const items=[];for(const g of base){if(!Array.isArray(g?.items))continue;for(const item of g.items)if(['labels','label-analysis'].includes(item?.id))items.push(item);g.items=g.items.filter(item=>!['labels','label-analysis'].includes(item?.id));}if(items.length)base.push({id:'label-intelligence',label:'Label Intelligence',items});}
  const seen=new Set(),groups=[],ids=new Set();
  for(const g of base){
   if(!g||!Array.isArray(g.items)||typeof g.id!=='string'||!/^[a-z0-9-]{1,40}$/.test(g.id)||ids.has(g.id))continue;
