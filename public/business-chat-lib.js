@@ -26,9 +26,10 @@ export function productBusinessAnswer({product:p,question,products=[],labels=[],
   gaps.push('Captured market entries are not a complete worldwide authorisation inventory. Commercial discontinuation, safety withdrawal and shortages must be established separately.');
  }
  if(['label','indications','comparison','label-history'].includes(family)){
+  const term=/\b(?:mention|contain|include)\s+["']?([^?"']{2,100})/i.exec(question)?.[1]?.trim();
   const section=family==='indications'?/indication|usage|paediatric|pediatric|population|age/i:/warning|precaution|contraindication|reaction|interaction|pregnan|lactation|breastfeed/i;
   for(const r of exactLabels.slice().sort((a,b)=>(b.published||'').localeCompare(a.published||'')).slice(0,6)){
-   const parts=(r.sections??[]).filter(s=>section.test(s.title));for(const s of parts.slice(0,3))for(const text of (s.paragraphs??[]).slice(0,1))add(s.title+': '+text.text.slice(0,400)+(text.text.length>400?'…':''),r.url,r.kind==='approved_change'?'Captured approved-change extract · '+(r.published||'date unknown'):'Recommendation / unconfirmed implementation');
+   const parts=(r.sections??[]).filter(s=>term||section.test(s.title));for(const s of parts.slice(0,6))for(const text of (s.paragraphs??[]).filter(p=>!term||hit(p.text,term)).slice(0,1))add(s.title+': '+text.text.slice(0,400)+(text.text.length>400?'…':''),r.url,r.kind==='approved_change'?'Captured approved-change extract · '+(r.published||'date unknown'):'Recommendation / unconfirmed implementation');
   }
   gaps.push('These are captured change extracts, not necessarily the complete current approved label. Missing sections do not establish absence of an indication, warning or restriction.');
   if(family==='label-history')gaps.push('First addition, original wording and before/after differences are not established without the original approval label and intervening approved versions.');
@@ -41,7 +42,7 @@ export function productBusinessAnswer({product:p,question,products=[],labels=[],
   gaps.push('The available timeline is incomplete. A signal, recommendation or news item is not proof of causation or approved label implementation.');
  }
  if(family==='clinical'){
-  if(trials?.schema===1&&Array.isArray(trials.studies)){
+  if(trials?.schema===1&&trials.companyId===p.company&&Array.isArray(trials.studies)){
    const matched=trials.studies.filter(s=>(s.medicines??[]).some(m=>hit(m.name,p.brand)||(p.ingredients??[]).some(i=>hit(m.name,i))));
    for(const s of matched.slice(0,8))add(s.id+' · '+s.title+' · phases '+(s.phases??[]).join(', ')+' · '+s.status+' · '+(s.conditions??[]).join('; '),s.url,'Registry study; not an approved indication');
    gaps.push('Searched '+trials.studies.length+' loaded company studies; '+matched.length+' lexical product/ingredient matches. Collection status: '+(trials.collectionStatus||'unknown')+'. No match does not prove no trial exists.');

@@ -14,7 +14,8 @@ export function createProductChat({el,bubble,json}){
   if(!['approval','label-history'].includes(family)){
    const companyData=await json('data/companies/'+encodeURIComponent(product.company)+'.json');
    const trials=family==='clinical'?await json('data/clinical/'+encodeURIComponent(product.company)+'.json'):null;if(turn!==sequence)return;
-   const answer=productBusinessAnswer({product,question,products:catalog.products,labels:labels?.records??[],updates:updates?.updates??[],company:companyData?.profile,trials});
+   const answer=productBusinessAnswer({product,question,products:catalog.products,labels:labels?.records??[],updates:updates?.updates??[],company:companyData?.profile?.id===product.company?companyData.profile:null,trials});
+   answer.coverage={registryBuilt:catalog.registryBuilt??null,labelsChecked:labels?.checked??null,clinicalRetrieved:trials?.retrievedAt??null};
    const nodes=[el('b',{textContent:product.brand+' · '+product.market+' · '+product.authId}),el('p',{className:'chat-card-meta',textContent:'Evidence category: '+answer.family})];
    for(const f of answer.findings.slice(0,15))nodes.push(el('article',{className:'chat-card'},[el('p',{className:'chat-card-meta',textContent:f.kind}),el('p',{textContent:f.text}),...(f.url?[link(f.url,'Supporting source ↗')]:[])]));
    for(const gap of answer.gaps)nodes.push(el('p',{className:'chat-gap',textContent:gap}));nodes.push(el('p',{className:'chat-card-src',textContent:'Registry: '+(catalog.registryBuilt||'unknown')+' · labels checked: '+(labels?.checked||'unavailable')+'. '+answer.review}));
