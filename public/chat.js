@@ -1,3 +1,4 @@
+import {createBusinessChat} from './business-chat.js';
 import {createProductChat} from './product-chat.js';
 import {fetchData} from './data-fetch.js';
 // "Ask PV Info": a chat bubble in the bottom-right corner. Readers ask about a
@@ -7,7 +8,8 @@ import {fetchData} from './data-fetch.js';
 
 import { buildIndex, reply } from "./chat-lib.js";
 
-let productChat;
+let productChat,businessChat;
+let responseQueue=Promise.resolve(),conversationEpoch=0;
 const TEASED = "pv-chat-teased";
 let index = null;
 let loading = null;
@@ -45,6 +47,8 @@ const panel = el("section", { className: "chat-panel", id: "chatPanel", ariaLabe
   el("header", { className: "chat-head" }, [
     el("span", { className: "chat-avatar", ariaHidden: "true", textContent: "🛡️" }),
     el("div", {}, [el("b", { textContent: "Ask PV Info" }), el("span", { textContent: "products, labels and PV updates · with sources" })]),
+    el('button',{type:'button',className:'chat-expand',ariaLabel:'Expand chat',textContent:'⤢',onclick:()=>{const expanded=panel.classList.toggle('chat-expanded');panel.querySelector('.chat-expand').ariaLabel=expanded?'Restore chat size':'Expand chat';}}),
+    el('button',{type:'button',className:'chat-clear',ariaLabel:'Clear conversation',textContent:'↺',onclick:()=>{conversationEpoch++;productChat.reset();businessChat.reset();businessChat=createBusinessChat({el,bubble,json});log.replaceChildren();chips.replaceChildren();bubble('bot',[el('p',{textContent:'Conversation cleared. Ask a new product or business question.'})]);}}),
     close,
   ]),
   log,
@@ -80,9 +84,11 @@ function showChips(list) {
   );
 }
 
-async function respond(q) {
+async function respond(q,turn=conversationEpoch) {
+  if(await businessChat(q)){productChat.reset();return;}
   if(await productChat(q))return;
 
+  if(turn!==conversationEpoch)return;
   const typing = bubble("bot typing", [el("span"), el("span"), el("span")]);
   typing.ariaLabel = "Typing";
   chips.replaceChildren();
@@ -90,6 +96,7 @@ async function respond(q) {
   // A short pause reads as a reply rather than a page refresh.
   await new Promise((r) => setTimeout(r, 350));
   typing.remove();
+  if(turn!==conversationEpoch)return;
   if (!index.updates.length) {
     bubble("bot", [el("p", { textContent: "The update list hasn't loaded yet. Try again in a minute." })]);
     return;
@@ -107,7 +114,8 @@ function ask(text) {
   const q = text.trim();
   if (!q) return;
   bubble("me", [el("p", { textContent: q })]);
-  respond(q);
+  const turn=conversationEpoch;
+  responseQueue=responseQueue.then(()=>turn===conversationEpoch?respond(q,turn):null).catch(()=>bubble('bot',[el('p',{textContent:'This evidence check could not complete. Please retry; no conclusion was inferred.'})]));
 }
 
 function open(state = true) {
@@ -119,7 +127,7 @@ function open(state = true) {
     loadIndex();
     if (!log.childNodes.length) {
       bubble("bot", [el("p", { textContent: "Hi 👋 Ask about a product’s approval, a safety term in its label, or PV updates. I’ll show the captured evidence and tell you what it cannot establish." })]);
-      showChips(["🚨 Latest safety alerts", "🇺🇸 FDA this week", "🇪🇺 EMA PRAC updates", "🇮🇳 What's new in India?", "📊 Summary"]);
+      showChips(["What can you answer?", "🚨 Latest safety alerts", "🇺🇸 FDA this week", "🇪🇺 EMA PRAC updates", "🇮🇳 What's new in India?", "📊 Summary"]);
     }
     if (matchMedia("(pointer: fine)").matches) input.focus();
   } else fab.focus();
@@ -137,6 +145,7 @@ form.onsubmit = (e) => {
 };
 
 productChat=createProductChat({el,bubble,json});
+businessChat=createBusinessChat({el,bubble,json});
 document.body.append(panel, fab);
 
 // One gentle hint, the first time only.
