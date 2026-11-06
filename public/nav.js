@@ -116,3 +116,6 @@ function freshness() {
   }});
 }
 freshness();
+
+// Always expose the full notice without an acknowledgement or acceptance claim.
+if(!document.querySelector('[data-pv-notice-footer]')){const footer=document.createElement('footer');footer.className='pv-notice-footer';footer.dataset.pvNoticeFooter='';const link=document.createElement('a');link.href='disclaimer.html';link.textContent='Use, validation & trademark notice';footer.append(link);document.body.append(footer);}

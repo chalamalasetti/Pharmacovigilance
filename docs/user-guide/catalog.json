@@ -290,6 +290,7 @@
     "pv-roles.html": "pv-roles",
     "admin-social.html": "admin-social",
     "content-studio.html": "content-studio",
-    "sandbox.html": "sandbox"
+    "sandbox.html": "sandbox",
+    "disclaimer.html": "getting-started"
   }
 }
