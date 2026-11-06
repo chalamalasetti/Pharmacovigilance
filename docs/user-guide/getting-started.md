@@ -43,3 +43,7 @@ This guide describes the implemented application, not proposed backlog features.
 
 ## Keep work appropriate for this app
 Use organizational descriptions. Do not enter patient narratives, dates of birth, personal addresses, phone/fax numbers or credentials into searches, public annotations, requirement text, evidence links or support messages. Where a workflow explicitly requests an owner/reviewer email, enter only the authorized work identifier. Never publish passwords, recovery keys, temporary passwords or private assessment exports in GitHub issues.
+
+## Use notice and AI disclosure
+
+Read the [full use, validation and trademark notice](disclaimer.html), also linked from the site footer. PV Info was built using AI assistance including Claude and ChatGPT; content and outputs may contain inaccuracies. Qualified human review is mandatory before relying on, sharing or implementing results. The Sandbox, E2B Studio and Configuration Workbench are independent training and planning aids, not regulatory submission tools. Their relevant exports carry a versioned copy of the notice. Third-party materials require the applicable rights and permissions.
