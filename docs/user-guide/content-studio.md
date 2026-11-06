@@ -2,7 +2,7 @@
 
 ## Start with a reusable structure
 
-Open **Resources → Template Library and Document Studio**, or follow the link from the Configuration Workbench. The homepage layout is unchanged. Anyone can browse six reference structures: SOP, work instruction, configuration runbook, validation checklist, training deck and team briefing. Search or filter by audience focus and change type, preview the sections, then choose a template.
+Open **Resources → Template Library & Studio**, or follow the link from the Configuration Workbench. The homepage layout is unchanged. Anyone can browse six reference structures: SOP, work instruction, configuration runbook, validation checklist, training deck and team briefing. Search or filter by audience focus and change type, preview the sections, then choose a template.
 
 These are reusable starting structures, not approved company procedures or a comprehensive library of legal obligations. Audience filters are broad reference categories. Enter the actual organizational roles in the document context. No paid AI drafting service is used.
 
