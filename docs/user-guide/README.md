@@ -61,3 +61,5 @@ Update the relevant chapter and catalog when a released function changes. Run `n
 - [Guidance impact: EMA masking pilot](guidance-impact.md) — source tables, proposed controls, workbench handoff and the road to autonomous intelligence.
 - [Regulatory Impact Briefs](impact-briefs.md): source bundles, role views and private assessment handoffs.
 - [PV Roles & Processes](pv-roles.md): reference catalog, private responsibility preferences and mapping review.
+
+- [Social Post Studio](admin-social.md): admin-only LinkedIn drafts, editorial checks and visual impact-card exports.

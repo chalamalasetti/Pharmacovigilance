@@ -354,7 +354,7 @@ function render() {
   $("ad-msg").textContent = "";
   $("lede").textContent = `Signed in as ${me.email}. Changes here are saved in the database and go live at the next build.`;
   $("jump").hidden = false;
-  $("app").replaceChildren(el("section",{class:"profile"},el("h2",{},"Data Refresh Center"),el("p",{},"Schedules, collection status, queued refreshes and run history."),el("a",{class:"btn",href:"admin-refresh.html"},"Open refresh controls →")),publishSection(), approvalSection(), companiesSection(), menuSection(), adminsSection(), sourcesSection(), resourcesSection(), researchSection(), activitySection());
+  $("app").replaceChildren(el("section",{class:"profile"},el("h2",{},"Data Refresh Center"),el("p",{},"Schedules, collection status, queued refreshes and run history."),el("a",{class:"btn",href:"admin-refresh.html"},"Open refresh controls →")),el("section",{class:"profile"},el("h2",{},"Social Post Studio"),el("p",{},"Prepare a source-linked LinkedIn post and visual impact card from a public update. Review and export before publishing."),el("a",{class:"btn",href:"admin-social.html"},"Create social post →")),publishSection(), approvalSection(), companiesSection(), menuSection(), adminsSection(), sourcesSection(), resourcesSection(), researchSection(), activitySection());
 }
 
 async function main() {

@@ -1,7 +1,7 @@
 {
-  "version": "1.8",
+  "version": "1.9",
   "reviewed": "2026-11-05",
-  "appRevision": "pv-operating-model-v1",
+  "appRevision": "admin-social-studio-v1",
   "chapters": [
     {
       "id": "getting-started",
@@ -219,6 +219,13 @@
       "group": "Regulatory intelligence",
       "audience": "Everyone",
       "summary": "Explore reference responsibilities, save private preferences and review role/process associations."
+    },
+    {
+      "id": "admin-social",
+      "title": "Social Post Studio",
+      "group": "Administration",
+      "audience": "Administrators",
+      "summary": "Select an evidence-linked update, review a LinkedIn draft and export its visual impact card."
     }
   ],
   "screens": {
@@ -266,6 +273,7 @@
     "e2b-studio.html": "e2b-studio",
     "guidance-impact.html": "guidance-impact",
     "impact-briefs.html": "impact-briefs",
-    "pv-roles.html": "pv-roles"
+    "pv-roles.html": "pv-roles",
+    "admin-social.html": "admin-social"
   }
 }
