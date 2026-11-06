@@ -5,7 +5,7 @@ export const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
 const DM='https://dailymed.nlm.nih.gov',FDA='https://api.fda.gov';
 const fail=(message,status=502)=>Object.assign(new Error(message),{status});
 export function validateRequest(params){
- const mode=params.get('mode')||'search',allowed={search:['mode','q','field','page'],history:['mode','setid','page'],version:['mode','setid','version']}[mode];
+ const mode=params.get('mode')||'search';if(!['search','history','version'].includes(mode))throw fail('Invalid label request.',400);const allowed={search:['mode','q','field','page'],history:['mode','setid','page'],version:['mode','setid','version']}[mode];
  if(!allowed||[...params.keys()].some(k=>!allowed.includes(k)||params.getAll(k).length!==1))throw fail('Invalid label request.',400);
  const page=Number(params.get('page')||1);if(!Number.isInteger(page)||page<1||page>100)throw fail('Choose a page from 1 to 100.',400);
  if(mode==='search'){const q=(params.get('q')||'').trim(),field=params.get('field')||'brand';if(q.length<2||q.length>120||!/^[\p{L}\p{N}][\p{L}\p{N}\s.,'()/-]*$/u.test(q)||!['brand','ingredient','company','term','application'].includes(field))throw fail('Enter 2–120 characters of public product metadata and a supported search field.',400);return {mode,q,field,page};}
@@ -55,4 +55,4 @@ export async function labelVersion({setid,version},{fetchImpl=fetch}={}){
  const file=files[0];if(!Number.isFinite(file._data?.uncompressedSize)||file._data.uncompressedSize>4_000_000)throw fail('SPL XML exceeds supported size.',413);
  return parseSPL(await file.async('string'),{setid,version});
 }
-export async function collectLabelRequest(request,deps){return ({search:searchLabels,history:labelHistory,version:labelVersion})[request.mode](request,deps);}
+export async function collectLabelRequest(request,deps){if(request.mode==='search')return searchLabels(request,deps);if(request.mode==='history')return labelHistory(request,deps);if(request.mode==='version')return labelVersion(request,deps);throw fail('Invalid label request.',400);}
