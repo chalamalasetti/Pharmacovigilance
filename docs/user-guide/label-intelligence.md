@@ -75,3 +75,15 @@ Ask PV Info recognises fifteen business question families: product identity, com
 Company roles are kept distinct: registry holder and catalog association do not establish manufacturer, distributor, commercial-rights owner or a transfer date. Portfolios show captured application records rather than a claimed complete current inventory. Clinical answers search loaded company study snapshots by reported medicine names and ingredients; matches do not establish ownership, approval or causality. Label comparisons show captured excerpts with version-alignment gaps rather than pretending to compare complete current labels.
 
 Reporting questions ask for a jurisdiction and show available source-linked planning starters; research-only countries retain unknown deadlines. My work questions summarise only this browser’s briefing records, not authoritative team assignments, overdue Action Center actions or verification decisions. Unsupported categories and missing evidence remain unresolved. Recognising a question family does not mean the corpus can establish every requested fact.
+
+## Label Safety Analysis Workspace
+
+Open **Explore → Label Safety Analysis**, or use the analysis link in Label Intelligence. Select a captured market and evidence-date window, starting at 2000 if needed. This does not backfill missing history. Registry dates are application-level captured source dates, not necessarily original approvals for each presentation.
+
+Use all captured applications or import CSV/JSON with product, company, market and application columns. Confirm each exact application match or explicitly exclude its import row. Unresolved rows block analysis. Company names, IDs and holders match exactly; aliases are not inferred. Selected rows are combined, then the market filter applies.
+
+Enter phrases, one per line, optionally followed by `| literal`, `| variant` or `| related`. These are phrase matches, not medical equivalence judgments. Optional locally supplied terminology JSON accepts term/type/code/version after rights acknowledgment. PT, LLT and SMQ metadata is not dictionary validated and no official SMQ algorithm runs. No licensed dictionary is bundled.
+
+Run the analysis to see cohort coverage, matching passages, source links, captured registry dates, evidence dates, yearly passage counts and application timelines. Dates refer to captured change entries, not established first-addition dates. Ingredient-only recommendations are not automatically assigned to applications. Missing captures or matches cannot establish absence from a label.
+
+Record include/exclude/needs-review decisions with reasons. Decisions bind to source hashes, are local review notes and do not establish an audit trail or approved conclusions. Save the JSON analysis package before leaving; working data remains in tab memory. Evidence CSV includes review decisions and reasons. Restore loads settings and notes but requires a fresh analysis against current captures; changed source hashes do not inherit prior decisions. Exports are training/review artifacts.
