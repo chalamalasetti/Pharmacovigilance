@@ -293,6 +293,7 @@
     "sandbox.html": "sandbox",
     "disclaimer.html": "getting-started",
     "rule-templates.html": "config-workbench",
-    "product-answers.html": "label-intelligence"
+    "product-answers.html": "label-intelligence",
+    "label-analysis.html": "label-intelligence"
   }
 }

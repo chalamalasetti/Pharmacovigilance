@@ -2,7 +2,7 @@ import {readFile,writeFile} from 'node:fs/promises';
 import {NOTICE_VERSION,NOTICE_SHORT,NOTICE_SECTIONS} from '../public/safety-notice.js';
 const esc=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const banner='<!-- safety-notice:start -->\n<aside class="pv-safety-notice" aria-label="Training scope and independence notice"><strong>Training only · Not for submission</strong><p>'+esc(NOTICE_SHORT)+'</p><a href="disclaimer.html">Read the full use, validation, privacy and trademark notice →</a></aside>\n<!-- safety-notice:end -->';
-for(const file of ['sandbox.html','config-workbench.html','e2b-studio.html','rule-templates.html','product-answers.html']){
+for(const file of ['sandbox.html','config-workbench.html','e2b-studio.html','rule-templates.html','product-answers.html','label-analysis.html']){
  const path='public/'+file;let html=await readFile(path,'utf8');
  html=html.includes('<!-- safety-notice:start -->')?html.replace(/<!-- safety-notice:start -->[\s\S]*?<!-- safety-notice:end -->/,banner):html.replace(/(<main\b[^>]*>)/,'$1'+banner);
  await writeFile(path,html);

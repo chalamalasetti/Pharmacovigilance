@@ -59,6 +59,7 @@ jobs:
           node test/browser/guidance-impact.smoke.cjs
           node test/browser/e2b-studio.smoke.cjs
           node test/browser/product-answers.smoke.cjs
+          node test/browser/label-analysis.smoke.cjs
           node test/browser/rule-templates.smoke.cjs
           node test/browser/config-workbench.smoke.cjs
           node test/browser/leadership.smoke.cjs
