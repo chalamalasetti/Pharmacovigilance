@@ -22,3 +22,5 @@ test('editor validation rejects missing pages and invalid groups while renderer 
  const n=defaultNavigation();n.groups[0].label=' ';assert.throws(()=>validateNavigation(n));
  const missing=defaultNavigation();missing.groups.pop();assert.throws(()=>validateNavigation(missing));assert.equal(normalizeNavigation(missing).groups.flatMap(g=>g.items).length,Object.keys(PAGES).length);
 });
+
+test('content studio is reachable under Resources in default and saved older menus',()=>{const d=defaultNavigation();assert.equal(PAGES['content-studio'].href,'content-studio.html');assert.ok(d.groups.find(g=>g.id==='resources').items.some(i=>i.id==='content-studio'));const old=structuredClone(d);for(const g of old.groups)g.items=g.items.filter(i=>i.id!=='content-studio');const normalized=normalizeNavigation(old);assert.ok(normalized.groups.find(g=>g.id==='resources').items.some(i=>i.id==='content-studio'&&!i.hidden));assert.doesNotThrow(()=>validateNavigation(normalized));});
