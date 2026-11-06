@@ -43,6 +43,7 @@ jobs:
         env:
           DATA_TAG: evidence-${{ github.run_id }}-${{ github.run_attempt }}
         with:
+          retries: 3
           script: |
             const publish=require('./scripts/evidence/publish.cjs');
             await publish({github,context,core});
