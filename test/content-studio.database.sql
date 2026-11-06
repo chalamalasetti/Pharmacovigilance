@@ -1,0 +1,35 @@
+begin;
+do $$
+declare a uuid:=gen_random_uuid();b uuid:=gen_random_uuid();outsider uuid:=gen_random_uuid();t uuid;d public.pv_content_documents;orig jsonb;n integer;sec text;
+begin
+ insert into auth.users(id,aud,role) values(a,'authenticated','authenticated'),(b,'authenticated','authenticated'),(outsider,'authenticated','authenticated');
+ insert into public.teams(name,created_by) values('Synthetic content QA team',b) returning id into t;
+ insert into public.team_members(team_id,user_id,role) values(t,a,'member'),(t,b,'owner') on conflict(team_id,user_id) do update set role=excluded.role;
+ perform set_config('request.jwt.claims',jsonb_build_object('sub',a,'role','authenticated')::text,true);execute 'set local role authenticated';
+ orig:='{"schema":1,"engine":"pv-content-v1","title":"Synthetic content procedure","template":{"id":"sop","version":"1.0"},"context":{"company":"Synthetic","markets":"EU","system":"Synthetic","version":"One","audience":"Systems"},"source":{"title":"Synthetic source","url":"https://www.ema.europa.eu/synthetic","edition":"1","location":"Section 1","verified":true},"sections":[{"id":"scope","title":"Scope","basis":"company","text":"Synthetic scope"},{"id":"evidence","title":"Evidence","basis":"source","text":"Synthetic evidence"}]}';
+ d:=public.save_pv_content(null,0,t,'document','save',orig,'Synthetic initial draft');
+ begin perform public.save_pv_content(d.id,null,t,'document','save',orig,'Stale write');raise exception 'Null revision accepted';exception when others then if sqlerrm<>'Document changed. Reload before continuing' then raise;end if;end;
+ begin update public.pv_content_documents set state='approved' where id=d.id;raise exception 'Direct mutation accepted';exception when insufficient_privilege then null;end;
+ d:=public.save_pv_content(d.id,d.revision,t,'document','submit','{}','Synthetic submission');
+ begin perform public.save_pv_content(d.id,d.revision,t,'document','review','{}','Author self review','scope');raise exception 'Author review accepted';exception when others then if sqlerrm<>'A separate team reviewer must review sections' then raise;end if;end;
+ perform set_config('request.jwt.claims',jsonb_build_object('sub',outsider,'role','authenticated')::text,true);
+ select count(*) into n from public.pv_content_documents where id=d.id;if n<>0 then raise exception 'Outsider read leaked';end if;
+ begin perform public.save_pv_content(d.id,d.revision,t,'document','revise','{}','Unauthorized revision');raise exception 'Outsider mutation accepted';exception when others then if sqlerrm<>'Document unavailable or access denied' then raise;end if;end;
+ perform set_config('request.jwt.claims',jsonb_build_object('sub',b,'role','authenticated')::text,true);
+ begin perform public.save_pv_content(d.id,d.revision,t,'document','approve','{}','Premature approval');raise exception 'Unreviewed approval accepted';exception when others then if sqlerrm<>'Review every section and resolve findings' then raise;end if;end;
+ d:=public.save_pv_content(d.id,d.revision,t,'document','comment','{}','Synthetic open finding','scope');
+ foreach sec in array array['scope','evidence'] loop d:=public.save_pv_content(d.id,d.revision,t,'document','review','{}','Synthetic independent section review',sec);end loop;
+ begin perform public.save_pv_content(d.id,d.revision,t,'document','approve','{}','Unresolved finding');raise exception 'Open finding allowed approval';exception when others then if sqlerrm<>'Review every section and resolve findings' then raise;end if;end;
+ d:=public.save_pv_content(d.id,d.revision,t,'document','resolve','{}','Synthetic resolved with evidence',d.findings->0->>'id');
+ d:=public.save_pv_content(d.id,d.revision,t,'document','approve','{}','Synthetic approval');
+ if d.state<>'approved' or d.approved_by<>b then raise exception 'Approval not recorded';end if;
+ begin perform public.save_pv_content(d.id,d.revision,t,'document','save',orig,'Overwrite approval');raise exception 'Approved overwrite accepted';exception when others then if sqlerrm<>'Create a draft revision before editing' then raise;end if;end;
+ select count(*) into n from public.pv_content_history where document_id=d.id and state='approved';if n<>1 then raise exception 'Approval history absent';end if;
+ d:=public.save_pv_content(d.id,d.revision,t,'document','revise','{}','Synthetic new draft');
+ if d.state<>'draft' or d.reviews<>'{}'::jsonb then raise exception 'Revision retained old review';end if;
+ begin update public.pv_content_history set reason='Overwrite';raise exception 'History overwrite accepted';exception when insufficient_privilege then null;end;
+ execute 'reset role';perform set_config('request.jwt.claims','{"role":"anon"}',true);execute 'set local role anon';
+ begin select count(*) into n from public.pv_content_documents;raise exception 'Anonymous access accepted';exception when insufficient_privilege then null;end;
+ execute 'reset role';
+end $$;
+rollback;

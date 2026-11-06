@@ -5,7 +5,7 @@
   "description": "Pharmacovigilance and drug regulatory updates from every major regulator, in one place.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-user-guide.mjs && node scripts/clinical-import.mjs && node scripts/aggregate.mjs && node scripts/substances.mjs && node scripts/labels.mjs --bootstrap && node scripts/documents.mjs --bootstrap && node scripts/seo.mjs",
+    "build": "npm run content:bundle && node scripts/build-user-guide.mjs && node scripts/clinical-import.mjs && node scripts/aggregate.mjs && node scripts/substances.mjs && node scripts/labels.mjs --bootstrap && node scripts/documents.mjs --bootstrap && node scripts/seo.mjs",
     "seo": "node scripts/seo.mjs --write",
     "aggregate": "node scripts/aggregate.mjs",
     "research": "node scripts/research.mjs",
@@ -21,15 +21,22 @@
     "clinical:backfill": "node scripts/clinical-bulk.mjs",
     "guide": "node scripts/build-user-guide.mjs",
     "substances": "node scripts/substances.mjs",
-    "labels": "node scripts/labels.mjs"
+    "labels": "node scripts/labels.mjs",
+    "content:bundle": "node scripts/build-content-export.mjs"
   },
   "engines": {
     "node": ">=22.13.0"
   },
   "dependencies": {
+    "@pdf-lib/fontkit": "1.1.1",
+    "buffer": "6.0.3",
+    "docx": "9.5.1",
+    "esbuild": "0.25.12",
     "fast-xml-parser": "5.11.2",
     "jose": "6.2.14",
     "linkedom": "0.18.14",
-    "pdfjs-dist": "6.4.299"
+    "pdf-lib": "1.17.1",
+    "pdfjs-dist": "6.4.299",
+    "pptxgenjs": "4.0.1"
   }
 }

@@ -63,3 +63,5 @@ Update the relevant chapter and catalog when a released function changes. Run `n
 - [PV Roles & Processes](pv-roles.md): reference catalog, private responsibility preferences and mapping review.
 
 - [Social Post Studio](admin-social.md): admin-only LinkedIn drafts, editorial checks and visual impact-card exports.
+
+- [Template Library and Document Studio](content-studio.md): reusable structures, private drafts, section review, approval and document exports.

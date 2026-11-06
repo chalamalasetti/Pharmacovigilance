@@ -1,7 +1,7 @@
 {
-  "version": "1.9",
+  "version": "2.0",
   "reviewed": "2026-11-05",
-  "appRevision": "admin-social-studio-v1",
+  "appRevision": "pv-content-studio-v1",
   "chapters": [
     {
       "id": "getting-started",
@@ -226,6 +226,13 @@
       "group": "Administration",
       "audience": "Administrators",
       "summary": "Select an evidence-linked update, review a LinkedIn draft and export its visual impact card."
+    },
+    {
+      "id": "content-studio",
+      "title": "Template Library and Document Studio",
+      "group": "Company work",
+      "audience": "Approved users",
+      "summary": "Create evidence-linked SOPs, work instructions, validation documents, training and team briefings; review sections and export saved Word, PDF and PowerPoint snapshots."
     }
   ],
   "screens": {
@@ -274,6 +281,7 @@
     "guidance-impact.html": "guidance-impact",
     "impact-briefs.html": "impact-briefs",
     "pv-roles.html": "pv-roles",
-    "admin-social.html": "admin-social"
+    "admin-social.html": "admin-social",
+    "content-studio.html": "content-studio"
   }
 }
