@@ -1,8 +1,8 @@
 const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs');
-const cloud=`export const team={me:{id:'fixture-owner',role:'authenticated'},list:[]};export const restrictedUser=()=>false;export const currentUser=async()=>team.me;export const loadTeam=async()=>team;export const isAdmin=async()=>false;export const navOnly=async()=>{};export const client=async()=>({from(){const q={select(){return q},eq(){return q},is(){return q},order(){return q},limit(){return q},maybeSingle(){return q},then(resolve){return Promise.resolve({data:[],error:null}).then(resolve)}};return q}});`;
+const cloud=`export const teamAction=async()=>{};export const teamSummary=()=>'';export const team={me:{id:'fixture-owner',role:'authenticated'},list:[]};export const restrictedUser=()=>false;export const currentUser=async()=>team.me;export const loadTeam=async()=>team;export const isAdmin=async()=>false;export const navOnly=async()=>{};export const client=async()=>({from(){const q={select(){return q},eq(){return q},is(){return q},order(){return q},limit(){return q},maybeSingle(){return q},then(resolve){return Promise.resolve({data:[],error:null}).then(resolve)}};return q}});`;
 (async()=>{
  const browser=await chromium.launch({headless:true}),page=await browser.newPage({viewport:{width:1440,height:1000},acceptDownloads:true}),errors=[];
- page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
+ page.on('pageerror',e=>{errors.push(e.message);console.error('Browser error:',e.message);});page.on('dialog',d=>d.accept());
  await page.route('**/cloud.js',r=>r.fulfill({contentType:'text/javascript',body:cloud}));await page.route('**/config.json',r=>r.fulfill({json:{}}));await page.route('**/data/site.json',r=>r.fulfill({json:{}}));
  await page.goto('http://127.0.0.1:4173/rule-templates.html');await page.getByText('4 templates · 0 saved forks',{exact:true}).waitFor();
  await page.getByRole('button',{name:'Watch FDA · Postmarketing 15-day alert',exact:true}).click();await page.getByRole('button',{name:'My watchlist',exact:true}).click();assert.equal(await page.locator('.rt-card').count(),1);
