@@ -21,6 +21,8 @@
 
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import path from "node:path";
+import {execFileSync} from "node:child_process";
+import {renderStaticLists} from "./static-content.mjs";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -95,19 +97,18 @@ export function problems(pages) {
 
 const xml = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-export function sitemap(pages, { base = SEO_SITE_URL, papers = [], companies = [], now = new Date() } = {}) {
-  const today = now.toISOString().slice(0, 10);
+export function sitemap(pages, { base = SEO_SITE_URL, papers = [], companies = [], modified = {}, now = new Date() } = {}) {
   const urls = [];
   for (const [file, html] of pages) {
     if (pageMeta(html).noindex) continue;
-    if (file === "index.html") urls.push({ loc: `${base}/`, lastmod: today, changefreq: "hourly", priority: "1.0" });
-    else urls.push({ loc: base + pagePath(file), changefreq: "daily", priority: "0.7" });
+    if (file === "index.html") urls.push({ loc: `${base}/`, lastmod: modified[file], changefreq: "hourly", priority: "1.0" });
+    else urls.push({ loc: base + pagePath(file), lastmod: modified[file], changefreq: "daily", priority: "0.7" });
   }
   const indexed = new Set(pages.filter(([, h]) => !pageMeta(h).noindex).map(([f]) => f));
   if (indexed.has("paper.html"))
     for (const p of papers) if (p?.id) urls.push({ loc: `${base}/paper.html?id=${encodeURIComponent(p.id)}`, lastmod: (p.published ?? p.date ?? "").slice(0, 10) || undefined, changefreq: "monthly", priority: "0.5" });
   if (indexed.has("company.html"))
-    for (const c of companies) if (c?.id) urls.push({ loc: `${base}/company.html?id=${encodeURIComponent(c.id)}`, changefreq: "daily", priority: "0.5" });
+    for (const c of companies) if (c?.id) urls.push({ loc: `${base}/company.html?id=${encodeURIComponent(c.id)}`, lastmod: modified["company.html"], changefreq: "daily", priority: "0.5" });
   const body = urls.map((u) => {
     const parts = [`<loc>${xml(u.loc)}</loc>`];
     if (u.lastmod && /^\d{4}-\d{2}-\d{2}$/.test(u.lastmod)) parts.push(`<lastmod>${u.lastmod}</lastmod>`);
@@ -128,6 +129,7 @@ async function readJson(file) {
 export async function run({ write = true, build = false, dir = PUBLIC, env = process.env } = {}) {
   const base = (env.SEO_SITE_URL || "https://www.pvinfo.org").replace(/\/$/, "");
   const verification = (env.GOOGLE_SITE_VERIFICATION || "").trim();
+  if (build) await renderStaticLists(dir);
   const pages = [];
   for (const file of await listPages(dir)) {
     const html = await readFile(path.join(dir, file), "utf8");
@@ -140,7 +142,18 @@ export async function run({ write = true, build = false, dir = PUBLIC, env = pro
   if (build) {
     const research = await readJson(path.join(dir, "data/research.json"));
     const companies = await readJson(path.join(dir, "data/companies/index.json"));
-    const map = sitemap(pages, { base, papers: research?.papers ?? [], companies: companies?.companies ?? [] });
+    const modified = {};
+    const validDay = value => /^\d{4}-\d{2}-\d{2}/.test(value??'') && Number.isFinite(Date.parse(value)) ? value.slice(0,10) : '';
+    for(const [file, html] of pages){
+      const assets=[...html.matchAll(/(?:src|href)="([^"?#]+\.(?:js|css))"/g)].map(m=>m[1]).filter(x=>!x.includes(':')&&!x.startsWith('/'));
+      try { const d=execFileSync('git',['log','-1','--format=%cs','--',...['public/'+file,...assets.map(x=>'public/'+x)]],{cwd:ROOT,encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim(); if(validDay(d))modified[file]=d; } catch {}
+    }
+    // Content dates, never retrieval/build timestamps, supplement source-change dates.
+    for(const [file,json,rows,fields] of [['index.html','updates.json','updates',['published','modified']],['resources.html','resources.json','resources',['updatedAt']]]){
+      const data=await readJson(path.join(dir,'data',json));const dates=(data?.[rows]??[]).flatMap(r=>[...fields.map(k=>validDay(r[k])),validDay(r.verified?.on)]).filter(Boolean);
+      const latest=[modified[file],...dates].filter(Boolean).sort().at(-1);if(latest)modified[file]=latest;
+    }
+    const map = sitemap(pages, { base, modified, papers: research?.papers ?? [], companies: companies?.companies ?? [] });
     await writeFile(path.join(dir, "sitemap.xml"), map);
     await writeFile(path.join(dir, "robots.txt"), robots({ base }));
     console.log(`seo: sitemap.xml with ${(map.match(/<url>/g) ?? []).length} URLs for ${base}${verification ? " (Google verification tag on)" : ""}`);
