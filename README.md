@@ -460,3 +460,7 @@ Admins can open **Admin → Social Post Studio** to select a recommended public 
 ### Template Library and Document Studio
 
 Six reusable reference structures support SOPs, work instructions, configuration runbooks, validation checklists, training decks and team briefings. Approved users populate private personal/team drafts from pinned company assessments or source captures, maintain reusable private variants, review sections and resolve findings. Independent team-owner approval is enforced in Postgres; approved snapshots remain reconstructable. Browser-local DOCX/PDF exports and training PPTX exports use saved revisions without a third-party conversion service or paid AI calls. Templates retain explicit placeholders for company and vendor-specific steps. See [user guide](docs/user-guide/content-studio.md).
+
+### Synthetic Safety Sandbox
+
+A browser-memory demonstration workspace supports fictional clinical/marketed cases, fixed-schema CSV imports, starter scenarios, two-rule comparison, explained eligibility and UTC elapsed-day deadline calculations. No real case data, gateway or vendor execution. Downloadable JSON includes inputs and engine assumptions. See [guide](docs/user-guide/sandbox.md).

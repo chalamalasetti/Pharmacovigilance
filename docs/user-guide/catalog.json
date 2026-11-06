@@ -233,6 +233,13 @@
       "group": "Company work",
       "audience": "Approved users",
       "summary": "Create evidence-linked SOPs, work instructions, validation documents, training and team briefings; review sections and export saved Word, PDF and PowerPoint snapshots."
+    },
+    {
+      "id": "sandbox",
+      "title": "Synthetic Safety Sandbox",
+      "group": "Company work",
+      "audience": "Everyone",
+      "summary": "Create fictional scenarios, compare structured rules and inspect demonstration deadlines in a temporary local workspace."
     }
   ],
   "screens": {
@@ -282,6 +289,7 @@
     "impact-briefs.html": "impact-briefs",
     "pv-roles.html": "pv-roles",
     "admin-social.html": "admin-social",
-    "content-studio.html": "content-studio"
+    "content-studio.html": "content-studio",
+    "sandbox.html": "sandbox"
   }
 }
