@@ -294,6 +294,7 @@
     "disclaimer.html": "getting-started",
     "rule-templates.html": "config-workbench",
     "product-answers.html": "label-intelligence",
-    "label-analysis.html": "label-intelligence"
+    "label-analysis.html": "label-intelligence",
+    "data-repository.html": "label-intelligence"
   }
 }
