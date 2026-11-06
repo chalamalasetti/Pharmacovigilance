@@ -4,9 +4,19 @@ Use this training workspace to construct fictional clinical or marketed case sce
 
 ## Open and start
 
-Open Resources → Synthetic Safety Sandbox from the Resources page, or follow the Configuration Workbench link. Load starter scenarios or create a synthetic case. Everything stays in page memory. Closing or reloading clears the working session; downloaded files remain on your device. No case records are transmitted or saved in browser storage.
+Open Resources → Synthetic Safety Sandbox from the Resources page, or follow the Configuration Workbench link. Start with **Cases**, **Scenario Library** or **Rule Lab**. Choose **New case** for a blank record, or start a fictional scenario from the library. Everything stays in page memory. Closing or reloading clears the working session; downloaded files remain on your device. No case records are transmitted or saved in browser storage.
 
 Use fictional information only. The form intentionally has no patient/reporter names, date of birth, email, phone or address fields. Short text labels are not an anonymization service: do not paste real case information into them.
+
+## Your case workspace
+
+The Cases dashboard shows saved revisions as cards. Search by case ID, medicine, event or country; filter by lifecycle, structural review status or earlier revisions. Summary cards distinguish structural issues from the requirements needed to run XML checks. **Ready to test** means the demonstration rules can run; it does not mean clinical completeness or XML validation has passed.
+
+Open a case to work through **Intake → Patient → Products → Events → Assessment → Narrative → Review → Export**. Previous/Continue buttons and the step navigation keep the same draft. Returning to Cases or Scenario Library keeps unsaved edits in this tab; choose **Resume draft** to continue. Opening a different case or scenario asks before discarding edits. Reloading or closing the tab still clears the entire session.
+
+**Review** brings structural issues, XML profile requirements, changes since the saved revision and the last saved revision’s changes together. Repeated rows are compared by their stable IDs. Save a new revision with its type and reason before testing saved cases or downloading the saved-case package.
+
+The Scenario Library includes a clinical reporting clock, multiple products/events, gestation zero, conflicting null flavor, follow-up without clock reset and missing initial receipt. Each creates a separate fictional case. Sample dates, assessments and clocks are editable training assumptions.
 
 ## Case form
 
@@ -19,7 +29,7 @@ Use fictional information only. The form intentionally has no patient/reporter n
 7. **Literature and linked reports:** up to 20 fictional citations with reference/DOI and language; linked case reference and amendment context.
 8. **Parent–child and death:** fictional parent demographics/history, death date/cause and autopsy context. No identity fields.
 9. **Narrative and exchange context:** fictional clinical narrative and reporter/sender comments, worldwide case reference, sender/receiver identifiers, reporter country and study sponsor/protocol. No gateway connection is created.
-10. **Revisions:** save the initial case, then record a reason and choose follow-up, correction or restore. Each save creates a new revision and preserves the previous snapshot. Initial receipt and case ID are locked after first save. Up to 100 earlier snapshots are supported. Restore creates a draft from an earlier snapshot; saving makes another revision. Latest-information time does not move backwards.
+10. **Revisions:** save the initial case, then record a reason and choose follow-up, correction or restore. Each save creates a new revision and preserves the previous snapshot. Case ID is locked after first save. A known initial receipt is locked; a previously missing receipt can be completed in a reasoned new revision, preserving the earlier blank snapshot. Up to 100 earlier snapshots are supported. Restore creates a draft from an earlier snapshot; saving makes another revision. Latest-information time does not move backwards.
 11. **Preview and export:** check structural issues, preview the case report and download the original PV Info training PDF. PDF reflects the current form, including unsaved changes, and is labeled draft. Save first to capture a complete revision record.
 
 The form covers the sections listed here. It does not implement every ICH/regional ICSR element, full parent drug/history repeatability, linked attachments, sender/receiver XML envelopes or licensed terminology validation. Fictional narratives are limited to 4,000 characters each; citation and parent/autopsy text are limited to 1,000 characters each.
@@ -33,6 +43,8 @@ Times are UTC. Deadline = selected receipt timestamp + configured days × 24 hou
 Results distinguish not triggered, indeterminate, blocked and triggered; triggered results show pending/overdue or met/missed against the simulated submission time. They explain each condition and preserve inputs in a downloadable results package.
 
 ## Save, import and restore
+
+Use **Import, download & session controls** to download saved cases, restore files or close the session. Draft edits are not included in saved-case packages. Closing clears cases, drafts, rules, results and the locally selected CIOMS template.
 
 - **Saved case package (JSON):** preserves saved cases, repeatable sections and revision history. Restore accepts the versioned synthetic format, checks IDs/history and replaces the current case collection after confirmation. Maximum 200 cases and 2 MB per imported package. Download this before closing.
 - **Legacy CSV:** fixed columns only, up to 200 cases / 200 KB. It creates simple single-product/single-event cases. CSV cannot carry repeatable sections or revision history. Use JSON to preserve richer cases.
