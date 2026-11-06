@@ -1,3 +1,4 @@
+import {safetyNotice} from './safety-notice.js';
 // ICH-shaped, XSD-validated training export. No agency profile or submission claim.
 import {cleanSynthetic,caseIssues,packageCases} from './sandbox-case-lib.js';
 export const XML_PROFILE='pvinfo-ich-r3-training/1';
@@ -51,7 +52,7 @@ export async function serializeTrainingXml(raw){
  const device=(tag,type,identifier,oid)=>n(tag,{typeCode:type},n('device',{classCode:'DEV',determinerCode:'INSTANCE'},n('id',{extension:identifier,root:ICH+oid})));
  const message=n('PORR_IN049016UV',{},n('id',{extension:c.id+'-R'+c.revision,root:ICH+'3.1'}),n('creationTime',{value:stamp(c.report.creationTime)}),n('interactionId',{extension:'PORR_IN049016UV',root:'2.16.840.1.113883.1.6'}),n('processingCode',{code:'T'}),n('processingModeCode',{code:'T'}),n('acceptAckCode',{code:'AL'}),device('receiver','RCV',c.report.receiver,'3.12'),device('sender','SND',c.report.sender,'3.11'),n('controlActProcess',{classCode:'CACT',moodCode:'EVN'},code('PORR_TE049016UV','2.16.840.1.113883.1.18',null),n('effectiveTime',{value:stamp(c.report.creationTime)}),n('subject',{typeCode:'SUBJ'},inv)));
  const root=n('MCCI_IN200100UV01',{xmlns:'urn:hl7-org:v3','xmlns:xsi':'http://www.w3.org/2001/XMLSchema-instance',ITSVersion:'XML_1.0','xsi:schemaLocation':'urn:hl7-org:v3 '+ENTRYPOINT},n('id',{extension:'SYNTHETIC-'+c.id+'-R'+c.revision,root:ICH+'3.22'}),n('creationTime',{value:stamp(c.report.creationTime)}),n('responseModeCode',{code:'D'}),n('interactionId',{extension:'MCCI_IN200100UV01',root:'2.16.840.1.113883.1.6'}),n('name',{code:'1',codeSystem:ICH+'1.1',codeSystemVersion:'1.0'}),message,device('receiver','RCV',c.report.receiver,'3.14'),device('sender','SND',c.report.sender,'3.13'));
- return '<?xml version="1.0" encoding="UTF-8"?>\n<!-- SYNTHETIC TRAINING ONLY; NOT FOR SUBMISSION -->\n'+render(root)+'\n';
+ return '<?xml version="1.0" encoding="UTF-8"?>\n<!-- SYNTHETIC TRAINING ONLY; NOT FOR SUBMISSION. Independent PV Info output; no Oracle, ICH, CIOMS or regulator endorsement. See https://www.pvinfo.org/disclaimer.html -->\n'+render(root)+'\n';
 }
 
 export async function loadSchemaBundle(fetcher=fetch){
@@ -77,7 +78,7 @@ function browserEngine(options){return new Promise((resolve,reject)=>{
 });}
 export async function validatedTrainingExport(raw,{loadSchemas=loadSchemaBundle,engine=browserEngine}={}){
  const c=cleanSynthetic(raw),issues=xmlProfileIssues(c);
- const report={schema:'pvinfo-xml-validation/1',classification:'SYNTHETIC TRAINING ONLY',profile:XML_PROFILE,formState:'current form / draft',caseId:c.id,revision:c.revision,
+ const report={schema:'pvinfo-xml-validation/1',classification:'SYNTHETIC TRAINING ONLY',notice:safetyNotice(),profile:XML_PROFILE,formState:'current form / draft',caseId:c.id,revision:c.revision,
   schemaSet:{version:'2.5',archiveSha256:ARCHIVE_HASH,bundleSha256:SCHEMA_HASH,entrypoint:ENTRYPOINT},
   validator:{package:'xmllint-wasm',version:'5.3.0',libxml2:'2.13.8'},
   profileChecks:{passed:issues.length===0,errors:issues},xsd:{executed:false,valid:false,errors:[]},

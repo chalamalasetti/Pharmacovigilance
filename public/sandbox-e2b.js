@@ -1,3 +1,4 @@
+import {safetyNotice} from './safety-notice.js';
 // Review aid only: no XML serialization, terminology conversion or validation claim.
 import {cleanSynthetic,caseIssues,CASE_SCHEMA} from './sandbox-case-lib.js';
 const CANDIDATES={
@@ -39,7 +40,7 @@ export function e2bReadiness(raw,catalog){
    candidatePath:path??null,status:path?'candidate — semantic and coding review required':'not mapped',
    populated:values.some(x=>x.value!==''&&x.value!==null&&x.value!==undefined),values};
  });
- return {schema:'pvinfo-e2b-mapping-review/1',caseSchema:CASE_SCHEMA,classification:'SYNTHETIC TRAINING ONLY',
+ return {schema:'pvinfo-e2b-mapping-review/1',caseSchema:CASE_SCHEMA,classification:'SYNTHETIC TRAINING ONLY',notice:safetyNotice(),
   caseId:c.id,revision:c.revision,formState:'current form / draft; may contain unsaved changes',
   outputType:'Mapping review JSON — NOT an E2B message',xmlExportEnabled:false,profile:null,
   catalogHash:catalog.contentHash,sources:catalog.sources,structuralIssues:caseIssues(c),

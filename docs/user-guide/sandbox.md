@@ -2,6 +2,8 @@
 
 Use this training workspace to construct fictional clinical or marketed case scenarios and compare reporting-rule assumptions. It is not a production safety database or a complete implementation of ICH E2B(R3).
 
+Read the [full use, validation and trademark notice](disclaimer.html). The tools and exports are independent training artifacts, not regulatory submissions or evidence of vendor endorsement. Choosing a local CIOMS template does not grant rights in that form.
+
 ## Open and start
 
 Open Resources → Synthetic Safety Sandbox from the Resources page, or follow the Configuration Workbench link. Start with **Cases**, **Scenario Library** or **Rule Lab**. Choose **New case** for a blank record, or start a fictional scenario from the library. Everything stays in page memory. Closing or reloading clears the working session; downloaded files remain on your device. No case records are transmitted or saved in browser storage.
