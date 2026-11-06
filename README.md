@@ -476,3 +476,9 @@ The production SEO step renders up to 30 unique latest headline links and the pu
 `npm run templates:build` renders the public Rule Template Library with four source-linked starters; run it before `npm run notice:build` and `npm run seo` after editing the catalog. Forks and a separate template watchlist are browser-local, with reasoned revision history and JSON review exports. Workbench handoff is an unverified source-pinned draft. Sandbox handoff is explicitly a user-chosen subset of case-level controls, not an execution of regulatory template text.
 
 Template expansion: 16 source-linked starters and 1,536 explicitly blank research worksheets cover 249 countries/territories plus EU/international discovery entries. Agency names/links extend the existing registry; unestablished authorities and report paths remain marked for research. No universal reporting-rule completeness is claimed.
+
+### Navigation registry and compact launchers
+
+Desktop menus use searchable two-column tool cards with bounded scrolling; mobile menus use compact single-column items. Existing administrator order and hidden settings are preserved. The navigation editor supports finding items by label or route. My Briefing places My work before its metrics and generated summary sections.
+
+Run `node scripts/build-navigation-sql.mjs` after changing `public/navigation.js`. It synchronizes the final validator in `supabase/schema.sql` and the deployable `supabase/navigation-registry.sql`; apply that SQL to the database as a tracked migration. The registry test prevents new frontend pages from silently diverging from the database allowlist. Navigation saves remain admin-only, and duplicate/unknown-page checks remain enforced.

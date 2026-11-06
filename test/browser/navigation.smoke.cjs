@@ -7,6 +7,7 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
  const my=page.locator('#site-nav summary').filter({hasText:'My Briefing'});await my.waitFor();
  assert.equal(await page.locator('#site-nav a[data-nav="action-center"]').isVisible(),false);
  await my.focus();await page.keyboard.press('Enter');await page.locator('#site-nav a[data-nav="action-center"]').waitFor({state:'visible'});
+ await page.getByLabel('Find in My Briefing',{exact:true}).fill('configuration');assert.equal(await page.locator('#site-nav a[data-nav="action-center"]').isVisible(),false);assert.equal(await page.locator('#site-nav a[data-nav="config-workbench"]').isVisible(),true);await page.getByLabel('Find in My Briefing',{exact:true}).fill('');
  await page.keyboard.press('Escape');assert.equal(await page.locator('#site-nav details[open]').count(),0);
  assert.equal(await page.locator('#site-nav [data-admin-only]').isVisible(),false);
  await page.setViewportSize({width:390,height:844});await page.getByRole('button',{name:'Menu',exact:false}).click();await my.click();assert.equal(await page.locator('#site-nav a[data-nav="action-center"]').isVisible(),true);

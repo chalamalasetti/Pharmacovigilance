@@ -108,7 +108,7 @@ function render() {
     el("span", { class: "scope" }, scope, p.watch.length ? ` · watching ${p.watch.join(", ")}` : ""),
   );
 
-  const tile = (n, label, cls = "") => el("div", { class: `tile ${cls}` }, el("b", {}, String(n)), el("span", {}, label));
+  const tile = (n, label, cls = "") => el("div", { class: `tile ${cls}` }, el("span", {class:"brief-tile-icon","aria-hidden":"true"}, ({"new for you":"✦","watchlist hits":"◎","safety & recalls":"◇","regulatory & guidance":"▤","not yet assessed":"◷","dates coming up":"▦"})[label]||"◈"), el("b", {}, String(n)), el("span", {}, label));
   $("tiles").replaceChildren(
     tile(b.counts.total, "new for you"),
     tile(b.watch.length, "watchlist hits", b.watch.length ? "hot" : ""),
@@ -347,7 +347,7 @@ function renderWork() {
   $("worktabs").replaceChildren(
     ...WORK_TABS.map((t) => {
       const n = entries.filter(([, r]) => t.test(r)).length;
-      return el("button", { type: "button", role: "tab", "aria-pressed": String(tab === t.id), onclick: () => ((tab = t.id), renderWork()) }, `${t.label} (${n})`);
+      return el("button", { type: "button", role: "tab", "aria-label": `${t.label} (${n})`, "aria-selected": String(tab === t.id), "aria-pressed": String(tab === t.id), onclick: () => ((tab = t.id), renderWork()) }, `${({saved:'★',followed:'◎',assigned:'↗',assessed:'✓',dismissed:'⊘'})[t.id]||'◈'} ${t.label} (${n})`);
     }),
   );
   const t = WORK_TABS.find((x) => x.id === tab);

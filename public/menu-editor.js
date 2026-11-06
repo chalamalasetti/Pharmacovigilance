@@ -2,7 +2,7 @@ import {defaultNavigation,normalizeNavigation,validateNavigation,PAGES} from './
 import {renderNavigation} from './navigation-view.js';
 const el=(tag,attrs={},...children)=>{const n=document.createElement(tag);for(const[k,v]of Object.entries(attrs)){if(k.startsWith('on'))n.addEventListener(k.slice(2),v);else if(v!==false&&v!=null)n.setAttribute(k,v===true?'':v);}n.append(...children.flat().filter(x=>x!=null&&x!==false));return n;};
 export function menuEditor({value,legacy={},expected=null,onSave}) {
- let saved=normalizeNavigation(value,legacy),draft=structuredClone(saved),saving=false;
+ let saved=normalizeNavigation(value,legacy),draft=structuredClone(saved),saving=false,searchText='';
  const root=el('section',{class:'profile menu-studio',id:'menu'}),body=el('div'),preview=el('nav',{class:'toplinks menu-preview','aria-label':'Menu preview'}),notice=el('p',{class:'hint',role:'status','aria-live':'polite'});
  const save=el('button',{type:'button',class:'btn primary',onclick:async()=>{
   if(saving)return;
@@ -20,6 +20,7 @@ export function menuEditor({value,legacy={},expected=null,onSave}) {
   if(label){const buttons=[...root.querySelectorAll('button[aria-label]')];const next=buttons.find(b=>b.getAttribute('aria-label')===label&&!b.disabled)??buttons.find(b=>b.getAttribute('aria-label')===label.replace(/ up$| down$/,delta<0?' down':' up')&&!b.disabled);next?.focus();}
  }
  function arrow(label,disabled,callback,symbol){return el('button',{type:'button',class:'menu-icon-btn','aria-label':label,title:label,disabled:saving||disabled,onclick:callback},symbol);}
+ function filterRows(){for(const row of body.querySelectorAll('.menu-item-row'))row.hidden=!row.textContent.toLowerCase().includes(searchText)&&![...row.querySelectorAll('input[type="text"]')].some(n=>String(n.value).toLowerCase().includes(searchText));}
  function draw(){
   body.replaceChildren(...draft.groups.map((g,gi)=>el('article',{class:'menu-group-card'},
    el('div',{class:'menu-group-head'},el('span',{class:'menu-group-symbol','aria-hidden':'true'},String(gi+1).padStart(2,'0')),
@@ -33,11 +34,12 @@ export function menuEditor({value,legacy={},expected=null,onSave}) {
      el('label',{class:'menu-destination'},el('span',{},'Group'),target),
      el('div',{class:'menu-move'},arrow(`Move ${PAGES[item.id].label} up`,ii===0,()=>move(g.items,ii,-1),'↑'),arrow(`Move ${PAGES[item.id].label} down`,ii===g.items.length-1,()=>move(g.items,ii,1),'↓')));
    }),!g.items.length?el('p',{class:'hint menu-empty'},'Empty group. Move a page here using its Group selector. Empty groups are not shown to visitors.'):null))));
-  refreshDirty();
+  filterRows();refreshDirty();
  }
  const add=el('button',{type:'button',class:'act',onclick:()=>{if(draft.groups.length>=12){notice.textContent='You can have up to 12 groups.';return;}draft.groups.push({id:'group-'+crypto.randomUUID().slice(0,8),label:'New group',items:[]});draw();}},'+ Add group');
  root.append(el('div',{class:'menu-studio-title'},el('div',{},el('h2',{},'Navigation studio'),el('p',{class:'hint'},'Group related work together. Rename, reorder or move pages, then preview before saving.')),add),
   el('p',{class:'menu-note'},'Admin access stays restricted to admins. Sign in / Sign out stays separate. Updates cannot be hidden. Hiding a page removes its menu link, not direct access.'),
+  el('label',{class:'menu-search-label'},'Find a menu item',el('input',{type:'search',placeholder:'Search by page, label or destination…','aria-label':'Find a menu item',oninput:e=>{searchText=e.target.value.trim().toLowerCase();filterRows();}})),
   el('div',{class:'menu-preview-wrap'},el('span',{class:'menu-eyebrow'},'Live draft preview'),preview),body,
   el('div',{class:'menu-studio-actions'},save,discard,reset),notice);
  draw();return root;
