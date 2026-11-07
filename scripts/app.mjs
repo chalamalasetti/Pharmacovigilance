@@ -26,6 +26,7 @@ const hostArg = process.argv.indexOf('--host');
 const PORT = Number(process.env.PORT ?? (portArg >= 0 ? process.argv[portArg + 1] : 4330));
 const HOST = hostArg >= 0 ? process.argv[hostArg + 1] : '127.0.0.1';
 if (!Number.isInteger(PORT) || PORT < 1024 || PORT > 65535 || !['127.0.0.1','0.0.0.0'].includes(HOST)) throw Error('Invalid development host or port');
+const developmentHeaders=JSON.parse(await readFile(new URL("../vercel.json",import.meta.url),"utf8")).headers.find(h=>h.source==="/(.*)")?.headers||[];
 const REFRESH_MS = 60 * 60 * 1000;
 
 const TYPES = {
@@ -40,6 +41,7 @@ const TYPES = {
 };
 
 export const server = http.createServer(async (req, res) => {
+  for(const header of developmentHeaders)res.setHeader(header.key,header.value);
   let urlPath;
   try {
     urlPath = decodeURIComponent(new URL(req.url, "http://x").pathname);

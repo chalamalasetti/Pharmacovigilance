@@ -15,7 +15,7 @@ function mapping(){const host=$('la-mapping');host.replaceChildren();if(!state.i
 $('la-to').value=new Date().toISOString().slice(0,10);
 $('la-form').addEventListener('input',e=>{if(e.target.closest('#la-mapping'))return;invalidate();if(e.target.id==='la-terms'){extraTerms=null;$('la-term-summary').textContent='';}status('Scope changed. Run analysis again.');});
 $('la-import').onchange=async e=>{try{const file=e.target.files[0];if(!file)return;if(file.size>200000)throw Error('Cohort file exceeds 200 KB.');state.imports=importCohort(await file.text(),file.name.toLowerCase());state.selections={};invalidate();mapping();status('Import loaded. Confirm each row; nothing was silently mapped.');}catch(err){status(err.message);}e.target.value='';};
-$('la-terminology').onchange=async e=>{try{const file=e.target.files[0];if(!file)return;if(!$('la-rights').checked)throw Error('Confirm your rights before importing terminology metadata.');if(file.size>100000)throw Error('Terminology file exceeds 100 KB.');const terms=cleanTerms(JSON.parse(await file.text()));extraTerms=terms;invalidate();$('la-term-summary').textContent=terms.length+' imported terms replace the text list. No dictionary validation or SMQ algorithm.';status('Terminology metadata loaded for review. Edit the phrase list to return to manual terms.');}catch(err){status(err.message);}e.target.value='';};
+$('la-terminology').disabled=true;$('la-rights').disabled=true;
 $('la-reset').onclick=()=>{state.imports=[];state.selections={};invalidate();mapping();status('All captured applications selected; run again.');};
 $('la-sample').onclick=()=>download('product,company,market,application\n','pvinfo-cohort-template.csv','text/csv');
 $('la-retry').onclick=load;

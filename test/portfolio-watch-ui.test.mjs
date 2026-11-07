@@ -13,5 +13,6 @@ test('import, explicit review, profile, restore and clear work together without 
  const select=$('pw-rows').querySelector('select');select.value='example';select.onchange();$('pw-confirm').onclick();assert.match($('pw-profile').textContent,/Example ingredient/);assert.equal($('pw-export').disabled,false);assert.match($('pw-profile').querySelector('a:last-child').href,/NDA000001/);
  const saved=lib.confirmPortfolio(lib.parsePortfolioCSV(csv),{'row-1':'example'},[product]);const text=JSON.stringify(saved);
  await $('pw-restore').onchange({target:{files:[{size:text.length,text:async()=>text}],value:''}});assert.match($('pw-recheck').textContent,/unchanged/);assert.equal($('pw-export').disabled,true);$('pw-confirm').onclick();assert.match($('pw-status').textContent,/Resolve every/);
+ await $('pw-refresh').onclick();assert.equal(calls.length,3);assert.equal($('pw-export').disabled,true);assert.match($('pw-status').textContent,/refreshed/);
  $('pw-clear').onclick();assert.equal($('pw-rows').children.length,0);assert.equal($('pw-export').disabled,true);
 });
