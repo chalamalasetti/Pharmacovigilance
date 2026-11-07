@@ -1,5 +1,5 @@
-import {searchMatches} from './search-normalization.js';
-export function filterCountryTrials(rows,{q='',phase='',status=''}={}){return rows.filter(s=>(!phase||s.phases.includes(phase))&&(!status||s.status===status)&&searchMatches(q,[s.id,s.title,s.status,...s.conditions,...s.medicines.map(m=>m.name),...s.companyRoles.map(r=>r.name)]));}
+import {filterTrials} from './clinical-lib.js';
+export const filterCountryTrials=(rows,filters={})=>filterTrials(rows,filters);
 // A country change invalidates in-flight pages and every continuation token.
 export function createCountryTrials({fetcher=fetch,onChange=()=>{}}={}){
  let serial=0,state;function reset(country){serial++;state={country,studies:[],status:'not-loaded',nextCursor:null,pages:0,sourceQueryTotal:null,error:null};onChange(state);return state;}

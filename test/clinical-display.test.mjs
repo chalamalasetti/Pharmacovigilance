@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {phaseOverview,phaseLabel,trialStatusLabel} from '../public/clinical-lib.js';import {filterCountryTrials} from '../public/country-trials.js';
+const study={id:'NCT00000001',phases:['PHASE1','PHASE2'],status:'RECRUITING',title:'Example',conditions:[],medicines:[],companyRoles:[],countries:[],areas:[]};
+test('shared clinical summaries count overlapping study phases without additive totals',()=>{const rows=[study,{...study,id:'NCT00000002',phases:[]},{...study}];const counts=Object.fromEntries(phaseOverview(rows).map(p=>[p.key,p.count]));assert.equal(counts.PHASE1,1);assert.equal(counts.PHASE2,1);assert.equal(counts.UNKNOWN,1);assert.equal(counts.PHASE3,0);});
+test('country and company clinical labels use the same human-readable phase and status values',()=>{assert.equal(phaseLabel('EARLY_PHASE1'),'Early phase 1');assert.equal(trialStatusLabel('ACTIVE_NOT_RECRUITING'),'Active, not recruiting');assert.equal(filterCountryTrials([study],{status:'active'}).length,1);assert.equal(filterCountryTrials([{...study,phases:[]}],{phase:'UNKNOWN'}).length,1);});
