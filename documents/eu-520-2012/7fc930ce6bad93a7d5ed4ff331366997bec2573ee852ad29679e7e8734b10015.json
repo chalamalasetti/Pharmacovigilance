@@ -1,0 +1,436 @@
+{
+  "schema_version": "public-document-key-info-v1",
+  "document_id": "eu-520-2012",
+  "metadata": {
+    "title": "Commission Implementing Regulation (EU) No 520/2012",
+    "country": "EU",
+    "agency": "EMA",
+    "edition": "Consolidated 2026-02-12",
+    "norm": "Regulation",
+    "topic": "PV quality and outsourcing",
+    "lifecycle": "Marketed",
+    "legal_basis": "Regulation (EU) No 520/2012, as amended; consolidation is a documentation aid.",
+    "applicability": "EU marketing authorisation holders within the Article 1 scope.",
+    "published_on": "",
+    "effective_on": "",
+    "source_status": "current"
+  },
+  "metadata_verification": "Source-register metadata; dates and legal status require human verification.",
+  "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02012R0520-20260212",
+  "original_sha256": "b197f13d39eae740ab3e218362627924ef4a8d24336e4c42b6a2be27d0c708ac",
+  "content_kind": "html",
+  "parser_version": "normative-rules-v4-tables",
+  "extraction_status": "candidates_extracted",
+  "candidate_count": 50,
+  "excluded_paragraphs": 0,
+  "candidate_limit_reached": false,
+  "review_status": "pending",
+  "limitations": [
+    "English rule-based extraction; no GPT or paid API.",
+    "Candidates are not approved requirements. Read the original, qualifications and exceptions.",
+    "Scans, tables, other languages and implicit obligations may be missed. Zero candidates does not establish zero requirements."
+  ],
+  "candidates": [
+    {
+      "ordinal": 1,
+      "anchor": "paragraph-125",
+      "statement": "All medicinal products for which the marketing authorisation holder obtained a marketing authorisation in accordance with Directive 2001/83/EC or Regulation (EC) No 726/2004 shall be covered by a pharmacovigilance system master file.",
+      "context": "Structure of the pharmacovigilance system master file",
+      "fingerprint": "d0f2e246389845c07f2a823e5a9606c7c0e22da5da6d1851ea3e7fe2097cfc5b",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 2,
+      "anchor": "paragraph-128",
+      "statement": "The pharmacovigilance system master file shall contain at least all of the following elements:",
+      "context": "Content of the pharmacovigilance system master file the following information relating to the qualified person responsible for pharmacovigilance:",
+      "fingerprint": "977e67648e3ba07ab51731c5dfd0bb360add4ea49e46697553e651a7b3497216",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 3,
+      "anchor": "paragraph-152",
+      "statement": "The pharmacovigilance system master file shall have an Annex containing the following documents:",
+      "context": "Content of the Annex to the pharmacovigilance system master file a list of medicinal products covered by the pharmacovigilance system master file, including the name of the medicinal product, the international non-proprietary name (INN) of the active substance(s), and the Member State(s) in which the authorisation is valid;",
+      "fingerprint": "1054c62f3aa28c8f7f265f576f26100677f99e9bae93725b14a555c534af5653",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 4,
+      "anchor": "paragraph-170",
+      "statement": "Without prejudice to the second sentence of paragraph 1 and to Article 11(2), the marketing authorisation holder shall include in the subcontracts the following elements:",
+      "context": "a clear description of the roles and responsibilities of the third parties to whom pharmacovigilance activities are subcontracted;",
+      "fingerprint": "ff698b9d3359beb144226750e9751fe17330dbb8f015bdc8b87c70c8653e04d8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 5,
+      "anchor": "paragraph-186",
+      "statement": "The quality system shall be based on all of the following activities:",
+      "context": "quality planning: establishing structures and planning integrated and consistent processes;",
+      "fingerprint": "3cc029745d1e9e536f713a89b1a6112eb87e46abd685edb861e1a6a1921eb7b7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 6,
+      "anchor": "paragraph-197",
+      "statement": "For the purposes of the first subparagraph, the market authorisation holder shall ensure that the qualified person responsible for pharmacovigilance has acquired adequate theoretical and practical knowledge for the performance of pharmacovigilance activities. Where the qualified person has not completed basic medical training in accordance with Article 24 of Directive 2005/36/EC of the European Parliament and of the Council of 7 September 2005 on the recognition of professional qualifications ( 2 ), the market authorisation holder shall ensure that the qualified person responsible for pharmacovigilance is assisted by a medically trained person. This assistance shall be duly documented.",
+      "context": "Management of human resources",
+      "fingerprint": "75c423a4495e73408735cea2a2b6d99d5980eab8480d073befeba3800d00decd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 7,
+      "anchor": "paragraph-200",
+      "statement": "Specific quality system procedures and processes shall be in place in order to ensure the following:",
+      "context": "the continuous monitoring of pharmacovigilance data, the examination of options for risk minimisation and prevention and appropriate measures are taken by the marketing authorisation holder;",
+      "fingerprint": "b6085d218edd46e70c4cb547ee0a4290974eee18a8e872e1bc3922c22b59c4fe",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 8,
+      "anchor": "paragraph-212",
+      "statement": "Marketing authorisation holders shall put in place a record management system for all documents used for pharmacovigilance activities that ensures the retrievability of those documents as well as the traceability of the measures taken to investigate safety concerns, of the timelines for those investigations and of decisions on safety concerns, including their date and the decision-making process.",
+      "context": "Record management and data retention Marketing authorisation holders shall establish mechanisms enabling the traceability and follow-up of adverse reaction reports.",
+      "fingerprint": "b4153a86fb9cee57cabbe34e0b6bb3e6e4dd2caac598bf550746135110d5efe5",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 9,
+      "anchor": "paragraph-213",
+      "statement": "Marketing authorisation holders shall establish mechanisms enabling the traceability and follow-up of adverse reaction reports.",
+      "context": "Marketing authorisation holders shall put in place a record management system for all documents used for pharmacovigilance activities that ensures the retrievability of those documents as well as the traceability of the measures taken to investigate safety concerns, of the timelines for those investigations and of decisions on safety concerns, including their date and the decision-making process. Pharmacovigilance data and documents relating to individual authorised medicinal products shall be retained as long as the product is authorised and for at least 10 years after the marketing authorisation has ceased to exist. However, the documents shall be retained for a longer period where Union law or national law so requires.",
+      "fingerprint": "0c67023186d8ed7c14819f596e9c9e5d552c64637448726aa75dc27197b8c1e1",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 10,
+      "anchor": "paragraph-214",
+      "statement": "Pharmacovigilance data and documents relating to individual authorised medicinal products shall be retained as long as the product is authorised and for at least 10 years after the marketing authorisation has ceased to exist. However, the documents shall be retained for a longer period where Union law or national law so requires.",
+      "context": "Marketing authorisation holders shall establish mechanisms enabling the traceability and follow-up of adverse reaction reports.",
+      "fingerprint": "ef584169dd11f607fd14b2f3dcd3adf9bd86e99ceb890294bff6e19fc89a0c3f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 11,
+      "anchor": "paragraph-224",
+      "statement": "The organisational structures and the distribution of tasks and responsibilities shall be clear and, to the extent necessary, accessible. Contact points shall be established.",
+      "context": "Management of human resources",
+      "fingerprint": "c135d8418c0457bbb5142885dabb07f73a59926487fcdc97e97d84ebee9c930a",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 12,
+      "anchor": "paragraph-227",
+      "statement": "The national competent authorities and the Agency shall establish specific procedures and processes in order to achieve all of the following objectives:",
+      "context": "ensuring the evaluation of the quality, including completeness, of pharmacovigilance data submitted;",
+      "fingerprint": "39619f4cbe04a771f1e9b76ec4089e1e4a26af05db50100ecf03d8ec2302c1d7",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 13,
+      "anchor": "paragraph-236",
+      "statement": "They shall put in place a record management system for all documents used for pharmacovigilance activities that ensures the retrievability of those documents as well as the traceability of the measures taken to investigate safety concerns, of the timelines for those investigations and of decisions on safety concerns, including their date and the decision-making process.",
+      "context": "Record management and data retention Pharmacovigilance data and documents relating to individual authorised medicinal products shall be retained as long as the product is authorised and for at least 10 years after the marketing authorisation has expired. However, the documents shall be retained for a longer period where Union law or national law so requires.",
+      "fingerprint": "e2aada13a5e8981563b0f53fcd0b46a1f90a13596168bb3454910a17b34a3e05",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 14,
+      "anchor": "paragraph-237",
+      "statement": "Pharmacovigilance data and documents relating to individual authorised medicinal products shall be retained as long as the product is authorised and for at least 10 years after the marketing authorisation has expired. However, the documents shall be retained for a longer period where Union law or national law so requires.",
+      "context": "They shall put in place a record management system for all documents used for pharmacovigilance activities that ensures the retrievability of those documents as well as the traceability of the measures taken to investigate safety concerns, of the timelines for those investigations and of decisions on safety concerns, including their date and the decision-making process.",
+      "fingerprint": "841138ea06167c764377fb48da6c636e056baed8ab3000002de6ea657c607ca0",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 15,
+      "anchor": "paragraph-252",
+      "statement": "For the purpose of monitoring data in the Eudravigilance database, only signals related to a suspected adverse reaction shall be considered.",
+      "context": "",
+      "fingerprint": "a0e958941f3e46d3a3f6c3d031b6d78bba7272d56c0687074d1fb5bb461db1ef",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 16,
+      "anchor": "paragraph-261",
+      "statement": "Where it is considered that a signal validated by a national competent authority or the Agency requires further analysis, it shall be confirmed as soon as possible and no later than 30 days from its receipt as follows:",
+      "context": "where the signal concerns a product authorised in accordance with Directive 2001/83/EC, it shall be confirmed by the competent authority of a Member State in which the medicinal product is marketed or of any lead Member State or co-leader appointed in accordance with Article 22(1);",
+      "fingerprint": "d7d4792ba3a7710c7c2b5cd5c04a7c51471df76dd71ab34c47948e4d9880202d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 17,
+      "anchor": "paragraph-262",
+      "statement": "where the signal concerns a product authorised in accordance with Directive 2001/83/EC, it shall be confirmed by the competent authority of a Member State in which the medicinal product is marketed or of any lead Member State or co-leader appointed in accordance with Article 22(1);",
+      "context": "Where it is considered that a signal validated by a national competent authority or the Agency requires further analysis, it shall be confirmed as soon as possible and no later than 30 days from its receipt as follows: where the signal concerns a product authorised in accordance with Regulation (EC) No 726/2004, it shall be confirmed by the Agency in collaboration with the Member States.",
+      "fingerprint": "59d57f5225de316355c5d75b83b8f19b4492bf3de7c27dc400b03409fe7d4b5f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 18,
+      "anchor": "paragraph-263",
+      "statement": "where the signal concerns a product authorised in accordance with Regulation (EC) No 726/2004, it shall be confirmed by the Agency in collaboration with the Member States.",
+      "context": "where the signal concerns a product authorised in accordance with Directive 2001/83/EC, it shall be confirmed by the competent authority of a Member State in which the medicinal product is marketed or of any lead Member State or co-leader appointed in accordance with Article 22(1); When analysing the validated signal, national competent authorities and the Agency may take into account other information available on the medicinal product.",
+      "fingerprint": "b4c086add32430541cab7c840bb15e30721c53a74b36a3bab71585d4158838fa",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 19,
+      "anchor": "paragraph-265",
+      "statement": "Where the validity of the signal is not confirmed, special attention shall be paid to non-confirmed signals concerning a medicinal product where those signals are subsequently followed by new signals concerning the same medicinal product.",
+      "context": "When analysing the validated signal, national competent authorities and the Agency may take into account other information available on the medicinal product.",
+      "fingerprint": "ab1af726dd0413923ba93bacfaed14af62b7e3e74750b67fe2f90d12016d2c88",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 20,
+      "anchor": "paragraph-269",
+      "statement": "The lead Member State shall monitor the Eudravigilance database and shall validate and confirm signals in accordance with Article 21(3) and (4) on behalf of the other Member States. The Member State appointed as co-leader shall assist the lead Member State in the fulfilment of its tasks.",
+      "context": "Worksharing for signal management",
+      "fingerprint": "18ac95abec32f9af5fb62c18762720e0332f8578ad6d546d87ced1a4ad66418e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 21,
+      "anchor": "paragraph-272",
+      "statement": "The Agency shall support the monitoring of the Eudravigilance database by providing national competent authorities with access to the following information:",
+      "context": "data outputs and statistical reports allowing a review of all adverse reactions reported to the Eudravigilance database in relation to an active substance or a medicinal product;",
+      "fingerprint": "4f18188bb2a9b626b67c137e04563ac405a050ffcbc3c723402badcbedc87242",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 22,
+      "anchor": "paragraph-278",
+      "statement": "The Agency shall also ensure appropriate support for the use of the Eudravigilance database by marketing authorisation holders.",
+      "context": "",
+      "fingerprint": "65975181688c8198c3d4ac9566a72d8df4641d40bc03f22e5e013340a410acfe",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 23,
+      "anchor": "paragraph-287",
+      "statement": "For the classification, retrieval, presentation, risk-benefit evaluation and assessment, electronic exchange and communication of pharmacovigilance and medicinal product information, Member States, marketing authorisation holders and the Agency shall use the following terminology:",
+      "context": "the Medical Dictionary for Regulatory Activities (MedDRA) as developed by the International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use (ICH), multidisciplinary topic M1;",
+      "fingerprint": "63fa9bc8078d0f925d56afe4edc5ad32c23c8c5f529241e64f2e1d19765e4499",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 24,
+      "anchor": "paragraph-298",
+      "statement": "For the description, retrieval, presentation, risk-benefit evaluation and assessment, electronic exchange and communication of pharmacovigilance and medicinal product information, national competent authorities, marketing authorisation holders and the Agency shall apply the following formats and standards:",
+      "context": "Use of internationally agreed formats and standards",
+      "fingerprint": "1737d5e611e474da3a1e4409056f566b6157fba9cc8265949f0f7d1aee8a0fd8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 25,
+      "anchor": "paragraph-317",
+      "statement": "Individual case safety reports shall be used for reporting to the Eudravigilance database suspected adverse reactions to a medicinal product that occur in a single patient at a specific point in time.",
+      "context": "Individual case safety reports",
+      "fingerprint": "e7de8f0682a0f503ebe82fc76e99d1bd7d0d392275a00f1863d39c00132dbb34",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 26,
+      "anchor": "paragraph-321",
+      "statement": "In reporting, the individual case safety report shall include at least one identifiable reporter, one identifiable patient, at least one suspected adverse reaction and the medicinal product(s) concerned.",
+      "context": "",
+      "fingerprint": "ed692d4503122f021d99b009bbd56e3f2e3b829cf1b58e9237f35a614bc540ce",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 27,
+      "anchor": "paragraph-323",
+      "statement": "When reporting suspected adverse reactions, Member States and marketing authorisation holders shall provide all available information on each individual case, including the following:",
+      "context": "administrative information: report type, date and a worldwide unique case identification number as well as unique sender identification and sender type; the date on which the report was first received from the source and the date of receipt of the most recent information, using a precise date; other case identifiers and their sources, as well as references to additional available documents held by the sender of the individual case safety report, where applicable;",
+      "fingerprint": "049b693eed9ee84e9f9e7666af4fd577ed4aa335f0c41e7b2ce60f006c6e0da8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 28,
+      "anchor": "paragraph-342",
+      "statement": "For the purposes of point (b), upon request of the Agency, the marketing authorisation holder that transmitted the initial report shall provide a copy of the relevant article taking into account copyright restrictions, and a full translation of that article into English.",
+      "context": "reasons for nullifying or amending an individual case safety report. For the purposes of point (h), a follow-up procedure shall be in place to obtain the batch number where it is not indicated in the initial report.",
+      "fingerprint": "419fe5c34f962e5d2602d2f3ff59a295d7f8dcfb0a24e0dc9993ea13879ba2ae",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 29,
+      "anchor": "paragraph-343",
+      "statement": "For the purposes of point (h), a follow-up procedure shall be in place to obtain the batch number where it is not indicated in the initial report.",
+      "context": "For the purposes of point (b), upon request of the Agency, the marketing authorisation holder that transmitted the initial report shall provide a copy of the relevant article taking into account copyright restrictions, and a full translation of that article into English. For the purposes of point (m), the information shall be presented in a logical time sequence, in the chronology of the patient’s experience including clinical course, therapeutic measures, outcome and follow-up information obtained; any relevant autopsy or post-mortem findings shall also be summarised in the narrative.",
+      "fingerprint": "969f47df46b80745d4e05241f9c5a6974df7710918859ef9eb95c6116e6ab98f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 30,
+      "anchor": "paragraph-344",
+      "statement": "For the purposes of point (m), the information shall be presented in a logical time sequence, in the chronology of the patient’s experience including clinical course, therapeutic measures, outcome and follow-up information obtained; any relevant autopsy or post-mortem findings shall also be summarised in the narrative.",
+      "context": "For the purposes of point (h), a follow-up procedure shall be in place to obtain the batch number where it is not indicated in the initial report. Member States may report case narratives in their official language(s). For those reports, case translations shall be provided where requested by the Agency or other Member States for the evaluation of potential signals.",
+      "fingerprint": "113aa9ddd2696a318373baf9b2ba1e8cd0973575f0a5fe211e239149f35cba0d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 31,
+      "anchor": "paragraph-345",
+      "statement": "Member States may report case narratives in their official language(s). For those reports, case translations shall be provided where requested by the Agency or other Member States for the evaluation of potential signals.",
+      "context": "For the purposes of point (m), the information shall be presented in a logical time sequence, in the chronology of the patient’s experience including clinical course, therapeutic measures, outcome and follow-up information obtained; any relevant autopsy or post-mortem findings shall also be summarised in the narrative. English shall be used for the reporting of suspected adverse reactions originating outside the Union.",
+      "fingerprint": "e27c0b4c25bf1dcd8e05a29788e552cf311e66806f33c2da33ea959b57f2d0c6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 32,
+      "anchor": "paragraph-346",
+      "statement": "English shall be used for the reporting of suspected adverse reactions originating outside the Union.",
+      "context": "Member States may report case narratives in their official language(s). For those reports, case translations shall be provided where requested by the Agency or other Member States for the evaluation of potential signals.",
+      "fingerprint": "a3532a1c59399c5acb6096944927b7fa50176e3047695b017d379c2273d8ad4d",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 33,
+      "anchor": "paragraph-349",
+      "statement": "Member States and marketing authorisation holders shall use the formats provided for in Article 26 and the terminology provided for in Article 25 for the electronic transmission of suspected adverse reactions.",
+      "context": "Format of electronic transmission of suspected adverse reactions",
+      "fingerprint": "a66e7c0d777de03155eb7835ecba15c0fab43f4fcb4fcc829eaa941f71239b6e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 34,
+      "anchor": "paragraph-354",
+      "statement": "The risk management plan established by the marketing authorisation holder shall contain the following elements:",
+      "context": "Content of the risk management plan an identification or characterisation of the safety profile of the medicinal product(s) concerned;",
+      "fingerprint": "ce5623240e5bcfb9598826b25c66b85976b1d6b82a343dbd734bff43b774ad68",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 35,
+      "anchor": "paragraph-365",
+      "statement": "The risk management plan shall be in the format set out in Annex I.",
+      "context": "Format of the risk management plan",
+      "fingerprint": "1d2a8036ffab068ec1088dc3d976aeea19b88cbaa1f8aa8b950502b0bb65696f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 36,
+      "anchor": "paragraph-382",
+      "statement": "For the purposes of this chapter, the following definitions shall apply:",
+      "context": "‘Start of data collection’ means the date from which information on the first study subject is first recorded in the study dataset or, in the case of the secondary use of data, the date from which data extraction starts;",
+      "fingerprint": "7abcbd6876cdcf0352d4ed79286a23a96d890b7e13c892b8ad761e63b30b499f",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 37,
+      "anchor": "paragraph-387",
+      "statement": "Protocols, abstracts and final study reports for non-interventional post-authorisation safety studies shall be submitted in the format set out in Annex III.",
+      "context": "Format of post-authorisation safety studies",
+      "fingerprint": "3c757f7998999142455d67fb69b4885f9523b76ec72d5d72834816b07a5beafd",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 38,
+      "anchor": "paragraph-392",
+      "statement": "This Regulation shall apply without prejudice to the obligations of national competent authorities and marketing authorisation holders relating to their processing of personal data under Directive 95/46/EC or the obligations of the Agency relating to its processing of personal data under Regulation (EC) No 45/2001.",
+      "context": "",
+      "fingerprint": "a832262759532296544a55ce6e8e78bb76305e8fcfafab86ae3c6b9b490b1574",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 39,
+      "anchor": "paragraph-397",
+      "statement": "This Regulation shall enter into force on the twentieth day following that of its publication in the Official Journal of the European Union.",
+      "context": "Entry into force and application It shall apply from 10 July 2012.",
+      "fingerprint": "8702a9f1c81aa79be030f82fffb2b611b80cfe489bb337ce169568024229eec6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 40,
+      "anchor": "paragraph-398",
+      "statement": "It shall apply from 10 July 2012.",
+      "context": "This Regulation shall enter into force on the twentieth day following that of its publication in the Official Journal of the European Union. This Regulation shall be binding in its entirety and directly applicable in all Member States.",
+      "fingerprint": "dbe1603a7ef982184204a116ad6a9ca5e418d457a9d6d0c5cafdd88de0b782c9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 41,
+      "anchor": "paragraph-399",
+      "statement": "This Regulation shall be binding in its entirety and directly applicable in all Member States.",
+      "context": "It shall apply from 10 July 2012.",
+      "fingerprint": "f51afcee5f8955378ada06d86a078cd70093ef402440b39d9b36c41aad3240c8",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 42,
+      "anchor": "paragraph-405",
+      "statement": "The risk management plan shall consist of the following modules:",
+      "context": "Format of the risk management plan",
+      "fingerprint": "84cd4010a16b7a2d2ddbcbf26f6604418450e526d3ae7059ede2c0b924a1086e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 43,
+      "anchor": "paragraph-440",
+      "statement": "The periodic safety update report shall consist of the following modules:",
+      "context": "Format of the electronic periodic safety update reports",
+      "fingerprint": "39b40e90ce6a148e95bb89ff22071975ff9e762495642c5f8fb04a5d04dc7638",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 44,
+      "anchor": "paragraph-568",
+      "statement": "setting: study population defined in terms of persons, place, time period, and selection criteria, including the rationale for any inclusion and exclusion criteria. Where any sampling from a source population is undertaken, a description of the source population and details of sampling methods shall be provided. Where the study design is a systematic review or a meta-analysis, the criteria for the selection and eligibility of studies shall be explained;",
+      "context": "",
+      "fingerprint": "2acd530d8e5d71f684243d9eb87c9e889db5494d59eaaf5d25ea4774690680c9",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 45,
+      "anchor": "paragraph-570",
+      "statement": "data sources: strategies and data sources for determining exposures, outcomes and all other variables relevant to the study objectives. Where the study will use an existing data source, such as electronic health records, any information on the validity of the recording and coding of the data shall be reported. In the case of a systematic review or meta-analysis, the search strategy and processes and any methods for confirming data from investigators shall be described;",
+      "context": "study size: any projected study size, precision sought for study estimates and any calculation of the study size that can minimally detect a pre-specified risk with a pre-specified interpretative power;",
+      "fingerprint": "03e1b779cb69678ac022dacc2af83edc1bdb5efc8e9fb4cfc00ca9fedc8a43bb",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 46,
+      "anchor": "paragraph-637",
+      "statement": "9.3. Subjects: any source population and eligibility criteria for study subjects. Sources and methods for selection of participants shall be provided, including, where relevant, methods for case ascertainment, as well as number of and reasons for dropouts.",
+      "context": "9.2. Setting: setting, locations, and relevant dates for the study, including periods of recruitment, follow-up, and data collection. In the case of a systematic review or meta-analysis, study characteristics used as criteria for eligibility, with rationale. 9.4. Variables: all outcomes, exposures, predictors, potential confounders, and effect modifiers, including operational definitions. Diagnostic criteria shall be provided, where applicable.",
+      "fingerprint": "0b3d4fb0c73c8afed53c83760c8107e867c127d7f723ccce328e49501e4a7cfa",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 47,
+      "anchor": "paragraph-638",
+      "statement": "9.4. Variables: all outcomes, exposures, predictors, potential confounders, and effect modifiers, including operational definitions. Diagnostic criteria shall be provided, where applicable.",
+      "context": "9.3. Subjects: any source population and eligibility criteria for study subjects. Sources and methods for selection of participants shall be provided, including, where relevant, methods for case ascertainment, as well as number of and reasons for dropouts. 9.5. Data sources and measurement: for each variable of interest, sources of data and details of methods of assessment and measurement. If the study has used an existing data source, such as electronic health records, any information on the validity of the recording and coding of the data shall be reported. In the case of a systematic review or meta-analysis, description of all information sources, search strategy, methods for selecting studies, methods of data extraction and any processes for obtaining or confirming data from investigators.",
+      "fingerprint": "f0486fede2f0bae80066422540253c0bdfdf53c6be0e59c480ade2719e57b3b6",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 48,
+      "anchor": "paragraph-639",
+      "statement": "9.5. Data sources and measurement: for each variable of interest, sources of data and details of methods of assessment and measurement. If the study has used an existing data source, such as electronic health records, any information on the validity of the recording and coding of the data shall be reported. In the case of a systematic review or meta-analysis, description of all information sources, search strategy, methods for selecting studies, methods of data extraction and any processes for obtaining or confirming data from investigators.",
+      "context": "9.4. Variables: all outcomes, exposures, predictors, potential confounders, and effect modifiers, including operational definitions. Diagnostic criteria shall be provided, where applicable.",
+      "fingerprint": "9a011ae123842a06f17e43f89d48dc084f9233406972127c407604bbec1f121e",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 49,
+      "anchor": "paragraph-656",
+      "statement": "Main results: unadjusted estimates and, if applicable, confounder-adjusted estimates and their precision. Where relevant, estimates of relative risk shall be translated into absolute risk for a meaningful time period.",
+      "context": "Outcome data: numbers of study subjects across categories of main outcomes.",
+      "fingerprint": "d7f93663f200a818f8082f44dc3dead19a092c03c895a115d36174b2872ab5ec",
+      "review_status": "pending"
+    },
+    {
+      "ordinal": 50,
+      "anchor": "paragraph-661",
+      "statement": "11.2. Limitations: limitations of the study taking into account circumstances that may have affected the quality or integrity of the data, limitations of the study approach and methods used to address them, sources of potential bias and imprecision, and validation of the events. Both the direction and magnitude of potential biases shall be discussed.",
+      "context": "11.1. Key results: key results with reference to the study objectives, prior research in support of and conflicting with the findings of the completed post-authorisation safety study, and, where relevant, the impact of the results on the risk–benefit balance of the product. 11.3. Interpretation: interpretation of results, considering objectives, limitations, multiplicity of analyses, results from similar studies and other relevant evidence.",
+      "fingerprint": "30a345e9b319d84f8fcac1c69b50a95cc8e830263d7a337ba152a6ad47ce4dc4",
+      "review_status": "pending"
+    }
+  ],
+  "retrieved_at": "2026-11-07T08:50:59.624Z"
+}
