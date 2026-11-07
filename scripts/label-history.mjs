@@ -22,6 +22,7 @@ async function get(url,{fetchImpl=fetch,limit=4_000_000,empty404=false}={}){
 }
 const values=v=>Array.isArray(v)?v.filter(x=>typeof x==='string'):[];
 export async function searchLabels({q,field,page},{fetchImpl=fetch}={}){
+ if(field==='application'){const match=/^(NDA|ANDA|BLA)\s*(\d{6})$/i.exec(String(q).trim());if(!match)throw fail('Enter an FDA application such as NDA 020702, ANDA 000001 or BLA 125057.',400);q=match[1].toUpperCase()+match[2];}
  const fields={brand:['openfda.brand_name'],ingredient:['openfda.substance_name','openfda.generic_name'],company:['openfda.manufacturer_name'],application:['openfda.application_number'],term:['boxed_warning','warnings','warnings_and_cautions','adverse_reactions','contraindications','precautions','drug_interactions']};
  const url=new URL('/drug/label.json',FDA);url.searchParams.set('search','('+fields[field].map(f=>`${f}:"${q}"`).join(' OR ')+')');url.searchParams.set('limit','10');url.searchParams.set('skip',String((page-1)*10));url.searchParams.set('sort','effective_time:desc');
  const raw=await get(url,{fetchImpl,limit:8_000_000,empty404:true});if(!raw)return {results:[],total:0,page,sourceURL:url.href,checked:new Date().toISOString()};
