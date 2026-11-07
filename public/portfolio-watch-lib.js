@@ -25,3 +25,24 @@ export function confirmPortfolio(rows,selections,records,{now=()=>new Date().toI
  if(!confirmed.length)throw Error('Confirm at least one product.');
  return {schema:'pv-portfolio-watch/1',createdAt:now(),products:confirmed,excludedRows:excluded,coverage,watchStatus:'not-scheduled',notice:'Local review package. No scheduled alerts, source monitoring or regulatory deadline inference. Contains portfolio selections; keep private.'};
 }
+export function restorePortfolio(text){
+ if(typeof text!=='string'||new TextEncoder().encode(text).length>3000000)throw Error('Use a portfolio package below 3 MB.');
+ const value=JSON.parse(text);if(value?.schema!=='pv-portfolio-watch/1'||!Array.isArray(value.products)||!value.products.length||value.products.length>500)throw Error('Invalid portfolio package.');
+ const rows=[],baseline=[];
+ for(const [i,entry]of value.products.entries()){
+  const p=entry?.product;if(!p||typeof p.id!=='string'||p.id.length>600||!['US','EU','CA'].includes(p.market))throw Error('Invalid saved product identity.');
+  const clean=v=>typeof v==='string'&&v.length<=500?v:'';
+  const input={brand:clean(p.brand),market:p.market,application:clean(p.application)};
+  if(!input.brand&&!input.application)throw Error('Saved product needs a brand or application for source rechecking.');
+  // Reuse CSV validation; saved package claims never become verified live evidence.
+  const csv=['brand,market,application',[input.brand,input.market,input.application].map(v=>'"'+v.replaceAll('"','""')+'"').join(',')].join('\n');
+  rows.push({...parsePortfolioCSV(csv)[0],id:'row-'+(i+1)});
+  baseline.push({rowId:'row-'+(i+1),id:p.id,market:p.market,brand:input.brand,application:input.application,hash:clean(p.hash)||null,status:clean(p.status)||null,approvalDate:clean(p.approvalDate)||null,snapshot:clean(p.snapshot)||null});
+ }
+ return {rows,baseline,savedAt:typeof value.createdAt==='string'?value.createdAt:null};
+}
+export function comparePortfolioSnapshot(baseline,records){
+ return baseline.map(saved=>{const current=records.find(p=>p.market===saved.market&&p.id===saved.id);if(!current)return {saved,current:null,state:'not-found',changes:[],meaning:'Not found in loaded source coverage; withdrawal is not established.'};
+ const fields=['hash','status','approvalDate'];const changes=fields.filter(k=>(saved[k]||null)!==(current[k]||null)).map(field=>({field,before:saved[field]||null,after:current[field]||null}));
+ return {saved,current,state:changes.length?'changed':'unchanged',changes,meaning:changes.length?'Source record metadata differs from the imported baseline; this is not proof of a label wording change.':'No difference in compared source metadata; label history was not checked.'};});
+}
