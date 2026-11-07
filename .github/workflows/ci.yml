@@ -67,6 +67,7 @@ jobs:
           node test/browser/rule-templates.smoke.cjs
           node test/browser/config-workbench.smoke.cjs
           node test/browser/leadership.smoke.cjs
+          node test/browser/control-tower.smoke.cjs
           node test/browser/drug-resolver.smoke.cjs
           node test/browser/safety-topics.smoke.cjs
           node test/browser/labels.smoke.cjs

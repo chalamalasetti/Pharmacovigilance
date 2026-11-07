@@ -142,7 +142,7 @@ function render(){
 async function main(){if(await approvalRequired('My Company Action Center'))return;
  try{sb=await C.client();user=await C.currentUser();if(user)await C.initCloud(ws);else await C.navOnly();
   if(user&&params.get('team')&&C.team.list.some(t=>t.id===params.get('team')))await C.setActiveTeam(ws,params.get('team'));
-  scope=user?(params.get('scope')==='team'&&C.team.id?C.team.id:'personal'):'local';await loadRows();announce('Choose an assessment handoff or an existing case.');
+  scope=user?(params.get('scope')==='local'?'local':params.get('scope')==='team'&&C.team.id?C.team.id:'personal'):'local';await loadRows();announce('Choose an assessment handoff or an existing case.');
  }catch(e){rows=[];render();announce(`Action Center could not load: ${e.message}. Sign in again or use This browser only.`,true);}
 }
 main();
