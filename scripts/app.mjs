@@ -16,6 +16,7 @@ import selfAccount from "../api/self-account.js";
 import accountAccess from "../api/account-access.js";
 import passwordLogin from "../api/password-login.js";
 import labelHistory from '../api/label-history.js';
+import usProductHistory from '../api/us-product-history.js';
 import clinicalTrials from "../api/clinical-trials.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../public");
@@ -52,6 +53,7 @@ export const server = http.createServer(async (req, res) => {
   if (urlPath === "/api/password-login") return passwordLogin(req, res);
   if (urlPath === "/api/clinical-trials") return clinicalTrials(req, res);
   if (urlPath === "/api/label-history") return labelHistory(req, res);
+  if (urlPath === "/api/us-product-history") return usProductHistory(req, res);
   const file = path.join(ROOT, urlPath.endsWith("/") ? urlPath + "index.html" : urlPath);
   if (!file.startsWith(ROOT + path.sep)) {
     res.writeHead(403).end();

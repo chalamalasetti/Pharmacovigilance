@@ -247,6 +247,13 @@
       "group": "Company work",
       "audience": "Everyone",
       "summary": "Create fictional scenarios, compare structured rules and inspect demonstration deadlines in a temporary local workspace."
+    },
+    {
+      "id": "us-label-journey",
+      "title": "US Approval & Label Journey",
+      "group": "Read and explore",
+      "audience": "Everyone",
+      "summary": "Trace FDA original decisions, supplements, official documents and available DailyMed label versions; compare source wording with explicit date and identity boundaries."
     }
   ],
   "screens": {
@@ -303,6 +310,7 @@
     "product-answers.html": "label-intelligence",
     "label-analysis.html": "label-intelligence",
     "data-repository.html": "label-intelligence",
-    "control-tower.html": "control-tower"
+    "control-tower.html": "control-tower",
+    "us-label-journey.html": "us-label-journey"
   }
 }

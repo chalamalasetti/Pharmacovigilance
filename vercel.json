@@ -58,6 +58,9 @@
     },
     "api/label-history.js": {
       "maxDuration": 30
+    },
+    "api/us-product-history.js": {
+      "maxDuration": 30
     }
   },
   "headers": [
