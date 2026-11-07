@@ -25,7 +25,9 @@
     "content:bundle": "node scripts/build-content-export.mjs && node scripts/build-e2b-runtime.mjs",
     "notice:build": "node scripts/build-safety-notice.mjs",
     "templates:build": "node scripts/build-rule-templates.mjs",
-    "answers:build": "node scripts/build-product-answers.mjs"
+    "answers:build": "node scripts/build-product-answers.mjs",
+    "security:headers": "node scripts/security-headers.mjs",
+    "security:audit": "npm audit --omit=dev --audit-level=high"
   },
   "engines": {
     "node": ">=22.13.0"
@@ -43,5 +45,10 @@
     "pdfjs-dist": "6.4.299",
     "pptxgenjs": "4.0.1",
     "xmllint-wasm": "5.3.0"
+  },
+  "overrides": {
+    "pptxgenjs": {
+      "image-size": "2.1.0"
+    }
   }
 }

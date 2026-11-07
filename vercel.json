@@ -69,6 +69,31 @@
   },
   "headers": [
     {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://cdn.jsdelivr.net 'wasm-unsafe-eval' 'sha256-+ZFqKgkITCB7XdXnxM5FSGzQRX7MQ4tMbrggRrdQC8g=' 'sha256-Ac4Xxx6c8LvtsO8brin1gUkD6hFhW0p3FOMZ6kyHv5s=' 'sha256-ElShUWg/R0NC6WIMZp3N2FKE5siI90ZKCnHMHJYcUhk=' 'sha256-JDgiDrVHHANf47p8D3w84TSRSZareB8WNnZcS5pN0Ng=' 'sha256-WY8ZlPRpL9HZwrZnkH/kbKdaaBuPuzEyZmFCFgf9QvE=' 'sha256-iA4zTY6akqJiu47W0Q9TPTVfd6Xfnt5i2lJ6Dh81XfE='; style-src 'self' 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' data:; connect-src 'self' https: wss://*.supabase.co; worker-src 'self' blob:; frame-src 'self' blob:; manifest-src 'self'"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    },
+    {
       "source": "/data/(.*)",
       "headers": [
         {

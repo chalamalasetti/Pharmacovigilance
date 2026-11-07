@@ -123,7 +123,7 @@ Each build also writes `public/data/status.json`: when the updates were last ref
 4. **Choose the account flow.** The current user ID/password signup and recovery-key flow does not send email. If retaining legacy email-link sign-in, configure and test the provider’s redirect URLs, delivery and rate limits. A new SMTP service is not required for password-based signup.
 5. **Redeploy** (Vercel → Deployments → ⋯ → Redeploy). The build log shows `database: sign-in and team features on` and `database: archived N updates`.
 
-Only the project URL and the public anon key reach the browser (`public/config.json`, written by the build). The service key is used only by trusted build jobs and server APIs, including restricted account operations. Never expose it through browser configuration or committed files. Row-level security does the rest: anyone can read the archive, each reader sees only their own workspace, and team data only its members.
+Only the project URL and the public anon key reach the browser (`public/config.json`, written by the build). The service key is used only by trusted build jobs and server APIs, including restricted account operations. Never expose it through browser configuration or committed files. The schema defines row-level policies intended to keep private workspaces owner-scoped and team records member-scoped while allowing public archive reads. Verify the applied database policies and cross-user access in the deployed environment; repository tests alone do not establish tenant isolation.
 
 ## Admin console
 
