@@ -122,3 +122,11 @@ The answer shows the earliest retrieved matching version, its effective and publ
 Searches check up to 40 new versions per pass. Use **Continue investigation** for another batch, **Retry missing versions** for failures, or **Stop investigation** / **Clear conversation** to cancel. A session supports 200 versions or 30 MB of retrieved text. Download the answer evidence before closing the tab; it includes the retrieved text and scope. The phrase field lets you investigate another literal phrase for the same family.
 
 Historical retrieval currently covers US DailyMed families. EU and Canadian product approval metadata can be explored, but their historical-label connectors are not yet connected. Literal matches include negated mentions and omit images; they do not interpret clinical significance or run a MedDRA/SMQ algorithm. Qualified human review remains mandatory.
+
+## Combined Product Intelligence in chat
+
+The chat now uses one shared layer for company, product, exact ingredient names, reported market status, authorisation identifiers, dates and selected label evidence. Ask “Who holds the authorisation for [product] in the US?”, then “Show its ingredients”, “Show its warnings”, “Show its timeline” or “Show sources”. You can also ask “Which products are associated with [company] in Canada?”. Choose the intended product/application and market when prompted.
+
+For label narrative, confirm a DailyMed family before the newest available version is retrieved. A subsequent historical phrase investigation contributes its selected family, verified versions and coverage to the same context. Combined answer downloads retain the source facts, relationship methods, version references and gaps. A market change starts a new product selection; clearing the conversation clears that context.
+
+Reported company roles remain distinct from commercial ownership. Regulatory identifiers, listings and DPD codes keep their original meanings. Conflicting dates and missing sources remain visible. The Companies screens retain their current source views; the shared layer is currently connected to chat and its label-history flow.
