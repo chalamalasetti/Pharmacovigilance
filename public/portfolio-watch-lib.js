@@ -1,4 +1,4 @@
-import {searchFold} from './search-normalization.js';
+const identityName=value=>String(value||'').normalize('NFKC').trim().replace(/\s+/g,' ').toLowerCase();
 const columns=new Set(['brand','ingredient','company','market','application','ndc']);
 // Parse quoted CSV without accepting an arbitrary object or executable content.
 export function parsePortfolioCSV(text){
@@ -14,10 +14,10 @@ export function parsePortfolioCSV(text){
  if(rows.length<2)throw Error('Include a header and at least one product.');if(rows.length>501)throw Error('Import at most 500 rows.');
  const headers=rows.shift().map(x=>x.toLowerCase());if(new Set(headers).size!==headers.length||headers.some(h=>!columns.has(h)))throw Error('Use unique columns: brand, ingredient, company, market, application, ndc.');
  if(!headers.includes('market'))throw Error('A market column is required.');
- return rows.map((cells,i)=>{if(cells.length!==headers.length)throw Error('Column count differs on product row '+(i+1));if(cells.some(c=>c.length>500||/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(c)))throw Error('Invalid or oversized cell.');const r=Object.fromEntries(headers.map((h,n)=>[h,cells[n]]));r.market=r.market.toUpperCase();if(!['US','EU','CA'].includes(r.market))throw Error('Supported evidence markets: US, EU, CA.');if(!r.brand&&!r.ingredient&&!r.application&&!r.ndc)throw Error('Each row needs a brand, ingredient or identifier.');if(r.application){r.application=r.application.toUpperCase().replace(/[\s-]/g,'');if(r.market!=='US'||!/^(NDA|ANDA|BLA)\d{6}$/.test(r.application))throw Error('Use a US FDA application such as NDA020702.');}if(r.ndc&&(r.market!=='US'||!/^\d{4,5}-\d{3,4}(?:-\d{1,2})?$/.test(r.ndc)))throw Error('Use a hyphenated source NDC; no automatic zero padding.');return {...r,id:'row-'+(i+1)};});
+ return rows.map((cells,i)=>{if(cells.length!==headers.length)throw Error('Column count differs on product row '+(i+1));if(cells.some(c=>c.length>500||/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(c)))throw Error('Invalid or oversized cell.');const r=Object.fromEntries(headers.map((h,n)=>[h,cells[n]]));r.market=r.market.toUpperCase();if(!['US','EU','CA'].includes(r.market))throw Error('Supported evidence markets: US, EU, CA.');if(!r.brand&&!r.ingredient&&!r.application&&!r.ndc)throw Error('Each row needs a brand, ingredient or identifier.');if(r.application){r.application=r.application.toUpperCase().replace(/[\s-]/g,'');if(r.market!=='US'||!/^(NDA|ANDA|BLA)\d{6}$/.test(r.application))throw Error('Use a US FDA application such as NDA020702.');}if(r.ndc&&r.ndc.split('-').length===3)throw Error('Package-level NDC is not supported by this product-record matcher. Supply the two-part product NDC or use a brand and application; no package equivalence is inferred.');if(r.ndc&&(r.market!=='US'||!/^\d{4,5}-\d{3,4}(?:-\d{1,2})?$/.test(r.ndc)))throw Error('Use a hyphenated source NDC; no automatic zero padding.');return {...r,id:'row-'+(i+1)};});
 }
 export function portfolioCandidates(row,records){
- return records.filter(p=>p.market===row.market&&(!row.application||p.application===row.application)&&(!row.ndc||(p.identifiers||[]).some(i=>/NDC/.test(i.kind)&&i.value===row.ndc))&&(!row.brand||searchFold(row.brand)===searchFold(p.brand))&&(!row.ingredient||(p.ingredients||[]).some(n=>searchFold(n)===searchFold(row.ingredient)))&&(!row.company||searchFold(row.company)===searchFold(p.company)));
+ return records.filter(p=>p.market===row.market&&(!row.application||p.application===row.application)&&(!row.ndc||(p.identifiers||[]).some(i=>/NDC/.test(i.kind)&&i.value===row.ndc))&&(!row.brand||identityName(row.brand)===identityName(p.brand))&&(!row.ingredient||(p.ingredients||[]).some(n=>identityName(n)===identityName(row.ingredient)))&&(!row.company||identityName(row.company)===identityName(p.company)));
 }
 export function confirmPortfolio(rows,selections,records,{now=()=>new Date().toISOString(),coverage=[]}={}){
  const confirmed=[],excluded=[];
@@ -41,8 +41,8 @@ export function restorePortfolio(text){
  }
  return {rows,baseline,savedAt:typeof value.createdAt==='string'?value.createdAt:null};
 }
-export function comparePortfolioSnapshot(baseline,records){
- return baseline.map(saved=>{const current=records.find(p=>p.market===saved.market&&p.id===saved.id);if(!current)return {saved,current:null,state:'not-found',changes:[],meaning:'Not found in loaded source coverage; withdrawal is not established.'};
+export function comparePortfolioSnapshot(baseline,records,coverage=[]){
+ return baseline.map(saved=>{const current=records.find(p=>p.market===saved.market&&p.id===saved.id);if(!current)return {saved,current:null,state:coverage.find(c=>c.market===saved.market)?.repository==='unavailable'?'unavailable':'not-found',changes:[],meaning:'Not found in loaded source coverage; withdrawal is not established.'};
  const fields=['hash','status','approvalDate'];const changes=fields.filter(k=>(saved[k]||null)!==(current[k]||null)).map(field=>({field,before:saved[field]||null,after:current[field]||null}));
  return {saved,current,state:changes.length?'changed':'unchanged',changes,meaning:changes.length?'Source record metadata differs from the imported baseline; this is not proof of a label wording change.':'No difference in compared source metadata; label history was not checked.'};});
 }

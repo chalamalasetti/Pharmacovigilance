@@ -2,7 +2,7 @@
 
 ## Select a jurisdiction
 
-Open **Explore → Country Explorer**. Choose a country or jurisdiction and select Explore. The current product repository supports US, Canadian and EU source records. For EU member countries, the product view shows EU centrally evaluated evidence; it does not establish national availability. Other countries retain regulator links and available safety updates, with the national registry marked as not connected.
+Open **Explore → Country Explorer**. Use Find a country to narrow the selector by country name, code or configured search terms, then select Explore. The current product repository supports US, Canadian and EU source records. For EU member countries, the product view shows EU centrally evaluated evidence; it does not establish national availability. Other countries retain regulator links and available safety updates, with the national registry marked as not connected.
 
 ## Read products and company roles
 
@@ -15,3 +15,8 @@ An NDC listing is not FDA approval. A source authorisation does not establish th
 The Companies view groups source company names within the current product filters. Safety updates search captured country updates independently of the product filters. The Clinical activity tab retrieves country-located ClinicalTrials.gov interventional drug and biological studies on demand. Use the same clinical phase overview as Company Portfolio: click a phase tile to filter, or click it again to clear the phase. Counts reflect loaded studies after search and status filters; a study with multiple phases appears in each applicable tile, so counts are not additive. Phase not stated retains studies with missing phase data. Readable status labels and Ongoing studies use the shared company clinical definitions. Filter loaded studies by phase, overall study status and search terms. Load subsequent registry pages explicitly. The source query total includes records excluded from this medicine-only view. Overall status is not local site recruitment status, and study medicines may include comparators and placebo. A country switch clears clinical pages and continuation tokens. Failed requests preserve previously loaded evidence for retry. A missing or unavailable snapshot is a coverage gap, not evidence that no records exist.
 
 Export downloads the filtered loaded product and update records with coverage information and limitations. It contains no live verification of national completeness. Review source dates before using a downloaded file; exports can become stale.
+
+
+## Share a filtered view
+
+The URL preserves the country, view, query, source and status filters plus clinical phase and study status. Clinical data is loaded on demand when reopening a link. Phase tiles show Not loaded until a registry page is received; zero counts then describe loaded evidence only. Company groups retain matches found through product or ingredient search.

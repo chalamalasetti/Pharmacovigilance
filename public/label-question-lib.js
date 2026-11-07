@@ -30,7 +30,8 @@ export function repositoryCandidates(records,question){
 }
 export function createRepositoryReader(fetcher=fetch){
  let manifest=null;const markets=new Map();
- return async(market,{signal,progress=()=>{}}={})=>{
+ return async(market,{signal,progress=()=>{},refresh=false}={})=>{
+  if(refresh){manifest=null;markets.clear();}
   if(markets.has(market))return markets.get(market);
   if(!manifest){const r=await fetcher(REPOSITORY_MANIFEST,{cache:'no-store',signal});if(!r.ok)throw Error('Published product repository unavailable. Retry later.');const candidate=await r.json();if(candidate.schema!=='pv-evidence-repository/1'||!candidate.completeLabelSnapshot||candidate.developmentSubset||!Array.isArray(candidate.indexes)||!Array.isArray(candidate.sourceCatalog?.sources))throw Error('Repository verification failed.');manifest=candidate;}
   const sources=new Set(manifest.sourceCatalog.sources.filter(s=>s.market===market).map(s=>s.id));

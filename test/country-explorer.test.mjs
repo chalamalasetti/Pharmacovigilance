@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {searchMatches,searchFold} from '../public/search-normalization.js';
-import {countryScope,prepareCountryProducts,filterCountryProducts,countryExport,productStatus} from '../public/country-explorer-lib.js';
+import {countryScope,companyGroups,prepareCountryProducts,filterCountryProducts,countryExport,productStatus} from '../public/country-explorer-lib.js';
 test('search accepts case, accents, word order and spaced identifiers without changing identity',()=>{
  assert(searchMatches('ATORVASTATIN lipitor',['Lipitor','atorvastatin']));
  assert(searchMatches('nda 020702','NDA020702'));
@@ -26,3 +26,7 @@ test('filters and evidence exports preserve record provenance and missing covera
  assert.equal(output.products[0].hash,'abc');assert.equal(output.products[0]._search,undefined);
  assert.equal(output.coverage.repository,'unavailable');assert.match(output.notice,/not a complete national register/);
 });
+
+test('company grouping preserves matches found through product names and ingredients',()=>{const rows=prepareCountryProducts([{id:'x',brand:'Example medicine',ingredients:['Example ingredient'],company:'Other name',sourceId:'fda-drugsfda'}]);assert.equal(companyGroups(filterCountryProducts(rows,{q:'medicine'}))[0].name,'Other name');});
+
+test('company grouping does not collapse distinct punctuation in legal source names',()=>{const rows=prepareCountryProducts([{id:'a',company:'A-B',ingredients:[]},{id:'b',company:'A B',ingredients:[]}]);assert.equal(companyGroups(rows).length,2);});
