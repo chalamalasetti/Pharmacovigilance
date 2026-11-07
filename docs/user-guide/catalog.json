@@ -261,6 +261,13 @@
       "group": "Read and explore",
       "audience": "Everyone",
       "summary": "Explore available country product records, source company roles and safety evidence with explicit coverage."
+    },
+    {
+      "id": "portfolio-watch",
+      "title": "Portfolio Label Watch import preview",
+      "group": "Read and explore",
+      "audience": "Everyone",
+      "summary": "Import a portfolio, explicitly confirm source matches and download a private review package."
     }
   ],
   "screens": {
@@ -319,6 +326,7 @@
     "data-repository.html": "label-intelligence",
     "control-tower.html": "control-tower",
     "us-label-journey.html": "us-label-journey",
-    "country-explorer.html": "country-explorer"
+    "country-explorer.html": "country-explorer",
+    "portfolio-watch.html": "portfolio-watch"
   }
 }
