@@ -22,7 +22,7 @@ export function repositoryCandidates(records,question){
  const grouped=new Map();
  for(const r of records){
   const brand=norm(r.brand);if(brand.length<3||!phrase(r.brand,question)&&!(r.ingredients||[]).some(i=>norm(i).length>=4&&phrase(i,question)))continue;
-  const application=appNumber(r.id),key=r.market+'|'+(application||r.id)+'|'+brand;
+  const application=appNumber(r.application||r.id),key=r.market+'|'+(application||r.id)+'|'+brand;
   const score=(phrase(r.brand,question)?1000+brand.length:0)+(r.id.startsWith('fda-drugsfda:')?20:0);
   const product={...r,application,score};if(!grouped.has(key)||grouped.get(key).score<score)grouped.set(key,product);
  }

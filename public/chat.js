@@ -1,6 +1,7 @@
 import {createBusinessChat} from './business-chat.js';
 import {createLabelQuestionChat} from './label-question-chat.js';
-import {createProductChat} from './product-chat.js';
+import {createProductIntelligence} from './product-intelligence.js';
+import {createIntelligenceChat} from './intelligence-chat.js';
 import {fetchData} from './data-fetch.js';
 // "Ask PV Info": a chat bubble in the bottom-right corner. Readers ask about a
 // country, agency, topic or drug and get the matching updates back, each linked
@@ -9,7 +10,7 @@ import {fetchData} from './data-fetch.js';
 
 import { buildIndex, reply } from "./chat-lib.js";
 
-let productChat,businessChat,labelQuestionChat;
+let businessChat,labelQuestionChat,intelligenceChat,intelligenceLayer;
 let responseQueue=Promise.resolve(),conversationEpoch=0;
 const TEASED = "pv-chat-teased";
 let index = null;
@@ -49,13 +50,13 @@ const panel = el("section", { className: "chat-panel", id: "chatPanel", ariaLabe
     el("span", { className: "chat-avatar", ariaHidden: "true", textContent: "🛡️" }),
     el("div", {}, [el("b", { textContent: "Ask PV Info" }), el("span", { textContent: "products, labels and PV updates · with sources" })]),
     el('button',{type:'button',className:'chat-expand',ariaLabel:'Expand chat',textContent:'⤢',onclick:()=>{const expanded=panel.classList.toggle('chat-expanded');panel.querySelector('.chat-expand').ariaLabel=expanded?'Restore chat size':'Expand chat';}}),
-    el('button',{type:'button',className:'chat-clear',ariaLabel:'Clear conversation',textContent:'↺',onclick:()=>{conversationEpoch++;labelQuestionChat.reset();productChat.reset();businessChat.reset();businessChat=createBusinessChat({el,bubble,json});log.replaceChildren();chips.replaceChildren();bubble('bot',[el('p',{textContent:'Conversation cleared. Ask a new product or business question.'})]);}}),
+    el('button',{type:'button',className:'chat-clear',ariaLabel:'Clear conversation',textContent:'↺',onclick:()=>{conversationEpoch++;labelQuestionChat.reset();intelligenceChat.reset();intelligenceLayer.clear();businessChat.reset();businessChat=createBusinessChat({el,bubble,json});log.replaceChildren();chips.replaceChildren();bubble('bot',[el('p',{textContent:'Conversation cleared. Ask a new product or business question.'})]);}}),
     close,
   ]),
   log,
   chips,
   form,
-  el("p", { className: "chat-foot", textContent: "Uses published product evidence and retrieved label versions. Dates and coverage gaps stay explicit. Human review required." }),
+  el("p", { className: "chat-foot", textContent: "Uses the shared Product Intelligence evidence layer and retrieved label versions. Dates and coverage gaps stay explicit. Human review required." }),
 ]);
 
 function bubble(who, children) {
@@ -86,10 +87,10 @@ function showChips(list) {
 }
 
 async function respond(q,turn=conversationEpoch) {
-  if(await labelQuestionChat(q)){productChat.reset();return;}
+  if(await labelQuestionChat(q)){intelligenceChat.reset();return;}
   labelQuestionChat.reset();
-  if(await businessChat(q)){productChat.reset();return;}
-  if(await productChat(q))return;
+  if(await intelligenceChat(q)){return;}
+  if(await businessChat(q)){return;}
 
   if(turn!==conversationEpoch)return;
   const typing = bubble("bot typing", [el("span"), el("span"), el("span")]);
@@ -147,8 +148,9 @@ form.onsubmit = (e) => {
   input.value = "";
 };
 
-productChat=createProductChat({el,bubble,json});
-labelQuestionChat=createLabelQuestionChat({el,bubble,json});
+intelligenceLayer=createProductIntelligence({json});
+intelligenceChat=createIntelligenceChat({el,bubble,json,layer:intelligenceLayer});
+labelQuestionChat=createLabelQuestionChat({el,bubble,json,readRepository:intelligenceLayer.load,layer:intelligenceLayer});
 businessChat=createBusinessChat({el,bubble,json});
 document.body.append(panel, fab);
 
