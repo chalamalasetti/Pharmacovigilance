@@ -61,6 +61,10 @@
     },
     "api/us-product-history.js": {
       "maxDuration": 30
+    },
+    "api/country-clinical.js": {
+      "maxDuration": 30,
+      "includeFiles": "public/data/agencies.json"
     }
   },
   "headers": [

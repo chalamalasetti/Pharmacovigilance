@@ -16,6 +16,8 @@ export const PAGES = {
  'safety-topics':{label:'Safety Topics',href:'safety-topics.html',hint:'Follow safety evidence across updates, labels and research',icon:'◎'},
  labels:{label:'Label Intelligence',href:'labels.html',hint:'Safety wording, evidence and company impact',icon:'⇄'},
  substances:{label:'Substances',href:'substances.html',hint:'Ingredients, products and company relationships',icon:'⌬'},
+ 'portfolio-watch':{label:'Portfolio Label Watch',href:'portfolio-watch.html',hint:'Import products, review source matches and recheck saved evidence',icon:'◎'},
+ 'country-explorer':{label:'Country Explorer',href:'country-explorer.html',hint:'Country products, company roles and safety evidence',icon:'◉'},
  companies:{label:'Companies',href:'companies.html',hint:'Explore company products and evidence',icon:'▦'},
  globe:{label:'Global view',href:'globe.html',hint:'Explore updates around the world',icon:'◉'},
  'e2b-studio':{label:'E2B Mapping Studio',href:'e2b-studio.html',hint:'ICH and FDA field evidence, baselines and private system mappings',icon:'⌘'},
@@ -34,7 +36,7 @@ export const PAGES = {
  'label-analysis':{label:'Label Safety Analysis',href:'label-analysis.html',hint:'Compare product cohorts, safety wording and captured evidence timelines',icon:'◈'},
  'data-repository':{label:'Evidence Data Repository',href:'data-repository.html',hint:'Products, ingredients, dates, labels and downloadable source-linked datasets',icon:'◈'},
 };
-const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['control-tower','briefing','company-briefing','leadership','config-workbench','company-inbox','action-center','team','account-settings']],['explore','Explore',['product-answers','research','companies','substances','safety-topics','globe','events']],['resources','Resources',['content-studio','sandbox','rule-templates','e2b-studio','resources','documents','changes','requirements','agencies','archive','user-guide','about']],['label-intelligence','Label Intelligence',['us-label-journey','labels','label-analysis','data-repository']]];
+const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['control-tower','briefing','company-briefing','leadership','config-workbench','company-inbox','action-center','team','account-settings']],['explore','Explore',['product-answers','research','country-explorer','companies','substances','safety-topics','globe','events']],['resources','Resources',['content-studio','sandbox','rule-templates','e2b-studio','resources','documents','changes','requirements','agencies','archive','user-guide','about']],['label-intelligence','Label Intelligence',['portfolio-watch','us-label-journey','labels','label-analysis','data-repository']]];
 export const defaultNavigation=()=>({version:1,groups:GROUPS.map(([id,label,items])=>({id,label,items:items.map(id=>({id,label:PAGES[id].label,hidden:false}))}))});
 export const cleanLabel=(value,fallback)=>typeof value==='string'&&value.trim()?value.trim().slice(0,32):fallback;
 export function normalizeNavigation(raw,{navOrder=[],hiddenNav=[]}={}) {

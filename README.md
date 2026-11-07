@@ -6,6 +6,10 @@ PV Info brings public pharmacovigilance, drug-safety and regulatory information 
 
 The application uses HTML/CSS/JavaScript, Node collection jobs and serverless APIs, Vercel, and optional Supabase authentication, Postgres and storage. Automated matching and extraction use explicit rules; no paid model API is required.
 
+## Development and contributions
+
+Start with [local development](docs/local-development.md), [contribution guidance](CONTRIBUTING.md) and [security reporting](SECURITY.md). The source is publicly visible; a general source-code licence has not yet been selected. Public visibility alone does not grant open-source reuse rights. Third-party data, terminology and assets retain their own terms.
+
 ## Product overview
 
 | Module | What users can do |
