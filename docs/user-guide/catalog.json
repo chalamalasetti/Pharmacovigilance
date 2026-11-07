@@ -53,6 +53,13 @@
       "summary": "Review source-marked safety wording, inspect limitations and pin evidence for private company assessment."
     },
     {
+      "id": "control-tower",
+      "title": "PV Control Tower",
+      "group": "Company work",
+      "audience": "Approved users",
+      "summary": "Review company priorities, product and market impact, assigned dates, coverage and management snapshots across separate personal and team scopes."
+    },
+    {
       "id": "company-briefing",
       "title": "Confirm My Company Briefing",
       "group": "Company work",
@@ -295,6 +302,7 @@
     "rule-templates.html": "config-workbench",
     "product-answers.html": "label-intelligence",
     "label-analysis.html": "label-intelligence",
-    "data-repository.html": "label-intelligence"
+    "data-repository.html": "label-intelligence",
+    "control-tower.html": "control-tower"
   }
 }

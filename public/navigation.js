@@ -2,6 +2,7 @@
 export const PAGES = {
  index:{label:'Updates',href:'./',hint:'Latest safety and regulatory news',icon:'◈'},
  briefing:{label:'My Briefing',href:'briefing.html',hint:'Your saved updates and daily priorities',icon:'◎'},
+ 'control-tower':{label:'PV Control Tower',href:'control-tower.html',hint:'Company priorities, product impact and recorded actions',icon:'◈'},
  'company-briefing':{label:'Company Briefing',href:'company-briefing.html',hint:'Confirm products and markets',icon:'▦'},
  'config-workbench':{label:'Configuration Workbench',href:'config-workbench.html',hint:'System profiles, rule baselines and evidence-linked change packages',icon:'⚙'},
  leadership:{label:'Leadership Cockpit',href:'leadership.html',hint:'Company safety watch, priorities and weekly brief',icon:'◈'},
@@ -32,7 +33,7 @@ export const PAGES = {
  'label-analysis':{label:'Label Safety Analysis',href:'label-analysis.html',hint:'Compare product cohorts, safety wording and captured evidence timelines',icon:'◈'},
  'data-repository':{label:'Evidence Data Repository',href:'data-repository.html',hint:'Products, ingredients, dates, labels and downloadable source-linked datasets',icon:'◈'},
 };
-const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['briefing','company-briefing','leadership','config-workbench','company-inbox','action-center','team','account-settings']],['explore','Explore',['product-answers','research','companies','substances','safety-topics','globe','events']],['resources','Resources',['content-studio','sandbox','rule-templates','e2b-studio','resources','documents','changes','requirements','agencies','archive','user-guide','about']],['label-intelligence','Label Intelligence',['labels','label-analysis','data-repository']]];
+const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['control-tower','briefing','company-briefing','leadership','config-workbench','company-inbox','action-center','team','account-settings']],['explore','Explore',['product-answers','research','companies','substances','safety-topics','globe','events']],['resources','Resources',['content-studio','sandbox','rule-templates','e2b-studio','resources','documents','changes','requirements','agencies','archive','user-guide','about']],['label-intelligence','Label Intelligence',['labels','label-analysis','data-repository']]];
 export const defaultNavigation=()=>({version:1,groups:GROUPS.map(([id,label,items])=>({id,label,items:items.map(id=>({id,label:PAGES[id].label,hidden:false}))}))});
 export const cleanLabel=(value,fallback)=>typeof value==='string'&&value.trim()?value.trim().slice(0,32):fallback;
 export function normalizeNavigation(raw,{navOrder=[],hiddenNav=[]}={}) {
@@ -57,7 +58,7 @@ export function normalizeNavigation(raw,{navOrder=[],hiddenNav=[]}={}) {
  for(const group of defaults.groups){
   const missing=group.items.filter(i=>!seen.has(i.id)).map(i=>({...i,hidden:i.id!=='index'&&hiddenNav.includes(i.id)}));
   if(!missing.length)continue;
-  const into=groups.find(g=>g.id===group.id)??groups[0];for(const item of missing){if(item.id==='sandbox'){const studio=into.items.findIndex(i=>i.id==='content-studio');into.items.splice(studio<0?0:studio+1,0,item);}else into.items.push(item);}
+  const into=groups.find(g=>g.id===group.id)??groups[0];for(const item of missing){if(item.id==='control-tower'){const work=groups.find(g=>g.items.some(i=>i.id==='company-briefing'))??into;work.items.unshift(item);}else if(item.id==='sandbox'){const studio=into.items.findIndex(i=>i.id==='content-studio');into.items.splice(studio<0?0:studio+1,0,item);}else into.items.push(item);}
  }
  return {version:1,groups};
 }
