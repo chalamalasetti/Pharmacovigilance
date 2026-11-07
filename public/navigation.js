@@ -29,11 +29,12 @@ export const PAGES = {
  archive:{label:'Archive',href:'archive.html',hint:'Search previously collected updates',icon:'◷'},
  'user-guide':{label:'User Guide',href:'user-guide.html',hint:'Step-by-step help for every module',icon:'▤'},
  about:{label:'About PV Info',href:'about.html',hint:'Coverage, sources and how it works',icon:'ⓘ'},
+ 'us-label-journey':{label:'US Approval & Label Journey',href:'us-label-journey.html',hint:'FDA decisions, original documents and word-level label comparison',icon:'⇄'},
  'product-answers':{label:'Product Evidence Answers',href:'product-answers.html',hint:'Ask about approval dates, label mentions and supporting evidence',icon:'✦'},
  'label-analysis':{label:'Label Safety Analysis',href:'label-analysis.html',hint:'Compare product cohorts, safety wording and captured evidence timelines',icon:'◈'},
  'data-repository':{label:'Evidence Data Repository',href:'data-repository.html',hint:'Products, ingredients, dates, labels and downloadable source-linked datasets',icon:'◈'},
 };
-const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['control-tower','briefing','company-briefing','leadership','config-workbench','company-inbox','action-center','team','account-settings']],['explore','Explore',['product-answers','research','companies','substances','safety-topics','globe','events']],['resources','Resources',['content-studio','sandbox','rule-templates','e2b-studio','resources','documents','changes','requirements','agencies','archive','user-guide','about']],['label-intelligence','Label Intelligence',['labels','label-analysis','data-repository']]];
+const GROUPS=[['updates','Updates',['index']],['my-briefing','My Briefing',['control-tower','briefing','company-briefing','leadership','config-workbench','company-inbox','action-center','team','account-settings']],['explore','Explore',['product-answers','research','companies','substances','safety-topics','globe','events']],['resources','Resources',['content-studio','sandbox','rule-templates','e2b-studio','resources','documents','changes','requirements','agencies','archive','user-guide','about']],['label-intelligence','Label Intelligence',['us-label-journey','labels','label-analysis','data-repository']]];
 export const defaultNavigation=()=>({version:1,groups:GROUPS.map(([id,label,items])=>({id,label,items:items.map(id=>({id,label:PAGES[id].label,hidden:false}))}))});
 export const cleanLabel=(value,fallback)=>typeof value==='string'&&value.trim()?value.trim().slice(0,32):fallback;
 export function normalizeNavigation(raw,{navOrder=[],hiddenNav=[]}={}) {
@@ -58,7 +59,7 @@ export function normalizeNavigation(raw,{navOrder=[],hiddenNav=[]}={}) {
  for(const group of defaults.groups){
   const missing=group.items.filter(i=>!seen.has(i.id)).map(i=>({...i,hidden:i.id!=='index'&&hiddenNav.includes(i.id)}));
   if(!missing.length)continue;
-  const into=groups.find(g=>g.id===group.id)??groups[0];for(const item of missing){if(item.id==='control-tower'){const work=groups.find(g=>g.items.some(i=>i.id==='company-briefing'))??into;work.items.unshift(item);}else if(item.id==='sandbox'){const studio=into.items.findIndex(i=>i.id==='content-studio');into.items.splice(studio<0?0:studio+1,0,item);}else into.items.push(item);}
+  const into=groups.find(g=>g.id===group.id)??groups[0];for(const item of missing){if(item.id==='us-label-journey'){into.items.unshift(item);}else if(item.id==='control-tower'){const work=groups.find(g=>g.items.some(i=>i.id==='company-briefing'))??into;work.items.unshift(item);}else if(item.id==='sandbox'){const studio=into.items.findIndex(i=>i.id==='content-studio');into.items.splice(studio<0?0:studio+1,0,item);}else into.items.push(item);}
  }
  return {version:1,groups};
 }

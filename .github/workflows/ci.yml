@@ -61,6 +61,7 @@ jobs:
           node test/browser/product-answers.smoke.cjs
           node test/browser/label-analysis.smoke.cjs
           node test/browser/label-history.smoke.cjs
+          node test/browser/us-label-journey.smoke.cjs
           node test/browser/label-question.smoke.cjs
           node test/browser/product-intelligence.smoke.cjs
           node test/browser/data-repository.smoke.cjs
