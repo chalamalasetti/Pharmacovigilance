@@ -1,3 +1,4 @@
+import {searchFold} from './search-normalization.js';
 // Search and filtering for the Company Explorer (companies.html, company.html), kept
 // free of the page so it can be tested. Followed companies live in this browser only.
 
@@ -100,11 +101,11 @@ export function searchCompanies(index, q, limit = 12) {
 // Products and substances (from products.json) whose name starts with the query, or has
 // a word that does. Each lists the companies with a sourced relationship and its markets.
 export function searchProducts(products, q, limit = 15) {
-  const nq = norm(q);
+  const nq = searchFold(q);
   if (nq.length < 3 || !products) return [];
   const out = [];
   for (const t of products.terms) {
-    const n = norm(t.n);
+    const n = searchFold(t.n);
     const score = n === nq ? 0 : n.startsWith(nq) ? 1 : n.split(" ").some((w) => w.startsWith(nq)) ? 2 : null;
     if (score != null) out.push({ ...t, score });
   }

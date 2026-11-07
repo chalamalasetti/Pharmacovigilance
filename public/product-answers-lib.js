@@ -1,10 +1,11 @@
+import {searchFold} from './search-normalization.js';
 // Evidence retrieval only: dates are never inferred from prose or incomplete label history.
 export const norm=s=>String(s??'').normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
 export const safeURL=s=>{try{const u=new URL(s);return ['https:','http:'].includes(u.protocol)&&!u.username&&!u.password?u.href:null;}catch{return null;}};
 const STOP=new Set('when was the and it label approved added date first in to of for an on is what or'.split(' '));
 const includes=(text,term)=>(' '+norm(text)+' ').includes(' '+norm(term)+' ');
 export function parseQuestion(q){q=String(q??'').trim();if(!q||q.length>500)throw Error('Enter a product question of 1–500 characters.');const tail=q.split(/when\s+was\s+/i).at(-1);const m=/^(.{2,100}?)\s+(?:first\s+)?added\s+to\s+(?:the\s+)?label/i.exec(tail);return {question:q,topic:m?.[1]?.trim()??''};}
-export function productCandidates(products,query,market=''){const q=norm(query);if(q.length<3)return [];return products.filter(p=>(!market||p.market===market)&&((norm(p.brand).length>=3&&!STOP.has(norm(p.brand))&&includes(q,p.brand))||norm(p.brand)===q||(p.ingredients??[]).some(i=>norm(i).length>=4&&includes(q,i)))).sort((a,b)=>norm(b.brand).length-norm(a.brand).length||a.market.localeCompare(b.market)||a.authId.localeCompare(b.authId));}
+export function productCandidates(products,query,market=''){const q=norm(query);if(q.length<3)return [];return products.filter(p=>(!market||p.market===market)&&((norm(p.brand).length>=3&&!STOP.has(norm(p.brand))&&includes(q,p.brand))||norm(p.brand)===q||(p.ingredients??[]).some(i=>norm(i).length>=4&&includes(q,i))||Boolean(searchFold(p.authId)&&(' '+searchFold(query)+' ').includes(' '+searchFold(p.authId)+' ')))).sort((a,b)=>norm(b.brand).length-norm(a.brand).length||a.market.localeCompare(b.market)||a.authId.localeCompare(b.authId));}
 const auth=s=>norm(s).replaceAll(' ','');
 export function labelIdentity(record,product){if(record.market!==product.market)return false;if(record.authId&&product.authId)return auth(record.authId)===auth(product.authId);return false;}
 export function answerProduct({product,question,topic='',labels=[],updates=[],coverage={}}){

@@ -254,6 +254,13 @@
       "group": "Read and explore",
       "audience": "Everyone",
       "summary": "Trace FDA original decisions, supplements, official documents and available DailyMed label versions; compare source wording with explicit date and identity boundaries."
+    },
+    {
+      "id": "country-explorer",
+      "title": "Country Explorer",
+      "group": "Read and explore",
+      "audience": "Everyone",
+      "summary": "Explore available country product records, source company roles and safety evidence with explicit coverage."
     }
   ],
   "screens": {
@@ -311,6 +318,7 @@
     "label-analysis.html": "label-intelligence",
     "data-repository.html": "label-intelligence",
     "control-tower.html": "control-tower",
-    "us-label-journey.html": "us-label-journey"
+    "us-label-journey.html": "us-label-journey",
+    "country-explorer.html": "country-explorer"
   }
 }
